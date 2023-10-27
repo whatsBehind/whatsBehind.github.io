@@ -6,7 +6,26 @@
     <description>Recent content in Programmings on What&#39;s Behind</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Oct 2023 11:53:02 -0700</lastBuildDate><atom:link href="https://whatsBehind.github.io/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Oct 2023 08:11:22 -0700</lastBuildDate><atom:link href="https://whatsBehind.github.io/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Web Storage Api</title>
+      <link>https://whatsBehind.github.io/programming/web/web-api/web-storage-api/</link>
+      <pubDate>Fri, 27 Oct 2023 08:11:22 -0700</pubDate>
+      
+      <guid>https://whatsBehind.github.io/programming/web/web-api/web-storage-api/</guid>
+      <description>Definition The Web Storage API provides mechanisms by which browsers can store key/value pairs
+Source code These mechanisms are available via the Window.sessionStorage and Window.localStorage properties (to be more precise, the Window object implements the WindowLocalStorage and WindowSessionStorage objects, which the localStorage and sessionStorage properties hang off) — invoking one of these will create an instance of the Storage object, through which data items can be set, retrieved and removed. A different Storage object is used for the sessionStorage and localStorage for each origin — they function and are controlled separately.</description>
+    </item>
+    
+    <item>
+      <title>Cookie</title>
+      <link>https://whatsBehind.github.io/programming/web/http/cookie/</link>
+      <pubDate>Fri, 27 Oct 2023 08:10:45 -0700</pubDate>
+      
+      <guid>https://whatsBehind.github.io/programming/web/http/cookie/</guid>
+      <description>What is cookie An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user&amp;rsquo;s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.</description>
+    </item>
+    
     <item>
       <title>Set Up Hugo in Git Hub Pages</title>
       <link>https://whatsBehind.github.io/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</link>
