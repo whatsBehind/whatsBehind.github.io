@@ -6,7 +6,17 @@
     <description>Recent content on What&#39;s Behind</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Oct 2023 08:11:22 -0700</lastBuildDate><atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Oct 2023 08:44:30 -0700</lastBuildDate><atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cors</title>
+      <link>https://whatsBehind.github.io/programming/web/glossary/cors/</link>
+      <pubDate>Mon, 30 Oct 2023 08:44:30 -0700</pubDate>
+      
+      <guid>https://whatsBehind.github.io/programming/web/glossary/cors/</guid>
+      <description>What&amp;rsquo;s CORS CORS is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image img.jpg from origin images.com, if you don&amp;rsquo;t have CORS set properly, you can&amp;rsquo;t access the img.jpg from other origins like yourOrigin.com.
+Why needs CORS CORS is mainly for security usage. Image that your browser stores credential cookies of domain bank.com which is the website of you bank account, and a hacking website hacking.</description>
+    </item>
+    
     <item>
       <title>Web Storage Api</title>
       <link>https://whatsBehind.github.io/programming/web/web-api/web-storage-api/</link>

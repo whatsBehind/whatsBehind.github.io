@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://whatsBehind.github.io/programming/</loc>
-    <lastmod>2023-10-27T08:11:22-07:00</lastmod>
+    <loc>https://whatsBehind.github.io/programming/web/glossary/cors/</loc>
+    <lastmod>2023-10-30T08:44:30-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/programming/web/web-api/web-storage-api/</loc>
-    <lastmod>2023-10-27T08:11:22-07:00</lastmod>
+    <loc>https://whatsBehind.github.io/programming/</loc>
+    <lastmod>2023-10-30T08:44:30-07:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/</loc>
+    <lastmod>2023-10-30T08:44:30-07:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/programming/web/web-api/web-storage-api/</loc>
     <lastmod>2023-10-27T08:11:22-07:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/programming/web/http/cookie/</loc>
