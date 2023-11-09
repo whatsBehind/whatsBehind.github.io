@@ -6,7 +6,17 @@
     <description>Recent content in Programmings on What&#39;s Behind</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Oct 2023 08:47:07 -0700</lastBuildDate><atom:link href="https://whatsBehind.github.io/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Nov 2023 07:19:23 -0800</lastBuildDate><atom:link href="https://whatsBehind.github.io/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reflection</title>
+      <link>https://whatsBehind.github.io/programming/backend/java/reflection/</link>
+      <pubDate>Tue, 07 Nov 2023 07:19:23 -0800</pubDate>
+      
+      <guid>https://whatsBehind.github.io/programming/backend/java/reflection/</guid>
+      <description>Introduction to Java Reflection Java Reflection is a powerful feature that allows runtime introspection of classes, objects, and their members. It enables Java programs to manipulate internal properties and methods of classes dynamically. Reflection is especially useful in scenarios where the program needs to interact with classes and objects whose properties are not known at compile time.
+Class Object The heart of Java&amp;rsquo;s reflection mechanism. It&amp;rsquo;s an instance that represents classes and interfaces in a running Java application.</description>
+    </item>
+    
     <item>
       <title>Linux Manual</title>
       <link>https://whatsBehind.github.io/programming/os/linux/linux-manual/</link>
