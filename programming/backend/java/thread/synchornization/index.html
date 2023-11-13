@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Synchornization | What&#39;s Behind</title>
+<meta name="keywords" content="">
+<meta name="description" content="Thread Interference Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.">
+<meta name="author" content="">
+<link rel="canonical" href="https://whatsBehind.github.io/programming/backend/java/thread/synchornization/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://whatsBehind.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://whatsBehind.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://whatsBehind.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://whatsBehind.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://whatsBehind.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Synchornization" />
+<meta property="og:description" content="Thread Interference Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/programming/backend/java/thread/synchornization/" /><meta property="article:section" content="programming" />
+<meta property="article:published_time" content="2023-11-13T08:30:17-08:00" />
+<meta property="article:modified_time" content="2023-11-13T08:30:17-08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Synchornization"/>
+<meta name="twitter:description" content="Thread Interference Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Programmings",
+      "item": "https://whatsBehind.github.io/programming/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Synchornization",
+      "item": "https://whatsBehind.github.io/programming/backend/java/thread/synchornization/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Synchornization",
+  "name": "Synchornization",
+  "description": "Thread Interference Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Thread Interference Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.\npublic class ThreadInterference { public static void main(String[] args) throws InterruptedException { InterferenceThread thread1 = new InterferenceThread(); InterferenceThread thread2 = new InterferenceThread(); thread1.start(); thread2.start(); thread1.join(); thread2.join(); int count = InterferenceThread.getCount(); System.out.println(\"The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: \" + count); } } class InterferenceThread extends Thread { static int count = 0; int loopCount = 0; public static int getCount() { return count; } @Override public void run() { while (loopCount++ \u003c 1_000_000) { count++; } } } /* * Executing result: * The value of count InterferenceThread class is supposed to be 2_000_000, but the real value is: 1563643 * */ Introduction to Synchronization In Java, synchronization is a mechanism that allows us to control the access of multiple threads to any shared resource. It’s critical because it helps prevent thread interference and consistency problems.\nWhy do we need synchronization? To avoid thread interference which occurs when multiple threads try to access and modify the shared resource concurrently. To prevent consistency problems by making sure that the shared resource is in a consistent state. To achieve thread safety when creating applications that are intended to be used in a multithreaded environment. The Concept of a Monitor (Intrinsic Locks) Every Java object has an intrinsic lock associated with it. When a thread wants to execute a synchronized method on an object, it first needs to obtain the intrinsic lock. Here’s how it works:\nWhen a synchronized method is called, the thread automatically acquires the lock before executing the method. Other threads that attempt to call a synchronized method on the same object are blocked until the first thread exits the method and releases the lock. Synchronized Methods/Block Synchronized methods allow us to create thread-safe operations by ensuring that only one thread can execute a synchronized method on an instance at a time. When a thread is executing a synchronized method, all other threads that invoke synchronized methods on the same instance will be blocked until the first thread exits the method.\nClass-Level Synchronization You can synchronize static methods or code snippets containing static fields, which locks the Class object associated with the class. This means it locks at the class level, and only one thread can execute any of the synchronized static methods for that class.\npublic class ClassLevelSynchronization { public static void main(String[] args) throws InterruptedException { ClassLevelSyncThread thread1 = new ClassLevelSyncThread(); ClassLevelSyncThread thread2 = new ClassLevelSyncThread(); thread1.start(); thread2.start(); thread1.join(); thread2.join(); int count = ClassLevelSyncThread.getCount(); System.out.println(\"The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: \" + count); } } class ClassLevelSyncThread extends Thread { static int count = 0; int loopCount = 0; public static int getCount() { return count; } @Override public void run() { while (loopCount++ \u003c 1_000_000) { synchronized (ClassLevelSyncThread.class) { count++; } } } } /* * The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: 2000000 * */ In above example, code count++ is wrapped by a synchronized block, and the lock for this block is SynchronizedThread.class, which means at any time only one SynchronizedThread thread can execute count++ code.\nWhy use SynchronizedThread.class as the lock? That is because count is a static field, and its value is associated to SynchronizedThread class instead of any concrete objects. If we use a concrete object as the lock like this, cause the lock belongs to different objects, the scenario that multiple threads access the same variable at a moment will happen again. You can replace the SynchronizedThread.class with this and check the executing results.\nInstance-Level Synchronization When you synchronize an instance method, you are locking the instance for which the method was called. Only one thread per instance can execute any of the synchronized instance methods.\npublic class InstanceLevelSynchronization { public static void main(String[] args) throws InterruptedException { InstanceLevelSyncThread instanceLevelSyncThread = new InstanceLevelSyncThread(); Thread thread1 = new Thread(instanceLevelSyncThread); Thread thread2 = new Thread(instanceLevelSyncThread); Thread thread3 = new Thread(instanceLevelSyncThread); thread1.start(); thread2.start(); thread3.start(); thread1.join(); thread2.join(); thread3.join(); int count = instanceLevelSyncThread.getCount(); System.out.println(\"The value of count in InterferenceThread class is supposed to be 3_000_000, but the real value is: \" + count); } } class InstanceLevelSyncThread implements Runnable { int count = 0; @Override public void run() { for (int loopCount = 0; loopCount \u003c 1_000_000; loopCount++) { synchronized (this) { count++; } } } public int getCount() { return count; } } /* * Executing results: * The value of count in InterferenceThread class is supposed to be 3_000_000, but the real value is: 3000000 * */ Here we initiate a InstanceLevelSyncThread instance and create three threads with the instance passed in. The lock for the synchronized block here is this, which is the instance we create.\nWe craete three threads, why are they synchronized by InstanceLevelSyncThread instance?\n/* What will be run. */ private Runnable target; public Thread(Runnable target) { this(null, target, \"Thread-\" + nextThreadNum(), 0); } @Override public void run() { if (target != null) { target.run(); } } Let’s first look at the source code of Thread. Thread has a Runnable filed target and a constructor taking Runnable instance as parameter. Look at the run() method in Thread, the code what will be run is not the Thread itself but the Runnable instance target. In above example, alother we create three Thread instance, but we pass same target to them, so the codes run by each thread are all from same instance, which is target. That’s why, count is synchronized by this.\nWhy do we use for loop here, any problem using while loop with loopCount? loopCount is a instance-level variable which is a shared field to different threads. If we use a while loop with loopCount like below, cause it is not synchronized, its value could be implemented by different threads at same moment. In other words, loopCount is not thread safe.\nwhile (loopCount++ \u003c 1_000_000) { synchronized (this) { count++; } } However, when using a for loop, we create a new int varibale each time when run() method is executed, which won’t be shared by multiple threads, so it is thread safe.\nfor (int loopCount = 0; loopCount \u003c 1_000_000; loopCount++) { synchronized (this) { count++; } } ",
+  "wordCount" : "1117",
+  "inLanguage": "en",
+  "datePublished": "2023-11-13T08:30:17-08:00",
+  "dateModified": "2023-11-13T08:30:17-08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://whatsBehind.github.io/programming/backend/java/thread/synchornization/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "What's Behind",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://whatsBehind.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://whatsBehind.github.io/" accesskey="h" title="What&#39;s Behind (Alt + H)">What&#39;s Behind</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Synchornization
+    </h1>
+    <div class="post-meta"><span title='2023-11-13 08:30:17 -0800 PST'>November 13, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="thread-interference">Thread Interference<a hidden class="anchor" aria-hidden="true" href="#thread-interference">#</a></h2>
+<p>Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadInterference</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
+</span></span><span style="display:flex;"><span>        InterferenceThread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InterferenceThread();
+</span></span><span style="display:flex;"><span>        InterferenceThread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InterferenceThread();
+</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> InterferenceThread.<span style="color:#a6e22e">getCount</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: &#34;</span> <span style="color:#f92672">+</span> count);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InterferenceThread</span> <span style="color:#66d9ef">extends</span> Thread {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getCount</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (loopCount<span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> 1_000_000) {
+</span></span><span style="display:flex;"><span>            count<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Executing result:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* The value of count InterferenceThread class is supposed to be 2_000_000, but the real value is: 1563643
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * */</span>
+</span></span></code></pre></div><h2 id="introduction-to-synchronization">Introduction to Synchronization<a hidden class="anchor" aria-hidden="true" href="#introduction-to-synchronization">#</a></h2>
+<p>In Java, synchronization is a mechanism that allows us to control the access of multiple threads to any shared resource. It&rsquo;s critical because it helps prevent thread interference and consistency problems.</p>
+<h3 id="why-do-we-need-synchronization">Why do we need synchronization?<a hidden class="anchor" aria-hidden="true" href="#why-do-we-need-synchronization">#</a></h3>
+<ul>
+<li>To avoid thread interference which occurs when multiple threads try to access and modify the shared resource concurrently.</li>
+<li>To prevent consistency problems by making sure that the shared resource is in a consistent state.</li>
+<li>To achieve thread safety when creating applications that are intended to be used in a multithreaded environment.</li>
+</ul>
+<h3 id="the-concept-of-a-monitor-intrinsic-locks">The Concept of a Monitor (Intrinsic Locks)<a hidden class="anchor" aria-hidden="true" href="#the-concept-of-a-monitor-intrinsic-locks">#</a></h3>
+<p>Every Java object has an intrinsic lock associated with it. When a thread wants to execute a synchronized method on an object, it first needs to obtain the intrinsic lock. Here&rsquo;s how it works:</p>
+<ul>
+<li>When a synchronized method is called, the thread automatically acquires the lock before executing the method.</li>
+<li>Other threads that attempt to call a synchronized method on the same object are blocked until the first thread exits the method and releases the lock.</li>
+</ul>
+<h2 id="synchronized-methodsblock">Synchronized Methods/Block<a hidden class="anchor" aria-hidden="true" href="#synchronized-methodsblock">#</a></h2>
+<p>Synchronized methods allow us to create thread-safe operations by ensuring that only one thread can execute a synchronized method on an instance at a time. When a thread is executing a synchronized method, all other threads that invoke synchronized methods on the same instance will be blocked until the first thread exits the method.</p>
+<h3 id="class-level-synchronization">Class-Level Synchronization<a hidden class="anchor" aria-hidden="true" href="#class-level-synchronization">#</a></h3>
+<p>You can synchronize static methods or code snippets containing static fields, which locks the Class object associated with the class. This means it locks at the class level, and only one thread can execute any of the synchronized static methods for that class.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClassLevelSynchronization</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
+</span></span><span style="display:flex;"><span>        ClassLevelSyncThread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassLevelSyncThread();
+</span></span><span style="display:flex;"><span>        ClassLevelSyncThread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassLevelSyncThread();
+</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> ClassLevelSyncThread.<span style="color:#a6e22e">getCount</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: &#34;</span> <span style="color:#f92672">+</span> count);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClassLevelSyncThread</span> <span style="color:#66d9ef">extends</span> Thread {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getCount</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (loopCount<span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> 1_000_000) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">synchronized</span> (ClassLevelSyncThread.<span style="color:#a6e22e">class</span>) {
+</span></span><span style="display:flex;"><span>                count<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: 2000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * */</span>
+</span></span></code></pre></div><p>In above example, code <code>count++</code> is wrapped by a <code>synchronized</code> block, and the lock for this block is <code>SynchronizedThread.class</code>, which means at any time only one <code>SynchronizedThread</code> thread can execute <code>count++</code> code.</p>
+<ul>
+<li>Why use <code>SynchronizedThread.class</code> as the lock?</li>
+</ul>
+<p>That is because count is a <code>static</code> field, and its value is associated to <code>SynchronizedThread</code> class instead of any concrete objects. If we use a concrete object as the lock like <code>this</code>, cause the lock belongs to different objects, the scenario that multiple threads access the same variable at a moment will happen again. You can replace the <code>SynchronizedThread.class</code> with <code>this</code> and check the executing results.</p>
+<h3 id="instance-level-synchronization">Instance-Level Synchronization<a hidden class="anchor" aria-hidden="true" href="#instance-level-synchronization">#</a></h3>
+<p>When you synchronize an instance method, you are locking the instance for which the method was called. Only one thread per instance can execute any of the synchronized instance methods.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InstanceLevelSynchronization</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
+</span></span><span style="display:flex;"><span>        InstanceLevelSyncThread instanceLevelSyncThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InstanceLevelSyncThread();
+</span></span><span style="display:flex;"><span>        Thread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(instanceLevelSyncThread);
+</span></span><span style="display:flex;"><span>        Thread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(instanceLevelSyncThread);
+</span></span><span style="display:flex;"><span>        Thread thread3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(instanceLevelSyncThread);
+</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        thread3.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>        thread3.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> instanceLevelSyncThread.<span style="color:#a6e22e">getCount</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The value of count in InterferenceThread class is supposed to be 3_000_000, but the real value is: &#34;</span> <span style="color:#f92672">+</span> count);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InstanceLevelSyncThread</span> <span style="color:#66d9ef">implements</span> Runnable {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> 0; loopCount <span style="color:#f92672">&lt;</span> 1_000_000; loopCount<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">synchronized</span> (<span style="color:#66d9ef">this</span>) {
+</span></span><span style="display:flex;"><span>                count<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getCount</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Executing results:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* The value of count in InterferenceThread class is supposed to be 3_000_000, but the real value is: 3000000
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* */</span>
+</span></span></code></pre></div><p>Here we initiate a <code>InstanceLevelSyncThread</code> instance and create three threads with the instance passed in. The lock for the synchronized block here is <code>this</code>, which is the instance we create.</p>
+<ul>
+<li>
+<p>We craete three threads, why are they synchronized by <code>InstanceLevelSyncThread</code> instance?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>    <span style="color:#75715e">/* What will be run. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Runnable target; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Thread</span>(Runnable target) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>(<span style="color:#66d9ef">null</span>, target, <span style="color:#e6db74">&#34;Thread-&#34;</span> <span style="color:#f92672">+</span> nextThreadNum(), 0);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (target <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>            target.<span style="color:#a6e22e">run</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></li>
+</ul>
+<p>Let&rsquo;s first look at the source code of <code>Thread</code>. Thread has a <code>Runnable</code> filed target and a constructor taking <code>Runnable</code> instance as parameter. Look at the <code>run()</code> method in <code>Thread</code>, the code what will be run is not the <code>Thread</code> itself but the <code>Runnable</code> instance <code>target</code>.
+In above example, alother we create three <code>Thread</code> instance, but we pass same <code>target</code> to them, so the codes run by each thread are all from same instance, which is <code>target</code>. That&rsquo;s why, <code>count</code> is synchronized by <code>this</code>.</p>
+<ul>
+<li>Why do we use <code>for</code> loop here, any problem using <code>while</code> loop with <code>loopCount</code>?</li>
+</ul>
+<p><code>loopCount</code> is a instance-level variable which is a shared field to different threads. If we use a <code>while</code> loop with <code>loopCount</code> like below, cause it is not synchronized, its value could be implemented by different threads at same moment. In other words, <code>loopCount</code> is not thread safe.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (loopCount<span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> 1_000_000) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">synchronized</span> (<span style="color:#66d9ef">this</span>) {
+</span></span><span style="display:flex;"><span>        count<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>However, when using a <code>for</code> loop, we create a new <code>int</code> varibale each time when <code>run()</code> method is executed, which won&rsquo;t be shared by multiple threads, so it is thread safe.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> 0; loopCount <span style="color:#f92672">&lt;</span> 1_000_000; loopCount<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">synchronized</span> (<span style="color:#66d9ef">this</span>) {
+</span></span><span style="display:flex;"><span>        count<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://whatsBehind.github.io/">What&#39;s Behind</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

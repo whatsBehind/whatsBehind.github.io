@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Start Thread | What&#39;s Behind</title>
+<meta name="keywords" content="">
+<meta name="description" content="Main Lesson Java threads are crucial for executing multiple tasks concurrently in a program. Let&rsquo;s dive into this topic:
+What is a Thread in Java? 🧵
+In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻
+There are two ways to create a thread: By extending the Thread class. By implementing the Runnable interface.">
+<meta name="author" content="">
+<link rel="canonical" href="https://whatsBehind.github.io/programming/backend/java/thread/start-thread/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://whatsBehind.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://whatsBehind.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://whatsBehind.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://whatsBehind.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://whatsBehind.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Start Thread" />
+<meta property="og:description" content="Main Lesson Java threads are crucial for executing multiple tasks concurrently in a program. Let&rsquo;s dive into this topic:
+What is a Thread in Java? 🧵
+In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻
+There are two ways to create a thread: By extending the Thread class. By implementing the Runnable interface." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/programming/backend/java/thread/start-thread/" /><meta property="article:section" content="programming" />
+<meta property="article:published_time" content="2023-11-12T22:25:15-08:00" />
+<meta property="article:modified_time" content="2023-11-12T22:25:15-08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Start Thread"/>
+<meta name="twitter:description" content="Main Lesson Java threads are crucial for executing multiple tasks concurrently in a program. Let&rsquo;s dive into this topic:
+What is a Thread in Java? 🧵
+In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻
+There are two ways to create a thread: By extending the Thread class. By implementing the Runnable interface."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Programmings",
+      "item": "https://whatsBehind.github.io/programming/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Start Thread",
+      "item": "https://whatsBehind.github.io/programming/backend/java/thread/start-thread/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Start Thread",
+  "name": "Start Thread",
+  "description": "Main Lesson Java threads are crucial for executing multiple tasks concurrently in a program. Let\u0026rsquo;s dive into this topic:\nWhat is a Thread in Java? 🧵\nIn Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻\nThere are two ways to create a thread: By extending the Thread class. By implementing the Runnable interface.",
+  "keywords": [
+    
+  ],
+  "articleBody": "Main Lesson Java threads are crucial for executing multiple tasks concurrently in a program. Let’s dive into this topic:\nWhat is a Thread in Java? 🧵\nIn Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻\nThere are two ways to create a thread: By extending the Thread class. By implementing the Runnable interface. Example: Let’s create a simple thread that prints “Hello, Java Threads!”. Starting a Thread ✨\nUse the .start() method to begin the execution of a thread. It’s like telling our worker, “Go ahead and start your task!” Thread Lifecycle 📚\nUnderstand the states: New, Runnable, Running, Waiting/Blocked, and Terminated. It’s like a day in the life of our worker, from arrival to completion of the task. Synchronization 🤝\nWhen threads share resources, we need to ensure they don’t interfere with each other. It’s like coordinating workers to avoid conflicts and ensure smooth operation. Thread Safety 🔒\nEnsuring that our threads don’t cause data corruption or inconsistent results. Think of it as safety measures in a workplace. Two Ways to Start A Thread Extends Thread class\npublic class ExtendsThread { public static void main(String[] args) { Thread_1 thread_ = new Thread_1(); thread_.start(); } } class Thread_1 extends Thread { public void run() { System.out.println(\"Hello World!\"); } } Thread_1 extends Thread class and overrides method run(). We create a Thread_1 object and invoked start() method inherited from parent class Thread to start a new thread. Besides extending Thread class, we can also create a thread by implementing Runnable interface\nImplements Runnable interface\npublic class ImplementsRunnable { public static void main(String[] args) { Thread thread = new Thread(new Thread_2()); thread.start(); } } class Thread_2 implements Runnable { public void run() { System.out.println(\"Hello World!\"); } } Open Question: Why do we invoke start() to start a thread, what if I invoke run() directly? That’s a great question about thread management in Java! Let’s delve into the difference between invoking start() and run() when dealing with threads.\nUsing start() Method:\nThe start() method is used to begin the execution of a new thread in the Java runtime environment. When start() is called, it performs necessary preparations and creates a new thread in which the run() method will execute. This means the run() method executes in a separate call stack. Key Point: start() enables concurrent execution, aligning with the whole purpose of using threads. Directly Calling run() Method:\nIf you directly call the run() method, it does not start a new thread. Instead, the run() method executes in the current thread’s call stack, just like a normal method call. This means no concurrent execution happens; it’s just a regular method call. Key Point: Calling run() directly defeats the purpose of threading, as it doesn’t utilize the multithreading capabilities of Java. Consequences of Invoking run() Instead of start():\nWhen you call run() directly, you’re not utilizing the threading capabilities of Java; your code is executed on the same thread that called run(). This can lead to performance issues if the purpose is to execute tasks concurrently. It essentially turns your thread into a regular object, not a thread of execution. Summary:\nUse start() to actually start a new thread, leading to concurrent execution. Directly calling run() is like any other method call and does not start a new thread. This distinction is crucial for effective multithreading in Java. It’s part of ensuring that your program benefits from concurrency and parallelism. 🦌💻🧵 public class InvokesRun { public static void main(String[] args) { System.out.println(\"Thread for main method \" + Thread.currentThread().getName()); RunThread runThread = new RunThread(); StartThread startThread = new StartThread(); runThread.run(); startThread.start(); } } class RunThread extends Thread { public void run() { System.out.println(\"Thread for RunThread: \" + Thread.currentThread().getName()); } } class StartThread extends Thread { public void run() { System.out.println(\"Thread for StartThread: \" + Thread.currentThread().getName()); } } ",
+  "wordCount" : "654",
+  "inLanguage": "en",
+  "datePublished": "2023-11-12T22:25:15-08:00",
+  "dateModified": "2023-11-12T22:25:15-08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://whatsBehind.github.io/programming/backend/java/thread/start-thread/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "What's Behind",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://whatsBehind.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://whatsBehind.github.io/" accesskey="h" title="What&#39;s Behind (Alt + H)">What&#39;s Behind</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Start Thread
+    </h1>
+    <div class="post-meta"><span title='2023-11-12 22:25:15 -0800 PST'>November 12, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h3 id="main-lesson">Main Lesson<a hidden class="anchor" aria-hidden="true" href="#main-lesson">#</a></h3>
+<p>Java threads are crucial for executing multiple tasks concurrently in a program. Let&rsquo;s dive into this topic:</p>
+<ol>
+<li>
+<p>What is a Thread in Java? 🧵</p>
+<ul>
+<li>In Java, a thread is the smallest unit of execution within a process.</li>
+<li>Think of it like a worker who performs a part of a larger task.</li>
+</ul>
+</li>
+<li>
+<p>Creating a Thread 💻</p>
+<ul>
+<li>There are two ways to create a thread:
+<ul>
+<li>By extending the Thread class.</li>
+<li>By implementing the Runnable interface.</li>
+</ul>
+</li>
+<li>Example: Let&rsquo;s create a simple thread that prints &ldquo;Hello, Java Threads!&rdquo;.</li>
+</ul>
+</li>
+<li>
+<p>Starting a Thread ✨</p>
+<ul>
+<li>Use the .start() method to begin the execution of a thread.</li>
+<li>It&rsquo;s like telling our worker, &ldquo;Go ahead and start your task!&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>Thread Lifecycle 📚</p>
+<ul>
+<li>Understand the states: New, Runnable, Running, Waiting/Blocked, and Terminated.</li>
+<li>It&rsquo;s like a day in the life of our worker, from arrival to completion of the task.</li>
+</ul>
+</li>
+<li>
+<p>Synchronization 🤝</p>
+<ul>
+<li>When threads share resources, we need to ensure they don&rsquo;t interfere with each other.</li>
+<li>It&rsquo;s like coordinating workers to avoid conflicts and ensure smooth operation.</li>
+</ul>
+</li>
+<li>
+<p>Thread Safety 🔒</p>
+<ul>
+<li>Ensuring that our threads don&rsquo;t cause data corruption or inconsistent results.</li>
+<li>Think of it as safety measures in a workplace.</li>
+</ul>
+</li>
+</ol>
+<h3 id="two-ways-to-start-a-thread">Two Ways to Start A Thread<a hidden class="anchor" aria-hidden="true" href="#two-ways-to-start-a-thread">#</a></h3>
+<ul>
+<li>
+<p>Extends <code>Thread</code> class</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExtendsThread</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        Thread_1 thread_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread_1();
+</span></span><span style="display:flex;"><span>        thread_.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Thread_1</span> <span style="color:#66d9ef">extends</span> Thread {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<p><code>Thread_1</code> extends <code>Thread</code> class and overrides method <code>run()</code>. We create a <code>Thread_1</code> object and invoked <code>start()</code> method inherited from parent class <code>Thread</code> to start a new thread. Besides extending <code>Thread</code> class, we can also create a thread by implementing <code>Runnable</code> interface</p>
+<ul>
+<li>
+<p>Implements <code>Runnable</code> interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ImplementsRunnable</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        Thread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> Thread_2());
+</span></span><span style="display:flex;"><span>        thread.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Thread_2</span> <span style="color:#66d9ef">implements</span> Runnable {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="open-question-why-do-we-invoke-start-to-start-a-thread-what-if-i-invoke-run-directly">Open Question: Why do we invoke <code>start()</code> to start a thread, what if I invoke <code>run()</code> directly?<a hidden class="anchor" aria-hidden="true" href="#open-question-why-do-we-invoke-start-to-start-a-thread-what-if-i-invoke-run-directly">#</a></h3>
+<p>That&rsquo;s a great question about thread management in Java! Let&rsquo;s delve into the difference between invoking <code>start()</code> and <code>run()</code> when dealing with threads.</p>
+<ol>
+<li>
+<p>Using <code>start()</code> Method:</p>
+<ul>
+<li>The <code>start()</code> method is used to begin the execution of a new thread in the Java runtime environment.</li>
+<li>When <code>start()</code> is called, it performs necessary preparations and creates a new thread in which the <code>run()</code> method will execute.</li>
+<li>This means the <code>run()</code> method executes in a separate call stack.</li>
+<li>Key Point: <code>start()</code> enables concurrent execution, aligning with the whole purpose of using threads.</li>
+</ul>
+</li>
+<li>
+<p>Directly Calling <code>run()</code> Method:</p>
+<ul>
+<li>If you directly call the <code>run()</code> method, it does not start a new thread.</li>
+<li>Instead, the <code>run()</code> method executes in the current thread&rsquo;s call stack, just like a normal method call.</li>
+<li>This means no concurrent execution happens; it&rsquo;s just a regular method call.</li>
+<li>Key Point: Calling <code>run()</code> directly defeats the purpose of threading, as it doesn&rsquo;t utilize the multithreading capabilities of Java.</li>
+</ul>
+</li>
+<li>
+<p>Consequences of Invoking <code>run()</code> Instead of <code>start()</code>:</p>
+<ul>
+<li>When you call <code>run()</code> directly, you&rsquo;re not utilizing the threading capabilities of Java; your code is executed on the same thread that called <code>run()</code>.</li>
+<li>This can lead to performance issues if the purpose is to execute tasks concurrently.</li>
+<li>It essentially turns your thread into a regular object, not a thread of execution.</li>
+</ul>
+</li>
+<li>
+<p>Summary:</p>
+<ul>
+<li>Use <code>start()</code> to actually start a new thread, leading to concurrent execution.</li>
+<li>Directly calling <code>run()</code> is like any other method call and does not start a new thread.</li>
+<li>This distinction is crucial for effective multithreading in Java. It&rsquo;s part of ensuring that your program benefits from concurrency and parallelism. 🦌💻🧵</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InvokesRun</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread for main method &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        RunThread runThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RunThread();
+</span></span><span style="display:flex;"><span>        StartThread startThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StartThread();
+</span></span><span style="display:flex;"><span>        runThread.<span style="color:#a6e22e">run</span>();
+</span></span><span style="display:flex;"><span>        startThread.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunThread</span> <span style="color:#66d9ef">extends</span> Thread {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread for RunThread: &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StartThread</span> <span style="color:#66d9ef">extends</span> Thread {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread for StartThread: &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://whatsBehind.github.io/">What&#39;s Behind</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

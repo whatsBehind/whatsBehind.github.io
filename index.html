@@ -127,6 +127,48 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2>Synchornization
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Thread Interference Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-11-13 08:30:17 -0800 PST'>November 13, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Synchornization" href="https://whatsBehind.github.io/programming/backend/java/thread/synchornization/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Thread Lifecycle
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Understanding the lifecycle of a thread is crucial for effective thread management. Here’s a breakdown:
+NEW State:
+When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:
+When you invoke the start() method, the thread moves to the RUNNABLE state. A thread in the RUNNABLE state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-11-12 23:12:57 -0800 PST'>November 12, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Thread Lifecycle" href="https://whatsBehind.github.io/programming/backend/java/thread/thread-lifecycle/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Start Thread
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Main Lesson Java threads are crucial for executing multiple tasks concurrently in a program. Let’s dive into this topic:
+What is a Thread in Java? 🧵
+In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻
+There are two ways to create a thread: By extending the Thread class. By implementing the Runnable interface....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-11-12 22:25:15 -0800 PST'>November 12, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Start Thread" href="https://whatsBehind.github.io/programming/backend/java/thread/start-thread/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Reflection
     </h2>
   </header>
