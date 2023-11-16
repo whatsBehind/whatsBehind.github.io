@@ -6,7 +6,27 @@
     <description>Recent content on What&#39;s Behind</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 13 Nov 2023 08:30:17 -0800</lastBuildDate><atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 15 Nov 2023 16:43:55 -0800</lastBuildDate><atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Input/Output Stream &amp; Reader/Writer</title>
+      <link>https://whatsBehind.github.io/programming/backend/java/io/stream-reader-and-write/</link>
+      <pubDate>Wed, 15 Nov 2023 16:43:55 -0800</pubDate>
+      
+      <guid>https://whatsBehind.github.io/programming/backend/java/io/stream-reader-and-write/</guid>
+      <description>What is stream? Java Input/OutputStream and Reader/Writer are essential components of the Java I/O (Input/Output) library, designed to facilitate reading and writing data in various forms from different sources within Java applications. These classes serve as a bridge between your application and external data sources, making it easier to perform I/O operations efficiently and consistently. In this post, we will explore what Input/OutputStream and Reader/Writer are, their relationships, and how they classify based on the type of data and data source.</description>
+    </item>
+    
+    <item>
+      <title>File</title>
+      <link>https://whatsBehind.github.io/programming/backend/java/io/file/</link>
+      <pubDate>Wed, 15 Nov 2023 15:42:12 -0800</pubDate>
+      
+      <guid>https://whatsBehind.github.io/programming/backend/java/io/file/</guid>
+      <description>The File class in Java, found in the java.io package, is not used for file content manipulation (reading/writing) but for file and directory pathnames operations. It&amp;rsquo;s used to obtain or manipulate the information associated with a file or directory, such as metadata, permissions, and path details.
+Commonly Used APIs in File Class for Files and Directories File Handling Create a New File
+createNewFile(): Creates a new file if it does not exist.</description>
+    </item>
+    
     <item>
       <title>Synchornization</title>
       <link>https://whatsBehind.github.io/programming/backend/java/thread/synchornization/</link>
