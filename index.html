@@ -127,19 +127,63 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
-    <h2>Input/Output Stream &amp; Reader/Writer
+    <h2>Decorator Pattern in Java IO
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Node Streams (Low-Level Streams) Definition:
+Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.
+File file = new File(&#34;example.txt&#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file “example.txt”. It’s a direct connection between the Java program and the file....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-11-16 23:12:49 -0800 PST'>November 16, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Decorator Pattern in Java IO" href="https://whatsBehind.github.io/programming/backend/java/io/decorator-pattern-in-java-io/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>ObjectInputStream and ObjectOutputStream
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>This post will introduce two new processing streams, ObjectInputStream and ObjectOutputStream, which are used to deserialize and serialize objects and primitive data.
+ObjectInputStream Purpose: To deserialize objects and primitive data written using ObjectOutputStream. It allows you to read bytes from a source (like a file or network socket) and reconstructs objects from those bytes.
+Key Features: Processing stream: reads serialized objects from an underlying InputStream.
+Common Use Case: Commonly used in networking (for sending objects across a network) or for persisting objects to files....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-11-16 23:10:58 -0800 PST'>November 16, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to ObjectInputStream and ObjectOutputStream" href="https://whatsBehind.github.io/programming/backend/java/io/object-input-and-output-stream/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Stream Reader: Bridge of Byte and Char
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>There are two special readers in Java IO package, they are InputStreamReader and OutputStreamWriter which serve as bridge between byte data and character data
+InputStreamReader Important constructor
+public class InputStreamReader extends Reader { public InputStreamReader(InputStream in, Charset cs); } Key feature (Bridge from byte to char)
+Character Encoding: Data stored in files or transmitted over networks is often in the form of bytes. When such data represents text, it needs to be decoded using a specific character encoding (like UTF-8, ISO-8859-1, etc....</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-11-16 23:02:33 -0800 PST'>November 16, 2023</span></footer>
+  <a class="entry-link" aria-label="post link to Stream Reader: Bridge of Byte and Char" href="https://whatsBehind.github.io/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Java IO Stream
     </h2>
   </header>
   <div class="entry-content">
     <p>What is stream? Java Input/OutputStream and Reader/Writer are essential components of the Java I/O (Input/Output) library, designed to facilitate reading and writing data in various forms from different sources within Java applications. These classes serve as a bridge between your application and external data sources, making it easier to perform I/O operations efficiently and consistently. In this post, we will explore what Input/OutputStream and Reader/Writer are, their relationships, and how they classify based on the type of data and data source....</p>
   </div>
   <footer class="entry-footer"><span title='2023-11-15 16:43:55 -0800 PST'>November 15, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to Input/Output Stream &amp; Reader/Writer" href="https://whatsBehind.github.io/programming/backend/java/io/stream-reader-and-write/"></a>
+  <a class="entry-link" aria-label="post link to Java IO Stream" href="https://whatsBehind.github.io/programming/backend/java/io/io-stream/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>File
+    <h2>Java File
     </h2>
   </header>
   <div class="entry-content">
@@ -148,7 +192,7 @@ Commonly Used APIs in File Class for Files and Directories File Handling Create 
 createNewFile(): Creates a new file if it does not exist....</p>
   </div>
   <footer class="entry-footer"><span title='2023-11-15 15:42:12 -0800 PST'>November 15, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to File" href="https://whatsBehind.github.io/programming/backend/java/io/file/"></a>
+  <a class="entry-link" aria-label="post link to Java File" href="https://whatsBehind.github.io/programming/backend/java/io/file/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -217,44 +261,6 @@ w (write): save. q: quit. x (==wq): save and quit. set nu: show line numbers. se
   </div>
   <footer class="entry-footer"><span title='2023-10-31 08:47:07 -0700 PDT'>October 31, 2023</span></footer>
   <a class="entry-link" aria-label="post link to Linux Manual" href="https://whatsBehind.github.io/programming/os/linux/linux-manual/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>CORS
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>What’s CORS CORS is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image img.jpg from origin images.com, if you don’t have CORS set properly, you can’t access the img.jpg from other origins like yourOrigin.com.
-Why needs CORS CORS is mainly for security usage. Image that your browser stores credential cookies of domain bank.com which is the website of you bank account, and a hacking website hacking....</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-10-30 08:44:30 -0700 PDT'>October 30, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to CORS" href="https://whatsBehind.github.io/programming/web/glossary/cors/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Web Storage Api
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Definition The Web Storage API provides mechanisms by which browsers can store key/value pairs
-Source code These mechanisms are available via the Window.sessionStorage and Window.localStorage properties (to be more precise, the Window object implements the WindowLocalStorage and WindowSessionStorage objects, which the localStorage and sessionStorage properties hang off) — invoking one of these will create an instance of the Storage object, through which data items can be set, retrieved and removed. A different Storage object is used for the sessionStorage and localStorage for each origin — they function and are controlled separately....</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-10-27 08:11:22 -0700 PDT'>October 27, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to Web Storage Api" href="https://whatsBehind.github.io/programming/web/web-api/web-storage-api/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Cookie
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>What is cookie An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user’s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol....</p>
-  </div>
-  <footer class="entry-footer"><span title='2023-10-27 08:10:45 -0700 PDT'>October 27, 2023</span></footer>
-  <a class="entry-link" aria-label="post link to Cookie" href="https://whatsBehind.github.io/programming/web/http/cookie/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
