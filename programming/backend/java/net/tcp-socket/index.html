@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Tcp Socket | What&#39;s Behind</title>
+<meta name="keywords" content="">
+<meta name="description" content="What Is a Socket? Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.
+Cient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening.">
+<meta name="author" content="">
+<link rel="canonical" href="https://whatsBehind.github.io/programming/backend/java/net/tcp-socket/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://whatsBehind.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://whatsBehind.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://whatsBehind.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://whatsBehind.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://whatsBehind.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Tcp Socket" />
+<meta property="og:description" content="What Is a Socket? Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.
+Cient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/programming/backend/java/net/tcp-socket/" /><meta property="article:section" content="programming" />
+<meta property="article:published_time" content="2023-11-19T21:42:27-08:00" />
+<meta property="article:modified_time" content="2023-11-19T21:42:27-08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tcp Socket"/>
+<meta name="twitter:description" content="What Is a Socket? Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.
+Cient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Programmings",
+      "item": "https://whatsBehind.github.io/programming/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Tcp Socket",
+      "item": "https://whatsBehind.github.io/programming/backend/java/net/tcp-socket/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Tcp Socket",
+  "name": "Tcp Socket",
+  "description": "What Is a Socket? Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.\nCient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening.",
+  "keywords": [
+    
+  ],
+  "articleBody": "What Is a Socket? Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.\nCient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening. To make a connection request, the client tries to rendezvous with the server on the server’s machine and port. The client also needs to identify itself to the server so it binds to a local port number that it will use during this connection. This is usually assigned by the system.\nServer accepts connection and creates a new socket If everything goes well, the server accepts the connection. Upon acceptance, the server gets a new socket bound to the same local port and also has its remote endpoint set to the address and port of the client. It needs a new socket so that it can continue to listen to the original socket for connection requests while tending to the needs of the connected client.\nSocket is successfully created on client On the client side, if the connection is accepted, a socket is successfully created and the client can use the socket to communicate with the server.\nThe client and server can now communicate by writing to or reading from their sockets. [1]\nExamples Create Sockets Server\npublic class Server_ { public static void main(String[] args) throws IOException { // A server socket listens to port 8888 ServerSocket serverSocket = new ServerSocket(8888); // The program is blocked here waiting for client connecting Socket socket = serverSocket.accept(); // Your business logic ... // Close both sockets to release system resource socket.close(); serverSocket.close(); } } First we create a ServerSocket listening to port 8888 Before accepting any connections, the program is blocked at line Socket socket = serverSocket.accept(); A client requests to connect to the server. After the server accepts the request, a new socket will be created in the server After your business logic, close the socket and server socket to release system resources Client\npublic class Client_ { public static void main(String[] args) throws IOException { // Create a new socket and connect to port 8888 on the server Socket socket = new Socket(InetAddress.getByName(\"\");, 8888); // Your business logic ... // Close the socket to release system resource socket.close(); } } First we create a socket connecting to port 8888 of the host Once the connection is successfully created, a socket will be created After your business logic, close the socket to release system resources Upload File from Client to Server Client\npublic class Client_ { public static void main(String[] args) throws IOException { // Create a new socket and connect to a specific port of the server Socket socket = new Socket(InetAddress.getLocalHost(), 8888); // Read file from disk String filePath = \"/path/to/the/file\"; FileInputStream bis = new FileInputStream(filePath); byte[] data = inputStreamToByteArray(bis); bis.close(); System.out.println(\"Client reads a file from disk\"); // Send byte data of the file to the server OutputStream os = socket.getOutputStream(); os.write(data); // You need to shut down the output stream, otherwise the server will hang up // It's a signal let server know that you're done sending data // TODO: What's the corresponding TCP packet for this? socket.shutdownOutput(); System.out.println(\"Client uploads a file to server\"); // Close streams and socket os.close(); socket.close(); } } Client reads a file in the disk to a FileInputStream, and invoke an utility method inputStreamToByteArray to convert InputStream to a byte array Then client writes the byte data into its output stream and sends it to the server Close all streams and socket to release system resources Utility method:\npublic class InputStreamUtil { public static byte[] inputStreamToByteArray(InputStream is) throws IOException { byte[] buf = new byte[1024]; ByteArrayOutputStream bos = new ByteArrayOutputStream(); int len; while((len = is.read(buf)) != -1) { bos.write(buf, 0, len); } byte[] result = bos.toByteArray(); bos.close(); return result; } } The utility method creates a ByteArrayOutputStream as a buffer to store data read from the input stream Contantly reads data from the input stream and writes the data into the ByteArrayOutputStream Invokes toByteArray method to get a byte array holding the data Server\npublic class Server_ { public static void main(String[] args) throws IOException { // A server socket waits for requests to come in over the network. ServerSocket serverSocket = new ServerSocket(8888); // Listens to a connection and accepts it. Returns a new socket Socket socket = serverSocket.accept(); // Read data from input stream InputStream is = socket.getInputStream(); byte[] data = inputStreamToByteArray(is); System.out.println(\"Server received file uploaded from client\"); // Save the file to local disk String filePath = \"/path/to/save/the/file\"; BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath)); bos.write(data); bos.close(); // Close streams and socket is.close(); socket.close(); serverSocket.close(); } } Server socket listens to port 8888 in local host Creates a new socket to accept connection from the client Reads data from socket’s input stream Writes byte data to disk through FileOutputStream Close all streams and sockets to release system resources ",
+  "wordCount" : "861",
+  "inLanguage": "en",
+  "datePublished": "2023-11-19T21:42:27-08:00",
+  "dateModified": "2023-11-19T21:42:27-08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://whatsBehind.github.io/programming/backend/java/net/tcp-socket/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "What's Behind",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://whatsBehind.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://whatsBehind.github.io/" accesskey="h" title="What&#39;s Behind (Alt + H)">What&#39;s Behind</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Tcp Socket
+    </h1>
+    <div class="post-meta"><span title='2023-11-19 21:42:27 -0800 PST'>November 19, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="what-is-a-socket">What Is a Socket?<a hidden class="anchor" aria-hidden="true" href="#what-is-a-socket">#</a></h2>
+<ul>
+<li>Server socket listens to a port</li>
+</ul>
+<p>Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.</p>
+<p><img loading="lazy" src="/programming/backend/java/net/tcp-socket/server-listen.png" alt="server-socket"  />
+</p>
+<ul>
+<li>Cient connects to the server with server ip and port</li>
+</ul>
+<p>On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening. To make a connection request, the client tries to rendezvous with the server on the server&rsquo;s machine and port. The client also needs to identify itself to the server so it binds to a local port number that it will use during this connection. This is usually assigned by the system.</p>
+<p><img loading="lazy" src="/programming/backend/java/net/tcp-socket/client-connect-server.png" alt="client-connect"  />
+</p>
+<ul>
+<li>Server accepts connection and creates a new socket</li>
+</ul>
+<p>If everything goes well, the server accepts the connection. Upon acceptance, the server gets a new socket bound to the same local port and also has its remote endpoint set to the address and port of the client. It needs a new socket so that it can continue to listen to the original socket for connection requests while tending to the needs of the connected client.</p>
+<p><img loading="lazy" src="/programming/backend/java/net/tcp-socket/server-accept.png" alt="server-accept"  />
+</p>
+<ul>
+<li>Socket is successfully created on client</li>
+</ul>
+<p>On the client side, if the connection is accepted, a socket is successfully created and the client can use the socket to communicate with the server.</p>
+<p>The client and server can now communicate by writing to or reading from their sockets. <a href="https://docs.oracle.com/javase/tutorial/networking/sockets/definition.html">[1]</a></p>
+<p><img loading="lazy" src="/programming/backend/java/net/tcp-socket/tcp-socket.png" alt="sockets"  />
+</p>
+<h2 id="examples">Examples<a hidden class="anchor" aria-hidden="true" href="#examples">#</a></h2>
+<h3 id="create-sockets">Create Sockets<a hidden class="anchor" aria-hidden="true" href="#create-sockets">#</a></h3>
+<ul>
+<li>
+<p>Server</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Server_</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// A server socket listens to port 8888</span>
+</span></span><span style="display:flex;"><span>        ServerSocket serverSocket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ServerSocket(8888);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// The program is blocked here waiting for client connecting</span>
+</span></span><span style="display:flex;"><span>        Socket socket <span style="color:#f92672">=</span> serverSocket.<span style="color:#a6e22e">accept</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Your business logic</span>
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Close both sockets to release system resource</span>
+</span></span><span style="display:flex;"><span>        socket.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>        serverSocket.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>First we create a <code>ServerSocket</code> listening to port <code>8888</code></li>
+<li>Before accepting any connections, the program is blocked at line <code>Socket socket = serverSocket.accept();</code></li>
+<li>A client requests to connect to the server. After the server accepts the request, a new socket will be created in the server</li>
+<li>After your business logic, close the socket and server socket to release system resources</li>
+</ul>
+</li>
+<li>
+<p>Client</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Client_</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Create a new socket and connect to port 8888 on the server</span>
+</span></span><span style="display:flex;"><span>        Socket socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Socket(InetAddress.<span style="color:#a6e22e">getByName</span>(<span style="color:#e6db74">&#34;&lt;host-name&gt;&#34;</span>);, 8888);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Your business logic</span>
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Close the socket to release system resource</span>
+</span></span><span style="display:flex;"><span>        socket.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>First we create a socket connecting to port <code>8888</code> of the host</li>
+<li>Once the connection is successfully created, a socket will be created</li>
+<li>After your business logic, close the socket to release system resources</li>
+</ul>
+</li>
+</ul>
+<h3 id="upload-file-from-client-to-server">Upload File from Client to Server<a hidden class="anchor" aria-hidden="true" href="#upload-file-from-client-to-server">#</a></h3>
+<ul>
+<li>
+<p>Client</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Client_</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Create a new socket and connect to a specific port of the server</span>
+</span></span><span style="display:flex;"><span>        Socket socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Socket(InetAddress.<span style="color:#a6e22e">getLocalHost</span>(), 8888);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Read file from disk</span>
+</span></span><span style="display:flex;"><span>        String filePath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/path/to/the/file&#34;</span>;
+</span></span><span style="display:flex;"><span>        FileInputStream bis <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(filePath);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> data <span style="color:#f92672">=</span> inputStreamToByteArray(bis);
+</span></span><span style="display:flex;"><span>        bis.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client reads a file from disk&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Send byte data of the file to the server</span>
+</span></span><span style="display:flex;"><span>        OutputStream os <span style="color:#f92672">=</span> socket.<span style="color:#a6e22e">getOutputStream</span>();
+</span></span><span style="display:flex;"><span>        os.<span style="color:#a6e22e">write</span>(data);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// You need to shut down the output stream, otherwise the server will hang up</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// It&#39;s a signal let server know that you&#39;re done sending data</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// TODO: What&#39;s the corresponding TCP packet for this?</span>
+</span></span><span style="display:flex;"><span>        socket.<span style="color:#a6e22e">shutdownOutput</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client uploads a file to server&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Close streams and socket</span>
+</span></span><span style="display:flex;"><span>        os.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>        socket.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Client reads a file in the disk to a <code>FileInputStream</code>, and invoke an utility method <code>inputStreamToByteArray</code> to convert <code>InputStream</code> to a byte array</li>
+<li>Then client writes the byte data into its output stream and sends it to the server</li>
+<li>Close all streams and socket to release system resources</li>
+</ul>
+</li>
+<li>
+<p>Utility method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InputStreamUtil</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">inputStreamToByteArray</span>(InputStream is) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buf <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        ByteArrayOutputStream bos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ByteArrayOutputStream();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> len;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>((len <span style="color:#f92672">=</span> is.<span style="color:#a6e22e">read</span>(buf)) <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span>1) {
+</span></span><span style="display:flex;"><span>            bos.<span style="color:#a6e22e">write</span>(buf, 0, len);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> result <span style="color:#f92672">=</span> bos.<span style="color:#a6e22e">toByteArray</span>();
+</span></span><span style="display:flex;"><span>        bos.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>The utility method creates a <code>ByteArrayOutputStream</code> as a buffer to store data read from the input stream</li>
+<li>Contantly reads data from the input stream and writes the data into the <code>ByteArrayOutputStream</code></li>
+<li>Invokes <code>toByteArray</code> method to get a byte array holding the data</li>
+</ul>
+</li>
+<li>
+<p>Server</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Server_</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// A server socket waits for requests to come in over the network.</span>
+</span></span><span style="display:flex;"><span>        ServerSocket serverSocket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ServerSocket(8888);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Listens to a connection and accepts it. Returns a new socket</span>
+</span></span><span style="display:flex;"><span>        Socket socket <span style="color:#f92672">=</span> serverSocket.<span style="color:#a6e22e">accept</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Read data from input stream</span>
+</span></span><span style="display:flex;"><span>        InputStream is <span style="color:#f92672">=</span> socket.<span style="color:#a6e22e">getInputStream</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> data <span style="color:#f92672">=</span> inputStreamToByteArray(is);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Server received file uploaded from client&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Save the file to local disk</span>
+</span></span><span style="display:flex;"><span>        String filePath <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/path/to/save/the/file&#34;</span>;
+</span></span><span style="display:flex;"><span>        BufferedOutputStream bos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedOutputStream(<span style="color:#66d9ef">new</span> FileOutputStream(filePath));
+</span></span><span style="display:flex;"><span>        bos.<span style="color:#a6e22e">write</span>(data);
+</span></span><span style="display:flex;"><span>        bos.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Close streams and socket</span>
+</span></span><span style="display:flex;"><span>        is.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>        socket.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>        serverSocket.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Server socket listens to port <code>8888</code> in local host</li>
+<li>Creates a new socket to accept connection from the client</li>
+<li>Reads data from socket&rsquo;s input stream</li>
+<li>Writes byte data to disk through <code>FileOutputStream</code></li>
+<li>Close all streams and sockets to release system resources</li>
+</ul>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://whatsBehind.github.io/">What&#39;s Behind</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
