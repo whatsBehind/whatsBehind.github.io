@@ -462,6 +462,8 @@ It has two privates methods <code>sendRequest</code> and <code>receiveResponse</
 <li>Client responds. Server receives the response from client. Then server close the socket in message publisher and remove message listener from listener manager</li>
 </ul>
 <p>After all aboves steps, all sockets are closed and each listen thread (<code>ServerListener</code> in the client and <code>ClientListener</code> in the server) is terminated.</p>
+<p><img loading="lazy" src="/programming/project/online-chat/logoff2.png" alt="image"  />
+</p>
 <h2 id="to-be-improved">To Be Improved<a hidden class="anchor" aria-hidden="true" href="#to-be-improved">#</a></h2>
 <ul>
 <li>This system is built on BIO. In server and client sides, there is one thread blocked to listen to message sent to the input stream of the socket. Thread is expensive because of the memory it occupies and performance influence when CPU switching among different threads</li>
