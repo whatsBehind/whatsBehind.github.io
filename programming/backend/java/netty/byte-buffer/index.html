@@ -104,8 +104,8 @@ Read Mode: You can read data from the buffer. 💡 Write Mode: You can write dat
   "keywords": [
     
   ],
-  "articleBody": "Introduction Java ByteBuffer is a class in Java’s java.nio package. It’s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘\nByteBuffer can be used in two modes:\nRead Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer. 💡 Practical Example // Create a new ByteBuffer ByteBuffer buffer = ByteBuffer.allocate(10); // Write data into the buffer buffer.put((byte) 10); buffer.put((byte) 20); // Flip the buffer to read mode buffer.flip(); // Read data from the buffer byte first = buffer.get(); byte second = buffer.get(); In this example, we first write two bytes into the buffer and then read them back.\nImportant Concepts and Operations Capacity, Limit, and Position: ByteBuffer has three important properties:\nCapacity: The maximum number of bytes it can hold. It’s set when the buffer is created and cannot be changed. Limit: The limit is the index of the first element that should not be read or written. It can change as you read/write data. Position: The next element to be read or written. Position will increase as you read or write data. Operations Create a new ByteBuffer\nByteBuffer buffer = ByteBuffer.allocate(10); Write ByteBuffer\nPut single byte ByteBuffer buffer = ByteBuffer.allocate(10); buffer.put((byte) 'a'); Put byte array ByteBuffer buffer = ByteBuffer.allocate(10); buffer.put(new byte[]{'a'}); Read ByteBuffer\nflip(): switch to read mode\nbuffer = ByteBuffer.allocate(10); buffer.put(new byte[]{'a', 'b', 'c', 'd'}); Here we create a new ByteBuffer, and write four bytes to the ByteBuffer. The ByteBuffer is still in write mode, and to switch to read mode, we can invoke flip() method.\nbuffer.flip(); flip() updates values of limit and position\nthis.limit = position; this.position = 0; get(): read one byte and increment position\nbuffer.flip(); char data = (char) buffer.get(); get(int i): read byte of index w/o position change\nbuffer.flip(); char data = (char) buffer.get(0); // 'a' pointer position doesn’t increment Manipulate position pointer\nrewind(): reset position back to 0\nByteBuffer buffer = ByteBuffer.allocate(10); buffer.put(new byte[]{'a', 'b', 'c', 'd'}); buffer.rewind(); rewind() only does one thing that is to reset position to 0. After rewind, you can write/read from the beginning of the ByteBuffer\nmark() and reset(): bookmark position and re-visit\nByteBuffer buffer = ByteBuffer.allocate(10); buffer.put(new byte[]{'a', 'b', 'c', 'd'}); buffer.flip(); buffer.get(); buffer.get(); buffer.mark(); buffer.get(); buffer.get(); buffer.reset(); mark() and reset() introduce a new pointer mark in ByteBuffer, and the two methods are normally used together. Value of mark in most case is -1. When mark() is invoked, current position will be remembered by assigning position to mark\nIn above code snippet, after remembering position (mark()), we continue read two more bytes from the ByteBuffer where position is 4. reset() resets position to previous mark which is 2.\nComparing to rewind() which can only reset position to 0, mark() and reset() have enhanced feature which bookmarks position and resets position to previous mark\nWork with Channel\nChannel\nChannel is an important component in NIO, and it is like Stream in BIO. Different from Stream, Channel can be used bi-directional and can be used in conjunction with Buffer\nWhen Using Channel and Buffer, data can be read from a Channel into a Buffer or written from a Buffer into a Channel ",
-  "wordCount" : "547",
+  "articleBody": "Introduction Java ByteBuffer is a class in Java’s java.nio package. It’s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘\nByteBuffer can be used in two modes:\nRead Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer. 💡 Practical Example // Create a new ByteBuffer ByteBuffer buffer = ByteBuffer.allocate(10); // Write data into the buffer buffer.put((byte) 10); buffer.put((byte) 20); // Flip the buffer to read mode buffer.flip(); // Read data from the buffer byte first = buffer.get(); byte second = buffer.get(); In this example, we first write two bytes into the buffer and then read them back.\nImportant Concepts and Operations Capacity, Limit, and Position: ByteBuffer has three important properties:\nCapacity: The maximum number of bytes it can hold. It’s set when the buffer is created and cannot be changed. Limit: The limit is the index of the first element that should not be read or written. It can change as you read/write data. Position: The next element to be read or written. Position will increase as you read or write data. Operations Create a new ByteBuffer\nByteBuffer buffer = ByteBuffer.allocate(10); Write ByteBuffer\nPut single byte ByteBuffer buffer = ByteBuffer.allocate(10); buffer.put((byte) 'a'); Put byte array ByteBuffer buffer = ByteBuffer.allocate(10); buffer.put(new byte[]{'a'}); Read ByteBuffer\nflip(): switch to read mode\nbuffer = ByteBuffer.allocate(10); buffer.put(new byte[]{'a', 'b', 'c', 'd'}); Here we create a new ByteBuffer, and write four bytes to the ByteBuffer. The ByteBuffer is still in write mode, and to switch to read mode, we can invoke flip() method.\nbuffer.flip(); flip() updates values of limit and position\nthis.limit = position; this.position = 0; get(): read one byte and increment position\nbuffer.flip(); char data = (char) buffer.get(); get(int i): read byte of index w/o position change\nbuffer.flip(); char data = (char) buffer.get(0); // 'a' pointer position doesn’t increment clear() \u0026 compact(): switch from read mode to write mode\nclear(): clear() resets position to 0, and limit to the capacity of the ByteBuffer. It doesn’t erase the data, but prepares a new write operation for the buffer.\nbuffer.put(new byte[]{'a', 'b', 'c', 'd'}); buffer.flip(); buffer.get(); buffer.get(); buffer.clear(); compact(): compact() moves unread data to the beginning of the buffer, and sets position after the last unread byte and limit to the capacity of the buffer.\nUse case: When you have partially processed the data in the buffer and want to keep remaining unprocessed data while sill making room for the new data to be added buffer.put(new byte[]{'a', 'b', 'c', 'd'}); buffer.flip(); buffer.get(); buffer.get(); buffer.compact(); Manipulate position pointer\nrewind(): reset position back to 0\nByteBuffer buffer = ByteBuffer.allocate(10); buffer.put(new byte[]{'a', 'b', 'c', 'd'}); buffer.rewind(); rewind() only does one thing that is to reset position to 0. After rewind, you can write/read from the beginning of the ByteBuffer\nmark() and reset(): bookmark position and re-visit\nByteBuffer buffer = ByteBuffer.allocate(10); buffer.put(new byte[]{'a', 'b', 'c', 'd'}); buffer.flip(); buffer.get(); buffer.get(); buffer.mark(); buffer.get(); buffer.get(); buffer.reset(); mark() and reset() introduce a new pointer mark in ByteBuffer, and the two methods are normally used together. Value of mark in most case is -1. When mark() is invoked, current position will be remembered by assigning position to mark\nIn above code snippet, after remembering position (mark()), we continue read two more bytes from the ByteBuffer where position is 4. reset() resets position to previous mark which is 2.\nComparing to rewind() which can only reset position to 0, mark() and reset() have enhanced feature which bookmarks position and resets position to previous mark\nWork with Channel\nChannel\nChannel is an important component in NIO, and it is like Stream in BIO. Different from Stream, Channel can be used bi-directional and can be used in conjunction with Buffer\nWhen Using Channel and Buffer, data can be read from a Channel into a Buffer or written from a Buffer into a Channel Read Channel\ntry (FileChannel channel = new FileInputStream(\"~/example.txt\").getChannel()) { channel.read(buffer); } Here we get the Channel from FileInputStream, and read data from the channel into a ByteBuffer\nWrite Channel\ntry (FileChannel channel = new FileOutputStream(\"~/example.txt\").getChannel()) { ByteBuffer buffer = ByteBuffer.allocate(10); buffer.put(new byte[]{'a', 'b', 'c', 'd'}); // Need to switch byteBuffer to read mode before writing to channel buffer.flip(); int len = channel.write(buffer); log.debug(String.format(\"Write %s bytes to file\", len)); } Work with String\nfrom string to buffer String.getBytes():\nbuffer = ByteBuffer.allocate(16); buffer.put(\"Hello World\".getBytes()); charset:\nByteBuffer buffer = StandardCharsets.UTF_8.encode(\"Hello World\"); ByteBuffer.wrap():\nByteBuffer buffer = ByteBuffer.wrap(\"Hello World\".getBytes()); from buffer to string charset: ByteBuffer buffer = StandardCharsets.UTF_8.encode(\"Hello World\"); String str = StandardCharsets.UTF_8.decode(buffer).toString(); ",
+  "wordCount" : "768",
   "inLanguage": "en",
   "datePublished": "2023-12-06T09:09:40-08:00",
   "dateModified": "2023-12-06T09:09:40-08:00",
@@ -270,6 +270,34 @@ Read Mode: You can read data from the buffer. 💡 Write Mode: You can write dat
 </ul>
 </li>
 <li>
+<p><code>clear()</code> &amp; <code>compact()</code>: switch from read mode to write mode</p>
+<ul>
+<li>
+<p><code>clear()</code>: <code>clear()</code> resets <code>position</code> to <code>0</code>, and <code>limit</code> to the capacity of the <code>ByteBuffer</code>. It doesn&rsquo;t erase the data, but prepares a new write operation for the buffer.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>});
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">clear</span>();
+</span></span></code></pre></div><p><img loading="lazy" src="/programming/backend/java/netty/byte-buffer/clear.png" alt="image"  />
+</p>
+</li>
+<li>
+<p><code>compact()</code>: <code>compact()</code> moves unread data to the beginning of the buffer, and sets <code>position</code> after the last unread byte and <code>limit</code> to the capacity of the buffer.</p>
+<ul>
+<li>Use case: When you have partially processed the data in the buffer and want to keep remaining unprocessed data while sill making room for the new data to be added</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>});
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">compact</span>();
+</span></span></code></pre></div><p><img loading="lazy" src="/programming/backend/java/netty/byte-buffer/compact.png" alt="image"  />
+</p>
+</li>
+</ul>
+</li>
+<li>
 <p>Manipulate <code>position</code> pointer</p>
 <ul>
 <li>
@@ -313,6 +341,56 @@ Read Mode: You can read data from the buffer. 💡 Write Mode: You can write dat
 <p>When Using <code>Channel</code> and <code>Buffer</code>, data can be read from a <code>Channel</code> into a <code>Buffer</code> or written from a <code>Buffer</code> into a <code>Channel</code>
 <img loading="lazy" src="/programming/backend/java/netty/byte-buffer/channel-and-buffer.png" alt="image"  />
 </p>
+</li>
+<li>
+<p>Read <code>Channel</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (FileChannel channel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(<span style="color:#e6db74">&#34;~/example.txt&#34;</span>).<span style="color:#a6e22e">getChannel</span>()) {
+</span></span><span style="display:flex;"><span>    channel.<span style="color:#a6e22e">read</span>(buffer);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here we get the <code>Channel</code> from <code>FileInputStream</code>, and read data from the channel into a <code>ByteBuffer</code></p>
+</li>
+<li>
+<p>Write <code>Channel</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (FileChannel channel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream(<span style="color:#e6db74">&#34;~/example.txt&#34;</span>).<span style="color:#a6e22e">getChannel</span>()) {
+</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(10);
+</span></span><span style="display:flex;"><span>    buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Need to switch byteBuffer to read mode before writing to channel</span>
+</span></span><span style="display:flex;"><span>    buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> channel.<span style="color:#a6e22e">write</span>(buffer);
+</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(String.<span style="color:#a6e22e">format</span>(<span style="color:#e6db74">&#34;Write %s bytes to file&#34;</span>, len));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Work with <code>String</code></p>
+<ul>
+<li>from string to buffer
+<ul>
+<li>
+<p><code>String.getBytes()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>.<span style="color:#a6e22e">getBytes</span>());
+</span></span></code></pre></div></li>
+<li>
+<p><code>charset</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> StandardCharsets.<span style="color:#a6e22e">UTF_8</span>.<span style="color:#a6e22e">encode</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>);
+</span></span></code></pre></div></li>
+<li>
+<p><code>ByteBuffer.wrap()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">wrap</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>.<span style="color:#a6e22e">getBytes</span>());
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>from buffer to string
+<ul>
+<li><code>charset</code>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> StandardCharsets.<span style="color:#a6e22e">UTF_8</span>.<span style="color:#a6e22e">encode</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>);
+</span></span><span style="display:flex;"><span>String str <span style="color:#f92672">=</span> StandardCharsets.<span style="color:#a6e22e">UTF_8</span>.<span style="color:#a6e22e">decode</span>(buffer).<span style="color:#a6e22e">toString</span>();
+</span></span></code></pre></div></li>
+</ul>
 </li>
 </ul>
 </li>
