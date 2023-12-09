@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/programming/os/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 31 Oct 2023 08:47:07 -0700</lastBuildDate>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/os/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

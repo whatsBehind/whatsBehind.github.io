@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/programming/project/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Nov 2023 21:26:33 -0800</lastBuildDate>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Online Chat</title>
+      <link>https://whatsBehind.github.io/docs/programming/project/online-chat/</link>
+      <pubDate>Sun, 26 Nov 2023 21:26:33 -0800</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/project/online-chat/</guid>
+      <description>Demo # GitHub&#xA;High Level Architecture # This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.&#xA;The system now supports below features:&#xA;Login Pull online users Online chat Logoff Because of supports for push and pull modes, features like&#xA;Upload/Download files Group chat can be easily added in the system.</description>
+    </item>
+  </channel>
+</rss>

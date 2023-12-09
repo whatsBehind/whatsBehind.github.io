@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Nov 2023 08:30:17 -0800</lastBuildDate>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/thread/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Synchornization</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</link>
+      <pubDate>Mon, 13 Nov 2023 08:30:17 -0800</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</guid>
+      <description>Thread Interference # Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.</description>
+    </item>
+    <item>
+      <title>Thread Lifecycle</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</link>
+      <pubDate>Sun, 12 Nov 2023 23:12:57 -0800</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</guid>
+      <description>Understanding the lifecycle of a thread is crucial for effective thread management. Here&amp;rsquo;s a breakdown:&#xA;NEW State:&#xA;When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:&#xA;When you invoke the start() method, the thread moves to the RUNNABLE state. A thread in the RUNNABLE state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor.</description>
+    </item>
+    <item>
+      <title>Start Thread</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</link>
+      <pubDate>Sun, 12 Nov 2023 22:25:15 -0800</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</guid>
+      <description>Main Lesson # Java threads are crucial for executing multiple tasks concurrently in a program. Let&amp;rsquo;s dive into this topic:&#xA;What is a Thread in Java? 🧵&#xA;In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻&#xA;There are two ways to create a thread: By extending the Thread class.</description>
+    </item>
+  </channel>
+</rss>

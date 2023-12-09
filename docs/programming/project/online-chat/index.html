@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Demo # GitHub
+High Level Architecture # This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.
+The system now supports below features:
+Login Pull online users Online chat Logoff Because of supports for push and pull modes, features like
+Upload/Download files Group chat can be easily added in the system.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Online Chat" />
+<meta property="og:description" content="Demo # GitHub
+High Level Architecture # This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.
+The system now supports below features:
+Login Pull online users Online chat Logoff Because of supports for push and pull modes, features like
+Upload/Download files Group chat can be easily added in the system." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/project/online-chat/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2023-11-26T21:26:33-08:00" />
+<meta property="article:modified_time" content="2023-11-26T21:26:33-08:00" />
+
+<title>Online Chat | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.58b183a9e5662a54c38bfa7ead1f2a691d0900f6b411cc091e61bab61719ab56.js" integrity="sha256-WLGDqeVmKlTDi/p&#43;rR8qaR0JAPa0EcwJHmG6thcZq1Y=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle"  />
+    <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle"  />
+    <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-945932e727978560611817848680d393" class="toggle"  />
+    <label for="section-945932e727978560611817848680d393" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4d132fa86c191d313485f304ca9a1229" class="toggle"  />
+    <label for="section-4d132fa86c191d313485f304ca9a1229" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle"  />
+    <label for="section-f8771c290018cde58e0ed5c89ae77e0d" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51b21b1aa4706431f75da30c83254b65" class="toggle"  />
+    <label for="section-51b21b1aa4706431f75da30c83254b65" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchornization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="toggle" checked />
+    <label for="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="active">Online Chat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fb923816a079b91d0045c2bbe184452" class="toggle"  />
+    <label for="section-3fb923816a079b91d0045c2bbe184452" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eef785d90f032562151b69894191310f" class="toggle"  />
+    <label for="section-eef785d90f032562151b69894191310f" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle"  />
+    <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eee032ba51521b5a76ca688aa982a5cd" class="toggle"  />
+    <label for="section-eee032ba51521b5a76ca688aa982a5cd" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
+    <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0975d481e131cd3566df9e7779add732" class="toggle"  />
+    <label for="section-0975d481e131cd3566df9e7779add732" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c91ba5e94a01028927e7fe8e471dfed6" class="toggle"  />
+    <label for="section-c91ba5e94a01028927e7fe8e471dfed6" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61b4842f6a6edc0699378637391b21b9" class="toggle"  />
+    <label for="section-61b4842f6a6edc0699378637391b21b9" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
+    <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a047c0faadc787118d3878bd75e8b987" class="toggle"  />
+    <label for="section-a047c0faadc787118d3878bd75e8b987" class="flex justify-between">
+      <a role="button" class="">Note</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Online Chat</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#high-level-architecture">High Level Architecture</a></li>
+    <li><a href="#key-components">Key Components</a>
+      <ul>
+        <li><a href="#client">Client</a></li>
+        <li><a href="#server">Server</a></li>
+      </ul>
+    </li>
+    <li><a href="#supported-features">Supported Features</a>
+      <ul>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#connect">Connect:</a></li>
+        <li><a href="#getonlineusers">GetOnlineUsers</a></li>
+        <li><a href="#chat">Chat</a></li>
+        <li><a href="#logoff">Logoff</a></li>
+      </ul>
+    </li>
+    <li><a href="#to-be-improved">To Be Improved</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="demo">
+  Demo
+  <a class="anchor" href="#demo">#</a>
+</h2>
+<p><a href="https://github.com/whatsBehind/online-chat">GitHub</a></p>
+<div class="container">
+  <div id="player-wrapper" class="my-5"></div>
+</div>
+
+<script 
+  type="text/javascript" 
+  src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"
+>
+</script>
+
+<script>
+  var playerElement = document.getElementById("player-wrapper");
+
+  var player = new Clappr.Player({
+    source: "/programming/project/online-chat/demo.mp4",
+    mute: true,
+    height: 360,
+    width: 640
+  });
+
+  player.attachTo(playerElement);  
+</script>
+
+<h2 id="high-level-architecture">
+  High Level Architecture
+  <a class="anchor" href="#high-level-architecture">#</a>
+</h2>
+<p>This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.</p>
+<p>The system now supports below features:</p>
+<ul>
+<li>Login</li>
+<li>Pull online users</li>
+<li>Online chat</li>
+<li>Logoff</li>
+</ul>
+<p>Because of supports for push and pull modes, features like</p>
+<ul>
+<li>Upload/Download files</li>
+<li>Group chat
+can be easily added in the system. However, this project is just for learning purpose, so I didn&rsquo;t spend too much time on it.</li>
+</ul>
+<p><img src="/programming/project/online-chat/online-chat-architecture.png" alt="image" /></p>
+<h2 id="key-components">
+  Key Components
+  <a class="anchor" href="#key-components">#</a>
+</h2>
+<h3 id="client">
+  Client
+  <a class="anchor" href="#client">#</a>
+</h3>
+<ul>
+<li>Server Listener</li>
+</ul>
+<p>It&rsquo;s basically a class extending <code>Thread</code> containing a socket connected with the server. In its <code>run()</code> method, it listens to <code>InputStream</code> of the socket which takes messages from the server. The socket in this component connects to <code>Publisher</code> from the server to support message push mode</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ServerListener</span> <span style="color:#66d9ef">extends</span> Thread {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Socket socket;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> listening <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ServerListener</span>(Socket socket, User user) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">socket</span> <span style="color:#f92672">=</span> socket;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> user;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(listening) {
+</span></span><span style="display:flex;"><span>                ObjectInputStream ois <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectInputStream(socket.<span style="color:#a6e22e">getInputStream</span>());
+</span></span><span style="display:flex;"><span>                Message response <span style="color:#f92672">=</span> (Message) ois.<span style="color:#a6e22e">readObject</span>();
+</span></span><span style="display:flex;"><span>                MessageType type <span style="color:#f92672">=</span> response.<span style="color:#a6e22e">getType</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">switch</span>(type) {
+</span></span><span style="display:flex;"><span>                    ... <span style="color:#75715e">// Operations</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException <span style="color:#f92672">|</span> ClassNotFoundException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Online Chat Client</li>
+</ul>
+<p>It&rsquo;s a client class containing another socket connecting with the server. It supports message pull mode, which is that client sends a request to server and receives a response, and it&rsquo;s a synchronous request.
+It has two private methods <code>sendRequest</code> and <code>receiveResponse</code> which are used to support communication with the server.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OnlineChatClient</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Socket client;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> ObjectOutputStream oos;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> ObjectInputStream ois;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sendRequest</span>(Message request) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        oos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectOutputStream(client.<span style="color:#a6e22e">getOutputStream</span>());
+</span></span><span style="display:flex;"><span>        oos.<span style="color:#a6e22e">writeObject</span>(request);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Message <span style="color:#a6e22e">receiveResponse</span>() <span style="color:#66d9ef">throws</span> IOException, ClassNotFoundException {
+</span></span><span style="display:flex;"><span>        ois <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectInputStream(client.<span style="color:#a6e22e">getInputStream</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (Message) ois.<span style="color:#a6e22e">readObject</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="server">
+  Server
+  <a class="anchor" href="#server">#</a>
+</h3>
+<ul>
+<li>Message Publisher</li>
+</ul>
+<p>The name of this component is descriptive. Its duty is to publish a message to a corresponding client and receive the response from the server. It works with <code>Server Listener</code> in clients to support message push mode. Each message publisher has a 1 to 1 relationship with the client. All message publishers are managed by <code>Message Publisher Manager</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MessagePublisher</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Socket socket;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> ObjectOutputStream oos;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">publish</span>(Object o) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        oos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectOutputStream(socket.<span style="color:#a6e22e">getOutputStream</span>());
+</span></span><span style="display:flex;"><span>        oos.<span style="color:#a6e22e">writeObject</span>(o);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Message Publisher Manager</li>
+</ul>
+<p>It maintains a <code>Map</code> to store all message publishers. The map&rsquo;s key is user id and the value is the message publisher. It provides methods like <code>add()</code> <code>get(String userId)</code> and <code>delete(String userId)</code> to manage all message publishers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MessagePublisherManager</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">static</span> Map<span style="color:#f92672">&lt;</span>String, MessagePublisher<span style="color:#f92672">&gt;</span> publishers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConcurrentHashMap<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">contains</span>(User user) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> String id <span style="color:#f92672">=</span> user.<span style="color:#a6e22e">getId</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> publishers.<span style="color:#a6e22e">containsKey</span>(id);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> MessagePublisher <span style="color:#a6e22e">add</span>(User user, Socket socket) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (contains(user)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> publishers.<span style="color:#a6e22e">get</span>(user);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> String id <span style="color:#f92672">=</span> user.<span style="color:#a6e22e">getId</span>();
+</span></span><span style="display:flex;"><span>        MessagePublisher publisher <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MessagePublisher(user, socket);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> MessagePublisherManager.<span style="color:#a6e22e">publishers</span>.<span style="color:#a6e22e">put</span>(id, publisher);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> MessagePublisher <span style="color:#a6e22e">get</span>(String userId) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> publishers.<span style="color:#a6e22e">get</span>(userId);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> MessagePublisher <span style="color:#a6e22e">get</span>(User user) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> get(user.<span style="color:#a6e22e">getId</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">remove</span>(User user) {
+</span></span><span style="display:flex;"><span>        publishers.<span style="color:#a6e22e">remove</span>(user.<span style="color:#a6e22e">getId</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Client Listener</li>
+</ul>
+<p>It is similar to <code>Server Listener</code> in clients. It&rsquo;s a <code>Thread</code> subclass waiting for message from the server. The thread in the most time is blocked at line</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Message response <span style="color:#f92672">=</span> (Message) ois.<span style="color:#a6e22e">readObject</span>();
+</span></span></code></pre></div><p>Once messages sent to the socket&rsquo;s receive queue (<code>InputStream</code>), it reads the message and performs corresponding operation and returns a response to the client.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClientListener</span> <span style="color:#66d9ef">extends</span> Thread {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Socket socket;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> ObjectOutputStream oos;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> listening <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(listening) {
+</span></span><span style="display:flex;"><span>                ObjectInputStream ois <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectInputStream(socket.<span style="color:#a6e22e">getInputStream</span>());
+</span></span><span style="display:flex;"><span>                Message response <span style="color:#f92672">=</span> (Message) ois.<span style="color:#a6e22e">readObject</span>();
+</span></span><span style="display:flex;"><span>                MessageType type <span style="color:#f92672">=</span> response.<span style="color:#a6e22e">getType</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">switch</span>(type) {
+</span></span><span style="display:flex;"><span>                    ... <span style="color:#75715e">// Operations</span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException <span style="color:#f92672">|</span> ClassNotFoundException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sendResponse</span>(Message message) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        oos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectOutputStream(socket.<span style="color:#a6e22e">getOutputStream</span>());
+</span></span><span style="display:flex;"><span>        oos.<span style="color:#a6e22e">writeObject</span>(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Client Listener Manager</li>
+</ul>
+<p>It manages all client listeners in a <code>Map</code>, supporting methods like <code>add</code>, <code>get</code> and <code>remove</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClientListenerManager</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">static</span> Map<span style="color:#f92672">&lt;</span>String, ClientListener<span style="color:#f92672">&gt;</span> clientListeners <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConcurrentHashMap<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> ObjectOutputStream oos;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">add</span>(Socket socket, User user) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        Message response <span style="color:#f92672">=</span> Message.<span style="color:#a6e22e">builder</span>()
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">type</span>(MessageType.<span style="color:#a6e22e">CONNECT</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">content</span>(gson.<span style="color:#a6e22e">toJson</span>(BaseResponse.<span style="color:#a6e22e">builder</span>().<span style="color:#a6e22e">successful</span>(<span style="color:#66d9ef">true</span>).<span style="color:#a6e22e">build</span>()))
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">timeStamp</span>(<span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toString</span>()).<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span>        oos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectOutputStream(socket.<span style="color:#a6e22e">getOutputStream</span>());
+</span></span><span style="display:flex;"><span>        oos.<span style="color:#a6e22e">writeObject</span>(response);
+</span></span><span style="display:flex;"><span>        ClientListener listener <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClientListener(socket, user);
+</span></span><span style="display:flex;"><span>        clientListeners.<span style="color:#a6e22e">put</span>(user.<span style="color:#a6e22e">getId</span>(), listener);
+</span></span><span style="display:flex;"><span>        listener.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> ClientListener <span style="color:#a6e22e">get</span>(User user) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> String id <span style="color:#f92672">=</span> user.<span style="color:#a6e22e">getId</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> clientListeners.<span style="color:#a6e22e">get</span>(id);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> ClientListener <span style="color:#a6e22e">get</span>(String id) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> clientListeners.<span style="color:#a6e22e">get</span>(id);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">remove</span>(User user) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">final</span> String id <span style="color:#f92672">=</span> user.<span style="color:#a6e22e">getId</span>();
+</span></span><span style="display:flex;"><span>        clientListeners.<span style="color:#a6e22e">remove</span>(id);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="supported-features">
+  Supported Features
+  <a class="anchor" href="#supported-features">#</a>
+</h2>
+<h3 id="login">
+  Login
+  <a class="anchor" href="#login">#</a>
+</h3>
+<ul>
+<li>Client creates a new <code>Socket</code> connecting to port <code>9999</code> in local host (Server and clients are in local host) by sending below message.
+<ul>
+<li>Message type is <code>USER_LOGIN</code></li>
+<li>Before sending the message, user needs to enter user id and password</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Message request <span style="color:#f92672">=</span> Message.<span style="color:#a6e22e">builder</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">sender</span>(user.<span style="color:#a6e22e">getId</span>())
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">timeStamp</span>(<span style="color:#66d9ef">new</span> Date().<span style="color:#a6e22e">toString</span>())
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">type</span>(MessageType.<span style="color:#a6e22e">USER_LOGIN</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">content</span>(gson.<span style="color:#a6e22e">toJson</span>(user))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">build</span>();
+</span></span></code></pre></div></li>
+</ul>
+<p><img src="/programming/project/online-chat/login1.png" alt="image" /></p>
+<ul>
+<li>Server receives the login message from the client
+<ul>
+<li>First server checks database if the user enters valid user id and password (Not implemented)</li>
+<li>After id and password validations, server creates a new <code>MessagePublisher</code> and add it into <code>MessagePublisherManager</code></li>
+<li>In the end, server sends back a response to notify the client if login succeeds</li>
+</ul>
+</li>
+<li>Client receives response from server. If login succeeded, client start a new <code>ServerListener</code> which is a subclass of <code>Thread</code> to listen to message from server. The thread is blocked when there is no messages from server.
+<img src="/programming/project/online-chat/login2.png" alt="image" /></li>
+</ul>
+<h3 id="connect">
+  Connect:
+  <a class="anchor" href="#connect">#</a>
+</h3>
+<p>This is not an API, but a process implicitly done in advance for features like <code>GetOnlineUsers</code> which utilizes <code>OnlineChatClient</code></p>
+<ul>
+<li>Client creates a new <code>Socket</code> connecting to port <code>9999</code> in local host
+<img src="/programming/project/online-chat/connect1.png" alt="image" /></li>
+<li>After server receives the request,
+<ul>
+<li>it starts a new <code>ClientListener</code>, the subclass of <code>Thread</code>, which is listening message from the client.</li>
+<li>Then server add the <code>ClientListener</code> to <code>ClientListenerManager</code></li>
+<li>Server send back response to the client</li>
+</ul>
+</li>
+<li>Client receives response from server
+<img src="/programming/project/online-chat/connect2.png" alt="image" /></li>
+</ul>
+<p>After above steps, a new socket connection between server and client is built, which supports message pull mode.</p>
+<h3 id="getonlineusers">
+  GetOnlineUsers
+  <a class="anchor" href="#getonlineusers">#</a>
+</h3>
+<ul>
+<li>Client sends a request to server</li>
+<li>Server checks <code>MessagePublisherManager</code>, get all online users&rsquo; id</li>
+<li>Server sends a response back to client</li>
+<li>Client renders online users&rsquo; id in terminal</li>
+</ul>
+<p><img src="/programming/project/online-chat/pull-online-users.png" alt="image" /></p>
+<h3 id="chat">
+  Chat
+  <a class="anchor" href="#chat">#</a>
+</h3>
+<ul>
+<li>ClientA sends a request to server containing receiver&rsquo;s id (ClientB) and the message</li>
+<li>Client listenerA in the server receives the request, it passes the message to message publisherB</li>
+<li>Message publisherB sends a request containing the message to clientB</li>
+<li>ClientB responds after receiving the message</li>
+<li>After message was successfully sent to clientB, client listenerA sends a response to clientA</li>
+<li>ClientA receives the response</li>
+</ul>
+<p><img src="/programming/project/online-chat/chat.png" alt="image" /></p>
+<h3 id="logoff">
+  Logoff
+  <a class="anchor" href="#logoff">#</a>
+</h3>
+<p><img src="/programming/project/online-chat/logoff1.png" alt="image" /></p>
+<ul>
+<li>Client sends a request to the server to logoff</li>
+<li>Server receives the request, responds to the client.</li>
+<li>Server close the socket in the client listener, and remove the listener from listener manager</li>
+<li>Server sends a request to client through message publisher</li>
+<li>Client receives the request, close socket in the server listen</li>
+<li>Client responds. Server receives the response from client. Then server closes the socket in message publisher and remove the message listener from listener manager</li>
+</ul>
+<p>After all aboves steps, all sockets are closed and each listener thread (<code>ServerListener</code> in the client and <code>ClientListener</code> in the server) is terminated.</p>
+<p><img src="/programming/project/online-chat/logoff2.png" alt="image" /></p>
+<h2 id="to-be-improved">
+  To Be Improved
+  <a class="anchor" href="#to-be-improved">#</a>
+</h2>
+<ul>
+<li>This system is built on BIO. In server and client sides, there is one thread blocked to listen to messages sent to the input stream of the socket. Thread is expensive because of the memory it occupies and performance influence when CPU switching among different threads</li>
+<li>Listener is a resource shared by two threads, main thread and the listener thread. Current code doesn&rsquo;t ensure thread safety. The quick fix is to expose <code>InputStream</code> and <code>OutputStream</code> of the socket from the listener, and main thread can only access the two streams by calling the exposed methods. Also, the two methods should be synchronized.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#high-level-architecture">High Level Architecture</a></li>
+    <li><a href="#key-components">Key Components</a>
+      <ul>
+        <li><a href="#client">Client</a></li>
+        <li><a href="#server">Server</a></li>
+      </ul>
+    </li>
+    <li><a href="#supported-features">Supported Features</a>
+      <ul>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#connect">Connect:</a></li>
+        <li><a href="#getonlineusers">GetOnlineUsers</a></li>
+        <li><a href="#chat">Chat</a></li>
+        <li><a href="#logoff">Logoff</a></li>
+      </ul>
+    </li>
+    <li><a href="#to-be-improved">To Be Improved</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

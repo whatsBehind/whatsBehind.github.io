@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="What&rsquo;s CORS # CORS is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image img.jpg from origin images.com, if you don&rsquo;t have CORS set properly, you can&rsquo;t access the img.jpg from other origins like yourOrigin.com.
+Why needs CORS # CORS is mainly for security usage. Image that your browser stores credential cookies of domain bank.com which is the website of you bank account, and a hacking website hacking.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="CORS" />
+<meta property="og:description" content="What&rsquo;s CORS # CORS is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image img.jpg from origin images.com, if you don&rsquo;t have CORS set properly, you can&rsquo;t access the img.jpg from other origins like yourOrigin.com.
+Why needs CORS # CORS is mainly for security usage. Image that your browser stores credential cookies of domain bank.com which is the website of you bank account, and a hacking website hacking." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/web/glossary/cors/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2023-10-30T08:44:30-07:00" />
+<meta property="article:modified_time" content="2023-10-30T08:44:30-07:00" />
+
+<title>CORS | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.58b183a9e5662a54c38bfa7ead1f2a691d0900f6b411cc091e61bab61719ab56.js" integrity="sha256-WLGDqeVmKlTDi/p&#43;rR8qaR0JAPa0EcwJHmG6thcZq1Y=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle"  />
+    <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle"  />
+    <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-945932e727978560611817848680d393" class="toggle"  />
+    <label for="section-945932e727978560611817848680d393" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4d132fa86c191d313485f304ca9a1229" class="toggle"  />
+    <label for="section-4d132fa86c191d313485f304ca9a1229" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle"  />
+    <label for="section-f8771c290018cde58e0ed5c89ae77e0d" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51b21b1aa4706431f75da30c83254b65" class="toggle"  />
+    <label for="section-51b21b1aa4706431f75da30c83254b65" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchornization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="toggle"  />
+    <label for="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fb923816a079b91d0045c2bbe184452" class="toggle"  />
+    <label for="section-3fb923816a079b91d0045c2bbe184452" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eef785d90f032562151b69894191310f" class="toggle"  />
+    <label for="section-eef785d90f032562151b69894191310f" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle" checked />
+    <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eee032ba51521b5a76ca688aa982a5cd" class="toggle" checked />
+    <label for="section-eee032ba51521b5a76ca688aa982a5cd" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="active">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
+    <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0975d481e131cd3566df9e7779add732" class="toggle"  />
+    <label for="section-0975d481e131cd3566df9e7779add732" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c91ba5e94a01028927e7fe8e471dfed6" class="toggle"  />
+    <label for="section-c91ba5e94a01028927e7fe8e471dfed6" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61b4842f6a6edc0699378637391b21b9" class="toggle"  />
+    <label for="section-61b4842f6a6edc0699378637391b21b9" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
+    <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a047c0faadc787118d3878bd75e8b987" class="toggle"  />
+    <label for="section-a047c0faadc787118d3878bd75e8b987" class="flex justify-between">
+      <a role="button" class="">Note</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>CORS</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#whats-cors">What&rsquo;s CORS</a></li>
+        <li><a href="#why-needs-cors">Why needs CORS</a></li>
+        <li><a href="#access-control-allow-origin-header"><code>Access-Control-Allow-Origin</code> Header</a></li>
+        <li><a href="#access-control-allow-methods-header"><code>Access-Control-Allow-Methods</code> Header</a></li>
+        <li><a href="#preflight-request">Preflight Request</a></li>
+        <li><a href="#access-control-allow-credentials-header"><code>Access-Control-Allow-Credentials</code> Header</a></li>
+        <li><a href="#access-control-allow-headers-header"><code>Access-Control-Allow-Headers</code> Header</a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h3 id="whats-cors">
+  What&rsquo;s CORS
+  <a class="anchor" href="#whats-cors">#</a>
+</h3>
+<p><code>CORS</code> is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image <code>img.jpg</code> from origin <code>images.com</code>, if you don&rsquo;t have CORS set properly, you can&rsquo;t access the <code>img.jpg</code> from other origins like <code>yourOrigin.com</code>.</p>
+<h3 id="why-needs-cors">
+  Why needs CORS
+  <a class="anchor" href="#why-needs-cors">#</a>
+</h3>
+<p><code>CORS</code> is mainly for security usage. Image that your browser stores credential cookies of domain <code>bank.com</code> which is the website of you bank account, and a hacking website <code>hacking.com</code> want to access your bank information and make a transaction from your bank. If without CORS, the javascript script from <code>hacking.com</code> is able to get the cookies under domain <code>bank.com</code> and make requests to <code>bank.com</code>.
+<code>CORS</code> can protect your website from malicious requests</p>
+<h3 id="access-control-allow-origin-header">
+  <code>Access-Control-Allow-Origin</code> Header
+  <a class="anchor" href="#access-control-allow-origin-header">#</a>
+</h3>
+<h4 id="issue-demonstration">
+  Issue Demonstration
+  <a class="anchor" href="#issue-demonstration">#</a>
+</h4>
+<p>Start a local host</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;express&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;World&#34;</span>})
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>);
+</span></span></code></pre></div><p>In your browser, navigate to <code>http://localhost:3000</code>. Open console and make a <code>GET</code> request to <code>http://localhost:3000</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:3000&#34;</span>).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">req</span>) =&gt; <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span></code></pre></div><p>You will receive a successful response</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;World&#39;</span>}
+</span></span></code></pre></div><p>You didn&rsquo;t see any <code>CORS</code> issues, cause you were making request from <code>http://localhost:3000</code> to same origin.</p>
+<p>Open a new tab in your browser, navigate to <code>www.google.com</code>, and make a same request. You will see error like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">Access</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">fetch</span> <span style="color:#a6e22e">at</span> <span style="color:#e6db74">&#39;http://localhost:3000/&#39;</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">origin</span> <span style="color:#e6db74">&#39;https://www.google.com&#39;</span> <span style="color:#a6e22e">has</span> <span style="color:#a6e22e">been</span> <span style="color:#a6e22e">blocked</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">CORS</span> <span style="color:#a6e22e">policy</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">No</span> <span style="color:#e6db74">&#39;Access-Control-Allow-Origin&#39;</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">present</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">requested</span> <span style="color:#a6e22e">resource</span>. <span style="color:#a6e22e">If</span> <span style="color:#a6e22e">an</span> <span style="color:#a6e22e">opaque</span> <span style="color:#a6e22e">response</span> <span style="color:#a6e22e">serves</span> <span style="color:#a6e22e">your</span> <span style="color:#a6e22e">needs</span>, <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">request</span><span style="color:#e6db74">&#39;s mode to &#39;</span><span style="color:#a6e22e">no</span><span style="color:#f92672">-</span><span style="color:#a6e22e">cors</span><span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">fetch</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">resource</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">CORS</span> <span style="color:#a6e22e">disabled</span>.
+</span></span></code></pre></div><h4 id="solution">
+  Solution
+  <a class="anchor" href="#solution">#</a>
+</h4>
+<p>Add <code>www.google.com</code> in allowed origins in your <code>CORS</code> config</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;express&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cors</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;cors&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cors</span>({
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">origin</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.google.com&#34;</span>
+</span></span><span style="display:flex;"><span>}));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;World&#34;</span>})
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#ae81ff">3000</span>);
+</span></span></code></pre></div><p>Make a same request again to local host, and the error is gone and you will see response printed in console:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;World&#39;</span>}
+</span></span></code></pre></div><h3 id="access-control-allow-methods-header">
+  <code>Access-Control-Allow-Methods</code> Header
+  <a class="anchor" href="#access-control-allow-methods-header">#</a>
+</h3>
+<h4 id="problem-demonstration">
+  Problem Demonstration
+  <a class="anchor" href="#problem-demonstration">#</a>
+</h4>
+<p>To demonstration the problem with <code>Access-Control-Allow-Methods</code> header</p>
+<ul>
+<li>I add <code>GET</code> and <code>POST</code> as allowed methods in <code>CORS</code> config, which limits that clients can only use <code>GET</code> or <code>POST</code> methods in their requests to the server</li>
+<li>Also, I changed the method provided by the server from <code>GET</code> to <code>PUT</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cors</span>({
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">origin</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.google.com&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;POST&#34;</span>],
+</span></span><span style="display:flex;"><span>}));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#39;/&#39;</span>, (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello&#34;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;World&#34;</span>})
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Then let&rsquo;s make request in the console under <code>www.google.com</code> domain</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:3000&#34;</span>, {<span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;PUT&#34;</span>}).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">req</span>) =&gt; <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span></code></pre></div><p>We will see error:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">www</span>.<span style="color:#a6e22e">google</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/:</span><span style="color:#ae81ff">1</span> <span style="color:#a6e22e">Access</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">fetch</span> <span style="color:#a6e22e">at</span> <span style="color:#e6db74">&#39;http://localhost:3000/&#39;</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">origin</span> <span style="color:#e6db74">&#39;https://www.google.com&#39;</span> <span style="color:#a6e22e">has</span> <span style="color:#a6e22e">been</span> <span style="color:#a6e22e">blocked</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">CORS</span> <span style="color:#a6e22e">policy</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Method</span> <span style="color:#a6e22e">PUT</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">allowed</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Methods</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">preflight</span> <span style="color:#a6e22e">response</span>.
+</span></span></code></pre></div><h4 id="solution-1">
+  Solution
+  <a class="anchor" href="#solution-1">#</a>
+</h4>
+<p>Add <code>PUT</code> in allowed methods</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cors</span>({
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">origin</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.google.com&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;POST&#34;</span>, <span style="color:#e6db74">&#34;PUT&#34;</span>],
+</span></span><span style="display:flex;"><span>}));
+</span></span></code></pre></div><p>Make the same request from <code>www.google.com</code> again, and this time the error was gone and we receive correct response.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>{<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Hello&#39;</span>, <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;World&#39;</span>}
+</span></span></code></pre></div><p>Checking console, we can see two requests, the first request, which is called preflight request, and its response header is lik below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">204</span> <span style="color:#a6e22e">No</span> <span style="color:#a6e22e">Content</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Origin</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//www.google.com
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Vary</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Origin</span>, <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Request</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Headers</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Methods</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">GET</span>,<span style="color:#a6e22e">POST</span>,<span style="color:#a6e22e">PUT</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Content</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Length</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Connection</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">keep</span><span style="color:#f92672">-</span><span style="color:#a6e22e">alive</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Keep</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Alive</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">timeout</span><span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>The headers tell the browser that cross-origin request to &lsquo;http://localhost:3000/&rsquo; is allowed for origin <code>https://www.google.com</code>, but only applies to three methods: <code>GET</code>, <code>POST</code> and <code>PUT</code>, which are same as what we defined in our <code>CORS</code> config.</p>
+<p>Another request is the real cross-origin request, with <code>PUT</code> method, and server returns response with content.</p>
+<h3 id="preflight-request">
+  Preflight Request
+  <a class="anchor" href="#preflight-request">#</a>
+</h3>
+<p>We demonstrate <code>Access-Control-Allow-Methods</code> problem, but what is preflight response in above error</p>
+<ul>
+<li>Preflight request is an <code>OPTIONS</code> request automatically sent by browser before a cross origin request.</li>
+<li>Preflight request is used to determine if a cross origin request is safe.</li>
+<li>Preflight request including header <code>Origin</code>, <code>Access-Control-Request-Method</code> and <code>Access-Control-Request-Headers</code> (Optional)</li>
+</ul>
+<h4 id="how-does-preflight-request-work">
+  How Does Preflight Request Work
+  <a class="anchor" href="#how-does-preflight-request-work">#</a>
+</h4>
+<ul>
+<li>Browser sends an <code>OPTIONS</code> request to the server with headers mentioned above</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">OPTIONS</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Request</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Method</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">PUT</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Host</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">localhost</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3000</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Origin</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//www.google.com
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Sec</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Fetch</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Mode</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cors</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Sec</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Fetch</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Site</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">cross</span><span style="color:#f92672">-</span><span style="color:#a6e22e">site</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>Server receives the preflight request and check its <code>CORS</code> configuration. It determines if the real cross-origin request has proper permission by checking origin, method and headers in the preflight request</p>
+</li>
+<li>
+<p>If the real request is allowed, server responds to the preflight request with appropriate <code>CORS</code> headers, including allowed origins, methods and headers.</p>
+</li>
+<li>
+<p>After receiving preflight response from the server, if the server allows the request, then browser will send the real cross-origin request to the server. If not, browser will block the request and prevent it from reaching the server</p>
+</li>
+</ul>
+<p>If we include headers in the request</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:3000&#34;</span>, {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;PUT&#34;</span>, 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Customer-Header&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;key=value&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;X-Customer-Header&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;key=value&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Cookie&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>}).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">req</span>) =&gt; <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span></code></pre></div><p>Here we include two customer headers: <code>Customer-Header</code> and <code>X-Customer-Header</code>, and the preflight request and response are like below</p>
+<ul>
+<li>Request</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">OPTIONS</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Request</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Headers</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">customer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">header</span>,<span style="color:#a6e22e">x</span><span style="color:#f92672">-</span><span style="color:#a6e22e">customer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">header</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Request</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Method</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">PUT</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Host</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">localhost</span><span style="color:#f92672">:</span><span style="color:#ae81ff">3000</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Origin</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//www.google.com
+</span></span></span></code></pre></div><p>Some headers are omitted, but you can see here preflight request tells server which headers are included in the cross-origin request.</p>
+<ul>
+<li>Response</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">204</span> <span style="color:#a6e22e">No</span> <span style="color:#a6e22e">Content</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Origin</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//www.google.com
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Methods</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">GET</span>,<span style="color:#a6e22e">POST</span>,<span style="color:#a6e22e">PUT</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Headers</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">customer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">header</span>,<span style="color:#a6e22e">x</span><span style="color:#f92672">-</span><span style="color:#a6e22e">customer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">header</span>
+</span></span></code></pre></div><h3 id="access-control-allow-credentials-header">
+  <code>Access-Control-Allow-Credentials</code> Header
+  <a class="anchor" href="#access-control-allow-credentials-header">#</a>
+</h3>
+<p>The <code>Access-Control-Allow-Credentials</code> response header tells browsers whether to expose the response to the frontend JavaScript code when the request&rsquo;s credentials mode (Request.credentials) is include.</p>
+<h4 id="issue-demonstration-1">
+  Issue Demonstration
+  <a class="anchor" href="#issue-demonstration-1">#</a>
+</h4>
+<p>Make below call in your browser console under Google domain</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:3000&#34;</span>, {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;PUT&#34;</span>, 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">credentials</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;include&#34;</span>
+</span></span><span style="display:flex;"><span>}).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">req</span>) =&gt; <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span></code></pre></div><p>You will see error message:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">Access</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">fetch</span> <span style="color:#a6e22e">at</span> <span style="color:#e6db74">&#39;http://localhost:3000/&#39;</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">origin</span> <span style="color:#e6db74">&#39;https://www.google.com&#39;</span> <span style="color:#a6e22e">has</span> <span style="color:#a6e22e">been</span> <span style="color:#a6e22e">blocked</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">CORS</span> <span style="color:#a6e22e">policy</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Response</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">preflight</span> <span style="color:#a6e22e">request</span> <span style="color:#a6e22e">doesn</span><span style="color:#e6db74">&#39;t pass access control check: The value of the &#39;</span><span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Credentials</span><span style="color:#e6db74">&#39; header in the response is &#39;&#39; which must be &#39;</span><span style="color:#66d9ef">true</span><span style="color:#e6db74">&#39; when the request&#39;</span><span style="color:#a6e22e">s</span> <span style="color:#a6e22e">credentials</span> <span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">is</span> <span style="color:#e6db74">&#39;include&#39;</span>.
+</span></span></code></pre></div><p>That is because you want to include credentials, including cookies, authorization headers, or TLS client certificates, in your request.</p>
+<p>Remember if you don&rsquo;t explicitly specify <code>credentials: &quot;include&quot;</code> in your request, cookies will not be added in your request&rsquo;s headers</p>
+<h4 id="solution-2">
+  Solution
+  <a class="anchor" href="#solution-2">#</a>
+</h4>
+<p>Set <code>credentials</code> to <code>true</code> in server&rsquo;s <code>CORS</code> config</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cors</span>({
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">origin</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.google.com&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;POST&#34;</span>, <span style="color:#e6db74">&#34;PUT&#34;</span>],
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">credentials</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}));
+</span></span></code></pre></div><h3 id="access-control-allow-headers-header">
+  <code>Access-Control-Allow-Headers</code> Header
+  <a class="anchor" href="#access-control-allow-headers-header">#</a>
+</h3>
+<p>Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request.</p>
+<h4 id="problem-demonstration-1">
+  Problem Demonstration
+  <a class="anchor" href="#problem-demonstration-1">#</a>
+</h4>
+<p>Limit <code>Content-Type</code> as the only header which server allowed</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cors</span>({
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">origin</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.google.com&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;POST&#34;</span>, <span style="color:#e6db74">&#34;PUT&#34;</span>],
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allowedHeaders</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;Content-Type&#39;</span>]
+</span></span><span style="display:flex;"><span>}));
+</span></span></code></pre></div><p>Then make a call from Google domain with two customer headers</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:3000&#34;</span>, {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;PUT&#34;</span>, 
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Customer-Header&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;key=value&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;X-Customer-Header&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;key=value&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Cookie&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;value&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>}).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">req</span>) =&gt; <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span></code></pre></div><p>The request was denied with below error message</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">Access</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">fetch</span> <span style="color:#a6e22e">at</span> <span style="color:#e6db74">&#39;http://localhost:3000/&#39;</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">origin</span> <span style="color:#e6db74">&#39;https://www.google.com&#39;</span> <span style="color:#a6e22e">has</span> <span style="color:#a6e22e">been</span> <span style="color:#a6e22e">blocked</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">CORS</span> <span style="color:#a6e22e">policy</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Request</span> <span style="color:#a6e22e">header</span> <span style="color:#a6e22e">field</span> <span style="color:#a6e22e">customer</span><span style="color:#f92672">-</span><span style="color:#a6e22e">header</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">allowed</span> <span style="color:#a6e22e">by</span> <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Headers</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">preflight</span> <span style="color:#a6e22e">response</span>.
+</span></span></code></pre></div><h4 id="solution-3">
+  Solution
+  <a class="anchor" href="#solution-3">#</a>
+</h4>
+<p>Add customers header as allowed headers</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cors</span>({
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">origin</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://www.google.com&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;POST&#34;</span>, <span style="color:#e6db74">&#34;PUT&#34;</span>],
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">allowedHeaders</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;Customer-Header&#34;</span>, <span style="color:#e6db74">&#34;X-Customer-Header&#34;</span>],
+</span></span><span style="display:flex;"><span>}));
+</span></span></code></pre></div><h3 id="reference">
+  Reference
+  <a class="anchor" href="#reference">#</a>
+</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=PNtFSVU-YTI">YouTube video</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/CORS">CORS</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request">Preflight Request</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials">Access-Control-Allow-Credentials</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#whats-cors">What&rsquo;s CORS</a></li>
+        <li><a href="#why-needs-cors">Why needs CORS</a></li>
+        <li><a href="#access-control-allow-origin-header"><code>Access-Control-Allow-Origin</code> Header</a></li>
+        <li><a href="#access-control-allow-methods-header"><code>Access-Control-Allow-Methods</code> Header</a></li>
+        <li><a href="#preflight-request">Preflight Request</a></li>
+        <li><a href="#access-control-allow-credentials-header"><code>Access-Control-Allow-Credentials</code> Header</a></li>
+        <li><a href="#access-control-allow-headers-header"><code>Access-Control-Allow-Headers</code> Header</a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

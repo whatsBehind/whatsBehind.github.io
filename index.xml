@@ -1,191 +1,131 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/</link>
     <description>Recent content on What&#39;s Behind</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 Dec 2023 09:09:40 -0800</lastBuildDate><atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Dec 2023 09:09:40 -0800</lastBuildDate>
+    <atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Byte Buffer</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/netty/byte-buffer/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/byte-buffer/</link>
       <pubDate>Wed, 06 Dec 2023 09:09:40 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/netty/byte-buffer/</guid>
-      <description>Introduction Java ByteBuffer is a class in Java&amp;rsquo;s java.nio package. It&amp;rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘
-ByteBuffer can be used in two modes:
-Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/byte-buffer/</guid>
+      <description>Introduction # Java ByteBuffer is a class in Java&amp;rsquo;s java.nio package. It&amp;rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘&#xA;ByteBuffer can be used in two modes:&#xA;Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.</description>
     </item>
-    
     <item>
       <title>Online Chat</title>
-      <link>https://whatsBehind.github.io/programming/project/online-chat/</link>
+      <link>https://whatsBehind.github.io/docs/programming/project/online-chat/</link>
       <pubDate>Sun, 26 Nov 2023 21:26:33 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/project/online-chat/</guid>
-      <description>Demo GitHub
-High Level Architecture This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.
-The system now supports below features:
-Login Pull online users Online chat Logoff Because of supports for push and pull modes, features like
-Upload/Download files Group chat can be easily added in the system.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/project/online-chat/</guid>
+      <description>Demo # GitHub&#xA;High Level Architecture # This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.&#xA;The system now supports below features:&#xA;Login Pull online users Online chat Logoff Because of supports for push and pull modes, features like&#xA;Upload/Download files Group chat can be easily added in the system.</description>
     </item>
-    
     <item>
       <title>Tcp Socket</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/net/tcp-socket/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/net/tcp-socket/</link>
       <pubDate>Sun, 19 Nov 2023 21:42:27 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/net/tcp-socket/</guid>
-      <description>What Is a Socket? Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.
-Cient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/net/tcp-socket/</guid>
+      <description>What Is a Socket? # Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.&#xA;Cient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening.</description>
     </item>
-    
     <item>
       <title>Decorator Pattern in Java IO</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/io/decorator-pattern-in-java-io/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/</link>
       <pubDate>Thu, 16 Nov 2023 23:12:49 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/io/decorator-pattern-in-java-io/</guid>
-      <description>Node Streams (Low-Level Streams) Definition:
-Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.
-File file = new File(&amp;#34;example.txt&amp;#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file &amp;ldquo;example.txt&amp;rdquo;. It&amp;rsquo;s a direct connection between the Java program and the file.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/</guid>
+      <description>Node Streams (Low-Level Streams) # Definition:&#xA;Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.&#xA;File file = new File(&amp;#34;example.txt&amp;#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file &amp;ldquo;example.txt&amp;rdquo;. It&amp;rsquo;s a direct connection between the Java program and the file.</description>
     </item>
-    
     <item>
       <title>ObjectInputStream and ObjectOutputStream</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/io/object-input-and-output-stream/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/io/object-input-and-output-stream/</link>
       <pubDate>Thu, 16 Nov 2023 23:10:58 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/io/object-input-and-output-stream/</guid>
-      <description>This post will introduce two new processing streams, ObjectInputStream and ObjectOutputStream, which are used to deserialize and serialize objects and primitive data.
-ObjectInputStream Purpose: To deserialize objects and primitive data written using ObjectOutputStream. It allows you to read bytes from a source (like a file or network socket) and reconstructs objects from those bytes.
-Key Features: Processing stream: reads serialized objects from an underlying InputStream.
-Common Use Case: Commonly used in networking (for sending objects across a network) or for persisting objects to files.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/object-input-and-output-stream/</guid>
+      <description>This post will introduce two new processing streams, ObjectInputStream and ObjectOutputStream, which are used to deserialize and serialize objects and primitive data.&#xA;ObjectInputStream # Purpose: To deserialize objects and primitive data written using ObjectOutputStream. It allows you to read bytes from a source (like a file or network socket) and reconstructs objects from those bytes.&#xA;Key Features: Processing stream: reads serialized objects from an underlying InputStream.&#xA;Common Use Case: Commonly used in networking (for sending objects across a network) or for persisting objects to files.</description>
     </item>
-    
     <item>
       <title>Stream Reader: Bridge of Byte and Char</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/</link>
       <pubDate>Thu, 16 Nov 2023 23:02:33 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/</guid>
-      <description>There are two special readers in Java IO package, they are InputStreamReader and OutputStreamWriter which serve as bridge between byte data and character data
-InputStreamReader Important constructor
-public class InputStreamReader extends Reader { public InputStreamReader(InputStream in, Charset cs); } Key feature (Bridge from byte to char)
-Character Encoding: Data stored in files or transmitted over networks is often in the form of bytes. When such data represents text, it needs to be decoded using a specific character encoding (like UTF-8, ISO-8859-1, etc.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/</guid>
+      <description>There are two special readers in Java IO package, they are InputStreamReader and OutputStreamWriter which serve as bridge between byte data and character data&#xA;InputStreamReader # Important constructor&#xA;public class InputStreamReader extends Reader { public InputStreamReader(InputStream in, Charset cs); } Key feature (Bridge from byte to char)&#xA;Character Encoding: Data stored in files or transmitted over networks is often in the form of bytes. When such data represents text, it needs to be decoded using a specific character encoding (like UTF-8, ISO-8859-1, etc.</description>
     </item>
-    
     <item>
       <title>Java IO Stream</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/io/io-stream/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/io/io-stream/</link>
       <pubDate>Wed, 15 Nov 2023 16:43:55 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/io/io-stream/</guid>
-      <description>What is stream? Java Input/OutputStream and Reader/Writer are essential components of the Java I/O (Input/Output) library, designed to facilitate reading and writing data in various forms from different sources within Java applications. These classes serve as a bridge between your application and external data sources, making it easier to perform I/O operations efficiently and consistently. In this post, we will explore what Input/OutputStream and Reader/Writer are, their relationships, and how they classify based on the type of data and data source.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/io-stream/</guid>
+      <description>What is stream? # Java Input/OutputStream and Reader/Writer are essential components of the Java I/O (Input/Output) library, designed to facilitate reading and writing data in various forms from different sources within Java applications. These classes serve as a bridge between your application and external data sources, making it easier to perform I/O operations efficiently and consistently. In this post, we will explore what Input/OutputStream and Reader/Writer are, their relationships, and how they classify based on the type of data and data source.</description>
     </item>
-    
     <item>
       <title>Java File</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/io/file/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/io/file/</link>
       <pubDate>Wed, 15 Nov 2023 15:42:12 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/io/file/</guid>
-      <description>The File class in Java, found in the java.io package, is not used for file content manipulation (reading/writing) but for file and directory pathnames operations. It&amp;rsquo;s used to obtain or manipulate the information associated with a file or directory, such as metadata, permissions, and path details.
-Commonly Used APIs in File Class for Files and Directories File Handling Create a New File
-createNewFile(): Creates a new file if it does not exist.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/file/</guid>
+      <description>The File class in Java, found in the java.io package, is not used for file content manipulation (reading/writing) but for file and directory pathnames operations. It&amp;rsquo;s used to obtain or manipulate the information associated with a file or directory, such as metadata, permissions, and path details.&#xA;Commonly Used APIs in File Class for Files and Directories # File Handling # Create a New File&#xA;createNewFile(): Creates a new file if it does not exist.</description>
     </item>
-    
     <item>
       <title>Synchornization</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/thread/synchornization/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</link>
       <pubDate>Mon, 13 Nov 2023 08:30:17 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/thread/synchornization/</guid>
-      <description>Thread Interference Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</guid>
+      <description>Thread Interference # Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.</description>
     </item>
-    
     <item>
       <title>Thread Lifecycle</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/thread/thread-lifecycle/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</link>
       <pubDate>Sun, 12 Nov 2023 23:12:57 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/thread/thread-lifecycle/</guid>
-      <description>Understanding the lifecycle of a thread is crucial for effective thread management. Here&amp;rsquo;s a breakdown:
-NEW State:
-When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:
-When you invoke the start() method, the thread moves to the RUNNABLE state. A thread in the RUNNABLE state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</guid>
+      <description>Understanding the lifecycle of a thread is crucial for effective thread management. Here&amp;rsquo;s a breakdown:&#xA;NEW State:&#xA;When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:&#xA;When you invoke the start() method, the thread moves to the RUNNABLE state. A thread in the RUNNABLE state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor.</description>
     </item>
-    
     <item>
       <title>Start Thread</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/thread/start-thread/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</link>
       <pubDate>Sun, 12 Nov 2023 22:25:15 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/thread/start-thread/</guid>
-      <description>Main Lesson Java threads are crucial for executing multiple tasks concurrently in a program. Let&amp;rsquo;s dive into this topic:
-What is a Thread in Java? 🧵
-In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻
-There are two ways to create a thread: By extending the Thread class. By implementing the Runnable interface.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</guid>
+      <description>Main Lesson # Java threads are crucial for executing multiple tasks concurrently in a program. Let&amp;rsquo;s dive into this topic:&#xA;What is a Thread in Java? 🧵&#xA;In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻&#xA;There are two ways to create a thread: By extending the Thread class.</description>
     </item>
-    
     <item>
       <title>Reflection</title>
-      <link>https://whatsBehind.github.io/programming/backend/java/reflection/</link>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/reflection/</link>
       <pubDate>Tue, 07 Nov 2023 07:19:23 -0800</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/backend/java/reflection/</guid>
-      <description>Introduction to Java Reflection Java Reflection is a powerful feature that allows runtime introspection of classes, objects, and their members. It enables Java programs to manipulate internal properties and methods of classes dynamically. Reflection is especially useful in scenarios where the program needs to interact with classes and objects whose properties are not known at compile time.
-Class Object The heart of Java&amp;rsquo;s reflection mechanism. It&amp;rsquo;s an instance that represents classes and interfaces in a running Java application.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/reflection/</guid>
+      <description>Introduction to Java Reflection # Java Reflection is a powerful feature that allows runtime introspection of classes, objects, and their members. It enables Java programs to manipulate internal properties and methods of classes dynamically. Reflection is especially useful in scenarios where the program needs to interact with classes and objects whose properties are not known at compile time.&#xA;Class Object # The heart of Java&amp;rsquo;s reflection mechanism. It&amp;rsquo;s an instance that represents classes and interfaces in a running Java application.</description>
     </item>
-    
     <item>
       <title>Linux Manual</title>
-      <link>https://whatsBehind.github.io/programming/os/linux/linux-manual/</link>
+      <link>https://whatsBehind.github.io/docs/programming/os/linux/linux-manual/</link>
       <pubDate>Tue, 31 Oct 2023 08:47:07 -0700</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/os/linux/linux-manual/</guid>
-      <description>Vim: Three Modes Normal mode Insert mode Command mode Command Mode Type : to enter.
-w (write): save. q: quit. x (==wq): save and quit. set nu: show line numbers. set nonu: do not show line numbers. Normal Mode y (yank): copy. p: paste. 5yy: copy 4 lines. dd: delete. 4dd: delete 4 lines. /word_to_search + Enter: search a word. n: next. G: last line. gg (go to the top&amp;hellip;): first line.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/os/linux/linux-manual/</guid>
+      <description>Vim: Three Modes # Normal mode Insert mode Command mode Command Mode # Type : to enter.&#xA;w (write): save. q: quit. x (==wq): save and quit. set nu: show line numbers. set nonu: do not show line numbers. Normal Mode # y (yank): copy. p: paste. 5yy: copy 4 lines. dd: delete. 4dd: delete 4 lines. /word_to_search + Enter: search a word. n: next. G: last line. gg (go to the top&amp;hellip;): first line.</description>
     </item>
-    
     <item>
       <title>CORS</title>
-      <link>https://whatsBehind.github.io/programming/web/glossary/cors/</link>
+      <link>https://whatsBehind.github.io/docs/programming/web/glossary/cors/</link>
       <pubDate>Mon, 30 Oct 2023 08:44:30 -0700</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/web/glossary/cors/</guid>
-      <description>What&amp;rsquo;s CORS CORS is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image img.jpg from origin images.com, if you don&amp;rsquo;t have CORS set properly, you can&amp;rsquo;t access the img.jpg from other origins like yourOrigin.com.
-Why needs CORS CORS is mainly for security usage. Image that your browser stores credential cookies of domain bank.com which is the website of you bank account, and a hacking website hacking.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/web/glossary/cors/</guid>
+      <description>What&amp;rsquo;s CORS # CORS is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image img.jpg from origin images.com, if you don&amp;rsquo;t have CORS set properly, you can&amp;rsquo;t access the img.jpg from other origins like yourOrigin.com.&#xA;Why needs CORS # CORS is mainly for security usage. Image that your browser stores credential cookies of domain bank.com which is the website of you bank account, and a hacking website hacking.</description>
     </item>
-    
     <item>
       <title>Web Storage Api</title>
-      <link>https://whatsBehind.github.io/programming/web/web-api/web-storage-api/</link>
+      <link>https://whatsBehind.github.io/docs/programming/web/web-api/web-storage-api/</link>
       <pubDate>Fri, 27 Oct 2023 08:11:22 -0700</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/web/web-api/web-storage-api/</guid>
-      <description>Definition The Web Storage API provides mechanisms by which browsers can store key/value pairs
-Source code These mechanisms are available via the Window.sessionStorage and Window.localStorage properties (to be more precise, the Window object implements the WindowLocalStorage and WindowSessionStorage objects, which the localStorage and sessionStorage properties hang off) — invoking one of these will create an instance of the Storage object, through which data items can be set, retrieved and removed. A different Storage object is used for the sessionStorage and localStorage for each origin — they function and are controlled separately.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/web/web-api/web-storage-api/</guid>
+      <description>Definition # The Web Storage API provides mechanisms by which browsers can store key/value pairs&#xA;Source code # These mechanisms are available via the Window.sessionStorage and Window.localStorage properties (to be more precise, the Window object implements the WindowLocalStorage and WindowSessionStorage objects, which the localStorage and sessionStorage properties hang off) — invoking one of these will create an instance of the Storage object, through which data items can be set, retrieved and removed.</description>
     </item>
-    
     <item>
       <title>Cookie</title>
-      <link>https://whatsBehind.github.io/programming/web/http/cookie/</link>
+      <link>https://whatsBehind.github.io/docs/programming/web/http/cookie/</link>
       <pubDate>Fri, 27 Oct 2023 08:10:45 -0700</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/web/http/cookie/</guid>
-      <description>What is cookie An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user&amp;rsquo;s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.</description>
+      <guid>https://whatsBehind.github.io/docs/programming/web/http/cookie/</guid>
+      <description>What is cookie # An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user&amp;rsquo;s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.</description>
     </item>
-    
     <item>
       <title>Set Up Hugo in Git Hub Pages</title>
-      <link>https://whatsBehind.github.io/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</link>
+      <link>https://whatsBehind.github.io/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</link>
       <pubDate>Sun, 22 Oct 2023 11:53:02 -0700</pubDate>
-      
-      <guid>https://whatsBehind.github.io/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</guid>
-      <description>Create a repository to hold the source code of your blogs Create a repository of Git Hub Pages Create a new Hugo project in your local machine cd ~/Projects hugo new site &amp;lt;site name&amp;gt; cd &amp;lt;site name&amp;gt; git init git remote add origin &amp;lt;repository URL of your blogs&amp;gt; git add . git commit -m &amp;#34;Initiate a new hugo project&amp;#34; git push origin main Choose theme for your blog site Navigate to Hugo theme website Down your favorite theme to directory ~/Projects/&amp;lt;site name&amp;gt;/themes Modify your config file baseURL = &amp;#34;https://&amp;lt;URL of your Git Hub Pages&amp;gt;/&amp;#34; languageCode = &amp;#34;en-us&amp;#34; title = &amp;#34;&amp;lt;website name&amp;gt;&amp;#34; theme = &amp;#34;&amp;lt;theme name&amp;gt;&amp;#34; Run hugo server to check if everything in your local host is expected Add Git Hub Pages repository as submodule of your source repository cd ~/Projects/&amp;lt;site name&amp;gt; git submodule add -b main &amp;lt;URL of your Git Hub Pages&amp;gt; public # Generate static resouce in public directory hugo cd public git add .</description>
+      <guid>https://whatsBehind.github.io/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</guid>
+      <description>Create a repository to hold the source code of your blogs # Create a repository of Git Hub Pages # Create a new Hugo project in your local machine # cd ~/Projects hugo new site &amp;lt;site name&amp;gt; cd &amp;lt;site name&amp;gt; git init git remote add origin &amp;lt;repository URL of your blogs&amp;gt; git add . git commit -m &amp;#34;Initiate a new hugo project&amp;#34; git push origin main Choose theme for your blog site # Navigate to Hugo theme website Down your favorite theme to directory ~/Projects/&amp;lt;site name&amp;gt;/themes Modify your config file baseURL = &amp;#34;https://&amp;lt;URL of your Git Hub Pages&amp;gt;/&amp;#34; languageCode = &amp;#34;en-us&amp;#34; title = &amp;#34;&amp;lt;website name&amp;gt;&amp;#34; theme = &amp;#34;&amp;lt;theme name&amp;gt;&amp;#34; Run hugo server to check if everything in your local host is expected Add Git Hub Pages repository as submodule of your source repository # cd ~/Projects/&amp;lt;site name&amp;gt; git submodule add -b main &amp;lt;URL of your Git Hub Pages&amp;gt; public # Generate static resouce in public directory hugo cd public git add .</description>
     </item>
-    
   </channel>
 </rss>
