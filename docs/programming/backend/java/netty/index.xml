@@ -22,5 +22,12 @@
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/blocking-mode/</guid>
       <description>Blocking Mode # This post will introduce the blocking mode of network connection and communication in Java code. We will first wirte both server and client codes. Then demo the blocking mode and its problems.&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); // Create server ServerSocketChannel ssc = ServerSocketChannel.open(); // Server listens to port 9999 at local host ssc.</description>
     </item>
+    <item>
+      <title>Unblocking Mode</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/unblocking-mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/unblocking-mode/</guid>
+      <description>Unblocking Mode # In last post, we discussed blocking mode and its problems. In this post, we will discuss unblocking mode and its problems&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); ServerSocketChannel ssc = ServerSocketChannel.open(); ssc.bind(new InetSocketAddress(9999)); ssc.configureBlocking(false); List&amp;lt;SocketChannel&amp;gt; channels = new ArrayList&amp;lt;&amp;gt;(); while (true) { log.debug(&amp;#34;Server connecting&amp;#34;); SocketChannel sc = ssc.accept(); if (sc != null) { log.</description>
+    </item>
   </channel>
 </rss>
