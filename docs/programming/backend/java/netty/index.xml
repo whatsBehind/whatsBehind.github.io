@@ -15,5 +15,19 @@
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/byte-buffer/</guid>
       <description>Introduction # Java ByteBuffer is a class in Java&amp;rsquo;s java.nio package. It&amp;rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘&#xA;ByteBuffer can be used in two modes:&#xA;Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.</description>
     </item>
+    <item>
+      <title>Blocking Mode</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/blocking-mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/blocking-mode/</guid>
+      <description>Blocking Mode # This post will introduce the blocking mode of network connection and communication in Java code. We will first wirte both server and client codes. Then demo the blocking mode and its problems.&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); // Create server ServerSocketChannel ssc = ServerSocketChannel.open(); // Server listens to port 9999 at local host ssc.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/hidden/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/hidden/</guid>
+      <description> Diagram for ByteBuffer: https://app.diagrams.net/?src=about#G1SiX3NqayBh9IzZmr4v4dIQPF_0gmmxYS </description>
+    </item>
   </channel>
 </rss>
