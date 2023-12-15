@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/nio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Byte Buffer</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</guid>
+      <description>Introduction # Java ByteBuffer is a class in Java&amp;rsquo;s java.nio package. It&amp;rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘&#xA;ByteBuffer can be used in two modes:&#xA;Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.</description>
+    </item>
+    <item>
+      <title>Blocking Mode</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</guid>
+      <description>Blocking Mode # This post will introduce the blocking mode of network connection and communication in Java code. We will first wirte both server and client codes. Then demo the blocking mode and its problems.&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); // Create server ServerSocketChannel ssc = ServerSocketChannel.open(); // Server listens to port 9999 at local host ssc.</description>
+    </item>
+    <item>
+      <title>Unblocking Mode</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</guid>
+      <description>Unblocking Mode # In last post, we discussed blocking mode and its problems. In this post, we will discuss unblocking mode and its problems&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); ServerSocketChannel ssc = ServerSocketChannel.open(); ssc.bind(new InetSocketAddress(9999)); ssc.configureBlocking(false); List&amp;lt;SocketChannel&amp;gt; channels = new ArrayList&amp;lt;&amp;gt;(); while (true) { log.debug(&amp;#34;Server connecting&amp;#34;); SocketChannel sc = ssc.accept(); if (sc != null) { log.</description>
+    </item>
+    <item>
+      <title>Selector</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</guid>
+      <description>Selector in Java NIO # A Selector in Java NIO is a special type of object that can check one or more NIO channels and determine which channels are ready for data operations (such as reading or writing). This is crucial in scenarios like servers handling multiple client connections.&#xA;Key Features: # Multiplexing: A single selector can handle multiple channels. Non-blocking Mode: Channels registered with a selector are usually in non-blocking mode.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Introduction # Java ByteBuffer is a class in Java&rsquo;s java.nio package. It&rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘
+ByteBuffer can be used in two modes:
+Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Byte Buffer" />
+<meta property="og:description" content="Introduction # Java ByteBuffer is a class in Java&rsquo;s java.nio package. It&rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘
+ByteBuffer can be used in two modes:
+Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Byte Buffer | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.8382b64bc3e2c220dcf6ec1e295fc35a2f356ead396c4ff96dbdad0b91b380f4.js" integrity="sha256-g4K2S8PiwiDc9uweKV/DWi81bq05bE/5bb2tC5GzgPQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="toggle"  />
+    <label for="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle" checked />
+    <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle" checked />
+    <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4d132fa86c191d313485f304ca9a1229" class="toggle"  />
+    <label for="section-4d132fa86c191d313485f304ca9a1229" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle"  />
+    <label for="section-f8771c290018cde58e0ed5c89ae77e0d" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51b21b1aa4706431f75da30c83254b65" class="toggle"  />
+    <label for="section-51b21b1aa4706431f75da30c83254b65" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchornization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f0c638519ab658fe62f69bdee816bc0f" class="toggle" checked />
+    <label for="section-f0c638519ab658fe62f69bdee816bc0f" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="active">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fb923816a079b91d0045c2bbe184452" class="toggle"  />
+    <label for="section-3fb923816a079b91d0045c2bbe184452" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eef785d90f032562151b69894191310f" class="toggle"  />
+    <label for="section-eef785d90f032562151b69894191310f" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle"  />
+    <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eee032ba51521b5a76ca688aa982a5cd" class="toggle"  />
+    <label for="section-eee032ba51521b5a76ca688aa982a5cd" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
+    <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0975d481e131cd3566df9e7779add732" class="toggle"  />
+    <label for="section-0975d481e131cd3566df9e7779add732" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c91ba5e94a01028927e7fe8e471dfed6" class="toggle"  />
+    <label for="section-c91ba5e94a01028927e7fe8e471dfed6" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61b4842f6a6edc0699378637391b21b9" class="toggle"  />
+    <label for="section-61b4842f6a6edc0699378637391b21b9" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
+    <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a047c0faadc787118d3878bd75e8b987" class="toggle"  />
+    <label for="section-a047c0faadc787118d3878bd75e8b987" class="flex justify-between">
+      <a role="button" class="">Note</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Byte Buffer</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#practical-example">Practical Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#important-concepts-and-operations">Important Concepts and Operations</a>
+      <ul>
+        <li><a href="#operations">Operations</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h2>
+<p>Java ByteBuffer is a class in Java&rsquo;s java.nio package. It&rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘</p>
+<p>ByteBuffer can be used in two modes:</p>
+<ul>
+<li>Read Mode: You can read data from the buffer. 💡</li>
+<li>Write Mode: You can write data to the buffer. 💡</li>
+</ul>
+<h3 id="practical-example">
+  Practical Example
+  <a class="anchor" href="#practical-example">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Create a new ByteBuffer</span>
+</span></span><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(10);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Write data into the buffer</span>
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>((<span style="color:#66d9ef">byte</span>) 10);
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>((<span style="color:#66d9ef">byte</span>) 20);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Flip the buffer to read mode</span>
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Read data from the buffer</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">byte</span> first <span style="color:#f92672">=</span> buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">byte</span> second <span style="color:#f92672">=</span> buffer.<span style="color:#a6e22e">get</span>();
+</span></span></code></pre></div><p>In this example, we first write two bytes into the buffer and then read them back.</p>
+<h2 id="important-concepts-and-operations">
+  Important Concepts and Operations
+  <a class="anchor" href="#important-concepts-and-operations">#</a>
+</h2>
+<ul>
+<li>
+<p>Capacity, Limit, and Position: ByteBuffer has three important properties:</p>
+<ul>
+<li>Capacity: The maximum number of bytes it can hold. It&rsquo;s set when the buffer is created and cannot be changed.</li>
+<li>Limit: The limit is the index of the first element that should not be read or written. It can change as you read/write data.</li>
+<li>Position: The next element to be read or written. Position will increase as you read or write data.</li>
+</ul>
+</li>
+</ul>
+<h3 id="operations">
+  Operations
+  <a class="anchor" href="#operations">#</a>
+</h3>
+<ul>
+<li>
+<p>Create a new <code>ByteBuffer</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(10);
+</span></span></code></pre></div><p><img src="/programming/backend/java/netty/byte-buffer/new-byte-buffer.png" alt="image" /></p>
+</li>
+<li>
+<p>Write <code>ByteBuffer</code></p>
+<ul>
+<li>Put single byte
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(10);
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>((<span style="color:#66d9ef">byte</span>) <span style="color:#e6db74">&#39;a&#39;</span>);
+</span></span></code></pre></div></li>
+<li>Put byte array
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(10);
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>});
+</span></span></code></pre></div><img src="/programming/backend/java/netty/byte-buffer/write-single-byte.png" alt="image" /></li>
+</ul>
+</li>
+<li>
+<p>Read <code>ByteBuffer</code></p>
+<ul>
+<li>
+<p><code>flip()</code>: switch to read mode</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(10);
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>});
+</span></span></code></pre></div><p><img src="/programming/backend/java/netty/byte-buffer/write-four-bytes.png" alt="image" /></p>
+<p>Here we create a new <code>ByteBuffer</code>, and write four bytes to the <code>ByteBuffer</code>. The <code>ByteBuffer</code> is still in write mode, and to switch to read mode, we can invoke <code>flip()</code> method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">flip</span>();
+</span></span></code></pre></div><p><img src="/programming/backend/java/netty/byte-buffer/flip.png" alt="image" /></p>
+<p><code>flip()</code> updates values of <code>limit</code> and <code>position</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">limit</span> <span style="color:#f92672">=</span> position;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">position</span> <span style="color:#f92672">=</span> 0;
+</span></span></code></pre></div></li>
+<li>
+<p><code>get()</code>: read one byte and increment position</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> data <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span>) buffer.<span style="color:#a6e22e">get</span>();
+</span></span></code></pre></div><p><img src="/programming/backend/java/netty/byte-buffer/get.png" alt="image" /></p>
+</li>
+<li>
+<p><code>get(int i)</code>: read byte of index w/o position change</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> data <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span>) buffer.<span style="color:#a6e22e">get</span>(0); <span style="color:#75715e">// &#39;a&#39;</span>
+</span></span></code></pre></div><p>pointer <code>position</code> doesn&rsquo;t increment
+<img src="/programming/backend/java/netty/byte-buffer/get-index.png" alt="image" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>clear()</code> &amp; <code>compact()</code>: switch from read mode to write mode</p>
+<ul>
+<li>
+<p><code>clear()</code>: <code>clear()</code> resets <code>position</code> to <code>0</code>, and <code>limit</code> to the capacity of the <code>ByteBuffer</code>. It doesn&rsquo;t erase the data, but prepares a new write operation for the buffer.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>});
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">clear</span>();
+</span></span></code></pre></div><p><img src="/programming/backend/java/netty/byte-buffer/clear.png" alt="image" /></p>
+</li>
+<li>
+<p><code>compact()</code>: <code>compact()</code> moves unread data to the beginning of the buffer, and sets <code>position</code> after the last unread byte and <code>limit</code> to the capacity of the buffer.</p>
+<ul>
+<li>Use case: When you have partially processed the data in the buffer and want to keep remaining unprocessed data while sill making room for the new data to be added</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>});
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">compact</span>();
+</span></span></code></pre></div><p><img src="/programming/backend/java/netty/byte-buffer/compact.png" alt="image" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Manipulate <code>position</code> pointer</p>
+<ul>
+<li>
+<p><code>rewind()</code>: reset position back to 0</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(10);
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>});
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">rewind</span>();
+</span></span></code></pre></div><p><img src="/programming/backend/java/netty/byte-buffer/rewind.png" alt="image" /></p>
+<p><code>rewind()</code> only does one thing that is to reset <code>position</code> to 0. After rewind, you can write/read from the beginning of the <code>ByteBuffer</code></p>
+</li>
+<li>
+<p><code>mark()</code> and <code>reset()</code>: bookmark position and re-visit</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(10);
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>});
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">mark</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">reset</span>();
+</span></span></code></pre></div><p><img src="/programming/backend/java/netty/byte-buffer/mark.png" alt="image" /></p>
+<p><code>mark()</code> and <code>reset()</code> introduce a new pointer <code>mark</code> in ByteBuffer, and the two methods are normally used together. Value of <code>mark</code> in most case is <code>-1</code>. When <code>mark()</code> is invoked, current <code>position</code> will be remembered by assigning <code>position</code> to <code>mark</code></p>
+<p><img src="/programming/backend/java/netty/byte-buffer/reset.png" alt="image" /></p>
+<p>In above code snippet, after remembering <code>position</code> (<code>mark()</code>), we continue read two more bytes from the <code>ByteBuffer</code> where <code>position</code> is <code>4</code>. <code>reset()</code> resets <code>position</code> to previous <code>mark</code> which is <code>2</code>.</p>
+<p>Comparing to <code>rewind()</code> which can only reset <code>position</code> to <code>0</code>, <code>mark()</code> and <code>reset()</code> have enhanced feature which bookmarks <code>position</code> and resets <code>position</code> to previous <code>mark</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Work with <code>Channel</code></p>
+<ul>
+<li>
+<p><code>Channel</code></p>
+<p><code>Channel</code> is an important component in NIO, and it is like <code>Stream</code> in BIO. Different from <code>Stream</code>, <code>Channel</code> can be used bi-directional and can be used in conjunction with <code>Buffer</code></p>
+<p>When Using <code>Channel</code> and <code>Buffer</code>, data can be read from a <code>Channel</code> into a <code>Buffer</code> or written from a <code>Buffer</code> into a <code>Channel</code>
+<img src="/programming/backend/java/netty/byte-buffer/channel-and-buffer.png" alt="image" /></p>
+</li>
+<li>
+<p>Read <code>Channel</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (FileChannel channel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(<span style="color:#e6db74">&#34;~/example.txt&#34;</span>).<span style="color:#a6e22e">getChannel</span>()) {
+</span></span><span style="display:flex;"><span>    channel.<span style="color:#a6e22e">read</span>(buffer);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here we get the <code>Channel</code> from <code>FileInputStream</code>, and read data from the channel into a <code>ByteBuffer</code></p>
+</li>
+<li>
+<p>Write <code>Channel</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (FileChannel channel <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream(<span style="color:#e6db74">&#34;~/example.txt&#34;</span>).<span style="color:#a6e22e">getChannel</span>()) {
+</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(10);
+</span></span><span style="display:flex;"><span>    buffer.<span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span>{<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Need to switch byteBuffer to read mode before writing to channel</span>
+</span></span><span style="display:flex;"><span>    buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> channel.<span style="color:#a6e22e">write</span>(buffer);
+</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(String.<span style="color:#a6e22e">format</span>(<span style="color:#e6db74">&#34;Write %s bytes to file&#34;</span>, len));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Work with <code>String</code></p>
+<ul>
+<li>from string to buffer
+<ul>
+<li>
+<p><code>String.getBytes()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
+</span></span><span style="display:flex;"><span>buffer.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>.<span style="color:#a6e22e">getBytes</span>());
+</span></span></code></pre></div></li>
+<li>
+<p><code>charset</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> StandardCharsets.<span style="color:#a6e22e">UTF_8</span>.<span style="color:#a6e22e">encode</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>);
+</span></span></code></pre></div></li>
+<li>
+<p><code>ByteBuffer.wrap()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">wrap</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>.<span style="color:#a6e22e">getBytes</span>());
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>from buffer to string
+<ul>
+<li><code>charset</code>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ByteBuffer buffer <span style="color:#f92672">=</span> StandardCharsets.<span style="color:#a6e22e">UTF_8</span>.<span style="color:#a6e22e">encode</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>);
+</span></span><span style="display:flex;"><span>String str <span style="color:#f92672">=</span> StandardCharsets.<span style="color:#a6e22e">UTF_8</span>.<span style="color:#a6e22e">decode</span>(buffer).<span style="color:#a6e22e">toString</span>();
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#practical-example">Practical Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#important-concepts-and-operations">Important Concepts and Operations</a>
+      <ul>
+        <li><a href="#operations">Operations</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

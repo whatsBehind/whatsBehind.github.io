@@ -2,11 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/byte-buffer/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/blocking-mode/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/unblocking-mode/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/</loc>
     <lastmod>2023-11-26T21:26:33-08:00</lastmod>
@@ -107,7 +109,7 @@
     <loc>https://whatsBehind.github.io/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</loc>
     <lastmod>2023-10-22T11:53:02-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/network/</loc>
   </url><url>
