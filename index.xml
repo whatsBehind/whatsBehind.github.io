@@ -37,6 +37,13 @@
       <description>Selector in Java NIO # A Selector in Java NIO is a special type of object that can check one or more NIO channels and determine which channels are ready for data operations (such as reading or writing). This is crucial in scenarios like servers handling multiple client connections.&#xA;Key Features: # Multiplexing: A single selector can handle multiple channels. Non-blocking Mode: Channels registered with a selector are usually in non-blocking mode.</description>
     </item>
     <item>
+      <title>Selector Read</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</guid>
+      <description>Read Operation in Selector # In last post, we discussed Selector and how it works, also introduced an interested operation OP_ACCEPT. In this post, I will introduce another interested operation OP_READ and how to gracefully read data from SocketChannel and handle closed socket channels&#xA;Server Code # @Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); Selector selector = Selector.open(); log.debug(&amp;#34;Create a selector&amp;#34;); ServerSocketChannel ssc = ServerSocketChannel.</description>
+    </item>
+    <item>
       <title>Online Chat</title>
       <link>https://whatsBehind.github.io/docs/programming/project/online-chat/</link>
       <pubDate>Sun, 26 Nov 2023 21:26:33 -0800</pubDate>
