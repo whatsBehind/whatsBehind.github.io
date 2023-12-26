@@ -44,6 +44,13 @@
       <description>Read Operation in Selector # In last post, we discussed Selector and how it works, also introduced an interested operation OP_ACCEPT. In this post, I will introduce another interested operation OP_READ and how to gracefully read data from SocketChannel and handle closed socket channels&#xA;Server Code # @Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); Selector selector = Selector.open(); log.debug(&amp;#34;Create a selector&amp;#34;); ServerSocketChannel ssc = ServerSocketChannel.</description>
     </item>
     <item>
+      <title>I/O  Model Summary</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</guid>
+      <description>I/O Model # We have discussed some I/O models, like blocking I/O model and non-blocking I/O model. These two I/O models have their own problems which are low efficient.&#xA;Then I introduce another I/O model Multiplexing which utilizes Selector to monitor registered keys and handle operations in a batch. This model provides high efficiency and handles multiple operations like accept (client connection) and read concurrently.&#xA;In this post, I will introduce two more I/O models, synchronous and asynchronous.</description>
+    </item>
+    <item>
       <title>Online Chat</title>
       <link>https://whatsBehind.github.io/docs/programming/project/online-chat/</link>
       <pubDate>Sun, 26 Nov 2023 21:26:33 -0800</pubDate>

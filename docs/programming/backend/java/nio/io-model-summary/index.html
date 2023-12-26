@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I/O Model # We have discussed some I/O models, like blocking I/O model and non-blocking I/O model. These two I/O models have their own problems which are low efficient.
+Then I introduce another I/O model Multiplexing which utilizes Selector to monitor registered keys and handle operations in a batch. This model provides high efficiency and handles multiple operations like accept (client connection) and read concurrently.
+In this post, I will introduce two more I/O models, synchronous and asynchronous.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="I/O  Model Summary" />
+<meta property="og:description" content="I/O Model # We have discussed some I/O models, like blocking I/O model and non-blocking I/O model. These two I/O models have their own problems which are low efficient.
+Then I introduce another I/O model Multiplexing which utilizes Selector to monitor registered keys and handle operations in a batch. This model provides high efficiency and handles multiple operations like accept (client connection) and read concurrently.
+In this post, I will introduce two more I/O models, synchronous and asynchronous." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/" /><meta property="article:section" content="docs" />
+
+
+
+<title>I/O  Model Summary | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.4248fd2dcf3bd92b6176e254286e6d0ac49964af90a5bbd06d181c89b86a513f.js" integrity="sha256-Qkj9Lc872SthduJUKG5tCsSZZK&#43;QpbvQbRgcibhqUT8=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="toggle"  />
+    <label for="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle" checked />
+    <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle" checked />
+    <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4d132fa86c191d313485f304ca9a1229" class="toggle"  />
+    <label for="section-4d132fa86c191d313485f304ca9a1229" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle"  />
+    <label for="section-f8771c290018cde58e0ed5c89ae77e0d" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51b21b1aa4706431f75da30c83254b65" class="toggle"  />
+    <label for="section-51b21b1aa4706431f75da30c83254b65" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchornization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f0c638519ab658fe62f69bdee816bc0f" class="toggle" checked />
+    <label for="section-f0c638519ab658fe62f69bdee816bc0f" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="active">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fb923816a079b91d0045c2bbe184452" class="toggle"  />
+    <label for="section-3fb923816a079b91d0045c2bbe184452" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eef785d90f032562151b69894191310f" class="toggle"  />
+    <label for="section-eef785d90f032562151b69894191310f" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle"  />
+    <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eee032ba51521b5a76ca688aa982a5cd" class="toggle"  />
+    <label for="section-eee032ba51521b5a76ca688aa982a5cd" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
+    <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0975d481e131cd3566df9e7779add732" class="toggle"  />
+    <label for="section-0975d481e131cd3566df9e7779add732" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c91ba5e94a01028927e7fe8e471dfed6" class="toggle"  />
+    <label for="section-c91ba5e94a01028927e7fe8e471dfed6" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61b4842f6a6edc0699378637391b21b9" class="toggle"  />
+    <label for="section-61b4842f6a6edc0699378637391b21b9" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
+    <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a047c0faadc787118d3878bd75e8b987" class="toggle"  />
+    <label for="section-a047c0faadc787118d3878bd75e8b987" class="flex justify-between">
+      <a role="button" class="">Note</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>I/O  Model Summary</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#synchronous-io-model">Synchronous I/O Model</a>
+      <ul>
+        <li><a href="#definition">Definition</a></li>
+        <li><a href="#key-factors">Key factors</a></li>
+        <li><a href="#example">Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#asynchronous-io-model">Asynchronous I/O Model</a>
+      <ul>
+        <li><a href="#definition-1">Definition</a></li>
+        <li><a href="#key-factors-1">Key factors</a></li>
+        <li><a href="#example-1">Example</a></li>
+        <li><a href="#is-future-asynchronous">Is <code>Future</code> asynchronous?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="io-model">
+  I/O Model
+  <a class="anchor" href="#io-model">#</a>
+</h1>
+<p>We have discussed some I/O models, like <a href="/docs/programming/backend/java/nio/blocking-mode">blocking I/O model</a> and <a href="/docs/programming/backend/java/nio/unblocking-mode">non-blocking I/O model</a>. These two I/O models have their own problems which are low efficient.</p>
+<p>Then I introduce another I/O model <a href="/docs/programming/backend/java/nio/selector">Multiplexing</a> which utilizes <code>Selector</code> to monitor registered keys and handle operations in a batch. This model provides high efficiency and handles multiple operations like accept (client connection) and read concurrently.</p>
+<p>In this post, I will introduce two more I/O models, synchronous and asynchronous.</p>
+<h2 id="synchronous-io-model">
+  Synchronous I/O Model
+  <a class="anchor" href="#synchronous-io-model">#</a>
+</h2>
+<h3 id="definition">
+  Definition
+  <a class="anchor" href="#definition">#</a>
+</h3>
+<p>In the synchronous I/O  model, the thread initiates the input or output operations and then it is blocked until the operation is completed. The thread remains inactive and can not perform any other tasks during this time. The thread resumes its executions after the operation has finished</p>
+<h3 id="key-factors">
+  Key factors
+  <a class="anchor" href="#key-factors">#</a>
+</h3>
+<ul>
+<li>Only one thread is involved to initiate the operation and get the result</li>
+<li>The thread is idle or blocked when waiting for the operation completing</li>
+<li>Linear execution flow</li>
+</ul>
+<h3 id="example">
+  Example
+  <a class="anchor" href="#example">#</a>
+</h3>
+<ul>
+<li>
+<p>Code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>    FileChannel fc <span style="color:#f92672">=</span> FileChannel.<span style="color:#a6e22e">open</span>(Paths.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/path/to/file/data.txt&#34;</span>), StandardOpenOption.<span style="color:#a6e22e">READ</span>);
+</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
+</span></span><span style="display:flex;"><span>    fc.<span style="color:#a6e22e">read</span>(buffer);
+</span></span><span style="display:flex;"><span>    buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>    ByteBufferReader.<span style="color:#a6e22e">readAll</span>(buffer);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p>Execution result</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>16:18:51.<span style="color:#a6e22e">605</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">utility</span>.<span style="color:#a6e22e">ByteBufferReader</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>The example of synchronous I/O  model is quite straight forward and easy. Only one thread is involved and the thread is blocked at blocking method <code>fc.read(buffer)</code> until data is loaded from the disk and copied to memories</p>
+<h2 id="asynchronous-io-model">
+  Asynchronous I/O Model
+  <a class="anchor" href="#asynchronous-io-model">#</a>
+</h2>
+<h3 id="definition-1">
+  Definition
+  <a class="anchor" href="#definition-1">#</a>
+</h3>
+<p>In asynchronous I/O model, when a thread initiates an I/O operation, it is not blocked and wait until the operation completes. Instead, the thread continues to execute, and another thread works on the I/O operation. Once the operation is complete, the initiating thread will be notified through mechanism like callbacks</p>
+<h3 id="key-factors-1">
+  Key factors
+  <a class="anchor" href="#key-factors-1">#</a>
+</h3>
+<ul>
+<li>
+<p>Multiple threads are involved.</p>
+<ul>
+<li>One thread is called main thread, which initiates the I/O operation, and it is not blocked during the operation. Instead, it continues to execute other tasks.</li>
+<li>Another thread is called working thread, its main task is to complete the I/O operation and calls back the main thread when the operation is complete.</li>
+</ul>
+</li>
+<li>
+<p>Main thread is not blocked</p>
+</li>
+<li>
+<p>Concurrency: Main thread can handle multiple I/O operations concurrently</p>
+</li>
+</ul>
+<h3 id="example-1">
+  Example
+  <a class="anchor" href="#example-1">#</a>
+</h3>
+<ul>
+<li>
+<p>Code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException, InterruptedException {
+</span></span><span style="display:flex;"><span>    AsynchronousFileChannel afc <span style="color:#f92672">=</span> AsynchronousFileChannel.<span style="color:#a6e22e">open</span>(Paths.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/path/to/file/data.txt&#34;</span>), StandardOpenOption.<span style="color:#a6e22e">READ</span>);
+</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
+</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start reading...&#34;</span>);
+</span></span><span style="display:flex;"><span>    afc.<span style="color:#a6e22e">read</span>(buffer, 0, buffer, <span style="color:#66d9ef">new</span> CompletionHandler<span style="color:#f92672">&lt;</span>Integer, ByteBuffer<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">completed</span>(Integer integer, ByteBuffer buffer) {
+</span></span><span style="display:flex;"><span>            buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>            ByteBufferReader.<span style="color:#a6e22e">readAll</span>(buffer);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">failed</span>(Throwable throwable, ByteBuffer buffer) {
+</span></span><span style="display:flex;"><span>            throwable.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Finish reading...&#34;</span>);
+</span></span><span style="display:flex;"><span>    Thread.<span style="color:#a6e22e">sleep</span>(1000);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>In <code>afc.read(...)</code> method of the async file channel, I pass in a callback object which has two methods <code>completed</code> and <code>failed</code> which are invoked by the working thread when the read operation completes or throws.</li>
+<li>I insert three logs before and after the <code>read</code> method and inside the <code>completed</code> method</li>
+<li>In the end of the code snippet, I force the main thread to sleep <code>1s</code>. Because the working thread is a daemon thread, it terminates when main thread finishes all tasks. Sleeping <code>1s</code> allows the work thread to complete</li>
+</ul>
+</li>
+<li>
+<p>Execution result</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>16:34:14.<span style="color:#a6e22e">824</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">asynchronous_</span>.<span style="color:#a6e22e">CallBackFileReader</span> <span style="color:#f92672">-</span> Start reading...
+</span></span><span style="display:flex;"><span>16:34:14.<span style="color:#a6e22e">826</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">asynchronous_</span>.<span style="color:#a6e22e">CallBackFileReader</span> <span style="color:#f92672">-</span> Finish reading...
+</span></span><span style="display:flex;"><span>16:34:14.<span style="color:#a6e22e">828</span> <span style="color:#f92672">[</span>Thread<span style="color:#f92672">-</span>0<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">utility</span>.<span style="color:#a6e22e">ByteBufferReader</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
+</span></span></code></pre></div><ul>
+<li>Two threads are involved, main thread (<code>main</code>) and working thread (<code>Thread-0</code>)</li>
+<li>Logs <code>Start reading...</code> and <code>Finish reading...</code> are printed first and the thread is main thread. That means after initiating the read operation <code>afc.read(...)</code>, the read operation is allocated to the working thread and the main thread is not blocked but continues to execute other tasks</li>
+<li>The data read from the disk later is printed and its executing thread is the working thread. That means the two threads are running concurrently</li>
+</ul>
+</li>
+</ul>
+<h3 id="is-future-asynchronous">
+  Is <code>Future</code> asynchronous?
+  <a class="anchor" href="#is-future-asynchronous">#</a>
+</h3>
+<ul>
+<li>
+<p>Code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException, InterruptedException, ExecutionException {
+</span></span><span style="display:flex;"><span>    AsynchronousFileChannel afc <span style="color:#f92672">=</span> AsynchronousFileChannel.<span style="color:#a6e22e">open</span>(Paths.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/path/to/file/data.txt&#34;</span>), StandardOpenOption.<span style="color:#a6e22e">READ</span>);
+</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
+</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start reading...&#34;</span>);
+</span></span><span style="display:flex;"><span>    Future<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> future <span style="color:#f92672">=</span> afc.<span style="color:#a6e22e">read</span>(buffer, 0);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Blocking method: main thread is blocked here until read operation completes</span>
+</span></span><span style="display:flex;"><span>    future.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>    buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>    ByteBufferReader.<span style="color:#a6e22e">readAll</span>(buffer);
+</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Finish reading...&#34;</span>);
+</span></span><span style="display:flex;"><span>    Thread.<span style="color:#a6e22e">sleep</span>(1000);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Instead of utilizing callbacks to notify the main thread. We can use <code>Future</code> object to get the data after the read operation</li>
+<li>After calling <code>afc.read(...)</code>, I invoke a blocking method <code>future.get()</code> to let the main thread wait here until the read operation completes. During this time, the working thread is working on the read operation and the main thread is blocked</li>
+</ul>
+</li>
+<li>
+<p>Execution result</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>16:46:47.<span style="color:#a6e22e">948</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">asynchronous_</span>.<span style="color:#a6e22e">FutureFileReader</span> <span style="color:#f92672">-</span> Start reading...
+</span></span><span style="display:flex;"><span>16:46:47.<span style="color:#a6e22e">952</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">utility</span>.<span style="color:#a6e22e">ByteBufferReader</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>16:46:47.<span style="color:#a6e22e">952</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">asynchronous_</span>.<span style="color:#a6e22e">FutureFileReader</span> <span style="color:#f92672">-</span> Finish reading...
+</span></span></code></pre></div><ul>
+<li>The above code works as synchronous I/O model. Codes are executed like a linear way and all logs are printed in the main thread</li>
+</ul>
+</li>
+<li>
+<p>Is it asynchronous?</p>
+<p>In my opinion, NO! This way has two threads involved, but comparing with synchronous I/O model, main thread only transfers its read job to the working thread. Main thread is still blocked at method <code>future.get()</code>, and it can&rsquo;t execute other tasks. Further more, comparing with synchronous I/O model, this way has one more thread involved but doesn&rsquo;t allow main to execute multiple tasks concurrently.</p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#synchronous-io-model">Synchronous I/O Model</a>
+      <ul>
+        <li><a href="#definition">Definition</a></li>
+        <li><a href="#key-factors">Key factors</a></li>
+        <li><a href="#example">Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#asynchronous-io-model">Asynchronous I/O Model</a>
+      <ul>
+        <li><a href="#definition-1">Definition</a></li>
+        <li><a href="#key-factors-1">Key factors</a></li>
+        <li><a href="#example-1">Example</a></li>
+        <li><a href="#is-future-asynchronous">Is <code>Future</code> asynchronous?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
