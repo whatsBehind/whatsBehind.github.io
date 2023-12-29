@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="In our previous posts of using Selector for connection and communication (read/write) between server and clients, we only utilize only one thread. Also multiplexing is highly efficient, but some time consumed tasks would affect the overall performance.
+In this post, I will mimic some functions from netty which allocate tasks to different threads to improve the performance
+Component # We will focus the components in the server side
+Boss # Boss runs under one thread Boss maintains one selector which only listens to ACCEPT events, in other words, boss is only responsible to accept client connection Worker # Workers runs in a separate thread Each worker has one selector which listens to READ and WRITE events After client&rsquo;s connection, the newly created SocketChannel will be registered with one worker Architecture # Connect">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Multiple Threads" />
+<meta property="og:description" content="In our previous posts of using Selector for connection and communication (read/write) between server and clients, we only utilize only one thread. Also multiplexing is highly efficient, but some time consumed tasks would affect the overall performance.
+In this post, I will mimic some functions from netty which allocate tasks to different threads to improve the performance
+Component # We will focus the components in the server side
+Boss # Boss runs under one thread Boss maintains one selector which only listens to ACCEPT events, in other words, boss is only responsible to accept client connection Worker # Workers runs in a separate thread Each worker has one selector which listens to READ and WRITE events After client&rsquo;s connection, the newly created SocketChannel will be registered with one worker Architecture # Connect" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Multiple Threads | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.4522317b03cfde5dbda9b2b298f38fe4e8dc0d43234325b306c83028ca433a22.js" integrity="sha256-RSIxewPP3l29qbKymPOP5OjcDUMjQyWzBsgwKMpDOiI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="toggle"  />
+    <label for="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle" checked />
+    <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle" checked />
+    <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4d132fa86c191d313485f304ca9a1229" class="toggle"  />
+    <label for="section-4d132fa86c191d313485f304ca9a1229" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle"  />
+    <label for="section-f8771c290018cde58e0ed5c89ae77e0d" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51b21b1aa4706431f75da30c83254b65" class="toggle"  />
+    <label for="section-51b21b1aa4706431f75da30c83254b65" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchornization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f0c638519ab658fe62f69bdee816bc0f" class="toggle" checked />
+    <label for="section-f0c638519ab658fe62f69bdee816bc0f" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="active">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fb923816a079b91d0045c2bbe184452" class="toggle"  />
+    <label for="section-3fb923816a079b91d0045c2bbe184452" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eef785d90f032562151b69894191310f" class="toggle"  />
+    <label for="section-eef785d90f032562151b69894191310f" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle"  />
+    <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eee032ba51521b5a76ca688aa982a5cd" class="toggle"  />
+    <label for="section-eee032ba51521b5a76ca688aa982a5cd" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
+    <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0975d481e131cd3566df9e7779add732" class="toggle"  />
+    <label for="section-0975d481e131cd3566df9e7779add732" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c91ba5e94a01028927e7fe8e471dfed6" class="toggle"  />
+    <label for="section-c91ba5e94a01028927e7fe8e471dfed6" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61b4842f6a6edc0699378637391b21b9" class="toggle"  />
+    <label for="section-61b4842f6a6edc0699378637391b21b9" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
+    <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a047c0faadc787118d3878bd75e8b987" class="toggle"  />
+    <label for="section-a047c0faadc787118d3878bd75e8b987" class="flex justify-between">
+      <a role="button" class="">Note</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Multiple Threads</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#component">Component</a>
+      <ul>
+        <li><a href="#boss">Boss</a></li>
+        <li><a href="#worker">Worker</a></li>
+      </ul>
+    </li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#implementation">Implementation</a>
+      <ul>
+        <li><a href="#worker-1">Worker</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p>In our previous posts of using <code>Selector</code> for connection and communication (read/write) between server and clients, we only utilize only one thread. Also multiplexing is highly efficient, but some time consumed tasks would affect the overall performance.</p>
+<p>In this post, I will mimic some functions from netty which allocate tasks to different threads to improve the performance</p>
+<h2 id="component">
+  Component
+  <a class="anchor" href="#component">#</a>
+</h2>
+<p>We will focus the components in the server side</p>
+<h3 id="boss">
+  Boss
+  <a class="anchor" href="#boss">#</a>
+</h3>
+<ul>
+<li>Boss runs under one thread</li>
+<li>Boss maintains one selector which only listens to <code>ACCEPT</code> events, in other words, boss is only responsible to accept client connection</li>
+</ul>
+<p><img src="/docs/programming/backend/java/nio/multiple-threads/boss.png" alt="boss" /></p>
+<h3 id="worker">
+  Worker
+  <a class="anchor" href="#worker">#</a>
+</h3>
+<ul>
+<li>Workers runs in a separate thread</li>
+<li>Each worker has one selector which listens to <code>READ</code> and <code>WRITE</code> events</li>
+<li>After client&rsquo;s connection, the newly created <code>SocketChannel</code> will be registered with one worker</li>
+</ul>
+<p><img src="/docs/programming/backend/java/nio/multiple-threads/worker.png" alt="worker" /></p>
+<h2 id="architecture">
+  Architecture
+  <a class="anchor" href="#architecture">#</a>
+</h2>
+<ul>
+<li>
+<p>Connect</p>
+<ul>
+<li>A client connects to the server</li>
+<li>Boss accepts the connection and create a <code>SocketChannel</code>
+<img src="/docs/programming/backend/java/nio/multiple-threads/connect.png" alt="connect" /></li>
+</ul>
+</li>
+<li>
+<p>Register</p>
+<ul>
+<li>Boss register the <code>SocketChannel</code> with one worker</li>
+<li>Worker starts to listens to <code>READ</code> and <code>WRITE</code> events from the newly registered channel</li>
+<li>Boss is decoupled with the channel</li>
+</ul>
+</li>
+</ul>
+<p><img src="/docs/programming/backend/java/nio/multiple-threads/register.png" alt="register" /></p>
+<ul>
+<li>Binding
+<ul>
+<li>After registration, the <code>SocketChannel</code> is bound to the worker, and decoupled to the boss</li>
+<li>I/O operations including <code>READ</code> and <code>WRITE</code> are monitored and handled by the worker
+<img src="/docs/programming/backend/java/nio/multiple-threads/client-to-worker.png" alt="client-to-worker" /></li>
+</ul>
+</li>
+</ul>
+<h2 id="implementation">
+  Implementation
+  <a class="anchor" href="#implementation">#</a>
+</h2>
+<h3 id="worker-1">
+  Worker
+  <a class="anchor" href="#worker-1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#a6e22e">@Getter</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Setter</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">implements</span> Runnable {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Thread thread;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Selector selector;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> start;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Worker</span>(String name) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">register</span>(SocketChannel sc) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>start) {
+</span></span><span style="display:flex;"><span>            start <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            selector <span style="color:#f92672">=</span> Selector.<span style="color:#a6e22e">open</span>();
+</span></span><span style="display:flex;"><span>            thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">this</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+</span></span><span style="display:flex;"><span>            thread.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>            log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start selector and thread in {}&#34;</span>, name);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        sc.<span style="color:#a6e22e">configureBlocking</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>        sc.<span style="color:#a6e22e">register</span>(selector, SelectionKey.<span style="color:#a6e22e">OP_READ</span>, <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Register client [{}] with {}&#34;</span>, sc.<span style="color:#a6e22e">getRemoteAddress</span>(), name);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{} is listening...&#34;</span>, name);
+</span></span><span style="display:flex;"><span>                selector.<span style="color:#a6e22e">select</span>();
+</span></span><span style="display:flex;"><span>                Iterator<span style="color:#f92672">&lt;</span>SelectionKey<span style="color:#f92672">&gt;</span> iterator <span style="color:#f92672">=</span> selector.<span style="color:#a6e22e">selectedKeys</span>().<span style="color:#a6e22e">iterator</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">while</span> (iterator.<span style="color:#a6e22e">hasNext</span>()) {
+</span></span><span style="display:flex;"><span>                    SelectionKey key <span style="color:#f92672">=</span> iterator.<span style="color:#a6e22e">next</span>();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (key.<span style="color:#a6e22e">isReadable</span>()) {
+</span></span><span style="display:flex;"><span>                        SocketChannel sc <span style="color:#f92672">=</span> (SocketChannel) key.<span style="color:#a6e22e">channel</span>();
+</span></span><span style="display:flex;"><span>                        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Reading message from client [{}]&#34;</span>, sc.<span style="color:#a6e22e">getRemoteAddress</span>());
+</span></span><span style="display:flex;"><span>                        ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                        sc.<span style="color:#a6e22e">read</span>(buffer);
+</span></span><span style="display:flex;"><span>                        buffer.<span style="color:#a6e22e">flip</span>();
+</span></span><span style="display:flex;"><span>                        ByteBufferReader.<span style="color:#a6e22e">readAll</span>(<span style="color:#e6db74">&#34;Message: &#34;</span>, buffer);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Field
+<ul>
+<li><code>Selector</code>: Monitor and handle read/write operations from registered channels</li>
+<li><code>Thread</code>: Task executor</li>
+</ul>
+</li>
+<li>Method
+<ul>
+<li><code>run()</code>: <code>Worker</code> implements <code>Runnable</code>. This method only does one thing:
+<ul>
+<li><code>selector.select()</code>: Listens to channel&rsquo;s events</li>
+<li>Handle events</li>
+</ul>
+</li>
+<li><code>register()</code>:
+<ul>
+<li>First time call:
+<ul>
+<li>Create <code>Selector</code></li>
+<li>Create and start the thread</li>
+</ul>
+</li>
+<li>Register the channel with the <code>Selector</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="problems">
+  Problems:
+  <a class="anchor" href="#problems">#</a>
+</h4>
+<p>Let&rsquo;s look at the two main operations of worker:
+1) monitor (<code>selector.select()</code>);
+2) registration (<code>sc.register(selector, SelectionKey.OP_READ, null);</code>)</p>
+<p>monitor is executed by worker thread, cause method <code>register()</code> is invoked by other thread, so registration is executed by other thread (boss).</p>
+<p>While worker thread is blocked at line <code>selector.select()</code>, even though boss registers a new channel, the worker can&rsquo;t starts to monitor events from the new channel immediately until next round of selector&rsquo;s monitor</p>
+<ul>
+<li>Fix:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Diff" data-lang="Diff"><span style="display:flex;"><span><span style="color:#75715e">@Getter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">@Setter
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">@Slf4j
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>public class Worker implements Runnable {
+</span></span><span style="display:flex;"><span>    private Thread thread;
+</span></span><span style="display:flex;"><span>    private Selector selector;
+</span></span><span style="display:flex;"><span>    private String name;
+</span></span><span style="display:flex;"><span>    private boolean start;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+   private ConcurrentLinkedQueue&lt;Runnable&gt; tasks = new ConcurrentLinkedQueue&lt;&gt;();
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>
+</span></span><span style="display:flex;"><span>    public Worker(String name) {
+</span></span><span style="display:flex;"><span>        this.name = name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    public void register(SocketChannel sc) throws IOException {
+</span></span><span style="display:flex;"><span>        if (!start) {
+</span></span><span style="display:flex;"><span>            start = true;
+</span></span><span style="display:flex;"><span>            selector = Selector.open();
+</span></span><span style="display:flex;"><span>            thread = new Thread(this, this.name);
+</span></span><span style="display:flex;"><span>            thread.start();
+</span></span><span style="display:flex;"><span>            log.debug(&#34;Start selector and thread in {}&#34;, name);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        sc.configureBlocking(false);
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-       sc.register(selector, SelectionKey.OP_READ, null);
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672">-       log.debug(&#34;Register client [{}] with {}&#34;, sc.getRemoteAddress(), name);
+</span></span></span><span style="display:flex;"><span><span style="color:#f92672"></span><span style="color:#a6e22e">+       tasks.add(() -&gt; {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+           try {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+               sc.register(selector, SelectionKey.OP_READ, null);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+           } catch (IOException e) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+               throw new RuntimeException(e);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+           }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       });
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+       selector.wakeup();
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    @Override
+</span></span><span style="display:flex;"><span>    public void run() {
+</span></span><span style="display:flex;"><span>        while (true) {
+</span></span><span style="display:flex;"><span>            try {
+</span></span><span style="display:flex;"><span>                log.debug(&#34;{} is listening...&#34;, name);
+</span></span><span style="display:flex;"><span>                selector.select();
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+               if (!tasks.isEmpty()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                   tasks.poll().run();
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+                   log.debug(&#34;Register client with {}&#34;, name);
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">+               }
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>                Iterator&lt;SelectionKey&gt; iterator = selector.selectedKeys().iterator();
+</span></span><span style="display:flex;"><span>                while (iterator.hasNext()) {
+</span></span><span style="display:flex;"><span>                    SelectionKey key = iterator.next();
+</span></span><span style="display:flex;"><span>                    iterator.remove();
+</span></span><span style="display:flex;"><span>                    if (key.isReadable()) {
+</span></span><span style="display:flex;"><span>                        SocketChannel sc = (SocketChannel) key.channel();
+</span></span><span style="display:flex;"><span>                        log.debug(&#34;Reading message from client [{}]&#34;, sc.getRemoteAddress());
+</span></span><span style="display:flex;"><span>                        ByteBuffer buffer = ByteBuffer.allocate(16);
+</span></span><span style="display:flex;"><span>                        ByteBuffer buffer = ByteBuffer.allocate(32);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                        sc.read(buffer);
+</span></span><span style="display:flex;"><span>                        buffer.flip();
+</span></span><span style="display:flex;"><span>                        ByteBufferReader.readAll(&#34;Message: &#34;, buffer);
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            } catch (IOException e) {
+</span></span><span style="display:flex;"><span>                throw new RuntimeException(e);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>I created a <code>Queue</code> as the bridge between two threads</li>
+<li>Instead let other thread to execute the registration, I add a <code>Runnable</code> task in the queue, and let the worker thread to execute the registration</li>
+<li>To fix the bug that the selector can&rsquo;t immediately monitor newly registered channels while it is blocked at <code>selector.selected</code>, after adding the task to the queue, I invoked method <code>selector.wakeup()</code> which unblocks the selector and let it continue to execute codes</li>
+<li>Before handling events from selected keys, worker will first check if there any registration tasks in the queue and do the registration if yes</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#component">Component</a>
+      <ul>
+        <li><a href="#boss">Boss</a></li>
+        <li><a href="#worker">Worker</a></li>
+      </ul>
+    </li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#implementation">Implementation</a>
+      <ul>
+        <li><a href="#worker-1">Worker</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
