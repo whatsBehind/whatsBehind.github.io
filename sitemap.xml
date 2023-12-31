@@ -4,6 +4,8 @@
   <url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</loc>
@@ -114,6 +116,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</loc>
     <lastmod>2023-10-22T11:53:02-07:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/</loc>
   </url><url>

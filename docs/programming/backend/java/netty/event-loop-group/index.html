@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EventLoop &amp; EventLoopGroup # EventLoop # What is an EventLoop?
+An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.
+How does EventLoop work?
+Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Event Loop Group" />
+<meta property="og:description" content="EventLoop &amp; EventLoopGroup # EventLoop # What is an EventLoop?
+An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.
+How does EventLoop work?
+Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Event Loop Group | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.7155a3e468d74732f1bd4f73259336d8bcf68e17cddd94597f63c5ba2dbba086.js" integrity="sha256-cVWj5GjXRzLxvU9zJZM22Lz2jhfN3ZRZf2PFui27oIY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="toggle"  />
+    <label for="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle" checked />
+    <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle" checked />
+    <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4d132fa86c191d313485f304ca9a1229" class="toggle"  />
+    <label for="section-4d132fa86c191d313485f304ca9a1229" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle"  />
+    <label for="section-f8771c290018cde58e0ed5c89ae77e0d" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51b21b1aa4706431f75da30c83254b65" class="toggle"  />
+    <label for="section-51b21b1aa4706431f75da30c83254b65" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchornization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-945932e727978560611817848680d393" class="toggle" checked />
+    <label for="section-945932e727978560611817848680d393" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="active">Event Loop Group</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f0c638519ab658fe62f69bdee816bc0f" class="toggle"  />
+    <label for="section-f0c638519ab658fe62f69bdee816bc0f" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fb923816a079b91d0045c2bbe184452" class="toggle"  />
+    <label for="section-3fb923816a079b91d0045c2bbe184452" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eef785d90f032562151b69894191310f" class="toggle"  />
+    <label for="section-eef785d90f032562151b69894191310f" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle"  />
+    <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eee032ba51521b5a76ca688aa982a5cd" class="toggle"  />
+    <label for="section-eee032ba51521b5a76ca688aa982a5cd" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
+    <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0975d481e131cd3566df9e7779add732" class="toggle"  />
+    <label for="section-0975d481e131cd3566df9e7779add732" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c91ba5e94a01028927e7fe8e471dfed6" class="toggle"  />
+    <label for="section-c91ba5e94a01028927e7fe8e471dfed6" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61b4842f6a6edc0699378637391b21b9" class="toggle"  />
+    <label for="section-61b4842f6a6edc0699378637391b21b9" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
+    <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a047c0faadc787118d3878bd75e8b987" class="toggle"  />
+    <label for="section-a047c0faadc787118d3878bd75e8b987" class="flex justify-between">
+      <a role="button" class="">Note</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Event Loop Group</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#eventloop">EventLoop</a></li>
+    <li><a href="#eventloopgroup">EventLoopGroup</a></li>
+    <li><a href="#examples">Examples</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="eventloop--eventloopgroup">
+  EventLoop &amp; EventLoopGroup
+  <a class="anchor" href="#eventloop--eventloopgroup">#</a>
+</h1>
+<h2 id="eventloop">
+  EventLoop
+  <a class="anchor" href="#eventloop">#</a>
+</h2>
+<ul>
+<li>
+<p>What is an <code>EventLoop</code>?</p>
+<p>An <code>EventLoop</code> in Netty is a fundamental component that handles all the events related to a single <code>Channel</code>.</p>
+</li>
+<li>
+<p>How does <code>EventLoop</code> work?</p>
+<ul>
+<li>
+<p>Single Threaded: Each <code>EventLoop</code> is bound to a single thread, and each <code>Channel</code> is registered with one <code>EventLoop</code>. This means all I/O operations of a <code>Channel</code> are always executed by the same thread, ensuring thread safety and consistency.</p>
+</li>
+<li>
+<p>Event Processing Loop: The <code>EventLoop</code> continuously checks for new events in its loop and processes them. Events might include connection acceptance, data read/write, or disconnection.</p>
+</li>
+<li>
+<p>Task Queue: Besides I/O operations, <code>EventLoops</code> have a task queue for tasks that are not directly related to I/O operations. This ensures that these tasks are also executed in the same thread, maintaining thread safety.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="eventloopgroup">
+  EventLoopGroup
+  <a class="anchor" href="#eventloopgroup">#</a>
+</h2>
+<ul>
+<li>
+<p>What is <code>EventLoopGroup</code>?
+An <code>EventLoopGroup</code> is a collection of <code>EventLoop</code> instances in Netty. It&rsquo;s responsible for managing these <code>EventLoops</code>, which are the core components handling I/O operations and events for <code>Channels</code> (a connection or a socket).</p>
+</li>
+<li>
+<p>Roles of <code>EventLoopGroup</code>?</p>
+<ul>
+<li>Boss and Worker Groups: In server-side applications, there are typically two <code>EventLoopGroups</code>. The &lsquo;boss&rsquo; group accepts incoming connections and hands them over to the &lsquo;worker&rsquo; group, which then handles the actual I/O operations. See <a href="/docs/programming/backend/java/nio/multiple-threads">boss-and-work</a></li>
+</ul>
+</li>
+<li>
+<p>How does <code>EventLoopGroup</code> work?</p>
+<ul>
+<li>When a client attempts to connect to the server, this connection request first arrives at the boss <code>EventLoopGroup</code>.</li>
+<li>The boss <code>EventLoopGroup</code> accepts the connection and registers it with an <code>EventLoop</code> in the worker <code>EventLoopGroup</code>.</li>
+<li>Once a connection is assigned to an <code>EventLoop</code> in the worker group, that <code>EventLoop</code> is responsible for all the events and operations associated with that connection.</li>
+<li>The <code>EventLoop</code> in the worker <code>EventLoopGroup</code> processes incoming data, sends responses, and can execute tasks like message decoding, business logic processing, and message encoding.</li>
+</ul>
+</li>
+</ul>
+<h2 id="examples">
+  Examples
+  <a class="anchor" href="#examples">#</a>
+</h2>
+<ul>
+<li>
+<p>Execute a single task</p>
+<ul>
+<li>
+<p>Code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>EventLoopGroup group <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NioEventLoopGroup(2);
+</span></span><span style="display:flex;"><span>group.<span style="color:#a6e22e">next</span>().<span style="color:#a6e22e">execute</span>(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(1000);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Hello main!&#34;</span>);
+</span></span></code></pre></div></li>
+<li>
+<p>Execution Result</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>22:10:25.<span style="color:#a6e22e">111</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello main<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>22:10:26.<span style="color:#a6e22e">111</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
+</span></span></code></pre></div></li>
+<li>
+<p><code>group.next()</code> returns a <code>EventLoop</code></p>
+</li>
+<li>
+<p>The <code>EventLoop</code> can execute a <code>Runnable</code> task in its thread</p>
+</li>
+<li>
+<p>Main thread is not blocked</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Execute scheduled tasks</p>
+<ul>
+<li>Code
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>EventLoopGroup group <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NioEventLoopGroup(2);
+</span></span><span style="display:flex;"><span>AtomicInteger count <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomicInteger(0);
+</span></span><span style="display:flex;"><span>group.<span style="color:#a6e22e">next</span>().<span style="color:#a6e22e">scheduleAtFixedRate</span>(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(1000);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Hello EventLoop-{}!&#34;</span>, count.<span style="color:#a6e22e">getAndIncrement</span>());
+</span></span><span style="display:flex;"><span>}, 0, 1, TimeUnit.<span style="color:#a6e22e">SECONDS</span>);
+</span></span></code></pre></div></li>
+<li>Execution Result
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>22:10:26.<span style="color:#a6e22e">112</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>0<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>22:10:27.<span style="color:#a6e22e">112</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>1<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>22:10:28.<span style="color:#a6e22e">113</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>2<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>22:10:29.<span style="color:#a6e22e">113</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>3<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>22:10:30.<span style="color:#a6e22e">114</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>4<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>22:10:31.<span style="color:#a6e22e">114</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>5<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>22:10:32.<span style="color:#a6e22e">114</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>6<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#eventloop">EventLoop</a></li>
+    <li><a href="#eventloopgroup">EventLoopGroup</a></li>
+    <li><a href="#examples">Examples</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
