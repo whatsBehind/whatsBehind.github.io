@@ -16,7 +16,7 @@
       <description>Introduction # Java ByteBuffer is a class in Java&amp;rsquo;s java.nio package. It&amp;rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘&#xA;ByteBuffer can be used in two modes:&#xA;Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.</description>
     </item>
     <item>
-      <title>Event Loop Group</title>
+      <title>EventLoop &amp; EventLoopGroup</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</guid>
@@ -28,6 +28,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</guid>
       <description>Blocking Mode # This post will introduce the blocking mode of network connection and communication in Java code. We will first wirte both server and client codes. Then demo the blocking mode and its problems.&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); // Create server ServerSocketChannel ssc = ServerSocketChannel.open(); // Server listens to port 9999 at local host ssc.</description>
+    </item>
+    <item>
+      <title>Channel &amp; ChannelFuture</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</guid>
+      <description>Concept # What is Channel? # Definition&#xA;A Channel in Netty represents an open network connection, such as a socket. It&amp;rsquo;s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.&#xA;Role&#xA;Data Communication: A Channel is used for reading data from and writing data to the network. State Management: It keeps track of the state of a network connection (e.g., whether it&amp;rsquo;s open, connected, etc.</description>
     </item>
     <item>
       <title>Unblocking Mode</title>
