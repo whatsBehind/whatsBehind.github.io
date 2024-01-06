@@ -37,6 +37,13 @@
       <description>Concept # What is Channel? # Definition&#xA;A Channel in Netty represents an open network connection, such as a socket. It&amp;rsquo;s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.&#xA;Role&#xA;Data Communication: A Channel is used for reading data from and writing data to the network. State Management: It keeps track of the state of a network connection (e.g., whether it&amp;rsquo;s open, connected, etc.</description>
     </item>
     <item>
+      <title>Pipeline &amp; Handler</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</guid>
+      <description>Handler # Role # A Handler in Netty is a component that contains the business logic for processing inbound and outbound data as well as various network (channel) events.&#xA;Types # ChannelInboundHandler:&#xA;Purpose: Deals with inbound data and events. It processes incoming data and reacts to channel events Key Methods: channelRead, channelActive, channelInactive, channelRegistered, channelUnregistered. Usage: You override these methods to perform actions like reading data from a network socket, reacting to channel activation or deactivation, etc.</description>
+    </item>
+    <item>
       <title>Unblocking Mode</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
