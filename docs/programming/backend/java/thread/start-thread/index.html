@@ -24,7 +24,7 @@ There are two ways to create a thread: By extending the Thread class." />
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.efaba616982d87b58227591390b1653beedd7cfa4e20eed97a339ae6d3342912.js" integrity="sha256-76umFpgth7WCJ1kTkLFlO&#43;7dfPpOIO7ZejOa5tM0KRI=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c57e2de0f83ce70f8ac690a86fec26d979682bb920e4f34cb415826204d480a6.js" integrity="sha256-xX4t4Pg85w&#43;KxpCob&#43;wm2XloK7kg5PNMtBWCYgTUgKY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -291,7 +291,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchornization</a>
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="active">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/common-methods/" class="">Common Methods</a>
   
 
         </li>
@@ -317,7 +330,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/backend/java/thread/start-thread/" class="active">Start Thread</a>
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchronization</a>
   
 
         </li>
@@ -857,9 +870,13 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#main-lesson">Main Lesson</a></li>
-        <li><a href="#two-ways-to-start-a-thread">Two Ways to Start A Thread</a></li>
-        <li><a href="#open-question-why-do-we-invoke-start-to-start-a-thread-what-if-i-invoke-run-directly">Open Question: Why do we invoke <code>start()</code> to start a thread, what if I invoke <code>run()</code> directly?</a></li>
+        <li>
+          <ul>
+            <li><a href="#main-lesson">Main Lesson</a></li>
+            <li><a href="#several-ways-to-start-a-thread">Several Ways to Start A Thread</a></li>
+            <li><a href="#open-question-why-do-we-invoke-start-to-start-a-thread-what-if-i-invoke-run-directly">Open Question: Why do we invoke <code>start()</code> to start a thread, what if I invoke <code>run()</code> directly?</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -928,9 +945,9 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ol>
-<h3 id="two-ways-to-start-a-thread">
-  Two Ways to Start A Thread
-  <a class="anchor" href="#two-ways-to-start-a-thread">#</a>
+<h3 id="several-ways-to-start-a-thread">
+  Several Ways to Start A Thread
+  <a class="anchor" href="#several-ways-to-start-a-thread">#</a>
 </h3>
 <ul>
 <li>
@@ -965,6 +982,30 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li>
+<p>Create <code>FutureTask</code> object</p>
+<ul>
+<li><code>FutureTask</code> has a <code>Callable</code> field. <code>Callable</code> and <code>Runnable</code> both stand for a task, the difference is that <code>Callable</code> has return value, but <code>Runnable</code> doesn&rsquo;t</li>
+<li>In below code snippet, we pass the <code>FutureTask</code> to a thread, and start the thread</li>
+<li><code>task.get()</code> method is a blocking thread. It stop current thread, which is main here until the task finishes (<code>run()</code> finish in <code>FutureTask</code>)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Create a new future task</span>
+</span></span><span style="display:flex;"><span>FutureTask<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> task <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FutureTask<span style="color:#f92672">&lt;&gt;</span>(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;running&#34;</span>);
+</span></span><span style="display:flex;"><span>    Thread.<span style="color:#a6e22e">sleep</span>(1000);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> 100;
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create and start a new thread</span>
+</span></span><span style="display:flex;"><span>Thread t <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(task, <span style="color:#e6db74">&#34;Thread_Get_Int&#34;</span>);
+</span></span><span style="display:flex;"><span>t.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;In main thread&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Blocking method</span>
+</span></span><span style="display:flex;"><span>Integer result <span style="color:#f92672">=</span> task.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, result);
 </span></span></code></pre></div></li>
 </ul>
 <h3 id="open-question-why-do-we-invoke-start-to-start-a-thread-what-if-i-invoke-run-directly">
@@ -1072,9 +1113,13 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li>
       <ul>
-        <li><a href="#main-lesson">Main Lesson</a></li>
-        <li><a href="#two-ways-to-start-a-thread">Two Ways to Start A Thread</a></li>
-        <li><a href="#open-question-why-do-we-invoke-start-to-start-a-thread-what-if-i-invoke-run-directly">Open Question: Why do we invoke <code>start()</code> to start a thread, what if I invoke <code>run()</code> directly?</a></li>
+        <li>
+          <ul>
+            <li><a href="#main-lesson">Main Lesson</a></li>
+            <li><a href="#several-ways-to-start-a-thread">Several Ways to Start A Thread</a></li>
+            <li><a href="#open-question-why-do-we-invoke-start-to-start-a-thread-what-if-i-invoke-run-directly">Open Question: Why do we invoke <code>start()</code> to start a thread, what if I invoke <code>run()</code> directly?</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

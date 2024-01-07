@@ -6,19 +6,19 @@
 <meta name="description" content="Thread Interference # Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Synchornization" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Synchronization" />
 <meta property="og:description" content="Thread Interference # Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-11-13T08:30:17-08:00" />
 <meta property="article:modified_time" content="2023-11-13T08:30:17-08:00" />
 
-<title>Synchornization | What&#39;s Behind</title>
+<title>Synchronization | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.efaba616982d87b58227591390b1653beedd7cfa4e20eed97a339ae6d3342912.js" integrity="sha256-76umFpgth7WCJ1kTkLFlO&#43;7dfPpOIO7ZejOa5tM0KRI=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c57e2de0f83ce70f8ac690a86fec26d979682bb920e4f34cb415826204d480a6.js" integrity="sha256-xX4t4Pg85w&#43;KxpCob&#43;wm2XloK7kg5PNMtBWCYgTUgKY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -285,7 +285,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/backend/java/thread/synchornization/" class="active">Synchornization</a>
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/common-methods/" class="">Common Methods</a>
   
 
         </li>
@@ -311,7 +324,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="active">Synchronization</a>
   
 
         </li>
@@ -833,7 +846,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Synchornization</strong>
+  <strong>Synchronization</strong>
 
   <label for="toc-control">
     
@@ -849,17 +862,21 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#thread-interference">Thread Interference</a></li>
-    <li><a href="#introduction-to-synchronization">Introduction to Synchronization</a>
+    <li>
       <ul>
-        <li><a href="#why-do-we-need-synchronization">Why do we need synchronization?</a></li>
-        <li><a href="#the-concept-of-a-monitor-intrinsic-locks">The Concept of a Monitor (Intrinsic Locks)</a></li>
-      </ul>
-    </li>
-    <li><a href="#synchronized-methodsblock">Synchronized Methods/Block</a>
-      <ul>
-        <li><a href="#class-level-synchronization">Class-Level Synchronization</a></li>
-        <li><a href="#instance-level-synchronization">Instance-Level Synchronization</a></li>
+        <li><a href="#thread-interference">Thread Interference</a></li>
+        <li><a href="#introduction-to-synchronization">Introduction to Synchronization</a>
+          <ul>
+            <li><a href="#why-do-we-need-synchronization">Why do we need synchronization?</a></li>
+            <li><a href="#the-concept-of-a-monitor-intrinsic-locks">The Concept of a Monitor (Intrinsic Locks)</a></li>
+          </ul>
+        </li>
+        <li><a href="#synchronized-methodsblock">Synchronized Methods/Block</a>
+          <ul>
+            <li><a href="#class-level-synchronization">Class-Level Synchronization</a></li>
+            <li><a href="#instance-level-synchronization">Instance-Level Synchronization</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -1105,17 +1122,21 @@ In above example, alother we create three <code>Thread</code> instance, but we p
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#thread-interference">Thread Interference</a></li>
-    <li><a href="#introduction-to-synchronization">Introduction to Synchronization</a>
+    <li>
       <ul>
-        <li><a href="#why-do-we-need-synchronization">Why do we need synchronization?</a></li>
-        <li><a href="#the-concept-of-a-monitor-intrinsic-locks">The Concept of a Monitor (Intrinsic Locks)</a></li>
-      </ul>
-    </li>
-    <li><a href="#synchronized-methodsblock">Synchronized Methods/Block</a>
-      <ul>
-        <li><a href="#class-level-synchronization">Class-Level Synchronization</a></li>
-        <li><a href="#instance-level-synchronization">Instance-Level Synchronization</a></li>
+        <li><a href="#thread-interference">Thread Interference</a></li>
+        <li><a href="#introduction-to-synchronization">Introduction to Synchronization</a>
+          <ul>
+            <li><a href="#why-do-we-need-synchronization">Why do we need synchronization?</a></li>
+            <li><a href="#the-concept-of-a-monitor-intrinsic-locks">The Concept of a Monitor (Intrinsic Locks)</a></li>
+          </ul>
+        </li>
+        <li><a href="#synchronized-methodsblock">Synchronized Methods/Block</a>
+          <ul>
+            <li><a href="#class-level-synchronization">Class-Level Synchronization</a></li>
+            <li><a href="#instance-level-synchronization">Instance-Level Synchronization</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

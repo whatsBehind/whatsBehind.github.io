@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</loc>
+    <lastmod>2023-11-12T22:25:15-08:00</lastmod>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</loc>
@@ -10,9 +13,17 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/common-methods/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</loc>
+    <lastmod>2023-11-12T23:12:57-08:00</lastmod>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</loc>
+    <lastmod>2023-11-13T08:30:17-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</loc>
   </url><url>
@@ -69,15 +80,6 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/</loc>
     <lastmod>2023-11-13T08:30:17-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</loc>
-    <lastmod>2023-11-13T08:30:17-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</loc>
-    <lastmod>2023-11-12T23:12:57-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</loc>
-    <lastmod>2023-11-12T22:25:15-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/reflection/</loc>
     <lastmod>2023-11-07T07:19:23-08:00</lastmod>

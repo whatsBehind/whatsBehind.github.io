@@ -9,6 +9,13 @@
     <lastBuildDate>Sun, 26 Nov 2023 21:26:33 -0800</lastBuildDate>
     <atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Start Thread</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</link>
+      <pubDate>Sun, 12 Nov 2023 22:25:15 -0800</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</guid>
+      <description>Main Lesson # Java threads are crucial for executing multiple tasks concurrently in a program. Let&amp;rsquo;s dive into this topic:&#xA;What is a Thread in Java? 🧵&#xA;In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻&#xA;There are two ways to create a thread: By extending the Thread class.</description>
+    </item>
+    <item>
       <title>Byte Buffer</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -37,6 +44,20 @@
       <description>Concept # What is Channel? # Definition&#xA;A Channel in Netty represents an open network connection, such as a socket. It&amp;rsquo;s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.&#xA;Role&#xA;Data Communication: A Channel is used for reading data from and writing data to the network. State Management: It keeps track of the state of a network connection (e.g., whether it&amp;rsquo;s open, connected, etc.</description>
     </item>
     <item>
+      <title>Common Methods</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/common-methods/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/common-methods/</guid>
+      <description>Common Methods of Java Thread # Sleep(long millis) # Static method that causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds. If a thread is sleeping, its state is changed to TIMED_WAITING Sleep method could be interrupted by calling interrupt(). After interruption, sleep throws InterruptedException, and thread state is changed to RUNNABLE Example # Code Thread t1 = new Thread(() -&amp;gt; { try { Thread.</description>
+    </item>
+    <item>
+      <title>Thread Lifecycle</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</link>
+      <pubDate>Sun, 12 Nov 2023 23:12:57 -0800</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</guid>
+      <description>Understanding the lifecycle of a thread is crucial for effective thread management. Here&amp;rsquo;s a breakdown:&#xA;NEW State:&#xA;When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:&#xA;When you invoke the start() method, the thread moves to the RUNNABLE state. A thread in the RUNNABLE state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor.</description>
+    </item>
+    <item>
       <title>Pipeline &amp; Handler</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -49,6 +70,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</guid>
       <description>Unblocking Mode # In last post, we discussed blocking mode and its problems. In this post, we will discuss unblocking mode and its problems&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); ServerSocketChannel ssc = ServerSocketChannel.open(); ssc.bind(new InetSocketAddress(9999)); ssc.configureBlocking(false); List&amp;lt;SocketChannel&amp;gt; channels = new ArrayList&amp;lt;&amp;gt;(); while (true) { log.debug(&amp;#34;Server connecting&amp;#34;); SocketChannel sc = ssc.accept(); if (sc != null) { log.</description>
+    </item>
+    <item>
+      <title>Synchronization</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</link>
+      <pubDate>Mon, 13 Nov 2023 08:30:17 -0800</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</guid>
+      <description>Thread Interference # Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.</description>
     </item>
     <item>
       <title>Selector</title>
@@ -126,27 +154,6 @@
       <pubDate>Wed, 15 Nov 2023 15:42:12 -0800</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/file/</guid>
       <description>The File class in Java, found in the java.io package, is not used for file content manipulation (reading/writing) but for file and directory pathnames operations. It&amp;rsquo;s used to obtain or manipulate the information associated with a file or directory, such as metadata, permissions, and path details.&#xA;Commonly Used APIs in File Class for Files and Directories # File Handling # Create a New File&#xA;createNewFile(): Creates a new file if it does not exist.</description>
-    </item>
-    <item>
-      <title>Synchornization</title>
-      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</link>
-      <pubDate>Mon, 13 Nov 2023 08:30:17 -0800</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</guid>
-      <description>Thread Interference # Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.</description>
-    </item>
-    <item>
-      <title>Thread Lifecycle</title>
-      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</link>
-      <pubDate>Sun, 12 Nov 2023 23:12:57 -0800</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</guid>
-      <description>Understanding the lifecycle of a thread is crucial for effective thread management. Here&amp;rsquo;s a breakdown:&#xA;NEW State:&#xA;When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:&#xA;When you invoke the start() method, the thread moves to the RUNNABLE state. A thread in the RUNNABLE state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor.</description>
-    </item>
-    <item>
-      <title>Start Thread</title>
-      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</link>
-      <pubDate>Sun, 12 Nov 2023 22:25:15 -0800</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</guid>
-      <description>Main Lesson # Java threads are crucial for executing multiple tasks concurrently in a program. Let&amp;rsquo;s dive into this topic:&#xA;What is a Thread in Java? 🧵&#xA;In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻&#xA;There are two ways to create a thread: By extending the Thread class.</description>
     </item>
     <item>
       <title>Reflection</title>
