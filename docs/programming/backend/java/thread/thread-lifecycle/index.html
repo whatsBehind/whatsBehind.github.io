@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Understanding the lifecycle of a thread is crucial for effective thread management. Here&rsquo;s a breakdown:
-NEW State:
+<meta name="description" content="Six Java Thread States # NEW State:
 When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:
-When you invoke the start() method, the thread moves to the RUNNABLE state. A thread in the RUNNABLE state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor.">
+When you invoke the start() method, the thread moves to the RUNNABLE state In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running A RUNNABLE state means the thread is either running on the CPU or waiting for Scheduler to allocate CPU resource BLOCKED State:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="Thread Lifecycle" />
-<meta property="og:description" content="Understanding the lifecycle of a thread is crucial for effective thread management. Here&rsquo;s a breakdown:
-NEW State:
+<meta property="og:description" content="Six Java Thread States # NEW State:
 When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:
-When you invoke the start() method, the thread moves to the RUNNABLE state. A thread in the RUNNABLE state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor." />
+When you invoke the start() method, the thread moves to the RUNNABLE state In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running A RUNNABLE state means the thread is either running on the CPU or waiting for Scheduler to allocate CPU resource BLOCKED State:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-11-12T23:12:57-08:00" />
@@ -24,7 +22,7 @@ When you invoke the start() method, the thread moves to the RUNNABLE state. A th
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.c57e2de0f83ce70f8ac690a86fec26d979682bb920e4f34cb415826204d480a6.js" integrity="sha256-xX4t4Pg85w&#43;KxpCob&#43;wm2XloK7kg5PNMtBWCYgTUgKY=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.96031a71e1f8e5f9c49710a66d4f079afc1679f4b8c7daa52c28bb001f5cc489.js" integrity="sha256-lgMaceH45fnElxCmbU8HmvwWefS4x9qlLCi7AB9cxIk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -868,9 +866,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#common-thread-methods">Common Thread Methods</a>
+    <li>
       <ul>
-        <li><a href="#practical-example">Practical Example</a></li>
+        <li><a href="#six-java-thread-states">Six Java Thread States</a></li>
+        <li><a href="#state-transition">State Transition</a></li>
+        <li><a href="#demo">Demo</a></li>
       </ul>
     </li>
   </ul>
@@ -885,7 +885,10 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><p>Understanding the lifecycle of a thread is crucial for effective thread management. Here&rsquo;s a breakdown:</p>
+  <article class="markdown book-article"><h2 id="six-java-thread-states">
+  Six Java Thread States
+  <a class="anchor" href="#six-java-thread-states">#</a>
+</h2>
 <ul>
 <li>
 <p><code>NEW</code> State:</p>
@@ -898,32 +901,30 @@ https://github.com/alex-shpak/hugo-book
 <li>
 <p><code>RUNNABLE</code> State:</p>
 <ul>
-<li>When you invoke the <code>start()</code> method, the thread moves to the <code>RUNNABLE</code> state.</li>
-<li>A thread in the <code>RUNNABLE</code> state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor.</li>
+<li>When you invoke the <code>start()</code> method, the thread moves to the <code>RUNNABLE</code> state</li>
+<li>In a typical implementation, a Java thread in the <code>RUNNABLE</code> state corresponds to an OS thread that is eligible for running</li>
+<li>A <code>RUNNABLE</code> state means the thread is
+<ul>
+<li>either running on the CPU</li>
+<li>or waiting for Scheduler to allocate CPU resource</li>
 </ul>
 </li>
-<li>
-<p><code>RUNNING</code> State:</p>
-<ul>
-<li><code>Thread</code> doesn&rsquo;t have this state. It still belongs to <code>RUNNABLE</code> state in Java, but it was running on processor.</li>
-<li>A thread is in the <code>RUNNING</code> state when the thread scheduler selects it from the runnable pool.</li>
-<li>In this state, the <code>run()</code> method&rsquo;s body is being executed.</li>
 </ul>
 </li>
 <li>
 <p><code>BLOCKED</code> State:</p>
 <ul>
-<li>Thread state for a thread blocked waiting for a monitor lock. A thread in the <code>BLOCKED</code> state is waiting for a monitor lock to enter a synchronized block/method or reenter a synchronized block/method after calling <code>Object.wait</code>.</li>
+<li>A thread enters the <code>BLOCKED</code> state when it tries to acquire a monitor lock (intrinsic lock) of an object but another thread already holds that lock. This commonly occurs in synchronized blocks or methods.</li>
 </ul>
 </li>
 <li>
 <p><code>WAITING</code> State:</p>
 <ul>
-<li>Thread state for a waiting thread. A thread is in the waiting state due to calling one of the following methods:
+<li>A thread is in the <code>WAITING</code> state when it is waiting for another thread to perform a specific action. Unlike the <code>BLOCKED</code> state, where a thread is waiting to acquire a lock, in the <code>WAITING</code> state, a thread is waiting for another thread&rsquo;s action without any lock competition</li>
+<li>How <code>WAITING</code> state occurs
 <ul>
-<li><code>Thread.sleep</code></li>
-<li><code>Object.wait</code> <strong>WITHOUT</strong> timeout</li>
-<li><code>Thread.join</code> <strong>WITHOUT</strong> timeout</li>
+<li><code>Object.wait()</code> <strong>WITHOUT</strong> timeout</li>
+<li><code>Thread.join()</code> <strong>WITHOUT</strong> timeout</li>
 </ul>
 </li>
 </ul>
@@ -931,16 +932,16 @@ https://github.com/alex-shpak/hugo-book
 <li>
 <p><code>TIMED_WAITING</code> State:</p>
 <ul>
-<li>Thread state for a waiting thread with a specified waiting time. A thread is in the timed waiting state due to calling one of the following methods with a specified positive waiting time:
+<li>A thread is in this state when it is waiting for another thread to perform an action for up to a specified waiting time. After the time expires, the thread will automatically return to the RUNNABLE state if it&rsquo;s not blocked by other means</li>
+<li>How <code>TIMED_WAITING</code> state occurs
 <ul>
+<li><code>Thread.sleep(long millis)</code></li>
 <li><code>Object.wait</code> <strong>WITH</strong> timeout</li>
 <li><code>Thread.join</code> <strong>WITH</strong> timeout</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<ul>
 <li>
 <p><code>TERMINATED</code> State:</p>
 <ul>
@@ -949,221 +950,84 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ul>
-<h1 id="common-thread-methods">
-  Common Thread Methods
-  <a class="anchor" href="#common-thread-methods">#</a>
-</h1>
-<p>Here are some commonly used methods in the Thread class:</p>
-<ul>
-<li>
-<p><code>start()</code>:</p>
-<ul>
-<li>Initiates the execution of the thread and calls the <code>run()</code> method.</li>
-<li>The thread transitions from New to Runnable state.</li>
-</ul>
-</li>
-<li>
-<p><code>run()</code>:</p>
-<ul>
-<li>Contains the code that is executed by the thread.</li>
-<li>You override this method when creating a thread.</li>
-</ul>
-</li>
-<li>
-<p><code>sleep(long millis)</code>:</p>
-<ul>
-<li>Causes the current thread to pause execution for a specified period.</li>
-<li>This is a static method.</li>
-</ul>
-</li>
-<li>
-<p><code>join()</code>:</p>
-<ul>
-<li>Used to pause the execution of the current thread until the thread it joins with completes its execution.</li>
-</ul>
-</li>
-<li>
-<p><code>yield()</code>:</p>
-<ul>
-<li>A static method that pauses the currently executing thread to give a chance for other threads of the same priority to execute. It&rsquo;s a way of telling the thread scheduler that the current thread is willing to &ldquo;step back&rdquo; if there are other threads that should run. However, the scheduler is free to ignore this hint.</li>
-</ul>
-</li>
-<li>
-<p><code>interrupt()</code>:</p>
-<ul>
-<li>Interrupts the thread, which is in the sleeping or waiting state, causing it to throw an <code>InterruptedException</code>.</li>
-</ul>
-</li>
-</ul>
-<h2 id="practical-example">
-  Practical Example
-  <a class="anchor" href="#practical-example">#</a>
+<h2 id="state-transition">
+  State Transition
+  <a class="anchor" href="#state-transition">#</a>
+</h2>
+<img src="/docs/programming/backend/java/thread/common-methods/thread-state.svg" alt="join" width="300"/>
+<h2 id="demo">
+  Demo
+  <a class="anchor" href="#demo">#</a>
 </h2>
 <ul>
-<li>Let&rsquo;s look at a simple example to demonstrate some of these concepts:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadLifeCycle</span> {
+<li>
+<p>Code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SixStates</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        Thread newThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>            log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start a new thread&#34;</span>);
+</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;NEW-thread&#34;</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
-</span></span><span style="display:flex;"><span>        LifeCycleThread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LifeCycleThread();
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;State of a new Thread: &#34;</span> <span style="color:#f92672">+</span> thread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        thread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(50);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;LifeCycleThread is sleeping. Thread state: &#34;</span> <span style="color:#f92672">+</span> thread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(120);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;LifeCycleThread finished. Thread state: &#34;</span> <span style="color:#f92672">+</span> thread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>        Thread runnableThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">true</span>) {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;RUNNABLE-thread&#34;</span>);
+</span></span><span style="display:flex;"><span>        runnableThread.<span style="color:#a6e22e">start</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LifeCycleThread</span> <span style="color:#66d9ef">extends</span> Thread {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread started. Thread state: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(100);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Executing results:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* State of a new Thread: NEW
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Thread started. Thread state: RUNNABLE
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* LifeCycleThread is sleeping. Thread state: TIMED_WAITING
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* LifeCycleThread finished. Thread state: TERMINATED
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* */</span>
-</span></span></code></pre></div><ul>
-<li>Example of <code>join()</code></li>
-</ul>
-<p>We defined an <code>OuterThead</code>, and inside it we defined an <code>InnerThread</code>. <code>run()</code> method in <code>InterThread</code> is simple, just sleeping for 100ms. In <code>run()</code> method of <code>OuterThread</code>, it starts an <code>InterThread</code> and right after that it invokes <code>join()</code> from <code>InnerThread</code>, which means <code>OuterThread</code> will wait here (<code>WAITING</code> state) until <code>InnerThread</code> finishes.
-In <code>main</code> thread, we start an <code>outerThread</code>, and print the states of <code>OuterThread</code> and <code>InnerThread</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Join_</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
-</span></span><span style="display:flex;"><span>        OuterThread outerThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> OuterThread();
-</span></span><span style="display:flex;"><span>        outerThread.<span style="color:#a6e22e">setName</span>(<span style="color:#e6db74">&#34;OuterThread&#34;</span>);
-</span></span><span style="display:flex;"><span>        outerThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(50);
-</span></span><span style="display:flex;"><span>        Thread innerThread <span style="color:#f92672">=</span> outerThread.<span style="color:#a6e22e">getInnerThread</span>();
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;InnerThread state: &#34;</span> <span style="color:#f92672">+</span> innerThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;OuterThread state: &#34;</span> <span style="color:#f92672">+</span> outerThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OuterThread</span> <span style="color:#66d9ef">extends</span> Thread {
-</span></span><span style="display:flex;"><span>    Thread innerThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> InnerThread(), <span style="color:#e6db74">&#34;InnerThread&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        innerThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            innerThread.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Thread <span style="color:#a6e22e">getInnerThread</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> innerThread;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InnerThread</span> <span style="color:#66d9ef">implements</span> Runnable {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
+</span></span><span style="display:flex;"><span>        Thread timedWaitingThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>                Thread.<span style="color:#a6e22e">sleep</span>(100);
+</span></span><span style="display:flex;"><span>                Thread.<span style="color:#a6e22e">sleep</span>(1_000_000);
 </span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
 </span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;TIMED_WAITING-thread&#34;</span>);
+</span></span><span style="display:flex;"><span>        timedWaitingThread.<span style="color:#a6e22e">start</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Executing results
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * InnerThread state: TIMED_WAITING
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * OuterThread state: WAITING
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * */</span>
-</span></span></code></pre></div><ul>
-<li>Example of <code>interrupt()</code></li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Interrupt_</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
-</span></span><span style="display:flex;"><span>        InterruptThread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InterruptThread();
-</span></span><span style="display:flex;"><span>        thread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(10);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;InterruptThread state: &#34;</span> <span style="color:#f92672">+</span> thread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        thread.<span style="color:#a6e22e">interrupt</span>();
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(10);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;InterruptThread was interrupted. Thread state: &#34;</span> <span style="color:#f92672">+</span> thread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InterruptThread</span> <span style="color:#66d9ef">extends</span> Thread {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;InterruptThread is sleep&#34;</span>);
-</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(100);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;InterruptThread was interrupted&#34;</span>);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Executing results:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* InterruptThread is sleep
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* InterruptThread state: TIMED_WAITING
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* InterruptThread was interrupted
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* InterruptThread was interrupted. Thread state: TERMINATED
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* */</span>
-</span></span></code></pre></div><ul>
-<li>Example of <code>BLOCKED</code> state</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BlockedState</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
-</span></span><span style="display:flex;"><span>        BlockedStateThread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BlockedStateThread();
-</span></span><span style="display:flex;"><span>        BlockedStateThread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BlockedStateThread();
-</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">setName</span>(<span style="color:#e6db74">&#34;Thread1&#34;</span>);
-</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">setName</span>(<span style="color:#e6db74">&#34;Thread2&#34;</span>);
-</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(50);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread1 state: &#34;</span> <span style="color:#f92672">+</span> thread1.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread2 state: &#34;</span> <span style="color:#f92672">+</span> thread2.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BlockedStateThread</span> <span style="color:#66d9ef">extends</span> Thread {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> 0;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (BlockedStateThread.<span style="color:#a6e22e">class</span>) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Which thread has the lock now: &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        Thread waitingThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>                Thread.<span style="color:#a6e22e">sleep</span>(100);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">synchronized</span> (SixStates.<span style="color:#a6e22e">class</span>) {
+</span></span><span style="display:flex;"><span>                    runnableThread.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
 </span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            count<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;WAITING-thread&#34;</span>);
+</span></span><span style="display:flex;"><span>        waitingThread.<span style="color:#a6e22e">start</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Executing results:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Which thread has the lock now: Thread1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Thread1 state: TIMED_WAITING
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Thread2 state: BLOCKED
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Which thread has the lock now: Thread2
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * */</span>
-</span></span></code></pre></div></article>
+</span></span><span style="display:flex;"><span>        Thread blockedThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">synchronized</span> (SixStates.<span style="color:#a6e22e">class</span>) {
+</span></span><span style="display:flex;"><span>                log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;BLOCKED thread&#34;</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;BLOCKED-thread&#34;</span>);
+</span></span><span style="display:flex;"><span>        blockedThread.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Thread terminatedThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;TERMINATED-thread&#34;</span>);
+</span></span><span style="display:flex;"><span>        terminatedThread.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, newThread.<span style="color:#a6e22e">getState</span>());
+</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, runnableThread.<span style="color:#a6e22e">getState</span>());
+</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, timedWaitingThread.<span style="color:#a6e22e">getState</span>());
+</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, waitingThread.<span style="color:#a6e22e">getState</span>());
+</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, blockedThread.<span style="color:#a6e22e">getState</span>());
+</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, terminatedThread.<span style="color:#a6e22e">getState</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}    
+</span></span></code></pre></div><ul>
+<li>Execution</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> NEW
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> RUNNABLE
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> TIMED_WAITING
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> WAITING
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> BLOCKED
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> TERMINATED
+</span></span></code></pre></div></li>
+</ul>
+</article>
  
       
 
@@ -1204,9 +1068,11 @@ In <code>main</code> thread, we start an <code>outerThread</code>, and print the
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#common-thread-methods">Common Thread Methods</a>
+    <li>
       <ul>
-        <li><a href="#practical-example">Practical Example</a></li>
+        <li><a href="#six-java-thread-states">Six Java Thread States</a></li>
+        <li><a href="#state-transition">State Transition</a></li>
+        <li><a href="#demo">Demo</a></li>
       </ul>
     </li>
   </ul>

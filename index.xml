@@ -55,7 +55,7 @@
       <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</link>
       <pubDate>Sun, 12 Nov 2023 23:12:57 -0800</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</guid>
-      <description>Understanding the lifecycle of a thread is crucial for effective thread management. Here&amp;rsquo;s a breakdown:&#xA;NEW State:&#xA;When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:&#xA;When you invoke the start() method, the thread moves to the RUNNABLE state. A thread in the RUNNABLE state is executing in the Java virtual machine but it may be waiting for other resources from the operating system such as processor.</description>
+      <description>Six Java Thread States # NEW State:&#xA;When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:&#xA;When you invoke the start() method, the thread moves to the RUNNABLE state In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running A RUNNABLE state means the thread is either running on the CPU or waiting for Scheduler to allocate CPU resource BLOCKED State:</description>
     </item>
     <item>
       <title>Pipeline &amp; Handler</title>
