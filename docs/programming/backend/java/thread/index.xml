@@ -36,5 +36,12 @@
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</guid>
       <description>Thread Interference # Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.</description>
     </item>
+    <item>
+      <title>Thread Safety</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-safety/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-safety/</guid>
+      <description> Example and Best Practice # Shared Mutable State # Unsafe Use public class Counter { private int count = 0; public void increment() { count++; } public int getCount() { return count; } } Better Practice public class Counter { private int count = 0; public synchronized void increment() { count++; } public synchronized int getCount() { return count; } } - Adding `synchronized` on the methods ensure each method </description>
+    </item>
   </channel>
 </rss>

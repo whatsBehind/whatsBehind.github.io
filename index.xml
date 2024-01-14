@@ -16,6 +16,13 @@
       <description>Main Lesson # Java threads are crucial for executing multiple tasks concurrently in a program. Let&amp;rsquo;s dive into this topic:&#xA;What is a Thread in Java? 🧵&#xA;In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻&#xA;There are two ways to create a thread: By extending the Thread class.</description>
     </item>
     <item>
+      <title>Asymmetric Encryption</title>
+      <link>https://whatsBehind.github.io/docs/programming/web/security/asymmetric-encryption/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/web/security/asymmetric-encryption/</guid>
+      <description>What Is Asymmetric Encryption? # Asymmetric encryption, also known as public-key encryption, is a method of encrypting data that involves two separate keys: a public key and a private key. These keys are mathematically linked but not identical, hence the term &amp;ldquo;asymmetric.&amp;rdquo; This method provides a secure way of encrypting and decrypting information, and it&amp;rsquo;s widely used in various forms of digital communication and security protocols&#xA;How Does It Work?</description>
+    </item>
+    <item>
       <title>Byte Buffer</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -91,6 +98,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</guid>
       <description>Read Operation in Selector # In last post, we discussed Selector and how it works, also introduced an interested operation OP_ACCEPT. In this post, I will introduce another interested operation OP_READ and how to gracefully read data from SocketChannel and handle closed socket channels&#xA;Server Code # @Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); Selector selector = Selector.open(); log.debug(&amp;#34;Create a selector&amp;#34;); ServerSocketChannel ssc = ServerSocketChannel.</description>
+    </item>
+    <item>
+      <title>Thread Safety</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-safety/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-safety/</guid>
+      <description> Example and Best Practice # Shared Mutable State # Unsafe Use public class Counter { private int count = 0; public void increment() { count++; } public int getCount() { return count; } } Better Practice public class Counter { private int count = 0; public synchronized void increment() { count++; } public synchronized int getCount() { return count; } } - Adding `synchronized` on the methods ensure each method </description>
     </item>
     <item>
       <title>I/O  Model Summary</title>
