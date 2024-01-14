@@ -14,5 +14,12 @@
       <guid>https://whatsBehind.github.io/docs/programming/web/security/asymmetric-encryption/</guid>
       <description>What Is Asymmetric Encryption? # Asymmetric encryption, also known as public-key encryption, is a method of encrypting data that involves two separate keys: a public key and a private key. These keys are mathematically linked but not identical, hence the term &amp;ldquo;asymmetric.&amp;rdquo; This method provides a secure way of encrypting and decrypting information, and it&amp;rsquo;s widely used in various forms of digital communication and security protocols&#xA;How Does It Work?</description>
     </item>
+    <item>
+      <title>TLS Handshake</title>
+      <link>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</guid>
+      <description>TLS/SSL and HTTPS # TLS (Transport Layer Security) and its predecessor, SSL (Secure Sockets Layer), are integral to HTTPS, which stands for Hypertext Transfer Protocol Secure. HTTPS is the secure version of HTTP, the primary protocol used for transmitting web pages over the internet. This post will introduce the process of TLS handshake, and the TLS version is TLS 1.2&#xA;TLS Handshake # Client to Server: ClientHello&#xA;The client starts the handshake by sending a ClientHello message.</description>
+    </item>
   </channel>
 </rss>

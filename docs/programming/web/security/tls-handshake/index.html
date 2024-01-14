@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="TLS/SSL and HTTPS # TLS (Transport Layer Security) and its predecessor, SSL (Secure Sockets Layer), are integral to HTTPS, which stands for Hypertext Transfer Protocol Secure. HTTPS is the secure version of HTTP, the primary protocol used for transmitting web pages over the internet. This post will introduce the process of TLS handshake, and the TLS version is TLS 1.2
+TLS Handshake # Client to Server: ClientHello
+The client starts the handshake by sending a ClientHello message.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/web/web-api/" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="TLS Handshake" />
+<meta property="og:description" content="TLS/SSL and HTTPS # TLS (Transport Layer Security) and its predecessor, SSL (Secure Sockets Layer), are integral to HTTPS, which stands for Hypertext Transfer Protocol Secure. HTTPS is the secure version of HTTP, the primary protocol used for transmitting web pages over the internet. This post will introduce the process of TLS handshake, and the TLS version is TLS 1.2
+TLS Handshake # Client to Server: ClientHello
+The client starts the handshake by sending a ClientHello message." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/" /><meta property="article:section" content="docs" />
 
-<title>Web API | What&#39;s Behind</title>
+
+
+<title>TLS Handshake | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.7fe15b281262a8159fbec14928596a90fbaad17d25babc5b7f56d8ec1175ccbe.js" integrity="sha256-f&#43;FbKBJiqBWfvsFJKFlqkPuq0X0lurxbf1bY7BF1zL4=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/web/web-api/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -654,9 +659,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle" checked />
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
     <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
-      <a role="button" class="active">Web API</a>
+      <a role="button" class="">Web API</a>
     </label>
   
 
@@ -722,7 +727,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-811d37783cbe9703bc6b3709e834ba31" class="toggle"  />
+    <input type="checkbox" id="section-811d37783cbe9703bc6b3709e834ba31" class="toggle" checked />
     <label for="section-811d37783cbe9703bc6b3709e834ba31" class="flex justify-between">
       <a role="button" class="">Security</a>
     </label>
@@ -751,7 +756,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/web/security/tls-handshake/" class="">TLS Handshake</a>
+    <a href="/docs/programming/web/security/tls-handshake/" class="active">TLS Handshake</a>
   
 
         </li>
@@ -905,7 +910,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Web API</strong>
+  <strong>TLS Handshake</strong>
 
   <label for="toc-control">
     
@@ -919,7 +924,18 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tlsssl-and-https">TLS/SSL and HTTPS</a></li>
+        <li><a href="#tls-handshake">TLS Handshake</a></li>
+        <li><a href="#symmetric-encryption-in-tls-handshake">Symmetric Encryption in TLS Handshake</a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -930,7 +946,80 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h2 id="tlsssl-and-https">
+  TLS/SSL and HTTPS
+  <a class="anchor" href="#tlsssl-and-https">#</a>
+</h2>
+<p>TLS (Transport Layer Security) and its predecessor, SSL (Secure Sockets Layer), are integral to HTTPS, which stands for Hypertext Transfer Protocol Secure. HTTPS is the secure version of HTTP, the primary protocol used for transmitting web pages over the internet. This post will introduce the process of TLS handshake, and the TLS version is TLS 1.2</p>
+<h2 id="tls-handshake">
+  TLS Handshake
+  <a class="anchor" href="#tls-handshake">#</a>
+</h2>
+<p><img src="/docs/programming/web/security/tls-handshake/client-hello.svg" alt="client-hello" /></p>
+<ol>
+<li>
+<p>Client to Server: ClientHello</p>
+<p>The client starts the handshake by sending a <code>ClientHello</code> message. This message includes</p>
+<ul>
+<li>the TLS version the client supports,</li>
+<li>a list of cryptographic algorithms (cipher suites) it can use,</li>
+<li>and a random byte string (client random) for key generation purposes.</li>
+</ul>
+</li>
+</ol>
+<p><img src="/docs/programming/web/security/tls-handshake/server-hello.svg" alt="server-hello" /></p>
+<ol start="2">
+<li>Server to Client: ServerHello</li>
+</ol>
+<p>The server responds with a <code>ServerHello</code> message. This message indicates the chosen TLS protocol version (compatible with the client&rsquo;s version), selects a cipher suite from the client&rsquo;s list, and includes a server-generated random byte string (server random).</p>
+<ol start="3">
+<li>Server to Client: Certificate</li>
+</ol>
+<p>The server sends its digital certificate to the client. This certificate, typically issued by a trusted Certificate Authority (CA), contains the server&rsquo;s public key and is used to authenticate the server to the client.</p>
+<ol start="4">
+<li>Server to Client: Server Key Exchange</li>
+</ol>
+<p>This message is sent by the server only if the server&rsquo;s digital certificate does not contain enough data to allow the client to exchange a pre-master secret. It provides cryptographic parameters necessary for the client to establish the pre-master secret.</p>
+<ol start="5">
+<li>Server to Client: Server Hello Done</li>
+</ol>
+<p>This message indicates the end of the <code>ServerHello</code> and associated messages. After sending this message, the server waits for the client&rsquo;s response.</p>
+<p><img src="/docs/programming/web/security/tls-handshake/pre-master-key-exchange.svg" alt="pre-master-key-exchange" /></p>
+<ol start="6">
+<li>
+<p>Client to Server: Client Key Exchange, Change Cipher Spec, Encrypted Handshake Message</p>
+<ul>
+<li>Client Key Exchange: The client responds with key exchange data, which typically includes a pre-master secret encrypted with the server&rsquo;s public key.</li>
+<li>Change Cipher Spec: The client then sends a message indicating that subsequent messages from the client will be encrypted using the newly agreed cipher suite and keys.</li>
+<li>Encrypted Handshake Message: This is a &lsquo;Finished&rsquo; message encrypted with the new encryption settings. It provides a cryptographic check that ensures the integrity of the handshake thus far.</li>
+</ul>
+</li>
+</ol>
+<p><img src="/docs/programming/web/security/tls-handshake/tls-handshake-whole-process.svg" alt="tls-handshake-whole-process" />
+7. Server to Client: Encrypted Handshake Message</p>
+<p>The server decrypts the client&rsquo;s &lsquo;Finished&rsquo; message and verifies it. Then, it sends its own &lsquo;Finished&rsquo; message, encrypted with the agreed cipher suite and keys. This message serves to confirm that the server part of the handshake is complete and that the server will begin to use the new security settings for all subsequent messages.</p>
+<h2 id="symmetric-encryption-in-tls-handshake">
+  Symmetric Encryption in TLS Handshake
+  <a class="anchor" href="#symmetric-encryption-in-tls-handshake">#</a>
+</h2>
+<ul>
+<li>Establishing a Session Key:</li>
+</ul>
+<p>After the asymmetric exchange of the pre-master secret, both the client and the server independently compute the master secret from the pre-master secret and the random numbers exchanged in the <code>ClientHello</code> and <code>ServerHello</code> messages.</p>
+<ul>
+<li>Generation of Session Keys:</li>
+</ul>
+<p>From the master secret, both parties derive a set of symmetric session keys using a secure key derivation function. These keys include separate encryption and MAC (Message Authentication Code) keys for both client-to-server and server-to-client communication.</p>
+<ul>
+<li>Data Encryption:</li>
+</ul>
+<p>Once the symmetric session keys are established, all subsequent data transmitted during the TLS session is encrypted using symmetric encryption. This includes the final part of the handshake, where both the client and server exchange &lsquo;Finished&rsquo; messages encrypted with the symmetric keys.</p>
+<h2 id="reference">
+  Reference
+  <a class="anchor" href="#reference">#</a>
+</h2>
+<p><a href="https://www.bilibili.com/video/BV1KY411x7Jp/?spm_id_from=333.337.search-card.all.click&amp;vd_source=8a0ebf984753817eaa0d64cff25fac50">Bilibili Video</a></p>
+</article>
  
       
 
@@ -955,6 +1044,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -965,7 +1058,18 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tlsssl-and-https">TLS/SSL and HTTPS</a></li>
+        <li><a href="#tls-handshake">TLS Handshake</a></li>
+        <li><a href="#symmetric-encryption-in-tls-handshake">Symmetric Encryption in TLS Handshake</a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

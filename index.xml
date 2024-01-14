@@ -58,6 +58,13 @@
       <description>Common Methods of Java Thread # Sleep(long millis) # Static method that causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds. If a thread is sleeping, its state is changed to TIMED_WAITING Sleep method could be interrupted by calling interrupt(). After interruption, sleep throws InterruptedException, and thread state is changed to RUNNABLE Example # Code Thread t1 = new Thread(() -&amp;gt; { try { Thread.</description>
     </item>
     <item>
+      <title>TLS Handshake</title>
+      <link>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</guid>
+      <description>TLS/SSL and HTTPS # TLS (Transport Layer Security) and its predecessor, SSL (Secure Sockets Layer), are integral to HTTPS, which stands for Hypertext Transfer Protocol Secure. HTTPS is the secure version of HTTP, the primary protocol used for transmitting web pages over the internet. This post will introduce the process of TLS handshake, and the TLS version is TLS 1.2&#xA;TLS Handshake # Client to Server: ClientHello&#xA;The client starts the handshake by sending a ClientHello message.</description>
+    </item>
+    <item>
       <title>Thread Lifecycle</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</link>
       <pubDate>Sun, 12 Nov 2023 23:12:57 -0800</pubDate>
