@@ -9,6 +9,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/web/network/dns/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</loc>
@@ -136,6 +138,8 @@
     <loc>https://whatsBehind.github.io/docs/programming/network/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/network/note/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/web/network/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/web/security/</loc>
   </url><url>
