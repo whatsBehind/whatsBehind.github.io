@@ -90,7 +90,7 @@
       <link>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</guid>
-      <description></description>
+      <description>Introduction # Both sessions and tokens are used for user authentication and maintaining user state across multiple HTTP requests in a web application.&#xA;Process # Session-Based Authentication Process # 1-2: User Login Attempt&#xA;The user submits their login credentials (usually username and password) through the client (e.g., a web browser). 3-4: Credentials Verification&#xA;The server receives the credentials and verifies them against its user database or authentication source. 5-6: Session Creation</description>
     </item>
     <item>
       <title>Unblocking Mode</title>

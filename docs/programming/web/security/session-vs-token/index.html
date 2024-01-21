@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="Introduction # Both sessions and tokens are used for user authentication and maintaining user state across multiple HTTP requests in a web application.
+Process # Session-Based Authentication Process # 1-2: User Login Attempt
+The user submits their login credentials (usually username and password) through the client (e.g., a web browser). 3-4: Credentials Verification
+The server receives the credentials and verifies them against its user database or authentication source. 5-6: Session Creation">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="Session vs Token" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Introduction # Both sessions and tokens are used for user authentication and maintaining user state across multiple HTTP requests in a web application.
+Process # Session-Based Authentication Process # 1-2: User Login Attempt
+The user submits their login credentials (usually username and password) through the client (e.g., a web browser). 3-4: Credentials Verification
+The server receives the credentials and verifies them against its user database or authentication source. 5-6: Session Creation" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/" /><meta property="article:section" content="docs" />
 
@@ -18,7 +24,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.34bdef277b40eebdb581a59182aa6199281d779358809ac7c7b9f86a0ad59b82.js" integrity="sha256-NL3vJ3tA7r21gaWRgqphmSgdd5NYgJrHx7n4agrVm4I=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.d510354d0963f11c45c629d9337211181bf165e2e53fa9dd8f4d0994ddab4774.js" integrity="sha256-1RA1TQlj8RxFxinZM3IRGBvxZeLlP6ndj00JlN2rR3Q=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -793,6 +799,17 @@ https://github.com/alex-shpak/hugo-book
       
     
       
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/session-vs-token/" class="active">Session vs Token</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -956,7 +973,27 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#process">Process</a>
+          <ul>
+            <li><a href="#session-based-authentication-process">Session-Based Authentication Process</a></li>
+            <li><a href="#token-based-authentication-process-using-jwt">Token-Based Authentication Process (Using JWT)</a></li>
+          </ul>
+        </li>
+        <li><a href="#comparison">Comparison</a>
+          <ul>
+            <li><a href="#session-based-authentication">Session-Based Authentication</a></li>
+            <li><a href="#token-based-authentication-eg-jwt">Token-Based Authentication (e.g., JWT)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -967,7 +1004,178 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h2 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h2>
+<p>Both sessions and tokens are used for user authentication and maintaining user state across multiple HTTP requests in a web application.</p>
+<h2 id="process">
+  Process
+  <a class="anchor" href="#process">#</a>
+</h2>
+<h3 id="session-based-authentication-process">
+  Session-Based Authentication Process
+  <a class="anchor" href="#session-based-authentication-process">#</a>
+</h3>
+<p><img src="/docs/programming/web/security/session-vs-token/session.svg" alt="session" /></p>
+<ul>
+<li>
+<p>1-2: User Login Attempt</p>
+<ul>
+<li>The user submits their login credentials (usually username and password) through the client (e.g., a web browser).</li>
+</ul>
+</li>
+<li>
+<p>3-4: Credentials Verification</p>
+<ul>
+<li>The server receives the credentials and verifies them against its user database or authentication source.</li>
+</ul>
+</li>
+<li>
+<p>5-6: Session Creation</p>
+<ul>
+<li>Upon successful verification, the server creates a new session. This session is stored in the server&rsquo;s memory or a session store (like a database).</li>
+</ul>
+</li>
+<li>
+<p>7: Sending Session ID to Client</p>
+<ul>
+<li>The server sends this session ID back to the client, typically as a cookie. This cookie is stored in the user&rsquo;s browser.</li>
+</ul>
+</li>
+<li>
+<p>Client Stores Session ID</p>
+<ul>
+<li>The browser stores this session ID and sends it along with every subsequent request to the server.</li>
+</ul>
+</li>
+<li>
+<p>Server Session Validation</p>
+<ul>
+<li>For each new request from the client, the server reads the session ID from the cookie, looks up the corresponding session in its session store, and validates it.</li>
+</ul>
+</li>
+</ul>
+<h3 id="token-based-authentication-process-using-jwt">
+  Token-Based Authentication Process (Using JWT)
+  <a class="anchor" href="#token-based-authentication-process-using-jwt">#</a>
+</h3>
+<p><img src="/docs/programming/web/security/session-vs-token/token.svg" alt="token" /></p>
+<ul>
+<li>
+<p>1-2: User Login Attempt</p>
+<ul>
+<li>The user submits their login credentials (usually username and password) through the client (e.g., a web browser).</li>
+</ul>
+</li>
+<li>
+<p>3-4: Credentials Verification</p>
+<ul>
+<li>The server receives the credentials and verifies them against its user database or authentication source.</li>
+</ul>
+</li>
+<li>
+<p>Token Generation</p>
+<ul>
+<li>Upon successful verification, the server generates a token (like a JWT). This token includes encoded user information and is digitally signed by the server.</li>
+</ul>
+</li>
+<li>
+<p>5: Server sends Token to Client</p>
+</li>
+<li>
+<p>6: Client Stores Token</p>
+</li>
+<li>
+<p>Token Sent with Requests</p>
+<ul>
+<li>For every subsequent request, the client attaches this token, typically in the HTTP Authorization header.</li>
+</ul>
+</li>
+<li>
+<p>Server Token Validation</p>
+<ul>
+<li>The server validates the token on each request. This involves verifying the token’s integrity and possibly checking against a list of revoked tokens.</li>
+</ul>
+</li>
+</ul>
+<h2 id="comparison">
+  Comparison
+  <a class="anchor" href="#comparison">#</a>
+</h2>
+<h3 id="session-based-authentication">
+  Session-Based Authentication
+  <a class="anchor" href="#session-based-authentication">#</a>
+</h3>
+<ol>
+<li>
+<p><strong>User Information Storage</strong>:</p>
+<ul>
+<li>In session-based authentication, user information is stored on the server. This can include user identity, authentication status, user preferences, and other session-related data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Server Memory and Resources</strong>:</p>
+<ul>
+<li>Since the data is stored server-side, it consumes server memory and resources. This can be significant, especially with a large number of concurrent users.</li>
+</ul>
+</li>
+<li>
+<p><strong>Client-Server Interaction</strong>:</p>
+<ul>
+<li>During subsequent requests, the client sends this session ID back to the server. The server uses this ID to retrieve the user&rsquo;s session information and authenticate the request.</li>
+</ul>
+</li>
+<li>
+<p><strong>Security</strong>:</p>
+<ul>
+<li>The actual user data is not exposed to the client, which can be a security advantage. However, the session ID needs to be protected to prevent session hijacking.</li>
+</ul>
+</li>
+<li>
+<p><strong>Scalability Concerns</strong>:</p>
+<ul>
+<li>Storing session data for each user can impact the scalability of the application, especially in distributed systems where session data might need to be shared across servers.</li>
+</ul>
+</li>
+</ol>
+<h3 id="token-based-authentication-eg-jwt">
+  Token-Based Authentication (e.g., JWT)
+  <a class="anchor" href="#token-based-authentication-eg-jwt">#</a>
+</h3>
+<ol>
+<li>
+<p><strong>User Information Storage</strong>:</p>
+<ul>
+<li>In token-based systems like JWT, user authentication information is encoded and optionally encrypted within the token itself. This can include user ID, roles, permissions, and other claims.</li>
+</ul>
+</li>
+<li>
+<p><strong>Client-Side Storage</strong>:</p>
+<ul>
+<li>The token is stored on the client side, typically in the browser&rsquo;s local storage, session storage, or as an HTTP-only cookie.</li>
+</ul>
+</li>
+<li>
+<p><strong>Stateless Operation</strong>:</p>
+<ul>
+<li>Each request from the client includes the token, allowing the server to authenticate the request statelessly, without needing to store user session data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Security</strong>:</p>
+<ul>
+<li>While the user information in the token can be read by the client, sensitive data should never be stored in a token payload unless encrypted. The token is also susceptible to different types of attacks (like XSS), and thus must be handled securely.</li>
+</ul>
+</li>
+<li>
+<p><strong>Scalability and Performance</strong>:</p>
+<ul>
+<li>Since the server does not store session state, token-based authentication can be more scalable, reducing the load and memory requirements on the server.</li>
+</ul>
+</li>
+</ol>
+</article>
  
       
 
@@ -992,6 +1200,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1002,7 +1214,27 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#process">Process</a>
+          <ul>
+            <li><a href="#session-based-authentication-process">Session-Based Authentication Process</a></li>
+            <li><a href="#token-based-authentication-process-using-jwt">Token-Based Authentication Process (Using JWT)</a></li>
+          </ul>
+        </li>
+        <li><a href="#comparison">Comparison</a>
+          <ul>
+            <li><a href="#session-based-authentication">Session-Based Authentication</a></li>
+            <li><a href="#token-based-authentication-eg-jwt">Token-Based Authentication (e.g., JWT)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
