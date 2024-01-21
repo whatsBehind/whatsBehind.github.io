@@ -86,6 +86,13 @@
       <description>Handler # Role # A Handler in Netty is a component that contains the business logic for processing inbound and outbound data as well as various network (channel) events.&#xA;Types # ChannelInboundHandler:&#xA;Purpose: Deals with inbound data and events. It processes incoming data and reacts to channel events Key Methods: channelRead, channelActive, channelInactive, channelRegistered, channelUnregistered. Usage: You override these methods to perform actions like reading data from a network socket, reacting to channel activation or deactivation, etc.</description>
     </item>
     <item>
+      <title>Session vs Token</title>
+      <link>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Unblocking Mode</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

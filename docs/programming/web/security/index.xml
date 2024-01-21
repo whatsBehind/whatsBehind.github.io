@@ -21,5 +21,12 @@
       <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</guid>
       <description>TLS/SSL and HTTPS # TLS (Transport Layer Security) and its predecessor, SSL (Secure Sockets Layer), are integral to HTTPS, which stands for Hypertext Transfer Protocol Secure. HTTPS is the secure version of HTTP, the primary protocol used for transmitting web pages over the internet. This post will introduce the process of TLS handshake, and the TLS version is TLS 1.2&#xA;TLS Handshake # Client to Server: ClientHello&#xA;The client starts the handshake by sending a ClientHello message.</description>
     </item>
+    <item>
+      <title>Session vs Token</title>
+      <link>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
