@@ -9,6 +9,13 @@
     <lastBuildDate>Sun, 26 Nov 2023 21:26:33 -0800</lastBuildDate>
     <atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Online Chat</title>
+      <link>https://whatsBehind.github.io/docs/programming/project/online-chat/</link>
+      <pubDate>Sun, 26 Nov 2023 21:26:33 -0800</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/project/online-chat/</guid>
+      <description>Demo # GitHub&#xA;High Level Architecture # This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.&#xA;The system now supports below features:&#xA;Login Pull online users Online chat Logoff Because of supports for push and pull modes, features like&#xA;Upload/Download files Group chat can be easily added in the system.</description>
+    </item>
+    <item>
       <title>Start Thread</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</link>
       <pubDate>Sun, 12 Nov 2023 22:25:15 -0800</pubDate>
@@ -63,6 +70,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/common-methods/</guid>
       <description>Common Methods of Java Thread # Sleep(long millis) # Static method that causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds. If a thread is sleeping, its state is changed to TIMED_WAITING Sleep method could be interrupted by calling interrupt(). After interruption, sleep throws InterruptedException, and thread state is changed to RUNNABLE Example # Code Thread t1 = new Thread(() -&amp;gt; { try { Thread.</description>
+    </item>
+    <item>
+      <title>Node Js Auth</title>
+      <link>https://whatsBehind.github.io/docs/programming/project/node-js-auth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/project/node-js-auth/</guid>
+      <description>Introduction # This project is for learning purpose. It is a practice of how to use JWT (Json Web Token) to authenticate user.&#xA;GitHub Demo Video # Tech Stack # Node.js Express: Quickly start a local host MongoDB/Mongoose: Database to store users @hapi/joi: Package to validate parameters of objects bcryptjs: Hash confidential information including password in this project jsonwebtoken: JWT package to sign and verify an auth token Reference # YouTube Video: Very nice video which guides me step by step to build this project What Is JWT?</description>
     </item>
     <item>
       <title>TLS Handshake</title>
@@ -140,13 +154,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/</guid>
       <description>In our previous posts of using Selector for connection and communication (read/write) between server and clients, we only utilize only one thread. Multiplexing is highly efficient, but some time-consumed tasks would affect the overall performance.&#xA;In this post, I will mimic some functions from Netty which allocates tasks to different threads to improve the performance&#xA;Component # We will focus on the components in the server side&#xA;Boss # Boss runs under one thread Boss maintains one selector which only listens to ACCEPT events, in other words, boss is only responsible to accept client connections Worker # Worker runs in a separate thread Each worker has one selector which listens to READ and WRITE events After client&amp;rsquo;s connection, the newly created SocketChannel will be registered with one worker Architecture # Connect</description>
-    </item>
-    <item>
-      <title>Online Chat</title>
-      <link>https://whatsBehind.github.io/docs/programming/project/online-chat/</link>
-      <pubDate>Sun, 26 Nov 2023 21:26:33 -0800</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/project/online-chat/</guid>
-      <description>Demo # GitHub&#xA;High Level Architecture # This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.&#xA;The system now supports below features:&#xA;Login Pull online users Online chat Logoff Because of supports for push and pull modes, features like&#xA;Upload/Download files Group chat can be easily added in the system.</description>
     </item>
     <item>
       <title>Tcp Socket</title>
