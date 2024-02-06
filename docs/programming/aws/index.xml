@@ -14,5 +14,12 @@
       <guid>https://whatsBehind.github.io/docs/programming/aws/cloudformation/</guid>
       <description>CloudFormation # Resources # Resource Type Reference&#xA;Resources Introduction&#xA;Syntax # Resources: Logical ID: Type: Resource type Properties: Set of properties Logical ID: A unique logical ID for that resource, which can be referenced by other parts in the template&#xA;Resource Type: An identifier of the resource that you are declaring&#xA;Resource Type Reference Resource Properties: Additional options that you can specify for a resource&#xA;Parameters (Optional) # Guide Parameters allow you to input custom values for your template.</description>
     </item>
+    <item>
+      <title>Sqs</title>
+      <link>https://whatsBehind.github.io/docs/programming/aws/sqs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/aws/sqs/</guid>
+      <description>Architecture of SQS System # Three Main Components # Producers&#xA;Producers in above system are the identities who send message to SQS queue&#xA;SQS Queue&#xA;SQS Queue is a buffer that stores messages and decouples producers and consumers in the system&#xA;Consumers&#xA;Consumers are identities in the system poll message from SQS queue&#xA;How to Use SQS Queue # Producer sends message&#xA;Producer sens message to SQS Queue, and the message will be visible to all consumers</description>
+    </item>
   </channel>
 </rss>
