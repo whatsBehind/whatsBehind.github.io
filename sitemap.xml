@@ -18,6 +18,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</loc>
@@ -148,6 +150,10 @@
     <loc>https://whatsBehind.github.io/docs/programming/network/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/network/note/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/monitoring/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/web/network/</loc>
   </url><url>

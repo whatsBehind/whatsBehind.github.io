@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="Introduction # Metrics and logs are important for a service. They help to monitor the health of a service and can also be used to debug when service goes down or crashes. This post won&rsquo;t discuss importance of monitoring system but focuses on how to design a monitoring system in your host
+Requirements # Upload Data to A Web Monitoring System # Logs are records of code execution that are stored somewhere in your host.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/network/note/" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Metric &amp; Log" />
+<meta property="og:description" content="Introduction # Metrics and logs are important for a service. They help to monitor the health of a service and can also be used to debug when service goes down or crashes. This post won&rsquo;t discuss importance of monitoring system but focuses on how to design a monitoring system in your host
+Requirements # Upload Data to A Web Monitoring System # Logs are records of code execution that are stored somewhere in your host." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/" /><meta property="article:section" content="docs" />
 
-<title>Note | What&#39;s Behind</title>
+
+
+<title>Metric &amp; Log | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.56de3cc6cf1a851b42e3c2784517c0bc0fba30fe0a7a6760507f5aaaba1bc2fc.js" integrity="sha256-Vt48xs8ahRtC48J4RRfAvA&#43;6MP4KemdgUH9aqrobwvw=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/network/note/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -936,7 +939,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle" checked />
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
     <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
       <a role="button" class="">Network</a>
     </label>
@@ -952,9 +955,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a047c0faadc787118d3878bd75e8b987" class="toggle" checked />
+    <input type="checkbox" id="section-a047c0faadc787118d3878bd75e8b987" class="toggle"  />
     <label for="section-a047c0faadc787118d3878bd75e8b987" class="flex justify-between">
-      <a role="button" class="active">Note</a>
+      <a role="button" class="">Note</a>
     </label>
   
 
@@ -978,7 +981,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle"  />
+    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle" checked />
     <label for="section-bb97be98433588b9dc24d06db2bc9121" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -994,7 +997,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0eacaeb7d45cd9d6d611e7abea975a63" class="toggle"  />
+    <input type="checkbox" id="section-0eacaeb7d45cd9d6d611e7abea975a63" class="toggle" checked />
     <label for="section-0eacaeb7d45cd9d6d611e7abea975a63" class="flex justify-between">
       <a role="button" class="">Monitoring</a>
     </label>
@@ -1010,7 +1013,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/system-design/monitoring/metric-log/" class="">Metric &amp; Log</a>
+    <a href="/docs/programming/system-design/monitoring/metric-log/" class="active">Metric &amp; Log</a>
   
 
         </li>
@@ -1067,7 +1070,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Note</strong>
+  <strong>Metric &amp; Log</strong>
 
   <label for="toc-control">
     
@@ -1081,7 +1084,37 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#requirements">Requirements</a>
+          <ul>
+            <li><a href="#upload-data-to-a-web-monitoring-system">Upload Data to A Web Monitoring System</a></li>
+            <li><a href="#decouple-data-collection-and-publication">Decouple Data Collection and Publication</a></li>
+            <li><a href="#sdks-to-emit-logs-and-metrics">SDKs to Emit Logs and Metrics</a></li>
+            <li><a href="#agent-to-publish-metrics-and-logs">Agent to publish metrics and logs</a></li>
+          </ul>
+        </li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#components">Components</a>
+          <ul>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#metriclog-files">Metric/Log Files</a></li>
+            <li><a href="#metriclog-agent">Metric/Log Agent</a></li>
+            <li><a href="#cloud-monitoring-system">Cloud Monitoring System</a></li>
+          </ul>
+        </li>
+        <li><a href="#concepts">Concepts</a>
+          <ul>
+            <li><a href="#metric">Metric</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1092,7 +1125,157 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h2 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h2>
+<p>Metrics and logs are important for a service. They help to monitor the health of a service and can also be used to debug when service goes down or crashes. This post won&rsquo;t discuss importance of monitoring system but focuses on how to design a monitoring system in your host</p>
+<h2 id="requirements">
+  Requirements
+  <a class="anchor" href="#requirements">#</a>
+</h2>
+<h3 id="upload-data-to-a-web-monitoring-system">
+  Upload Data to A Web Monitoring System
+  <a class="anchor" href="#upload-data-to-a-web-monitoring-system">#</a>
+</h3>
+<p>Logs are records of code execution that are stored somewhere in your host. Log files rotate with given interval, like 1 hr. You log files may look like below:</p>
+<pre tabindex="0"><code>service.log-2024-01-01-1
+</code></pre><p>There are some limitations to store logs in you host:</p>
+<ol>
+<li>Size limitation
+Depends on how long you want to retain your logs. However, regardless the log retention, 5 years or 10 years, it is a waste of disk storage to store logs in you host</li>
+<li>Limited query function
+When debugging service issues, you only care about specific log patterns within a range of time. What you can do is to use regular expression and <code>grep</code> to query the logs which is not handy. Apart from that, it is hard to virtualize the metrics for your system</li>
+</ol>
+<p>Considering above limitation, a good solution is to upload your logs and metrics to a monitoring system (like AWS CloudWatch) which</p>
+<ol>
+<li>has unlimited storage</li>
+<li>provides out-of-box query features</li>
+<li>is able to virtualize your metrics</li>
+<li>monitors metrics and triggers actions if needed</li>
+<li>and more&hellip;</li>
+</ol>
+<h3 id="decouple-data-collection-and-publication">
+  Decouple Data Collection and Publication
+  <a class="anchor" href="#decouple-data-collection-and-publication">#</a>
+</h3>
+<p>To upload data to a monitoring system, we can invoke provided APIs. However, it is not a good practice to call the APIs for each single log or metric in your service code considering a lot of network traffic and low efficiency</p>
+<p>The better way is to decouple the process of emitting logs and metrics with publishing them. One solution is to buffer your logs and metrics in you hosts and have an out-of-process tool that publishes the records to remote machines</p>
+<pre tabindex="0"><code>service.log
+service.metrics
+</code></pre><h3 id="sdks-to-emit-logs-and-metrics">
+  SDKs to Emit Logs and Metrics
+  <a class="anchor" href="#sdks-to-emit-logs-and-metrics">#</a>
+</h3>
+<p>Comparing with metrics, logs are easier to format. The most basic log should contain two parts, timestamp and message. Timestamp is the time when the log is emitted and message contains the execution details, including class and code line that emit the log, log level (INFO, DEBUG, WARNING, ERROR), and custom message.</p>
+<p>Metrics are more complex which contains more information. The SKD should have a model class for the metric. Also, it should provide APIs to emit the metrics which serializes the metric instance to a string with predefined format to the buffer files</p>
+<ul>
+<li>
+<p>Sample codes</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Metric metric <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Metric();
+</span></span><span style="display:flex;"><span>metric.<span style="color:#a6e22e">setTime</span>(...);
+</span></span><span style="display:flex;"><span>metric.<span style="color:#a6e22e">setName</span>(...);
+</span></span><span style="display:flex;"><span>metric.<span style="color:#a6e22e">setValue</span>(...);
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>metric.<span style="color:#a6e22e">emit</span>();
+</span></span></code></pre></div></li>
+<li>
+<p>Sample metric string</p>
+<p>The contents within delimiter <code>-----</code> is a metric serialization containing all parameters of a metric</p>
+<pre tabindex="0"><code>-----
+time: ...
+name: ...
+value: ...
+...
+-----
+</code></pre></li>
+</ul>
+<h3 id="agent-to-publish-metrics-and-logs">
+  Agent to publish metrics and logs
+  <a class="anchor" href="#agent-to-publish-metrics-and-logs">#</a>
+</h3>
+<p>We should have a tool to publish metrics and logs to remote monitoring system. It could be out-of-process, so it doesn&rsquo;t impact your service. It periodically reads log and metric files and uploads them. To balance the traffic and size of one request, selecting a proper time interval is important</p>
+<h2 id="architecture">
+  Architecture
+  <a class="anchor" href="#architecture">#</a>
+</h2>
+<p><img src="/docs/programming/system-design/monitoring/monitoring-system.svg" alt="monitoring-system" /></p>
+<h2 id="components">
+  Components
+  <a class="anchor" href="#components">#</a>
+</h2>
+<h3 id="service">
+  Service
+  <a class="anchor" href="#service">#</a>
+</h3>
+<p>Your service that is running in the host and generating logs and metrics. It utilizes APIs from log/metric SKD to write logs and metrics to local files. The SDK should provide below features:</p>
+<ol>
+<li>Metric model</li>
+<li>APIs to write log and emit metric</li>
+<li>Serialize metric to a specific schema that is understandable by the log/metric agent</li>
+<li>Rotate log/metric files</li>
+</ol>
+<h3 id="metriclog-files">
+  Metric/Log Files
+  <a class="anchor" href="#metriclog-files">#</a>
+</h3>
+<p>Files that buffer logs and metrics generated by the service</p>
+<h3 id="metriclog-agent">
+  Metric/Log Agent
+  <a class="anchor" href="#metriclog-agent">#</a>
+</h3>
+<p>An out-of-process software that</p>
+<ol>
+<li>polls data from metric/log files</li>
+<li>transform metric schema to specific format that is predefined by the cloud monitoring system</li>
+<li>periodically push metrics and logs to the remote system</li>
+</ol>
+<h3 id="cloud-monitoring-system">
+  Cloud Monitoring System
+  <a class="anchor" href="#cloud-monitoring-system">#</a>
+</h3>
+<p>A third party tool that stores your metrics and logs. It provides some feature like data virtualization, log query, metric action triggering etc&hellip;</p>
+<h2 id="concepts">
+  Concepts
+  <a class="anchor" href="#concepts">#</a>
+</h2>
+<h3 id="metric">
+  Metric
+  <a class="anchor" href="#metric">#</a>
+</h3>
+<p>A metric is a behavior of your service or system. It is easier to explain it using examples. Common metrics for a service including count, latency, errors of API calls.</p>
+<p>A metric is a collection of multiple data point which is one measurement. For example, when you receive an API request, the count metric should have one data point with value 1, which means your API gets called once. You record that time when receiving the request and when you finish the process before respond to the client, you record current time. The subtraction between <code>endTime</code> and <code>startTime</code> is the value of one latency data point. If the API process fails, then data point of error with value 1 is recorded.</p>
+<h4 id="schema">
+  Schema
+  <a class="anchor" href="#schema">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JavaScript" data-lang="JavaScript"><span style="display:flex;"><span><span style="color:#a6e22e">Metric</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">nameSpace</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">unit</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dimensions</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">string</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">dataPoints</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">timestamp</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">date</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span><span style="color:#f92672">/</span><span style="color:#a6e22e">string</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Above is a simple schema of AWS CloudWatch metric.</p>
+<ul>
+<li>nameSpace: Group name of your metrics. You manage your metrics under different groups. You can create groups based on service name, resource type etc&hellip;</li>
+<li>unit: The unit for the value of metric&rsquo;s data point, i.e, COUNT, MILLI_SECONDS</li>
+<li>dimensions: Map of key value pairs, which are attributes of your metric</li>
+<li>dataPoints: Collection of metric measurements
+<ul>
+<li>timestamp: The time when the data point is recorded</li>
+<li>value: The value for one data point, like ONE API call, 50 ms latency</li>
+</ul>
+</li>
+</ul>
+</article>
  
       
 
@@ -1117,6 +1300,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1127,7 +1314,37 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#requirements">Requirements</a>
+          <ul>
+            <li><a href="#upload-data-to-a-web-monitoring-system">Upload Data to A Web Monitoring System</a></li>
+            <li><a href="#decouple-data-collection-and-publication">Decouple Data Collection and Publication</a></li>
+            <li><a href="#sdks-to-emit-logs-and-metrics">SDKs to Emit Logs and Metrics</a></li>
+            <li><a href="#agent-to-publish-metrics-and-logs">Agent to publish metrics and logs</a></li>
+          </ul>
+        </li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#components">Components</a>
+          <ul>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#metriclog-files">Metric/Log Files</a></li>
+            <li><a href="#metriclog-agent">Metric/Log Agent</a></li>
+            <li><a href="#cloud-monitoring-system">Cloud Monitoring System</a></li>
+          </ul>
+        </li>
+        <li><a href="#concepts">Concepts</a>
+          <ul>
+            <li><a href="#metric">Metric</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

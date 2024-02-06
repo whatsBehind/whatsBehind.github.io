@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/programming/system-design/monitoring/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/system-design/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Metric &amp; Log</title>
+      <link>https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/</guid>
+      <description>Introduction # Metrics and logs are important for a service. They help to monitor the health of a service and can also be used to debug when service goes down or crashes. This post won&amp;rsquo;t discuss importance of monitoring system but focuses on how to design a monitoring system in your host&#xA;Requirements # Upload Data to A Web Monitoring System # Logs are records of code execution that are stored somewhere in your host.</description>
+    </item>
+  </channel>
+</rss>
