@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="Architecture # Pub-Sub Model # Publisher # Service or application that sends message to SNS Topic. SNS Topic allows multiple message publisher
+SNS Topic # SNS uses topics to logically separate messages into channels
+Fanout The Fanout scenario is when a message published to an SNS topic is replicated and pushed to multiple endpoints, such as Kinesis Data Firehose delivery streams, Amazon SQS queues, HTTP(S) endpoints, and Lambda functions. This allows for parallel asynchronous processing.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/netty/" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Sns" />
+<meta property="og:description" content="Architecture # Pub-Sub Model # Publisher # Service or application that sends message to SNS Topic. SNS Topic allows multiple message publisher
+SNS Topic # SNS uses topics to logically separate messages into channels
+Fanout The Fanout scenario is when a message published to an SNS topic is replicated and pushed to multiple endpoints, such as Kinesis Data Firehose delivery streams, Amazon SQS queues, HTTP(S) endpoints, and Lambda functions. This allows for parallel asynchronous processing." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/aws/message/sns/" /><meta property="article:section" content="docs" />
 
-<title>Netty | What&#39;s Behind</title>
+
+
+<title>Sns | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.8c0c16479389dd12370a2a9e4b19a95aa8c630945db629733a9fe483f3c0ce4a.js" integrity="sha256-jAwWR5OJ3RI3CiqeSxmpWqjGMJRdtilzOp/kg/PAzko=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/backend/java/netty/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -129,7 +134,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle" checked />
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle"  />
     <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
@@ -145,7 +150,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle" checked />
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle"  />
     <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
@@ -380,9 +385,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-945932e727978560611817848680d393" class="toggle" checked />
+    <input type="checkbox" id="section-945932e727978560611817848680d393" class="toggle"  />
     <label for="section-945932e727978560611817848680d393" class="flex justify-between">
-      <a role="button" class="active">Netty</a>
+      <a role="button" class="">Netty</a>
     </label>
   
 
@@ -889,7 +894,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e97a896d4bd387a2bf56a2d56170f469" class="toggle"  />
+    <input type="checkbox" id="section-e97a896d4bd387a2bf56a2d56170f469" class="toggle" checked />
     <label for="section-e97a896d4bd387a2bf56a2d56170f469" class="flex justify-between">
       <a role="button" class="">Aws</a>
     </label>
@@ -918,7 +923,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a857ab78df3a4e73796a54f21637c847" class="toggle"  />
+    <input type="checkbox" id="section-a857ab78df3a4e73796a54f21637c847" class="toggle" checked />
     <label for="section-a857ab78df3a4e73796a54f21637c847" class="flex justify-between">
       <a role="button" class="">Message</a>
     </label>
@@ -934,7 +939,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/aws/message/sns/" class="">Sns</a>
+    <a href="/docs/programming/aws/message/sns/" class="active">Sns</a>
   
 
         </li>
@@ -1101,7 +1106,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Netty</strong>
+  <strong>Sns</strong>
 
   <label for="toc-control">
     
@@ -1115,7 +1120,30 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#architecture">Architecture</a>
+          <ul>
+            <li><a href="#pub-sub-model">Pub-Sub Model</a></li>
+            <li><a href="#publisher">Publisher</a></li>
+            <li><a href="#sns-topic">SNS Topic</a></li>
+            <li><a href="#subscriber">Subscriber</a></li>
+          </ul>
+        </li>
+        <li><a href="#sns-vs-sqs">SNS V.S. SQS</a>
+          <ul>
+            <li><a href="#push-vs-pull">Push V.S. Pull</a></li>
+            <li><a href="#message-retention">Message Retention</a></li>
+            <li><a href="#message-duplication">Message Duplication</a></li>
+            <li><a href="#message-processing">Message Processing</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1126,7 +1154,77 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h2 id="architecture">
+  Architecture
+  <a class="anchor" href="#architecture">#</a>
+</h2>
+<h3 id="pub-sub-model">
+  Pub-Sub Model
+  <a class="anchor" href="#pub-sub-model">#</a>
+</h3>
+<p><img src="/docs/programming/aws/message/sns/pub-sub.svg" alt="pub-sub" /></p>
+<h3 id="publisher">
+  Publisher
+  <a class="anchor" href="#publisher">#</a>
+</h3>
+<p>Service or application that sends message to SNS Topic. SNS Topic allows multiple message publisher</p>
+<h3 id="sns-topic">
+  SNS Topic
+  <a class="anchor" href="#sns-topic">#</a>
+</h3>
+<p>SNS uses topics to logically separate messages into channels</p>
+<ul>
+<li>
+<p>Fanout
+The Fanout scenario is when a message published to an SNS topic is replicated and pushed to multiple endpoints, such as Kinesis Data Firehose delivery streams, Amazon SQS queues, HTTP(S) endpoints, and Lambda functions. This allows for parallel asynchronous processing.</p>
+</li>
+<li>
+<p>Filter Policy
+After subscribing to an SNS topic, subscribers will receive all messages published by the topic. To receive a subset of messages, a subscriber must assign a filter policy to the topic subscription.</p>
+</li>
+<li>
+<p>Retry Policy
+Retry Policy is a JSON Object which allows SNS Topic to re-publish message to subscribers when message delivery fails</p>
+</li>
+<li>
+<p>DLQ
+You can set up an SQS DLQ (Dead Letter Queue) to receive messages failed to be delivered after all retries</p>
+</li>
+<li>
+<p>Resource Policy
+It&rsquo;s a policy attached to SNS Topic which defines WHO (Primary) can do WHAT (Actions) on WHICH resource</p>
+</li>
+</ul>
+<h3 id="subscriber">
+  Subscriber
+  <a class="anchor" href="#subscriber">#</a>
+</h3>
+<p>To receive messages from an SNS topic, applications or receives should subscribe to the SNS topic. After subscription, every message sent to the SNS topic will be replicated and pushed to all subscribers</p>
+<h2 id="sns-vs-sqs">
+  SNS V.S. SQS
+  <a class="anchor" href="#sns-vs-sqs">#</a>
+</h2>
+<h3 id="push-vs-pull">
+  Push V.S. Pull
+  <a class="anchor" href="#push-vs-pull">#</a>
+</h3>
+<p>SNS topics push message to subscribers. SQS queues retain messages, and consumers need to pull messages from the queue</p>
+<h3 id="message-retention">
+  Message Retention
+  <a class="anchor" href="#message-retention">#</a>
+</h3>
+<p>An SQS message is stored on the queue for up to 14 days until it is successfully processed by a consumer. SNS does not retain messages so if there are no subscribers for a topic, the message is discarded.</p>
+<h3 id="message-duplication">
+  Message Duplication
+  <a class="anchor" href="#message-duplication">#</a>
+</h3>
+<p>SNS topics duplicate messages and fan out them to all subscribers. Although SQS queues can have multiple consumers, but one message is processed by only one consumer. The message goes back to the queue if consumers doesn&rsquo;t delete the message before invisible timeout runs out</p>
+<h3 id="message-processing">
+  Message Processing
+  <a class="anchor" href="#message-processing">#</a>
+</h3>
+<p>SNS only concerns with message delivery. Apart from message delivery, SQS also cares if the message is processed properly by the consumer. The messages are deleted by the consumer after message processing is finished</p>
+</article>
  
       
 
@@ -1151,6 +1249,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1161,7 +1263,30 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#architecture">Architecture</a>
+          <ul>
+            <li><a href="#pub-sub-model">Pub-Sub Model</a></li>
+            <li><a href="#publisher">Publisher</a></li>
+            <li><a href="#sns-topic">SNS Topic</a></li>
+            <li><a href="#subscriber">Subscriber</a></li>
+          </ul>
+        </li>
+        <li><a href="#sns-vs-sqs">SNS V.S. SQS</a>
+          <ul>
+            <li><a href="#push-vs-pull">Push V.S. Pull</a></li>
+            <li><a href="#message-retention">Message Retention</a></li>
+            <li><a href="#message-duplication">Message Duplication</a></li>
+            <li><a href="#message-processing">Message Processing</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

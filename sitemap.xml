@@ -28,7 +28,9 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/project/node-js-auth/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/aws/sqs/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming/aws/message/sns/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/aws/message/sqs/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</loc>
   </url><url>
@@ -142,6 +144,8 @@
     <lastmod>2023-10-22T11:53:02-07:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/aws/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/aws/message/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/</loc>
   </url><url>

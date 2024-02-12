@@ -3,21 +3,36 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="Architecture of SQS System # Three Main Components # Producers
+Producers in above system are the identities who send message to SQS queue
+SQS Queue
+SQS Queue is a buffer that stores messages and decouples producers and consumers in the system
+Consumers
+Consumers are identities in the system poll message from SQS queue
+How to Use SQS Queue # Producer sends message
+Producer sens message to SQS Queue, and the message will be visible to all consumers">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/netty/" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Sqs" />
+<meta property="og:description" content="Architecture of SQS System # Three Main Components # Producers
+Producers in above system are the identities who send message to SQS queue
+SQS Queue
+SQS Queue is a buffer that stores messages and decouples producers and consumers in the system
+Consumers
+Consumers are identities in the system poll message from SQS queue
+How to Use SQS Queue # Producer sends message
+Producer sens message to SQS Queue, and the message will be visible to all consumers" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/aws/message/sqs/" /><meta property="article:section" content="docs" />
 
-<title>Netty | What&#39;s Behind</title>
+
+
+<title>Sqs | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.8c0c16479389dd12370a2a9e4b19a95aa8c630945db629733a9fe483f3c0ce4a.js" integrity="sha256-jAwWR5OJ3RI3CiqeSxmpWqjGMJRdtilzOp/kg/PAzko=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/backend/java/netty/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -129,7 +144,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle" checked />
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle"  />
     <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
@@ -145,7 +160,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle" checked />
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle"  />
     <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
@@ -380,9 +395,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-945932e727978560611817848680d393" class="toggle" checked />
+    <input type="checkbox" id="section-945932e727978560611817848680d393" class="toggle"  />
     <label for="section-945932e727978560611817848680d393" class="flex justify-between">
-      <a role="button" class="active">Netty</a>
+      <a role="button" class="">Netty</a>
     </label>
   
 
@@ -889,7 +904,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e97a896d4bd387a2bf56a2d56170f469" class="toggle"  />
+    <input type="checkbox" id="section-e97a896d4bd387a2bf56a2d56170f469" class="toggle" checked />
     <label for="section-e97a896d4bd387a2bf56a2d56170f469" class="flex justify-between">
       <a role="button" class="">Aws</a>
     </label>
@@ -918,7 +933,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a857ab78df3a4e73796a54f21637c847" class="toggle"  />
+    <input type="checkbox" id="section-a857ab78df3a4e73796a54f21637c847" class="toggle" checked />
     <label for="section-a857ab78df3a4e73796a54f21637c847" class="flex justify-between">
       <a role="button" class="">Message</a>
     </label>
@@ -947,7 +962,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/aws/message/sqs/" class="">Sqs</a>
+    <a href="/docs/programming/aws/message/sqs/" class="active">Sqs</a>
   
 
         </li>
@@ -1101,7 +1116,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Netty</strong>
+  <strong>Sqs</strong>
 
   <label for="toc-control">
     
@@ -1115,7 +1130,32 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#architecture-of-sqs-system">Architecture of SQS System</a>
+          <ul>
+            <li><a href="#three-main-components">Three Main Components</a></li>
+            <li><a href="#how-to-use-sqs-queue">How to Use SQS Queue</a></li>
+          </ul>
+        </li>
+        <li><a href="#sqs-encryption">SQS Encryption</a></li>
+        <li><a href="#sqs-access-policy">SQS Access Policy</a>
+          <ul>
+            <li><a href="#cross-account-access-policy">Cross Account Access Policy</a></li>
+          </ul>
+        </li>
+        <li><a href="#sqs-standard-queue">SQS Standard Queue</a>
+          <ul>
+            <li><a href="#attributes">Attributes</a></li>
+          </ul>
+        </li>
+        <li><a href="#dlq-dead-letter-queue">DLQ (Dead Letter Queue)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1126,7 +1166,124 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h2 id="architecture-of-sqs-system">
+  Architecture of SQS System
+  <a class="anchor" href="#architecture-of-sqs-system">#</a>
+</h2>
+<p><img src="/docs/programming/aws/sqs/producer-queue-consumer.svg" alt="producer-queue-consumer" /></p>
+<h3 id="three-main-components">
+  Three Main Components
+  <a class="anchor" href="#three-main-components">#</a>
+</h3>
+<ul>
+<li>
+<p>Producers</p>
+<p>Producers in above system are the identities who send message to SQS queue</p>
+</li>
+<li>
+<p>SQS Queue</p>
+<p>SQS Queue is a buffer that stores messages and decouples producers and consumers in the system</p>
+</li>
+<li>
+<p>Consumers</p>
+<p>Consumers are identities in the system poll message from SQS queue</p>
+</li>
+</ul>
+<h3 id="how-to-use-sqs-queue">
+  How to Use SQS Queue
+  <a class="anchor" href="#how-to-use-sqs-queue">#</a>
+</h3>
+<ol>
+<li>
+<p>Producer sends message</p>
+<p><img src="/docs/programming/aws/sqs/send-message.svg" alt="send-message" /></p>
+<p>Producer sens message to SQS Queue, and the message will be visible to all consumers</p>
+<ul>
+<li>Message state - Visible: The message is able to be polled by any consumers. The message is in visible state when
+<ol>
+<li>Message is sent to the queue and not pulled by any consumers</li>
+<li>Message is not deleted before the visibility timeout runs out</li>
+</ol>
+</li>
+<li>Visibility timeout: The time that a message stays in the queue but is hidden to all consumers. Message is supposed to be polled and processed by only one consumer at a time. Hence, once a consumer polls the message, it should not be visible to all consumers</li>
+</ul>
+</li>
+<li>
+<p>Consumer polls message</p>
+<p><img src="/docs/programming/aws/sqs/poll-message.svg" alt="poll-message" /></p>
+<p>Consumer polls messages (up to 10 in one batch) from the queue and processes the messages. The message will be invisible until
+1. Consumer who polls the message completes message processing and deletes the message
+2. Or consumer doesn&rsquo;t delete the message before visibility timeout runs out, and the message becomes visible again</p>
+<ul>
+<li>Message state - Invisible: The message can&rsquo;t be polled by any consumers.</li>
+</ul>
+</li>
+<li>
+<p>Consumer deletes message</p>
+<p><img src="/docs/programming/aws/sqs/delete-message.svg" alt="delete-message" /></p>
+<p>Consumer completes message processing and deletes the message from the queue</p>
+</li>
+</ol>
+<h2 id="sqs-encryption">
+  SQS Encryption
+  <a class="anchor" href="#sqs-encryption">#</a>
+</h2>
+<h2 id="sqs-access-policy">
+  SQS Access Policy
+  <a class="anchor" href="#sqs-access-policy">#</a>
+</h2>
+<p>Policy that is attached to a SQS queue, defines WHO (the identity) can perform WHAT actions (APIs that are allowed) on this SQS queue</p>
+<h3 id="cross-account-access-policy">
+  Cross Account Access Policy
+  <a class="anchor" href="#cross-account-access-policy">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Json" data-lang="Json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;2012-10-17&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Statement&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Effect&#34;</span>: <span style="color:#e6db74">&#34;Allow&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Principal&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;AWS&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::&lt;Account-B-ID&gt;:root&#34;</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Action&#34;</span>: [
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SQS:SendMessage&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SQS:ReceiveMessage&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SQS:DeleteMessage&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SQS:GetQueueAttributes&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SQS:GetQueueUrl&#34;</span>
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Resource&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:sqs:&lt;region&gt;:&lt;Account-A-ID&gt;:&lt;queue-name&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>The access policy allows Account-B to access SQS queue in Account-A</li>
+</ul>
+<h2 id="sqs-standard-queue">
+  SQS Standard Queue
+  <a class="anchor" href="#sqs-standard-queue">#</a>
+</h2>
+<h3 id="attributes">
+  Attributes
+  <a class="anchor" href="#attributes">#</a>
+</h3>
+<ul>
+<li>Unlimited throughput and number of messages in queue</li>
+<li>Default retention of message: 4 days. Max: 14 days</li>
+<li>Low latency</li>
+<li>Limitation of 256 KB per message</li>
+<li>Can have duplicate messages</li>
+<li>Could be out of order</li>
+</ul>
+<h2 id="dlq-dead-letter-queue">
+  DLQ (Dead Letter Queue)
+  <a class="anchor" href="#dlq-dead-letter-queue">#</a>
+</h2>
+<p><img src="/docs/programming/aws/sqs/visibility-timeout.svg" alt="visibility-timeout" /></p>
+<p>If consumer doesn&rsquo;t delete the message from the queue before visibility timeout runs out, the message will be visible again and receive count for that message increments.</p>
+<p>We can set up a threshold of how many times a message could go back to the queue. If <code>MaximumReceives</code> threshold is exceeded, the message goes into a dead letter queue</p>
+<p>DLQ is mainly for debugging purpose. It also supports to re-drive failing messages which sends messages from DLQ to SQS queue</p>
+</article>
  
       
 
@@ -1151,6 +1308,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1161,7 +1322,32 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#architecture-of-sqs-system">Architecture of SQS System</a>
+          <ul>
+            <li><a href="#three-main-components">Three Main Components</a></li>
+            <li><a href="#how-to-use-sqs-queue">How to Use SQS Queue</a></li>
+          </ul>
+        </li>
+        <li><a href="#sqs-encryption">SQS Encryption</a></li>
+        <li><a href="#sqs-access-policy">SQS Access Policy</a>
+          <ul>
+            <li><a href="#cross-account-access-policy">Cross Account Access Policy</a></li>
+          </ul>
+        </li>
+        <li><a href="#sqs-standard-queue">SQS Standard Queue</a>
+          <ul>
+            <li><a href="#attributes">Attributes</a></li>
+          </ul>
+        </li>
+        <li><a href="#dlq-dead-letter-queue">DLQ (Dead Letter Queue)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
