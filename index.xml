@@ -125,7 +125,7 @@
       <link>https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/</guid>
-      <description>What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.&#xA;Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data source or event publishers are applications that publish data to the EventBridge.</description>
+      <description>What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.&#xA;Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data sources or event publishers are applications that publish data to the EventBridge.</description>
     </item>
     <item>
       <title>Pipeline &amp; Handler</title>

@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.
-Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data source or event publishers are applications that publish data to the EventBridge.">
+Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data sources or event publishers are applications that publish data to the EventBridge.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="EventBridge" />
 <meta property="og:description" content="What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.
-Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data source or event publishers are applications that publish data to the EventBridge." />
+Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data sources or event publishers are applications that publish data to the EventBridge." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/" /><meta property="article:section" content="docs" />
 
@@ -20,7 +20,7 @@ Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Service
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.9a898ca5ff996326219357873551f96fcfc4befb87c01692ef529ec2225a94af.js" integrity="sha256-momMpf&#43;ZYyYhk1eHNVH5b8/EvvuHwBaS71KewiJalK8=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5eec34be8efeb77c2629905dd622897797f19c81d8af91139eb2b8a97822accc.js" integrity="sha256-Xuw0vo7&#43;t3wmKZBd1iKJd5fxnIHYr5ETnrK4qXgirMw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1201,20 +1201,20 @@ https://github.com/alex-shpak/hugo-book
   Data Sources
   <a class="anchor" href="#data-sources">#</a>
 </h3>
-<p>Data source or event publishers are applications that publish data to the EventBridge. They could be your own applications, Software-as-a-Service (SaaS) applications and AWS services. Data sources call <code>PutEvent</code> API to publish events to an event bus in the EventBridge.</p>
+<p>Data sources or event publishers are applications that publish data to the EventBridge. They could be your own applications, Software-as-a-Service (SaaS) applications and AWS services. Data sources call <code>PutEvent</code> API to publish events to an event bus in the EventBridge.</p>
 <ul>
-<li>AWS services: EventBridge catches all AWS service events, but to utility them, you need to create a rule and route event of interests to target</li>
+<li>AWS services: EventBridge catches all AWS service events, but to utilize them, you need to create a rule to route event of interests to target</li>
 </ul>
 <h3 id="event-buses">
   Event Buses
   <a class="anchor" href="#event-buses">#</a>
 </h3>
-<p>Event buses receive events. They are data channels in EventBridge, and you can think them as topics in SNS. When an application publishes event to EventBridge, it must specify the event bus name.</p>
+<p>Event buses receive events. They are data channels in EventBridge, and you can think them as topics in SNS. When applications publish events to EventBridge, it must specify the event bus name.</p>
 <h3 id="rules">
   Rules
   <a class="anchor" href="#rules">#</a>
 </h3>
-<p>A Rules matches incoming events and route them to targets for processing. A single rule and route matching events to multiple targets. Rules should be attached to an event bus.</p>
+<p>A Rule matches incoming events and routes them to targets for processing. A single rule can route matching events to multiple targets. Rules should be attached to an event bus.</p>
 <h4 id="example">
   Example
   <a class="anchor" href="#example">#</a>
@@ -1286,12 +1286,12 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#archive-and-replay">#</a>
 </h3>
 <p><img src="/docs/programming/aws/message/event-bridge/event-archive.png" alt="event-archive" /></p>
-<p>Archive events. Replay allows you to resend event from archives to event buses</p>
+<p>Archive events. Replay allows you to resend events from archive to event bus</p>
 <ul>
 <li>
 <p>To create an archive for an event bus, here are some key attributes you need to specify</p>
 <ul>
-<li>Event Source: Event buses that you want to archive events</li>
+<li>Event Source: Event bus that you want to archive events</li>
 <li>Retention Period: Time that events will be retained in archive</li>
 <li>Event Pattern: Only events matching the event pattern will be archived</li>
 </ul>
@@ -1316,12 +1316,12 @@ https://github.com/alex-shpak/hugo-book
 <li>Route53
 <ul>
 <li>Health check event bus in primary region and emit health metrics to CloudWatch</li>
-<li>Route <code>PutEvent</code> request to event buses in primary or secondary region</li>
+<li>Route <code>PutEvent</code> requests to event bus in primary or secondary region</li>
 </ul>
 </li>
 <li>CloudWatch Alarm
 <ul>
-<li>Once health check alarm is over threshold, the alarm notifies Route53 that primary event bus is done</li>
+<li>Once health check alarm is over threshold, the alarm notifies Route53 that primary event bus is down</li>
 </ul>
 </li>
 <li>Event buses
@@ -1335,9 +1335,9 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#how-does-it-work">#</a>
 </h4>
 <ul>
-<li>Publisher calls <code>PutEvent</code> to send an event to EventBridge global endpoint hosted in Route53</li>
-<li>The Event is routed to primary event bus and optionally replicated to secondary event bus in real time depending on you setup</li>
-<li>Once health check metrics is over threshold in CloudWatch alarm, route53 is notified, and it starts failover which routes all events to secondary event bus until the alarm is inactive. You have multiple options when events are routed to secondary event bus
+<li>Publisher calls <code>PutEvent</code> to send events to EventBridge global endpoint hosted in Route53</li>
+<li>The Event is routed to primary event bus and optionally replicated to secondary event bus in real time depending on your setup</li>
+<li>Once health check metrics are over threshold in CloudWatch alarm, route53 is notified, and it starts failover which routes all events to secondary event bus until the alarm is inactive. You have multiple options when events are routed to secondary event bus
 <ul>
 <li>Implement same process solution to process the event</li>
 <li>Archive all events routed to secondary event bus and replay them to primary event bus once it is healthy again</li>
@@ -1363,9 +1363,10 @@ All fields are same for original and replicated events except event id. Consumer
 </h3>
 <ul>
 <li>They are important components in event driver application to decouple data sources and data consumers</li>
-<li>They both push data to consumers</li>
+<li>Push data to consumers</li>
 <li>Unlike SQS queues, they don&rsquo;t retain data</li>
 <li>They can have multiple data sources and consumers</li>
+<li>Support retry and DLQ</li>
 <li>Similar components
 <ul>
 <li>SNS Topic - Event Bus</li>
