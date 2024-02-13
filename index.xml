@@ -121,6 +121,13 @@
       <description>Six Java Thread States # NEW State:&#xA;When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:&#xA;When you invoke the start() method, the thread moves to the RUNNABLE state In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running A RUNNABLE state means the thread is either running on the CPU or waiting for Scheduler to allocate CPU resource BLOCKED State:</description>
     </item>
     <item>
+      <title>EventBridge</title>
+      <link>https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/</guid>
+      <description>What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.&#xA;Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data source or event publishers are applications that publish data to the EventBridge.</description>
+    </item>
+    <item>
       <title>Pipeline &amp; Handler</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
