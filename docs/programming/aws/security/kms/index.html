@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="What is KMS? # AWS Key Management Service is a full management service to generate and manage encryption keys
+Key Concepts # Customer Master Key (CMK) # CMKs are primary resources created and managed by KMS. It&rsquo;s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/monitoring/" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="KMS" />
+<meta property="og:description" content="What is KMS? # AWS Key Management Service is a full management service to generate and manage encryption keys
+Key Concepts # Customer Master Key (CMK) # CMKs are primary resources created and managed by KMS. It&rsquo;s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/aws/security/kms/" /><meta property="article:section" content="docs" />
 
-<title>Monitoring | What&#39;s Behind</title>
+
+
+<title>KMS | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.4cc85bc08361418d5a151408569bb446f42edceab56af78becbc51e259722dc3.js" integrity="sha256-TMhbwINhQY1aFRQIVpu0RvQu3Oq1aveL7LxR4llyLcM=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/system-design/monitoring/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -889,7 +892,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e97a896d4bd387a2bf56a2d56170f469" class="toggle"  />
+    <input type="checkbox" id="section-e97a896d4bd387a2bf56a2d56170f469" class="toggle" checked />
     <label for="section-e97a896d4bd387a2bf56a2d56170f469" class="flex justify-between">
       <a role="button" class="">Aws</a>
     </label>
@@ -978,7 +981,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a31ff4733cd80cf4d5fd6176bfd38157" class="toggle"  />
+    <input type="checkbox" id="section-a31ff4733cd80cf4d5fd6176bfd38157" class="toggle" checked />
     <label for="section-a31ff4733cd80cf4d5fd6176bfd38157" class="flex justify-between">
       <a role="button" class="">Security</a>
     </label>
@@ -994,7 +997,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/aws/security/kms/" class="">KMS</a>
+    <a href="/docs/programming/aws/security/kms/" class="active">KMS</a>
   
 
         </li>
@@ -1059,7 +1062,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle" checked />
+    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle"  />
     <label for="section-bb97be98433588b9dc24d06db2bc9121" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -1075,9 +1078,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0eacaeb7d45cd9d6d611e7abea975a63" class="toggle" checked />
+    <input type="checkbox" id="section-0eacaeb7d45cd9d6d611e7abea975a63" class="toggle"  />
     <label for="section-0eacaeb7d45cd9d6d611e7abea975a63" class="flex justify-between">
-      <a role="button" class="active">Monitoring</a>
+      <a role="button" class="">Monitoring</a>
     </label>
   
 
@@ -1148,7 +1151,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Monitoring</strong>
+  <strong>KMS</strong>
 
   <label for="toc-control">
     
@@ -1162,7 +1165,37 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-kms">What is KMS?</a></li>
+    <li><a href="#key-concepts">Key Concepts</a>
+      <ul>
+        <li><a href="#customer-master-key-cmk">Customer Master Key (CMK)</a></li>
+        <li><a href="#key-policies">Key policies</a></li>
+        <li><a href="#data-keys">Data Keys</a>
+          <ul>
+            <li><a href="#why-need-data-keys">Why Need Data Keys?</a></li>
+            <li><a href="#how-to-use-data-keys">How to Use Data Keys?</a></li>
+          </ul>
+        </li>
+        <li><a href="#envelop-encryption">Envelop Encryption</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-aws-services-utilize-kms">How AWS Services Utilize KMS</a>
+      <ul>
+        <li><a href="#data-protection">Data Protection</a></li>
+        <li><a href="#s3-server-side-encryption">S3 Server-Side Encryption</a>
+          <ul>
+            <li><a href="#sse-s3">SSE-S3</a></li>
+            <li><a href="#sse-kms">SSE-KMS</a></li>
+            <li><a href="#sse-c">SSE-C</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
 
 
 
@@ -1173,7 +1206,187 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h1 id="what-is-kms">
+  What is KMS?
+  <a class="anchor" href="#what-is-kms">#</a>
+</h1>
+<p>AWS Key Management Service is a full management service to generate and manage encryption keys</p>
+<h1 id="key-concepts">
+  Key Concepts
+  <a class="anchor" href="#key-concepts">#</a>
+</h1>
+<h2 id="customer-master-key-cmk">
+  Customer Master Key (CMK)
+  <a class="anchor" href="#customer-master-key-cmk">#</a>
+</h2>
+<p>CMKs are primary resources created and managed by KMS. It&rsquo;s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data.</p>
+<p>CMKs can be:</p>
+<ul>
+<li>Customer-managed: These are created and managed by AWS users</li>
+<li>AWS-managed: There are created and managed by AWS services, like <code>aws/s3</code>, <code>aws/ddb</code> etc&hellip;</li>
+</ul>
+<h2 id="key-policies">
+  Key policies
+  <a class="anchor" href="#key-policies">#</a>
+</h2>
+<p>Key policies are resource policies that are attached to every CMK to determine who has what permissions on the CMK under which conditions. Every CMK must have one and only one key policy</p>
+<h2 id="data-keys">
+  Data Keys
+  <a class="anchor" href="#data-keys">#</a>
+</h2>
+<p>Data keys are <strong>SYMMETRIC</strong> keys generated by AWS KMS. They are normally used to encrypt and decrypt large size data on client side. You can use CMK to generate, encrypt and decrypt data keys</p>
+<h3 id="why-need-data-keys">
+  Why Need Data Keys?
+  <a class="anchor" href="#why-need-data-keys">#</a>
+</h3>
+<p>AWS KMS APIs <code>kms:Encrypt</code> and <code>kms:Decrypt</code> only support data size less than 4 KB. The workaround to encrypt large size data is that KMS generates data keys and clients use the generated data keys to encrypt and decrypt large size data on their sides and no need to upload the data to KMS.</p>
+<h3 id="how-to-use-data-keys">
+  How to Use Data Keys?
+  <a class="anchor" href="#how-to-use-data-keys">#</a>
+</h3>
+<h4 id="creating-a-cmk">
+  Creating a CMK
+  <a class="anchor" href="#creating-a-cmk">#</a>
+</h4>
+<ul>
+<li>
+<p>First calling <code>create-key</code> API to create a CMK</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>aws kms create-key 
+</span></span></code></pre></div><p>You will get response like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;KeyMetadata&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;KeyId&#34;</span>: <span style="color:#e6db74">&#34;bca1a73c-b9d2-43e2-97e7-XXXXXXXXXXXX&#34;</span>,
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Creating an alias for the CMK</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>aws kms create-alias --target-key-id <span style="color:#e6db74">&#34;bca1a73c-b9d2-43e2-97e7-XXXXXXXXXXXX&#34;</span> --alias-name alias/demo-data-key
+</span></span></code></pre></div></li>
+</ul>
+<p>We won&rsquo;t use the generated CMK to encrypt data, but use the data key. That is called <a href="#envelop-encryption">Envelop Encryption</a></p>
+<h4 id="generating-a-data-key">
+  Generating a Data Key
+  <a class="anchor" href="#generating-a-data-key">#</a>
+</h4>
+<ul>
+<li>
+<p>Generating a symmetric data key</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>aws kms generate-data-key --key-id alias/demo-data-key --key-spec AES_256
+</span></span></code></pre></div><p>You will get response:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;CiphertextBlob&#34;</span>: <span style="color:#e6db74">&#34;AQIDAHiNuXXnu8SiDat5B2+53PrUzQvrztxy2goKhceTVwNoDAFboLcM9DYLJRprvSF16VWhAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMaAKf1DtSn99SoSYsAgEQgDsPACB1itRaJX6yTjEQuWidGXpMYwL9x47oxbepRkjQjIta4jdisEZU3VbqJhGRKLJzwFepzU+ofZWKBA==&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Plaintext&#34;</span>: <span style="color:#e6db74">&#34;tJ6HM0yWt2SwkEGDhG7IgVilYlU8j2IaX+wrr24Af7w=&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;KeyId&#34;</span>: <span style="color:#e6db74">&#34;arn\:aws\:kms\:eu-central-1\:XXXXXXXXXXXX\:key/0265a04d-b823-4a16-9fbe-772a5cb6baea&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>Components</p>
+<ul>
+<li>Plaintext:
+<ul>
+<li>The data key, unencrypted.</li>
+<li>It is used to encrypt or decrypt data by clients.</li>
+<li>Clients should remove it from memory every time after use it</li>
+</ul>
+</li>
+<li>CiphertextBlob:
+<ul>
+<li>The data key, encrypted by the CMK.</li>
+<li>Clients should keep it persistently.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Relationship</p>
+<p>The plaintext and encrypted data key are generated by running an encryption algorithm on the CMK. One CMK can generate multiple data keys</p>
+<p><img src="/docs/programming/aws/security/kms/generate-data-key.png" alt="generate-data-key" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Storing encrypted data key</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>export DATA_KEY_CIPHERTEXT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;AQIDAHiNuXXnu8SiDat5B2+53PrUzQvrztxy2goKhceTVwNoDAFboLcM9DYLJRprvSF16VWhAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMaAKf1DtSn99SoSYsAgEQgDsPACB1itRaJX6yTjEQuWidGXpMYwL9x47oxbepRkjQjIta4jdisEZU3VbqJhGRKLJzwFepzU+ofZWKBA==&#34;</span>
+</span></span><span style="display:flex;"><span>echo $DATA_KEY_CIPHERTEXT | base64 --decode &gt; data_key_ciphertext
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="decrypting-encrypted-data-key">
+  Decrypting Encrypted Data Key
+  <a class="anchor" href="#decrypting-encrypted-data-key">#</a>
+</h4>
+<p>After generating a data key, client keeps the encrypted data key and should never keep the plaintext data key in their disk. To encrypt data using data key, client needs to decrypt the encrypted data key to get the plaintext data key</p>
+<p><img src="/docs/programming/aws/security/kms/kms-decrypt-with-data-key.png" alt="decrypt-data-key" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>export DATA_KEY_PLAINTEXT<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>aws kms decrypt --ciphertext-blob fileb://./data_key_ciphertext --query Plaintext --output text<span style="color:#e6db74">`</span>
+</span></span></code></pre></div><h4 id="encrypting-with-plaintext-data-key">
+  Encrypting with Plaintext Data Key
+  <a class="anchor" href="#encrypting-with-plaintext-data-key">#</a>
+</h4>
+<p>Now you have the plaintext data key. You can use your preferred encryption algorithm to encrypt your data with the plaintext data key. Remember to remove the plaintext data key from memory after using</p>
+<p><img src="/docs/programming/aws/security/kms/kms-encrypt-with-data-key.png" alt="encrypt-with-data-key" /></p>
+<h2 id="envelop-encryption">
+  Envelop Encryption
+  <a class="anchor" href="#envelop-encryption">#</a>
+</h2>
+<p>Envelop Encryption is to encrypt your plaintext data with a plaintext data key and then encrypt the plaintext data key with a master key (CMK)</p>
+<p><img src="/docs/programming/aws/security/kms/envelop-encryption.png" alt="envelop-encryption" /></p>
+<h1 id="how-aws-services-utilize-kms">
+  How AWS Services Utilize KMS
+  <a class="anchor" href="#how-aws-services-utilize-kms">#</a>
+</h1>
+<h2 id="data-protection">
+  Data Protection
+  <a class="anchor" href="#data-protection">#</a>
+</h2>
+<p>Data protection in AWS refers to protecting data in transit (data transmits over wire) and protecting data at rest (storing data at disk). You can protect your data in transit using TLS/SSL protocol (HTTPS), or encrypt your data at client side. To protect data at rest, you have two options:</p>
+<ul>
+<li>Server-Side encryption</li>
+<li>Client-Side encryption</li>
+</ul>
+<p>Use S3 as example to introduce how KMS is involved in server-side encryption</p>
+<h2 id="s3-server-side-encryption">
+  S3 Server-Side Encryption
+  <a class="anchor" href="#s3-server-side-encryption">#</a>
+</h2>
+<h3 id="sse-s3">
+  SSE-S3
+  <a class="anchor" href="#sse-s3">#</a>
+</h3>
+<p>SSE-S3 stands for Server-Side Encryption with Amazon S3-managed Keys.</p>
+<ul>
+<li>Default option</li>
+<li>No KMS is involved, so no extra costs</li>
+<li>Only S3 related permissions are required to access objects in S3 buckets</li>
+</ul>
+<p>It&rsquo;s the most basic encryption method provided by S3. After you upload an object to S3 buckets, before it is saved to disk, the object will be encrypted by a S3-managed key. When you download objects from S3 buckets, the encrypted objects will be decrypted first and then downloaded to client side.</p>
+<h3 id="sse-kms">
+  SSE-KMS
+  <a class="anchor" href="#sse-kms">#</a>
+</h3>
+<p>SSE-KMS stands for Server-Side Encryption with CMK stored in KMS</p>
+<ul>
+<li>Loss: KMS is involved, so you need to pay extra costs</li>
+<li>Gain: Extra layer of security. You need to have permissions of S3 and KMS to access objects in S3 buckets</li>
+</ul>
+<p><img src="/docs/programming/aws/security/kms/kms-iam.png" alt="SSE-KMS" /></p>
+<p>To upload an object encrypted with an AWS KMS key to Amazon S3, you need <code>kms:GenerateDataKey</code> permissions on the key. To download an object encrypted with an AWS KMS key, you need <code>kms:Decrypt</code> permissions. Encryption on each object provides high security, but that results in too many calls from S3 to KMS. To balance security and HTTP traffic (also costs), instead of generating data key for each object, you can use bucket key to encrypt objects.</p>
+<ul>
+<li>S3 Bucket Keys for SSE-KMS
+After you configure your bucket to use S3 Bucket Key for SSE-KMS, AWS generates a short-live key from AWS KMS and then keep it in S3 for a period of time. The bucket key will create data keys for new objects during its lifecycle. That eliminates a lot of requests to KMS to generate data key for each object.</li>
+</ul>
+<h3 id="sse-c">
+  SSE-C
+  <a class="anchor" href="#sse-c">#</a>
+</h3>
+<p>AWS S3 allows you to use custom encryption key for server-side encryption. Clients manage the encryption key and provide the key as part of their requests and S3 manages the encryption process.</p>
+<h1 id="reference">
+  Reference
+  <a class="anchor" href="#reference">#</a>
+</h1>
+<p><a href="https://catalog.us-east-1.prod.workshops.aws/workshops/aad9ff1e-b607-45bc-893f-121ea5224f24/en-US">AWS KMS Workshop</a></p>
+</article>
  
       
 
@@ -1198,6 +1411,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1208,7 +1425,37 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-kms">What is KMS?</a></li>
+    <li><a href="#key-concepts">Key Concepts</a>
+      <ul>
+        <li><a href="#customer-master-key-cmk">Customer Master Key (CMK)</a></li>
+        <li><a href="#key-policies">Key policies</a></li>
+        <li><a href="#data-keys">Data Keys</a>
+          <ul>
+            <li><a href="#why-need-data-keys">Why Need Data Keys?</a></li>
+            <li><a href="#how-to-use-data-keys">How to Use Data Keys?</a></li>
+          </ul>
+        </li>
+        <li><a href="#envelop-encryption">Envelop Encryption</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-aws-services-utilize-kms">How AWS Services Utilize KMS</a>
+      <ul>
+        <li><a href="#data-protection">Data Protection</a></li>
+        <li><a href="#s3-server-side-encryption">S3 Server-Side Encryption</a>
+          <ul>
+            <li><a href="#sse-s3">SSE-S3</a></li>
+            <li><a href="#sse-kms">SSE-KMS</a></li>
+            <li><a href="#sse-c">SSE-C</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
 
 
  

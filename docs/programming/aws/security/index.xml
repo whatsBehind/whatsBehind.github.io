@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/programming/aws/security/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/aws/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KMS</title>
+      <link>https://whatsBehind.github.io/docs/programming/aws/security/kms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/aws/security/kms/</guid>
+      <description>What is KMS? # AWS Key Management Service is a full management service to generate and manage encryption keys&#xA;Key Concepts # Customer Master Key (CMK) # CMKs are primary resources created and managed by KMS. It&amp;rsquo;s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data.</description>
+    </item>
+  </channel>
+</rss>
