@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="What Is DNS? # DNS, which stands for Domain Name System, is a fundamental component of the internet&rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like www.example.com) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.
+Hierarchy of Domain Names # Root Level Domain: The root level is the highest level in the DNS hierarchy and is represented by a dot (.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/web/web-api/" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="DNS" />
+<meta property="og:description" content="What Is DNS? # DNS, which stands for Domain Name System, is a fundamental component of the internet&rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like www.example.com) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.
+Hierarchy of Domain Names # Root Level Domain: The root level is the highest level in the DNS hierarchy and is represented by a dot (." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/network/dns/" /><meta property="article:section" content="docs" />
 
-<title>Web API | What&#39;s Behind</title>
+
+
+<title>DNS | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.9a16d7a1012fd1eb28d22804eaa37b3cbb988751e3a09759933ca32a15da9c12.js" integrity="sha256-mhbXoQEv0eso0igE6qN7PLuYh1HjoJdZkzyjKhXanBI=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/web/web-api/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -617,7 +620,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle" checked />
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle"  />
     <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
       <a role="button" class="">Web</a>
     </label>
@@ -667,9 +670,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle" checked />
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
     <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
-      <a role="button" class="active">Web API</a>
+      <a role="button" class="">Web API</a>
     </label>
   
 
@@ -983,7 +986,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle" checked />
     <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
       <a role="button" class="">Network</a>
     </label>
@@ -999,7 +1002,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/network/dns/" class="">DNS</a>
+    <a href="/docs/programming/network/dns/" class="active">DNS</a>
   
 
         </li>
@@ -1132,7 +1135,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Web API</strong>
+  <strong>DNS</strong>
 
   <label for="toc-control">
     
@@ -1146,7 +1149,18 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-is-dns">What Is DNS?</a></li>
+        <li><a href="#hierarchy-of-domain-names">Hierarchy of Domain Names</a></li>
+        <li><a href="#dns-resolution-process-for-wwwgooglecom">DNS Resolution Process for <code>www.google.com</code></a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1157,7 +1171,124 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h2 id="what-is-dns">
+  What Is DNS?
+  <a class="anchor" href="#what-is-dns">#</a>
+</h2>
+<p>DNS, which stands for Domain Name System, is a fundamental component of the internet&rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like <a href="https://www.example.com">www.example.com</a>) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.</p>
+<h2 id="hierarchy-of-domain-names">
+  Hierarchy of Domain Names
+  <a class="anchor" href="#hierarchy-of-domain-names">#</a>
+</h2>
+<p><img src="/docs/programming/web/network/dns/domain-name-hierarchy.svg" alt="domain-name-hierarchy" /></p>
+<ol>
+<li>Root Level Domain:</li>
+</ol>
+<p>The root level is the highest level in the DNS hierarchy and is represented by a dot (.) but is typically not visible in domain names. Root servers are the backbone of DNS, directing traffic to the correct Top-Level Domain (TLD) servers.</p>
+<ol start="2">
+<li>Top-Level Domain (TLD):</li>
+</ol>
+<p>TLDs are the part of the domain name to the right of the dot. They are broadly categorized into two types: generic TLDs (gTLDs) like <code>.com</code>, <code>.org</code>, <code>.net</code>, and country code TLDs (ccTLDs) like <code>.uk</code>, <code>.de</code>, <code>.ca</code>. The TLD serves as a key part of the domain, indicating either the nature of the domain (like .com for commercial) or the geographical location (like <code>.uk</code> for the United Kingdom).</p>
+<ol start="3">
+<li>Second-Level Domain:</li>
+</ol>
+<p>The second-level domain is the segment of a domain name that directly precedes the TLD. For businesses or entities, this part of the domain name is often their brand or identity. For example, in <code>google.com</code>, &ldquo;google&rdquo; is the domain name chosen by the entity.</p>
+<ol start="4">
+<li>Subdomain:</li>
+</ol>
+<p>Subdomains are additional parts of the domain that are added to the left of the second-level domain and separated by dots. They are used to organizing different sections or functions of a website. For instance, a company might use a subdomain for its blog (like blog.example.com) or a specific product (like product.example.com).</p>
+<h2 id="dns-resolution-process-for-wwwgooglecom">
+  DNS Resolution Process for <code>www.google.com</code>
+  <a class="anchor" href="#dns-resolution-process-for-wwwgooglecom">#</a>
+</h2>
+<p><img src="/docs/programming/web/network/dns/visit-google.svg" alt="visit-google" /></p>
+<ol>
+<li>
+<p><strong>User Requests the Domain:</strong></p>
+<ul>
+<li>The user enters <code>www.google.com</code> into their web browser.</li>
+</ul>
+</li>
+<li>
+<p><strong>Browser Checks Cache:</strong></p>
+<ul>
+<li>The browser checks its own cache to see if it already has the IP address for <code>www.google.com</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Query to DNS Resolver:</strong></p>
+<ul>
+<li>If the IP address is not in the browser cache, the browser sends a query to a DNS resolver, typically provided by the ISP or a third-party service.</li>
+</ul>
+</li>
+<li>
+<p><strong>DNS Resolver Checks Cache:</strong></p>
+<ul>
+<li>The DNS resolver checks its cache to see if it has a recent record of the IP address for <code>www.google.com</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>DNS Resolver Queries Root Server:</strong></p>
+<ul>
+<li>If the IP address is not in the resolver&rsquo;s cache, it queries one of the root name servers, which provides the IP address to the TLD name servers for <code>.com</code>.
+<ul>
+<li>There are 13 logical root name servers around world. Each logical root name server has hundreds of physical hosts with same IP address. The query will be sent to the nearest physical root name server by router</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Query to <code>.com</code> TLD Name Server:</strong></p>
+<ul>
+<li>The resolver queries the <code>.com</code> TLD name server, which directs it to the name servers for the <code>google.com</code> domain.</li>
+</ul>
+</li>
+<li>
+<p><strong>Query to <code>google.com</code> Name Server:</strong></p>
+<ul>
+<li>The resolver queries the <code>google.com</code> name servers to get the IP address for <code>www.google.com</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Resolver Receives IP Address:</strong></p>
+<ul>
+<li>The <code>google.com</code> name server responds with the IP address for <code>www.google.com</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>DNS Resolver Caches the Response:</strong></p>
+<ul>
+<li>The DNS resolver caches the IP address for a specified time based on the TTL value. The TTL value is returned together with the IP address</li>
+</ul>
+</li>
+<li>
+<p><strong>Resolver Returns IP Address to Browser:</strong></p>
+<ul>
+<li>The resolver sends the IP address back to the browser.</li>
+</ul>
+</li>
+<li>
+<p><strong>Browser Caches the Response:</strong></p>
+<ul>
+<li>The browser caches the IP address for future use.</li>
+</ul>
+</li>
+<li>
+<p><strong>Browser Connects to the IP Address:</strong></p>
+<ul>
+<li>The browser uses the IP address to establish a connection to the server hosting <code>www.google.com</code>, allowing the user to access the website.</li>
+</ul>
+</li>
+</ol>
+<h2 id="reference">
+  Reference
+  <a class="anchor" href="#reference">#</a>
+</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html">Amazon Route 53</a></li>
+<li><a href="https://www.bilibili.com/video/BV1uL4y1B7aE/?spm_id_from=333.337.search-card.all.click&amp;vd_source=8a0ebf984753817eaa0d64cff25fac50">Bilibili Video</a></li>
+</ul>
+</article>
  
       
 
@@ -1182,6 +1313,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1192,7 +1327,18 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-is-dns">What Is DNS?</a></li>
+        <li><a href="#hierarchy-of-domain-names">Hierarchy of Domain Names</a></li>
+        <li><a href="#dns-resolution-process-for-wwwgooglecom">DNS Resolution Process for <code>www.google.com</code></a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="Why Load Balancer? # Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/web/web-api/" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Load Balancer" />
+<meta property="og:description" content="Why Load Balancer? # Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/load-balancer/" /><meta property="article:section" content="docs" />
 
-<title>Web API | What&#39;s Behind</title>
+
+
+<title>Load Balancer | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.9a16d7a1012fd1eb28d22804eaa37b3cbb988751e3a09759933ca32a15da9c12.js" integrity="sha256-mhbXoQEv0eso0igE6qN7PLuYh1HjoJdZkzyjKhXanBI=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/web/web-api/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -617,7 +618,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle" checked />
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle"  />
     <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
       <a role="button" class="">Web</a>
     </label>
@@ -667,9 +668,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle" checked />
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
     <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
-      <a role="button" class="active">Web API</a>
+      <a role="button" class="">Web API</a>
     </label>
   
 
@@ -1030,7 +1031,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle"  />
+    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle" checked />
     <label for="section-bb97be98433588b9dc24d06db2bc9121" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -1046,7 +1047,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/system-design/load-balancer/" class="">Load Balancer</a>
+    <a href="/docs/programming/system-design/load-balancer/" class="active">Load Balancer</a>
   
 
         </li>
@@ -1132,7 +1133,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Web API</strong>
+  <strong>Load Balancer</strong>
 
   <label for="toc-control">
     
@@ -1146,7 +1147,29 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-load-balancer">Why Load Balancer?</a></li>
+    <li><a href="#what-is-load-balancer">What is Load Balancer?</a>
+      <ul>
+        <li><a href="#what-are-benefits-of-load-balancers">What are Benefits of Load Balancers?</a></li>
+        <li><a href="#type-of-load-balancer">Type of Load Balancer</a>
+          <ul>
+            <li><a href="#hardware-load-balancer">Hardware Load Balancer</a></li>
+            <li><a href="#software-load-balancer">Software Load Balancer</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-does-load-balancer-work">How Does Load Balancer work?</a>
+          <ul>
+            <li><a href="#load-balancing-algorithm">Load Balancing Algorithm</a></li>
+            <li><a href="#health-check">Health Check</a></li>
+            <li><a href="#throttling">Throttling</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1157,7 +1180,112 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h1 id="why-load-balancer">
+  Why Load Balancer?
+  <a class="anchor" href="#why-load-balancer">#</a>
+</h1>
+<p>Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also. Now you have two servers to receive clients&rsquo; requests, and the question is how to determine the target server for each request? That&rsquo;s where Load Balancer comes in</p>
+<h1 id="what-is-load-balancer">
+  What is Load Balancer?
+  <a class="anchor" href="#what-is-load-balancer">#</a>
+</h1>
+<p>Load Balancer is a network component sitting in front of a set of servers (hosts) to distribute clients&rsquo; requests evenly to those servers behind it</p>
+<h2 id="what-are-benefits-of-load-balancers">
+  What are Benefits of Load Balancers?
+  <a class="anchor" href="#what-are-benefits-of-load-balancers">#</a>
+</h2>
+<ol>
+<li>Improve availability of your service</li>
+</ol>
+<p>Load balancer monitors servers behind it and forwards requests to healthy servers. If one server goes down, the load balancer removes it from the target list and forwards requests to other servers. Client can still send request and get response from the server</p>
+<ol start="2">
+<li>Evenly distribute requests</li>
+</ol>
+<p>If you choose load balancer algorithm properly, requests should be sent to each server evenly and that protects servers from being overwhelmed</p>
+<h2 id="type-of-load-balancer">
+  Type of Load Balancer
+  <a class="anchor" href="#type-of-load-balancer">#</a>
+</h2>
+<h3 id="hardware-load-balancer">
+  Hardware Load Balancer
+  <a class="anchor" href="#hardware-load-balancer">#</a>
+</h3>
+<h3 id="software-load-balancer">
+  Software Load Balancer
+  <a class="anchor" href="#software-load-balancer">#</a>
+</h3>
+<h4 id="application-load-balancer">
+  Application Load Balancer
+  <a class="anchor" href="#application-load-balancer">#</a>
+</h4>
+<p>This type of load balancer operates on application layer of OSI model, and it typically supports HTTPS/HTTP protocol. It routes requests based on request contents, so the SSL/TLS session needs termination, in other words, decrypting the request contents. The request will be forwarded to a server w/ or w/o TLS encryption.</p>
+<h4 id="network-load-balancer">
+  Network Load Balancer
+  <a class="anchor" href="#network-load-balancer">#</a>
+</h4>
+<p>This type of load balancer operates on transport layer, and it supports TCP protocol. It examines IP address and other network information to redirect traffic. Typically, no SSL/TLS termination is needed, because it has no idea what HTTP and TLS are.</p>
+<h2 id="how-does-load-balancer-work">
+  How Does Load Balancer work?
+  <a class="anchor" href="#how-does-load-balancer-work">#</a>
+</h2>
+<p><img src="/docs/programming/system-design/load-balancer/application-load-balancer.svg" alt="application-load-balancer" /></p>
+<ol>
+<li>
+<p>The client builds a TCP connection with the load balancer and has a <a href="/docs/programming/web/security/tls-handshake/">TLS handshake</a></p>
+</li>
+<li>
+<p>Client sends an HTTPS request to the load balancer</p>
+</li>
+<li>
+<p>Load balancer decrypts the request</p>
+</li>
+<li>
+<p>Load balancer reads and parses request contents to determine the target of the request</p>
+</li>
+<li>
+<p>Load balancer builds a TCP connection with the selected target or use the active connections that was built</p>
+</li>
+<li>
+<p>Load balancer forwards the request to the server and receives the response</p>
+</li>
+<li>
+<p>Load balancer forwards the response to the client</p>
+</li>
+</ol>
+<h3 id="load-balancing-algorithm">
+  Load Balancing Algorithm
+  <a class="anchor" href="#load-balancing-algorithm">#</a>
+</h3>
+<p>A load balancer has multiple servers behind it, and load balancing algorithm is to choose the target for client requests.</p>
+<ol>
+<li>
+<p>Round Robin method
+The requests are sent to server in a predefined order</p>
+</li>
+<li>
+<p>least connection method
+The load balancer checks the connections with each server and select the server with the least connections</p>
+</li>
+<li>
+<p>Weighted least connection method
+Some servers can handle more active connections than others. You can assign different weights to servers and the load balancer will choose the server with least &ldquo;active connections / weights&rdquo;</p>
+</li>
+</ol>
+<h3 id="health-check">
+  Health Check
+  <a class="anchor" href="#health-check">#</a>
+</h3>
+<p>Load balancer monitors servers by pinging the service (IP address + port). That helps load balancer to manage health status of servers and forward requests to healthy servers. Once a server is unhealthy, the load balancer removes it from the target list until the server is healthy again.</p>
+<h3 id="throttling">
+  Throttling
+  <a class="anchor" href="#throttling">#</a>
+</h3>
+<p>When there is a peak of requests, and load balancer or the servers can&rsquo;t handle so many requests, there are two main solutions</p>
+<ol>
+<li>Spillover/Throttling: The load balancer fails the request and return a response with error status code like <code>503</code></li>
+<li>Request Queue: Instead of failing the request immediately, the load balancer queues the requests and forwards the requests once servers have capacity to handle them</li>
+</ol>
+</article>
  
       
 
@@ -1182,6 +1310,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1192,7 +1324,29 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-load-balancer">Why Load Balancer?</a></li>
+    <li><a href="#what-is-load-balancer">What is Load Balancer?</a>
+      <ul>
+        <li><a href="#what-are-benefits-of-load-balancers">What are Benefits of Load Balancers?</a></li>
+        <li><a href="#type-of-load-balancer">Type of Load Balancer</a>
+          <ul>
+            <li><a href="#hardware-load-balancer">Hardware Load Balancer</a></li>
+            <li><a href="#software-load-balancer">Software Load Balancer</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-does-load-balancer-work">How Does Load Balancer work?</a>
+          <ul>
+            <li><a href="#load-balancing-algorithm">Load Balancing Algorithm</a></li>
+            <li><a href="#health-check">Health Check</a></li>
+            <li><a href="#throttling">Throttling</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

@@ -14,7 +14,7 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/aws/cloudformation/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/network/dns/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming/network/dns/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</loc>
   </url><url>
@@ -27,6 +27,10 @@
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/common-methods/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancer/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/project/node-js-auth/</loc>
   </url><url>
@@ -159,13 +163,9 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/network/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/network/note/</loc>
-  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/monitoring/</loc>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/network/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/web/security/</loc>
   </url><url>

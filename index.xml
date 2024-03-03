@@ -45,9 +45,9 @@
     </item>
     <item>
       <title>DNS</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/network/dns/</link>
+      <link>https://whatsBehind.github.io/docs/programming/network/dns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/network/dns/</guid>
+      <guid>https://whatsBehind.github.io/docs/programming/network/dns/</guid>
       <description>What Is DNS? # DNS, which stands for Domain Name System, is a fundamental component of the internet&amp;rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like www.example.com) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.&#xA;Hierarchy of Domain Names # Root Level Domain: The root level is the highest level in the DNS hierarchy and is represented by a dot (.</description>
     </item>
     <item>
@@ -91,6 +91,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/common-methods/</guid>
       <description>Common Methods of Java Thread # Sleep(long millis) # Static method that causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds. If a thread is sleeping, its state is changed to TIMED_WAITING Sleep method could be interrupted by calling interrupt(). After interruption, sleep throws InterruptedException, and thread state is changed to RUNNABLE Example # Code Thread t1 = new Thread(() -&amp;gt; { try { Thread.</description>
+    </item>
+    <item>
+      <title>DNS Hands On</title>
+      <link>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</guid>
+      <description>Introduction # In dns post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain google.com. Also, I will introduce a new concept record in domain name server&#xA;Environment and Tools # I will use CLI dig to query domain name server in Linux system</description>
+    </item>
+    <item>
+      <title>Load Balancer</title>
+      <link>https://whatsBehind.github.io/docs/programming/system-design/load-balancer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/system-design/load-balancer/</guid>
+      <description>Why Load Balancer? # Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&amp;rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also.</description>
     </item>
     <item>
       <title>Node Js Auth</title>
