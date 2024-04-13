@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Concepts # __name__ # __name__ is a built-in variable (attribute) of a module. It is being used to indicate if a module is being run directly or being imported into other modules
+Value when module is running directly: When you run a Python module directly, __name__ of this module is set to __main__
+Value when module is imported: When the module is imported into others modules, __name__ is set to the module name (file name w/o .">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="How Is Python File Executed" />
+<meta property="og:description" content="Concepts # __name__ # __name__ is a built-in variable (attribute) of a module. It is being used to indicate if a module is being run directly or being imported into other modules
+Value when module is running directly: When you run a Python module directly, __name__ of this module is set to __main__
+Value when module is imported: When the module is imported into others modules, __name__ is set to the module name (file name w/o ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/" /><meta property="article:section" content="docs" />
+
+
+
+<title>How Is Python File Executed | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.a4d7c81f94cceba1eec8a032d3c64f45e227a45d769ce6a1bbad7ca174ef969c.js" integrity="sha256-pNfIH5TM66HuyKAy08ZPReInpF12nOahu618oXTvlpw=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="toggle"  />
+    <label for="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle" checked />
+    <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle"  />
+    <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4d132fa86c191d313485f304ca9a1229" class="toggle"  />
+    <label for="section-4d132fa86c191d313485f304ca9a1229" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle"  />
+    <label for="section-f8771c290018cde58e0ed5c89ae77e0d" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51b21b1aa4706431f75da30c83254b65" class="toggle"  />
+    <label for="section-51b21b1aa4706431f75da30c83254b65" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-945932e727978560611817848680d393" class="toggle"  />
+    <label for="section-945932e727978560611817848680d393" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f0c638519ab658fe62f69bdee816bc0f" class="toggle"  />
+    <label for="section-f0c638519ab658fe62f69bdee816bc0f" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-088183d722984539ab998e788b15e2fd" class="toggle" checked />
+    <label for="section-088183d722984539ab998e788b15e2fd" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/executing-a-python-file/" class="active">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fb923816a079b91d0045c2bbe184452" class="toggle"  />
+    <label for="section-3fb923816a079b91d0045c2bbe184452" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eef785d90f032562151b69894191310f" class="toggle"  />
+    <label for="section-eef785d90f032562151b69894191310f" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle"  />
+    <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eee032ba51521b5a76ca688aa982a5cd" class="toggle"  />
+    <label for="section-eee032ba51521b5a76ca688aa982a5cd" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
+    <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0975d481e131cd3566df9e7779add732" class="toggle"  />
+    <label for="section-0975d481e131cd3566df9e7779add732" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-811d37783cbe9703bc6b3709e834ba31" class="toggle"  />
+    <label for="section-811d37783cbe9703bc6b3709e834ba31" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c91ba5e94a01028927e7fe8e471dfed6" class="toggle"  />
+    <label for="section-c91ba5e94a01028927e7fe8e471dfed6" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61b4842f6a6edc0699378637391b21b9" class="toggle"  />
+    <label for="section-61b4842f6a6edc0699378637391b21b9" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e97a896d4bd387a2bf56a2d56170f469" class="toggle"  />
+    <label for="section-e97a896d4bd387a2bf56a2d56170f469" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a857ab78df3a4e73796a54f21637c847" class="toggle"  />
+    <label for="section-a857ab78df3a4e73796a54f21637c847" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a31ff4733cd80cf4d5fd6176bfd38157" class="toggle"  />
+    <label for="section-a31ff4733cd80cf4d5fd6176bfd38157" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
+    <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle"  />
+    <label for="section-bb97be98433588b9dc24d06db2bc9121" class="flex justify-between">
+      <a role="button" class="">System Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1a081e269409f312c6530031b235772b" class="toggle"  />
+    <label for="section-1a081e269409f312c6530031b235772b" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0eacaeb7d45cd9d6d611e7abea975a63" class="toggle"  />
+    <label for="section-0eacaeb7d45cd9d6d611e7abea975a63" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>How Is Python File Executed</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#concepts">Concepts</a>
+          <ul>
+            <li><a href="#__name__"><code>__name__</code></a></li>
+            <li><a href="#python-path-syspath">Python Path (<code>sys.path</code>)</a></li>
+            <li><a href="#built-in-modules">Built-in Modules</a></li>
+            <li><a href="#sysmodules"><code>sys.modules</code></a></li>
+            <li><a href="#module-compilation">Module Compilation</a></li>
+            <li><a href="#namespace">Namespace</a></li>
+          </ul>
+        </li>
+        <li><a href="#execution-process">Execution Process</a>
+          <ul>
+            <li><a href="#file-and-file-structure">File and File Structure</a></li>
+            <li><a href="#executing-python3-mainpy">Executing <code>python3 main.py</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="concepts">
+  Concepts
+  <a class="anchor" href="#concepts">#</a>
+</h2>
+<h3 id="__name__">
+  <code>__name__</code>
+  <a class="anchor" href="#__name__">#</a>
+</h3>
+<p><code>__name__</code> is a built-in variable (attribute) of a module. It is being used to indicate if a module is being run directly or being imported into other modules</p>
+<ul>
+<li>
+<p>Value when module is running directly: When you run a Python module directly, <code>__name__</code> of this module is set to <code>__main__</code></p>
+</li>
+<li>
+<p>Value when module is imported: When the module is imported into others modules, <code>__name__</code> is set to the module name (file name w/o <code>.py</code> extension). For example, a Python module <code>my_module.py</code> is imported, then its <code>__name__</code> is set to <code>my_module</code> when it is imported</p>
+</li>
+</ul>
+<h4 id="example">
+  Example
+  <a class="anchor" href="#example">#</a>
+</h4>
+<p>Assume you have two Python files <code>main.py</code> and <code>my_module.py</code>, and <code>main.py</code> is the running script and imports <code>my_module.py</code></p>
+<ul>
+<li>
+<p>Directory structure</p>
+<pre tabindex="0"><code>src
+├── main.py
+└── my_module.py
+</code></pre></li>
+<li>
+<p><code>my_module.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># my_module.py file</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;__name__ in my_module file: </span><span style="color:#e6db74">{</span>__name__<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div></li>
+<li>
+<p><code>main.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># main.py file</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> my_module
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;__name__ in main file: </span><span style="color:#e6db74">{</span>__name__<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div></li>
+</ul>
+<p>Run <code>python3 main.py</code> in <code>src</code> directory, and you see logs in the terminal</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>__name__ in my_module file: my_module
+</span></span><span style="display:flex;"><span>__name__ in main file: __main__
+</span></span></code></pre></div><h3 id="python-path-syspath">
+  Python Path (<code>sys.path</code>)
+  <a class="anchor" href="#python-path-syspath">#</a>
+</h3>
+<p>The <code>sys.path</code> in Python is <strong>a list of strings</strong> that specifies the search path for modules. When you import a module, the Python interpreter searches for the module in each directory listed in <code>sys.path</code> in order, from the first to the last. The search process stops as soon as the interpreter finds a module that matches the import statement, and then it attempts to load the module.</p>
+<p>Here&rsquo;s what typically comprises <code>sys.path</code>:</p>
+<ul>
+<li>
+<p>The directory of the running script: The first entry in <code>sys.path</code> is the path to the directory containing the running script.</p>
+</li>
+<li>
+<p><code>PYTHONPATH</code> Directories: If the <code>PYTHONPATH</code> environment variable is set, its contents are added to <code>sys.path</code>. <code>PYTHONPATH</code> is a list of directories separated by <code>os.pathsep</code> (which is <code>;</code> on Windows and <code>:</code> on Unix/Linux) where Python looks for modules to import.</p>
+</li>
+<li>
+<p>Standard Library Directories: These are the directories that contain the Python standard library modules. The location of these directories depends on the Python installation.</p>
+</li>
+<li>
+<p>Site-packages Directory: This directory contains third-party modules installed using package managers like <code>pip</code>. There can be multiple site-packages directories if Python is configured with virtual environments or if there are user-specific installations (using <code>pip install --user</code>).</p>
+</li>
+</ul>
+<h3 id="built-in-modules">
+  Built-in Modules
+  <a class="anchor" href="#built-in-modules">#</a>
+</h3>
+<p>Built-in modules are an integral part of Python and are automatically loaded with the Python interpreter, providing foundational functionality that Python code can utilize. They don&rsquo;t have specific files like standard Python modules (<code>.py</code> files) on the disk, so they are not under directories in <code>sys.path</code></p>
+<ul>
+<li>
+<p>To see all built-in modules of your Python interpreters:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span>print(sys<span style="color:#f92672">.</span>builtin_module_names)
+</span></span></code></pre></div><p>You will see a list of built-in modules printed in the terminal. Some common built-in modules:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span><span style="color:#f92672">(</span><span style="color:#e6db74">&#39;sys&#39;</span>, <span style="color:#e6db74">&#39;time&#39;</span>, <span style="color:#e6db74">&#39;math&#39;</span><span style="color:#f92672">)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>To see origin of a module:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> importlib.util
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>module_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;sys&#34;</span>
+</span></span><span style="display:flex;"><span>module_spec <span style="color:#f92672">=</span> importlib<span style="color:#f92672">.</span>util<span style="color:#f92672">.</span>find_spec(module_name)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Origin of module [</span><span style="color:#e6db74">{</span>module_name<span style="color:#e6db74">}</span><span style="color:#e6db74">]: [</span><span style="color:#e6db74">{</span>module_spec<span style="color:#f92672">.</span>origin<span style="color:#e6db74">}</span><span style="color:#e6db74">]&#34;</span>)
+</span></span></code></pre></div><ul>
+<li>stdout
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>Origin of module <span style="color:#f92672">[</span>sys<span style="color:#f92672">]</span>: <span style="color:#f92672">[</span>built-in<span style="color:#f92672">]</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>Origin of non-built-in modules, like site-package modules, is the directory containing the module. For example</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>Origin of module <span style="color:#f92672">[</span>langchain<span style="color:#f92672">]</span>: <span style="color:#f92672">[</span>/home/&lt;user_name&gt;/.local/lib/python3.10/site-packages/langchain/__init__.py<span style="color:#f92672">]</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="sysmodules">
+  <code>sys.modules</code>
+  <a class="anchor" href="#sysmodules">#</a>
+</h3>
+<p><code>sys.modules</code> is a dictionary in Python. It acts as a cache of all modules that have already been imported during the runtime of a program. This dictionary maps module names (as strings) to module objects, ensuring that each module is imported only once, even if it is referenced in multiple import statements across the program.</p>
+<h4 id="caching-mechanism">
+  Caching Mechanism
+  <a class="anchor" href="#caching-mechanism">#</a>
+</h4>
+<p>When you import a module, Python first checks <code>sys.modules</code> to see if the module is already loaded. If it is, Python uses the existing module object from <code>sys.modules</code> instead of reloading the module from file.</p>
+<p>Assume you have two Python files. When running <code>python3 module_cache.py</code>, you should only see &ldquo;I am imported&rdquo; get printed once.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>src
+</span></span><span style="display:flex;"><span>├── module_cache.py
+</span></span><span style="display:flex;"><span>└── my_module.py
+</span></span></code></pre></div><ul>
+<li>
+<p><code>my_module.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># my_module.py</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;I am imported&#34;</span>)
+</span></span></code></pre></div></li>
+<li>
+<p><code>module_cache.py</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># module_cache.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> my_module
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> my_module
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="module-compilation">
+  Module Compilation
+  <a class="anchor" href="#module-compilation">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Source Code Compilation</strong></p>
+<p>When a Python module is imported or a Python script is executed, the Python interpreter first compiles the source code (<code>.py</code> files) into bytecode (<code>.pyc</code> files). Bytecode is a low-level, platform-independent representation of the source code that can be executed by the Python Virtual Machine (PVM).</p>
+</li>
+<li>
+<p><strong>Bytecode Execution</strong></p>
+<p>After compilation, the bytecode is directly executed by the Python interpreter.</p>
+</li>
+<li>
+<p><strong>In-Memory Compilation</strong></p>
+<p>The bytecode for the running script is compiled in memory and is not automatically saved to disk.</p>
+</li>
+<li>
+<p><strong>On-Disk Cache</strong></p>
+<p>The bytecode of imported modules are cached on disk (<code>__pycache__</code> directory) for further use. The <code>__pycache__</code> directory is typically located in the same directory as the <code>.py</code> source file it corresponds to</p>
+</li>
+</ul>
+<h3 id="namespace">
+  Namespace
+  <a class="anchor" href="#namespace">#</a>
+</h3>
+<p>A namespace in Python is essentially a mapping from names to objects (<code>dict[str, Any]</code>). It&rsquo;s a container of all variables and their values (primitive type) or references (objects) in current scope</p>
+<h4 id="type-of-namespaces">
+  Type of Namespaces
+  <a class="anchor" href="#type-of-namespaces">#</a>
+</h4>
+<ul>
+<li>
+<p>Built-in namespace: Contains names provided by Python itself, such as built-in functions (<code>print</code>, <code>len</code>) and exception names.</p>
+</li>
+<li>
+<p>Global Namespace: Specific to a module, this contains names from various imported modules and variables defined at the level of the current module. Each module has its own global namespace.</p>
+</li>
+<li>
+<p>Local Namespace: Specific to a function or method invocation, this contains names defined in the function. These names only exist while the function is executing.</p>
+</li>
+</ul>
+<h4 id="examples">
+  Examples
+  <a class="anchor" href="#examples">#</a>
+</h4>
+<p>Below example explains the main purpose of namespace: Prevent naming conflicts by isolating names in separate scopes</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;global namespace&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">my_func</span>():
+</span></span><span style="display:flex;"><span>    string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;local namespace of my_func&#34;</span>
+</span></span><span style="display:flex;"><span>    print(string)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nested_func</span>():
+</span></span><span style="display:flex;"><span>        string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;local namespace of nested_func&#34;</span>
+</span></span><span style="display:flex;"><span>        print(string)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    nested_func()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>my_func()
+</span></span><span style="display:flex;"><span>print(string)
+</span></span></code></pre></div><ul>
+<li>
+<p>Initially, <code>string</code> is defined in global namespace of current module</p>
+</li>
+<li>
+<p>When function <code>my_func()</code> is invoked, a local namespace is created for it during its execution. A new <code>string</code> variable is defined in the local namespace</p>
+</li>
+<li>
+<p>Within <code>my_func()</code>, <code>nested_func()</code> is defined and invoked. Another local namespace is created and nested within the local namespace of <code>my_func()</code>. Within the nested local namespace, a new <code>string</code> is defined</p>
+</li>
+</ul>
+<p><strong>Output</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>local namespace of my_func
+</span></span><span style="display:flex;"><span>local namespace of nested_func
+</span></span><span style="display:flex;"><span>global namespace
+</span></span></code></pre></div><h2 id="execution-process">
+  Execution Process
+  <a class="anchor" href="#execution-process">#</a>
+</h2>
+<h3 id="file-and-file-structure">
+  File and File Structure
+  <a class="anchor" href="#file-and-file-structure">#</a>
+</h3>
+<ul>
+<li>
+<p>File structure</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>src
+</span></span><span style="display:flex;"><span>├── main.py
+</span></span><span style="display:flex;"><span>└── my_module.py
+</span></span></code></pre></div></li>
+<li>
+<p>Files</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># my_module.py</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;I am my_module.&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">greeting</span>():
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Hello World!&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># main.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> my_module
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>my_module<span style="color:#f92672">.</span>greeting()
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="executing-python3-mainpy">
+  Executing <code>python3 main.py</code>
+  <a class="anchor" href="#executing-python3-mainpy">#</a>
+</h3>
+<ul>
+<li>
+<p>Python interpreter (<code>python3</code>) initializes</p>
+</li>
+<li>
+<p>Python constructs <code>sys.path</code>, including:</p>
+<ul>
+<li>
+<p>The directory of the script being run (<code>src</code> in this case)</p>
+</li>
+<li>
+<p>Standard library directories</p>
+</li>
+<li>
+<p>Directories in <code>PYTHONPATH</code></p>
+</li>
+<li>
+<p>Site-packages directories</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Python compiles and executes <code>main.py</code></p>
+</li>
+<li>
+<p>Python loads <code>my_module.py</code></p>
+<ul>
+<li>
+<p>First Python searches the module in <code>sys.modules</code> cache</p>
+</li>
+<li>
+<p>Because it is first time importing <code>my_module</code>, so the module is not in <code>sys.modules</code> cache. Then Python starts to search directories in <code>sys.path</code> list</p>
+</li>
+<li>
+<p>Python found <code>my_module.py</code> in the same directory containing the running script <code>main.py</code> and loads the file</p>
+</li>
+<li>
+<p>If there is no cache file in <code>__pycache__</code> under <code>src</code> or the source code of <code>my_module.py</code> has been modified since last compilation, Python compiles the source code into bytecode and stores it in <code>__pycache__</code></p>
+</li>
+<li>
+<p>After compiling <code>my_module</code>, Python starts to execute it and print <code>I am my_module</code> in the terminal</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Python adds <code>my_module</code> to global namespace of <code>main.py</code></p>
+</li>
+<li>
+<p>Python continues executing <code>main.py</code></p>
+<ul>
+<li>Invokes <code>greeting()</code> function from <code>my_module</code>, and prints <code>Hello World!</code> in the terminal</li>
+</ul>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#concepts">Concepts</a>
+          <ul>
+            <li><a href="#__name__"><code>__name__</code></a></li>
+            <li><a href="#python-path-syspath">Python Path (<code>sys.path</code>)</a></li>
+            <li><a href="#built-in-modules">Built-in Modules</a></li>
+            <li><a href="#sysmodules"><code>sys.modules</code></a></li>
+            <li><a href="#module-compilation">Module Compilation</a></li>
+            <li><a href="#namespace">Namespace</a></li>
+          </ul>
+        </li>
+        <li><a href="#execution-process">Execution Process</a>
+          <ul>
+            <li><a href="#file-and-file-structure">File and File Structure</a></li>
+            <li><a href="#executing-python3-mainpy">Executing <code>python3 main.py</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

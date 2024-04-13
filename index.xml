@@ -58,6 +58,13 @@
       <description>EventLoop &amp;amp; EventLoopGroup # EventLoop # What is an EventLoop?&#xA;An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.&#xA;How does EventLoop work?&#xA;Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.</description>
     </item>
     <item>
+      <title>How Is Python File Executed</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/</guid>
+      <description>Concepts # __name__ # __name__ is a built-in variable (attribute) of a module. It is being used to indicate if a module is being run directly or being imported into other modules&#xA;Value when module is running directly: When you run a Python module directly, __name__ of this module is set to __main__&#xA;Value when module is imported: When the module is imported into others modules, __name__ is set to the module name (file name w/o .</description>
+    </item>
+    <item>
       <title>KMS</title>
       <link>https://whatsBehind.github.io/docs/programming/aws/security/kms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

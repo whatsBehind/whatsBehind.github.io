@@ -3,26 +3,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Node Streams (Low-Level Streams) # Definition:
-Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.
-File file = new File(&#34;example.txt&#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file &ldquo;example.txt&rdquo;. It&rsquo;s a direct connection between the Java program and the file.">
+<meta name="description" content="">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Decorator Pattern in Java IO" />
-<meta property="og:description" content="Node Streams (Low-Level Streams) # Definition:
-Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.
-File file = new File(&#34;example.txt&#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file &ldquo;example.txt&rdquo;. It&rsquo;s a direct connection between the Java program and the file." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-11-16T23:12:49-08:00" />
-<meta property="article:modified_time" content="2023-11-16T23:12:49-08:00" />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/" />
 
-<title>Decorator Pattern in Java IO | What&#39;s Behind</title>
+<title>Design Data Intensive Applications | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.a4d7c81f94cceba1eec8a032d3c64f45e227a45d769ce6a1bbad7ca174ef969c.js" integrity="sha256-pNfIH5TM66HuyKAy08ZPReInpF12nOahu618oXTvlpw=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -134,7 +129,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle" checked />
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle"  />
     <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
@@ -150,7 +145,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle" checked />
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle"  />
     <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
@@ -200,7 +195,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle" checked />
+    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle"  />
     <label for="section-f8771c290018cde58e0ed5c89ae77e0d" class="flex justify-between">
       <a role="button" class="">Io</a>
     </label>
@@ -216,7 +211,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="active">Decorator Pattern in Java IO</a>
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
   
 
         </li>
@@ -1069,7 +1064,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle"  />
+    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle" checked />
     <label for="section-bb97be98433588b9dc24d06db2bc9121" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -1098,9 +1093,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1a081e269409f312c6530031b235772b" class="toggle"  />
+    <input type="checkbox" id="section-1a081e269409f312c6530031b235772b" class="toggle" checked />
     <label for="section-1a081e269409f312c6530031b235772b" class="flex justify-between">
-      <a role="button" class="">Design Data Intensive Applications</a>
+      <a role="button" class="active">Design Data Intensive Applications</a>
     </label>
   
 
@@ -1192,7 +1187,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Decorator Pattern in Java IO</strong>
+  <strong>Design Data Intensive Applications</strong>
 
   <label for="toc-control">
     
@@ -1206,24 +1201,7 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#node-streams-low-level-streams">Node Streams (Low-Level Streams)</a></li>
-        <li><a href="#processing-streams-high-level-streams">Processing Streams (High-Level Streams)</a></li>
-        <li><a href="#combining-node-and-processing-streams">Combining Node and Processing Streams</a></li>
-        <li><a href="#decorator-pattern-in-java-io-stream">Decorator Pattern in Java IO Stream</a>
-          <ul>
-            <li><a href="#component-node-stream">Component (Node Stream)</a></li>
-            <li><a href="#decorator-processing-stream">Decorator (Processing Stream)</a></li>
-            <li><a href="#q--a-of-decorator-pattern">Q &amp; A of Decorator Pattern</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
 
 
 
@@ -1234,111 +1212,7 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h2 id="node-streams-low-level-streams">
-  Node Streams (Low-Level Streams)
-  <a class="anchor" href="#node-streams-low-level-streams">#</a>
-</h2>
-<ul>
-<li>
-<p><strong>Definition:</strong></p>
-<ul>
-<li>Node Streams connect directly with the source of the data</li>
-<li>They read data from or write data to a specific location (like a file, memory, or network socket).</li>
-</ul>
-</li>
-<li>
-<p><strong>Example:</strong> <code>FileInputStream</code> is a node stream that reads byte data from a file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;example.txt&#34;</span>);
-</span></span><span style="display:flex;"><span>FileInputStream fis <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(file);
-</span></span></code></pre></div></li>
-</ul>
-<p>Here, <code>FileInputStream</code> is directly reading the bytes from the file &ldquo;example.txt&rdquo;. It&rsquo;s a direct connection between the Java program and the file.</p>
-<h2 id="processing-streams-high-level-streams">
-  Processing Streams (High-Level Streams)
-  <a class="anchor" href="#processing-streams-high-level-streams">#</a>
-</h2>
-<ul>
-<li>
-<p><strong>Definition:</strong></p>
-<ul>
-<li>Processing Streams are built on top of node streams to provide additional functionality, like buffering, filtering, reading objects, etc.</li>
-<li>They don&rsquo;t write or read data directly to or from data source, but delegate this job to node streams.</li>
-</ul>
-</li>
-<li>
-<p><strong>Example:</strong> <code>BufferedInputStream</code> is a processing stream that adds buffering capabilities to another input stream, such as <code>FileInputStream</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>FileInputStream fis <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(<span style="color:#e6db74">&#34;example.txt&#34;</span>);
-</span></span><span style="display:flex;"><span>BufferedInputStream bis <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedInputStream(fis);
-</span></span></code></pre></div></li>
-</ul>
-<p><code>BufferedInputStream</code> does not connect directly to the file. Instead, it wraps the <code>FileInputStream</code> and adds buffering to it. When you read from a <code>BufferedInputStream</code>, it retrieves data from the buffer, and when the buffer is empty, it reads another large chunk of data from the <code>FileInputStream</code> and fills the buffer. This minimizes the number of interactions with the file system, which is much slower than reading from a buffer in memory.</p>
-<h2 id="combining-node-and-processing-streams">
-  Combining Node and Processing Streams
-  <a class="anchor" href="#combining-node-and-processing-streams">#</a>
-</h2>
-<p>Typically, you chain processing streams together to get both their benefits. For instance, wrapping a <code>FileInputStream</code> with a <code>BufferedInputStream</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;example.txt&#34;</span>);
-</span></span><span style="display:flex;"><span>InputStream is <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedInputStream(<span style="color:#66d9ef">new</span> FileInputStream(file));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>is.<span style="color:#a6e22e">close</span>();
-</span></span></code></pre></div><p>In this example, we use <code>FileInputStream</code> to connect to the file and <code>BufferedInputStream</code> to add buffering. The data still comes from the file, but it passes through the buffer, which can be read from more quickly than the file.</p>
-<h2 id="decorator-pattern-in-java-io-stream">
-  Decorator Pattern in Java IO Stream
-  <a class="anchor" href="#decorator-pattern-in-java-io-stream">#</a>
-</h2>
-<h3 id="component-node-stream">
-  Component (Node Stream)
-  <a class="anchor" href="#component-node-stream">#</a>
-</h3>
-<ul>
-<li>Definition: The component is the primary or underlying object that has the <strong>original behavior</strong>, which is to read data from data source for node streams.</li>
-<li>In Java IO: <code>FileInputStream</code> and <code>FileReader</code> are example of components. They provide the basic functionality for byte and character stream handling.</li>
-</ul>
-<h3 id="decorator-processing-stream">
-  Decorator (Processing Stream)
-  <a class="anchor" href="#decorator-processing-stream">#</a>
-</h3>
-<ul>
-<li>Definition: Decorators implement or extend the same interface as the component they are going to decorate. They compose the instance of component and provide an enhanced interface with added responsibilities.- In Java IO: <code>BufferedInputStream</code>, <code>BufferedOutputStream</code>, <code>BufferedReader</code>, and <code>BufferedWriter</code> are examples of decorators. They add buffering to the streams they decorate.</li>
-</ul>
-<h4 id="key-features-of-decorator">
-  Key Features of Decorator
-  <a class="anchor" href="#key-features-of-decorator">#</a>
-</h4>
-<ul>
-<li>
-<p>Delegation: The decorator delegates the work to the component it decorates and then adds its own behavior before or after delegating. This is a key feature because it means the decorator itself doesn&rsquo;t handle the primary operations; it relies on the component to do so.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BufferedInputStream</span> <span style="color:#66d9ef">extends</span> InputStream {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> InputStream inner;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">BufferedInputStream</span>(InputStream inner) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">inner</span> <span style="color:#f92672">=</span> inner;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">read</span>() <span style="color:#66d9ef">throws</span> IOException {
-</span></span><span style="display:flex;"><span>        ... <span style="color:#75715e">// own behavior of decorator</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> inner.<span style="color:#a6e22e">read</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-<li>
-<p>Add Features Over Component Dynamically: Because decorators implement or extend the same interface as the component they are going to decorate, that means they can be decorated by other decorators. Decorators can be nested and combined in any order to add multiple behaviors.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>InputStream input <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(<span style="color:#e6db74">&#34;file.txt&#34;</span>);
-</span></span><span style="display:flex;"><span>InputStream buffered <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedInputStream(input);
-</span></span><span style="display:flex;"><span>InputStream dataInput <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DataInputStream(buffered);
-</span></span></code></pre></div></li>
-</ul>
-<h3 id="q--a-of-decorator-pattern">
-  Q &amp; A of Decorator Pattern
-  <a class="anchor" href="#q--a-of-decorator-pattern">#</a>
-</h3>
-<ul>
-<li>What&rsquo;s the main difference between component and decorator?Component and decorator both implement or extend same interface or superclass. However, components don&rsquo;t compose an instance of the interface or superclass, so it can only perform the original behavior. Decorators compose an instance of the interface or superclass, which can be delegated to perform the original behavior.</li>
-<li>What&rsquo;s the difference between strategy and decorator pattern?Key feature for decorator and strategy pattern is delegation. However, decorators extend or implements same interface or superclass it decorates, which mean decorators themselves can be decorated also, which add extra features dynamically during runtime.</li>
-</ul>
-</article>
+  <article class="markdown book-article"></article>
  
       
 
@@ -1363,10 +1237,6 @@ https://github.com/alex-shpak/hugo-book
 
       
   
-  <div class="book-comments">
-
-</div>
-  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1377,24 +1247,7 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#node-streams-low-level-streams">Node Streams (Low-Level Streams)</a></li>
-        <li><a href="#processing-streams-high-level-streams">Processing Streams (High-Level Streams)</a></li>
-        <li><a href="#combining-node-and-processing-streams">Combining Node and Processing Streams</a></li>
-        <li><a href="#decorator-pattern-in-java-io-stream">Decorator Pattern in Java IO Stream</a>
-          <ul>
-            <li><a href="#component-node-stream">Component (Node Stream)</a></li>
-            <li><a href="#decorator-processing-stream">Decorator (Processing Stream)</a></li>
-            <li><a href="#q--a-of-decorator-pattern">Q &amp; A of Decorator Pattern</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
 
 
  

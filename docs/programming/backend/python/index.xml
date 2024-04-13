@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/programming/backend/python/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/backend/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Is Python File Executed</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/</guid>
+      <description>Concepts # __name__ # __name__ is a built-in variable (attribute) of a module. It is being used to indicate if a module is being run directly or being imported into other modules&#xA;Value when module is running directly: When you run a Python module directly, __name__ of this module is set to __main__&#xA;Value when module is imported: When the module is imported into others modules, __name__ is set to the module name (file name w/o .</description>
+    </item>
+  </channel>
+</rss>
