@@ -12,13 +12,13 @@
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-11-13T08:30:17-08:00" />
 <meta property="article:modified_time" content="2023-11-13T08:30:17-08:00" />
-
 <title>Synchronization | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.a4d7c81f94cceba1eec8a032d3c64f45e227a45d769ce6a1bbad7ca174ef969c.js" integrity="sha256-pNfIH5TM66HuyKAy08ZPReInpF12nOahu618oXTvlpw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.4a7823b1dad75bd455859067d02c19cb0a007914fd0b742f0948b8ab4039a237.js" integrity="sha256-SngjsdrXW9RVhZBn0CwZywoAeRT9C3QvCUi4q0A5ojc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1103,6 +1103,19 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1238,35 +1251,35 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#thread-interference">#</a>
 </h2>
 <p>Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadInterference</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThreadInterference</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
-</span></span><span style="display:flex;"><span>        InterferenceThread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InterferenceThread();
-</span></span><span style="display:flex;"><span>        InterferenceThread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InterferenceThread();
-</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> InterferenceThread.<span style="color:#a6e22e">getCount</span>();
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: &#34;</span> <span style="color:#f92672">+</span> count);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        InterferenceThread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InterferenceThread<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        InterferenceThread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InterferenceThread<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> InterferenceThread<span style="color:#f92672">.</span><span style="color:#a6e22e">getCount</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: &#34;</span> <span style="color:#f92672">+</span> count<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InterferenceThread</span> <span style="color:#66d9ef">extends</span> Thread {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> 0;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InterferenceThread</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getCount</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count;
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getCount</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (loopCount<span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> 1_000_000) {
-</span></span><span style="display:flex;"><span>            count<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>loopCount<span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1_000_000</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            count<span style="color:#f92672">++;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Executing result:
@@ -1305,36 +1318,36 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#class-level-synchronization">#</a>
 </h3>
 <p>You can synchronize static methods or code snippets containing static fields, which locks the Class object associated with the class. This means it locks at the class level, and only one thread can execute any of the synchronized static methods for that class.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClassLevelSynchronization</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
-</span></span><span style="display:flex;"><span>        ClassLevelSyncThread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassLevelSyncThread();
-</span></span><span style="display:flex;"><span>        ClassLevelSyncThread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassLevelSyncThread();
-</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> ClassLevelSyncThread.<span style="color:#a6e22e">getCount</span>();
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: &#34;</span> <span style="color:#f92672">+</span> count);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClassLevelSynchronization</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        ClassLevelSyncThread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassLevelSyncThread<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        ClassLevelSyncThread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ClassLevelSyncThread<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> ClassLevelSyncThread<span style="color:#f92672">.</span><span style="color:#a6e22e">getCount</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: &#34;</span> <span style="color:#f92672">+</span> count<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClassLevelSyncThread</span> <span style="color:#66d9ef">extends</span> Thread {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> 0;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClassLevelSyncThread</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getCount</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count;
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getCount</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (loopCount<span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> 1_000_000) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">synchronized</span> (ClassLevelSyncThread.<span style="color:#a6e22e">class</span>) {
-</span></span><span style="display:flex;"><span>                count<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>loopCount<span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1_000_000</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span>ClassLevelSyncThread<span style="color:#f92672">.</span><span style="color:#a6e22e">class</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                count<span style="color:#f92672">++;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * The value of count in InterferenceThread class is supposed to be 2_000_000, but the real value is: 2000000
@@ -1349,39 +1362,39 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#instance-level-synchronization">#</a>
 </h3>
 <p>When you synchronize an instance method, you are locking the instance for which the method was called. Only one thread per instance can execute any of the synchronized instance methods.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InstanceLevelSynchronization</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> InterruptedException {
-</span></span><span style="display:flex;"><span>        InstanceLevelSyncThread instanceLevelSyncThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InstanceLevelSyncThread();
-</span></span><span style="display:flex;"><span>        Thread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(instanceLevelSyncThread);
-</span></span><span style="display:flex;"><span>        Thread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(instanceLevelSyncThread);
-</span></span><span style="display:flex;"><span>        Thread thread3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(instanceLevelSyncThread);
-</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        thread3.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>        thread1.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>        thread2.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>        thread3.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> instanceLevelSyncThread.<span style="color:#a6e22e">getCount</span>();
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The value of count in InterferenceThread class is supposed to be 3_000_000, but the real value is: &#34;</span> <span style="color:#f92672">+</span> count);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InstanceLevelSynchronization</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> InterruptedException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        InstanceLevelSyncThread instanceLevelSyncThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> InstanceLevelSyncThread<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        Thread thread1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>instanceLevelSyncThread<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Thread thread2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>instanceLevelSyncThread<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        Thread thread3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>instanceLevelSyncThread<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread3<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread1<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread2<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread3<span style="color:#f92672">.</span><span style="color:#a6e22e">join</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> instanceLevelSyncThread<span style="color:#f92672">.</span><span style="color:#a6e22e">getCount</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;The value of count in InterferenceThread class is supposed to be 3_000_000, but the real value is: &#34;</span> <span style="color:#f92672">+</span> count<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InstanceLevelSyncThread</span> <span style="color:#66d9ef">implements</span> Runnable {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InstanceLevelSyncThread</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> 0; loopCount <span style="color:#f92672">&lt;</span> 1_000_000; loopCount<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">synchronized</span> (<span style="color:#66d9ef">this</span>) {
-</span></span><span style="display:flex;"><span>                count<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> loopCount <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1_000_000</span><span style="color:#f92672">;</span> loopCount<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                count<span style="color:#f92672">++;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getCount</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getCount</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Executing results:
@@ -1392,18 +1405,18 @@ https://github.com/alex-shpak/hugo-book
 <li>
 <p>We craete three threads, why are they synchronized by <code>InstanceLevelSyncThread</code> instance?</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>    <span style="color:#75715e">/* What will be run. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Runnable target; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Runnable target<span style="color:#f92672">;</span> 
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Thread</span>(Runnable target) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>(<span style="color:#66d9ef">null</span>, target, <span style="color:#e6db74">&#34;Thread-&#34;</span> <span style="color:#f92672">+</span> nextThreadNum(), 0);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Thread</span><span style="color:#f92672">(</span>Runnable target<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">(</span><span style="color:#66d9ef">null</span><span style="color:#f92672">,</span> target<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Thread-&#34;</span> <span style="color:#f92672">+</span> nextThreadNum<span style="color:#f92672">(),</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (target <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
-</span></span><span style="display:flex;"><span>            target.<span style="color:#a6e22e">run</span>();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>target <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            target<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 </ul>
 <p>Let&rsquo;s first look at the source code of <code>Thread</code>. Thread has a <code>Runnable</code> filed target and a constructor taking <code>Runnable</code> instance as parameter. Look at the <code>run()</code> method in <code>Thread</code>, the code what will be run is not the <code>Thread</code> itself but the <code>Runnable</code> instance <code>target</code>.
@@ -1412,17 +1425,17 @@ In above example, alother we create three <code>Thread</code> instance, but we p
 <li>Why do we use <code>for</code> loop here, any problem using <code>while</code> loop with <code>loopCount</code>?</li>
 </ul>
 <p><code>loopCount</code> is a instance-level variable which is a shared field to different threads. If we use a <code>while</code> loop with <code>loopCount</code> like below, cause it is not synchronized, its value could be implemented by different threads at same moment. In other words, <code>loopCount</code> is not thread safe.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (loopCount<span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> 1_000_000) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">synchronized</span> (<span style="color:#66d9ef">this</span>) {
-</span></span><span style="display:flex;"><span>        count<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>loopCount<span style="color:#f92672">++</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1_000_000</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        count<span style="color:#f92672">++;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><p>However, when using a <code>for</code> loop, we create a new <code>int</code> varibale each time when <code>run()</code> method is executed, which won&rsquo;t be shared by multiple threads, so it is thread safe.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> 0; loopCount <span style="color:#f92672">&lt;</span> 1_000_000; loopCount<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">synchronized</span> (<span style="color:#66d9ef">this</span>) {
-</span></span><span style="display:flex;"><span>        count<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> loopCount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">;</span> loopCount <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1_000_000</span><span style="color:#f92672">;</span> loopCount<span style="color:#f92672">++)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">synchronized</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        count<span style="color:#f92672">++;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></article>
  
       

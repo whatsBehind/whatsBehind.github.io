@@ -18,13 +18,13 @@ There are two ways to create a thread: By extending the Thread class." />
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/" /><meta property="article:section" content="docs" />
 <meta property="article:published_time" content="2023-11-12T22:25:15-08:00" />
 <meta property="article:modified_time" content="2023-11-12T22:25:15-08:00" />
-
 <title>Start Thread | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.a4d7c81f94cceba1eec8a032d3c64f45e227a45d769ce6a1bbad7ca174ef969c.js" integrity="sha256-pNfIH5TM66HuyKAy08ZPReInpF12nOahu618oXTvlpw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.4a7823b1dad75bd455859067d02c19cb0a007914fd0b742f0948b8ab4039a237.js" integrity="sha256-SngjsdrXW9RVhZBn0CwZywoAeRT9C3QvCUi4q0A5ojc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1109,6 +1109,19 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1294,36 +1307,36 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
 <p>Extends <code>Thread</code> class</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExtendsThread</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        Thread_1 thread_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread_1();
-</span></span><span style="display:flex;"><span>        thread_.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExtendsThread</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Thread_1 thread_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread_1<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        thread_<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Thread_1</span> <span style="color:#66d9ef">extends</span> Thread {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Thread_1</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello World!&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 </ul>
 <p><code>Thread_1</code> extends <code>Thread</code> class and overrides method <code>run()</code>. We create a <code>Thread_1</code> object and invoked <code>start()</code> method inherited from parent class <code>Thread</code> to start a new thread. Besides extending <code>Thread</code> class, we can also create a thread by implementing <code>Runnable</code> interface</p>
 <ul>
 <li>
 <p>Implements <code>Runnable</code> interface</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ImplementsRunnable</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        Thread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> Thread_2());
-</span></span><span style="display:flex;"><span>        thread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ImplementsRunnable</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Thread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> Thread_2<span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        thread<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Thread_2</span> <span style="color:#66d9ef">implements</span> Runnable {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Thread_2</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Hello World!&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 <li>
 <p>Create <code>FutureTask</code> object</p>
@@ -1332,22 +1345,22 @@ https://github.com/alex-shpak/hugo-book
 <li>In below code snippet, we pass the <code>FutureTask</code> to a thread, and start the thread</li>
 <li><code>task.get()</code> method is a blocking thread. It stop current thread, which is main here until the task finishes (<code>run()</code> finish in <code>FutureTask</code>)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Create a new future task</span>
-</span></span><span style="display:flex;"><span>FutureTask<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> task <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FutureTask<span style="color:#f92672">&lt;&gt;</span>(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;running&#34;</span>);
-</span></span><span style="display:flex;"><span>    Thread.<span style="color:#a6e22e">sleep</span>(1000);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> 100;
-</span></span><span style="display:flex;"><span>});
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#75715e">// Create a new future task
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>FutureTask<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> task <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FutureTask<span style="color:#f92672">&lt;&gt;(()</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;running&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1000</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">100</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">});</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create and start a new thread</span>
-</span></span><span style="display:flex;"><span>Thread t <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(task, <span style="color:#e6db74">&#34;Thread_Get_Int&#34;</span>);
-</span></span><span style="display:flex;"><span>t.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create and start a new thread
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Thread t <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span>task<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Thread_Get_Int&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>t<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;In main thread&#34;</span>);
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;In main thread&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Blocking method</span>
-</span></span><span style="display:flex;"><span>Integer result <span style="color:#f92672">=</span> task.<span style="color:#a6e22e">get</span>();
-</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, result);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Blocking method
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Integer result <span style="color:#f92672">=</span> task<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{}&#34;</span><span style="color:#f92672">,</span> result<span style="color:#f92672">);</span>
 </span></span></code></pre></div></li>
 </ul>
 <h3 id="open-question-why-do-we-invoke-start-to-start-a-thread-what-if-i-invoke-run-directly">
@@ -1391,27 +1404,27 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InvokesRun</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread for main method &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
-</span></span><span style="display:flex;"><span>        RunThread runThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RunThread();
-</span></span><span style="display:flex;"><span>        StartThread startThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StartThread();
-</span></span><span style="display:flex;"><span>        runThread.<span style="color:#a6e22e">run</span>();
-</span></span><span style="display:flex;"><span>        startThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InvokesRun</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread for main method &#34;</span> <span style="color:#f92672">+</span> Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>        RunThread runThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RunThread<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        StartThread startThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StartThread<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        runThread<span style="color:#f92672">.</span><span style="color:#a6e22e">run</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        startThread<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunThread</span> <span style="color:#66d9ef">extends</span> Thread {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread for RunThread: &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunThread</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread for RunThread: &#34;</span> <span style="color:#f92672">+</span> Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StartThread</span> <span style="color:#66d9ef">extends</span> Thread {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread for StartThread: &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StartThread</span> <span style="color:#66d9ef">extends</span> Thread <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Thread for StartThread: &#34;</span> <span style="color:#f92672">+</span> Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">currentThread</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getName</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></article>
  
       

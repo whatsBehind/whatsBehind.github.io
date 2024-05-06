@@ -5,56 +5,82 @@
     <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/</link>
     <description>Recent content on What&#39;s Behind</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/nio/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/nio/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Byte Buffer</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</guid>
-      <description>Introduction # Java ByteBuffer is a class in Java&amp;rsquo;s java.nio package. It&amp;rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘&#xA;ByteBuffer can be used in two modes:&#xA;Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.</description>
+      <description>Introduction # Java ByteBuffer is a class in Java&amp;rsquo;s java.nio package. It&amp;rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘
+ByteBuffer can be used in two modes:
+Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.</description>
     </item>
+    
     <item>
       <title>Blocking Mode</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</guid>
-      <description>Blocking Mode # This post will introduce the blocking mode of network connection and communication in Java code. We will first wirte both server and client codes. Then demo the blocking mode and its problems.&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); // Create server ServerSocketChannel ssc = ServerSocketChannel.open(); // Server listens to port 9999 at local host ssc.</description>
+      <description>Blocking Mode # This post will introduce the blocking mode of network connection and communication in Java code. We will first wirte both server and client codes. Then demo the blocking mode and its problems.
+Code Example # Server
+@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); // Create server ServerSocketChannel ssc = ServerSocketChannel.open(); // Server listens to port 9999 at local host ssc.</description>
     </item>
+    
     <item>
       <title>Unblocking Mode</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</guid>
-      <description>Unblocking Mode # In last post, we discussed blocking mode and its problems. In this post, we will discuss unblocking mode and its problems&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); ServerSocketChannel ssc = ServerSocketChannel.open(); ssc.bind(new InetSocketAddress(9999)); ssc.configureBlocking(false); List&amp;lt;SocketChannel&amp;gt; channels = new ArrayList&amp;lt;&amp;gt;(); while (true) { log.debug(&amp;#34;Server connecting&amp;#34;); SocketChannel sc = ssc.accept(); if (sc != null) { log.</description>
+      <description>Unblocking Mode # In last post, we discussed blocking mode and its problems. In this post, we will discuss unblocking mode and its problems
+Code Example # Server
+@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); ServerSocketChannel ssc = ServerSocketChannel.open(); ssc.bind(new InetSocketAddress(9999)); ssc.configureBlocking(false); List&amp;lt;SocketChannel&amp;gt; channels = new ArrayList&amp;lt;&amp;gt;(); while (true) { log.debug(&amp;#34;Server connecting&amp;#34;); SocketChannel sc = ssc.accept(); if (sc != null) { log.</description>
     </item>
+    
     <item>
       <title>Selector</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</guid>
-      <description>Selector in Java NIO # A Selector in Java NIO is a special type of object that can check one or more NIO channels and determine which channels are ready for data operations (such as reading or writing). This is crucial in scenarios like servers handling multiple client connections.&#xA;Key Features: # Multiplexing: A single selector can handle multiple channels. Non-blocking Mode: Channels registered with a selector are usually in non-blocking mode.</description>
+      <description>Selector in Java NIO # A Selector in Java NIO is a special type of object that can check one or more NIO channels and determine which channels are ready for data operations (such as reading or writing). This is crucial in scenarios like servers handling multiple client connections.
+Key Features: # Multiplexing: A single selector can handle multiple channels. Non-blocking Mode: Channels registered with a selector are usually in non-blocking mode.</description>
     </item>
+    
     <item>
       <title>Selector Read</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</guid>
-      <description>Read Operation in Selector # In last post, we discussed Selector and how it works, also introduced an interested operation OP_ACCEPT. In this post, I will introduce another interested operation OP_READ and how to gracefully read data from SocketChannel and handle closed socket channels&#xA;Server Code # @Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); Selector selector = Selector.open(); log.debug(&amp;#34;Create a selector&amp;#34;); ServerSocketChannel ssc = ServerSocketChannel.</description>
+      <description>Read Operation in Selector # In last post, we discussed Selector and how it works, also introduced an interested operation OP_ACCEPT. In this post, I will introduce another interested operation OP_READ and how to gracefully read data from SocketChannel and handle closed socket channels
+Server Code # @Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); Selector selector = Selector.open(); log.debug(&amp;#34;Create a selector&amp;#34;); ServerSocketChannel ssc = ServerSocketChannel.</description>
     </item>
+    
     <item>
       <title>I/O  Model Summary</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</guid>
-      <description>I/O Model # We have discussed some I/O models, like blocking I/O model and non-blocking I/O model. These two I/O models have their own problems which are low efficient.&#xA;Then I introduce another I/O model Multiplexing which utilizes Selector to monitor registered keys and handle operations in a batch. This model provides high efficiency and handles multiple operations like accept (client connection) and read concurrently.&#xA;In this post, I will introduce two more I/O models, synchronous and asynchronous.</description>
+      <description>I/O Model # We have discussed some I/O models, like blocking I/O model and non-blocking I/O model. These two I/O models have their own problems which are low efficient.
+Then I introduce another I/O model Multiplexing which utilizes Selector to monitor registered keys and handle operations in a batch. This model provides high efficiency and handles multiple operations like accept (client connection) and read concurrently.
+In this post, I will introduce two more I/O models, synchronous and asynchronous.</description>
     </item>
+    
     <item>
       <title>Multiple Threads</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/</guid>
-      <description>In our previous posts of using Selector for connection and communication (read/write) between server and clients, we only utilize only one thread. Multiplexing is highly efficient, but some time-consumed tasks would affect the overall performance.&#xA;In this post, I will mimic some functions from Netty which allocates tasks to different threads to improve the performance&#xA;Component # We will focus on the components in the server side&#xA;Boss # Boss runs under one thread Boss maintains one selector which only listens to ACCEPT events, in other words, boss is only responsible to accept client connections Worker # Worker runs in a separate thread Each worker has one selector which listens to READ and WRITE events After client&amp;rsquo;s connection, the newly created SocketChannel will be registered with one worker Architecture # Connect</description>
+      <description>In our previous posts of using Selector for connection and communication (read/write) between server and clients, we only utilize only one thread. Multiplexing is highly efficient, but some time-consumed tasks would affect the overall performance.
+In this post, I will mimic some functions from Netty which allocates tasks to different threads to improve the performance
+Component # We will focus on the components in the server side
+Boss # Boss runs under one thread Boss maintains one selector which only listens to ACCEPT events, in other words, boss is only responsible to accept client connections Worker # Worker runs in a separate thread Each worker has one selector which listens to READ and WRITE events After client&amp;rsquo;s connection, the newly created SocketChannel will be registered with one worker Architecture # Connect</description>
     </item>
+    
   </channel>
 </rss>

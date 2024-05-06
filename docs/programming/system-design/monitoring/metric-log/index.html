@@ -14,13 +14,13 @@ Requirements # Upload Data to A Web Monitoring System # Logs are records of code
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/" /><meta property="article:section" content="docs" />
 
 
-
 <title>Metric &amp; Log | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.a4d7c81f94cceba1eec8a032d3c64f45e227a45d769ce6a1bbad7ca174ef969c.js" integrity="sha256-pNfIH5TM66HuyKAy08ZPReInpF12nOahu618oXTvlpw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.4a7823b1dad75bd455859067d02c19cb0a007914fd0b742f0948b8ab4039a237.js" integrity="sha256-SngjsdrXW9RVhZBn0CwZywoAeRT9C3QvCUi4q0A5ojc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1105,6 +1105,19 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1292,12 +1305,12 @@ service.metrics
 <ul>
 <li>
 <p>Sample codes</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Metric metric <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Metric();
-</span></span><span style="display:flex;"><span>metric.<span style="color:#a6e22e">setTime</span>(...);
-</span></span><span style="display:flex;"><span>metric.<span style="color:#a6e22e">setName</span>(...);
-</span></span><span style="display:flex;"><span>metric.<span style="color:#a6e22e">setValue</span>(...);
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>metric.<span style="color:#a6e22e">emit</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Metric metric <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Metric<span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>metric<span style="color:#f92672">.</span><span style="color:#a6e22e">setTime</span><span style="color:#f92672">(...);</span>
+</span></span><span style="display:flex;"><span>metric<span style="color:#f92672">.</span><span style="color:#a6e22e">setName</span><span style="color:#f92672">(...);</span>
+</span></span><span style="display:flex;"><span>metric<span style="color:#f92672">.</span><span style="color:#a6e22e">setValue</span><span style="color:#f92672">(...);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>metric<span style="color:#f92672">.</span><span style="color:#a6e22e">emit</span><span style="color:#f92672">();</span>
 </span></span></code></pre></div></li>
 <li>
 <p>Sample metric string</p>

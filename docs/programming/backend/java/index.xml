@@ -6,14 +6,16 @@
     <description>Recent content on What&#39;s Behind</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Nov 2023 21:42:27 -0800</lastBuildDate>
-    <atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Nov 2023 21:42:27 -0800</lastBuildDate><atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reflection</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/reflection/</link>
       <pubDate>Tue, 07 Nov 2023 07:19:23 -0800</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/reflection/</guid>
-      <description>Introduction to Java Reflection # Java Reflection is a powerful feature that allows runtime introspection of classes, objects, and their members. It enables Java programs to manipulate internal properties and methods of classes dynamically. Reflection is especially useful in scenarios where the program needs to interact with classes and objects whose properties are not known at compile time.&#xA;Class Object # The heart of Java&amp;rsquo;s reflection mechanism. It&amp;rsquo;s an instance that represents classes and interfaces in a running Java application.</description>
+      <description>Introduction to Java Reflection # Java Reflection is a powerful feature that allows runtime introspection of classes, objects, and their members. It enables Java programs to manipulate internal properties and methods of classes dynamically. Reflection is especially useful in scenarios where the program needs to interact with classes and objects whose properties are not known at compile time.
+Class Object # The heart of Java&amp;rsquo;s reflection mechanism. It&amp;rsquo;s an instance that represents classes and interfaces in a running Java application.</description>
     </item>
+    
   </channel>
 </rss>

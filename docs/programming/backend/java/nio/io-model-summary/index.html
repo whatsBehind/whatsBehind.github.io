@@ -16,13 +16,13 @@ In this post, I will introduce two more I/O models, synchronous and asynchronous
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/" /><meta property="article:section" content="docs" />
 
 
-
 <title>I/O  Model Summary | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.a4d7c81f94cceba1eec8a032d3c64f45e227a45d769ce6a1bbad7ca174ef969c.js" integrity="sha256-pNfIH5TM66HuyKAy08ZPReInpF12nOahu618oXTvlpw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.4a7823b1dad75bd455859067d02c19cb0a007914fd0b742f0948b8ab4039a237.js" integrity="sha256-SngjsdrXW9RVhZBn0CwZywoAeRT9C3QvCUi4q0A5ojc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1107,6 +1107,19 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1271,17 +1284,17 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
 <p>Code</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
-</span></span><span style="display:flex;"><span>    FileChannel fc <span style="color:#f92672">=</span> FileChannel.<span style="color:#a6e22e">open</span>(Paths.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/path/to/file/data.txt&#34;</span>), StandardOpenOption.<span style="color:#a6e22e">READ</span>);
-</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
-</span></span><span style="display:flex;"><span>    fc.<span style="color:#a6e22e">read</span>(buffer);
-</span></span><span style="display:flex;"><span>    buffer.<span style="color:#a6e22e">flip</span>();
-</span></span><span style="display:flex;"><span>    ByteBufferReader.<span style="color:#a6e22e">readAll</span>(buffer);
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    FileChannel fc <span style="color:#f92672">=</span> FileChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/path/to/file/data.txt&#34;</span><span style="color:#f92672">),</span> StandardOpenOption<span style="color:#f92672">.</span><span style="color:#a6e22e">READ</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">allocate</span><span style="color:#f92672">(</span><span style="color:#ae81ff">16</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    fc<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    buffer<span style="color:#f92672">.</span><span style="color:#a6e22e">flip</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    ByteBufferReader<span style="color:#f92672">.</span><span style="color:#a6e22e">readAll</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div></li>
 <li>
 <p>Execution result</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>16:18:51.<span style="color:#a6e22e">605</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">utility</span>.<span style="color:#a6e22e">ByteBufferReader</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">18</span><span style="color:#f92672">:</span><span style="color:#ae81ff">51.605</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">utility</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ByteBufferReader</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
 </span></span></code></pre></div></li>
 </ul>
 <p>The example of synchronous I/O  model is quite straight forward and easy. Only one thread is involved and the thread is blocked at blocking method <code>fc.read(buffer)</code> until data is loaded from the disk and copied to memories</p>
@@ -1320,25 +1333,25 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
 <p>Code</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException, InterruptedException {
-</span></span><span style="display:flex;"><span>    AsynchronousFileChannel afc <span style="color:#f92672">=</span> AsynchronousFileChannel.<span style="color:#a6e22e">open</span>(Paths.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/path/to/file/data.txt&#34;</span>), StandardOpenOption.<span style="color:#a6e22e">READ</span>);
-</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
-</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start reading...&#34;</span>);
-</span></span><span style="display:flex;"><span>    afc.<span style="color:#a6e22e">read</span>(buffer, 0, buffer, <span style="color:#66d9ef">new</span> CompletionHandler<span style="color:#f92672">&lt;</span>Integer, ByteBuffer<span style="color:#f92672">&gt;</span>() {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">,</span> InterruptedException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    AsynchronousFileChannel afc <span style="color:#f92672">=</span> AsynchronousFileChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/path/to/file/data.txt&#34;</span><span style="color:#f92672">),</span> StandardOpenOption<span style="color:#f92672">.</span><span style="color:#a6e22e">READ</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">allocate</span><span style="color:#f92672">(</span><span style="color:#ae81ff">16</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Start reading...&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    afc<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">,</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">,</span> buffer<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> CompletionHandler<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> ByteBuffer<span style="color:#f92672">&gt;()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">completed</span>(Integer integer, ByteBuffer buffer) {
-</span></span><span style="display:flex;"><span>            buffer.<span style="color:#a6e22e">flip</span>();
-</span></span><span style="display:flex;"><span>            ByteBufferReader.<span style="color:#a6e22e">readAll</span>(buffer);
-</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">completed</span><span style="color:#f92672">(</span>Integer integer<span style="color:#f92672">,</span> ByteBuffer buffer<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            buffer<span style="color:#f92672">.</span><span style="color:#a6e22e">flip</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            ByteBufferReader<span style="color:#f92672">.</span><span style="color:#a6e22e">readAll</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">failed</span>(Throwable throwable, ByteBuffer buffer) {
-</span></span><span style="display:flex;"><span>            throwable.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Finish reading...&#34;</span>);
-</span></span><span style="display:flex;"><span>    Thread.<span style="color:#a6e22e">sleep</span>(1000);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">failed</span><span style="color:#f92672">(</span>Throwable throwable<span style="color:#f92672">,</span> ByteBuffer buffer<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            throwable<span style="color:#f92672">.</span><span style="color:#a6e22e">printStackTrace</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">});</span>
+</span></span><span style="display:flex;"><span>    log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Finish reading...&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1000</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><ul>
 <li>In <code>afc.read(...)</code> method of the async file channel, I pass in a callback object which has two methods <code>completed</code> and <code>failed</code> which are invoked by the working thread when the read operation completes or throws.</li>
 <li>I insert three logs before and after the <code>read</code> method and inside the <code>completed</code> method</li>
@@ -1347,9 +1360,9 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
 <p>Execution result</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>16:34:14.<span style="color:#a6e22e">824</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">asynchronous_</span>.<span style="color:#a6e22e">CallBackFileReader</span> <span style="color:#f92672">-</span> Start reading...
-</span></span><span style="display:flex;"><span>16:34:14.<span style="color:#a6e22e">826</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">asynchronous_</span>.<span style="color:#a6e22e">CallBackFileReader</span> <span style="color:#f92672">-</span> Finish reading...
-</span></span><span style="display:flex;"><span>16:34:14.<span style="color:#a6e22e">828</span> <span style="color:#f92672">[</span>Thread<span style="color:#f92672">-</span>0<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">utility</span>.<span style="color:#a6e22e">ByteBufferReader</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">34</span><span style="color:#f92672">:</span><span style="color:#ae81ff">14.824</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">asynchronous_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">CallBackFileReader</span> <span style="color:#f92672">-</span> Start reading<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">34</span><span style="color:#f92672">:</span><span style="color:#ae81ff">14.826</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">asynchronous_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">CallBackFileReader</span> <span style="color:#f92672">-</span> Finish reading<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">34</span><span style="color:#f92672">:</span><span style="color:#ae81ff">14.828</span> <span style="color:#f92672">[</span>Thread<span style="color:#f92672">-</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">utility</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ByteBufferReader</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
 </span></span></code></pre></div><ul>
 <li>Two threads are involved, main thread (<code>main</code>) and working thread (<code>Thread-0</code>)</li>
 <li>Logs <code>Start reading...</code> and <code>Finish reading...</code> are printed first and the thread is main thread. That means after initiating the read operation <code>afc.read(...)</code>, the read operation is allocated to the working thread and the main thread is not blocked but continues to execute other tasks</li>
@@ -1364,18 +1377,18 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
 <p>Code</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException, InterruptedException, ExecutionException {
-</span></span><span style="display:flex;"><span>    AsynchronousFileChannel afc <span style="color:#f92672">=</span> AsynchronousFileChannel.<span style="color:#a6e22e">open</span>(Paths.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;/path/to/file/data.txt&#34;</span>), StandardOpenOption.<span style="color:#a6e22e">READ</span>);
-</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
-</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start reading...&#34;</span>);
-</span></span><span style="display:flex;"><span>    Future<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> future <span style="color:#f92672">=</span> afc.<span style="color:#a6e22e">read</span>(buffer, 0);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Blocking method: main thread is blocked here until read operation completes</span>
-</span></span><span style="display:flex;"><span>    future.<span style="color:#a6e22e">get</span>();
-</span></span><span style="display:flex;"><span>    buffer.<span style="color:#a6e22e">flip</span>();
-</span></span><span style="display:flex;"><span>    ByteBufferReader.<span style="color:#a6e22e">readAll</span>(buffer);
-</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Finish reading...&#34;</span>);
-</span></span><span style="display:flex;"><span>    Thread.<span style="color:#a6e22e">sleep</span>(1000);
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">,</span> InterruptedException<span style="color:#f92672">,</span> ExecutionException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    AsynchronousFileChannel afc <span style="color:#f92672">=</span> AsynchronousFileChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">(</span>Paths<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/path/to/file/data.txt&#34;</span><span style="color:#f92672">),</span> StandardOpenOption<span style="color:#f92672">.</span><span style="color:#a6e22e">READ</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">allocate</span><span style="color:#f92672">(</span><span style="color:#ae81ff">16</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Start reading...&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Future<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> future <span style="color:#f92672">=</span> afc<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">,</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Blocking method: main thread is blocked here until read operation completes
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    future<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    buffer<span style="color:#f92672">.</span><span style="color:#a6e22e">flip</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>    ByteBufferReader<span style="color:#f92672">.</span><span style="color:#a6e22e">readAll</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Finish reading...&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    Thread<span style="color:#f92672">.</span><span style="color:#a6e22e">sleep</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1000</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><ul>
 <li>Instead of utilizing callbacks to notify the main thread. We can use <code>Future</code> object to get the data after the read operation</li>
 <li>After calling <code>afc.read(...)</code>, I invoke a blocking method <code>future.get()</code> to let the main thread wait here until the read operation completes. During this time, the working thread is working on the read operation and the main thread is blocked</li>
@@ -1383,9 +1396,9 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
 <p>Execution result</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>16:46:47.<span style="color:#a6e22e">948</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">asynchronous_</span>.<span style="color:#a6e22e">FutureFileReader</span> <span style="color:#f92672">-</span> Start reading...
-</span></span><span style="display:flex;"><span>16:46:47.<span style="color:#a6e22e">952</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">utility</span>.<span style="color:#a6e22e">ByteBufferReader</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>16:46:47.<span style="color:#a6e22e">952</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">asynchronous_</span>.<span style="color:#a6e22e">FutureFileReader</span> <span style="color:#f92672">-</span> Finish reading...
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">47.948</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">asynchronous_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">FutureFileReader</span> <span style="color:#f92672">-</span> Start reading<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">47.952</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">utility</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ByteBufferReader</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">47.952</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">asynchronous_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">FutureFileReader</span> <span style="color:#f92672">-</span> Finish reading<span style="color:#f92672">...</span>
 </span></span></code></pre></div><ul>
 <li>The above code works as synchronous I/O model. Codes are executed like a linear way and all logs are printed in the main thread</li>
 </ul>

@@ -18,13 +18,13 @@ Boss # Boss runs under one thread Boss maintains one selector which only listens
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/" /><meta property="article:section" content="docs" />
 
 
-
 <title>Multiple Threads | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.a4d7c81f94cceba1eec8a032d3c64f45e227a45d769ce6a1bbad7ca174ef969c.js" integrity="sha256-pNfIH5TM66HuyKAy08ZPReInpF12nOahu618oXTvlpw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.4a7823b1dad75bd455859067d02c19cb0a007914fd0b742f0948b8ab4039a237.js" integrity="sha256-SngjsdrXW9RVhZBn0CwZywoAeRT9C3QvCUi4q0A5ojc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1109,6 +1109,19 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1307,54 +1320,54 @@ https://github.com/alex-shpak/hugo-book
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#a6e22e">@Getter</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Setter</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">implements</span> Runnable {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Thread thread;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Selector selector;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String name;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> start;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Worker</span> <span style="color:#66d9ef">implements</span> Runnable <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Thread thread<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Selector selector<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String name<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> start<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Worker</span>(String name) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Worker</span><span style="color:#f92672">(</span>String name<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name<span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">register</span>(SocketChannel sc) <span style="color:#66d9ef">throws</span> IOException {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>start) {
-</span></span><span style="display:flex;"><span>            start <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span><span style="display:flex;"><span>            selector <span style="color:#f92672">=</span> Selector.<span style="color:#a6e22e">open</span>();
-</span></span><span style="display:flex;"><span>            thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">this</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
-</span></span><span style="display:flex;"><span>            thread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>            log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start selector and thread in {}&#34;</span>, name);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        sc.<span style="color:#a6e22e">configureBlocking</span>(<span style="color:#66d9ef">false</span>);
-</span></span><span style="display:flex;"><span>        sc.<span style="color:#a6e22e">register</span>(selector, SelectionKey.<span style="color:#a6e22e">OP_READ</span>, <span style="color:#66d9ef">null</span>);
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Register client [{}] with {}&#34;</span>, sc.<span style="color:#a6e22e">getRemoteAddress</span>(), name);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">register</span><span style="color:#f92672">(</span>SocketChannel sc<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">(!</span>start<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            start <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+</span></span><span style="display:flex;"><span>            selector <span style="color:#f92672">=</span> Selector<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread<span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">name</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            thread<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Start selector and thread in {}&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        sc<span style="color:#f92672">.</span><span style="color:#a6e22e">configureBlocking</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        sc<span style="color:#f92672">.</span><span style="color:#a6e22e">register</span><span style="color:#f92672">(</span>selector<span style="color:#f92672">,</span> SelectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">OP_READ</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Register client [{}] with {}&#34;</span><span style="color:#f92672">,</span> sc<span style="color:#f92672">.</span><span style="color:#a6e22e">getRemoteAddress</span><span style="color:#f92672">(),</span> name<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>                log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{} is listening...&#34;</span>, name);
-</span></span><span style="display:flex;"><span>                selector.<span style="color:#a6e22e">select</span>();
-</span></span><span style="display:flex;"><span>                Iterator<span style="color:#f92672">&lt;</span>SelectionKey<span style="color:#f92672">&gt;</span> iterator <span style="color:#f92672">=</span> selector.<span style="color:#a6e22e">selectedKeys</span>().<span style="color:#a6e22e">iterator</span>();
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">while</span> (iterator.<span style="color:#a6e22e">hasNext</span>()) {
-</span></span><span style="display:flex;"><span>                    SelectionKey key <span style="color:#f92672">=</span> iterator.<span style="color:#a6e22e">next</span>();
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (key.<span style="color:#a6e22e">isReadable</span>()) {
-</span></span><span style="display:flex;"><span>                        SocketChannel sc <span style="color:#f92672">=</span> (SocketChannel) key.<span style="color:#a6e22e">channel</span>();
-</span></span><span style="display:flex;"><span>                        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Reading message from client [{}]&#34;</span>, sc.<span style="color:#a6e22e">getRemoteAddress</span>());
-</span></span><span style="display:flex;"><span>                        ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer.<span style="color:#a6e22e">allocate</span>(16);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;{} is listening...&#34;</span><span style="color:#f92672">,</span> name<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                selector<span style="color:#f92672">.</span><span style="color:#a6e22e">select</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                Iterator<span style="color:#f92672">&lt;</span>SelectionKey<span style="color:#f92672">&gt;</span> iterator <span style="color:#f92672">=</span> selector<span style="color:#f92672">.</span><span style="color:#a6e22e">selectedKeys</span><span style="color:#f92672">().</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                    SelectionKey key <span style="color:#f92672">=</span> iterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>key<span style="color:#f92672">.</span><span style="color:#a6e22e">isReadable</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                        SocketChannel sc <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>SocketChannel<span style="color:#f92672">)</span> key<span style="color:#f92672">.</span><span style="color:#a6e22e">channel</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                        log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Reading message from client [{}]&#34;</span><span style="color:#f92672">,</span> sc<span style="color:#f92672">.</span><span style="color:#a6e22e">getRemoteAddress</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>                        ByteBuffer buffer <span style="color:#f92672">=</span> ByteBuffer<span style="color:#f92672">.</span><span style="color:#a6e22e">allocate</span><span style="color:#f92672">(</span><span style="color:#ae81ff">16</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                        sc.<span style="color:#a6e22e">read</span>(buffer);
-</span></span><span style="display:flex;"><span>                        buffer.<span style="color:#a6e22e">flip</span>();
-</span></span><span style="display:flex;"><span>                        ByteBufferReader.<span style="color:#a6e22e">readAll</span>(<span style="color:#e6db74">&#34;Message: &#34;</span>, buffer);
-</span></span><span style="display:flex;"><span>                    }
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (IOException e) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>                        sc<span style="color:#f92672">.</span><span style="color:#a6e22e">read</span><span style="color:#f92672">(</span>buffer<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                        buffer<span style="color:#f92672">.</span><span style="color:#a6e22e">flip</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                        ByteBufferReader<span style="color:#f92672">.</span><span style="color:#a6e22e">readAll</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Message: &#34;</span><span style="color:#f92672">,</span> buffer<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>IOException e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">(</span>e<span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><ul>
 <li>Field
 <ul>

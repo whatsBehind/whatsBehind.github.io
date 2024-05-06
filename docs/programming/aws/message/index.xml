@@ -5,28 +5,43 @@
     <link>https://whatsBehind.github.io/docs/programming/aws/message/</link>
     <description>Recent content on What&#39;s Behind</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <atom:link href="https://whatsBehind.github.io/docs/programming/aws/message/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://whatsBehind.github.io/docs/programming/aws/message/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SNS</title>
       <link>https://whatsBehind.github.io/docs/programming/aws/message/sns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/aws/message/sns/</guid>
-      <description>Architecture # Pub-Sub Model # Publisher # Service or application that sends message to SNS Topic. SNS Topic allows multiple message publisher&#xA;SNS Topic # SNS uses topics to logically separate messages into channels&#xA;Fanout The Fanout scenario is when a message published to an SNS topic is replicated and pushed to multiple endpoints, such as Kinesis Data Firehose delivery streams, Amazon SQS queues, HTTP(S) endpoints, and Lambda functions. This allows for parallel asynchronous processing.</description>
+      <description>Architecture # Pub-Sub Model # Publisher # Service or application that sends message to SNS Topic. SNS Topic allows multiple message publisher
+SNS Topic # SNS uses topics to logically separate messages into channels
+Fanout The Fanout scenario is when a message published to an SNS topic is replicated and pushed to multiple endpoints, such as Kinesis Data Firehose delivery streams, Amazon SQS queues, HTTP(S) endpoints, and Lambda functions. This allows for parallel asynchronous processing.</description>
     </item>
+    
     <item>
       <title>SQS</title>
       <link>https://whatsBehind.github.io/docs/programming/aws/message/sqs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/aws/message/sqs/</guid>
-      <description>Architecture of SQS System # Three Main Components # Producers&#xA;Producers in above system are the identities who send message to SQS queue&#xA;SQS Queue&#xA;SQS Queue is a buffer that stores messages and decouples producers and consumers in the system&#xA;Consumers&#xA;Consumers are identities in the system poll message from SQS queue&#xA;How to Use SQS Queue # Producer sends message&#xA;Producer sens message to SQS Queue, and the message will be visible to all consumers</description>
+      <description>Architecture of SQS System # Three Main Components # Producers
+Producers in above system are the identities who send message to SQS queue
+SQS Queue
+SQS Queue is a buffer that stores messages and decouples producers and consumers in the system
+Consumers
+Consumers are identities in the system poll message from SQS queue
+How to Use SQS Queue # Producer sends message
+Producer sens message to SQS Queue, and the message will be visible to all consumers</description>
     </item>
+    
     <item>
       <title>EventBridge</title>
       <link>https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/</guid>
-      <description>What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.&#xA;Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data sources or event publishers are applications that publish data to the EventBridge.</description>
+      <description>What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.
+Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data sources or event publishers are applications that publish data to the EventBridge.</description>
     </item>
+    
   </channel>
 </rss>

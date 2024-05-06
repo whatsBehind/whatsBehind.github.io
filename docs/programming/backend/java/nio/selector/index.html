@@ -14,13 +14,13 @@ Key Features: # Multiplexing: A single selector can handle multiple channels. No
 <meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/" /><meta property="article:section" content="docs" />
 
 
-
 <title>Selector | What&#39;s Behind</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.a4d7c81f94cceba1eec8a032d3c64f45e227a45d769ce6a1bbad7ca174ef969c.js" integrity="sha256-pNfIH5TM66HuyKAy08ZPReInpF12nOahu618oXTvlpw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.4a7823b1dad75bd455859067d02c19cb0a007914fd0b742f0948b8ab4039a237.js" integrity="sha256-SngjsdrXW9RVhZBn0CwZywoAeRT9C3QvCUi4q0A5ojc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1105,6 +1105,19 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1251,35 +1264,35 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 <p>Below is the code example of server. Let&rsquo;s read the code line by line to understand how selector works</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Server</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> IOException {
-</span></span><span style="display:flex;"><span>        Selector selector <span style="color:#f92672">=</span> Selector.<span style="color:#a6e22e">open</span>();
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Create a selector&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Server</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        Selector selector <span style="color:#f92672">=</span> Selector<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Create a selector&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        ServerSocketChannel ssc <span style="color:#f92672">=</span> ServerSocketChannel.<span style="color:#a6e22e">open</span>();
-</span></span><span style="display:flex;"><span>        ssc.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">new</span> InetSocketAddress(9999));
-</span></span><span style="display:flex;"><span>        ssc.<span style="color:#a6e22e">configureBlocking</span>(<span style="color:#66d9ef">false</span>);
-</span></span><span style="display:flex;"><span>        ssc.<span style="color:#a6e22e">register</span>(selector, SelectionKey.<span style="color:#a6e22e">OP_ACCEPT</span>, <span style="color:#66d9ef">null</span>);
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Register ServerSocketChannel under selector&#34;</span>);
+</span></span><span style="display:flex;"><span>        ServerSocketChannel ssc <span style="color:#f92672">=</span> ServerSocketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>        ssc<span style="color:#f92672">.</span><span style="color:#a6e22e">bind</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> InetSocketAddress<span style="color:#f92672">(</span><span style="color:#ae81ff">9999</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>        ssc<span style="color:#f92672">.</span><span style="color:#a6e22e">configureBlocking</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        ssc<span style="color:#f92672">.</span><span style="color:#a6e22e">register</span><span style="color:#f92672">(</span>selector<span style="color:#f92672">,</span> SelectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">OP_ACCEPT</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>        log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Register ServerSocketChannel under selector&#34;</span><span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
-</span></span><span style="display:flex;"><span>            log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start selecting&#34;</span>);
-</span></span><span style="display:flex;"><span>            selector.<span style="color:#a6e22e">select</span>();
-</span></span><span style="display:flex;"><span>            log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Selected&#34;</span>);
-</span></span><span style="display:flex;"><span>            Iterator<span style="color:#f92672">&lt;</span>SelectionKey<span style="color:#f92672">&gt;</span> keyIterator <span style="color:#f92672">=</span> selector.<span style="color:#a6e22e">selectedKeys</span>().<span style="color:#a6e22e">iterator</span>();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(keyIterator.<span style="color:#a6e22e">hasNext</span>()) {
-</span></span><span style="display:flex;"><span>                SelectionKey key <span style="color:#f92672">=</span> keyIterator.<span style="color:#a6e22e">next</span>();
-</span></span><span style="display:flex;"><span>                ServerSocketChannel channel <span style="color:#f92672">=</span> (ServerSocketChannel) key.<span style="color:#a6e22e">channel</span>();
-</span></span><span style="display:flex;"><span>                SocketChannel sc <span style="color:#f92672">=</span> channel.<span style="color:#a6e22e">accept</span>();
-</span></span><span style="display:flex;"><span>                log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Connected to client {}&#34;</span>, sc.<span style="color:#a6e22e">getRemoteAddress</span>());
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Start selecting&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            selector<span style="color:#f92672">.</span><span style="color:#a6e22e">select</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Selected&#34;</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>            Iterator<span style="color:#f92672">&lt;</span>SelectionKey<span style="color:#f92672">&gt;</span> keyIterator <span style="color:#f92672">=</span> selector<span style="color:#f92672">.</span><span style="color:#a6e22e">selectedKeys</span><span style="color:#f92672">().</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span><span style="color:#f92672">(</span>keyIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">hasNext</span><span style="color:#f92672">())</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>                SelectionKey key <span style="color:#f92672">=</span> keyIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                ServerSocketChannel channel <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>ServerSocketChannel<span style="color:#f92672">)</span> key<span style="color:#f92672">.</span><span style="color:#a6e22e">channel</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                SocketChannel sc <span style="color:#f92672">=</span> channel<span style="color:#f92672">.</span><span style="color:#a6e22e">accept</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>                log<span style="color:#f92672">.</span><span style="color:#a6e22e">debug</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Connected to client {}&#34;</span><span style="color:#f92672">,</span> sc<span style="color:#f92672">.</span><span style="color:#a6e22e">getRemoteAddress</span><span style="color:#f92672">());</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
 </span></span></code></pre></div><ul>
 <li>
 <p>Create a <code>Selector</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Selector selector <span style="color:#f92672">=</span> Selector.<span style="color:#a6e22e">open</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Selector selector <span style="color:#f92672">=</span> Selector<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">();</span>
 </span></span></code></pre></div><p><img src="/docs/programming/backend/java/nio/selector/create-selector.png" alt="create-selector" /></p>
 <ul>
 <li>Here we create a new <code>Selector</code> which has two important collections, <code>keys</code> and <code>selectedKeys</code>. At this time, the two collections are still empty.</li>
@@ -1288,10 +1301,10 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
 <p>Register a channel with the selector</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ServerSocketChannel ssc <span style="color:#f92672">=</span> ServerSocketChannel.<span style="color:#a6e22e">open</span>();
-</span></span><span style="display:flex;"><span>ssc.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">new</span> InetSocketAddress(9999));
-</span></span><span style="display:flex;"><span>ssc.<span style="color:#a6e22e">configureBlocking</span>(<span style="color:#66d9ef">false</span>);
-</span></span><span style="display:flex;"><span>ssc.<span style="color:#a6e22e">register</span>(selector, SelectionKey.<span style="color:#a6e22e">OP_ACCEPT</span>, <span style="color:#66d9ef">null</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ServerSocketChannel ssc <span style="color:#f92672">=</span> ServerSocketChannel<span style="color:#f92672">.</span><span style="color:#a6e22e">open</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>ssc<span style="color:#f92672">.</span><span style="color:#a6e22e">bind</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> InetSocketAddress<span style="color:#f92672">(</span><span style="color:#ae81ff">9999</span><span style="color:#f92672">));</span>
+</span></span><span style="display:flex;"><span>ssc<span style="color:#f92672">.</span><span style="color:#a6e22e">configureBlocking</span><span style="color:#f92672">(</span><span style="color:#66d9ef">false</span><span style="color:#f92672">);</span>
+</span></span><span style="display:flex;"><span>ssc<span style="color:#f92672">.</span><span style="color:#a6e22e">register</span><span style="color:#f92672">(</span>selector<span style="color:#f92672">,</span> SelectionKey<span style="color:#f92672">.</span><span style="color:#a6e22e">OP_ACCEPT</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">);</span>
 </span></span></code></pre></div><p><img src="/docs/programming/backend/java/nio/selector/register-ssc.png" alt="register-ssc" /></p>
 <ul>
 <li>We create a new <code>ServerSocketChannel</code></li>
@@ -1302,8 +1315,8 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
 <p>Select channels with event</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>selector.<span style="color:#a6e22e">select</span>();
-</span></span><span style="display:flex;"><span>Iterator<span style="color:#f92672">&lt;</span>SelectionKey<span style="color:#f92672">&gt;</span> keyIterator <span style="color:#f92672">=</span> selector.<span style="color:#a6e22e">selectedKeys</span>().<span style="color:#a6e22e">iterator</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>selector<span style="color:#f92672">.</span><span style="color:#a6e22e">select</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>Iterator<span style="color:#f92672">&lt;</span>SelectionKey<span style="color:#f92672">&gt;</span> keyIterator <span style="color:#f92672">=</span> selector<span style="color:#f92672">.</span><span style="color:#a6e22e">selectedKeys</span><span style="color:#f92672">().</span><span style="color:#a6e22e">iterator</span><span style="color:#f92672">();</span>
 </span></span></code></pre></div><ul>
 <li>After invoking <code>select</code> method, the selector will monitor all registered channels. The method will be blocked here until channels have event</li>
 <li>Once channels have event happened, the selector will add those channels to another collection <code>selectedKeys</code></li>
@@ -1312,9 +1325,9 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
 <p>Handle channel operations</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>SelectionKey key <span style="color:#f92672">=</span> keyIterator.<span style="color:#a6e22e">next</span>();
-</span></span><span style="display:flex;"><span>ServerSocketChannel channel <span style="color:#f92672">=</span> (ServerSocketChannel) key.<span style="color:#a6e22e">channel</span>();
-</span></span><span style="display:flex;"><span>SocketChannel sc <span style="color:#f92672">=</span> channel.<span style="color:#a6e22e">accept</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>SelectionKey key <span style="color:#f92672">=</span> keyIterator<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>ServerSocketChannel channel <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>ServerSocketChannel<span style="color:#f92672">)</span> key<span style="color:#f92672">.</span><span style="color:#a6e22e">channel</span><span style="color:#f92672">();</span>
+</span></span><span style="display:flex;"><span>SocketChannel sc <span style="color:#f92672">=</span> channel<span style="color:#f92672">.</span><span style="color:#a6e22e">accept</span><span style="color:#f92672">();</span>
 </span></span></code></pre></div><ul>
 <li>Only one channel is registered under the selector, so I cast the channel to <code>ServerSocketChannel</code> and let it accept client&rsquo;s connection</li>
 </ul>
@@ -1327,24 +1340,24 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
 <p>Start the server</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>08:45:22.<span style="color:#a6e22e">261</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">selector_</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Create a selector
-</span></span><span style="display:flex;"><span>08:45:22.<span style="color:#a6e22e">268</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">selector_</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Register ServerSocketChannel under selector
-</span></span><span style="display:flex;"><span>08:45:22.<span style="color:#a6e22e">268</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">selector_</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Start selecting
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#ae81ff">08</span><span style="color:#f92672">:</span><span style="color:#ae81ff">45</span><span style="color:#f92672">:</span><span style="color:#ae81ff">22.261</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">selector_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Create a selector
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08</span><span style="color:#f92672">:</span><span style="color:#ae81ff">45</span><span style="color:#f92672">:</span><span style="color:#ae81ff">22.268</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">selector_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Register ServerSocketChannel under selector
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08</span><span style="color:#f92672">:</span><span style="color:#ae81ff">45</span><span style="color:#f92672">:</span><span style="color:#ae81ff">22.268</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">selector_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Start selecting
 </span></span></code></pre></div><ul>
 <li>The selector starts to monitor registered channels. <code>select</code> method is blocked until event happens in the channel</li>
 </ul>
 </li>
 <li>
 <p>ClientA connects</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>08:46:01.<span style="color:#a6e22e">420</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">selector_</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Selected
-</span></span><span style="display:flex;"><span>08:46:01.<span style="color:#a6e22e">421</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">selector_</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Connected to client <span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:47074
-</span></span><span style="display:flex;"><span>08:46:01.<span style="color:#a6e22e">422</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">selector_</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Start selecting
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#ae81ff">08</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">01.420</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">selector_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Selected
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">01.421</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">selector_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Connected to client <span style="color:#f92672">/</span><span style="color:#ae81ff">127.0.0.1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">47074</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">01.422</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">selector_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Start selecting
 </span></span></code></pre></div></li>
 <li>
 <p>ClientB connects</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>08:46:31.<span style="color:#a6e22e">762</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">selector_</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Selected
-</span></span><span style="display:flex;"><span>08:46:31.<span style="color:#a6e22e">762</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">selector_</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Connected to client <span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:47080
-</span></span><span style="display:flex;"><span>08:46:31.<span style="color:#a6e22e">762</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">selector_</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Start selecting
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#ae81ff">08</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">31.762</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">selector_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Selected
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">31.762</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">selector_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Connected to client <span style="color:#f92672">/</span><span style="color:#ae81ff">127.0.0.1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">47080</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">08</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">31.762</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com<span style="color:#f92672">.</span><span style="color:#a6e22e">whatsbehind</span><span style="color:#f92672">.</span><span style="color:#a6e22e">netty_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">nio</span><span style="color:#f92672">.</span><span style="color:#a6e22e">selector_</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> Start selecting
 </span></span></code></pre></div></li>
 </ul>
 </article>

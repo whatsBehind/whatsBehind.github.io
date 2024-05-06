@@ -6,14 +6,16 @@
     <description>Recent content on What&#39;s Behind</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Nov 2023 21:42:27 -0800</lastBuildDate>
-    <atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Nov 2023 21:42:27 -0800</lastBuildDate><atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tcp Socket</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/net/tcp-socket/</link>
       <pubDate>Sun, 19 Nov 2023 21:42:27 -0800</pubDate>
+      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/net/tcp-socket/</guid>
-      <description>What Is a Socket? # Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.&#xA;Cient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening.</description>
+      <description>What Is a Socket? # Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.
+Cient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening.</description>
     </item>
+    
   </channel>
 </rss>
