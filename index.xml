@@ -304,6 +304,17 @@ Key Features: # Multiplexing: A single selector can handle multiple channels. No
     </item>
     
     <item>
+      <title>Transactions</title>
+      <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</guid>
+      <description>Transaction # A transaction is a way for an application to group several reads and writes together into a logical unit. Either the entire transaction succeeds (commits) or it fails (aborts, rollbacks). This can eliminate partial failure&amp;ndash;i.e., the case where some operations succeed and some fail
+The Meaning of ACID # ACID, which stands for Atomicity, Consistency, Isolation, and Durability, are the safety guarantees provided by transactions
+Atomicity # Definition</description>
+    </item>
+    
+    <item>
       <title>Selector Read</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -16,5 +16,16 @@
 Advantages of Replication # Reduce Latency: To keep data geographically close to your users Increase Availability: To allow the system to continue working even if some of its parts have failed Increase Read Throughput: To scale out the number of machines that can serve read queries Principles of Replication # Data Consistency: Each node that stores a copy of the database is called a replica.</description>
     </item>
     
+    <item>
+      <title>Transactions</title>
+      <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</guid>
+      <description>Transaction # A transaction is a way for an application to group several reads and writes together into a logical unit. Either the entire transaction succeeds (commits) or it fails (aborts, rollbacks). This can eliminate partial failure&amp;ndash;i.e., the case where some operations succeed and some fail
+The Meaning of ACID # ACID, which stands for Atomicity, Consistency, Isolation, and Durability, are the safety guarantees provided by transactions
+Atomicity # Definition</description>
+    </item>
+    
   </channel>
 </rss>
