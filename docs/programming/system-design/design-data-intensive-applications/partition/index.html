@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Partition # In the context of databases, partitioning refers to the process of dividing a database or its elements into smaller, more manageable pieces called partitions. Each piece of data (each record, row, or document) belongs to an exact partition.
+The main benefit for partition is scalability. Different partitions can be placed on different nodes. Thus, a large dataset can be distributed across many disks, and the query loads can be distributed across many processors.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Partition" />
+<meta property="og:description" content="Partition # In the context of databases, partitioning refers to the process of dividing a database or its elements into smaller, more manageable pieces called partitions. Each piece of data (each record, row, or document) belongs to an exact partition.
+The main benefit for partition is scalability. Different partitions can be placed on different nodes. Thus, a large dataset can be distributed across many disks, and the query loads can be distributed across many processors." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/" /><meta property="article:section" content="docs" />
+
+
+<title>Partition | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.f710ba192424f5687f2f20b6f5aafaa55ce2c4ee9a58cc9df1b5cb252f0b2dd4.js" integrity="sha256-9xC6GSQk9Wh/LyC29ar6pVzixO6aWMyd8bXLJS8LLdQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="toggle"  />
+    <label for="section-7ce6fe0c65f837fcf676f1e6ecbf9947" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7844d228e6c88ae97cf5828b0d009769" class="toggle"  />
+    <label for="section-7844d228e6c88ae97cf5828b0d009769" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85e6d0a84cbb2566773c803dc893e0af" class="toggle"  />
+    <label for="section-85e6d0a84cbb2566773c803dc893e0af" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4d132fa86c191d313485f304ca9a1229" class="toggle"  />
+    <label for="section-4d132fa86c191d313485f304ca9a1229" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f8771c290018cde58e0ed5c89ae77e0d" class="toggle"  />
+    <label for="section-f8771c290018cde58e0ed5c89ae77e0d" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-51b21b1aa4706431f75da30c83254b65" class="toggle"  />
+    <label for="section-51b21b1aa4706431f75da30c83254b65" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-945932e727978560611817848680d393" class="toggle"  />
+    <label for="section-945932e727978560611817848680d393" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f0c638519ab658fe62f69bdee816bc0f" class="toggle"  />
+    <label for="section-f0c638519ab658fe62f69bdee816bc0f" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-088183d722984539ab998e788b15e2fd" class="toggle"  />
+    <label for="section-088183d722984539ab998e788b15e2fd" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3fb923816a079b91d0045c2bbe184452" class="toggle"  />
+    <label for="section-3fb923816a079b91d0045c2bbe184452" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eef785d90f032562151b69894191310f" class="toggle"  />
+    <label for="section-eef785d90f032562151b69894191310f" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-baafd18a53132bc7da781d43371b88b2" class="toggle"  />
+    <label for="section-baafd18a53132bc7da781d43371b88b2" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eee032ba51521b5a76ca688aa982a5cd" class="toggle"  />
+    <label for="section-eee032ba51521b5a76ca688aa982a5cd" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0de0223513b5941f61c65ed294def20" class="toggle"  />
+    <label for="section-c0de0223513b5941f61c65ed294def20" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0975d481e131cd3566df9e7779add732" class="toggle"  />
+    <label for="section-0975d481e131cd3566df9e7779add732" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-811d37783cbe9703bc6b3709e834ba31" class="toggle"  />
+    <label for="section-811d37783cbe9703bc6b3709e834ba31" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c91ba5e94a01028927e7fe8e471dfed6" class="toggle"  />
+    <label for="section-c91ba5e94a01028927e7fe8e471dfed6" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61b4842f6a6edc0699378637391b21b9" class="toggle"  />
+    <label for="section-61b4842f6a6edc0699378637391b21b9" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e97a896d4bd387a2bf56a2d56170f469" class="toggle"  />
+    <label for="section-e97a896d4bd387a2bf56a2d56170f469" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a857ab78df3a4e73796a54f21637c847" class="toggle"  />
+    <label for="section-a857ab78df3a4e73796a54f21637c847" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a31ff4733cd80cf4d5fd6176bfd38157" class="toggle"  />
+    <label for="section-a31ff4733cd80cf4d5fd6176bfd38157" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d83032c16586068a0402c6767f2442f" class="toggle"  />
+    <label for="section-2d83032c16586068a0402c6767f2442f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bb97be98433588b9dc24d06db2bc9121" class="toggle" checked />
+    <label for="section-bb97be98433588b9dc24d06db2bc9121" class="flex justify-between">
+      <a role="button" class="">System Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1a081e269409f312c6530031b235772b" class="toggle" checked />
+    <label for="section-1a081e269409f312c6530031b235772b" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/partition/" class="active">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0eacaeb7d45cd9d6d611e7abea975a63" class="toggle"  />
+    <label for="section-0eacaeb7d45cd9d6d611e7abea975a63" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Partition</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#partition">Partition</a>
+      <ul>
+        <li><a href="#partitioning-and-replication">Partitioning and Replication</a></li>
+        <li><a href="#partitioning-of-key-value-data">Partitioning of Key-Value Data</a></li>
+        <li><a href="#partitioning-by-key-range">Partitioning by Key Range</a>
+          <ul>
+            <li><a href="#even-distribution-vs-fast-query">Even Distribution V.S. Fast Query</a></li>
+            <li><a href="#partitioning-by-hash-of-key">Partitioning by Hash of Key</a></li>
+            <li><a href="#skewed-workloads-and-relieving-hot-spots">Skewed Workloads and Relieving Hot Spots</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#partitioning-and-secondary-indexes">Partitioning and Secondary Indexes</a>
+      <ul>
+        <li><a href="#secondary-index">Secondary Index</a></li>
+        <li><a href="#local-secondary-index">Local Secondary Index</a></li>
+        <li><a href="#global-secondary-index">Global Secondary Index</a></li>
+      </ul>
+    </li>
+    <li><a href="#rebalancing-partitions">Rebalancing Partitions</a>
+      <ul>
+        <li><a href="#strategies-for-rebalancing">Strategies for Rebalancing</a>
+          <ul>
+            <li><a href="#not-recommended-hash-mod-n">Not Recommended: Hash Mod N</a></li>
+            <li><a href="#fix-number-of-partitions">Fix Number of Partitions</a></li>
+            <li><a href="#dynamic-partitioning">Dynamic Partitioning</a></li>
+            <li><a href="#partitioning-proportionally-to-nodes">Partitioning Proportionally to Nodes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#request-routing">Request Routing</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="partition">
+  Partition
+  <a class="anchor" href="#partition">#</a>
+</h1>
+<p>In the context of databases, partitioning refers to the process of dividing a database or its elements into smaller, more manageable pieces called partitions. Each piece of data (each record, row, or document) belongs to an exact partition.</p>
+<p>The main benefit for partition is scalability. Different partitions can be placed on different nodes. Thus, a large dataset can be distributed across many disks, and the query loads can be distributed across many processors.</p>
+<h2 id="partitioning-and-replication">
+  Partitioning and Replication
+  <a class="anchor" href="#partitioning-and-replication">#</a>
+</h2>
+<p>Partitioning is usually combined with replication so that copies of each partition are stored on multiple nodes. This means that, even though each record belongs to exactly one partition, it may still be stored on several nodes for fault tolerance.</p>
+<h2 id="partitioning-of-key-value-data">
+  Partitioning of Key-Value Data
+  <a class="anchor" href="#partitioning-of-key-value-data">#</a>
+</h2>
+<p>Our goal of partitioning is to spread the data and the query load evenly across nodes.</p>
+<p>If the partitioning is unfair, some partitions would have more data or queries than others. A partition with disproportionately high load is called a <strong>hot spot</strong>.</p>
+<h2 id="partitioning-by-key-range">
+  Partitioning by Key Range
+  <a class="anchor" href="#partitioning-by-key-range">#</a>
+</h2>
+<p>One way of partitioning is to assign a continuous range of keys to each partition. If you know the boundaries between the ranges, you can easily determine which partition contains a given key. If you also know which partition is assigned to which node, then you can make your request directly to the appropriate node</p>
+<p>The ranges of keys are not necessarily evenly spaced, because your data may not be evenly distributed. In order to distribute the data evenly, the partition boundaries need to adapt to the data</p>
+<h3 id="even-distribution-vs-fast-query">
+  Even Distribution V.S. Fast Query
+  <a class="anchor" href="#even-distribution-vs-fast-query">#</a>
+</h3>
+<p>When partitioning a dataset, there is often a trade-off between achieving an even distribution of data and ensuring fast query performance.</p>
+<p><strong>Fast Query</strong></p>
+<ul>
+<li>Range Scans: Key range partitioning allows for efficient range scans. For instance, storing sensor data with timestamps as keys means that measurements within a specific time period are stored in contiguous partitions.</li>
+<li>Example: Queries for data within a month can be quickly executed as the relevant data is stored in a few partitions due to the sorted order of timestamps.</li>
+</ul>
+<p><strong>Even Distribution</strong></p>
+<ul>
+<li>Hot Spots: Key range partitioning can lead to hot spots where certain partitions become overloaded. This happens when all measurements within a time period are directed to a single node.</li>
+<li>Solution: To distribute data more evenly, the key can be prefixed with a sensor ID. This spreads the measurement data across multiple nodes, balancing the load more effectively.</li>
+<li>Trade-Off: While this approach improves data distribution and reduces hot spots, it complicates queries. Fetching data for multiple sensors within a time range now requires separate range queries for each sensor, potentially increasing query complexity and time.</li>
+</ul>
+<h3 id="partitioning-by-hash-of-key">
+  Partitioning by Hash of Key
+  <a class="anchor" href="#partitioning-by-hash-of-key">#</a>
+</h3>
+<p>Because of the risk of hot spots, many distributed datastores use a hash function to determine the partition for a given key. A good hash function takes skewed data and makes it uniformly distributed.</p>
+<p>Once you have a suitable hash function for keys, you can assign each partition a range of hashes, and every key whose hash falls within a partition&rsquo;s range will be stored in that partition</p>
+<p><strong>Lost</strong></p>
+<p>By using the hash of the key for partitioning we lose a nice property of key-range partitioning: the ability to do efficient range queries. Keys were once adjacent are now scattered across all the partitions, so their sort order is lost</p>
+<p><strong>Compound primary key</strong></p>
+<p>Compound primary key consists of several columns. First part of the key is called hashing key or partitioning key, which determines the partition. Other columns are used as an index for sorting the data. A query can&rsquo;t search for a range of values within the first column of a compound key, but if it specifies a fixed value for the first column, it can perform an efficient range scan over the other columns of the key</p>
+<h3 id="skewed-workloads-and-relieving-hot-spots">
+  Skewed Workloads and Relieving Hot Spots
+  <a class="anchor" href="#skewed-workloads-and-relieving-hot-spots">#</a>
+</h3>
+<p>As discussed, hashing a key to determine its partition can help reduce hot spots. However, it can’t avoid them entirely: in the extreme case where all reads and writes are for the same key, you still end up with all requests being routed to the same partition. For example, a celebrity with millions of followers in a social media application</p>
+<p>One solution is to add a random number to the beginning or end of the key. It could split the queries evenly to different partitions. However, that brings problem when reading data from those keys as you have to query the data from many partitions and then combine it</p>
+<h1 id="partitioning-and-secondary-indexes">
+  Partitioning and Secondary Indexes
+  <a class="anchor" href="#partitioning-and-secondary-indexes">#</a>
+</h1>
+<h2 id="secondary-index">
+  Secondary Index
+  <a class="anchor" href="#secondary-index">#</a>
+</h2>
+<p>A secondary index is an additional data structure that allows you to query the database more efficiently on columns other than the primary key.</p>
+<p>Assume you have a <code>employees</code> table with following columns</p>
+<ul>
+<li><code>employee_id</code> (Primary Key)</li>
+<li><code>name</code></li>
+<li><code>department</code></li>
+<li><code>salary</code></li>
+<li><code>hire_date</code></li>
+</ul>
+<p><strong>Without Secondary Index</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> employees <span style="color:#66d9ef">WHERE</span> department <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Sales&#39;</span>;
+</span></span></code></pre></div><p>Without a secondary index, the database might have to perform a full table scan, checking each row to find matches for the department column. This can be inefficient, especially for large tables</p>
+<p><strong>With Secondary Index</strong></p>
+<p>You can create a secondary index for <code>department</code> column. Database will create an additional data structure that maps department names to the rows where they appear. When you run the same query, the database can use the secondary index to quickly locate rows whose <code>department</code> is <code>Sales</code> without scanning the entire table</p>
+<p><strong>Data Structure</strong></p>
+<p>You can conceptually think the data structure of secondary index as</p>
+<p><code>Map&lt;column_value, List&lt;row_pointer&gt;&gt;</code></p>
+<ul>
+<li>
+<p>Secondary index key: the value of the column that the secondary index is based on. For example, distinct department names</p>
+</li>
+<li>
+<p>List of rows: the index maintains a list of <em><strong>POINTERS</strong></em> (not rows) to the rows in the table where the column value matches the key. These pointers could be row ID or primary key values that uniquely identify each row</p>
+</li>
+</ul>
+<h2 id="local-secondary-index">
+  Local Secondary Index
+  <a class="anchor" href="#local-secondary-index">#</a>
+</h2>
+<p>A local secondary index is a type of secondary index in partitioned databases where the index is partitioned in the same manner as the base table. Each partition of the index corresponds directly to a partition of the base table, and the index entries within each partition only reference the rows within that partition.</p>
+<p><strong>Disadvantages of Local Indexes</strong></p>
+<p>Secondary index query could be expensive when you need to access data distributed across many or all partitions. For example, the employee table is partitioned by primary key <code>employee_id</code>, and you create a local index for <code>department</code>. When you need to query all employees whose department is <code>Sales</code>, you need to query all partitions</p>
+<h2 id="global-secondary-index">
+  Global Secondary Index
+  <a class="anchor" href="#global-secondary-index">#</a>
+</h2>
+<p>Global secondary index covers entire database regardless how the database is partitioned. That means the index entries can reference rows across multiple partitions</p>
+<p><strong>Partitioning Global Secondary Index</strong></p>
+<p>Global secondary indexes (GSIs) can also be partitioned. When a global secondary index is partitioned, it means that the index itself is divided into smaller segments or partitions, each of which can be managed independently. This allows the index to scale more effectively with the underlying data and distribute the indexing loads across multiple nodes.</p>
+<p><strong>Index update overheads</strong></p>
+<p>The downside of a global index is that writes are slower and more complex, because a write to a single row or document may affect multiple partitions of the index (a table has many secondary indexes and different secondary index entries may in different partitions)</p>
+<p>In practice, updates to global secondary indexes are often asynchronous. That won&rsquo;t increase write latency, but the index may not be up-to-date</p>
+<h1 id="rebalancing-partitions">
+  Rebalancing Partitions
+  <a class="anchor" href="#rebalancing-partitions">#</a>
+</h1>
+<p>The process of moving loads from one node in the cluster to another is called rebalancing.</p>
+<p><strong>Minimum Requirements of Rebalancing</strong></p>
+<ul>
+<li>
+<p>After rebalancing, the loads (data storage, read and write requests) should be shared fairly between the nodes in the cluster</p>
+</li>
+<li>
+<p>While rebalancing is happening, the database should continue accepting reads and writes</p>
+</li>
+<li>
+<p>No more data than necessary should be moved between nodes</p>
+</li>
+</ul>
+<h2 id="strategies-for-rebalancing">
+  Strategies for Rebalancing
+  <a class="anchor" href="#strategies-for-rebalancing">#</a>
+</h2>
+<h3 id="not-recommended-hash-mod-n">
+  Not Recommended: Hash Mod N
+  <a class="anchor" href="#not-recommended-hash-mod-n">#</a>
+</h3>
+<p>Assume we have N nodes. <code>Hash(key)</code> mod N would return a number between 0 and N-1. We can number nodes from 0 to N-1, and then use mod to assign the key to corresponding node.</p>
+<p>The problem with mod N approach is that if the number of nodes N changes, most of the keys will need to be moved from one node to another node (including both existing nodes and new nodes). Such frequent moves make rebalancing excessively expensive.</p>
+<p>This approach moves data around more than necessary.</p>
+<h3 id="fix-number-of-partitions">
+  Fix Number of Partitions
+  <a class="anchor" href="#fix-number-of-partitions">#</a>
+</h3>
+<p>Create many more partitions than nodes, and assign several partitions to each node. For example, we have 10 nodes, and we create 100 partitions, and assign 10 partitions to each node.</p>
+<p>If a new node is added to the cluster, the new node can <em>&ldquo;steal&rdquo;</em> a few partitions from every existing nodes until partitions are fairly distributed once again.</p>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/partition/fix-number-partitions.png" alt="fix-number-partitions" /></p>
+<ul>
+<li>
+<p>In this configuration, it’s possible to split and merge partitions, but a fixed number of partitions is operationally simpler, so many fixed-partition databases choose not to implement partition splitting.</p>
+</li>
+<li>
+<p>Thus, the number of partitions configured at the outset is the maximum number of nodes you can have, so you need to choose it high enough to accommodate future growth.</p>
+</li>
+<li>
+<p>Each partition contains a fixed fraction of the total data, the size of each partition grows proportionally to the total amount of data in the cluster. If partitions are very large, rebalancing and recovery from node failures become expensive.</p>
+</li>
+<li>
+<p>However, each partition also has management overhead, so it’s counterproductive to choose too high a number.</p>
+</li>
+</ul>
+<h3 id="dynamic-partitioning">
+  Dynamic Partitioning
+  <a class="anchor" href="#dynamic-partitioning">#</a>
+</h3>
+<p>For databases that use key range partitioning, a fixed number of partitions with fixed boundaries would be very inconvenient when you need to reconfigure the partition boundaries</p>
+<p>Dynamic partitioning would split a partition exceeding a configured size into two partitions and merge shrunk partitions into one partition.</p>
+<p>Each partition is assigned to one node, and each node can handle multiple partitions. After a large partition has been split, one of its two halves can be transferred to another node in order to balance the load.</p>
+<p>Dynamic partitioning is not only suitable for key range-partitioned data, but can equally well be used with hash-partitioned data.</p>
+<h3 id="partitioning-proportionally-to-nodes">
+  Partitioning Proportionally to Nodes
+  <a class="anchor" href="#partitioning-proportionally-to-nodes">#</a>
+</h3>
+<p>With dynamic partitioning, the number of partitions is proportional to the size of the dataset, since the splitting and merging processes keep the size of each partition between some fixed minimum and maximum. On the other hand, with a fixed number of partitions, the size of each partition is proportional to the size of the dataset. In both of these cases, the number of partitions is independent of the number of nodes.</p>
+<p>A third option is to make the number of partitions proportional to the number of nodes &ndash; in other words, to have fixed number of partitions per node.</p>
+<ul>
+<li>
+<p>The size of each partition grows proportionally to the dataset size while the number of nodes remains unchanged</p>
+</li>
+<li>
+<p>When you increase the number of nodes, the partitions become smaller again</p>
+</li>
+</ul>
+<p><strong>New Node Joins</strong></p>
+<p>When a new node joins the cluster, it randomly chooses a fixed number of existing partitions to split, and then takes ownership of on half of each of those split partitions while leaving the other half of each partition in place</p>
+<h1 id="request-routing">
+  Request Routing
+  <a class="anchor" href="#request-routing">#</a>
+</h1>
+<p><strong>Service Discover</strong>: When a client wants to make a request, how does it know which node to connect to?</p>
+<ol>
+<li>
+<p>Allow clients to send the request to any node, and the node either handles the request directly or forward it to appropriate node</p>
+</li>
+<li>
+<p>Send all requests from clients to a routing layer, like load balancer</p>
+</li>
+<li>
+<p>Require that clients be aware of the partitioning and the assignment of partitions to nodes. In this case, clients can connect directly to the appropriate node</p>
+</li>
+</ol>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/partition/request-routing.png" alt="request-routing" /></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#partition">Partition</a>
+      <ul>
+        <li><a href="#partitioning-and-replication">Partitioning and Replication</a></li>
+        <li><a href="#partitioning-of-key-value-data">Partitioning of Key-Value Data</a></li>
+        <li><a href="#partitioning-by-key-range">Partitioning by Key Range</a>
+          <ul>
+            <li><a href="#even-distribution-vs-fast-query">Even Distribution V.S. Fast Query</a></li>
+            <li><a href="#partitioning-by-hash-of-key">Partitioning by Hash of Key</a></li>
+            <li><a href="#skewed-workloads-and-relieving-hot-spots">Skewed Workloads and Relieving Hot Spots</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#partitioning-and-secondary-indexes">Partitioning and Secondary Indexes</a>
+      <ul>
+        <li><a href="#secondary-index">Secondary Index</a></li>
+        <li><a href="#local-secondary-index">Local Secondary Index</a></li>
+        <li><a href="#global-secondary-index">Global Secondary Index</a></li>
+      </ul>
+    </li>
+    <li><a href="#rebalancing-partitions">Rebalancing Partitions</a>
+      <ul>
+        <li><a href="#strategies-for-rebalancing">Strategies for Rebalancing</a>
+          <ul>
+            <li><a href="#not-recommended-hash-mod-n">Not Recommended: Hash Mod N</a></li>
+            <li><a href="#fix-number-of-partitions">Fix Number of Partitions</a></li>
+            <li><a href="#dynamic-partitioning">Dynamic Partitioning</a></li>
+            <li><a href="#partitioning-proportionally-to-nodes">Partitioning Proportionally to Nodes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#request-routing">Request Routing</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

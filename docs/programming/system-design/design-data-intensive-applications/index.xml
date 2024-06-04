@@ -17,6 +17,16 @@ Advantages of Replication # Reduce Latency: To keep data geographically close to
     </item>
     
     <item>
+      <title>Partition</title>
+      <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</guid>
+      <description>Partition # In the context of databases, partitioning refers to the process of dividing a database or its elements into smaller, more manageable pieces called partitions. Each piece of data (each record, row, or document) belongs to an exact partition.
+The main benefit for partition is scalability. Different partitions can be placed on different nodes. Thus, a large dataset can be distributed across many disks, and the query loads can be distributed across many processors.</description>
+    </item>
+    
+    <item>
       <title>Transactions</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
