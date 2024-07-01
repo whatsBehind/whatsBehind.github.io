@@ -4,490 +4,331 @@
     <title>What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/</link>
     <description>Recent content on What&#39;s Behind</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Nov 2023 21:26:33 -0800</lastBuildDate><atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Nov 2023 21:26:33 -0800</lastBuildDate>
+    <atom:link href="https://whatsBehind.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Online Chat</title>
       <link>https://whatsBehind.github.io/docs/programming/project/online-chat/</link>
       <pubDate>Sun, 26 Nov 2023 21:26:33 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/project/online-chat/</guid>
-      <description>Demo # GitHub
-High Level Architecture # This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.
-The system now supports below features:
-Login Pull online users Online chat Logoff Because of supports for push and pull modes, features like
-Upload/Download files Group chat can be easily added in the system.</description>
+      <description>Demo # GitHub&#xA;High Level Architecture # This is an online chat system built with BIO (Blocking IO) Using Java. Each client has two socket connections with the server, one connection supports message push mode and another one supports message pull mode.&#xA;The system now supports below features:&#xA;Login Pull online users Online chat Logoff Because of supports for push and pull modes, features like&#xA;Upload/Download files Group chat can be easily added in the system.</description>
     </item>
-    
     <item>
       <title>Start Thread</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</link>
       <pubDate>Sun, 12 Nov 2023 22:25:15 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</guid>
-      <description>Main Lesson # Java threads are crucial for executing multiple tasks concurrently in a program. Let&amp;rsquo;s dive into this topic:
-What is a Thread in Java? 🧵
-In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻
-There are two ways to create a thread: By extending the Thread class.</description>
+      <description>Main Lesson # Java threads are crucial for executing multiple tasks concurrently in a program. Let&amp;rsquo;s dive into this topic:&#xA;What is a Thread in Java? 🧵&#xA;In Java, a thread is the smallest unit of execution within a process. Think of it like a worker who performs a part of a larger task. Creating a Thread 💻&#xA;There are two ways to create a thread: By extending the Thread class.</description>
     </item>
-    
     <item>
       <title>Asymmetric Encryption</title>
       <link>https://whatsBehind.github.io/docs/programming/web/security/asymmetric-encryption/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/web/security/asymmetric-encryption/</guid>
-      <description>What Is Asymmetric Encryption? # Asymmetric encryption, also known as public-key encryption, is a method of encrypting data that involves two separate keys: a public key and a private key. These keys are mathematically linked but not identical, hence the term &amp;ldquo;asymmetric.&amp;rdquo; This method provides a secure way of encrypting and decrypting information, and it&amp;rsquo;s widely used in various forms of digital communication and security protocols
-How Does It Work?</description>
+      <description>What Is Asymmetric Encryption? # Asymmetric encryption, also known as public-key encryption, is a method of encrypting data that involves two separate keys: a public key and a private key. These keys are mathematically linked but not identical, hence the term &amp;ldquo;asymmetric.&amp;rdquo; This method provides a secure way of encrypting and decrypting information, and it&amp;rsquo;s widely used in various forms of digital communication and security protocols&#xA;How Does It Work?</description>
     </item>
-    
     <item>
       <title>Byte Buffer</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</guid>
-      <description>Introduction # Java ByteBuffer is a class in Java&amp;rsquo;s java.nio package. It&amp;rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘
-ByteBuffer can be used in two modes:
-Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.</description>
+      <description>Introduction # Java ByteBuffer is a class in Java&amp;rsquo;s java.nio package. It&amp;rsquo;s used for reading and writing data to and from buffers efficiently. Buffers are blocks of memory that can store data temporarily. ByteBuffer is particularly useful when dealing with I/O operations and for high-performance applications. 📘&#xA;ByteBuffer can be used in two modes:&#xA;Read Mode: You can read data from the buffer. 💡 Write Mode: You can write data to the buffer.</description>
     </item>
-    
     <item>
       <title>CloudFormation</title>
       <link>https://whatsBehind.github.io/docs/programming/aws/cloudformation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/aws/cloudformation/</guid>
-      <description>CloudFormation # Resources # Resource Type Reference
-Resources Introduction
-Syntax # Resources: Logical ID: Type: Resource type Properties: Set of properties Logical ID: A unique logical ID for that resource, which can be referenced by other parts in the template
-Resource Type: An identifier of the resource that you are declaring
-Resource Type Reference Resource Properties: Additional options that you can specify for a resource
-Parameters (Optional) # Guide Parameters allow you to input custom values for your template.</description>
+      <description>CloudFormation # Resources # Resource Type Reference&#xA;Resources Introduction&#xA;Syntax # Resources: Logical ID: Type: Resource type Properties: Set of properties Logical ID: A unique logical ID for that resource, which can be referenced by other parts in the template&#xA;Resource Type: An identifier of the resource that you are declaring&#xA;Resource Type Reference Resource Properties: Additional options that you can specify for a resource&#xA;Parameters (Optional) # Guide Parameters allow you to input custom values for your template.</description>
     </item>
-    
     <item>
       <title>DNS</title>
       <link>https://whatsBehind.github.io/docs/programming/network/dns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/network/dns/</guid>
-      <description>What Is DNS? # DNS, which stands for Domain Name System, is a fundamental component of the internet&amp;rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like www.example.com) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.
-Hierarchy of Domain Names # Root Level Domain: The root level is the highest level in the DNS hierarchy and is represented by a dot (.</description>
+      <description>What Is DNS? # DNS, which stands for Domain Name System, is a fundamental component of the internet&amp;rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like www.example.com) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.&#xA;Hierarchy of Domain Names # Root Level Domain: The root level is the highest level in the DNS hierarchy and is represented by a dot (.</description>
     </item>
-    
     <item>
       <title>EventLoop &amp; EventLoopGroup</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</guid>
-      <description>EventLoop &amp;amp; EventLoopGroup # EventLoop # What is an EventLoop?
-An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.
-How does EventLoop work?
-Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.</description>
+      <description>EventLoop &amp;amp; EventLoopGroup # EventLoop # What is an EventLoop?&#xA;An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.&#xA;How does EventLoop work?&#xA;Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.</description>
     </item>
-    
     <item>
       <title>How Is Python File Executed</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/</guid>
-      <description>Concepts # __name__ # __name__ is a built-in variable (attribute) of a module. It is being used to indicate if a module is being run directly or being imported into other modules
-Value when module is running directly: When you run a Python module directly, __name__ of this module is set to __main__
-Value when module is imported: When the module is imported into others modules, __name__ is set to the module name (file name w/o .</description>
+      <description>Concepts # __name__ # __name__ is a built-in variable (attribute) of a module. It is being used to indicate if a module is being run directly or being imported into other modules&#xA;Value when module is running directly: When you run a Python module directly, __name__ of this module is set to __main__&#xA;Value when module is imported: When the module is imported into others modules, __name__ is set to the module name (file name w/o .</description>
     </item>
-    
     <item>
       <title>KMS</title>
       <link>https://whatsBehind.github.io/docs/programming/aws/security/kms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/aws/security/kms/</guid>
-      <description>What is KMS? # AWS Key Management Service is a full management service to generate and manage encryption keys
-Key Concepts # Customer Master Key (CMK) # CMKs are primary resources created and managed by KMS. It&amp;rsquo;s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data.</description>
+      <description>What is KMS? # AWS Key Management Service is a full management service to generate and manage encryption keys&#xA;Key Concepts # Customer Master Key (CMK) # CMKs are primary resources created and managed by KMS. It&amp;rsquo;s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data.</description>
     </item>
-    
     <item>
       <title>Metric &amp; Log</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/</guid>
-      <description>Introduction # Metrics and logs are important for a service. They help to monitor the health of a service and can also be used to debug when service goes down or crashes. This post won&amp;rsquo;t discuss importance of monitoring system but focuses on how to design a monitoring system in your host
-Requirements # Upload Data to A Web Monitoring System # Logs are records of code execution that are stored somewhere in your host.</description>
+      <description>Introduction # Metrics and logs are important for a service. They help to monitor the health of a service and can also be used to debug when service goes down or crashes. This post won&amp;rsquo;t discuss importance of monitoring system but focuses on how to design a monitoring system in your host&#xA;Requirements # Upload Data to A Web Monitoring System # Logs are records of code execution that are stored somewhere in your host.</description>
     </item>
-    
+    <item>
+      <title>Text Processing and Searching</title>
+      <link>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/</guid>
+      <description>grep # Introduction to grep # grep stands for &amp;ldquo;Global Regular Expression Print.&amp;rdquo; It is a powerful command-line utility used for searching plain-text data for lines that match a regular expression. grep is widely used for searching specific patterns within files and outputting the matching lines.&#xA;Basic Syntax # grep [options] pattern [file...] pattern: The string or regular expression to search for. [file...]: The file(s) to search. If no files are specified, grep searches the input provided from the standard input.</description>
+    </item>
     <item>
       <title>Blocking Mode</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</guid>
-      <description>Blocking Mode # This post will introduce the blocking mode of network connection and communication in Java code. We will first wirte both server and client codes. Then demo the blocking mode and its problems.
-Code Example # Server
-@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); // Create server ServerSocketChannel ssc = ServerSocketChannel.open(); // Server listens to port 9999 at local host ssc.</description>
+      <description>Blocking Mode # This post will introduce the blocking mode of network connection and communication in Java code. We will first wirte both server and client codes. Then demo the blocking mode and its problems.&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); // Create server ServerSocketChannel ssc = ServerSocketChannel.open(); // Server listens to port 9999 at local host ssc.</description>
     </item>
-    
     <item>
       <title>Channel &amp; ChannelFuture</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</guid>
-      <description>Concept # What is Channel? # Definition
-A Channel in Netty represents an open network connection, such as a socket. It&amp;rsquo;s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.
-Role
-Data Communication: A Channel is used for reading data from and writing data to the network. State Management: It keeps track of the state of a network connection (e.g., whether it&amp;rsquo;s open, connected, etc.</description>
+      <description>Concept # What is Channel? # Definition&#xA;A Channel in Netty represents an open network connection, such as a socket. It&amp;rsquo;s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.&#xA;Role&#xA;Data Communication: A Channel is used for reading data from and writing data to the network. State Management: It keeps track of the state of a network connection (e.g., whether it&amp;rsquo;s open, connected, etc.</description>
     </item>
-    
     <item>
       <title>Common Methods</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/common-methods/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/common-methods/</guid>
       <description>Common Methods of Java Thread # Sleep(long millis) # Static method that causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds. If a thread is sleeping, its state is changed to TIMED_WAITING Sleep method could be interrupted by calling interrupt(). After interruption, sleep throws InterruptedException, and thread state is changed to RUNNABLE Example # Code Thread t1 = new Thread(() -&amp;gt; { try { Thread.</description>
     </item>
-    
     <item>
       <title>DNS Hands On</title>
       <link>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</guid>
-      <description>Introduction # In dns post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain google.com. Also, I will introduce a new concept record in domain name server
-Environment and Tools # I will use CLI dig to query domain name server in Linux system</description>
+      <description>Introduction # In dns post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain google.com. Also, I will introduce a new concept record in domain name server&#xA;Environment and Tools # I will use CLI dig to query domain name server in Linux system</description>
     </item>
-    
     <item>
       <title>Load Balancer</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/load-balancer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/system-design/load-balancer/</guid>
       <description>Why Load Balancer? # Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&amp;rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also.</description>
     </item>
-    
     <item>
       <title>Node Js Auth</title>
       <link>https://whatsBehind.github.io/docs/programming/project/node-js-auth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/project/node-js-auth/</guid>
-      <description>Introduction # This project is for learning purpose. It is a practice of
-how to use JWT (Json Web Token) to authenticate user login with Google using OAuth2 Tech Stack # Node.js Express: Quickly start a local host MongoDB/Mongoose: Database to store users @hapi/joi: Package to validate parameters of objects bcryptjs: Hash confidential information including passwords in this project jsonwebtoken: JWT package to sign and verify a auth token axios: Send HTTP requests querystring: Package to parse and assembly query string in HTTP request Reference # Implement JWT using node.</description>
+      <description>Introduction # This project is for learning purpose. It is a practice of&#xA;how to use JWT (Json Web Token) to authenticate user login with Google using OAuth2 Tech Stack # Node.js Express: Quickly start a local host MongoDB/Mongoose: Database to store users @hapi/joi: Package to validate parameters of objects bcryptjs: Hash confidential information including passwords in this project jsonwebtoken: JWT package to sign and verify a auth token axios: Send HTTP requests querystring: Package to parse and assembly query string in HTTP request Reference # Implement JWT using node.</description>
     </item>
-    
     <item>
       <title>Replication</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/replication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/replication/</guid>
-      <description>Definition # Replication means keeping a copy of the same data on multiple machines that are connected via a network.
-Advantages of Replication # Reduce Latency: To keep data geographically close to your users Increase Availability: To allow the system to continue working even if some of its parts have failed Increase Read Throughput: To scale out the number of machines that can serve read queries Principles of Replication # Data Consistency: Each node that stores a copy of the database is called a replica.</description>
+      <description>Definition # Replication means keeping a copy of the same data on multiple machines that are connected via a network.&#xA;Advantages of Replication # Reduce Latency: To keep data geographically close to your users Increase Availability: To allow the system to continue working even if some of its parts have failed Increase Read Throughput: To scale out the number of machines that can serve read queries Principles of Replication # Data Consistency: Each node that stores a copy of the database is called a replica.</description>
     </item>
-    
     <item>
       <title>SNS</title>
       <link>https://whatsBehind.github.io/docs/programming/aws/message/sns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/aws/message/sns/</guid>
-      <description>Architecture # Pub-Sub Model # Publisher # Service or application that sends message to SNS Topic. SNS Topic allows multiple message publisher
-SNS Topic # SNS uses topics to logically separate messages into channels
-Fanout The Fanout scenario is when a message published to an SNS topic is replicated and pushed to multiple endpoints, such as Kinesis Data Firehose delivery streams, Amazon SQS queues, HTTP(S) endpoints, and Lambda functions. This allows for parallel asynchronous processing.</description>
+      <description>Architecture # Pub-Sub Model # Publisher # Service or application that sends message to SNS Topic. SNS Topic allows multiple message publisher&#xA;SNS Topic # SNS uses topics to logically separate messages into channels&#xA;Fanout The Fanout scenario is when a message published to an SNS topic is replicated and pushed to multiple endpoints, such as Kinesis Data Firehose delivery streams, Amazon SQS queues, HTTP(S) endpoints, and Lambda functions. This allows for parallel asynchronous processing.</description>
     </item>
-    
     <item>
       <title>SQS</title>
       <link>https://whatsBehind.github.io/docs/programming/aws/message/sqs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/aws/message/sqs/</guid>
-      <description>Architecture of SQS System # Three Main Components # Producers
-Producers in above system are the identities who send message to SQS queue
-SQS Queue
-SQS Queue is a buffer that stores messages and decouples producers and consumers in the system
-Consumers
-Consumers are identities in the system poll message from SQS queue
-How to Use SQS Queue # Producer sends message
-Producer sens message to SQS Queue, and the message will be visible to all consumers</description>
+      <description>Architecture of SQS System # Three Main Components # Producers&#xA;Producers in above system are the identities who send message to SQS queue&#xA;SQS Queue&#xA;SQS Queue is a buffer that stores messages and decouples producers and consumers in the system&#xA;Consumers&#xA;Consumers are identities in the system poll message from SQS queue&#xA;How to Use SQS Queue # Producer sends message&#xA;Producer sens message to SQS Queue, and the message will be visible to all consumers</description>
     </item>
-    
     <item>
       <title>TLS Handshake</title>
       <link>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</guid>
-      <description>TLS/SSL and HTTPS # TLS (Transport Layer Security) and its predecessor, SSL (Secure Sockets Layer), are integral to HTTPS, which stands for Hypertext Transfer Protocol Secure. HTTPS is the secure version of HTTP, the primary protocol used for transmitting web pages over the internet. This post will introduce the process of TLS handshake, and the TLS version is TLS 1.2
-TLS Handshake # Client to Server: ClientHello
-The client starts the handshake by sending a ClientHello message.</description>
+      <description>TLS/SSL and HTTPS # TLS (Transport Layer Security) and its predecessor, SSL (Secure Sockets Layer), are integral to HTTPS, which stands for Hypertext Transfer Protocol Secure. HTTPS is the secure version of HTTP, the primary protocol used for transmitting web pages over the internet. This post will introduce the process of TLS handshake, and the TLS version is TLS 1.2&#xA;TLS Handshake # Client to Server: ClientHello&#xA;The client starts the handshake by sending a ClientHello message.</description>
     </item>
-    
     <item>
       <title>Thread Lifecycle</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</link>
       <pubDate>Sun, 12 Nov 2023 23:12:57 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</guid>
-      <description>Six Java Thread States # NEW State:
-When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:
-When you invoke the start() method, the thread moves to the RUNNABLE state In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running A RUNNABLE state means the thread is either running on the CPU or waiting for Scheduler to allocate CPU resource BLOCKED State:</description>
+      <description>Six Java Thread States # NEW State:&#xA;When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:&#xA;When you invoke the start() method, the thread moves to the RUNNABLE state In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running A RUNNABLE state means the thread is either running on the CPU or waiting for Scheduler to allocate CPU resource BLOCKED State:</description>
     </item>
-    
     <item>
       <title>EventBridge</title>
       <link>https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/</guid>
-      <description>What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.
-Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data sources or event publishers are applications that publish data to the EventBridge.</description>
+      <description>What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.&#xA;Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data sources or event publishers are applications that publish data to the EventBridge.</description>
     </item>
-    
     <item>
       <title>Partition</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</guid>
-      <description>Partition # In the context of databases, partitioning refers to the process of dividing a database or its elements into smaller, more manageable pieces called partitions. Each piece of data (each record, row, or document) belongs to an exact partition.
-The main benefit for partition is scalability. Different partitions can be placed on different nodes. Thus, a large dataset can be distributed across many disks, and the query loads can be distributed across many processors.</description>
+      <description>Partition # In the context of databases, partitioning refers to the process of dividing a database or its elements into smaller, more manageable pieces called partitions. Each piece of data (each record, row, or document) belongs to an exact partition.&#xA;The main benefit for partition is scalability. Different partitions can be placed on different nodes. Thus, a large dataset can be distributed across many disks, and the query loads can be distributed across many processors.</description>
     </item>
-    
     <item>
       <title>Pipeline &amp; Handler</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</guid>
-      <description>Handler # Role # A Handler in Netty is a component that contains the business logic for processing inbound and outbound data as well as various network (channel) events.
-Types # ChannelInboundHandler:
-Purpose: Deals with inbound data and events. It processes incoming data and reacts to channel events Key Methods: channelRead, channelActive, channelInactive, channelRegistered, channelUnregistered. Usage: You override these methods to perform actions like reading data from a network socket, reacting to channel activation or deactivation, etc.</description>
+      <description>Handler # Role # A Handler in Netty is a component that contains the business logic for processing inbound and outbound data as well as various network (channel) events.&#xA;Types # ChannelInboundHandler:&#xA;Purpose: Deals with inbound data and events. It processes incoming data and reacts to channel events Key Methods: channelRead, channelActive, channelInactive, channelRegistered, channelUnregistered. Usage: You override these methods to perform actions like reading data from a network socket, reacting to channel activation or deactivation, etc.</description>
     </item>
-    
     <item>
       <title>Session vs Token</title>
       <link>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</guid>
-      <description>Introduction # Both sessions and tokens are used for user authentication and maintaining user state across multiple HTTP requests in a web application.
-Process # Session-Based Authentication Process # 1-2: User Login Attempt
-The user submits their login credentials (usually username and password) through the client (e.g., a web browser). 3-4: Credentials Verification
-The server receives the credentials and verifies them against its user database or authentication source. 5-6: Session Creation</description>
+      <description>Introduction # Both sessions and tokens are used for user authentication and maintaining user state across multiple HTTP requests in a web application.&#xA;Process # Session-Based Authentication Process # 1-2: User Login Attempt&#xA;The user submits their login credentials (usually username and password) through the client (e.g., a web browser). 3-4: Credentials Verification&#xA;The server receives the credentials and verifies them against its user database or authentication source. 5-6: Session Creation</description>
     </item>
-    
     <item>
       <title>Unblocking Mode</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</guid>
-      <description>Unblocking Mode # In last post, we discussed blocking mode and its problems. In this post, we will discuss unblocking mode and its problems
-Code Example # Server
-@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); ServerSocketChannel ssc = ServerSocketChannel.open(); ssc.bind(new InetSocketAddress(9999)); ssc.configureBlocking(false); List&amp;lt;SocketChannel&amp;gt; channels = new ArrayList&amp;lt;&amp;gt;(); while (true) { log.debug(&amp;#34;Server connecting&amp;#34;); SocketChannel sc = ssc.accept(); if (sc != null) { log.</description>
+      <description>Unblocking Mode # In last post, we discussed blocking mode and its problems. In this post, we will discuss unblocking mode and its problems&#xA;Code Example # Server&#xA;@Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); ServerSocketChannel ssc = ServerSocketChannel.open(); ssc.bind(new InetSocketAddress(9999)); ssc.configureBlocking(false); List&amp;lt;SocketChannel&amp;gt; channels = new ArrayList&amp;lt;&amp;gt;(); while (true) { log.debug(&amp;#34;Server connecting&amp;#34;); SocketChannel sc = ssc.accept(); if (sc != null) { log.</description>
     </item>
-    
     <item>
       <title>Synchronization</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</link>
       <pubDate>Mon, 13 Nov 2023 08:30:17 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</guid>
       <description>Thread Interference # Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.</description>
     </item>
-    
     <item>
       <title>Selector</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</guid>
-      <description>Selector in Java NIO # A Selector in Java NIO is a special type of object that can check one or more NIO channels and determine which channels are ready for data operations (such as reading or writing). This is crucial in scenarios like servers handling multiple client connections.
-Key Features: # Multiplexing: A single selector can handle multiple channels. Non-blocking Mode: Channels registered with a selector are usually in non-blocking mode.</description>
+      <description>Selector in Java NIO # A Selector in Java NIO is a special type of object that can check one or more NIO channels and determine which channels are ready for data operations (such as reading or writing). This is crucial in scenarios like servers handling multiple client connections.&#xA;Key Features: # Multiplexing: A single selector can handle multiple channels. Non-blocking Mode: Channels registered with a selector are usually in non-blocking mode.</description>
     </item>
-    
     <item>
       <title>Transactions</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</guid>
-      <description>Transaction # A transaction is a way for an application to group several reads and writes together into a logical unit. Either the entire transaction succeeds (commits) or it fails (aborts, rollbacks). This can eliminate partial failure&amp;ndash;i.e., the case where some operations succeed and some fail
-The Meaning of ACID # ACID, which stands for Atomicity, Consistency, Isolation, and Durability, are the safety guarantees provided by transactions
-Atomicity # Definition</description>
+      <description>Transaction # A transaction is a way for an application to group several reads and writes together into a logical unit. Either the entire transaction succeeds (commits) or it fails (aborts, rollbacks). This can eliminate partial failure&amp;ndash;i.e., the case where some operations succeed and some fail&#xA;The Meaning of ACID # ACID, which stands for Atomicity, Consistency, Isolation, and Durability, are the safety guarantees provided by transactions&#xA;Atomicity # Definition</description>
     </item>
-    
     <item>
       <title>Selector Read</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</guid>
-      <description>Read Operation in Selector # In last post, we discussed Selector and how it works, also introduced an interested operation OP_ACCEPT. In this post, I will introduce another interested operation OP_READ and how to gracefully read data from SocketChannel and handle closed socket channels
-Server Code # @Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); Selector selector = Selector.open(); log.debug(&amp;#34;Create a selector&amp;#34;); ServerSocketChannel ssc = ServerSocketChannel.</description>
+      <description>Read Operation in Selector # In last post, we discussed Selector and how it works, also introduced an interested operation OP_ACCEPT. In this post, I will introduce another interested operation OP_READ and how to gracefully read data from SocketChannel and handle closed socket channels&#xA;Server Code # @Slf4j public class Server { public static void main(String[] args) throws IOException { ByteBuffer buffer = ByteBuffer.allocate(32); Selector selector = Selector.open(); log.debug(&amp;#34;Create a selector&amp;#34;); ServerSocketChannel ssc = ServerSocketChannel.</description>
     </item>
-    
     <item>
       <title>Thread Safety</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-safety/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-safety/</guid>
       <description> Example and Best Practice # Shared Mutable State # Unsafe Use public class Counter { private int count = 0; public void increment() { count++; } public int getCount() { return count; } } Better Practice public class Counter { private int count = 0; public synchronized void increment() { count++; } public synchronized int getCount() { return count; } } - Adding `synchronized` on the methods ensure each method </description>
     </item>
-    
     <item>
       <title>I/O  Model Summary</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</guid>
-      <description>I/O Model # We have discussed some I/O models, like blocking I/O model and non-blocking I/O model. These two I/O models have their own problems which are low efficient.
-Then I introduce another I/O model Multiplexing which utilizes Selector to monitor registered keys and handle operations in a batch. This model provides high efficiency and handles multiple operations like accept (client connection) and read concurrently.
-In this post, I will introduce two more I/O models, synchronous and asynchronous.</description>
+      <description>I/O Model # We have discussed some I/O models, like blocking I/O model and non-blocking I/O model. These two I/O models have their own problems which are low efficient.&#xA;Then I introduce another I/O model Multiplexing which utilizes Selector to monitor registered keys and handle operations in a batch. This model provides high efficiency and handles multiple operations like accept (client connection) and read concurrently.&#xA;In this post, I will introduce two more I/O models, synchronous and asynchronous.</description>
     </item>
-    
     <item>
       <title>Multiple Threads</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/</guid>
-      <description>In our previous posts of using Selector for connection and communication (read/write) between server and clients, we only utilize only one thread. Multiplexing is highly efficient, but some time-consumed tasks would affect the overall performance.
-In this post, I will mimic some functions from Netty which allocates tasks to different threads to improve the performance
-Component # We will focus on the components in the server side
-Boss # Boss runs under one thread Boss maintains one selector which only listens to ACCEPT events, in other words, boss is only responsible to accept client connections Worker # Worker runs in a separate thread Each worker has one selector which listens to READ and WRITE events After client&amp;rsquo;s connection, the newly created SocketChannel will be registered with one worker Architecture # Connect</description>
+      <description>In our previous posts of using Selector for connection and communication (read/write) between server and clients, we only utilize only one thread. Multiplexing is highly efficient, but some time-consumed tasks would affect the overall performance.&#xA;In this post, I will mimic some functions from Netty which allocates tasks to different threads to improve the performance&#xA;Component # We will focus on the components in the server side&#xA;Boss # Boss runs under one thread Boss maintains one selector which only listens to ACCEPT events, in other words, boss is only responsible to accept client connections Worker # Worker runs in a separate thread Each worker has one selector which listens to READ and WRITE events After client&amp;rsquo;s connection, the newly created SocketChannel will be registered with one worker Architecture # Connect</description>
     </item>
-    
     <item>
       <title>Tcp Socket</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/net/tcp-socket/</link>
       <pubDate>Sun, 19 Nov 2023 21:42:27 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/net/tcp-socket/</guid>
-      <description>What Is a Socket? # Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.
-Cient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening.</description>
+      <description>What Is a Socket? # Server socket listens to a port Normally, a server runs on a specific computer and has a socket that is bound to a specific port number. The server just waits, listening to the socket for a client to make a connection request.&#xA;Cient connects to the server with server ip and port On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening.</description>
     </item>
-    
     <item>
       <title>Decorator Pattern in Java IO</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/</link>
       <pubDate>Thu, 16 Nov 2023 23:12:49 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/</guid>
-      <description>Node Streams (Low-Level Streams) # Definition:
-Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.
-File file = new File(&amp;#34;example.txt&amp;#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file &amp;ldquo;example.txt&amp;rdquo;. It&amp;rsquo;s a direct connection between the Java program and the file.</description>
+      <description>Node Streams (Low-Level Streams) # Definition:&#xA;Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.&#xA;File file = new File(&amp;#34;example.txt&amp;#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file &amp;ldquo;example.txt&amp;rdquo;. It&amp;rsquo;s a direct connection between the Java program and the file.</description>
     </item>
-    
     <item>
       <title>ObjectInputStream and ObjectOutputStream</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/object-input-and-output-stream/</link>
       <pubDate>Thu, 16 Nov 2023 23:10:58 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/object-input-and-output-stream/</guid>
-      <description>This post will introduce two new processing streams, ObjectInputStream and ObjectOutputStream, which are used to deserialize and serialize objects and primitive data.
-ObjectInputStream # Purpose: To deserialize objects and primitive data written using ObjectOutputStream. It allows you to read bytes from a source (like a file or network socket) and reconstructs objects from those bytes.
-Key Features: Processing stream: reads serialized objects from an underlying InputStream.
-Common Use Case: Commonly used in networking (for sending objects across a network) or for persisting objects to files.</description>
+      <description>This post will introduce two new processing streams, ObjectInputStream and ObjectOutputStream, which are used to deserialize and serialize objects and primitive data.&#xA;ObjectInputStream # Purpose: To deserialize objects and primitive data written using ObjectOutputStream. It allows you to read bytes from a source (like a file or network socket) and reconstructs objects from those bytes.&#xA;Key Features: Processing stream: reads serialized objects from an underlying InputStream.&#xA;Common Use Case: Commonly used in networking (for sending objects across a network) or for persisting objects to files.</description>
     </item>
-    
     <item>
       <title>Stream Reader: Bridge of Byte and Char</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/</link>
       <pubDate>Thu, 16 Nov 2023 23:02:33 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/</guid>
-      <description>There are two special readers in Java IO package, they are InputStreamReader and OutputStreamWriter which serve as bridge between byte data and character data
-InputStreamReader # Important constructor
-public class InputStreamReader extends Reader { public InputStreamReader(InputStream in, Charset cs); } Key feature (Bridge from byte to char)
-Character Encoding: Data stored in files or transmitted over networks is often in the form of bytes. When such data represents text, it needs to be decoded using a specific character encoding (like UTF-8, ISO-8859-1, etc.</description>
+      <description>There are two special readers in Java IO package, they are InputStreamReader and OutputStreamWriter which serve as bridge between byte data and character data&#xA;InputStreamReader # Important constructor&#xA;public class InputStreamReader extends Reader { public InputStreamReader(InputStream in, Charset cs); } Key feature (Bridge from byte to char)&#xA;Character Encoding: Data stored in files or transmitted over networks is often in the form of bytes. When such data represents text, it needs to be decoded using a specific character encoding (like UTF-8, ISO-8859-1, etc.</description>
     </item>
-    
     <item>
       <title>Java IO Stream</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/io-stream/</link>
       <pubDate>Wed, 15 Nov 2023 16:43:55 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/io-stream/</guid>
       <description>What is stream? # Java Input/OutputStream and Reader/Writer are essential components of the Java I/O (Input/Output) library, designed to facilitate reading and writing data in various forms from different sources within Java applications. These classes serve as a bridge between your application and external data sources, making it easier to perform I/O operations efficiently and consistently. In this post, we will explore what Input/OutputStream and Reader/Writer are, their relationships, and how they classify based on the type of data and data source.</description>
     </item>
-    
     <item>
       <title>Java File</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/file/</link>
       <pubDate>Wed, 15 Nov 2023 15:42:12 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/file/</guid>
-      <description>The File class in Java, found in the java.io package, is not used for file content manipulation (reading/writing) but for file and directory pathnames operations. It&amp;rsquo;s used to obtain or manipulate the information associated with a file or directory, such as metadata, permissions, and path details.
-Commonly Used APIs in File Class for Files and Directories # File Handling # Create a New File
-createNewFile(): Creates a new file if it does not exist.</description>
+      <description>The File class in Java, found in the java.io package, is not used for file content manipulation (reading/writing) but for file and directory pathnames operations. It&amp;rsquo;s used to obtain or manipulate the information associated with a file or directory, such as metadata, permissions, and path details.&#xA;Commonly Used APIs in File Class for Files and Directories # File Handling # Create a New File&#xA;createNewFile(): Creates a new file if it does not exist.</description>
     </item>
-    
     <item>
       <title>Reflection</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/reflection/</link>
       <pubDate>Tue, 07 Nov 2023 07:19:23 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/reflection/</guid>
-      <description>Introduction to Java Reflection # Java Reflection is a powerful feature that allows runtime introspection of classes, objects, and their members. It enables Java programs to manipulate internal properties and methods of classes dynamically. Reflection is especially useful in scenarios where the program needs to interact with classes and objects whose properties are not known at compile time.
-Class Object # The heart of Java&amp;rsquo;s reflection mechanism. It&amp;rsquo;s an instance that represents classes and interfaces in a running Java application.</description>
+      <description>Introduction to Java Reflection # Java Reflection is a powerful feature that allows runtime introspection of classes, objects, and their members. It enables Java programs to manipulate internal properties and methods of classes dynamically. Reflection is especially useful in scenarios where the program needs to interact with classes and objects whose properties are not known at compile time.&#xA;Class Object # The heart of Java&amp;rsquo;s reflection mechanism. It&amp;rsquo;s an instance that represents classes and interfaces in a running Java application.</description>
     </item>
-    
     <item>
       <title>Linux Manual</title>
       <link>https://whatsBehind.github.io/docs/programming/os/linux/linux-manual/</link>
       <pubDate>Tue, 31 Oct 2023 08:47:07 -0700</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/os/linux/linux-manual/</guid>
-      <description>Vim: Three Modes # Normal mode Insert mode Command mode Command Mode # Type : to enter.
-w (write): save. q: quit. x (==wq): save and quit. set nu: show line numbers. set nonu: do not show line numbers. Normal Mode # y (yank): copy. p: paste. 5yy: copy 4 lines. dd: delete. 4dd: delete 4 lines. /word_to_search + Enter: search a word. n: next. G: last line. gg (go to the top&amp;hellip;): first line.</description>
+      <description>Vim: Three Modes # Normal mode Insert mode Command mode Command Mode # Type : to enter.&#xA;w (write): save. q: quit. x (==wq): save and quit. set nu: show line numbers. set nonu: do not show line numbers. Normal Mode # y (yank): copy. p: paste. 5yy: copy 4 lines. dd: delete. 4dd: delete 4 lines. /word_to_search + Enter: search a word. n: next. G: last line. gg (go to the top&amp;hellip;): first line.</description>
     </item>
-    
     <item>
       <title>CORS</title>
       <link>https://whatsBehind.github.io/docs/programming/web/glossary/cors/</link>
       <pubDate>Mon, 30 Oct 2023 08:44:30 -0700</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/web/glossary/cors/</guid>
-      <description>What&amp;rsquo;s CORS # CORS is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image img.jpg from origin images.com, if you don&amp;rsquo;t have CORS set properly, you can&amp;rsquo;t access the img.jpg from other origins like yourOrigin.com.
-Why needs CORS # CORS is mainly for security usage. Image that your browser stores credential cookies of domain bank.com which is the website of you bank account, and a hacking website hacking.</description>
+      <description>What&amp;rsquo;s CORS # CORS is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image img.jpg from origin images.com, if you don&amp;rsquo;t have CORS set properly, you can&amp;rsquo;t access the img.jpg from other origins like yourOrigin.com.&#xA;Why needs CORS # CORS is mainly for security usage. Image that your browser stores credential cookies of domain bank.com which is the website of you bank account, and a hacking website hacking.</description>
     </item>
-    
     <item>
       <title>Web Storage Api</title>
       <link>https://whatsBehind.github.io/docs/programming/web/web-api/web-storage-api/</link>
       <pubDate>Fri, 27 Oct 2023 08:11:22 -0700</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/web/web-api/web-storage-api/</guid>
-      <description>Definition # The Web Storage API provides mechanisms by which browsers can store key/value pairs
-Source code # These mechanisms are available via the Window.sessionStorage and Window.localStorage properties (to be more precise, the Window object implements the WindowLocalStorage and WindowSessionStorage objects, which the localStorage and sessionStorage properties hang off) — invoking one of these will create an instance of the Storage object, through which data items can be set, retrieved and removed.</description>
+      <description>Definition # The Web Storage API provides mechanisms by which browsers can store key/value pairs&#xA;Source code # These mechanisms are available via the Window.sessionStorage and Window.localStorage properties (to be more precise, the Window object implements the WindowLocalStorage and WindowSessionStorage objects, which the localStorage and sessionStorage properties hang off) — invoking one of these will create an instance of the Storage object, through which data items can be set, retrieved and removed.</description>
     </item>
-    
     <item>
       <title>Cookie</title>
       <link>https://whatsBehind.github.io/docs/programming/web/http/cookie/</link>
       <pubDate>Fri, 27 Oct 2023 08:10:45 -0700</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/web/http/cookie/</guid>
       <description>What is cookie # An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user&amp;rsquo;s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.</description>
     </item>
-    
     <item>
       <title>Set Up Hugo in Git Hub Pages</title>
       <link>https://whatsBehind.github.io/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</link>
       <pubDate>Sun, 22 Oct 2023 11:53:02 -0700</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</guid>
       <description>Create a repository to hold the source code of your blogs # Create a repository of Git Hub Pages # Create a new Hugo project in your local machine # cd ~/Projects hugo new site &amp;lt;site name&amp;gt; cd &amp;lt;site name&amp;gt; git init git remote add origin &amp;lt;repository URL of your blogs&amp;gt; git add . git commit -m &amp;#34;Initiate a new hugo project&amp;#34; git push origin main Choose theme for your blog site # Navigate to Hugo theme website Down your favorite theme to directory ~/Projects/&amp;lt;site name&amp;gt;/themes Modify your config file baseURL = &amp;#34;https://&amp;lt;URL of your Git Hub Pages&amp;gt;/&amp;#34; languageCode = &amp;#34;en-us&amp;#34; title = &amp;#34;&amp;lt;website name&amp;gt;&amp;#34; theme = &amp;#34;&amp;lt;theme name&amp;gt;&amp;#34; Run hugo server to check if everything in your local host is expected Add Git Hub Pages repository as submodule of your source repository # cd ~/Projects/&amp;lt;site name&amp;gt; git submodule add -b main &amp;lt;URL of your Git Hub Pages&amp;gt; public # Generate static resouce in public directory hugo cd public git add .</description>
     </item>
-    
   </channel>
 </rss>

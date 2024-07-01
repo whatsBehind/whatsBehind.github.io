@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="High Level Tradeoffs # Availability vs Consistency # CAP theorem # Consistency - Every read receives the most recent write or an error Availability - Every request receives a response, without guarantee that it contains the most recent version of the information Partition Tolerance - The system continues to operate despite arbitrary partitioning due to network failures
+We need to prioritize consistency and availability when a network partition happens.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/programming/system-design/outline/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Outline">
+  <meta property="og:description" content="High Level Tradeoffs # Availability vs Consistency # CAP theorem # Consistency - Every read receives the most recent write or an error Availability - Every request receives a response, without guarantee that it contains the most recent version of the information Partition Tolerance - The system continues to operate despite arbitrary partitioning due to network failures
+We need to prioritize consistency and availability when a network partition happens.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Outline | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="http://localhost:1313/docs/programming/system-design/outline/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.9def0eb90ff915c83e9b20468399ee65f3d52bd4f490caaae8b3caf5a818ba2c.js" integrity="sha256-ne8OuQ/5Fcg&#43;myBGg5nuZfPVK9T0kMqq6LPK9agYuiw=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eca28b761422c4017b94002a44eae355" class="toggle"  />
+    <label for="section-eca28b761422c4017b94002a44eae355" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0ef9353eeeaaa2e712636b20cef819bd" class="toggle"  />
+    <label for="section-0ef9353eeeaaa2e712636b20cef819bd" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6d661aeeb5f983714eda94738c952867" class="toggle"  />
+    <label for="section-6d661aeeb5f983714eda94738c952867" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/nio/" class="">NIO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/hidden/" class="">Hidden</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/partial-sticking-packets/" class="">Partial Sticking Packets</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b996168529cd69f060de2ebed180d38e" class="toggle"  />
+    <label for="section-b996168529cd69f060de2ebed180d38e" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c52490d9096abcb758f801b4ee7eca56" class="toggle"  />
+    <label for="section-c52490d9096abcb758f801b4ee7eca56" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e24e7d8d92b6a9f48fae63ed1f8e476c" class="toggle"  />
+    <label for="section-e24e7d8d92b6a9f48fae63ed1f8e476c" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-700f7fbf6d3aaecb4ab38c518403c448" class="toggle"  />
+    <label for="section-700f7fbf6d3aaecb4ab38c518403c448" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce3689c52c4ddd4486357e6ce0409f7" class="toggle"  />
+    <label for="section-7ce3689c52c4ddd4486357e6ce0409f7" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c94bdc48cc72a10f9750698bd760b496" class="toggle"  />
+    <label for="section-c94bdc48cc72a10f9750698bd760b496" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e532608ee91345a4a35cfb45ce211d1" class="toggle"  />
+    <label for="section-0e532608ee91345a4a35cfb45ce211d1" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ed5523c642ad46d1578230786a8db5d" class="toggle"  />
+    <label for="section-7ed5523c642ad46d1578230786a8db5d" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-efb1407d62e73a8a817711e3fba4de9c" class="toggle"  />
+    <label for="section-efb1407d62e73a8a817711e3fba4de9c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1a3a25c54274eb9ddf23020bba0cdbfb" class="toggle"  />
+    <label for="section-1a3a25c54274eb9ddf23020bba0cdbfb" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e0b6d6801838f2b3dd490821e43524a7" class="toggle"  />
+    <label for="section-e0b6d6801838f2b3dd490821e43524a7" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-71f41ee591103342b6c17608020c2cb3" class="toggle"  />
+    <label for="section-71f41ee591103342b6c17608020c2cb3" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f5e221e70b8f0e9ab5d58bace04b60b" class="toggle"  />
+    <label for="section-2f5e221e70b8f0e9ab5d58bace04b60b" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85860536baf35c0d2e30b2f54dce7ab8" class="toggle"  />
+    <label for="section-85860536baf35c0d2e30b2f54dce7ab8" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ac646c5ee24949b9e8c3a07548f95ea4" class="toggle"  />
+    <label for="section-ac646c5ee24949b9e8c3a07548f95ea4" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9bbc07e9cf5a3dd1f0670b58cc26fe7d" class="toggle"  />
+    <label for="section-9bbc07e9cf5a3dd1f0670b58cc26fe7d" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9a57184de34a650b7e802c8a3175c764" class="toggle"  />
+    <label for="section-9a57184de34a650b7e802c8a3175c764" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-973779c9194adc86298e028d295f6f5e" class="toggle"  />
+    <label for="section-973779c9194adc86298e028d295f6f5e" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1655a5eb0fd2d3d2770bffd5cb198b50" class="toggle"  />
+    <label for="section-1655a5eb0fd2d3d2770bffd5cb198b50" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-76769177bd065f12742ea50362a7ab48" class="toggle"  />
+    <label for="section-76769177bd065f12742ea50362a7ab48" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cc8252e831d02a7053a71a00d99d1ee" class="toggle"  />
+    <label for="section-8cc8252e831d02a7053a71a00d99d1ee" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c77786c61c4d41dd20c5b2d72a718a0f" class="toggle" checked />
+    <label for="section-c77786c61c4d41dd20c5b2d72a718a0f" class="flex justify-between">
+      <a role="button" class="">System Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/outline/" class="active">Outline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-264f85fc5494c4e02ddec05bf36defa3" class="toggle"  />
+    <label for="section-264f85fc5494c4e02ddec05bf36defa3" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a8ea8d01186e9944288c4a6ce6c90b2c" class="toggle"  />
+    <label for="section-a8ea8d01186e9944288c4a6ce6c90b2c" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Outline</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#high-level-tradeoffs">High Level Tradeoffs</a>
+          <ul>
+            <li><a href="#availability-vs-consistency">Availability vs Consistency</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="high-level-tradeoffs">
+  High Level Tradeoffs
+  <a class="anchor" href="#high-level-tradeoffs">#</a>
+</h2>
+<h3 id="availability-vs-consistency">
+  Availability vs Consistency
+  <a class="anchor" href="#availability-vs-consistency">#</a>
+</h3>
+<h4 id="cap-theorem">
+  CAP theorem
+  <a class="anchor" href="#cap-theorem">#</a>
+</h4>
+<p>Consistency - Every read receives the most recent write or an error
+Availability - Every request receives a response, without guarantee that it contains the most recent version of the information
+Partition Tolerance - The system continues to operate despite arbitrary partitioning due to network failures</p>
+<p>We need to prioritize consistency and availability when a network partition happens.</p>
+<p>Q: What is network partition?
+A: Some nodes (servers) in the distributed system that are down.</p>
+<p>Q: Why consistency and availability are contradictory?
+A: Consider the case that latest data was written to one server, and right after the write operation, the server is down. Then data in all other nodes are stale. A client query the system for the data, and we have two options here:</p>
+<ol>
+<li>One is to wait until the network partition is resolved. In other words, the server that holds the latest data is back</li>
+<li>Return the data from other node, although the data is stale</li>
+</ol>
+<p>The first option is regarding consistency and second option is regarding availability</p>
+<p><a href="http://ksat.me/a-plain-english-introduction-to-cap-theorem">A plain english introduction to CAP Theorem</a>
+<a href="https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#availability-vs-consistency">Availability vs Consistency</a></p>
+<h4 id="consistency-patterns">
+  Consistency Patterns
+  <a class="anchor" href="#consistency-patterns">#</a>
+</h4>
+<ul>
+<li>
+<p>Weak consistency</p>
+</li>
+<li>
+<p>Eventual consistency</p>
+</li>
+<li>
+<p>Strong consistency</p>
+</li>
+</ul>
+<p>To Be Dived Deeper: Different consistency patterns have their suitable systems and applications. Figure out which pattern is applicable to what systems</p>
+<h4 id="availability-patterns">
+  Availability Patterns
+  <a class="anchor" href="#availability-patterns">#</a>
+</h4>
+<ul>
+<li>
+<p>Failover</p>
+</li>
+<li>
+<p>Replication</p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#high-level-tradeoffs">High Level Tradeoffs</a>
+          <ul>
+            <li><a href="#availability-vs-consistency">Availability vs Consistency</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

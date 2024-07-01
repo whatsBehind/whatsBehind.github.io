@@ -4,7 +4,8 @@
     <title>Tags on What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/tags/</link>
     <description>Recent content in Tags on What&#39;s Behind</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://whatsBehind.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -4,38 +4,29 @@
     <title>What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/</link>
     <description>Recent content on What&#39;s Behind</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Replication</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/replication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/replication/</guid>
-      <description>Definition # Replication means keeping a copy of the same data on multiple machines that are connected via a network.
-Advantages of Replication # Reduce Latency: To keep data geographically close to your users Increase Availability: To allow the system to continue working even if some of its parts have failed Increase Read Throughput: To scale out the number of machines that can serve read queries Principles of Replication # Data Consistency: Each node that stores a copy of the database is called a replica.</description>
+      <description>Definition # Replication means keeping a copy of the same data on multiple machines that are connected via a network.&#xA;Advantages of Replication # Reduce Latency: To keep data geographically close to your users Increase Availability: To allow the system to continue working even if some of its parts have failed Increase Read Throughput: To scale out the number of machines that can serve read queries Principles of Replication # Data Consistency: Each node that stores a copy of the database is called a replica.</description>
     </item>
-    
     <item>
       <title>Partition</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</guid>
-      <description>Partition # In the context of databases, partitioning refers to the process of dividing a database or its elements into smaller, more manageable pieces called partitions. Each piece of data (each record, row, or document) belongs to an exact partition.
-The main benefit for partition is scalability. Different partitions can be placed on different nodes. Thus, a large dataset can be distributed across many disks, and the query loads can be distributed across many processors.</description>
+      <description>Partition # In the context of databases, partitioning refers to the process of dividing a database or its elements into smaller, more manageable pieces called partitions. Each piece of data (each record, row, or document) belongs to an exact partition.&#xA;The main benefit for partition is scalability. Different partitions can be placed on different nodes. Thus, a large dataset can be distributed across many disks, and the query loads can be distributed across many processors.</description>
     </item>
-    
     <item>
       <title>Transactions</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</guid>
-      <description>Transaction # A transaction is a way for an application to group several reads and writes together into a logical unit. Either the entire transaction succeeds (commits) or it fails (aborts, rollbacks). This can eliminate partial failure&amp;ndash;i.e., the case where some operations succeed and some fail
-The Meaning of ACID # ACID, which stands for Atomicity, Consistency, Isolation, and Durability, are the safety guarantees provided by transactions
-Atomicity # Definition</description>
+      <description>Transaction # A transaction is a way for an application to group several reads and writes together into a logical unit. Either the entire transaction succeeds (commits) or it fails (aborts, rollbacks). This can eliminate partial failure&amp;ndash;i.e., the case where some operations succeed and some fail&#xA;The Meaning of ACID # ACID, which stands for Atomicity, Consistency, Isolation, and Durability, are the safety guarantees provided by transactions&#xA;Atomicity # Definition</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,42 +4,29 @@
     <title>What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/</link>
     <description>Recent content on What&#39;s Behind</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/netty/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/netty/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>EventLoop &amp; EventLoopGroup</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</guid>
-      <description>EventLoop &amp;amp; EventLoopGroup # EventLoop # What is an EventLoop?
-An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.
-How does EventLoop work?
-Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.</description>
+      <description>EventLoop &amp;amp; EventLoopGroup # EventLoop # What is an EventLoop?&#xA;An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.&#xA;How does EventLoop work?&#xA;Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.</description>
     </item>
-    
     <item>
       <title>Channel &amp; ChannelFuture</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</guid>
-      <description>Concept # What is Channel? # Definition
-A Channel in Netty represents an open network connection, such as a socket. It&amp;rsquo;s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.
-Role
-Data Communication: A Channel is used for reading data from and writing data to the network. State Management: It keeps track of the state of a network connection (e.g., whether it&amp;rsquo;s open, connected, etc.</description>
+      <description>Concept # What is Channel? # Definition&#xA;A Channel in Netty represents an open network connection, such as a socket. It&amp;rsquo;s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.&#xA;Role&#xA;Data Communication: A Channel is used for reading data from and writing data to the network. State Management: It keeps track of the state of a network connection (e.g., whether it&amp;rsquo;s open, connected, etc.</description>
     </item>
-    
     <item>
       <title>Pipeline &amp; Handler</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</guid>
-      <description>Handler # Role # A Handler in Netty is a component that contains the business logic for processing inbound and outbound data as well as various network (channel) events.
-Types # ChannelInboundHandler:
-Purpose: Deals with inbound data and events. It processes incoming data and reacts to channel events Key Methods: channelRead, channelActive, channelInactive, channelRegistered, channelUnregistered. Usage: You override these methods to perform actions like reading data from a network socket, reacting to channel activation or deactivation, etc.</description>
+      <description>Handler # Role # A Handler in Netty is a component that contains the business logic for processing inbound and outbound data as well as various network (channel) events.&#xA;Types # ChannelInboundHandler:&#xA;Purpose: Deals with inbound data and events. It processes incoming data and reacts to channel events Key Methods: channelRead, channelActive, channelInactive, channelRegistered, channelUnregistered. Usage: You override these methods to perform actions like reading data from a network socket, reacting to channel activation or deactivation, etc.</description>
     </item>
-    
   </channel>
 </rss>

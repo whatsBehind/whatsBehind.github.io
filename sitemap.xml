@@ -24,6 +24,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</loc>
@@ -73,22 +75,25 @@
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/</loc>
-    <lastmod>2023-11-26T21:26:33-08:00</lastmod>
+    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/</loc>
-    <lastmod>2023-11-26T21:26:33-08:00</lastmod>
+    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/</loc>
+    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/</loc>
+    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/</loc>
+    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/</loc>
+    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/project/</loc>
     <lastmod>2023-11-26T21:26:33-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/</loc>
-    <lastmod>2023-11-26T21:26:33-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/</loc>
-    <lastmod>2023-11-19T21:42:27-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/</loc>
-    <lastmod>2023-11-19T21:42:27-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/net/</loc>
     <lastmod>2023-11-19T21:42:27-08:00</lastmod>
@@ -167,11 +172,13 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/</loc>
-  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/python/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/network/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/os/mac-os/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/</loc>
   </url><url>

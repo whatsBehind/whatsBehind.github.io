@@ -4,17 +4,16 @@
     <title>What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/docs/programming/tools/hugo/</link>
     <description>Recent content on What&#39;s Behind</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Oct 2023 11:53:02 -0700</lastBuildDate><atom:link href="https://whatsBehind.github.io/docs/programming/tools/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Oct 2023 11:53:02 -0700</lastBuildDate>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/tools/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Set Up Hugo in Git Hub Pages</title>
       <link>https://whatsBehind.github.io/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</link>
       <pubDate>Sun, 22 Oct 2023 11:53:02 -0700</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</guid>
       <description>Create a repository to hold the source code of your blogs # Create a repository of Git Hub Pages # Create a new Hugo project in your local machine # cd ~/Projects hugo new site &amp;lt;site name&amp;gt; cd &amp;lt;site name&amp;gt; git init git remote add origin &amp;lt;repository URL of your blogs&amp;gt; git add . git commit -m &amp;#34;Initiate a new hugo project&amp;#34; git push origin main Choose theme for your blog site # Navigate to Hugo theme website Down your favorite theme to directory ~/Projects/&amp;lt;site name&amp;gt;/themes Modify your config file baseURL = &amp;#34;https://&amp;lt;URL of your Git Hub Pages&amp;gt;/&amp;#34; languageCode = &amp;#34;en-us&amp;#34; title = &amp;#34;&amp;lt;website name&amp;gt;&amp;#34; theme = &amp;#34;&amp;lt;theme name&amp;gt;&amp;#34; Run hugo server to check if everything in your local host is expected Add Git Hub Pages repository as submodule of your source repository # cd ~/Projects/&amp;lt;site name&amp;gt; git submodule add -b main &amp;lt;URL of your Git Hub Pages&amp;gt; public # Generate static resouce in public directory hugo cd public git add .</description>
     </item>
-    
   </channel>
 </rss>

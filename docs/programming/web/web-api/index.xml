@@ -4,18 +4,16 @@
     <title>What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/docs/programming/web/web-api/</link>
     <description>Recent content on What&#39;s Behind</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Oct 2023 08:11:22 -0700</lastBuildDate><atom:link href="https://whatsBehind.github.io/docs/programming/web/web-api/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Oct 2023 08:11:22 -0700</lastBuildDate>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/web/web-api/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Web Storage Api</title>
       <link>https://whatsBehind.github.io/docs/programming/web/web-api/web-storage-api/</link>
       <pubDate>Fri, 27 Oct 2023 08:11:22 -0700</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/web/web-api/web-storage-api/</guid>
-      <description>Definition # The Web Storage API provides mechanisms by which browsers can store key/value pairs
-Source code # These mechanisms are available via the Window.sessionStorage and Window.localStorage properties (to be more precise, the Window object implements the WindowLocalStorage and WindowSessionStorage objects, which the localStorage and sessionStorage properties hang off) — invoking one of these will create an instance of the Storage object, through which data items can be set, retrieved and removed.</description>
+      <description>Definition # The Web Storage API provides mechanisms by which browsers can store key/value pairs&#xA;Source code # These mechanisms are available via the Window.sessionStorage and Window.localStorage properties (to be more precise, the Window object implements the WindowLocalStorage and WindowSessionStorage objects, which the localStorage and sessionStorage properties hang off) — invoking one of these will create an instance of the Storage object, through which data items can be set, retrieved and removed.</description>
     </item>
-    
   </channel>
 </rss>

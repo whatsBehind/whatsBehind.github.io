@@ -4,27 +4,22 @@
     <title>What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/docs/programming/network/</link>
     <description>Recent content on What&#39;s Behind</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://whatsBehind.github.io/docs/programming/network/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DNS</title>
       <link>https://whatsBehind.github.io/docs/programming/network/dns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/network/dns/</guid>
-      <description>What Is DNS? # DNS, which stands for Domain Name System, is a fundamental component of the internet&amp;rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like www.example.com) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.
-Hierarchy of Domain Names # Root Level Domain: The root level is the highest level in the DNS hierarchy and is represented by a dot (.</description>
+      <description>What Is DNS? # DNS, which stands for Domain Name System, is a fundamental component of the internet&amp;rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like www.example.com) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.&#xA;Hierarchy of Domain Names # Root Level Domain: The root level is the highest level in the DNS hierarchy and is represented by a dot (.</description>
     </item>
-    
     <item>
       <title>DNS Hands On</title>
       <link>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</guid>
-      <description>Introduction # In dns post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain google.com. Also, I will introduce a new concept record in domain name server
-Environment and Tools # I will use CLI dig to query domain name server in Linux system</description>
+      <description>Introduction # In dns post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain google.com. Also, I will introduce a new concept record in domain name server&#xA;Environment and Tools # I will use CLI dig to query domain name server in Linux system</description>
     </item>
-    
   </channel>
 </rss>

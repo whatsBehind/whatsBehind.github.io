@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="grep # Introduction to grep # grep stands for &ldquo;Global Regular Expression Print.&rdquo; It is a powerful command-line utility used for searching plain-text data for lines that match a regular expression. grep is widely used for searching specific patterns within files and outputting the matching lines.
+Basic Syntax # grep [options] pattern [file...] pattern: The string or regular expression to search for. [file...]: The file(s) to search. If no files are specified, grep searches the input provided from the standard input.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Text Processing and Searching">
+  <meta property="og:description" content="grep # Introduction to grep # grep stands for “Global Regular Expression Print.” It is a powerful command-line utility used for searching plain-text data for lines that match a regular expression. grep is widely used for searching specific patterns within files and outputting the matching lines.
+Basic Syntax # grep [options] pattern [file...] pattern: The string or regular expression to search for. [file...]: The file(s) to search. If no files are specified, grep searches the input provided from the standard input.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Text Processing and Searching | What&#39;s Behind</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/">
+<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.fa844030d08e95a7abe4c3f0fa03b984173b58d0b03411834887525a2fd939d9.js" integrity="sha256-&#43;oRAMNCOlaer5MPw&#43;gO5hBc7WNCwNBGDSIdSWi/ZOdk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eca28b761422c4017b94002a44eae355" class="toggle"  />
+    <label for="section-eca28b761422c4017b94002a44eae355" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0ef9353eeeaaa2e712636b20cef819bd" class="toggle"  />
+    <label for="section-0ef9353eeeaaa2e712636b20cef819bd" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6d661aeeb5f983714eda94738c952867" class="toggle"  />
+    <label for="section-6d661aeeb5f983714eda94738c952867" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b996168529cd69f060de2ebed180d38e" class="toggle"  />
+    <label for="section-b996168529cd69f060de2ebed180d38e" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c52490d9096abcb758f801b4ee7eca56" class="toggle"  />
+    <label for="section-c52490d9096abcb758f801b4ee7eca56" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e24e7d8d92b6a9f48fae63ed1f8e476c" class="toggle"  />
+    <label for="section-e24e7d8d92b6a9f48fae63ed1f8e476c" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-700f7fbf6d3aaecb4ab38c518403c448" class="toggle"  />
+    <label for="section-700f7fbf6d3aaecb4ab38c518403c448" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ce3689c52c4ddd4486357e6ce0409f7" class="toggle"  />
+    <label for="section-7ce3689c52c4ddd4486357e6ce0409f7" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c94bdc48cc72a10f9750698bd760b496" class="toggle"  />
+    <label for="section-c94bdc48cc72a10f9750698bd760b496" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e532608ee91345a4a35cfb45ce211d1" class="toggle" checked />
+    <label for="section-0e532608ee91345a4a35cfb45ce211d1" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7ed5523c642ad46d1578230786a8db5d" class="toggle"  />
+    <label for="section-7ed5523c642ad46d1578230786a8db5d" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-efb1407d62e73a8a817711e3fba4de9c" class="toggle" checked />
+    <label for="section-efb1407d62e73a8a817711e3fba4de9c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1a3a25c54274eb9ddf23020bba0cdbfb" class="toggle" checked />
+    <label for="section-1a3a25c54274eb9ddf23020bba0cdbfb" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/" class="active">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e0b6d6801838f2b3dd490821e43524a7" class="toggle"  />
+    <label for="section-e0b6d6801838f2b3dd490821e43524a7" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-71f41ee591103342b6c17608020c2cb3" class="toggle"  />
+    <label for="section-71f41ee591103342b6c17608020c2cb3" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2f5e221e70b8f0e9ab5d58bace04b60b" class="toggle"  />
+    <label for="section-2f5e221e70b8f0e9ab5d58bace04b60b" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-85860536baf35c0d2e30b2f54dce7ab8" class="toggle"  />
+    <label for="section-85860536baf35c0d2e30b2f54dce7ab8" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ac646c5ee24949b9e8c3a07548f95ea4" class="toggle"  />
+    <label for="section-ac646c5ee24949b9e8c3a07548f95ea4" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9bbc07e9cf5a3dd1f0670b58cc26fe7d" class="toggle"  />
+    <label for="section-9bbc07e9cf5a3dd1f0670b58cc26fe7d" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9a57184de34a650b7e802c8a3175c764" class="toggle"  />
+    <label for="section-9a57184de34a650b7e802c8a3175c764" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-973779c9194adc86298e028d295f6f5e" class="toggle"  />
+    <label for="section-973779c9194adc86298e028d295f6f5e" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1655a5eb0fd2d3d2770bffd5cb198b50" class="toggle"  />
+    <label for="section-1655a5eb0fd2d3d2770bffd5cb198b50" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-76769177bd065f12742ea50362a7ab48" class="toggle"  />
+    <label for="section-76769177bd065f12742ea50362a7ab48" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8cc8252e831d02a7053a71a00d99d1ee" class="toggle"  />
+    <label for="section-8cc8252e831d02a7053a71a00d99d1ee" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c77786c61c4d41dd20c5b2d72a718a0f" class="toggle"  />
+    <label for="section-c77786c61c4d41dd20c5b2d72a718a0f" class="flex justify-between">
+      <a role="button" class="">System Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-264f85fc5494c4e02ddec05bf36defa3" class="toggle"  />
+    <label for="section-264f85fc5494c4e02ddec05bf36defa3" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a8ea8d01186e9944288c4a6ce6c90b2c" class="toggle"  />
+    <label for="section-a8ea8d01186e9944288c4a6ce6c90b2c" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Text Processing and Searching</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#grep"><code>grep</code></a>
+      <ul>
+        <li><a href="#introduction-to-grep">Introduction to <code>grep</code></a></li>
+        <li><a href="#basic-syntax">Basic Syntax</a></li>
+        <li><a href="#common-options">Common Options</a></li>
+        <li><a href="#practices">Practices</a>
+          <ul>
+            <li><a href="#set-up-practicing-env">Set up Practicing Env</a></li>
+            <li><a href="#make-your-hands-dirty">Make Your Hands Dirty</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#sed"><code>sed</code></a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="grep">
+  <code>grep</code>
+  <a class="anchor" href="#grep">#</a>
+</h1>
+<h2 id="introduction-to-grep">
+  Introduction to <code>grep</code>
+  <a class="anchor" href="#introduction-to-grep">#</a>
+</h2>
+<p><code>grep</code> stands for &ldquo;Global Regular Expression Print.&rdquo; It is a powerful command-line utility used for searching plain-text data for lines that match a regular expression. <code>grep</code> is widely used for searching specific patterns within files and outputting the matching lines.</p>
+<h2 id="basic-syntax">
+  Basic Syntax
+  <a class="anchor" href="#basic-syntax">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span> pattern <span style="color:#f92672">[</span>file...<span style="color:#f92672">]</span>
+</span></span></code></pre></div><ul>
+<li><code>pattern</code>: The string or regular expression to search for.</li>
+<li><code>[file...]</code>: The file(s) to search. If no files are specified, grep searches the input provided from the standard input.</li>
+</ul>
+<h2 id="common-options">
+  Common Options
+  <a class="anchor" href="#common-options">#</a>
+</h2>
+<ul>
+<li><code>-i</code>: Ignore case distinctions in the pattern.</li>
+<li><code>-v</code>: Invert the match, showing lines that do not match the pattern.</li>
+<li><code>-r</code> or <code>-R</code>: Recursively search directories.</li>
+<li><code>-n</code>: Prefix each line of output with the line number within its input file.</li>
+<li><code>-l</code>: Print only the names of files containing matches.</li>
+<li><code>-c</code>: Print only a count of matching lines per file.</li>
+<li><code>-E</code>: Use extended regular expressions.</li>
+<li><code>-o</code>: Only show the matched words</li>
+</ul>
+<h2 id="practices">
+  Practices
+  <a class="anchor" href="#practices">#</a>
+</h2>
+<p>Let&rsquo;s have some hands-on practices for <code>grep</code>.</p>
+<h3 id="set-up-practicing-env">
+  Set up Practicing Env
+  <a class="anchor" href="#set-up-practicing-env">#</a>
+</h3>
+<p>Navigate to a directory that you want to practice <code>grep</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cd ~/practics/mac-os/terminal-commands/grep
+</span></span></code></pre></div><p>Write contents to file <code>practice.txt</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;EOL &gt; practice.txt
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">practice
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">practices
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Practices
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Learn with practices
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">I am practicing grep command
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOL</span>
+</span></span></code></pre></div><p>Create a new directory and copy <code>practice.txt</code> to the nested directory</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir nested_dir
+</span></span><span style="display:flex;"><span>cp practice.txt nested_dir
+</span></span></code></pre></div><p>Verify that you have the practice env set up</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>tree .
+</span></span></code></pre></div><p>The file structure should look like below</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── nested_dir
+</span></span><span style="display:flex;"><span>│   └── practice.txt
+</span></span><span style="display:flex;"><span>└── practice.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span> directories, <span style="color:#ae81ff">2</span> files
+</span></span></code></pre></div><h3 id="make-your-hands-dirty">
+  Make Your Hands Dirty
+  <a class="anchor" href="#make-your-hands-dirty">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Basic Search</strong></p>
+<p>Searches for &ldquo;practice&rdquo; in file <code>practice.txt</code>, and prints the matching lines</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep practice practice.txt
+</span></span></code></pre></div><p>The matching words are case-sensitive</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>practice
+</span></span><span style="display:flex;"><span>practices
+</span></span><span style="display:flex;"><span>Learn with practices
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Case-Insensitive Search</strong></p>
+<p>Searches for &ldquo;practice&rdquo; in <code>practice.txt</code>, ignoring case.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -i practice practice.txt
+</span></span></code></pre></div><p>Word &ldquo;Practice&rdquo; with capital &ldquo;P&rdquo; is matched</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>practice
+</span></span><span style="display:flex;"><span>practices
+</span></span><span style="display:flex;"><span>Practices
+</span></span><span style="display:flex;"><span>Learn with practices
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Recursive Search</strong></p>
+<p>Search for practice in all files under current directory, including nested directory</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -r practice .
+</span></span></code></pre></div><p>Output</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./nested_dir/practice.txt:practice
+</span></span><span style="display:flex;"><span>./nested_dir/practice.txt:practices
+</span></span><span style="display:flex;"><span>./nested_dir/practice.txt:Learn with practices
+</span></span><span style="display:flex;"><span>./practice.txt:practice
+</span></span><span style="display:flex;"><span>./practice.txt:practices
+</span></span><span style="display:flex;"><span>./practice.txt:Learn with practices
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Count Matches</strong></p>
+<p>Prints the number of lines containing &lsquo;pattern&rsquo; in <code>practice.txt</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -c practice practice.txt
+</span></span></code></pre></div><p>Output</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#ae81ff">3</span>
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Display Line Numbers</strong></p>
+<p>Searches for &ldquo;practice&rdquo; in <code>practice.txt</code> and displays the line numbers of matching lines</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -n practice practice.txt
+</span></span></code></pre></div><p>Output</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>1:practice
+</span></span><span style="display:flex;"><span>2:practices
+</span></span><span style="display:flex;"><span>4:Learn with practices
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Search for Exact Word</strong></p>
+<p>Searches for the exact word &ldquo;practice&rdquo; in <code>practice.txt</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -w practice practice.txt
+</span></span></code></pre></div><p>Only word <code>practice</code> is exactly matched</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>practice
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Invert Match</strong></p>
+<p>Prints lines that do not match &ldquo;practice&rdquo; in <code>practice.txt</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -v practice practice.txt
+</span></span></code></pre></div><p>Output</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Practices
+</span></span><span style="display:flex;"><span>I am practicing grep command
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Display Only Filenames</strong></p>
+<p>Prints the names of files containing &lsquo;pattern&rsquo; within the current directory</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -lr practice .
+</span></span></code></pre></div><p>Output</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./nested_dir/practice.txt
+</span></span><span style="display:flex;"><span>./practice.txt
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Using Extended RegEx</strong></p>
+<p>Searches for &ldquo;practice&rdquo; and &ldquo;practicing&rdquo; in file <code>practice.txt</code> using extended regular expressions</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -E <span style="color:#e6db74">&#34;practice|practicing&#34;</span> practice.txt
+</span></span></code></pre></div><p>Output</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>practice
+</span></span><span style="display:flex;"><span>practices
+</span></span><span style="display:flex;"><span>Learn with practices
+</span></span><span style="display:flex;"><span>I am practicing grep command
+</span></span></code></pre></div></li>
+<li>
+<p><strong>Only Show Matched Parts</strong></p>
+<p>Only shows the matched word &ldquo;practice&rdquo; and prints line number</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>grep -on practice practice.txt
+</span></span></code></pre></div><p>Output</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>1:practice
+</span></span><span style="display:flex;"><span>2:practice
+</span></span><span style="display:flex;"><span>4:practice
+</span></span></code></pre></div></li>
+</ul>
+<h1 id="sed">
+  <code>sed</code>
+  <a class="anchor" href="#sed">#</a>
+</h1>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#grep"><code>grep</code></a>
+      <ul>
+        <li><a href="#introduction-to-grep">Introduction to <code>grep</code></a></li>
+        <li><a href="#basic-syntax">Basic Syntax</a></li>
+        <li><a href="#common-options">Common Options</a></li>
+        <li><a href="#practices">Practices</a>
+          <ul>
+            <li><a href="#set-up-practicing-env">Set up Practicing Env</a></li>
+            <li><a href="#make-your-hands-dirty">Make Your Hands Dirty</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#sed"><code>sed</code></a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Text Processing and Searching</title>
+      <link>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/</guid>
+      <description>grep # Introduction to grep # grep stands for &amp;ldquo;Global Regular Expression Print.&amp;rdquo; It is a powerful command-line utility used for searching plain-text data for lines that match a regular expression. grep is widely used for searching specific patterns within files and outputting the matching lines.&#xA;Basic Syntax # grep [options] pattern [file...] pattern: The string or regular expression to search for. [file...]: The file(s) to search. If no files are specified, grep searches the input provided from the standard input.</description>
+    </item>
+  </channel>
+</rss>

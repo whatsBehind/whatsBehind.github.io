@@ -4,63 +4,44 @@
     <title>What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/docs/programming/backend/java/io/</link>
     <description>Recent content on What&#39;s Behind</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Nov 2023 23:12:49 -0800</lastBuildDate><atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Nov 2023 23:12:49 -0800</lastBuildDate>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/backend/java/io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Decorator Pattern in Java IO</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/</link>
       <pubDate>Thu, 16 Nov 2023 23:12:49 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/</guid>
-      <description>Node Streams (Low-Level Streams) # Definition:
-Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.
-File file = new File(&amp;#34;example.txt&amp;#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file &amp;ldquo;example.txt&amp;rdquo;. It&amp;rsquo;s a direct connection between the Java program and the file.</description>
+      <description>Node Streams (Low-Level Streams) # Definition:&#xA;Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.&#xA;File file = new File(&amp;#34;example.txt&amp;#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file &amp;ldquo;example.txt&amp;rdquo;. It&amp;rsquo;s a direct connection between the Java program and the file.</description>
     </item>
-    
     <item>
       <title>ObjectInputStream and ObjectOutputStream</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/object-input-and-output-stream/</link>
       <pubDate>Thu, 16 Nov 2023 23:10:58 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/object-input-and-output-stream/</guid>
-      <description>This post will introduce two new processing streams, ObjectInputStream and ObjectOutputStream, which are used to deserialize and serialize objects and primitive data.
-ObjectInputStream # Purpose: To deserialize objects and primitive data written using ObjectOutputStream. It allows you to read bytes from a source (like a file or network socket) and reconstructs objects from those bytes.
-Key Features: Processing stream: reads serialized objects from an underlying InputStream.
-Common Use Case: Commonly used in networking (for sending objects across a network) or for persisting objects to files.</description>
+      <description>This post will introduce two new processing streams, ObjectInputStream and ObjectOutputStream, which are used to deserialize and serialize objects and primitive data.&#xA;ObjectInputStream # Purpose: To deserialize objects and primitive data written using ObjectOutputStream. It allows you to read bytes from a source (like a file or network socket) and reconstructs objects from those bytes.&#xA;Key Features: Processing stream: reads serialized objects from an underlying InputStream.&#xA;Common Use Case: Commonly used in networking (for sending objects across a network) or for persisting objects to files.</description>
     </item>
-    
     <item>
       <title>Stream Reader: Bridge of Byte and Char</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/</link>
       <pubDate>Thu, 16 Nov 2023 23:02:33 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/</guid>
-      <description>There are two special readers in Java IO package, they are InputStreamReader and OutputStreamWriter which serve as bridge between byte data and character data
-InputStreamReader # Important constructor
-public class InputStreamReader extends Reader { public InputStreamReader(InputStream in, Charset cs); } Key feature (Bridge from byte to char)
-Character Encoding: Data stored in files or transmitted over networks is often in the form of bytes. When such data represents text, it needs to be decoded using a specific character encoding (like UTF-8, ISO-8859-1, etc.</description>
+      <description>There are two special readers in Java IO package, they are InputStreamReader and OutputStreamWriter which serve as bridge between byte data and character data&#xA;InputStreamReader # Important constructor&#xA;public class InputStreamReader extends Reader { public InputStreamReader(InputStream in, Charset cs); } Key feature (Bridge from byte to char)&#xA;Character Encoding: Data stored in files or transmitted over networks is often in the form of bytes. When such data represents text, it needs to be decoded using a specific character encoding (like UTF-8, ISO-8859-1, etc.</description>
     </item>
-    
     <item>
       <title>Java IO Stream</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/io-stream/</link>
       <pubDate>Wed, 15 Nov 2023 16:43:55 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/io-stream/</guid>
       <description>What is stream? # Java Input/OutputStream and Reader/Writer are essential components of the Java I/O (Input/Output) library, designed to facilitate reading and writing data in various forms from different sources within Java applications. These classes serve as a bridge between your application and external data sources, making it easier to perform I/O operations efficiently and consistently. In this post, we will explore what Input/OutputStream and Reader/Writer are, their relationships, and how they classify based on the type of data and data source.</description>
     </item>
-    
     <item>
       <title>Java File</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/io/file/</link>
       <pubDate>Wed, 15 Nov 2023 15:42:12 -0800</pubDate>
-      
       <guid>https://whatsBehind.github.io/docs/programming/backend/java/io/file/</guid>
-      <description>The File class in Java, found in the java.io package, is not used for file content manipulation (reading/writing) but for file and directory pathnames operations. It&amp;rsquo;s used to obtain or manipulate the information associated with a file or directory, such as metadata, permissions, and path details.
-Commonly Used APIs in File Class for Files and Directories # File Handling # Create a New File
-createNewFile(): Creates a new file if it does not exist.</description>
+      <description>The File class in Java, found in the java.io package, is not used for file content manipulation (reading/writing) but for file and directory pathnames operations. It&amp;rsquo;s used to obtain or manipulate the information associated with a file or directory, such as metadata, permissions, and path details.&#xA;Commonly Used APIs in File Class for Files and Directories # File Handling # Create a New File&#xA;createNewFile(): Creates a new file if it does not exist.</description>
     </item>
-    
   </channel>
 </rss>
