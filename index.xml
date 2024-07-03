@@ -177,6 +177,13 @@
       <description>What is AWS EventBridge? # AWS EventBridge is a serverless event bus service that is used to build event driven applications. EventBridge allows you to ingest, filter, transform and deliver events from sources to targets.&#xA;Reference # AWS EventBridge Workshop EventBridge Global Endpoint Message Services for Serverless Applications Architecture # Components and Concepts # Data Sources # Data sources or event publishers are applications that publish data to the EventBridge.</description>
     </item>
     <item>
+      <title>format-string</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/python/format-string/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/python/format-string/</guid>
+      <description>Format String in Python # f-strings # f-strings provide a concise and readable way to embed expressions inside string literals. They are prefixed with the letter f or F and use curly braces {} as placeholder for expressions&#xA;Quick Start&#xA;name = &amp;#34;Alice&amp;#34; age = 30 greeting = f&amp;#34;Hello, my name is {name} and I am {age} years old&amp;#34; print(greeting) Output&#xA;Hello, my name is Alice and I am 30 years old Usage # Expressions</description>
+    </item>
+    <item>
       <title>Partition</title>
       <link>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
