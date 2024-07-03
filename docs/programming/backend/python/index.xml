@@ -14,5 +14,12 @@
       <guid>https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/</guid>
       <description>Concepts # __name__ # __name__ is a built-in variable (attribute) of a module. It is being used to indicate if a module is being run directly or being imported into other modules&#xA;Value when module is running directly: When you run a Python module directly, __name__ of this module is set to __main__&#xA;Value when module is imported: When the module is imported into others modules, __name__ is set to the module name (file name w/o .</description>
     </item>
+    <item>
+      <title>RegEx</title>
+      <link>https://whatsBehind.github.io/docs/programming/backend/python/re/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/backend/python/re/</guid>
+      <description>re in Python # re.search() # The re.search() method is used to search a string for a match to a regular expression pattern. It scans through the string from left to right and returns the FIRST match it finds. If a match is found, it returns a match object; otherwise, it returns None.&#xA;Method Signature # search(pattern: str, string: str, flags: int=0) -&amp;gt; re.Match pattern: The regular expression pattern to search for.</description>
+    </item>
   </channel>
 </rss>
