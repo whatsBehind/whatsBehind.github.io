@@ -13,7 +13,7 @@
       <link>https://whatsBehind.github.io/docs/programming/web/http/cookie/</link>
       <pubDate>Fri, 27 Oct 2023 08:10:45 -0700</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/web/http/cookie/</guid>
-      <description>What is cookie # An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user&amp;rsquo;s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.</description>
+      <description>&lt;h3 id=&#34;what-is-cookie&#34;&gt;&#xA;  What is cookie&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-cookie&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user&amp;rsquo;s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

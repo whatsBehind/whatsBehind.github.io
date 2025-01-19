@@ -3,30 +3,268 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Vim: Three Modes # Normal mode Insert mode Command mode Command Mode # Type : to enter.
-w (write): save. q: quit. x (==wq): save and quit. set nu: show line numbers. set nonu: do not show line numbers. Normal Mode # y (yank): copy. p: paste. 5yy: copy 4 lines. dd: delete. 4dd: delete 4 lines. /word_to_search &#43; Enter: search a word. n: next. G: last line. gg (go to the top&hellip;): first line.">
+<meta name="description" content="
+  Vim: Three Modes
+  #
+
+
+Normal mode
+Insert mode
+Command mode
+
+
+  Command Mode
+  #
+
+Type : to enter.
+
+w (write): save.
+q: quit.
+x (==wq): save and quit.
+set nu: show line numbers.
+set nonu: do not show line numbers.
+
+
+  Normal Mode
+  #
+
+
+y (yank): copy.
+p: paste.
+5yy: copy 4 lines.
+dd: delete.
+4dd: delete 4 lines.
+/word_to_search &#43; Enter: search a word.
+
+n: next.
+G: last line.
+gg (go to the top&hellip;): first line.
+
+
+u: undo.
+Ctrl &#43; r: redo.
+20gg / 20G: go to line 20.
+
+
+  User Login and Logout Commands
+  #
+
+
+Command:
+
+su - &lt;user&gt;: switch user.
+logout:
+
+If you are the root user, you will be switched to the standard user.
+If you are not the root user, you will be logged out of the Linux system.
+
+
+adduser &lt;user&gt;: add a user under /home directory.
+
+-d &lt;home_dir&gt;: specify the home directory for the new user.
+
+
+passwd: set the password for the root user.
+&lt;user&gt;: set the password for the user.
+
+
+
+
+  User
+  #
+
+
+User home directory: /home/&lt;user&gt;.
+
+
+  File and Directory Commands
+  #
+
+
+ls: List files and directories in the current directory.
+
+Example: ls
+Common options:
+
+-h: make the file sizes in the output more human-readable
+
+
+
+
+cd: Change the current directory.
+
+Example: cd /path/to/directory
+
+
+pwd: Print the current working directory.
+
+Example: pwd
+
+
+mkdir: Create a new directory.
+
+Example: mkdir new_directory
+
+
+rmdir: Remove a directory (only if it&rsquo;s empty).
+
+Example: rmdir empty_directory
+
+
+rm: Remove files or directories.
+
+Example: rm file.txt or rm -r directory
+
+
+cp: Copy files and directories.
+
+Example: cp file.txt /path/to/destination
+
+
+mv: Move or rename files and directories.
+
+Example: mv file.txt new_name.txt or mv file.txt /path/to/destination
+
+
+touch: Create an empty file.
+
+Example: touch new_file.txt
+
+
+cat: Display the content of a file.
+
+Options:
+
+-n: show line number
+
+
+Example: cat file.txt
+
+
+more and less: Display file content page by page.
+
+Example: more file.txt or less file.txt
+
+
+head and tail: Display the beginning or end of a file.
+
+Example: head file.txt or tail file.txt
+
+
+chmod: Change file permissions.
+
+Example: chmod 755 file.txt
+
+
+chown: Change file ownership.
+
+Example: chown user:group file.txt
+
+
+ln: Create symbolic links or hard links to files or directories.
+
+Example: ln -s target link_name (for symbolic links) or ln target link_name (for hard links)
+
+
+history: Display latest executed commands in current shell session
+
+Use case:
+
+history
+!100: re-execute executed command in line 100
+
+
+
+
+&gt; &amp; &gt;&gt;: In Linux and Unix-like operating systems, &gt; and &raquo; are used as operators for redirecting output from commands. They are often used in the command line to control where the output of a command is sent
+
+Difference: &gt; overwrite existed content, but &gt;&gt; append command output to to the output of a file
+Example:
+
+echo &quot;Hello, World!&quot; &gt; output.txt
+echo &quot;Appended text&quot; &gt;&gt; output.txt
+echo file1.txt &gt;&gt; file2.txt
+ls -l &gt;&gt; output.txt
+
+
+
+
+
+
+  Date Command
+  #
+
+
+Date
+
+
+  Search &amp; Find Commands
+  #
+
+
+find: Search for files and directories.
+
+Basic syntax:
+
+find [path] [options] [expression]
+
+
+Common options:
+
+-name &lt;pattern&gt;: Search for files and directories with a specific name or pattern.
+-type &lt;type&gt;: Specify the type of file (e.g., f for regular files, d for directories).
+-mtime &lt;days&gt;: Search for files modified within a certain number of days.
+-size &lt;size&gt;: Search for files of a specific size (e.g., &#43;10M for files larger than 10 megabytes).
+-user &lt;username&gt;: Search for files owned by a specific user.
+-group &lt;groupname&gt;: Search for files in a specific group.
+-exec &lt;command&gt; {} \;: Execute a command on each matching file or directory.
+-print: Display the path of each matching file or directory.
+
+
+Example:
+
+find . -name &quot;example.txt&quot;
+find ~ -type d -user john
+find /path/to/directory -type f -mtime &#43;7 -exec rm {} ;
+find . -type f -size &#43;100M
+find /path/to/directory -type f -name &quot;*.log&quot;
+
+
+
+
+locate: Quick find location of a file. It uses pre-built database (updatedb command to create index for dirs and files) to provide fast search results
+
+Usage:
+
+sudo yum install mlocate: install locate in CentOS
+updatedb: create a db to store index of all files in your linux system
+locate example.txt: find example.txt files
+
+
+Reminder Keep in mind that locate is a powerful tool for quickly finding files and directories on your system. However, it doesn&rsquo;t search for files in real-time, so you need to ensure that the database is updated regularly using the updatedb command for accurate results.
+
+
+grep: filter and find
+">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/os/linux/linux-manual/">
   <meta property="og:site_name" content="What&#39;s Behind">
   <meta property="og:title" content="Linux Manual">
   <meta property="og:description" content="Vim: Three Modes # Normal mode Insert mode Command mode Command Mode # Type : to enter.
-w (write): save. q: quit. x (==wq): save and quit. set nu: show line numbers. set nonu: do not show line numbers. Normal Mode # y (yank): copy. p: paste. 5yy: copy 4 lines. dd: delete. 4dd: delete 4 lines. /word_to_search &#43; Enter: search a word. n: next. G: last line. gg (go to the top…): first line.">
+w (write): save. q: quit. x (==wq): save and quit. set nu: show line numbers. set nonu: do not show line numbers. Normal Mode # y (yank): copy. p: paste. 5yy: copy 4 lines. dd: delete. 4dd: delete 4 lines. /word_to_search &#43; Enter: search a word. n: next. G: last line. gg (go to the top…): first line. u: undo. Ctrl &#43; r: redo. 20gg / 20G: go to line 20. User Login and Logout Commands # Command: su - &lt;user&gt;: switch user. logout: If you are the root user, you will be switched to the standard user. If you are not the root user, you will be logged out of the Linux system. adduser &lt;user&gt;: add a user under /home directory. -d &lt;home_dir&gt;: specify the home directory for the new user. passwd: set the password for the root user. &lt;user&gt;: set the password for the user. User # User home directory: /home/&lt;user&gt;. File and Directory Commands # ls: List files and directories in the current directory. Example: ls Common options: -h: make the file sizes in the output more human-readable cd: Change the current directory. Example: cd /path/to/directory pwd: Print the current working directory. Example: pwd mkdir: Create a new directory. Example: mkdir new_directory rmdir: Remove a directory (only if it’s empty). Example: rmdir empty_directory rm: Remove files or directories. Example: rm file.txt or rm -r directory cp: Copy files and directories. Example: cp file.txt /path/to/destination mv: Move or rename files and directories. Example: mv file.txt new_name.txt or mv file.txt /path/to/destination touch: Create an empty file. Example: touch new_file.txt cat: Display the content of a file. Options: -n: show line number Example: cat file.txt more and less: Display file content page by page. Example: more file.txt or less file.txt head and tail: Display the beginning or end of a file. Example: head file.txt or tail file.txt chmod: Change file permissions. Example: chmod 755 file.txt chown: Change file ownership. Example: chown user:group file.txt ln: Create symbolic links or hard links to files or directories. Example: ln -s target link_name (for symbolic links) or ln target link_name (for hard links) history: Display latest executed commands in current shell session Use case: history !100: re-execute executed command in line 100 &gt; &amp; &gt;&gt;: In Linux and Unix-like operating systems, &gt; and » are used as operators for redirecting output from commands. They are often used in the command line to control where the output of a command is sent Difference: &gt; overwrite existed content, but &gt;&gt; append command output to to the output of a file Example: echo &#34;Hello, World!&#34; &gt; output.txt echo &#34;Appended text&#34; &gt;&gt; output.txt echo file1.txt &gt;&gt; file2.txt ls -l &gt;&gt; output.txt Date Command # Date Search &amp; Find Commands # find: Search for files and directories. Basic syntax: find [path] [options] [expression] Common options: -name &lt;pattern&gt;: Search for files and directories with a specific name or pattern. -type &lt;type&gt;: Specify the type of file (e.g., f for regular files, d for directories). -mtime &lt;days&gt;: Search for files modified within a certain number of days. -size &lt;size&gt;: Search for files of a specific size (e.g., &#43;10M for files larger than 10 megabytes). -user &lt;username&gt;: Search for files owned by a specific user. -group &lt;groupname&gt;: Search for files in a specific group. -exec &lt;command&gt; {} \;: Execute a command on each matching file or directory. -print: Display the path of each matching file or directory. Example: find . -name &#34;example.txt&#34; find ~ -type d -user john find /path/to/directory -type f -mtime &#43;7 -exec rm {} ; find . -type f -size &#43;100M find /path/to/directory -type f -name &#34;*.log&#34; locate: Quick find location of a file. It uses pre-built database (updatedb command to create index for dirs and files) to provide fast search results Usage: sudo yum install mlocate: install locate in CentOS updatedb: create a db to store index of all files in your linux system locate example.txt: find example.txt files Reminder Keep in mind that locate is a powerful tool for quickly finding files and directories on your system. However, it doesn’t search for files in real-time, so you need to ensure that the database is updated regularly using the updatedb command for accurate results. grep: filter and find">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
     <meta property="article:published_time" content="2023-10-31T08:47:07-07:00">
     <meta property="article:modified_time" content="2023-10-31T08:47:07-07:00">
 <title>Linux Manual | What&#39;s Behind</title>
-<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="https://whatsBehind.github.io/docs/programming/os/linux/linux-manual/">
-<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
-  <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.b405a5a5b54c5f23ec7c9eaac0c933d109c4eabf183b5c6d71ebcbf3419f6fe1.js" integrity="sha256-tAWlpbVMXyPsfJ6qwMkz0QnE6r8YO1xtcevL80Gfb&#43;E=" crossorigin="anonymous"></script>
-
-  
-
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b8356e822fee47006c6b08d20f79c8cfb65fbeb7f9a8141348c08f03110828ea.js" integrity="sha256-uDVugi/uRwBsawjSD3nIz7Zfvrf5qBQTSMCPAxEIKOo=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -47,11 +285,12 @@ https://github.com/alex-shpak/hugo-book
 </h2>
 
 
-<div class="book-search">
+<div class="book-search hidden">
   <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
 
 
 
@@ -64,7 +303,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  
 
 
 
@@ -91,8 +329,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-eca28b761422c4017b94002a44eae355" class="toggle"  />
-    <label for="section-eca28b761422c4017b94002a44eae355" class="flex justify-between">
+    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
+    <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
   
@@ -107,8 +345,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0ef9353eeeaaa2e712636b20cef819bd" class="toggle"  />
-    <label for="section-0ef9353eeeaaa2e712636b20cef819bd" class="flex justify-between">
+    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle"  />
+    <label for="section-d89b2e5681262822056a3eec9d0a41e4" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
   
@@ -123,8 +361,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-6d661aeeb5f983714eda94738c952867" class="toggle"  />
-    <label for="section-6d661aeeb5f983714eda94738c952867" class="flex justify-between">
+    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
+    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
       <a role="button" class="">Nio</a>
     </label>
   
@@ -235,8 +473,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b996168529cd69f060de2ebed180d38e" class="toggle"  />
-    <label for="section-b996168529cd69f060de2ebed180d38e" class="flex justify-between">
+    <input type="checkbox" id="section-3a8a021e398721afe1d6aaefc5a53581" class="toggle"  />
+    <label for="section-3a8a021e398721afe1d6aaefc5a53581" class="flex justify-between">
       <a role="button" class="">Net</a>
     </label>
   
@@ -269,8 +507,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c52490d9096abcb758f801b4ee7eca56" class="toggle"  />
-    <label for="section-c52490d9096abcb758f801b4ee7eca56" class="flex justify-between">
+    <input type="checkbox" id="section-30dab7aa6f04e2575ba9575d3f7aa552" class="toggle"  />
+    <label for="section-30dab7aa6f04e2575ba9575d3f7aa552" class="flex justify-between">
       <a role="button" class="">Io</a>
     </label>
   
@@ -355,8 +593,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e24e7d8d92b6a9f48fae63ed1f8e476c" class="toggle"  />
-    <label for="section-e24e7d8d92b6a9f48fae63ed1f8e476c" class="flex justify-between">
+    <input type="checkbox" id="section-12abf7232ea9d442045b1411b7978a30" class="toggle"  />
+    <label for="section-12abf7232ea9d442045b1411b7978a30" class="flex justify-between">
       <a role="button" class="">Thread</a>
     </label>
   
@@ -454,8 +692,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-700f7fbf6d3aaecb4ab38c518403c448" class="toggle"  />
-    <label for="section-700f7fbf6d3aaecb4ab38c518403c448" class="flex justify-between">
+    <input type="checkbox" id="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="toggle"  />
+    <label for="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="flex justify-between">
       <a role="button" class="">Netty</a>
     </label>
   
@@ -519,8 +757,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7ce3689c52c4ddd4486357e6ce0409f7" class="toggle"  />
-    <label for="section-7ce3689c52c4ddd4486357e6ce0409f7" class="flex justify-between">
+    <input type="checkbox" id="section-3267b427ef0b7fb8be17928f82652d59" class="toggle"  />
+    <label for="section-3267b427ef0b7fb8be17928f82652d59" class="flex justify-between">
       <a role="button" class="">Python</a>
     </label>
   
@@ -584,8 +822,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c94bdc48cc72a10f9750698bd760b496" class="toggle"  />
-    <label for="section-c94bdc48cc72a10f9750698bd760b496" class="flex justify-between">
+    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
+    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
       <a role="button" class="">Project</a>
     </label>
   
@@ -631,8 +869,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0e532608ee91345a4a35cfb45ce211d1" class="toggle" checked />
-    <label for="section-0e532608ee91345a4a35cfb45ce211d1" class="flex justify-between">
+    <input type="checkbox" id="section-15e5b6cfbe135e4220353ad911edbc9a" class="toggle" checked />
+    <label for="section-15e5b6cfbe135e4220353ad911edbc9a" class="flex justify-between">
       <a role="button" class="">Os</a>
     </label>
   
@@ -647,8 +885,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7ed5523c642ad46d1578230786a8db5d" class="toggle" checked />
-    <label for="section-7ed5523c642ad46d1578230786a8db5d" class="flex justify-between">
+    <input type="checkbox" id="section-128d8751d4236191f55b9181cd918421" class="toggle" checked />
+    <label for="section-128d8751d4236191f55b9181cd918421" class="flex justify-between">
       <a role="button" class="">Linux</a>
     </label>
   
@@ -681,8 +919,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-efb1407d62e73a8a817711e3fba4de9c" class="toggle"  />
-    <label for="section-efb1407d62e73a8a817711e3fba4de9c" class="flex justify-between">
+    <input type="checkbox" id="section-a437cea16383409ff4bb050630be8e13" class="toggle"  />
+    <label for="section-a437cea16383409ff4bb050630be8e13" class="flex justify-between">
       <a role="button" class="">MAC Os</a>
     </label>
   
@@ -697,8 +935,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1a3a25c54274eb9ddf23020bba0cdbfb" class="toggle"  />
-    <label for="section-1a3a25c54274eb9ddf23020bba0cdbfb" class="flex justify-between">
+    <input type="checkbox" id="section-61556e42b41c13f33940b404f66932ed" class="toggle"  />
+    <label for="section-61556e42b41c13f33940b404f66932ed" class="flex justify-between">
       <a role="button" class="">Terminal Command</a>
     </label>
   
@@ -741,8 +979,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e0b6d6801838f2b3dd490821e43524a7" class="toggle"  />
-    <label for="section-e0b6d6801838f2b3dd490821e43524a7" class="flex justify-between">
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
       <a role="button" class="">Web</a>
     </label>
   
@@ -757,8 +995,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-71f41ee591103342b6c17608020c2cb3" class="toggle"  />
-    <label for="section-71f41ee591103342b6c17608020c2cb3" class="flex justify-between">
+    <input type="checkbox" id="section-a913ce247e99bf5334ae2e3cbeee0f90" class="toggle"  />
+    <label for="section-a913ce247e99bf5334ae2e3cbeee0f90" class="flex justify-between">
       <a role="button" class="">Glossary</a>
     </label>
   
@@ -791,8 +1029,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-2f5e221e70b8f0e9ab5d58bace04b60b" class="toggle"  />
-    <label for="section-2f5e221e70b8f0e9ab5d58bace04b60b" class="flex justify-between">
+    <input type="checkbox" id="section-01867ca5de591b785e2c310209ee8cb4" class="toggle"  />
+    <label for="section-01867ca5de591b785e2c310209ee8cb4" class="flex justify-between">
       <a role="button" class="">Web API</a>
     </label>
   
@@ -825,8 +1063,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-85860536baf35c0d2e30b2f54dce7ab8" class="toggle"  />
-    <label for="section-85860536baf35c0d2e30b2f54dce7ab8" class="flex justify-between">
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
       <a role="button" class="">HTTP</a>
     </label>
   
@@ -859,8 +1097,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-ac646c5ee24949b9e8c3a07548f95ea4" class="toggle"  />
-    <label for="section-ac646c5ee24949b9e8c3a07548f95ea4" class="flex justify-between">
+    <input type="checkbox" id="section-6441cb17542fe8006e427b6b0a94d041" class="toggle"  />
+    <label for="section-6441cb17542fe8006e427b6b0a94d041" class="flex justify-between">
       <a role="button" class="">Security</a>
     </label>
   
@@ -924,8 +1162,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9bbc07e9cf5a3dd1f0670b58cc26fe7d" class="toggle"  />
-    <label for="section-9bbc07e9cf5a3dd1f0670b58cc26fe7d" class="flex justify-between">
+    <input type="checkbox" id="section-43effcc73883f6032917b714430cd064" class="toggle"  />
+    <label for="section-43effcc73883f6032917b714430cd064" class="flex justify-between">
       <a role="button" class="">Tools</a>
     </label>
   
@@ -940,8 +1178,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9a57184de34a650b7e802c8a3175c764" class="toggle"  />
-    <label for="section-9a57184de34a650b7e802c8a3175c764" class="flex justify-between">
+    <input type="checkbox" id="section-13ffff656c2dc3dfe4c18658b113a7be" class="toggle"  />
+    <label for="section-13ffff656c2dc3dfe4c18658b113a7be" class="flex justify-between">
       <a role="button" class="">Hugo</a>
     </label>
   
@@ -979,8 +1217,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-973779c9194adc86298e028d295f6f5e" class="toggle"  />
-    <label for="section-973779c9194adc86298e028d295f6f5e" class="flex justify-between">
+    <input type="checkbox" id="section-435c533cf8e83924f036a3fc06649777" class="toggle"  />
+    <label for="section-435c533cf8e83924f036a3fc06649777" class="flex justify-between">
       <a role="button" class="">Aws</a>
     </label>
   
@@ -1008,8 +1246,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1655a5eb0fd2d3d2770bffd5cb198b50" class="toggle"  />
-    <label for="section-1655a5eb0fd2d3d2770bffd5cb198b50" class="flex justify-between">
+    <input type="checkbox" id="section-62258074df8a7a4253e368d8300827d8" class="toggle"  />
+    <label for="section-62258074df8a7a4253e368d8300827d8" class="flex justify-between">
       <a role="button" class="">Message</a>
     </label>
   
@@ -1068,8 +1306,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-76769177bd065f12742ea50362a7ab48" class="toggle"  />
-    <label for="section-76769177bd065f12742ea50362a7ab48" class="flex justify-between">
+    <input type="checkbox" id="section-5214fd1aa07e57317f87d16d6d714389" class="toggle"  />
+    <label for="section-5214fd1aa07e57317f87d16d6d714389" class="flex justify-between">
       <a role="button" class="">Security</a>
     </label>
   
@@ -1107,8 +1345,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-8cc8252e831d02a7053a71a00d99d1ee" class="toggle"  />
-    <label for="section-8cc8252e831d02a7053a71a00d99d1ee" class="flex justify-between">
+    <input type="checkbox" id="section-f08994ed3456b39a7f1229df10e15d9f" class="toggle"  />
+    <label for="section-f08994ed3456b39a7f1229df10e15d9f" class="flex justify-between">
       <a role="button" class="">Network</a>
     </label>
   
@@ -1154,8 +1392,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c77786c61c4d41dd20c5b2d72a718a0f" class="toggle"  />
-    <label for="section-c77786c61c4d41dd20c5b2d72a718a0f" class="flex justify-between">
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle"  />
+    <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
   
@@ -1183,8 +1421,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-264f85fc5494c4e02ddec05bf36defa3" class="toggle"  />
-    <label for="section-264f85fc5494c4e02ddec05bf36defa3" class="flex justify-between">
+    <input type="checkbox" id="section-635ac14c32f4b096cb88b04c783b749f" class="toggle"  />
+    <label for="section-635ac14c32f4b096cb88b04c783b749f" class="flex justify-between">
       <a role="button" class="">Design Data Intensive Applications</a>
     </label>
   
@@ -1243,8 +1481,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a8ea8d01186e9944288c4a6ce6c90b2c" class="toggle"  />
-    <label for="section-a8ea8d01186e9944288c4a6ce6c90b2c" class="flex justify-between">
+    <input type="checkbox" id="section-d6b5a5ebe02e8f45cd65f61120086e8f" class="toggle"  />
+    <label for="section-d6b5a5ebe02e8f45cd65f61120086e8f" class="flex justify-between">
       <a role="button" class="">Monitoring</a>
     </label>
   
@@ -1270,6 +1508,56 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle"  />
+    <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e65dadec602a3e741624a6eace4b2779" class="toggle"  />
+    <label for="section-e65dadec602a3e741624a6eace4b2779" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1282,6 +1570,10 @@ https://github.com/alex-shpak/hugo-book
     
   </ul>
 
+        </li>
+      
+    
+  </ul>
 
 
 
@@ -1316,7 +1608,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Linux Manual</strong>
+  <h3>Linux Manual</h3>
 
   <label for="toc-control">
     

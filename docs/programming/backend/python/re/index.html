@@ -3,28 +3,47 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="re in Python # re.search() # The re.search() method is used to search a string for a match to a regular expression pattern. It scans through the string from left to right and returns the FIRST match it finds. If a match is found, it returns a match object; otherwise, it returns None.
-Method Signature # search(pattern: str, string: str, flags: int=0) -&gt; re.Match pattern: The regular expression pattern to search for.">
+<meta name="description" content="
+  re in Python
+  #
+
+
+  re.search()
+  #
+
+The re.search() method is used to search a string for a match to a regular expression pattern. It scans through the string from left to right and returns the FIRST match it finds. If a match is found, it returns a match object; otherwise, it returns None.
+
+  Method Signature
+  #
+
+search(pattern: str, string: str, flags: int=0) -&gt; re.Match
+
+pattern: The regular expression pattern to search for.
+string: The string to search within.
+flags: Optional flags to modify the behavior of the pattern (default is 0).
+
+
+  Match Object Methods
+  #
+
+If a match is found, re.search() returns a match object. This object provides several useful methods and attributes:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/python/re/">
   <meta property="og:site_name" content="What&#39;s Behind">
   <meta property="og:title" content="RegEx">
   <meta property="og:description" content="re in Python # re.search() # The re.search() method is used to search a string for a match to a regular expression pattern. It scans through the string from left to right and returns the FIRST match it finds. If a match is found, it returns a match object; otherwise, it returns None.
-Method Signature # search(pattern: str, string: str, flags: int=0) -&gt; re.Match pattern: The regular expression pattern to search for.">
+Method Signature # search(pattern: str, string: str, flags: int=0) -&gt; re.Match pattern: The regular expression pattern to search for. string: The string to search within. flags: Optional flags to modify the behavior of the pattern (default is 0). Match Object Methods # If a match is found, re.search() returns a match object. This object provides several useful methods and attributes:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
 <title>RegEx | What&#39;s Behind</title>
-<link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/python/re/">
-<link rel="stylesheet" href="/book.min.309b7ed028807cdb68d8d61e26d609f48369c098dbf5e4d8c0dcf4cdf49feafc.css" integrity="sha256-MJt&#43;0CiAfNto2NYeJtYJ9INpwJjb9eTYwNz0zfSf6vw=" crossorigin="anonymous">
-  <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.b405a5a5b54c5f23ec7c9eaac0c933d109c4eabf183b5c6d71ebcbf3419f6fe1.js" integrity="sha256-tAWlpbVMXyPsfJ6qwMkz0QnE6r8YO1xtcevL80Gfb&#43;E=" crossorigin="anonymous"></script>
-
-  
-
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b8356e822fee47006c6b08d20f79c8cfb65fbeb7f9a8141348c08f03110828ea.js" integrity="sha256-uDVugi/uRwBsawjSD3nIz7Zfvrf5qBQTSMCPAxEIKOo=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -45,11 +64,12 @@ https://github.com/alex-shpak/hugo-book
 </h2>
 
 
-<div class="book-search">
+<div class="book-search hidden">
   <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
   <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
 
 
 
@@ -62,7 +82,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  
 
 
 
@@ -89,8 +108,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-eca28b761422c4017b94002a44eae355" class="toggle" checked />
-    <label for="section-eca28b761422c4017b94002a44eae355" class="flex justify-between">
+    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle" checked />
+    <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
   
@@ -105,8 +124,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0ef9353eeeaaa2e712636b20cef819bd" class="toggle"  />
-    <label for="section-0ef9353eeeaaa2e712636b20cef819bd" class="flex justify-between">
+    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle"  />
+    <label for="section-d89b2e5681262822056a3eec9d0a41e4" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
   
@@ -121,8 +140,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-6d661aeeb5f983714eda94738c952867" class="toggle"  />
-    <label for="section-6d661aeeb5f983714eda94738c952867" class="flex justify-between">
+    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
+    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
       <a role="button" class="">Nio</a>
     </label>
   
@@ -233,8 +252,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b996168529cd69f060de2ebed180d38e" class="toggle"  />
-    <label for="section-b996168529cd69f060de2ebed180d38e" class="flex justify-between">
+    <input type="checkbox" id="section-3a8a021e398721afe1d6aaefc5a53581" class="toggle"  />
+    <label for="section-3a8a021e398721afe1d6aaefc5a53581" class="flex justify-between">
       <a role="button" class="">Net</a>
     </label>
   
@@ -267,8 +286,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c52490d9096abcb758f801b4ee7eca56" class="toggle"  />
-    <label for="section-c52490d9096abcb758f801b4ee7eca56" class="flex justify-between">
+    <input type="checkbox" id="section-30dab7aa6f04e2575ba9575d3f7aa552" class="toggle"  />
+    <label for="section-30dab7aa6f04e2575ba9575d3f7aa552" class="flex justify-between">
       <a role="button" class="">Io</a>
     </label>
   
@@ -353,8 +372,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e24e7d8d92b6a9f48fae63ed1f8e476c" class="toggle"  />
-    <label for="section-e24e7d8d92b6a9f48fae63ed1f8e476c" class="flex justify-between">
+    <input type="checkbox" id="section-12abf7232ea9d442045b1411b7978a30" class="toggle"  />
+    <label for="section-12abf7232ea9d442045b1411b7978a30" class="flex justify-between">
       <a role="button" class="">Thread</a>
     </label>
   
@@ -452,8 +471,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-700f7fbf6d3aaecb4ab38c518403c448" class="toggle"  />
-    <label for="section-700f7fbf6d3aaecb4ab38c518403c448" class="flex justify-between">
+    <input type="checkbox" id="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="toggle"  />
+    <label for="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="flex justify-between">
       <a role="button" class="">Netty</a>
     </label>
   
@@ -517,8 +536,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7ce3689c52c4ddd4486357e6ce0409f7" class="toggle" checked />
-    <label for="section-7ce3689c52c4ddd4486357e6ce0409f7" class="flex justify-between">
+    <input type="checkbox" id="section-3267b427ef0b7fb8be17928f82652d59" class="toggle" checked />
+    <label for="section-3267b427ef0b7fb8be17928f82652d59" class="flex justify-between">
       <a role="button" class="">Python</a>
     </label>
   
@@ -582,8 +601,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c94bdc48cc72a10f9750698bd760b496" class="toggle"  />
-    <label for="section-c94bdc48cc72a10f9750698bd760b496" class="flex justify-between">
+    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
+    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
       <a role="button" class="">Project</a>
     </label>
   
@@ -629,8 +648,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0e532608ee91345a4a35cfb45ce211d1" class="toggle"  />
-    <label for="section-0e532608ee91345a4a35cfb45ce211d1" class="flex justify-between">
+    <input type="checkbox" id="section-15e5b6cfbe135e4220353ad911edbc9a" class="toggle"  />
+    <label for="section-15e5b6cfbe135e4220353ad911edbc9a" class="flex justify-between">
       <a role="button" class="">Os</a>
     </label>
   
@@ -645,8 +664,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7ed5523c642ad46d1578230786a8db5d" class="toggle"  />
-    <label for="section-7ed5523c642ad46d1578230786a8db5d" class="flex justify-between">
+    <input type="checkbox" id="section-128d8751d4236191f55b9181cd918421" class="toggle"  />
+    <label for="section-128d8751d4236191f55b9181cd918421" class="flex justify-between">
       <a role="button" class="">Linux</a>
     </label>
   
@@ -679,8 +698,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-efb1407d62e73a8a817711e3fba4de9c" class="toggle"  />
-    <label for="section-efb1407d62e73a8a817711e3fba4de9c" class="flex justify-between">
+    <input type="checkbox" id="section-a437cea16383409ff4bb050630be8e13" class="toggle"  />
+    <label for="section-a437cea16383409ff4bb050630be8e13" class="flex justify-between">
       <a role="button" class="">MAC Os</a>
     </label>
   
@@ -695,8 +714,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1a3a25c54274eb9ddf23020bba0cdbfb" class="toggle"  />
-    <label for="section-1a3a25c54274eb9ddf23020bba0cdbfb" class="flex justify-between">
+    <input type="checkbox" id="section-61556e42b41c13f33940b404f66932ed" class="toggle"  />
+    <label for="section-61556e42b41c13f33940b404f66932ed" class="flex justify-between">
       <a role="button" class="">Terminal Command</a>
     </label>
   
@@ -739,8 +758,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e0b6d6801838f2b3dd490821e43524a7" class="toggle"  />
-    <label for="section-e0b6d6801838f2b3dd490821e43524a7" class="flex justify-between">
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
       <a role="button" class="">Web</a>
     </label>
   
@@ -755,8 +774,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-71f41ee591103342b6c17608020c2cb3" class="toggle"  />
-    <label for="section-71f41ee591103342b6c17608020c2cb3" class="flex justify-between">
+    <input type="checkbox" id="section-a913ce247e99bf5334ae2e3cbeee0f90" class="toggle"  />
+    <label for="section-a913ce247e99bf5334ae2e3cbeee0f90" class="flex justify-between">
       <a role="button" class="">Glossary</a>
     </label>
   
@@ -789,8 +808,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-2f5e221e70b8f0e9ab5d58bace04b60b" class="toggle"  />
-    <label for="section-2f5e221e70b8f0e9ab5d58bace04b60b" class="flex justify-between">
+    <input type="checkbox" id="section-01867ca5de591b785e2c310209ee8cb4" class="toggle"  />
+    <label for="section-01867ca5de591b785e2c310209ee8cb4" class="flex justify-between">
       <a role="button" class="">Web API</a>
     </label>
   
@@ -823,8 +842,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-85860536baf35c0d2e30b2f54dce7ab8" class="toggle"  />
-    <label for="section-85860536baf35c0d2e30b2f54dce7ab8" class="flex justify-between">
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
       <a role="button" class="">HTTP</a>
     </label>
   
@@ -857,8 +876,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-ac646c5ee24949b9e8c3a07548f95ea4" class="toggle"  />
-    <label for="section-ac646c5ee24949b9e8c3a07548f95ea4" class="flex justify-between">
+    <input type="checkbox" id="section-6441cb17542fe8006e427b6b0a94d041" class="toggle"  />
+    <label for="section-6441cb17542fe8006e427b6b0a94d041" class="flex justify-between">
       <a role="button" class="">Security</a>
     </label>
   
@@ -922,8 +941,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9bbc07e9cf5a3dd1f0670b58cc26fe7d" class="toggle"  />
-    <label for="section-9bbc07e9cf5a3dd1f0670b58cc26fe7d" class="flex justify-between">
+    <input type="checkbox" id="section-43effcc73883f6032917b714430cd064" class="toggle"  />
+    <label for="section-43effcc73883f6032917b714430cd064" class="flex justify-between">
       <a role="button" class="">Tools</a>
     </label>
   
@@ -938,8 +957,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9a57184de34a650b7e802c8a3175c764" class="toggle"  />
-    <label for="section-9a57184de34a650b7e802c8a3175c764" class="flex justify-between">
+    <input type="checkbox" id="section-13ffff656c2dc3dfe4c18658b113a7be" class="toggle"  />
+    <label for="section-13ffff656c2dc3dfe4c18658b113a7be" class="flex justify-between">
       <a role="button" class="">Hugo</a>
     </label>
   
@@ -977,8 +996,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-973779c9194adc86298e028d295f6f5e" class="toggle"  />
-    <label for="section-973779c9194adc86298e028d295f6f5e" class="flex justify-between">
+    <input type="checkbox" id="section-435c533cf8e83924f036a3fc06649777" class="toggle"  />
+    <label for="section-435c533cf8e83924f036a3fc06649777" class="flex justify-between">
       <a role="button" class="">Aws</a>
     </label>
   
@@ -1006,8 +1025,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1655a5eb0fd2d3d2770bffd5cb198b50" class="toggle"  />
-    <label for="section-1655a5eb0fd2d3d2770bffd5cb198b50" class="flex justify-between">
+    <input type="checkbox" id="section-62258074df8a7a4253e368d8300827d8" class="toggle"  />
+    <label for="section-62258074df8a7a4253e368d8300827d8" class="flex justify-between">
       <a role="button" class="">Message</a>
     </label>
   
@@ -1066,8 +1085,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-76769177bd065f12742ea50362a7ab48" class="toggle"  />
-    <label for="section-76769177bd065f12742ea50362a7ab48" class="flex justify-between">
+    <input type="checkbox" id="section-5214fd1aa07e57317f87d16d6d714389" class="toggle"  />
+    <label for="section-5214fd1aa07e57317f87d16d6d714389" class="flex justify-between">
       <a role="button" class="">Security</a>
     </label>
   
@@ -1105,8 +1124,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-8cc8252e831d02a7053a71a00d99d1ee" class="toggle"  />
-    <label for="section-8cc8252e831d02a7053a71a00d99d1ee" class="flex justify-between">
+    <input type="checkbox" id="section-f08994ed3456b39a7f1229df10e15d9f" class="toggle"  />
+    <label for="section-f08994ed3456b39a7f1229df10e15d9f" class="flex justify-between">
       <a role="button" class="">Network</a>
     </label>
   
@@ -1152,8 +1171,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c77786c61c4d41dd20c5b2d72a718a0f" class="toggle"  />
-    <label for="section-c77786c61c4d41dd20c5b2d72a718a0f" class="flex justify-between">
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle"  />
+    <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
   
@@ -1181,8 +1200,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-264f85fc5494c4e02ddec05bf36defa3" class="toggle"  />
-    <label for="section-264f85fc5494c4e02ddec05bf36defa3" class="flex justify-between">
+    <input type="checkbox" id="section-635ac14c32f4b096cb88b04c783b749f" class="toggle"  />
+    <label for="section-635ac14c32f4b096cb88b04c783b749f" class="flex justify-between">
       <a role="button" class="">Design Data Intensive Applications</a>
     </label>
   
@@ -1241,8 +1260,8 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a8ea8d01186e9944288c4a6ce6c90b2c" class="toggle"  />
-    <label for="section-a8ea8d01186e9944288c4a6ce6c90b2c" class="flex justify-between">
+    <input type="checkbox" id="section-d6b5a5ebe02e8f45cd65f61120086e8f" class="toggle"  />
+    <label for="section-d6b5a5ebe02e8f45cd65f61120086e8f" class="flex justify-between">
       <a role="button" class="">Monitoring</a>
     </label>
   
@@ -1268,6 +1287,56 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle"  />
+    <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e65dadec602a3e741624a6eace4b2779" class="toggle"  />
+    <label for="section-e65dadec602a3e741624a6eace4b2779" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1280,6 +1349,10 @@ https://github.com/alex-shpak/hugo-book
     
   </ul>
 
+        </li>
+      
+    
+  </ul>
 
 
 
@@ -1314,7 +1387,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>RegEx</strong>
+  <h3>RegEx</h3>
 
   <label for="toc-control">
     

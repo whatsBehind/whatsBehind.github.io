@@ -12,7 +12,7 @@
       <link>https://whatsBehind.github.io/docs/programming/system-design/load-balancer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/system-design/load-balancer/</guid>
-      <description>Why Load Balancer? # Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&amp;rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also.</description>
+      <description>&lt;h1 id=&#34;why-load-balancer&#34;&gt;&#xA;  Why Load Balancer?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#why-load-balancer&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&amp;rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also. Now you have two servers to receive clients&amp;rsquo; requests, and the question is how to determine the target server for each request? That&amp;rsquo;s where Load Balancer comes in&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
