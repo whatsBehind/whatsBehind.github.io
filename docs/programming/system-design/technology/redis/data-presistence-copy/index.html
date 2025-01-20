@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="
+  Redis Data Persistence
+  #
+
+
+  Redis Data Persistence: How Does It Work?
+  #
+
+Redis is widely known for its blazing-fast in-memory operations, but it also provides robust mechanisms for ensuring data persistence, making it suitable for a wide range of use cases. Let’s dive into how Redis achieves data persistence and ensures durability.
+
+
+  1. Snapshotting (RDB - Redis Database File)
+  #
+
+Snapshotting is a point-in-time persistence mechanism where Redis saves the entire dataset to disk at regular intervals.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/os/linux/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/programming/system-design/technology/redis/data-presistence-copy/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="What&#39;s Behind">
+  <meta property="og:title" content="Data Persistence">
+  <meta property="og:description" content="Redis Data Persistence # Redis Data Persistence: How Does It Work? # Redis is widely known for its blazing-fast in-memory operations, but it also provides robust mechanisms for ensuring data persistence, making it suitable for a wide range of use cases. Let’s dive into how Redis achieves data persistence and ensures durability.
+1. Snapshotting (RDB - Redis Database File) # Snapshotting is a point-in-time persistence mechanism where Redis saves the entire dataset to disk at regular intervals.">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-<title>Linux | What&#39;s Behind</title>
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Data Persistence | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/os/linux/">
+<link rel="canonical" href="http://localhost:1313/docs/programming/system-design/technology/redis/data-presistence-copy/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.973da05bd996010542670ea24381c8b0c1560cd0d826c84565a5c4d9b2222bde.js" integrity="sha256-lz2gW9mWAQVCZw6iQ4HIsMFWDNDYJshFZaXE2bIiK94=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/os/linux/index.xml" title="What's Behind" />
+  <script defer src="/en.search.min.16ca1b36365ccad6ff4c73d79ab8c8929718c38ec79e24defb4779dcc767cd62.js" integrity="sha256-FsobNjZcytb/THPXmrjIkpcYw47HniTe&#43;0d53MdnzWI=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -83,6 +99,53 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
+    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
     <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
       <a role="button" class="">Backend</a>
@@ -107,118 +170,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
-    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
-      <a role="button" class="">Nio</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
     
       
         <li>
@@ -499,6 +450,118 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
+    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -576,54 +639,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
-    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
-      <a role="button" class="">Project</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-15e5b6cfbe135e4220353ad911edbc9a" class="toggle" checked />
+    <input type="checkbox" id="section-15e5b6cfbe135e4220353ad911edbc9a" class="toggle"  />
     <label for="section-15e5b6cfbe135e4220353ad911edbc9a" class="flex justify-between">
       <a role="button" class="">Os</a>
     </label>
@@ -639,9 +655,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-128d8751d4236191f55b9181cd918421" class="toggle" checked />
+    <input type="checkbox" id="section-128d8751d4236191f55b9181cd918421" class="toggle"  />
     <label for="section-128d8751d4236191f55b9181cd918421" class="flex justify-between">
-      <a role="button" class="active">Linux</a>
+      <a role="button" class="">Linux</a>
     </label>
   
 
@@ -1146,7 +1162,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle"  />
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle" checked />
     <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -1269,7 +1285,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle"  />
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle" checked />
     <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
       <a role="button" class="">Technology</a>
     </label>
@@ -1319,7 +1335,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle"  />
+    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle" checked />
     <label for="section-82f8da13d6fac792702112b64522aa5d" class="flex justify-between">
       <a role="button" class="">Redis</a>
     </label>
@@ -1348,7 +1364,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/system-design/technology/redis/data-presistence/" class="">Data Persistence</a>
+    <a href="/docs/programming/system-design/technology/redis/data-presistence-copy/" class="active">Data Persistence</a>
   
 
         </li>
@@ -1361,7 +1377,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/system-design/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+    <a href="/docs/programming/system-design/technology/redis/data-presistence/" class="">Data Persistence</a>
   
 
         </li>
@@ -1422,7 +1438,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Linux</h3>
+  <h3>Data Persistence</h3>
 
   <label for="toc-control">
     
@@ -1436,7 +1452,31 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-data-persistence">Redis Data Persistence</a>
+      <ul>
+        <li><a href="#redis-data-persistence-how-does-it-work">Redis Data Persistence: How Does It Work?</a></li>
+        <li><a href="#1-snapshotting-rdb---redis-database-file">1. Snapshotting (RDB - Redis Database File)</a>
+          <ul>
+            <li><a href="#how-it-works"><strong>How it Works</strong></a></li>
+            <li><a href="#configuration"><strong>Configuration</strong></a></li>
+            <li><a href="#advantages"><strong>Advantages</strong></a></li>
+            <li><a href="#disadvantages"><strong>Disadvantages</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#2-append-only-file-aof">2. Append-Only File (AOF)</a>
+          <ul>
+            <li><a href="#how-it-works-1"><strong>How it Works</strong></a></li>
+            <li><a href="#configuration-1"><strong>Configuration</strong></a></li>
+            <li><a href="#advantages-1"><strong>Advantages</strong></a></li>
+            <li><a href="#disadvantages-1"><strong>Disadvantages</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1447,7 +1487,94 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h1 id="redis-data-persistence">
+  Redis Data Persistence
+  <a class="anchor" href="#redis-data-persistence">#</a>
+</h1>
+<h2 id="redis-data-persistence-how-does-it-work">
+  Redis Data Persistence: How Does It Work?
+  <a class="anchor" href="#redis-data-persistence-how-does-it-work">#</a>
+</h2>
+<p>Redis is widely known for its blazing-fast in-memory operations, but it also provides robust mechanisms for ensuring data persistence, making it suitable for a wide range of use cases. Let’s dive into how Redis achieves data persistence and ensures durability.</p>
+<hr>
+<h2 id="1-snapshotting-rdb---redis-database-file">
+  1. Snapshotting (RDB - Redis Database File)
+  <a class="anchor" href="#1-snapshotting-rdb---redis-database-file">#</a>
+</h2>
+<p>Snapshotting is a point-in-time persistence mechanism where Redis saves the entire dataset to disk at regular intervals.</p>
+<h3 id="how-it-works">
+  <strong>How it Works</strong>
+  <a class="anchor" href="#how-it-works">#</a>
+</h3>
+<ul>
+<li>Redis creates a binary dump of the dataset in the form of an RDB file by forking a child process.</li>
+<li>The child process handles the snapshot creation entirely, ensuring minimal impact on runtime performance as the main thread remains free to serve client requests.</li>
+</ul>
+<h3 id="configuration">
+  <strong>Configuration</strong>
+  <a class="anchor" href="#configuration">#</a>
+</h3>
+<p>Snapshotting can be configured using the <code>save</code> directives in the Redis configuration file (<code>redis.conf</code>). For example:</p>
+<pre tabindex="0"><code>save 60 1000  # Save a snapshot every 60 seconds if at least 1000 changes occurred
+</code></pre><h3 id="advantages">
+  <strong>Advantages</strong>
+  <a class="anchor" href="#advantages">#</a>
+</h3>
+<ul>
+<li><strong>Quick Recovery</strong>: Snapshots provide a complete and consistent dataset, enabling fast recovery if the server crashes.</li>
+<li><strong>Minimal Performance Impact</strong>: The child process handles I/O, leaving the main thread responsive.</li>
+</ul>
+<h3 id="disadvantages">
+  <strong>Disadvantages</strong>
+  <a class="anchor" href="#disadvantages">#</a>
+</h3>
+<ul>
+<li><strong>Potential Data Loss</strong>: Changes made after the last snapshot will be lost if the server crashes.</li>
+<li><strong>Resource Intensive</strong>: Copying the entire dataset can be I/O heavy, especially for large datasets.</li>
+</ul>
+<hr>
+<h2 id="2-append-only-file-aof">
+  2. Append-Only File (AOF)
+  <a class="anchor" href="#2-append-only-file-aof">#</a>
+</h2>
+<p>The Append-Only File is a more granular persistence mechanism that logs every write operation to a file in a write-ahead manner, similar to a write-ahead log (WAL) in traditional databases. This ensures that data changes are saved incrementally and can be reconstructed reliably during a restart.</p>
+<h3 id="how-it-works-1">
+  <strong>How it Works</strong>
+  <a class="anchor" href="#how-it-works-1">#</a>
+</h3>
+<ul>
+<li>Redis logs each write operation (e.g., <code>SET</code>, <code>DEL</code>) in an append-only format, which can be configured to log either every single write or at a specified interval.</li>
+<li>During recovery, Redis replays these logged operations to reconstruct the dataset.</li>
+</ul>
+<h3 id="configuration-1">
+  <strong>Configuration</strong>
+  <a class="anchor" href="#configuration-1">#</a>
+</h3>
+<p>Enable AOF persistence with the following in <code>redis.conf</code>:</p>
+<pre tabindex="0"><code>appendonly yes
+
+# Redis provides three options for AOF synchronization:
+- appendfsync always: Every write operation is immediately flushed to disk. This ensures maximum durability but may impact performance.
+- appendfsync everysec: Write operations are flushed to disk every second, balancing durability and performance.
+- appendfsync no: The OS decides when to flush data to disk, prioritizing performance over durability.
+</code></pre><h3 id="advantages-1">
+  <strong>Advantages</strong>
+  <a class="anchor" href="#advantages-1">#</a>
+</h3>
+<ul>
+<li><strong>Higher Durability</strong>: Logs every operation, reducing potential data loss.</li>
+</ul>
+<h3 id="disadvantages-1">
+  <strong>Disadvantages</strong>
+  <a class="anchor" href="#disadvantages-1">#</a>
+</h3>
+<ul>
+<li><strong>Performance Overhead</strong>: Logging every operation (e.g., <code>appendfsync always</code>) can introduce significant disk I/O and latency.</li>
+<li><strong>Large File Sizes</strong>: AOF files are generally larger than RDB snapshots.</li>
+<li><strong>AOF Rewriting</strong>: To address growing file sizes, Redis compacts the AOF file by rewriting it with the minimal set of commands needed to rebuild the current dataset. This process, while efficient, introduces additional disk I/O.</li>
+<li><strong>Slow Recovery</strong>: Incremental recovery from AOF files can take longer compared to RDB snapshots, especially for large datasets, as Redis replays every logged operation to reconstruct the dataset.</li>
+</ul>
+</article>
  
       
 
@@ -1472,6 +1599,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1482,7 +1613,31 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-data-persistence">Redis Data Persistence</a>
+      <ul>
+        <li><a href="#redis-data-persistence-how-does-it-work">Redis Data Persistence: How Does It Work?</a></li>
+        <li><a href="#1-snapshotting-rdb---redis-database-file">1. Snapshotting (RDB - Redis Database File)</a>
+          <ul>
+            <li><a href="#how-it-works"><strong>How it Works</strong></a></li>
+            <li><a href="#configuration"><strong>Configuration</strong></a></li>
+            <li><a href="#advantages"><strong>Advantages</strong></a></li>
+            <li><a href="#disadvantages"><strong>Disadvantages</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#2-append-only-file-aof">2. Append-Only File (AOF)</a>
+          <ul>
+            <li><a href="#how-it-works-1"><strong>How it Works</strong></a></li>
+            <li><a href="#configuration-1"><strong>Configuration</strong></a></li>
+            <li><a href="#advantages-1"><strong>Advantages</strong></a></li>
+            <li><a href="#disadvantages-1"><strong>Disadvantages</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

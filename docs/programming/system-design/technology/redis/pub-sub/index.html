@@ -3,22 +3,46 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="
+  Redis Pub/Sub
+  #
+
+Redis Pub/Sub (Publish/Subscribe) is a lightweight messaging system that allows clients to send and receive messages in real time. It’s designed for event-driven communication where publishers broadcast messages to channels, and subscribers listening to those channels receive the messages instantly.
+
+
+  Key Components
+  #
+
+
+Channels: Channels are message hubs in Redis, responsible for receiving and broadcasting messages.
+Publishers: Clients that send messages to channels.
+Subscribers: Clients that listen to channels and receive messages.
+
+
+
+  How It Works
+  #
+
+
+
+Subscribers Subscribe to Channels:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/os/linux/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/technology/redis/pub-sub/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="What&#39;s Behind">
+  <meta property="og:title" content="Redis Pub/Sub">
+  <meta property="og:description" content="Redis Pub/Sub # Redis Pub/Sub (Publish/Subscribe) is a lightweight messaging system that allows clients to send and receive messages in real time. It’s designed for event-driven communication where publishers broadcast messages to channels, and subscribers listening to those channels receive the messages instantly.
+Key Components # Channels: Channels are message hubs in Redis, responsible for receiving and broadcasting messages. Publishers: Clients that send messages to channels. Subscribers: Clients that listen to channels and receive messages. How It Works # Subscribers Subscribe to Channels:">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-<title>Linux | What&#39;s Behind</title>
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Redis Pub/Sub | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/os/linux/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/system-design/technology/redis/pub-sub/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.973da05bd996010542670ea24381c8b0c1560cd0d826c84565a5c4d9b2222bde.js" integrity="sha256-lz2gW9mWAQVCZw6iQ4HIsMFWDNDYJshFZaXE2bIiK94=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/os/linux/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -623,7 +647,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-15e5b6cfbe135e4220353ad911edbc9a" class="toggle" checked />
+    <input type="checkbox" id="section-15e5b6cfbe135e4220353ad911edbc9a" class="toggle"  />
     <label for="section-15e5b6cfbe135e4220353ad911edbc9a" class="flex justify-between">
       <a role="button" class="">Os</a>
     </label>
@@ -639,9 +663,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-128d8751d4236191f55b9181cd918421" class="toggle" checked />
+    <input type="checkbox" id="section-128d8751d4236191f55b9181cd918421" class="toggle"  />
     <label for="section-128d8751d4236191f55b9181cd918421" class="flex justify-between">
-      <a role="button" class="active">Linux</a>
+      <a role="button" class="">Linux</a>
     </label>
   
 
@@ -1146,7 +1170,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle"  />
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle" checked />
     <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -1269,7 +1293,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle"  />
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle" checked />
     <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
       <a role="button" class="">Technology</a>
     </label>
@@ -1319,7 +1343,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle"  />
+    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle" checked />
     <label for="section-82f8da13d6fac792702112b64522aa5d" class="flex justify-between">
       <a role="button" class="">Redis</a>
     </label>
@@ -1361,7 +1385,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/system-design/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+    <a href="/docs/programming/system-design/technology/redis/pub-sub/" class="active">Redis Pub/Sub</a>
   
 
         </li>
@@ -1422,7 +1446,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Linux</h3>
+  <h3>Redis Pub/Sub</h3>
 
   <label for="toc-control">
     
@@ -1436,7 +1460,17 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-pubsub">Redis Pub/Sub</a>
+      <ul>
+        <li><a href="#key-components">Key Components</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#key-properties-of-redis-pubsub">Key Properties of Redis Pub/Sub</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1447,7 +1481,106 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h1 id="redis-pubsub">
+  Redis Pub/Sub
+  <a class="anchor" href="#redis-pubsub">#</a>
+</h1>
+<p>Redis Pub/Sub (Publish/Subscribe) is a lightweight messaging system that allows clients to send and receive messages in real time. It’s designed for event-driven communication where publishers broadcast messages to channels, and subscribers listening to those channels receive the messages instantly.</p>
+<hr>
+<h2 id="key-components">
+  Key Components
+  <a class="anchor" href="#key-components">#</a>
+</h2>
+<ol>
+<li><strong>Channels</strong>: Channels are message hubs in Redis, responsible for receiving and broadcasting messages.</li>
+<li><strong>Publishers</strong>: Clients that send messages to channels.</li>
+<li><strong>Subscribers</strong>: Clients that listen to channels and receive messages.</li>
+</ol>
+<hr>
+<h2 id="how-it-works">
+  How It Works
+  <a class="anchor" href="#how-it-works">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>Subscribers Subscribe to Channels</strong>:</p>
+<ul>
+<li>A subscriber issues the <code>SUBSCRIBE</code> command to start listening to one or more channels.</li>
+<li>Example:
+<pre tabindex="0"><code># Subscriber listens to &#39;news&#39; and &#39;sports&#39; channels
+SUBSCRIBE news sports
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p><strong>Publishers Publish Messages</strong>:</p>
+<ul>
+<li>A publisher sends messages to a specific channel using the <code>PUBLISH</code> command.</li>
+<li>Example:
+<pre tabindex="0"><code># Publisher sends a message to the &#39;news&#39; channel
+PUBLISH news &#34;Breaking news! Redis is awesome.&#34;
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p><strong>Message Broadcast</strong>:</p>
+<ul>
+<li>Redis instantly delivers the message to all subscribers of the channel.</li>
+<li>Example:
+<pre tabindex="0"><code># Subscribers receive the message in real time
+&#34;news: Breaking news! Redis is awesome.&#34;
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Subscriptions</strong>:</p>
+<ul>
+<li>Clients can subscribe or unsubscribe from channels at any time without interrupting other operations.</li>
+<li>Example:
+<pre tabindex="0"><code># Dynamically unsubscribe from &#39;sports&#39; channel
+UNSUBSCRIBE sports
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="key-properties-of-redis-pubsub">
+  Key Properties of Redis Pub/Sub
+  <a class="anchor" href="#key-properties-of-redis-pubsub">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>Push-Based Messaging</strong>:</p>
+<ul>
+<li>Messages are pushed to subscribers as soon as they are published, unlike pull-based systems like Kafka.</li>
+</ul>
+</li>
+<li>
+<p><strong>Synchronous Communication</strong>:</p>
+<ul>
+<li>Messages are broadcasted to all active subscribers immediately after being published.</li>
+</ul>
+</li>
+<li>
+<p><strong>No Acknowledgment</strong>:</p>
+<ul>
+<li>Redis Pub/Sub does not require explicit acknowledgment of message delivery.</li>
+</ul>
+</li>
+<li>
+<p><strong>No Message Persistence</strong>:</p>
+<ul>
+<li>Messages are only delivered to active subscribers. If a subscriber is offline, it will miss messages sent during its downtime.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Subscribe/Unsubscribe</strong>:</p>
+<ul>
+<li>Clients can dynamically subscribe or unsubscribe from channels at runtime without interfering with other subscribers or the overall Pub/Sub system.</li>
+</ul>
+</li>
+</ol>
+</article>
  
       
 
@@ -1472,6 +1605,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1482,7 +1619,17 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-pubsub">Redis Pub/Sub</a>
+      <ul>
+        <li><a href="#key-components">Key Components</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#key-properties-of-redis-pubsub">Key Properties of Redis Pub/Sub</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
