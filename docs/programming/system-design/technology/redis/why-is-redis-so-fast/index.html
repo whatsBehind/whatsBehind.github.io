@@ -4,39 +4,31 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  EventLoop &amp; EventLoopGroup
+  Why is Redis So Fast?
   #
 
+Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for &ldquo;Remote Dictionary Server,&rdquo; and it’s an open-source project known for its speed, simplicity, and versatility.
+Redis achieves its incredible speed through several key design principles and optimizations:
 
-  EventLoop
+  1. In-Memory Operations
   #
 
-
-
-What is an EventLoop?
-An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.
-
-
-How does EventLoop work?
-
-
-Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.">
+Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/technology/redis/why-is-redis-so-fast/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="EventLoop & EventLoopGroup">
-  <meta property="og:description" content="EventLoop &amp; EventLoopGroup # EventLoop # What is an EventLoop?
-An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.
-How does EventLoop work?
-Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.">
+  <meta property="og:title" content="Why Is Redis So Fast">
+  <meta property="og:description" content="Why is Redis So Fast? # Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for “Remote Dictionary Server,” and it’s an open-source project known for its speed, simplicity, and versatility.
+Redis achieves its incredible speed through several key design principles and optimizations:
+1. In-Memory Operations # Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>EventLoop &amp; EventLoopGroup | What&#39;s Behind</title>
+<title>Why Is Redis So Fast | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/system-design/technology/redis/why-is-redis-so-fast/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.2f51a3d2d5dcd073db51cbe3c7535a6fdd9cda2f6feb92bf26a7526f3ee72648.js" integrity="sha256-L1Gj0tXc0HPbUcvjx1Nab92c2i9v65K/JqdSbz7nJkg=" crossorigin="anonymous"></script>
@@ -104,7 +96,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle" checked />
+    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
     <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
@@ -120,7 +112,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle" checked />
+    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle"  />
     <label for="section-d89b2e5681262822056a3eec9d0a41e4" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
@@ -467,7 +459,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="toggle" checked />
+    <input type="checkbox" id="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="toggle"  />
     <label for="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="flex justify-between">
       <a role="button" class="">Netty</a>
     </label>
@@ -483,7 +475,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="active">EventLoop &amp; EventLoopGroup</a>
+    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
   
 
         </li>
@@ -1167,7 +1159,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle"  />
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle" checked />
     <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -1290,7 +1282,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle"  />
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle" checked />
     <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
       <a role="button" class="">Technology</a>
     </label>
@@ -1340,7 +1332,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle"  />
+    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle" checked />
     <label for="section-82f8da13d6fac792702112b64522aa5d" class="flex justify-between">
       <a role="button" class="">Redis</a>
     </label>
@@ -1356,7 +1348,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/system-design/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+    <a href="/docs/programming/system-design/technology/redis/why-is-redis-so-fast/" class="active">Why Is Redis So Fast</a>
   
 
         </li>
@@ -1417,7 +1409,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>EventLoop &amp; EventLoopGroup</h3>
+  <h3>Why Is Redis So Fast</h3>
 
   <label for="toc-control">
     
@@ -1433,11 +1425,29 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#eventloop--eventloopgroup">EventLoop &amp; EventLoopGroup</a>
+    <li><a href="#why-is-redis-so-fast">Why is Redis So Fast?</a>
       <ul>
-        <li><a href="#eventloop">EventLoop</a></li>
-        <li><a href="#eventloopgroup">EventLoopGroup</a></li>
-        <li><a href="#examples">Examples</a></li>
+        <li><a href="#1-in-memory-operations">1. In-Memory Operations</a>
+          <ul>
+            <li><a href="#understanding-mts-and-bandwidth">Understanding MT/s and Bandwidth</a></li>
+            <li><a href="#calculating-redis-operations">Calculating Redis Operations</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-efficient-data-structures">2. Efficient Data Structures</a></li>
+        <li><a href="#3-single-threaded-event-loop">3. Single-Threaded Event Loop</a>
+          <ul>
+            <li><a href="#calculating-redis-operations-per-second-cpu-bound">Calculating Redis Operations Per Second (CPU-bound)</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-minimal-protocol-overhead">4. Minimal Protocol Overhead</a></li>
+        <li><a href="#5-pipelining">5. Pipelining</a></li>
+        <li><a href="#6-optimized-network-io">6. Optimized Network IO</a>
+          <ul>
+            <li><a href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">Step-by-Step Handling of a Request and Response in Non-Blocking I/O</a></li>
+            <li><a href="#network-bandwidth-calculation">Network Bandwidth Calculation</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-partitioning">7. Partitioning</a></li>
       </ul>
     </li>
   </ul>
@@ -1452,124 +1462,183 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="eventloop--eventloopgroup">
-  EventLoop &amp; EventLoopGroup
-  <a class="anchor" href="#eventloop--eventloopgroup">#</a>
+  <article class="markdown book-article"><h1 id="why-is-redis-so-fast">
+  Why is Redis So Fast?
+  <a class="anchor" href="#why-is-redis-so-fast">#</a>
 </h1>
-<h2 id="eventloop">
-  EventLoop
-  <a class="anchor" href="#eventloop">#</a>
+<p>Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for &ldquo;Remote Dictionary Server,&rdquo; and it’s an open-source project known for its speed, simplicity, and versatility.</p>
+<p>Redis achieves its incredible speed through several key design principles and optimizations:</p>
+<h2 id="1-in-memory-operations">
+  1. In-Memory Operations
+  <a class="anchor" href="#1-in-memory-operations">#</a>
 </h2>
-<ul>
-<li>
-<p>What is an <code>EventLoop</code>?</p>
-<p>An <code>EventLoop</code> in Netty is a fundamental component that handles all the events related to a single <code>Channel</code>.</p>
-</li>
-<li>
-<p>How does <code>EventLoop</code> work?</p>
-<ul>
-<li>
-<p>Single Threaded: Each <code>EventLoop</code> is bound to a single thread, and each <code>Channel</code> is registered with one <code>EventLoop</code>. This means all I/O operations of a <code>Channel</code> are always executed by the same thread, ensuring thread safety and consistency.</p>
-</li>
-<li>
-<p>Event Processing Loop: The <code>EventLoop</code> continuously checks for new events in its loop and processes them. Events might include connection acceptance, data read/write, or disconnection.</p>
-</li>
-<li>
-<p>Task Queue: Besides I/O operations, <code>EventLoops</code> have a task queue for tasks that are not directly related to I/O operations. This ensures that these tasks are also executed in the same thread, maintaining thread safety.</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="eventloopgroup">
-  EventLoopGroup
-  <a class="anchor" href="#eventloopgroup">#</a>
+<p>Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.</p>
+<h3 id="understanding-mts-and-bandwidth">
+  Understanding MT/s and Bandwidth
+  <a class="anchor" href="#understanding-mts-and-bandwidth">#</a>
+</h3>
+<p>For example, DDR5 DRAM—the latest generation of DRAM—can achieve memory access speeds of around 4800 MT/s (megatransfers per second). MT/s reflects the number of data transfers per second over the memory bus. DRAM employs double data rate (DDR) technology, which allows it to send data on both the rising and falling edges of the clock cycle, effectively doubling the transfer rate. Each transfer moves a fixed amount of data, and this is used to calculate the bandwidth (GB/s):</p>
+<p>Bandwidth (GB/s) = MT/s × Bus Width (Bytes) ÷ 1000</p>
+<p>For instance, with DDR5-4800, having 4800 MT/s and a bus width of 64 bits (8 bytes):
+Bandwidth = 4800 × 8 ÷ 1000 = 38.4 GB/s per channel.</p>
+<h3 id="calculating-redis-operations">
+  Calculating Redis Operations
+  <a class="anchor" href="#calculating-redis-operations">#</a>
+</h3>
+<p>Assume each Redis operation requires 100 bytes of data (both request and response). Using the theoretical bandwidth of 38.4 GB/s for a single channel, the rough queries per second (QPS) Redis could achieve is:</p>
+<p>QPS = Bandwidth (Bytes/s) ÷ Operation Size (Bytes)
+QPS = 38.4 × 10^9 ÷ 100 = 384 million operations per second.</p>
+<p>This theoretical calculation showcases the massive potential throughput of Redis when operating entirely in memory with modern DRAM, far exceeding the capabilities of traditional disk-based systems and enabling sub-millisecond response times. However, this is just a rough calculation. In real-world scenarios, the QPS of Redis is bottlenecked by other factors such as CPU, network bandwidth, and I/O limitations, with memory being just one of the constraints.</p>
+<h2 id="2-efficient-data-structures">
+  2. Efficient Data Structures
+  <a class="anchor" href="#2-efficient-data-structures">#</a>
 </h2>
-<ul>
-<li>
-<p>What is <code>EventLoopGroup</code>?
-An <code>EventLoopGroup</code> is a collection of <code>EventLoop</code> instances in Netty. It&rsquo;s responsible for managing these <code>EventLoops</code>, which are the core components handling I/O operations and events for <code>Channels</code> (a connection or a socket).</p>
-</li>
-<li>
-<p>Roles of <code>EventLoopGroup</code>?</p>
-<ul>
-<li>Boss and Worker Groups: In server-side applications, there are typically two <code>EventLoopGroups</code>. The &lsquo;boss&rsquo; group accepts incoming connections and hands them over to the &lsquo;worker&rsquo; group, which then handles the actual I/O operations. See <a href="/docs/programming/backend/java/nio/multiple-threads">boss-and-work</a></li>
-</ul>
-</li>
-<li>
-<p>How does <code>EventLoopGroup</code> work?</p>
-<ul>
-<li>When a client attempts to connect to the server, this connection request first arrives at the boss <code>EventLoopGroup</code>.</li>
-<li>The boss <code>EventLoopGroup</code> accepts the connection and registers it with an <code>EventLoop</code> in the worker <code>EventLoopGroup</code>.</li>
-<li>Once a connection is assigned to an <code>EventLoop</code> in the worker group, that <code>EventLoop</code> is responsible for all the events and operations associated with that connection.</li>
-<li>The <code>EventLoop</code> in the worker <code>EventLoopGroup</code> processes incoming data, sends responses, and can execute tasks like message decoding, business logic processing, and message encoding.</li>
-</ul>
-</li>
-</ul>
-<h2 id="examples">
-  Examples
-  <a class="anchor" href="#examples">#</a>
+<p>Redis uses highly optimized data structures specifically designed to maximize performance. For example, dictionaries in Redis allow O(1) average-time complexity for lookups and inserts, making key-value storage extremely efficient. Skip lists are used for sorted sets, enabling fast range queries and ordered operations with O(log n) complexity. Additionally, Redis employs lightweight compression techniques to reduce memory usage while ensuring minimal impact on data access speed. These tailored data structures ensure that Redis can handle millions of operations per second while maintaining consistent low latency.</p>
+<h2 id="3-single-threaded-event-loop">
+  3. Single-Threaded Event Loop
+  <a class="anchor" href="#3-single-threaded-event-loop">#</a>
 </h2>
+<p>The benefit of using a single-threaded event loop in Redis is that it eliminates the need for context switching and complex locking mechanisms, enabling more predictable and efficient operation. This simplicity also avoids issues like race conditions and deadlocks, making Redis highly reliable for lightweight commands and in-memory operations.</p>
+<p>However, this raises a critical question: can a single thread handle high volumes of operations in a modern computing environment? To address this, let’s calculate the theoretical performance of a single-threaded Redis instance, assuming one operation takes 100 CPU cycles on average.</p>
+<h3 id="calculating-redis-operations-per-second-cpu-bound">
+  Calculating Redis Operations Per Second (CPU-bound)
+  <a class="anchor" href="#calculating-redis-operations-per-second-cpu-bound">#</a>
+</h3>
 <ul>
-<li>
-<p>Execute a single task</p>
+<li><strong>CPU Clock Speed</strong>: 4.5 GHz (4.5 × 10^9 cycles/second)</li>
+<li><strong>Cycles Per Operation</strong>: 100 CPU cycles per operation (assumption for lightweight Redis commands).</li>
+</ul>
+<p>Thus, the number of operations Redis can handle is:</p>
+<p>QPS = Clock Speed / Cycles Per Operation
+QPS = 4.5 × 10^9 / 100 = 45 million operations per second.</p>
+<h2 id="4-minimal-protocol-overhead">
+  4. Minimal Protocol Overhead
+  <a class="anchor" href="#4-minimal-protocol-overhead">#</a>
+</h2>
+<p>RESP (Redis Serialization Protocol) is a lightweight, custom protocol dedicated to Redis that offers several key advantages:</p>
 <ul>
+<li><strong>Compact Format</strong>: RESP eliminates the overhead of verbose headers and negotiation mechanisms, which eases CPU usage by requiring significantly fewer cycles to parse and execute compared to general-purpose protocols like HTTP.</li>
+<li><strong>Reduced Network Bandwidth</strong>: By containing fewer bytes in both requests and responses, RESP minimizes the network bandwidth required for communication, improving overall throughput.</li>
+<li><strong>Integrated Pipelining</strong>: RESP seamlessly supports pipelining, allowing multiple commands to be sent in a single request, which further reduces latency and boosts performance.</li>
+</ul>
+<h2 id="5-pipelining">
+  5. Pipelining
+  <a class="anchor" href="#5-pipelining">#</a>
+</h2>
+<p>Redis allows clients to send multiple commands in a single request through its pipelining feature, which reduces round-trip latency and significantly improves throughput. For example, instead of waiting for each command&rsquo;s response before sending the next, a client can send a batch of commands like <code>SET key1 value1</code>, <code>SET key2 value2</code>, and <code>GET key1</code> all at once. The server processes them sequentially and sends back a batch of responses, minimizing network delays. </p>
+<h2 id="6-optimized-network-io">
+  6. Optimized Network IO
+  <a class="anchor" href="#6-optimized-network-io">#</a>
+</h2>
+<p>Redis handles network requests and responses efficiently using non-blocking I/O and event-driven mechanisms. Here’s a step-by-step explanation of how Redis handles client requests and responses:</p>
+<h3 id="step-by-step-handling-of-a-request-and-response-in-non-blocking-io">
+  Step-by-Step Handling of a Request and Response in Non-Blocking I/O
+  <a class="anchor" href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">#</a>
+</h3>
+<ol>
 <li>
-<p>Code</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>EventLoopGroup group <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NioEventLoopGroup(2);
-</span></span><span style="display:flex;"><span>group.<span style="color:#a6e22e">next</span>().<span style="color:#a6e22e">execute</span>(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(1000);
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
-</span></span><span style="display:flex;"><span>});
-</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Hello main!&#34;</span>);
-</span></span></code></pre></div></li>
-<li>
-<p>Execution Result</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>22:10:25.<span style="color:#a6e22e">111</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello main<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:26.<span style="color:#a6e22e">111</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
-</span></span></code></pre></div></li>
-<li>
-<p><code>group.next()</code> returns a <code>EventLoop</code></p>
+<p><strong>Client Sends a TCP Request</strong>:</p>
+<ul>
+<li>The client sends a command (e.g., <code>GET key1</code>) over an established TCP connection to Redis.</li>
+<li>The data is broken into packets and sent to the server.</li>
+</ul>
 </li>
 <li>
-<p>The <code>EventLoop</code> can execute a <code>Runnable</code> task in its thread</p>
+<p><strong>OS Receives TCP Packets</strong>:</p>
+<ul>
+<li>The operating system (OS) kernel on the server receives the incoming packets, reassembles them, and stores the complete request in the <strong>socket buffer</strong>, which is managed by the OS.</li>
+<li>In non-blocking mode, Redis’s main thread does not wait for the complete message to be ready in the buffer. Instead, Redis continues processing other ready events in its event loop until notified by the OS that the request is ready for reading.</li>
+</ul>
 </li>
 <li>
-<p>Main thread is not blocked</p>
+<p><strong>Redis Reads the Request</strong>:</p>
+<ul>
+<li>When the complete request is ready in the socket buffer, the OS notifies Redis that it is ready to be read and processed.</li>
+<li>Redis’s main thread processes the &ldquo;ready-to-read&rdquo; event in its event loop. </li>
+<li>It executes a non-blocking <code>read()</code> system call to fetch the request data from the socket buffer into Redis’s user-space memory.</li>
+<li>If the full request is not yet available, Redis skips this socket and continues processing other events, avoiding blocking.</li>
+</ul>
+</li>
+<li>
+<p><strong>Redis Processes the Request</strong>:</p>
+<ul>
+<li>Redis parses and executes the command (e.g., <code>GET key1</code>) by retrieving the key’s value from its in-memory data structure.</li>
+<li>The response (e.g., <code>value1</code>) is prepared in memory, waiting to be written to the socket buffer.</li>
+</ul>
+</li>
+<li>
+<p><strong>Redis Writes the Response to the Socket Buffer</strong>:</p>
+<ul>
+<li>Redis executes a non-blocking <code>write()</code> system call to send the response to the socket buffer.</li>
+<li>If the socket buffer has enough space, the data is copied immediately, and the <code>write()</code> call returns.</li>
+<li>If the buffer is full (e.g., due to a slow client), the <code>write()</code> call defers, and Redis marks the socket as &ldquo;waiting for readiness.&rdquo; After marking, Redis does not block; instead, it immediately moves on to process other ready requests or tasks in its event loop. Redis retries the write when the OS notifies that the socket is writable again, ensuring efficient use of the main thread while maintaining responsiveness.</li>
+</ul>
+</li>
+<li>
+<p><strong>OS Transmits the Data to the Client</strong>:</p>
+<ul>
+<li>Once the response is in the socket buffer, the OS and the network interface card (NIC) handle the actual transmission of the data over the network. Redis itself is not involved in this process; the OS takes full responsibility for reliably sending the data to the client, including handling retransmissions and acknowledgments.</li>
+</ul>
+</li>
+</ol>
+<h4 id="key-points-of-non-blocking-io">
+  <strong>Key Points of Non-Blocking I/O</strong>
+  <a class="anchor" href="#key-points-of-non-blocking-io">#</a>
+</h4>
+<ul>
+<li>Redis never blocks its main thread while waiting for I/O operations (e.g., receiving a request, writing a response).</li>
+<li>The OS handles low-level tasks like managing socket buffers and transmitting data over the network.</li>
+<li>Redis’s event loop ensures it efficiently processes ready events (e.g., requests from other clients) while waiting for I/O readiness.</li>
+</ul>
+<p>This non-blocking I/O model, combined with Redis’s single-threaded design, allows it to scale efficiently and handle thousands of concurrent connections without bottlenecks.</p>
+<h3 id="network-bandwidth-calculation">
+  Network Bandwidth Calculation
+  <a class="anchor" href="#network-bandwidth-calculation">#</a>
+</h3>
+<p>Let’s calculate the theoretical maximum number of requests Redis can handle based solely on network bandwidth. Assume both the request and response are 100 bytes each.</p>
+<h4 id="assumptions">
+  Assumptions:
+  <a class="anchor" href="#assumptions">#</a>
+</h4>
+<ul>
+<li>Request size = 200 bytes, considering network overhead like TCP/IP headers</li>
+<li>Response size = 200 bytes</li>
+<li>Total data per operation = 200 (request) + 200 (response) = 400 bytes</li>
+<li>Network bandwidth = 10 Gbps (10 gigabits per second)</li>
+</ul>
+<h4 id="calculation">
+  Calculation:
+  <a class="anchor" href="#calculation">#</a>
+</h4>
+<ol>
+<li>
+<p>Convert bandwidth to bytes per second:</p>
+<ul>
+<li>
+<p>10 Gbps = 10 × 10^9 bits/second</p>
+</li>
+<li>
+<p>1 byte = 8 bits, so:</p>
+<p>Bandwidth (bytes/second) = 10 × 10^9 ÷ 8 = 1250 × 10^6 bytes/second</p>
 </li>
 </ul>
 </li>
 <li>
-<p>Execute scheduled tasks</p>
-<ul>
-<li>Code
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>EventLoopGroup group <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NioEventLoopGroup(2);
-</span></span><span style="display:flex;"><span>AtomicInteger count <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomicInteger(0);
-</span></span><span style="display:flex;"><span>group.<span style="color:#a6e22e">next</span>().<span style="color:#a6e22e">scheduleAtFixedRate</span>(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(1000);
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Hello EventLoop-{}!&#34;</span>, count.<span style="color:#a6e22e">getAndIncrement</span>());
-</span></span><span style="display:flex;"><span>}, 0, 1, TimeUnit.<span style="color:#a6e22e">SECONDS</span>);
-</span></span></code></pre></div></li>
-<li>Execution Result
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>22:10:26.<span style="color:#a6e22e">112</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>0<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:27.<span style="color:#a6e22e">112</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>1<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:28.<span style="color:#a6e22e">113</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>2<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:29.<span style="color:#a6e22e">113</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>3<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:30.<span style="color:#a6e22e">114</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>4<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:31.<span style="color:#a6e22e">114</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>5<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:32.<span style="color:#a6e22e">114</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>6<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>...
-</span></span></code></pre></div></li>
-</ul>
+<p>Calculate the maximum requests per second:</p>
+<p>Requests per second (RPS) = Bandwidth (bytes/second) ÷ Data per operation (bytes)</p>
+<p>RPS = 1250 × 10^6 ÷ 400 = 3.125 million requests per second</p>
 </li>
-</ul>
+</ol>
+<h4 id="conclusion">
+  Conclusion:
+  <a class="anchor" href="#conclusion">#</a>
+</h4>
+<p>With a 10 Gbps network connection, Redis can theoretically handle up to <strong>3.125 million requests per second</strong> network bandwidth-wise, assuming no other bottlenecks (e.g., CPU or memory).</p>
+<h2 id="7-partitioning">
+  7. Partitioning
+  <a class="anchor" href="#7-partitioning">#</a>
+</h2>
+<p>With Redis Cluster, data can be partitioned across multiple nodes, enabling horizontal scaling while maintaining high performance. If higher QPS is required and a single thread cannot handle the load, the system can be scaled by partitioning incoming requests and deploying more Redis instances to distribute the workload efficiently.</p>
 </article>
  
       
@@ -1611,11 +1680,29 @@ An <code>EventLoopGroup</code> is a collection of <code>EventLoop</code> instanc
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#eventloop--eventloopgroup">EventLoop &amp; EventLoopGroup</a>
+    <li><a href="#why-is-redis-so-fast">Why is Redis So Fast?</a>
       <ul>
-        <li><a href="#eventloop">EventLoop</a></li>
-        <li><a href="#eventloopgroup">EventLoopGroup</a></li>
-        <li><a href="#examples">Examples</a></li>
+        <li><a href="#1-in-memory-operations">1. In-Memory Operations</a>
+          <ul>
+            <li><a href="#understanding-mts-and-bandwidth">Understanding MT/s and Bandwidth</a></li>
+            <li><a href="#calculating-redis-operations">Calculating Redis Operations</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-efficient-data-structures">2. Efficient Data Structures</a></li>
+        <li><a href="#3-single-threaded-event-loop">3. Single-Threaded Event Loop</a>
+          <ul>
+            <li><a href="#calculating-redis-operations-per-second-cpu-bound">Calculating Redis Operations Per Second (CPU-bound)</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-minimal-protocol-overhead">4. Minimal Protocol Overhead</a></li>
+        <li><a href="#5-pipelining">5. Pipelining</a></li>
+        <li><a href="#6-optimized-network-io">6. Optimized Network IO</a>
+          <ul>
+            <li><a href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">Step-by-Step Handling of a Request and Response in Non-Blocking I/O</a></li>
+            <li><a href="#network-bandwidth-calculation">Network Bandwidth Calculation</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-partitioning">7. Partitioning</a></li>
       </ul>
     </li>
   </ul>

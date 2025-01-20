@@ -3,43 +3,22 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="
-  EventLoop &amp; EventLoopGroup
-  #
-
-
-  EventLoop
-  #
-
-
-
-What is an EventLoop?
-An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.
-
-
-How does EventLoop work?
-
-
-Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.">
+<meta name="description" content="">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/technology/redis/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="EventLoop & EventLoopGroup">
-  <meta property="og:description" content="EventLoop &amp; EventLoopGroup # EventLoop # What is an EventLoop?
-An EventLoop in Netty is a fundamental component that handles all the events related to a single Channel.
-How does EventLoop work?
-Single Threaded: Each EventLoop is bound to a single thread, and each Channel is registered with one EventLoop. This means all I/O operations of a Channel are always executed by the same thread, ensuring thread safety and consistency.">
+  <meta property="og:title" content="What&#39;s Behind">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="docs">
-<title>EventLoop &amp; EventLoopGroup | What&#39;s Behind</title>
+  <meta property="og:type" content="website">
+<title>Redis | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/system-design/technology/redis/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.2f51a3d2d5dcd073db51cbe3c7535a6fdd9cda2f6feb92bf26a7526f3ee72648.js" integrity="sha256-L1Gj0tXc0HPbUcvjx1Nab92c2i9v65K/JqdSbz7nJkg=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/system-design/technology/redis/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -104,7 +83,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle" checked />
+    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
     <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
@@ -120,7 +99,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle" checked />
+    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle"  />
     <label for="section-d89b2e5681262822056a3eec9d0a41e4" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
@@ -467,7 +446,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="toggle" checked />
+    <input type="checkbox" id="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="toggle"  />
     <label for="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="flex justify-between">
       <a role="button" class="">Netty</a>
     </label>
@@ -483,7 +462,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="active">EventLoop &amp; EventLoopGroup</a>
+    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
   
 
         </li>
@@ -1167,7 +1146,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle"  />
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle" checked />
     <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -1290,7 +1269,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle"  />
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle" checked />
     <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
       <a role="button" class="">Technology</a>
     </label>
@@ -1340,9 +1319,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle"  />
+    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle" checked />
     <label for="section-82f8da13d6fac792702112b64522aa5d" class="flex justify-between">
-      <a role="button" class="">Redis</a>
+      <a role="button" class="active">Redis</a>
     </label>
   
 
@@ -1417,7 +1396,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>EventLoop &amp; EventLoopGroup</h3>
+  <h3>Redis</h3>
 
   <label for="toc-control">
     
@@ -1431,17 +1410,7 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#eventloop--eventloopgroup">EventLoop &amp; EventLoopGroup</a>
-      <ul>
-        <li><a href="#eventloop">EventLoop</a></li>
-        <li><a href="#eventloopgroup">EventLoopGroup</a></li>
-        <li><a href="#examples">Examples</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
 
 
 
@@ -1452,125 +1421,7 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="eventloop--eventloopgroup">
-  EventLoop &amp; EventLoopGroup
-  <a class="anchor" href="#eventloop--eventloopgroup">#</a>
-</h1>
-<h2 id="eventloop">
-  EventLoop
-  <a class="anchor" href="#eventloop">#</a>
-</h2>
-<ul>
-<li>
-<p>What is an <code>EventLoop</code>?</p>
-<p>An <code>EventLoop</code> in Netty is a fundamental component that handles all the events related to a single <code>Channel</code>.</p>
-</li>
-<li>
-<p>How does <code>EventLoop</code> work?</p>
-<ul>
-<li>
-<p>Single Threaded: Each <code>EventLoop</code> is bound to a single thread, and each <code>Channel</code> is registered with one <code>EventLoop</code>. This means all I/O operations of a <code>Channel</code> are always executed by the same thread, ensuring thread safety and consistency.</p>
-</li>
-<li>
-<p>Event Processing Loop: The <code>EventLoop</code> continuously checks for new events in its loop and processes them. Events might include connection acceptance, data read/write, or disconnection.</p>
-</li>
-<li>
-<p>Task Queue: Besides I/O operations, <code>EventLoops</code> have a task queue for tasks that are not directly related to I/O operations. This ensures that these tasks are also executed in the same thread, maintaining thread safety.</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="eventloopgroup">
-  EventLoopGroup
-  <a class="anchor" href="#eventloopgroup">#</a>
-</h2>
-<ul>
-<li>
-<p>What is <code>EventLoopGroup</code>?
-An <code>EventLoopGroup</code> is a collection of <code>EventLoop</code> instances in Netty. It&rsquo;s responsible for managing these <code>EventLoops</code>, which are the core components handling I/O operations and events for <code>Channels</code> (a connection or a socket).</p>
-</li>
-<li>
-<p>Roles of <code>EventLoopGroup</code>?</p>
-<ul>
-<li>Boss and Worker Groups: In server-side applications, there are typically two <code>EventLoopGroups</code>. The &lsquo;boss&rsquo; group accepts incoming connections and hands them over to the &lsquo;worker&rsquo; group, which then handles the actual I/O operations. See <a href="/docs/programming/backend/java/nio/multiple-threads">boss-and-work</a></li>
-</ul>
-</li>
-<li>
-<p>How does <code>EventLoopGroup</code> work?</p>
-<ul>
-<li>When a client attempts to connect to the server, this connection request first arrives at the boss <code>EventLoopGroup</code>.</li>
-<li>The boss <code>EventLoopGroup</code> accepts the connection and registers it with an <code>EventLoop</code> in the worker <code>EventLoopGroup</code>.</li>
-<li>Once a connection is assigned to an <code>EventLoop</code> in the worker group, that <code>EventLoop</code> is responsible for all the events and operations associated with that connection.</li>
-<li>The <code>EventLoop</code> in the worker <code>EventLoopGroup</code> processes incoming data, sends responses, and can execute tasks like message decoding, business logic processing, and message encoding.</li>
-</ul>
-</li>
-</ul>
-<h2 id="examples">
-  Examples
-  <a class="anchor" href="#examples">#</a>
-</h2>
-<ul>
-<li>
-<p>Execute a single task</p>
-<ul>
-<li>
-<p>Code</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>EventLoopGroup group <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NioEventLoopGroup(2);
-</span></span><span style="display:flex;"><span>group.<span style="color:#a6e22e">next</span>().<span style="color:#a6e22e">execute</span>(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(1000);
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Hello World!&#34;</span>);
-</span></span><span style="display:flex;"><span>});
-</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Hello main!&#34;</span>);
-</span></span></code></pre></div></li>
-<li>
-<p>Execution Result</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>22:10:25.<span style="color:#a6e22e">111</span> <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello main<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:26.<span style="color:#a6e22e">111</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello World<span style="color:#f92672">!</span>
-</span></span></code></pre></div></li>
-<li>
-<p><code>group.next()</code> returns a <code>EventLoop</code></p>
-</li>
-<li>
-<p>The <code>EventLoop</code> can execute a <code>Runnable</code> task in its thread</p>
-</li>
-<li>
-<p>Main thread is not blocked</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Execute scheduled tasks</p>
-<ul>
-<li>Code
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>EventLoopGroup group <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NioEventLoopGroup(2);
-</span></span><span style="display:flex;"><span>AtomicInteger count <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomicInteger(0);
-</span></span><span style="display:flex;"><span>group.<span style="color:#a6e22e">next</span>().<span style="color:#a6e22e">scheduleAtFixedRate</span>(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        Thread.<span style="color:#a6e22e">sleep</span>(1000);
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Hello EventLoop-{}!&#34;</span>, count.<span style="color:#a6e22e">getAndIncrement</span>());
-</span></span><span style="display:flex;"><span>}, 0, 1, TimeUnit.<span style="color:#a6e22e">SECONDS</span>);
-</span></span></code></pre></div></li>
-<li>Execution Result
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>22:10:26.<span style="color:#a6e22e">112</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>0<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:27.<span style="color:#a6e22e">112</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>1<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:28.<span style="color:#a6e22e">113</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>2<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:29.<span style="color:#a6e22e">113</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>3<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:30.<span style="color:#a6e22e">114</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>4<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:31.<span style="color:#a6e22e">114</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>5<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>22:10:32.<span style="color:#a6e22e">114</span> <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>2<span style="color:#f92672">]</span> DEBUG com.<span style="color:#a6e22e">whatsbehind</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">EventLoopGroup_</span> <span style="color:#f92672">-</span> Hello EventLoop<span style="color:#f92672">-</span>6<span style="color:#f92672">!</span>
-</span></span><span style="display:flex;"><span>...
-</span></span></code></pre></div></li>
-</ul>
-</li>
-</ul>
-</article>
+  <article class="markdown book-article"></article>
  
       
 
@@ -1595,10 +1446,6 @@ An <code>EventLoopGroup</code> is a collection of <code>EventLoop</code> instanc
 
       
   
-  <div class="book-comments">
-
-</div>
-  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1609,17 +1456,7 @@ An <code>EventLoopGroup</code> is a collection of <code>EventLoop</code> instanc
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#eventloop--eventloopgroup">EventLoop &amp; EventLoopGroup</a>
-      <ul>
-        <li><a href="#eventloop">EventLoop</a></li>
-        <li><a href="#eventloopgroup">EventLoopGroup</a></li>
-        <li><a href="#examples">Examples</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
 
 
  
