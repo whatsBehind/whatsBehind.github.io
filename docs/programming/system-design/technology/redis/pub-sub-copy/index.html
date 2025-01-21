@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="
+  Redis Pub/Sub
+  #
+
+Redis Pub/Sub (Publish/Subscribe) is a lightweight messaging system that allows clients to send and receive messages in real time. It’s designed for event-driven communication where publishers broadcast messages to channels, and subscribers listening to those channels receive the messages instantly.
+
+
+  Key Components
+  #
+
+
+Channels: Channels are message hubs in Redis, responsible for receiving and broadcasting messages.
+Publishers: Clients that send messages to channels.
+Subscribers: Clients that listen to channels and receive messages.
+
+
+
+  How It Works
+  #
+
+
+
+Subscribers Subscribe to Channels:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/python/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/programming/system-design/technology/redis/pub-sub-copy/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="What&#39;s Behind">
+  <meta property="og:title" content="Redis Pub/Sub">
+  <meta property="og:description" content="Redis Pub/Sub # Redis Pub/Sub (Publish/Subscribe) is a lightweight messaging system that allows clients to send and receive messages in real time. It’s designed for event-driven communication where publishers broadcast messages to channels, and subscribers listening to those channels receive the messages instantly.
+Key Components # Channels: Channels are message hubs in Redis, responsible for receiving and broadcasting messages. Publishers: Clients that send messages to channels. Subscribers: Clients that listen to channels and receive messages. How It Works # Subscribers Subscribe to Channels:">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-<title>Python | What&#39;s Behind</title>
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Redis Pub/Sub | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/python/">
+<link rel="canonical" href="http://localhost:1313/docs/programming/system-design/technology/redis/pub-sub-copy/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5846d430dd9d13c8883c7d3165e791f18c6a064f499bd9ea7e8fce0cbf31c7fd.js" integrity="sha256-WEbUMN2dE8iIPH0xZeeR8YxqBk9Jm9nqfo/ODL8xx/0=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/backend/python/index.xml" title="What's Behind" />
+  <script defer src="/en.search.min.16ca1b36365ccad6ff4c73d79ab8c8929718c38ec79e24defb4779dcc767cd62.js" integrity="sha256-FsobNjZcytb/THPXmrjIkpcYw47HniTe&#43;0d53MdnzWI=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -83,7 +107,54 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle" checked />
+    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
+    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
     <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
@@ -107,118 +178,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
-    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
-      <a role="button" class="">Nio</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
     
       
         <li>
@@ -499,6 +458,118 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
+    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -511,9 +582,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-3267b427ef0b7fb8be17928f82652d59" class="toggle" checked />
+    <input type="checkbox" id="section-3267b427ef0b7fb8be17928f82652d59" class="toggle"  />
     <label for="section-3267b427ef0b7fb8be17928f82652d59" class="flex justify-between">
-      <a role="button" class="active">Python</a>
+      <a role="button" class="">Python</a>
     </label>
   
 
@@ -560,53 +631,6 @@ https://github.com/alex-shpak/hugo-book
       
     
   </ul>
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
-    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
-      <a role="button" class="">Project</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
-  
 
         </li>
       
@@ -1146,7 +1170,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle"  />
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle" checked />
     <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -1269,7 +1293,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle"  />
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle" checked />
     <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
       <a role="button" class="">Technology</a>
     </label>
@@ -1319,7 +1343,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle"  />
+    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle" checked />
     <label for="section-82f8da13d6fac792702112b64522aa5d" class="flex justify-between">
       <a role="button" class="">Redis</a>
     </label>
@@ -1361,7 +1385,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/system-design/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+    <a href="/docs/programming/system-design/technology/redis/pub-sub-copy/" class="active">Redis Pub/Sub</a>
   
 
         </li>
@@ -1374,7 +1398,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/system-design/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+    <a href="/docs/programming/system-design/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
   
 
         </li>
@@ -1435,7 +1459,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Python</h3>
+  <h3>Redis Pub/Sub</h3>
 
   <label for="toc-control">
     
@@ -1449,7 +1473,17 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-pubsub">Redis Pub/Sub</a>
+      <ul>
+        <li><a href="#key-components">Key Components</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#key-properties-of-redis-pubsub">Key Properties of Redis Pub/Sub</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1460,7 +1494,106 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h1 id="redis-pubsub">
+  Redis Pub/Sub
+  <a class="anchor" href="#redis-pubsub">#</a>
+</h1>
+<p>Redis Pub/Sub (Publish/Subscribe) is a lightweight messaging system that allows clients to send and receive messages in real time. It’s designed for event-driven communication where publishers broadcast messages to channels, and subscribers listening to those channels receive the messages instantly.</p>
+<hr>
+<h2 id="key-components">
+  Key Components
+  <a class="anchor" href="#key-components">#</a>
+</h2>
+<ol>
+<li><strong>Channels</strong>: Channels are message hubs in Redis, responsible for receiving and broadcasting messages.</li>
+<li><strong>Publishers</strong>: Clients that send messages to channels.</li>
+<li><strong>Subscribers</strong>: Clients that listen to channels and receive messages.</li>
+</ol>
+<hr>
+<h2 id="how-it-works">
+  How It Works
+  <a class="anchor" href="#how-it-works">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>Subscribers Subscribe to Channels</strong>:</p>
+<ul>
+<li>A subscriber issues the <code>SUBSCRIBE</code> command to start listening to one or more channels.</li>
+<li>Example:
+<pre tabindex="0"><code># Subscriber listens to &#39;news&#39; and &#39;sports&#39; channels
+SUBSCRIBE news sports
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p><strong>Publishers Publish Messages</strong>:</p>
+<ul>
+<li>A publisher sends messages to a specific channel using the <code>PUBLISH</code> command.</li>
+<li>Example:
+<pre tabindex="0"><code># Publisher sends a message to the &#39;news&#39; channel
+PUBLISH news &#34;Breaking news! Redis is awesome.&#34;
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p><strong>Message Broadcast</strong>:</p>
+<ul>
+<li>Redis instantly delivers the message to all subscribers of the channel.</li>
+<li>Example:
+<pre tabindex="0"><code># Subscribers receive the message in real time
+&#34;news: Breaking news! Redis is awesome.&#34;
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Subscriptions</strong>:</p>
+<ul>
+<li>Clients can subscribe or unsubscribe from channels at any time without interrupting other operations.</li>
+<li>Example:
+<pre tabindex="0"><code># Dynamically unsubscribe from &#39;sports&#39; channel
+UNSUBSCRIBE sports
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="key-properties-of-redis-pubsub">
+  Key Properties of Redis Pub/Sub
+  <a class="anchor" href="#key-properties-of-redis-pubsub">#</a>
+</h2>
+<ol>
+<li>
+<p><strong>Push-Based Messaging</strong>:</p>
+<ul>
+<li>Messages are pushed to subscribers as soon as they are published, unlike pull-based systems like Kafka.</li>
+</ul>
+</li>
+<li>
+<p><strong>Synchronous Communication</strong>:</p>
+<ul>
+<li>Messages are broadcasted to all active subscribers immediately after being published.</li>
+</ul>
+</li>
+<li>
+<p><strong>No Acknowledgment</strong>:</p>
+<ul>
+<li>Redis Pub/Sub does not require explicit acknowledgment of message delivery.</li>
+</ul>
+</li>
+<li>
+<p><strong>No Message Persistence</strong>:</p>
+<ul>
+<li>Messages are only delivered to active subscribers. If a subscriber is offline, it will miss messages sent during its downtime.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dynamic Subscribe/Unsubscribe</strong>:</p>
+<ul>
+<li>Clients can dynamically subscribe or unsubscribe from channels at runtime without interfering with other subscribers or the overall Pub/Sub system.</li>
+</ul>
+</li>
+</ol>
+</article>
  
       
 
@@ -1485,6 +1618,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1495,7 +1632,17 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-pubsub">Redis Pub/Sub</a>
+      <ul>
+        <li><a href="#key-components">Key Components</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#key-properties-of-redis-pubsub">Key Properties of Redis Pub/Sub</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

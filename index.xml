@@ -247,6 +247,13 @@
       <description>&lt;h2 id=&#34;thread-interference&#34;&gt;&#xA;  Thread Interference&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#thread-interference&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Imagine you have an object that maintains a hit count for a website. If two threads increment the hit counter at the same time, they might read the same value, say 100. Both threads then increment it and set it back to the object. The result should be 102 hits, but because there was no synchronization, you only get 101 - one hit is lost. This is a simple example of a race condition.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Redis Replication &amp; Sentinel</title>
+      <link>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/replication-and-sentinel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/replication-and-sentinel/</guid>
+      <description>&lt;h1 id=&#34;redis-replication--sentinel&#34;&gt;&#xA;  Redis Replication &amp;amp; Sentinel&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#redis-replication--sentinel&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;High availability is critical for any modern system, and Redis achieves this through its &lt;strong&gt;master-slave architecture&lt;/strong&gt; and &lt;strong&gt;Redis Sentinel&lt;/strong&gt;. Let’s explore how these components work together to ensure seamless operation, even in the face of failures.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;master-and-slave-architecture&#34;&gt;&#xA;  Master and Slave Architecture&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#master-and-slave-architecture&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The &lt;strong&gt;master-slave architecture&lt;/strong&gt; is a classic replication model commonly used in distributed systems. Its primary purpose is to enhance system &lt;strong&gt;scalability&lt;/strong&gt; and &lt;strong&gt;fault tolerance&lt;/strong&gt; by replicating data from a central master node to multiple slave nodes.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Selector</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

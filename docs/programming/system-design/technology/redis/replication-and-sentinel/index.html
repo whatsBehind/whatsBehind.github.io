@@ -3,22 +3,34 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="
+  Redis Replication &amp; Sentinel
+  #
+
+High availability is critical for any modern system, and Redis achieves this through its master-slave architecture and Redis Sentinel. Let’s explore how these components work together to ensure seamless operation, even in the face of failures.
+
+
+  Master and Slave Architecture
+  #
+
+The master-slave architecture is a classic replication model commonly used in distributed systems. Its primary purpose is to enhance system scalability and fault tolerance by replicating data from a central master node to multiple slave nodes.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/python/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/technology/redis/replication-and-sentinel/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="What&#39;s Behind">
+  <meta property="og:title" content="Redis Replication & Sentinel">
+  <meta property="og:description" content="Redis Replication &amp; Sentinel # High availability is critical for any modern system, and Redis achieves this through its master-slave architecture and Redis Sentinel. Let’s explore how these components work together to ensure seamless operation, even in the face of failures.
+Master and Slave Architecture # The master-slave architecture is a classic replication model commonly used in distributed systems. Its primary purpose is to enhance system scalability and fault tolerance by replicating data from a central master node to multiple slave nodes.">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-<title>Python | What&#39;s Behind</title>
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Redis Replication &amp; Sentinel | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/python/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/system-design/technology/redis/replication-and-sentinel/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.5846d430dd9d13c8883c7d3165e791f18c6a064f499bd9ea7e8fce0cbf31c7fd.js" integrity="sha256-WEbUMN2dE8iIPH0xZeeR8YxqBk9Jm9nqfo/ODL8xx/0=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/backend/python/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -83,7 +95,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle" checked />
+    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
     <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
@@ -511,9 +523,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-3267b427ef0b7fb8be17928f82652d59" class="toggle" checked />
+    <input type="checkbox" id="section-3267b427ef0b7fb8be17928f82652d59" class="toggle"  />
     <label for="section-3267b427ef0b7fb8be17928f82652d59" class="flex justify-between">
-      <a role="button" class="active">Python</a>
+      <a role="button" class="">Python</a>
     </label>
   
 
@@ -1146,7 +1158,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle"  />
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle" checked />
     <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
       <a role="button" class="">System Design</a>
     </label>
@@ -1269,7 +1281,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle"  />
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle" checked />
     <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
       <a role="button" class="">Technology</a>
     </label>
@@ -1319,7 +1331,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle"  />
+    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle" checked />
     <label for="section-82f8da13d6fac792702112b64522aa5d" class="flex justify-between">
       <a role="button" class="">Redis</a>
     </label>
@@ -1374,7 +1386,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/system-design/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+    <a href="/docs/programming/system-design/technology/redis/replication-and-sentinel/" class="active">Redis Replication &amp; Sentinel</a>
   
 
         </li>
@@ -1435,7 +1447,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Python</h3>
+  <h3>Redis Replication &amp; Sentinel</h3>
 
   <label for="toc-control">
     
@@ -1449,7 +1461,26 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-replication--sentinel">Redis Replication &amp; Sentinel</a>
+      <ul>
+        <li><a href="#master-and-slave-architecture">Master and Slave Architecture</a></li>
+        <li><a href="#redis-sentinel-the-key-to-high-availability">Redis Sentinel: The Key to High Availability</a></li>
+        <li><a href="#how-does-sentinel-ensure-clients-always-discover-the-latest-master">How Does Sentinel Ensure Clients Always Discover the Latest Master?</a>
+          <ul>
+            <li><a href="#1-detecting-master-failure">1. Detecting Master Failure</a></li>
+            <li><a href="#2-declaring-the-master-objectively-down-odown">2. Declaring the Master Objectively Down (ODOWN)</a></li>
+            <li><a href="#3-electing-a-leader-sentinel-for-failover">3. Electing a Leader Sentinel for Failover</a></li>
+            <li><a href="#4-promoting-a-new-master">4. Promoting a New Master</a></li>
+            <li><a href="#5-synchronizing-the-new-master">5. Synchronizing the New Master</a></li>
+            <li><a href="#6-communicating-the-new-master-to-clients">6. Communicating the New Master to Clients</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1460,7 +1491,132 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h1 id="redis-replication--sentinel">
+  Redis Replication &amp; Sentinel
+  <a class="anchor" href="#redis-replication--sentinel">#</a>
+</h1>
+<p>High availability is critical for any modern system, and Redis achieves this through its <strong>master-slave architecture</strong> and <strong>Redis Sentinel</strong>. Let’s explore how these components work together to ensure seamless operation, even in the face of failures.</p>
+<hr>
+<h2 id="master-and-slave-architecture">
+  Master and Slave Architecture
+  <a class="anchor" href="#master-and-slave-architecture">#</a>
+</h2>
+<p>The <strong>master-slave architecture</strong> is a classic replication model commonly used in distributed systems. Its primary purpose is to enhance system <strong>scalability</strong> and <strong>fault tolerance</strong> by replicating data from a central master node to multiple slave nodes.</p>
+<p>Redis supports a <strong>master-slave replication model</strong>, where:</p>
+<ol>
+<li>
+<p><strong>Master Node:</strong></p>
+<ul>
+<li>Handles all write operations.</li>
+<li>Automatically propagates data changes to the slave nodes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Slave Nodes:</strong></p>
+<ul>
+<li>Serve as read replicas, improving scalability by handling read operations.</li>
+<li>Act as backups for the master in case of failure.</li>
+</ul>
+</li>
+</ol>
+<p><em><strong>What Happens If the Master is Down?</strong></em></p>
+<p>When the master node goes down, the entire system can become unusable for write operations. This raises the critical question: <strong>How does Redis handle master failures?</strong></p>
+<p>This is where <strong>Redis Sentinel</strong> comes into play.</p>
+<hr>
+<h2 id="redis-sentinel-the-key-to-high-availability">
+  Redis Sentinel: The Key to High Availability
+  <a class="anchor" href="#redis-sentinel-the-key-to-high-availability">#</a>
+</h2>
+<p>Redis Sentinel is a system designed to monitor Redis nodes and ensure high availability. It:</p>
+<ol>
+<li>
+<p><strong>Monitors Redis Nodes:</strong></p>
+<ul>
+<li>Sentinels continuously check the health of the master and slave nodes by sending <code>PING</code> commands.</li>
+<li>If a node doesn’t respond within the configured timeout (<code>down-after-milliseconds</code>), it is marked as <strong>subjectively down (SDOWN)</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Performs Automatic Failover:</strong></p>
+<ul>
+<li>If a master is declared <strong>objectively down (ODOWN)</strong> by a quorum of Sentinels, Sentinel promotes one of the slaves to master.</li>
+<li>It reconfigures the other slaves to replicate from the new master.</li>
+</ul>
+</li>
+<li>
+<p><strong>Acts as a Configuration Provider:</strong></p>
+<ul>
+<li>Sentinel informs clients about the new master, ensuring they always connect to the correct instance.</li>
+</ul>
+</li>
+</ol>
+<p><em><strong>What Happens If a Sentinel Instance is Down?</strong></em></p>
+<p>Sentinel is designed to operate as a <strong>cluster</strong> of multiple Sentinel nodes. Even if one or more Sentinel instances fail, as long as the remaining Sentinels meet the <strong>quorum</strong> requirement, they can continue to monitor the Redis nodes and perform failovers.</p>
+<hr>
+<h2 id="how-does-sentinel-ensure-clients-always-discover-the-latest-master">
+  How Does Sentinel Ensure Clients Always Discover the Latest Master?
+  <a class="anchor" href="#how-does-sentinel-ensure-clients-always-discover-the-latest-master">#</a>
+</h2>
+<p>Sentinel achieves consistency using <strong>quorum</strong>, which is a leaderless replication mechanism. It ensures clients always connect to the latest master by leveraging quorum-based decision-making and state propagation. To understand this, let’s break the process down step-by-step.</p>
+<h3 id="1-detecting-master-failure">
+  1. Detecting Master Failure
+  <a class="anchor" href="#1-detecting-master-failure">#</a>
+</h3>
+<ul>
+<li>Each Sentinel node periodically sends <code>PING</code> commands to the master, slaves, and other Sentinels to monitor their health.</li>
+<li>If a Sentinel node does not receive a response within the configured <code>down-after-milliseconds</code> time, it marks the master as <strong>subjectively down (SDOWN)</strong>.</li>
+<li>Sentinels communicate this status with each other using a <strong>gossip protocol</strong>, exchanging their view of the cluster state.</li>
+</ul>
+<h3 id="2-declaring-the-master-objectively-down-odown">
+  2. Declaring the Master Objectively Down (ODOWN)
+  <a class="anchor" href="#2-declaring-the-master-objectively-down-odown">#</a>
+</h3>
+<ul>
+<li>A quorum of Sentinels (e.g., 3 out of 5 nodes) must agree that the master is unresponsive to declare it <strong>objectively down (ODOWN)</strong>. It’s important to note that quorum is only used for the failover decision, not for updating clients with the new master information.</li>
+<li>Once quorum is achieved, the failover process begins.</li>
+</ul>
+<h3 id="3-electing-a-leader-sentinel-for-failover">
+  3. Electing a Leader Sentinel for Failover
+  <a class="anchor" href="#3-electing-a-leader-sentinel-for-failover">#</a>
+</h3>
+<ul>
+<li>During failover, one Sentinel is temporarily elected to coordinate the failover process. </li>
+</ul>
+<h3 id="4-promoting-a-new-master">
+  4. Promoting a New Master
+  <a class="anchor" href="#4-promoting-a-new-master">#</a>
+</h3>
+<ul>
+<li>The leader Sentinel selects the best candidate slave based on:
+<ul>
+<li>Replication offset (to ensure minimal data loss).</li>
+<li>Connection health.</li>
+<li>Priority configuration (<code>replica-priority</code>).</li>
+</ul>
+</li>
+<li>The selected slave is promoted to master, and other slaves are reconfigured to replicate from the new master.</li>
+</ul>
+<h3 id="5-synchronizing-the-new-master">
+  5. Synchronizing the New Master
+  <a class="anchor" href="#5-synchronizing-the-new-master">#</a>
+</h3>
+<ul>
+<li>Once the failover is complete, the Sentinel leader  synchronizes the new master node information to other Sentinels using the <strong>gossip protocol</strong>.</li>
+<li>As the state propagates through the Sentinel cluster, it is important to note that the Sentinels involved in the failover decision (write quorum) do not necessarily have the latest master information immediately, as the information is propagated asynchronously after the failover process.</li>
+</ul>
+<h3 id="6-communicating-the-new-master-to-clients">
+  6. Communicating the New Master to Clients
+  <a class="anchor" href="#6-communicating-the-new-master-to-clients">#</a>
+</h3>
+<ul>
+<li>
+<p>Clients query Sentinels to discover the current master node.</p>
+</li>
+<li>
+<p> While some Sentinels may have stale information during this brief propagation period, clients can query multiple Sentinels to get the latest master information, making a best-effort attempt to ensure accurate and consistent data.</p>
+</li>
+</ul>
+</article>
  
       
 
@@ -1485,6 +1641,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1495,7 +1655,26 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-replication--sentinel">Redis Replication &amp; Sentinel</a>
+      <ul>
+        <li><a href="#master-and-slave-architecture">Master and Slave Architecture</a></li>
+        <li><a href="#redis-sentinel-the-key-to-high-availability">Redis Sentinel: The Key to High Availability</a></li>
+        <li><a href="#how-does-sentinel-ensure-clients-always-discover-the-latest-master">How Does Sentinel Ensure Clients Always Discover the Latest Master?</a>
+          <ul>
+            <li><a href="#1-detecting-master-failure">1. Detecting Master Failure</a></li>
+            <li><a href="#2-declaring-the-master-objectively-down-odown">2. Declaring the Master Objectively Down (ODOWN)</a></li>
+            <li><a href="#3-electing-a-leader-sentinel-for-failover">3. Electing a Leader Sentinel for Failover</a></li>
+            <li><a href="#4-promoting-a-new-master">4. Promoting a New Master</a></li>
+            <li><a href="#5-synchronizing-the-new-master">5. Synchronizing the New Master</a></li>
+            <li><a href="#6-communicating-the-new-master-to-clients">6. Communicating the New Master to Clients</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  
