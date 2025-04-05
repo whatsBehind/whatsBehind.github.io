@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Why Load Balancer?
+  #
+
+Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also. Now you have two servers to receive clients&rsquo; requests, and the question is how to determine the target server for each request? That&rsquo;s where Load Balancer comes in">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/load-balancing/load-balancer/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Load Balancer">
+  <meta property="og:description" content="Why Load Balancer? # Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can’t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also. Now you have two servers to receive clients’ requests, and the question is how to determine the target server for each request? That’s where Load Balancer comes in">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Load Balancer | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/system-design/load-balancing/load-balancer/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.0aaf5fe6f57ca0aef6dcbffec15ac24aabef48acb2da369796c8911443fa9510.js" integrity="sha256-Cq9f5vV8oK723L/&#43;wVrCSqvvSKyy2jaXlsiRFEP6lRA=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
+    <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle"  />
+    <label for="section-d89b2e5681262822056a3eec9d0a41e4" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
+    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3a8a021e398721afe1d6aaefc5a53581" class="toggle"  />
+    <label for="section-3a8a021e398721afe1d6aaefc5a53581" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-30dab7aa6f04e2575ba9575d3f7aa552" class="toggle"  />
+    <label for="section-30dab7aa6f04e2575ba9575d3f7aa552" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12abf7232ea9d442045b1411b7978a30" class="toggle"  />
+    <label for="section-12abf7232ea9d442045b1411b7978a30" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="toggle"  />
+    <label for="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7fca83de470936b8f46c9d214eb96e6f" class="toggle"  />
+    <label for="section-7fca83de470936b8f46c9d214eb96e6f" class="flex justify-between">
+      <a role="button" class="">API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3267b427ef0b7fb8be17928f82652d59" class="toggle"  />
+    <label for="section-3267b427ef0b7fb8be17928f82652d59" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
+    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-15e5b6cfbe135e4220353ad911edbc9a" class="toggle"  />
+    <label for="section-15e5b6cfbe135e4220353ad911edbc9a" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-128d8751d4236191f55b9181cd918421" class="toggle"  />
+    <label for="section-128d8751d4236191f55b9181cd918421" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a437cea16383409ff4bb050630be8e13" class="toggle"  />
+    <label for="section-a437cea16383409ff4bb050630be8e13" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61556e42b41c13f33940b404f66932ed" class="toggle"  />
+    <label for="section-61556e42b41c13f33940b404f66932ed" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a913ce247e99bf5334ae2e3cbeee0f90" class="toggle"  />
+    <label for="section-a913ce247e99bf5334ae2e3cbeee0f90" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01867ca5de591b785e2c310209ee8cb4" class="toggle"  />
+    <label for="section-01867ca5de591b785e2c310209ee8cb4" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6441cb17542fe8006e427b6b0a94d041" class="toggle"  />
+    <label for="section-6441cb17542fe8006e427b6b0a94d041" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-43effcc73883f6032917b714430cd064" class="toggle"  />
+    <label for="section-43effcc73883f6032917b714430cd064" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ffff656c2dc3dfe4c18658b113a7be" class="toggle"  />
+    <label for="section-13ffff656c2dc3dfe4c18658b113a7be" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-435c533cf8e83924f036a3fc06649777" class="toggle"  />
+    <label for="section-435c533cf8e83924f036a3fc06649777" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-62258074df8a7a4253e368d8300827d8" class="toggle"  />
+    <label for="section-62258074df8a7a4253e368d8300827d8" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5214fd1aa07e57317f87d16d6d714389" class="toggle"  />
+    <label for="section-5214fd1aa07e57317f87d16d6d714389" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f08994ed3456b39a7f1229df10e15d9f" class="toggle"  />
+    <label for="section-f08994ed3456b39a7f1229df10e15d9f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/networking/" class="">IP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle" checked />
+    <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
+      <a role="button" class="">System Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-635ac14c32f4b096cb88b04c783b749f" class="toggle"  />
+    <label for="section-635ac14c32f4b096cb88b04c783b749f" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-43f8309f7625d11a21842e4f1759c1f1" class="toggle" checked />
+    <label for="section-43f8309f7625d11a21842e4f1759c1f1" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/load-balancing/load-balancer/" class="active">Load Balancer</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6b5a5ebe02e8f45cd65f61120086e8f" class="toggle"  />
+    <label for="section-d6b5a5ebe02e8f45cd65f61120086e8f" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle"  />
+    <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e65dadec602a3e741624a6eace4b2779" class="toggle"  />
+    <label for="section-e65dadec602a3e741624a6eace4b2779" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle"  />
+    <label for="section-82f8da13d6fac792702112b64522aa5d" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Load Balancer</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-load-balancer">Why Load Balancer?</a></li>
+    <li><a href="#what-is-load-balancer">What is Load Balancer?</a>
+      <ul>
+        <li><a href="#what-are-benefits-of-load-balancers">What are Benefits of Load Balancers?</a></li>
+        <li><a href="#type-of-load-balancer">Type of Load Balancer</a>
+          <ul>
+            <li><a href="#hardware-load-balancer">Hardware Load Balancer</a></li>
+            <li><a href="#software-load-balancer">Software Load Balancer</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-does-load-balancer-work">How Does Load Balancer work?</a>
+          <ul>
+            <li><a href="#load-balancing-algorithm">Load Balancing Algorithm</a></li>
+            <li><a href="#health-check">Health Check</a></li>
+            <li><a href="#throttling">Throttling</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="why-load-balancer">
+  Why Load Balancer?
+  <a class="anchor" href="#why-load-balancer">#</a>
+</h1>
+<p>Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also. Now you have two servers to receive clients&rsquo; requests, and the question is how to determine the target server for each request? That&rsquo;s where Load Balancer comes in</p>
+<h1 id="what-is-load-balancer">
+  What is Load Balancer?
+  <a class="anchor" href="#what-is-load-balancer">#</a>
+</h1>
+<p>Load Balancer is a network component sitting in front of a set of servers (hosts) to distribute clients&rsquo; requests evenly to those servers behind it</p>
+<h2 id="what-are-benefits-of-load-balancers">
+  What are Benefits of Load Balancers?
+  <a class="anchor" href="#what-are-benefits-of-load-balancers">#</a>
+</h2>
+<ol>
+<li>Improve availability of your service</li>
+</ol>
+<p>Load balancer monitors servers behind it and forwards requests to healthy servers. If one server goes down, the load balancer removes it from the target list and forwards requests to other servers. Client can still send request and get response from the server</p>
+<ol start="2">
+<li>Evenly distribute requests</li>
+</ol>
+<p>If you choose load balancer algorithm properly, requests should be sent to each server evenly and that protects servers from being overwhelmed</p>
+<h2 id="type-of-load-balancer">
+  Type of Load Balancer
+  <a class="anchor" href="#type-of-load-balancer">#</a>
+</h2>
+<h3 id="hardware-load-balancer">
+  Hardware Load Balancer
+  <a class="anchor" href="#hardware-load-balancer">#</a>
+</h3>
+<h3 id="software-load-balancer">
+  Software Load Balancer
+  <a class="anchor" href="#software-load-balancer">#</a>
+</h3>
+<h4 id="application-load-balancer">
+  Application Load Balancer
+  <a class="anchor" href="#application-load-balancer">#</a>
+</h4>
+<p>This type of load balancer operates on application layer of OSI model, and it typically supports HTTPS/HTTP protocol. It routes requests based on request contents, so the SSL/TLS session needs termination, in other words, decrypting the request contents. The request will be forwarded to a server w/ or w/o TLS encryption.</p>
+<h4 id="network-load-balancer">
+  Network Load Balancer
+  <a class="anchor" href="#network-load-balancer">#</a>
+</h4>
+<p>This type of load balancer operates on transport layer, and it supports TCP protocol. It examines IP address and other network information to redirect traffic. Typically, no SSL/TLS termination is needed, because it has no idea what HTTP and TLS are.</p>
+<h2 id="how-does-load-balancer-work">
+  How Does Load Balancer work?
+  <a class="anchor" href="#how-does-load-balancer-work">#</a>
+</h2>
+<p><img src="/docs/programming/system-design/load-balancer/application-load-balancer.svg" alt="application-load-balancer" /></p>
+<ol>
+<li>
+<p>The client builds a TCP connection with the load balancer and has a <a href="/docs/programming/web/security/tls-handshake/">TLS handshake</a></p>
+</li>
+<li>
+<p>Client sends an HTTPS request to the load balancer</p>
+</li>
+<li>
+<p>Load balancer decrypts the request</p>
+</li>
+<li>
+<p>Load balancer reads and parses request contents to determine the target of the request</p>
+</li>
+<li>
+<p>Load balancer builds a TCP connection with the selected target or use the active connections that was built</p>
+</li>
+<li>
+<p>Load balancer forwards the request to the server and receives the response</p>
+</li>
+<li>
+<p>Load balancer forwards the response to the client</p>
+</li>
+</ol>
+<h3 id="load-balancing-algorithm">
+  Load Balancing Algorithm
+  <a class="anchor" href="#load-balancing-algorithm">#</a>
+</h3>
+<p>A load balancer has multiple servers behind it, and load balancing algorithm is to choose the target for client requests.</p>
+<ol>
+<li>
+<p>Round Robin method
+The requests are sent to server in a predefined order</p>
+</li>
+<li>
+<p>least connection method
+The load balancer checks the connections with each server and select the server with the least connections</p>
+</li>
+<li>
+<p>Weighted least connection method
+Some servers can handle more active connections than others. You can assign different weights to servers and the load balancer will choose the server with least &ldquo;active connections / weights&rdquo;</p>
+</li>
+</ol>
+<h3 id="health-check">
+  Health Check
+  <a class="anchor" href="#health-check">#</a>
+</h3>
+<p>Load balancer monitors servers by pinging the service (IP address + port). That helps load balancer to manage health status of servers and forward requests to healthy servers. Once a server is unhealthy, the load balancer removes it from the target list until the server is healthy again.</p>
+<h3 id="throttling">
+  Throttling
+  <a class="anchor" href="#throttling">#</a>
+</h3>
+<p>When there is a peak of requests, and load balancer or the servers can&rsquo;t handle so many requests, there are two main solutions</p>
+<ol>
+<li>Spillover/Throttling: The load balancer fails the request and return a response with error status code like <code>503</code></li>
+<li>Request Queue: Instead of failing the request immediately, the load balancer queues the requests and forwards the requests once servers have capacity to handle them</li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-load-balancer">Why Load Balancer?</a></li>
+    <li><a href="#what-is-load-balancer">What is Load Balancer?</a>
+      <ul>
+        <li><a href="#what-are-benefits-of-load-balancers">What are Benefits of Load Balancers?</a></li>
+        <li><a href="#type-of-load-balancer">Type of Load Balancer</a>
+          <ul>
+            <li><a href="#hardware-load-balancer">Hardware Load Balancer</a></li>
+            <li><a href="#software-load-balancer">Software Load Balancer</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-does-load-balancer-work">How Does Load Balancer work?</a>
+          <ul>
+            <li><a href="#load-balancing-algorithm">Load Balancing Algorithm</a></li>
+            <li><a href="#health-check">Health Check</a></li>
+            <li><a href="#throttling">Throttling</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

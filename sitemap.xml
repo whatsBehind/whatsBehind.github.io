@@ -24,7 +24,11 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/aws/security/kms/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/load-balancer/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/api/restful-get/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/</loc>
   </url><url>
@@ -39,8 +43,6 @@
     <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/data-presistence/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</loc>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancer/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/project/node-js-auth/</loc>
   </url><url>
@@ -61,6 +63,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/python/format-string/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/network/networking/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</loc>
@@ -73,6 +77,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</loc>
     <lastmod>2023-11-13T08:30:17-08:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/network/cird/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/replication-and-sentinel/</loc>
   </url><url>
@@ -184,6 +190,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/aws/security/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/backend/api/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/python/</loc>
@@ -197,6 +205,8 @@
     <loc>https://whatsBehind.github.io/docs/programming/system-design/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/monitoring/</loc>
   </url><url>

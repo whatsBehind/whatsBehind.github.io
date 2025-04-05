@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Redis Replication &amp; Sentinel
+  #
+
+High availability is critical for any modern system, and Redis achieves this through its master-slave architecture and Redis Sentinel. Let’s explore how these components work together to ensure seamless operation, even in the face of failures.
+
+
+  Master and Slave Architecture
+  #
+
+The master-slave architecture is a classic replication model commonly used in distributed systems. Its primary purpose is to enhance system scalability and fault tolerance by replicating data from a central master node to multiple slave nodes.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/programming/system-design/technology/redis/replication-and-sentinel-copy/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Redis Replication & Sentinel">
+  <meta property="og:description" content="Redis Replication &amp; Sentinel # High availability is critical for any modern system, and Redis achieves this through its master-slave architecture and Redis Sentinel. Let’s explore how these components work together to ensure seamless operation, even in the face of failures.
+Master and Slave Architecture # The master-slave architecture is a classic replication model commonly used in distributed systems. Its primary purpose is to enhance system scalability and fault tolerance by replicating data from a central master node to multiple slave nodes.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Redis Replication &amp; Sentinel | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/programming/system-design/technology/redis/replication-and-sentinel-copy/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.16ca1b36365ccad6ff4c73d79ab8c8929718c38ec79e24defb4779dcc767cd62.js" integrity="sha256-FsobNjZcytb/THPXmrjIkpcYw47HniTe&#43;0d53MdnzWI=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
+    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
+    <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
+      <a role="button" class="">Backend</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle"  />
+    <label for="section-d89b2e5681262822056a3eec9d0a41e4" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3a8a021e398721afe1d6aaefc5a53581" class="toggle"  />
+    <label for="section-3a8a021e398721afe1d6aaefc5a53581" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-30dab7aa6f04e2575ba9575d3f7aa552" class="toggle"  />
+    <label for="section-30dab7aa6f04e2575ba9575d3f7aa552" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12abf7232ea9d442045b1411b7978a30" class="toggle"  />
+    <label for="section-12abf7232ea9d442045b1411b7978a30" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="toggle"  />
+    <label for="section-de3ec6a026b81e65f77c5a7c0f2cd777" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
+    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3267b427ef0b7fb8be17928f82652d59" class="toggle"  />
+    <label for="section-3267b427ef0b7fb8be17928f82652d59" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-15e5b6cfbe135e4220353ad911edbc9a" class="toggle"  />
+    <label for="section-15e5b6cfbe135e4220353ad911edbc9a" class="flex justify-between">
+      <a role="button" class="">Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-128d8751d4236191f55b9181cd918421" class="toggle"  />
+    <label for="section-128d8751d4236191f55b9181cd918421" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a437cea16383409ff4bb050630be8e13" class="toggle"  />
+    <label for="section-a437cea16383409ff4bb050630be8e13" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61556e42b41c13f33940b404f66932ed" class="toggle"  />
+    <label for="section-61556e42b41c13f33940b404f66932ed" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a913ce247e99bf5334ae2e3cbeee0f90" class="toggle"  />
+    <label for="section-a913ce247e99bf5334ae2e3cbeee0f90" class="flex justify-between">
+      <a role="button" class="">Glossary</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/glossary/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01867ca5de591b785e2c310209ee8cb4" class="toggle"  />
+    <label for="section-01867ca5de591b785e2c310209ee8cb4" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6441cb17542fe8006e427b6b0a94d041" class="toggle"  />
+    <label for="section-6441cb17542fe8006e427b6b0a94d041" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/security/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-43effcc73883f6032917b714430cd064" class="toggle"  />
+    <label for="section-43effcc73883f6032917b714430cd064" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ffff656c2dc3dfe4c18658b113a7be" class="toggle"  />
+    <label for="section-13ffff656c2dc3dfe4c18658b113a7be" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-435c533cf8e83924f036a3fc06649777" class="toggle"  />
+    <label for="section-435c533cf8e83924f036a3fc06649777" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-62258074df8a7a4253e368d8300827d8" class="toggle"  />
+    <label for="section-62258074df8a7a4253e368d8300827d8" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5214fd1aa07e57317f87d16d6d714389" class="toggle"  />
+    <label for="section-5214fd1aa07e57317f87d16d6d714389" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f08994ed3456b39a7f1229df10e15d9f" class="toggle"  />
+    <label for="section-f08994ed3456b39a7f1229df10e15d9f" class="flex justify-between">
+      <a role="button" class="">Network</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4634b8a2422e3042385f4c14a0822f58" class="toggle" checked />
+    <label for="section-4634b8a2422e3042385f4c14a0822f58" class="flex justify-between">
+      <a role="button" class="">System Design</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-635ac14c32f4b096cb88b04c783b749f" class="toggle"  />
+    <label for="section-635ac14c32f4b096cb88b04c783b749f" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6b5a5ebe02e8f45cd65f61120086e8f" class="toggle"  />
+    <label for="section-d6b5a5ebe02e8f45cd65f61120086e8f" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5b4a6554295593bd19ab191ce0f0890a" class="toggle" checked />
+    <label for="section-5b4a6554295593bd19ab191ce0f0890a" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e65dadec602a3e741624a6eace4b2779" class="toggle"  />
+    <label for="section-e65dadec602a3e741624a6eace4b2779" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-82f8da13d6fac792702112b64522aa5d" class="toggle" checked />
+    <label for="section-82f8da13d6fac792702112b64522aa5d" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/redis/replication-and-sentinel-copy/" class="active">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/system-design/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Redis Replication &amp; Sentinel</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-replication--sentinel">Redis Replication &amp; Sentinel</a>
+      <ul>
+        <li><a href="#master-and-slave-architecture">Master and Slave Architecture</a></li>
+        <li><a href="#redis-sentinel-the-key-to-high-availability">Redis Sentinel: The Key to High Availability</a></li>
+        <li><a href="#how-does-sentinel-ensure-clients-always-discover-the-latest-master">How Does Sentinel Ensure Clients Always Discover the Latest Master?</a>
+          <ul>
+            <li><a href="#1-detecting-master-failure">1. Detecting Master Failure</a></li>
+            <li><a href="#2-declaring-the-master-objectively-down-odown">2. Declaring the Master Objectively Down (ODOWN)</a></li>
+            <li><a href="#3-electing-a-leader-sentinel-for-failover">3. Electing a Leader Sentinel for Failover</a></li>
+            <li><a href="#4-promoting-a-new-master">4. Promoting a New Master</a></li>
+            <li><a href="#5-synchronizing-the-new-master">5. Synchronizing the New Master</a></li>
+            <li><a href="#6-communicating-the-new-master-to-clients">6. Communicating the New Master to Clients</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="redis-replication--sentinel">
+  Redis Replication &amp; Sentinel
+  <a class="anchor" href="#redis-replication--sentinel">#</a>
+</h1>
+<p>High availability is critical for any modern system, and Redis achieves this through its <strong>master-slave architecture</strong> and <strong>Redis Sentinel</strong>. Let’s explore how these components work together to ensure seamless operation, even in the face of failures.</p>
+<hr>
+<h2 id="master-and-slave-architecture">
+  Master and Slave Architecture
+  <a class="anchor" href="#master-and-slave-architecture">#</a>
+</h2>
+<p>The <strong>master-slave architecture</strong> is a classic replication model commonly used in distributed systems. Its primary purpose is to enhance system <strong>scalability</strong> and <strong>fault tolerance</strong> by replicating data from a central master node to multiple slave nodes.</p>
+<p>Redis supports a <strong>master-slave replication model</strong>, where:</p>
+<ol>
+<li>
+<p><strong>Master Node:</strong></p>
+<ul>
+<li>Handles all write operations.</li>
+<li>Automatically propagates data changes to the slave nodes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Slave Nodes:</strong></p>
+<ul>
+<li>Serve as read replicas, improving scalability by handling read operations.</li>
+<li>Act as backups for the master in case of failure.</li>
+</ul>
+</li>
+</ol>
+<p><em><strong>What Happens If the Master is Down?</strong></em></p>
+<p>When the master node goes down, the entire system can become unusable for write operations. This raises the critical question: <strong>How does Redis handle master failures?</strong></p>
+<p>This is where <strong>Redis Sentinel</strong> comes into play.</p>
+<hr>
+<h2 id="redis-sentinel-the-key-to-high-availability">
+  Redis Sentinel: The Key to High Availability
+  <a class="anchor" href="#redis-sentinel-the-key-to-high-availability">#</a>
+</h2>
+<p>Redis Sentinel is a system designed to monitor Redis nodes and ensure high availability. It:</p>
+<ol>
+<li>
+<p><strong>Monitors Redis Nodes:</strong></p>
+<ul>
+<li>Sentinels continuously check the health of the master and slave nodes by sending <code>PING</code> commands.</li>
+<li>If a node doesn’t respond within the configured timeout (<code>down-after-milliseconds</code>), it is marked as <strong>subjectively down (SDOWN)</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Performs Automatic Failover:</strong></p>
+<ul>
+<li>If a master is declared <strong>objectively down (ODOWN)</strong> by a quorum of Sentinels, Sentinel promotes one of the slaves to master.</li>
+<li>It reconfigures the other slaves to replicate from the new master.</li>
+</ul>
+</li>
+<li>
+<p><strong>Acts as a Configuration Provider:</strong></p>
+<ul>
+<li>Sentinel informs clients about the new master, ensuring they always connect to the correct instance.</li>
+</ul>
+</li>
+</ol>
+<p><em><strong>What Happens If a Sentinel Instance is Down?</strong></em></p>
+<p>Sentinel is designed to operate as a <strong>cluster</strong> of multiple Sentinel nodes. Even if one or more Sentinel instances fail, as long as the remaining Sentinels meet the <strong>quorum</strong> requirement, they can continue to monitor the Redis nodes and perform failovers.</p>
+<hr>
+<h2 id="how-does-sentinel-ensure-clients-always-discover-the-latest-master">
+  How Does Sentinel Ensure Clients Always Discover the Latest Master?
+  <a class="anchor" href="#how-does-sentinel-ensure-clients-always-discover-the-latest-master">#</a>
+</h2>
+<p>Sentinel achieves consistency using <strong>quorum</strong>, which is a leaderless replication mechanism. It ensures clients always connect to the latest master by leveraging quorum-based decision-making and state propagation. To understand this, let’s break the process down step-by-step.</p>
+<h3 id="1-detecting-master-failure">
+  1. Detecting Master Failure
+  <a class="anchor" href="#1-detecting-master-failure">#</a>
+</h3>
+<ul>
+<li>Each Sentinel node periodically sends <code>PING</code> commands to the master, slaves, and other Sentinels to monitor their health.</li>
+<li>If a Sentinel node does not receive a response within the configured <code>down-after-milliseconds</code> time, it marks the master as <strong>subjectively down (SDOWN)</strong>.</li>
+<li>Sentinels communicate this status with each other using a <strong>gossip protocol</strong>, exchanging their view of the cluster state.</li>
+</ul>
+<h3 id="2-declaring-the-master-objectively-down-odown">
+  2. Declaring the Master Objectively Down (ODOWN)
+  <a class="anchor" href="#2-declaring-the-master-objectively-down-odown">#</a>
+</h3>
+<ul>
+<li>A quorum of Sentinels (e.g., 3 out of 5 nodes) must agree that the master is unresponsive to declare it <strong>objectively down (ODOWN)</strong>. It’s important to note that quorum is only used for the failover decision, not for updating clients with the new master information.</li>
+<li>Once quorum is achieved, the failover process begins.</li>
+</ul>
+<h3 id="3-electing-a-leader-sentinel-for-failover">
+  3. Electing a Leader Sentinel for Failover
+  <a class="anchor" href="#3-electing-a-leader-sentinel-for-failover">#</a>
+</h3>
+<ul>
+<li>During failover, one Sentinel is temporarily elected to coordinate the failover process. </li>
+</ul>
+<h3 id="4-promoting-a-new-master">
+  4. Promoting a New Master
+  <a class="anchor" href="#4-promoting-a-new-master">#</a>
+</h3>
+<ul>
+<li>The leader Sentinel selects the best candidate slave based on:
+<ul>
+<li>Replication offset (to ensure minimal data loss).</li>
+<li>Connection health.</li>
+<li>Priority configuration (<code>replica-priority</code>).</li>
+</ul>
+</li>
+<li>The selected slave is promoted to master, and other slaves are reconfigured to replicate from the new master.</li>
+</ul>
+<h3 id="5-synchronizing-the-new-master">
+  5. Synchronizing the New Master
+  <a class="anchor" href="#5-synchronizing-the-new-master">#</a>
+</h3>
+<ul>
+<li>Once the failover is complete, the Sentinel leader  synchronizes the new master node information to other Sentinels using the <strong>gossip protocol</strong>.</li>
+<li>As the state propagates through the Sentinel cluster, it is important to note that the Sentinels involved in the failover decision (write quorum) do not necessarily have the latest master information immediately, as the information is propagated asynchronously after the failover process.</li>
+</ul>
+<h3 id="6-communicating-the-new-master-to-clients">
+  6. Communicating the New Master to Clients
+  <a class="anchor" href="#6-communicating-the-new-master-to-clients">#</a>
+</h3>
+<ul>
+<li>
+<p>Clients query Sentinels to discover the current master node.</p>
+</li>
+<li>
+<p> While some Sentinels may have stale information during this brief propagation period, clients can query multiple Sentinels to get the latest master information, making a best-effort attempt to ensure accurate and consistent data.</p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#redis-replication--sentinel">Redis Replication &amp; Sentinel</a>
+      <ul>
+        <li><a href="#master-and-slave-architecture">Master and Slave Architecture</a></li>
+        <li><a href="#redis-sentinel-the-key-to-high-availability">Redis Sentinel: The Key to High Availability</a></li>
+        <li><a href="#how-does-sentinel-ensure-clients-always-discover-the-latest-master">How Does Sentinel Ensure Clients Always Discover the Latest Master?</a>
+          <ul>
+            <li><a href="#1-detecting-master-failure">1. Detecting Master Failure</a></li>
+            <li><a href="#2-declaring-the-master-objectively-down-odown">2. Declaring the Master Objectively Down (ODOWN)</a></li>
+            <li><a href="#3-electing-a-leader-sentinel-for-failover">3. Electing a Leader Sentinel for Failover</a></li>
+            <li><a href="#4-promoting-a-new-master">4. Promoting a New Master</a></li>
+            <li><a href="#5-synchronizing-the-new-master">5. Synchronizing the New Master</a></li>
+            <li><a href="#6-communicating-the-new-master-to-clients">6. Communicating the New Master to Clients</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

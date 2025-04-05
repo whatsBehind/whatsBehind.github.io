@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -10,7 +10,7 @@
 Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can&rsquo;t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also. Now you have two servers to receive clients&rsquo; requests, and the question is how to determine the target server for each request? That&rsquo;s where Load Balancer comes in">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/system-design/load-balancer/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/programming/system-design/load-balancer/">
   <meta property="og:site_name" content="What&#39;s Behind">
   <meta property="og:title" content="Load Balancer">
   <meta property="og:description" content="Why Load Balancer? # Assume you are holding a service on a server and the service supports multiple connections. The traffic that it serves is not high, so the server can handle those traffic concurrently. Everything looks good, but unfortunately the server some day goes down, and it can’t serve any traffic. To improve the availability of your service, you bought another server and replicate your service code in the new server which can serves traffic also. Now you have two servers to receive clients’ requests, and the question is how to determine the target server for each request? That’s where Load Balancer comes in">
@@ -20,10 +20,10 @@ Assume you are holding a service on a server and the service supports multiple c
 <title>Load Balancer | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/system-design/load-balancer/">
+<link rel="canonical" href="http://localhost:1313/docs/programming/system-design/load-balancer/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5846d430dd9d13c8883c7d3165e791f18c6a064f499bd9ea7e8fce0cbf31c7fd.js" integrity="sha256-WEbUMN2dE8iIPH0xZeeR8YxqBk9Jm9nqfo/ODL8xx/0=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.22b1a4d6a3b06c40f336dff1eaadcb34cc09a02b81f7713d003474e06a71bc2c.js" integrity="sha256-IrGk1qOwbEDzNt/x6q3LNMwJoCuB93E9ADR04GpxvCw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -500,6 +500,40 @@ https://github.com/alex-shpak/hugo-book
       
     
   </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7fca83de470936b8f46c9d214eb96e6f" class="toggle"  />
+    <label for="section-7fca83de470936b8f46c9d214eb96e6f" class="flex justify-between">
+      <a role="button" class="">API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/api/restful-get/" class="">RESTful GET</a>
+  
 
         </li>
       
@@ -1134,6 +1168,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/programming/network/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/network/networking/" class="">DNS</a>
   
 
         </li>

@@ -21,5 +21,19 @@
       <guid>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;https://whatsBehind.github.io/docs/programming/network/dns&#34;&gt;dns&lt;/a&gt; post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain &lt;code&gt;google.com&lt;/code&gt;. Also, I will introduce a new concept record in domain name server&lt;/p&gt;&#xA;&lt;h2 id=&#34;environment-and-tools&#34;&gt;&#xA;  Environment and Tools&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#environment-and-tools&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;I will use CLI &lt;code&gt;dig&lt;/code&gt; to query domain name server in Linux system&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>IP</title>
+      <link>https://whatsBehind.github.io/docs/programming/network/networking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/network/networking/</guid>
+      <description>&lt;h1 id=&#34;-understanding-ip-addresses-the-identity-system-of-the-internet&#34;&gt;&#xA;  🌐 Understanding IP Addresses: The Identity System of the Internet&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-understanding-ip-addresses-the-identity-system-of-the-internet&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Every device on a network needs an identity — a way for other devices to find it and communicate with it. In computer networking, that identity is an &lt;strong&gt;IP address&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-what-is-an-ip-address&#34;&gt;&#xA;  📌 What Is an IP Address?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-what-is-an-ip-address&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;An &lt;strong&gt;IP (Internet Protocol) address&lt;/strong&gt; is a unique number assigned to each device connected to a network. It functions much like a home address — directing data to the right recipient.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CIRD</title>
+      <link>https://whatsBehind.github.io/docs/programming/network/cird/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/network/cird/</guid>
+      <description>&lt;h1 id=&#34;-cidr-explained-the-flexible-backbone-of-ip-addressing&#34;&gt;&#xA;  📏 CIDR Explained: The Flexible Backbone of IP Addressing&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-cidr-explained-the-flexible-backbone-of-ip-addressing&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;One of the most powerful tools in modern networking is &lt;strong&gt;CIDR&lt;/strong&gt; — Classless Inter-Domain Routing. It replaces the old class-based IP system and gives us a flexible, scalable way to organize and route traffic across networks.&lt;/p&gt;&#xA;&lt;p&gt;This post introduces what CIDR is, why it was created, and how to read and use CIDR notation.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-why-cidr-was-introduced&#34;&gt;&#xA;  🧠 Why CIDR Was Introduced&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-why-cidr-was-introduced&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Before CIDR, IP addresses were divided into rigid classes:&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
