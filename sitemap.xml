@@ -20,6 +20,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/get-start/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/aws/security/kms/</loc>
@@ -207,6 +209,8 @@
     <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/monitoring/</loc>
   </url><url>

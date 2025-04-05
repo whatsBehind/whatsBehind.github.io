@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HAProxy: Get Started</title>
+      <link>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/get-start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/get-start/</guid>
+      <description>&lt;h1 id=&#34;haproxy-get-started&#34;&gt;&#xA;  HAProxy: Get Started&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#haproxy-get-started&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-goal-of-this-module&#34;&gt;&#xA;  ✨ Goal of this Module&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal-of-this-module&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;You will:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Set up HAProxy using Docker&lt;/li&gt;&#xA;&lt;li&gt;Create a working HAProxy config for Layer 4 (TCP) load balancing&lt;/li&gt;&#xA;&lt;li&gt;Use &lt;code&gt;nc&lt;/code&gt; (netcat) to simulate backend TCP servers&lt;/li&gt;&#xA;&lt;li&gt;Verify that HAProxy distributes connections across backends&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-step-1-project-setup&#34;&gt;&#xA;  🧱 Step 1: Project Setup&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-step-1-project-setup&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Create a folder for your HAProxy lab:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir haproxy-lab&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd haproxy-lab&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch haproxy.cfg docker-compose.yml&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create two files inside it:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
