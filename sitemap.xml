@@ -67,6 +67,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/python/format-string/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/load-balancing-algorithm/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/network/networking/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</loc>
@@ -84,11 +86,15 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/network/cird/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/layer7-load-balancing/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/replication-and-sentinel/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/http-sticky-sessions-cookies/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</loc>
   </url><url>
