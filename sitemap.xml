@@ -54,11 +54,11 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/replication/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/aws/message/sns/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/aws/message/sqs/</loc>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</loc>
     <lastmod>2023-11-12T23:12:57-08:00</lastmod>
@@ -77,7 +77,7 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/pub-sub/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</loc>
   </url><url>
@@ -92,6 +92,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-client-hello/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/http-sticky-sessions-cookies/</loc>
@@ -100,7 +102,11 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-safety/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-server-hello/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-certificate/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/</loc>
   </url><url>
