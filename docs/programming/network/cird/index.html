@@ -4,25 +4,25 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  📏 CIDR Explained: The Flexible Backbone of IP Addressing
+  📏 Introduction to CIDR (Classless Inter-Domain Routing)
   #
 
-One of the most powerful tools in modern networking is CIDR — Classless Inter-Domain Routing. It replaces the old class-based IP system and gives us a flexible, scalable way to organize and route traffic across networks.
-This post introduces what CIDR is, why it was created, and how to read and use CIDR notation.
+CIDR — short for Classless Inter-Domain Routing — is a modern way to define IP address ranges in networking. It offers more flexibility and efficiency than the old class-based IP system.
+This post breaks down what CIDR is, why it was created, and how software engineers can understand and apply it in real-world situations.
 
 
-  🧠 Why CIDR Was Introduced
+  🔹 Why CIDR Was Introduced
   #
 
-Before CIDR, IP addresses were divided into rigid classes:">
+Before CIDR, IPs were allocated in fixed-size blocks (Class A, B, and C), which often led to:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/network/cird/">
   <meta property="og:site_name" content="What&#39;s Behind">
   <meta property="og:title" content="CIRD">
-  <meta property="og:description" content="📏 CIDR Explained: The Flexible Backbone of IP Addressing # One of the most powerful tools in modern networking is CIDR — Classless Inter-Domain Routing. It replaces the old class-based IP system and gives us a flexible, scalable way to organize and route traffic across networks.
-This post introduces what CIDR is, why it was created, and how to read and use CIDR notation.
-🧠 Why CIDR Was Introduced # Before CIDR, IP addresses were divided into rigid classes:">
+  <meta property="og:description" content="📏 Introduction to CIDR (Classless Inter-Domain Routing) # CIDR — short for Classless Inter-Domain Routing — is a modern way to define IP address ranges in networking. It offers more flexibility and efficiency than the old class-based IP system.
+This post breaks down what CIDR is, why it was created, and how software engineers can understand and apply it in real-world situations.
+🔹 Why CIDR Was Introduced # Before CIDR, IPs were allocated in fixed-size blocks (Class A, B, and C), which often led to:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -32,7 +32,7 @@ This post introduces what CIDR is, why it was created, and how to read and use C
 <link rel="canonical" href="https://whatsBehind.github.io/docs/programming/network/cird/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.0e00aef5c3a4fed135e16d1a05253108dcd6a3a40c2c7dfefecf26cfcf4c3ada.js" integrity="sha256-DgCu9cOk/tE14W0aBSUxCNzWo6QMLH3&#43;/s8mz89MOto=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.3a90e8a0de602727181f9e872b5a4818211ee1ed9c939adcfc712a0343c31bed.js" integrity="sha256-OpDooN5gJycYH56HK1pIGCEe4e2ck5rc/HEqA0PDG&#43;0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1697,16 +1697,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-cidr-explained-the-flexible-backbone-of-ip-addressing">📏 CIDR Explained: The Flexible Backbone of IP Addressing</a>
+    <li><a href="#-introduction-to-cidr-classless-inter-domain-routing">📏 Introduction to CIDR (Classless Inter-Domain Routing)</a>
       <ul>
-        <li><a href="#-why-cidr-was-introduced">🧠 Why CIDR Was Introduced</a></li>
-        <li><a href="#-what-is-cidr">🔢 What Is CIDR?</a>
-          <ul>
-            <li><a href="#example">Example:</a></li>
-          </ul>
-        </li>
-        <li><a href="#-how-to-read-cidr-notation">🧮 How to Read CIDR Notation</a></li>
-        <li><a href="#-cidr-in-routing-tables">🧭 CIDR in Routing Tables</a></li>
+        <li><a href="#-why-cidr-was-introduced">🔹 Why CIDR Was Introduced</a></li>
+        <li><a href="#-cidr-notation-explained">🔹 CIDR Notation Explained</a></li>
+        <li><a href="#-practical-example-for-software-engineers">🔹 Practical Example for Software Engineers</a></li>
       </ul>
     </li>
   </ul>
@@ -1721,122 +1716,110 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="-cidr-explained-the-flexible-backbone-of-ip-addressing">
-  📏 CIDR Explained: The Flexible Backbone of IP Addressing
-  <a class="anchor" href="#-cidr-explained-the-flexible-backbone-of-ip-addressing">#</a>
+  <article class="markdown book-article"><h1 id="-introduction-to-cidr-classless-inter-domain-routing">
+  📏 Introduction to CIDR (Classless Inter-Domain Routing)
+  <a class="anchor" href="#-introduction-to-cidr-classless-inter-domain-routing">#</a>
 </h1>
-<p>One of the most powerful tools in modern networking is <strong>CIDR</strong> — Classless Inter-Domain Routing. It replaces the old class-based IP system and gives us a flexible, scalable way to organize and route traffic across networks.</p>
-<p>This post introduces what CIDR is, why it was created, and how to read and use CIDR notation.</p>
+<p>CIDR — short for <strong>Classless Inter-Domain Routing</strong> — is a modern way to define IP address ranges in networking. It offers more flexibility and efficiency than the old class-based IP system.</p>
+<p>This post breaks down what CIDR is, why it was created, and how software engineers can understand and apply it in real-world situations.</p>
 <hr>
 <h2 id="-why-cidr-was-introduced">
-  🧠 Why CIDR Was Introduced
+  🔹 Why CIDR Was Introduced
   <a class="anchor" href="#-why-cidr-was-introduced">#</a>
 </h2>
-<p>Before CIDR, IP addresses were divided into rigid classes:</p>
+<p>Before CIDR, IPs were allocated in fixed-size blocks (Class A, B, and C), which often led to:</p>
 <ul>
-<li><strong>Class A</strong>: <code>x.0.0.0/8</code> (16 million IPs)</li>
-<li><strong>Class B</strong>: <code>x.x.0.0/16</code> (65,000 IPs)</li>
-<li><strong>Class C</strong>: <code>x.x.x.0/24</code> (256 IPs)</li>
+<li><strong>Wasted IPs</strong> — organizations got more IPs than needed.</li>
+<li><strong>Routing table bloat</strong> — routers had to store many redundant routes.</li>
 </ul>
-<p>This system caused two major problems:</p>
-<ol>
-<li>
-<p><strong>Wasted IP addresses</strong> — Because the class-based system allocated IPs in large fixed blocks (e.g., Class A gave 16 million IPs), many organizations received far more IPs than they actually needed. For example, a company that needed just a few hundred IPs might be assigned a Class B block with over 65,000 IPs, leaving the rest unused and wasted.</p>
-</li>
-<li>
-<p><strong>Huge routing tables</strong> — Since each classful network block had to be listed individually in routers&rsquo; routing tables, ISPs and backbone routers ended up managing thousands of separate entries. This made routing tables large and inefficient, slowing down routing decisions and requiring more memory and processing power in networking hardware.</p>
-</li>
-</ol>
-<p>CIDR solves both by letting us define IP ranges of <strong>any size</strong>, and <strong>aggregate multiple ranges</strong> into one route.</p>
+<p>CIDR solves these issues by:</p>
+<ul>
+<li>Allowing <strong>arbitrary-sized networks</strong>, e.g., <code>/26</code>, <code>/27</code>, <code>/29</code>, not just <code>/8</code>, <code>/16</code>, <code>/24</code></li>
+<li>Supporting <strong>route aggregation</strong>, where multiple small networks are represented as one larger block (e.g., four /24s can be represented as a single /22)</li>
+</ul>
 <hr>
-<h2 id="-what-is-cidr">
-  🔢 What Is CIDR?
-  <a class="anchor" href="#-what-is-cidr">#</a>
+<h2 id="-cidr-notation-explained">
+  🔹 CIDR Notation Explained
+  <a class="anchor" href="#-cidr-notation-explained">#</a>
 </h2>
-<p>CIDR stands for <strong>Classless Inter-Domain Routing</strong>. It expresses IP address ranges using this format:</p>
+<blockquote>
+<p>💡 <strong>Clarification:</strong> CIDR is not a network itself — it&rsquo;s a way to <strong>define a network</strong>. Think of CIDR as a label that describes a group of IP addresses that belong to the same subnet. For example, <code>192.168.1.0/24</code> defines a network that includes IPs from <code>192.168.1.0</code> to <code>192.168.1.255</code>. CIDR tells us where the network starts, and how many IPs are in it, based on the prefix length.</p>
+</blockquote>
+<blockquote>
+<p>🧠 Note: The IP address used in a CIDR block (e.g., 192.168.1.0/24) always has its host bits set to 0. This means it represents the network address, not an individual host.</p>
+</blockquote>
+<p>CIDR uses the format:</p>
 <pre tabindex="0"><code>&lt;IP address&gt;/&lt;prefix length&gt;
-</code></pre><h3 id="example">
-  Example:
-  <a class="anchor" href="#example">#</a>
-</h3>
+</code></pre><p>For example:</p>
 <pre tabindex="0"><code>192.168.1.0/24
 </code></pre><ul>
-<li>The first 24 bits are the <strong>network portion</strong> (192.168.1).</li>
-<li>The remaining 8 bits are for <strong>hosts</strong> (0–255).</li>
+<li>The <code>/24</code> means the first 24 bits define the <strong>network portion</strong></li>
+<li>The remaining bits are used for <strong>host addresses</strong></li>
 </ul>
-<p>CIDR allows you to describe both large and small networks with precision.</p>
-<hr>
-<h2 id="-how-to-read-cidr-notation">
-  🧮 How to Read CIDR Notation
-  <a class="anchor" href="#-how-to-read-cidr-notation">#</a>
-</h2>
+<p>Each prefix length maps to a specific <strong>number of addresses</strong>:</p>
 <table>
   <thead>
       <tr>
           <th>CIDR</th>
-          <th>IP Range Size</th>
-          <th>Usable IPs</th>
-          <th>Notes</th>
+          <th>IP Count</th>
+          <th>Usable Hosts</th>
+          <th>Subnet Mask</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td><code>/30</code></td>
-          <td>4 IPs</td>
-          <td>2 usable</td>
-          <td>For point-to-point links</td>
+          <td>/30</td>
+          <td>4</td>
+          <td>2</td>
+          <td>255.255.255.252</td>
       </tr>
       <tr>
-          <td><code>/24</code></td>
-          <td>256 IPs</td>
-          <td>254 usable</td>
-          <td>Common for home/office LANs</td>
+          <td>/29</td>
+          <td>8</td>
+          <td>6</td>
+          <td>255.255.255.248</td>
       </tr>
       <tr>
-          <td><code>/16</code></td>
-          <td>65,536 IPs</td>
-          <td>65,534</td>
-          <td>For larger enterprise blocks</td>
+          <td>/28</td>
+          <td>16</td>
+          <td>14</td>
+          <td>255.255.255.240</td>
       </tr>
       <tr>
-          <td><code>/8</code></td>
-          <td>~16 million</td>
-          <td>~16 million</td>
-          <td>Very large, rarely used today</td>
+          <td>/24</td>
+          <td>256</td>
+          <td>254</td>
+          <td>255.255.255.0</td>
+      </tr>
+      <tr>
+          <td>/22</td>
+          <td>1024</td>
+          <td>1022</td>
+          <td>255.255.252.0</td>
       </tr>
   </tbody>
 </table>
-<p>The number of usable IPs is always <strong>2 less</strong> than the total range: one reserved for the <strong>network address</strong>, and one for the <strong>broadcast address</strong>.</p>
+<blockquote>
+<p>🔎 You lose 2 IPs per block: one for the <strong>network address</strong>, and one for the <strong>broadcast address</strong>.</p>
+</blockquote>
+<p>For example:
+In network <code>192.168.1.0/24</code>, <code>192.168.1.0</code> is network address, and <code>192.168.1.255</code> is broadcast address. They are reserved and can&rsquo;t be used as IP address.</p>
 <hr>
-<h2 id="-cidr-in-routing-tables">
-  🧭 CIDR in Routing Tables
-  <a class="anchor" href="#-cidr-in-routing-tables">#</a>
+<h2 id="-practical-example-for-software-engineers">
+  🔹 Practical Example for Software Engineers
+  <a class="anchor" href="#-practical-example-for-software-engineers">#</a>
 </h2>
-<p>Routers use CIDR to make decisions about where to forward packets:</p>
+<p>You’re deploying a microservice in AWS and assigning it to a private subnet:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">CIDR block</span>: <span style="color:#ae81ff">10.0.1.0</span><span style="color:#ae81ff">/24</span>
+</span></span></code></pre></div><p>This gives your subnet:</p>
 <ul>
-<li>
-<p>Each rule in the routing table is a CIDR block.</p>
-</li>
-<li>
-<p>Routers match the destination IP to the <strong>longest prefix</strong> (most specific match). For example, if a router sees two matching entries in its routing table — one for <code>192.168.0.0/16</code> and another for <code>192.168.1.0/24</code> — and the destination IP is <code>192.168.1.45</code>, it will choose the <code>/24</code> route because it is more specific (i.e., it matches more bits of the IP address).</p>
-</li>
-<li>
-<p><strong>Before CIDR</strong>, if a router needed to support four separate Class C networks (each with 256 IP addresses), it required <strong>four distinct routing table entries</strong>:</p>
-<ul>
-<li><code>192.168.0.0/24</code></li>
-<li><code>192.168.1.0/24</code></li>
-<li><code>192.168.2.0/24</code></li>
-<li><code>192.168.3.0/24</code></li>
+<li>256 IPs total</li>
+<li>254 usable IPs for EC2, Lambda, containers, etc.</li>
 </ul>
-<p>Each of these had to be handled independently, adding complexity and overhead to routing operations.</p>
-<p><strong>With CIDR</strong>, we can <strong>aggregate</strong> these four networks into a single route:</p>
-<ul>
-<li><code>192.168.0.0/22</code></li>
-</ul>
-<p>This is possible because the first 22 bits of the IP addresses in all four networks are identical. Route aggregation significantly <strong>reduces the number of routing table entries</strong>, leading to faster lookups and better scalability across large networks and the internet.</p>
-</li>
-</ul>
-<p>CIDR makes the internet&rsquo;s routing tables <strong>smaller, faster, and more scalable</strong>.</p>
+<p>If you split that into <code>/26</code> subnets, you can create 4 smaller subnets with 64 IPs each.</p>
+<blockquote>
+<p>✅ Knowing CIDR helps when defining subnets, firewall rules, VPC peering ranges, and more.</p>
+</blockquote>
 </article>
  
       
@@ -1878,16 +1861,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-cidr-explained-the-flexible-backbone-of-ip-addressing">📏 CIDR Explained: The Flexible Backbone of IP Addressing</a>
+    <li><a href="#-introduction-to-cidr-classless-inter-domain-routing">📏 Introduction to CIDR (Classless Inter-Domain Routing)</a>
       <ul>
-        <li><a href="#-why-cidr-was-introduced">🧠 Why CIDR Was Introduced</a></li>
-        <li><a href="#-what-is-cidr">🔢 What Is CIDR?</a>
-          <ul>
-            <li><a href="#example">Example:</a></li>
-          </ul>
-        </li>
-        <li><a href="#-how-to-read-cidr-notation">🧮 How to Read CIDR Notation</a></li>
-        <li><a href="#-cidr-in-routing-tables">🧭 CIDR in Routing Tables</a></li>
+        <li><a href="#-why-cidr-was-introduced">🔹 Why CIDR Was Introduced</a></li>
+        <li><a href="#-cidr-notation-explained">🔹 CIDR Notation Explained</a></li>
+        <li><a href="#-practical-example-for-software-engineers">🔹 Practical Example for Software Engineers</a></li>
       </ul>
     </li>
   </ul>
