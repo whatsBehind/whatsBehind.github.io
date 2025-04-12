@@ -32,6 +32,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/api/restful-get/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/web/http/start-http/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/why-is-redis-so-fast/</loc>
@@ -69,7 +71,7 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/load-balancing-algorithm/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/network/networking/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming/network/id-address/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</loc>
   </url><url>
@@ -99,6 +101,8 @@
     <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/http-sticky-sessions-cookies/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/network/subnet/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-safety/</loc>
   </url><url>

@@ -9,6 +9,13 @@
     <lastBuildDate>Fri, 27 Oct 2023 08:10:45 -0700</lastBuildDate>
     <atom:link href="https://whatsBehind.github.io/docs/programming/web/http/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Start HTTP</title>
+      <link>https://whatsBehind.github.io/docs/programming/web/http/start-http/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/web/http/start-http/</guid>
+      <description>&lt;h1 id=&#34;-introduction-to-http-the-foundation-of-the-web&#34;&gt;&#xA;  🌐 Introduction to HTTP: The Foundation of the Web&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-introduction-to-http-the-foundation-of-the-web&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;HTTP (Hypertext Transfer Protocol) is the cornerstone of communication on the web. It defines the rules by which clients (like browsers or mobile apps) and servers exchange information. Every time you open a website, submit a form, or load an image, you&amp;rsquo;re using HTTP.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-what-is-http&#34;&gt;&#xA;  🧠 What is HTTP?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-what-is-http&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;HTTP is a request-response protocol that allows a client to request data from a server and receive a response. It is:&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Cookie</title>
       <link>https://whatsBehind.github.io/docs/programming/web/http/cookie/</link>
       <pubDate>Fri, 27 Oct 2023 08:10:45 -0700</pubDate>
