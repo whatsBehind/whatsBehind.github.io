@@ -3,22 +3,34 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="
+  📘 Lesson: HTTP Cache-Control – Concepts and Browser Testing with FastAPI
+  #
+
+HTTP caching plays a crucial role in improving performance, reducing latency, and minimizing server load. One of the most versatile headers for managing caching behavior is Cache-Control. In this lesson, we&rsquo;ll explore how it works from both the server and client perspectives, and demonstrate how to test it using FastAPI and Chrome DevTools.
+
+
+  🔄 Why Cache?
+  #
+
+Caching helps eliminate redundant requests to the server by allowing clients or intermediaries to reuse stored responses. It:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/network/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/web/http/http-header-part-3/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="What&#39;s Behind">
+  <meta property="og:title" content="HTTP Headers Part 3: Cache-Control">
+  <meta property="og:description" content="📘 Lesson: HTTP Cache-Control – Concepts and Browser Testing with FastAPI # HTTP caching plays a crucial role in improving performance, reducing latency, and minimizing server load. One of the most versatile headers for managing caching behavior is Cache-Control. In this lesson, we’ll explore how it works from both the server and client perspectives, and demonstrate how to test it using FastAPI and Chrome DevTools.
+🔄 Why Cache? # Caching helps eliminate redundant requests to the server by allowing clients or intermediaries to reuse stored responses. It:">
   <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-<title>Network | What&#39;s Behind</title>
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>HTTP Headers Part 3: Cache-Control | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/network/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/web/http/http-header-part-3/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.f11a862b51385cc137fde2157aa4d6da8d6600ebd7a5d1905cff9f8bcf369b86.js" integrity="sha256-8RqGK1E4XME3/eIVeqTW2o1mAOvXpdGQXP&#43;fi882m4Y=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="https://whatsBehind.github.io/docs/programming/network/index.xml" title="What's Behind" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -767,7 +779,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle" checked />
     <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
       <a role="button" class="">Web</a>
     </label>
@@ -851,7 +863,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle" checked />
     <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
       <a role="button" class="">HTTP</a>
     </label>
@@ -919,7 +931,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+    <a href="/docs/programming/web/http/http-header-part-3/" class="active">HTTP Headers Part 3: Cache-Control</a>
   
 
         </li>
@@ -1263,9 +1275,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-f08994ed3456b39a7f1229df10e15d9f" class="toggle" checked />
+    <input type="checkbox" id="section-f08994ed3456b39a7f1229df10e15d9f" class="toggle"  />
     <label for="section-f08994ed3456b39a7f1229df10e15d9f" class="flex justify-between">
-      <a role="button" class="active">Network</a>
+      <a role="button" class="">Network</a>
     </label>
   
 
@@ -1745,7 +1757,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Network</h3>
+  <h3>HTTP Headers Part 3: Cache-Control</h3>
 
   <label for="toc-control">
     
@@ -1759,7 +1771,27 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi">📘 Lesson: HTTP Cache-Control – Concepts and Browser Testing with FastAPI</a>
+      <ul>
+        <li><a href="#-why-cache">🔄 Why Cache?</a></li>
+        <li><a href="#-understanding-cache-control">🔑 Understanding <code>Cache-Control</code></a>
+          <ul>
+            <li><a href="#-server-side-cache-control">✅ Server-Side <code>Cache-Control</code></a></li>
+            <li><a href="#-client-side-cache-control">📥 Client-Side <code>Cache-Control</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#-fastapi-hands-on-two-endpoints-for-caching">🛠️ FastAPI Hands-On: Two Endpoints for Caching</a>
+          <ul>
+            <li><a href="#-start-your-server">📄 Start Your Server</a></li>
+            <li><a href="#-test-it-out-using-the-browser-console">🧪 Test It Out Using the Browser Console</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -1770,7 +1802,171 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"></article>
+  <article class="markdown book-article"><h1 id="-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi">
+  📘 Lesson: HTTP Cache-Control – Concepts and Browser Testing with FastAPI
+  <a class="anchor" href="#-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi">#</a>
+</h1>
+<p>HTTP caching plays a crucial role in improving performance, reducing latency, and minimizing server load. One of the most versatile headers for managing caching behavior is <code>Cache-Control</code>. In this lesson, we&rsquo;ll explore how it works from both the server and client perspectives, and demonstrate how to test it using FastAPI and Chrome DevTools.</p>
+<hr>
+<h2 id="-why-cache">
+  🔄 Why Cache?
+  <a class="anchor" href="#-why-cache">#</a>
+</h2>
+<p>Caching helps eliminate redundant requests to the server by allowing clients or intermediaries to reuse stored responses. It:</p>
+<ul>
+<li>Reduces page load times</li>
+<li>Decreases bandwidth usage</li>
+<li>Improves scalability and responsiveness</li>
+</ul>
+<hr>
+<h2 id="-understanding-cache-control">
+  🔑 Understanding <code>Cache-Control</code>
+  <a class="anchor" href="#-understanding-cache-control">#</a>
+</h2>
+<h3 id="-server-side-cache-control">
+  ✅ Server-Side <code>Cache-Control</code>
+  <a class="anchor" href="#-server-side-cache-control">#</a>
+</h3>
+<ul>
+<li><strong>Direction</strong>: Response</li>
+<li><strong>Purpose</strong>: Tells clients, browsers, and CDNs how the response should be cached.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Header Example</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Cache-Control: public, max-age=10</code></td>
+          <td>Response is cacheable by any cache and remains fresh for 10 seconds.</td>
+      </tr>
+      <tr>
+          <td><code>Cache-Control: no-store</code></td>
+          <td>Response must not be cached or stored by any system.</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="-client-side-cache-control">
+  📥 Client-Side <code>Cache-Control</code>
+  <a class="anchor" href="#-client-side-cache-control">#</a>
+</h3>
+<ul>
+<li><strong>Direction</strong>: Request</li>
+<li><strong>Purpose</strong>: Instructs caches how to treat previously stored responses.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Directive</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>no-cache</code></td>
+          <td>Forces revalidation before using cached data. Cached data may still be stored.</td>
+      </tr>
+      <tr>
+          <td><code>max-age=0</code></td>
+          <td>Immediately treats any cached data as stale and triggers revalidation.</td>
+      </tr>
+      <tr>
+          <td><code>no-store</code></td>
+          <td>Prevents caching of the request and its response entirely.</td>
+      </tr>
+      <tr>
+          <td><code>only-if-cached</code></td>
+          <td>Uses the cached response only; fails if no cached version exists.</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>🔍 Note: <code>no-cache</code> allows caching but requires validation, whereas <code>no-store</code> forbids storage altogether.</p>
+</blockquote>
+<hr>
+<h2 id="-fastapi-hands-on-two-endpoints-for-caching">
+  🛠️ FastAPI Hands-On: Two Endpoints for Caching
+  <a class="anchor" href="#-fastapi-hands-on-two-endpoints-for-caching">#</a>
+</h2>
+<h3 id="-start-your-server">
+  📄 Start Your Server
+  <a class="anchor" href="#-start-your-server">#</a>
+</h3>
+<p><em>Change directory to <code>03-http-headers</code> and create a new Python file <code>cache-control.py</code>:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd 03-http-headers
+</span></span><span style="display:flex;"><span>touch cache-control.py
+</span></span></code></pre></div><p><em>Paste in the following Python code:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Response
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> FastAPI()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/cached&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cached_resource</span>(response: Response):
+</span></span><span style="display:flex;"><span>    response<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Cache-Control&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;public, max-age=10&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;This response is cached for 10 seconds.&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;timestamp&#34;</span>: datetime<span style="color:#f92672">.</span>utcnow()<span style="color:#f92672">.</span>isoformat()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/no-store&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">no_store_resource</span>(response: Response):
+</span></span><span style="display:flex;"><span>    response<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Cache-Control&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;no-store&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;This response is never cached.&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;timestamp&#34;</span>: datetime<span style="color:#f92672">.</span>utcnow()<span style="color:#f92672">.</span>isoformat()
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p><em>Use Uvicorn to start your FastAPI app:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uvicorn cache-control:app --reload
+</span></span></code></pre></div><hr>
+<h3 id="-test-it-out-using-the-browser-console">
+  🧪 Test It Out Using the Browser Console
+  <a class="anchor" href="#-test-it-out-using-the-browser-console">#</a>
+</h3>
+<p>You can test caching behavior directly in the browser using Chrome DevTools:</p>
+<ol>
+<li>Open Chrome DevTools (<code>F12</code>)</li>
+<li>Go to the <strong>Console</strong> tab</li>
+<li>Use the <code>fetch()</code> API to simulate HTTP requests with custom <code>Cache-Control</code> headers.</li>
+</ol>
+<h4 id="-test-with-max-age0">
+  🔁 Test with <code>max-age=0</code>
+  <a class="anchor" href="#-test-with-max-age0">#</a>
+</h4>
+<p><em>Paste below commands in the Console tab:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:8000/cached&#34;</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">res</span> =&gt; <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:8000/cached&#34;</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">res</span> =&gt; <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:8000/cached&#34;</span>, { <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#34;Cache-Control&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;max-age=0&#34;</span> } }).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">res</span> =&gt; <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span></code></pre></div><ul>
+<li>The first two responses should show same timestamp, because the second request is returned by the browser&rsquo;s cache.</li>
+<li>Header <code>max-age=0</code> makes the cache stale, and the request is sent to the server for validation. Because our server code doesn&rsquo;t do validation, new response instead of cache is returned.</li>
+</ul>
+<p>You should only see two requests logs in the server terminal, and they are from the first and the third requests.</p>
+<p><em>Browser&rsquo;s responses:</em></p>
+<pre tabindex="0"><code>{message: &#39;This response is cached for 10 seconds.&#39;, timestamp: &#39;2025-04-13T06:48:13.860974&#39;}
+{message: &#39;This response is cached for 10 seconds.&#39;, timestamp: &#39;2025-04-13T06:48:13.860974&#39;}
+{message: &#39;This response is cached for 10 seconds.&#39;, timestamp: &#39;2025-04-13T06:48:13.865528&#39;}
+</code></pre><p><em>Server terminal responses:</em></p>
+<pre tabindex="0"><code>INFO:     127.0.0.1:57927 - &#34;GET /cached HTTP/1.1&#34; 200 OK
+INFO:     127.0.0.1:57927 - &#34;GET /cached HTTP/1.1&#34; 200 OK
+</code></pre><h4 id="-test-with-no-store">
+  🚫 Test with <code>no-store</code>
+  <a class="anchor" href="#-test-with-no-store">#</a>
+</h4>
+<p>Paste below commands in the Console tab:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:8000/no-store&#34;</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">res</span> =&gt; <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#34;http://localhost:8000/no-store&#34;</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">res</span> =&gt; <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>()).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>);
+</span></span></code></pre></div><p>Because header <code>no-store</code> is set by the server, the response won&rsquo;t be cached by the browser. Hence, every request is sent to the server. You should see two different timestamps in the responses and two request logs in the server terminal.</p>
+<p><em>Browser&rsquo;s responses:</em></p>
+<pre tabindex="0"><code>{message: &#39;This response is never cached.&#39;, timestamp: &#39;2025-04-13T06:49:49.211935&#39;}
+{message: &#39;This response is never cached.&#39;, timestamp: &#39;2025-04-13T06:49:49.216012&#39;}
+</code></pre><p><em>Server terminal responses:</em></p>
+<pre tabindex="0"><code>INFO:     127.0.0.1:58336 - &#34;GET /no-store HTTP/1.1&#34; 200 OK
+INFO:     127.0.0.1:58336 - &#34;GET /no-store HTTP/1.1&#34; 200 OK
+</code></pre></article>
  
       
 
@@ -1795,6 +1991,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1805,7 +2005,27 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi">📘 Lesson: HTTP Cache-Control – Concepts and Browser Testing with FastAPI</a>
+      <ul>
+        <li><a href="#-why-cache">🔄 Why Cache?</a></li>
+        <li><a href="#-understanding-cache-control">🔑 Understanding <code>Cache-Control</code></a>
+          <ul>
+            <li><a href="#-server-side-cache-control">✅ Server-Side <code>Cache-Control</code></a></li>
+            <li><a href="#-client-side-cache-control">📥 Client-Side <code>Cache-Control</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#-fastapi-hands-on-two-endpoints-for-caching">🛠️ FastAPI Hands-On: Two Endpoints for Caching</a>
+          <ul>
+            <li><a href="#-start-your-server">📄 Start Your Server</a></li>
+            <li><a href="#-test-it-out-using-the-browser-console">🧪 Test It Out Using the Browser Console</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
  

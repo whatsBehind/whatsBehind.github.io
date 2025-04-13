@@ -359,6 +359,13 @@
       <description>&lt;h1 id=&#34;haproxy-sticky-sessions-using-cookies&#34;&gt;&#xA;  HAProxy: Sticky Sessions Using Cookies&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#haproxy-sticky-sessions-using-cookies&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;When running multiple backend servers, sticky sessions (also known as session persistence) ensure that a user&amp;rsquo;s requests are always routed to the &lt;strong&gt;same server&lt;/strong&gt;. This is especially useful for apps that store session state in memory (e.g., login sessions, carts, temporary data).&lt;/p&gt;&#xA;&lt;p&gt;In this post, you&amp;rsquo;ll learn how to implement sticky sessions in HAProxy using &lt;strong&gt;HTTP cookies&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-backend-setup-with-python-servers&#34;&gt;&#xA;  🔧 Backend Setup with Python Servers&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-backend-setup-with-python-servers&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Use this Python script to spin up identifiable HTTP servers:&lt;/p&gt;</description>
     </item>
     <item>
+      <title>HTTP Headers Part 3: Cache-Control</title>
+      <link>https://whatsBehind.github.io/docs/programming/web/http/http-header-part-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/web/http/http-header-part-3/</guid>
+      <description>&lt;h1 id=&#34;-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi&#34;&gt;&#xA;  📘 Lesson: HTTP Cache-Control – Concepts and Browser Testing with FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;HTTP caching plays a crucial role in improving performance, reducing latency, and minimizing server load. One of the most versatile headers for managing caching behavior is &lt;code&gt;Cache-Control&lt;/code&gt;. In this lesson, we&amp;rsquo;ll explore how it works from both the server and client perspectives, and demonstrate how to test it using FastAPI and Chrome DevTools.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-why-cache&#34;&gt;&#xA;  🔄 Why Cache?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-why-cache&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Caching helps eliminate redundant requests to the server by allowing clients or intermediaries to reuse stored responses. It:&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Selector Read</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
