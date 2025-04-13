@@ -4,41 +4,30 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Node Streams (Low-Level Streams)
+  📘 Lesson 2: HTTP Methods &amp; Status Codes
   #
 
+Understanding HTTP methods and status codes is essential for designing and debugging web APIs. This lesson explores the most commonly used HTTP methods and how servers communicate the results of requests using standardized status codes.
 
 
-Definition:
+  🔧 Common HTTP Methods
+  #
 
-Node Streams connect directly with the source of the data
-They read data from or write data to a specific location (like a file, memory, or network socket).
-
-
-
-Example: FileInputStream is a node stream that reads byte data from a file.
-File file = new File(&#34;example.txt&#34;);
-FileInputStream fis = new FileInputStream(file);
-
-
-Here, FileInputStream is directly reading the bytes from the file &ldquo;example.txt&rdquo;. It&rsquo;s a direct connection between the Java program and the file.">
+HTTP methods (also called verbs) define the action the client wants the server to perform. Here are the most commonly used methods:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/web/http/http-methods-and-status-codes/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="Decorator Pattern in Java IO">
-  <meta property="og:description" content="Node Streams (Low-Level Streams) # Definition:
-Node Streams connect directly with the source of the data They read data from or write data to a specific location (like a file, memory, or network socket). Example: FileInputStream is a node stream that reads byte data from a file.
-File file = new File(&#34;example.txt&#34;); FileInputStream fis = new FileInputStream(file); Here, FileInputStream is directly reading the bytes from the file “example.txt”. It’s a direct connection between the Java program and the file.">
+  <meta property="og:title" content="HTTP Methods & Status Codes">
+  <meta property="og:description" content="📘 Lesson 2: HTTP Methods &amp; Status Codes # Understanding HTTP methods and status codes is essential for designing and debugging web APIs. This lesson explores the most commonly used HTTP methods and how servers communicate the results of requests using standardized status codes.
+🔧 Common HTTP Methods # HTTP methods (also called verbs) define the action the client wants the server to perform. Here are the most commonly used methods:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:published_time" content="2023-11-16T23:12:49-08:00">
-    <meta property="article:modified_time" content="2023-11-16T23:12:49-08:00">
-<title>Decorator Pattern in Java IO | What&#39;s Behind</title>
+<title>HTTP Methods &amp; Status Codes | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/web/http/http-methods-and-status-codes/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.9bc241886bf15760cd32c3686bd759e73753d475ec1c7b9d16803c94d60597e9.js" integrity="sha256-m8JBiGvxV2DNMsNoa9dZ5zdT1HXsHHudFoA8lNYFl&#43;k=" crossorigin="anonymous"></script>
@@ -106,7 +95,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle" checked />
+    <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
     <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
       <a role="button" class="">Backend</a>
     </label>
@@ -122,7 +111,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle" checked />
+    <input type="checkbox" id="section-d89b2e5681262822056a3eec9d0a41e4" class="toggle"  />
     <label for="section-d89b2e5681262822056a3eec9d0a41e4" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
@@ -284,7 +273,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-30dab7aa6f04e2575ba9575d3f7aa552" class="toggle" checked />
+    <input type="checkbox" id="section-30dab7aa6f04e2575ba9575d3f7aa552" class="toggle"  />
     <label for="section-30dab7aa6f04e2575ba9575d3f7aa552" class="flex justify-between">
       <a role="button" class="">Io</a>
     </label>
@@ -300,7 +289,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="active">Decorator Pattern in Java IO</a>
+    <a href="/docs/programming/backend/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
   
 
         </li>
@@ -790,7 +779,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle" checked />
     <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
       <a role="button" class="">Web</a>
     </label>
@@ -874,7 +863,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle" checked />
     <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
       <a role="button" class="">HTTP</a>
     </label>
@@ -903,7 +892,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+    <a href="/docs/programming/web/http/http-methods-and-status-codes/" class="active">HTTP Methods &amp; Status Codes</a>
   
 
         </li>
@@ -1729,7 +1718,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Decorator Pattern in Java IO</h3>
+  <h3>HTTP Methods &amp; Status Codes</h3>
 
   <label for="toc-control">
     
@@ -1745,18 +1734,20 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#-lesson-2-http-methods--status-codes">📘 Lesson 2: HTTP Methods &amp; Status Codes</a>
       <ul>
-        <li><a href="#node-streams-low-level-streams">Node Streams (Low-Level Streams)</a></li>
-        <li><a href="#processing-streams-high-level-streams">Processing Streams (High-Level Streams)</a></li>
-        <li><a href="#combining-node-and-processing-streams">Combining Node and Processing Streams</a></li>
-        <li><a href="#decorator-pattern-in-java-io-stream">Decorator Pattern in Java IO Stream</a>
+        <li><a href="#-common-http-methods">🔧 Common HTTP Methods</a></li>
+        <li><a href="#-http-status-codes">🚦 HTTP Status Codes</a>
           <ul>
-            <li><a href="#component-node-stream">Component (Node Stream)</a></li>
-            <li><a href="#decorator-processing-stream">Decorator (Processing Stream)</a></li>
-            <li><a href="#q--a-of-decorator-pattern">Q &amp; A of Decorator Pattern</a></li>
+            <li><a href="#-notable-2xx-status-codes">🔍 Notable 2xx Status Codes</a></li>
           </ul>
         </li>
+      </ul>
+    </li>
+    <li><a href="#-hands-on-practice-with-fastapi">🛠️ Hands-On Practice with FastAPI</a>
+      <ul>
+        <li><a href="#-create-or-update-mainpy">📄 Create or Update <code>main.py</code></a></li>
+        <li><a href="#-try-these-commands-in-your-terminal">🧪 Try These Commands in Your Terminal</a></li>
       </ul>
     </li>
   </ul>
@@ -1771,111 +1762,209 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h2 id="node-streams-low-level-streams">
-  Node Streams (Low-Level Streams)
-  <a class="anchor" href="#node-streams-low-level-streams">#</a>
+  <article class="markdown book-article"><h1 id="-lesson-2-http-methods--status-codes">
+  📘 Lesson 2: HTTP Methods &amp; Status Codes
+  <a class="anchor" href="#-lesson-2-http-methods--status-codes">#</a>
+</h1>
+<p>Understanding HTTP methods and status codes is essential for designing and debugging web APIs. This lesson explores the most commonly used HTTP methods and how servers communicate the results of requests using standardized status codes.</p>
+<hr>
+<h2 id="-common-http-methods">
+  🔧 Common HTTP Methods
+  <a class="anchor" href="#-common-http-methods">#</a>
 </h2>
-<ul>
-<li>
-<p><strong>Definition:</strong></p>
-<ul>
-<li>Node Streams connect directly with the source of the data</li>
-<li>They read data from or write data to a specific location (like a file, memory, or network socket).</li>
-</ul>
-</li>
-<li>
-<p><strong>Example:</strong> <code>FileInputStream</code> is a node stream that reads byte data from a file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;example.txt&#34;</span>);
-</span></span><span style="display:flex;"><span>FileInputStream fis <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(file);
-</span></span></code></pre></div></li>
-</ul>
-<p>Here, <code>FileInputStream</code> is directly reading the bytes from the file &ldquo;example.txt&rdquo;. It&rsquo;s a direct connection between the Java program and the file.</p>
-<h2 id="processing-streams-high-level-streams">
-  Processing Streams (High-Level Streams)
-  <a class="anchor" href="#processing-streams-high-level-streams">#</a>
+<p>HTTP methods (also called verbs) define the action the client wants the server to perform. Here are the most commonly used methods:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Purpose</th>
+          <th>Idempotent</th>
+          <th>Safe</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>GET</strong></td>
+          <td>Retrieve data</td>
+          <td>✅</td>
+          <td>✅</td>
+      </tr>
+      <tr>
+          <td><strong>POST</strong></td>
+          <td>Submit data to create resource</td>
+          <td>❌</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td><strong>PUT</strong></td>
+          <td>Replace a resource</td>
+          <td>✅</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td><strong>PATCH</strong></td>
+          <td>Modify part of a resource</td>
+          <td>❌</td>
+          <td>❌</td>
+      </tr>
+      <tr>
+          <td><strong>DELETE</strong></td>
+          <td>Remove a resource</td>
+          <td>✅</td>
+          <td>❌</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>✅ <em>Idempotent</em> means the request can be made multiple times with the same result.</p>
+<p>✅ <em>Safe</em> means the request does not change server state.</p>
+</blockquote>
+<hr>
+<h2 id="-http-status-codes">
+  🚦 HTTP Status Codes
+  <a class="anchor" href="#-http-status-codes">#</a>
 </h2>
-<ul>
-<li>
-<p><strong>Definition:</strong></p>
-<ul>
-<li>Processing Streams are built on top of node streams to provide additional functionality, like buffering, filtering, reading objects, etc.</li>
-<li>They don&rsquo;t write or read data directly to or from data source, but delegate this job to node streams.</li>
-</ul>
-</li>
-<li>
-<p><strong>Example:</strong> <code>BufferedInputStream</code> is a processing stream that adds buffering capabilities to another input stream, such as <code>FileInputStream</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>FileInputStream fis <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(<span style="color:#e6db74">&#34;example.txt&#34;</span>);
-</span></span><span style="display:flex;"><span>BufferedInputStream bis <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedInputStream(fis);
-</span></span></code></pre></div></li>
-</ul>
-<p><code>BufferedInputStream</code> does not connect directly to the file. Instead, it wraps the <code>FileInputStream</code> and adds buffering to it. When you read from a <code>BufferedInputStream</code>, it retrieves data from the buffer, and when the buffer is empty, it reads another large chunk of data from the <code>FileInputStream</code> and fills the buffer. This minimizes the number of interactions with the file system, which is much slower than reading from a buffer in memory.</p>
-<h2 id="combining-node-and-processing-streams">
-  Combining Node and Processing Streams
-  <a class="anchor" href="#combining-node-and-processing-streams">#</a>
-</h2>
-<p>Typically, you chain processing streams together to get both their benefits. For instance, wrapping a <code>FileInputStream</code> with a <code>BufferedInputStream</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>File file <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> File(<span style="color:#e6db74">&#34;example.txt&#34;</span>);
-</span></span><span style="display:flex;"><span>InputStream is <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedInputStream(<span style="color:#66d9ef">new</span> FileInputStream(file));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>is.<span style="color:#a6e22e">close</span>();
-</span></span></code></pre></div><p>In this example, we use <code>FileInputStream</code> to connect to the file and <code>BufferedInputStream</code> to add buffering. The data still comes from the file, but it passes through the buffer, which can be read from more quickly than the file.</p>
-<h2 id="decorator-pattern-in-java-io-stream">
-  Decorator Pattern in Java IO Stream
-  <a class="anchor" href="#decorator-pattern-in-java-io-stream">#</a>
-</h2>
-<h3 id="component-node-stream">
-  Component (Node Stream)
-  <a class="anchor" href="#component-node-stream">#</a>
+<p>HTTP responses include status codes to indicate the outcome of a request. These codes are grouped into categories:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Code Range</th>
+          <th>Meaning</th>
+          <th>Examples</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>1xx</strong></td>
+          <td>Informational</td>
+          <td>100 Continue</td>
+      </tr>
+      <tr>
+          <td><strong>2xx</strong></td>
+          <td>Success</td>
+          <td>200 OK, 201 Created, 204 No Content</td>
+      </tr>
+      <tr>
+          <td><strong>3xx</strong></td>
+          <td>Redirection</td>
+          <td>301 Moved Permanently, 304 Not Modified</td>
+      </tr>
+      <tr>
+          <td><strong>4xx</strong></td>
+          <td>Client Error</td>
+          <td>400 Bad Request, 404 Not Found</td>
+      </tr>
+      <tr>
+          <td><strong>5xx</strong></td>
+          <td>Server Error</td>
+          <td>500 Internal Server Error</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="-notable-2xx-status-codes">
+  🔍 Notable 2xx Status Codes
+  <a class="anchor" href="#-notable-2xx-status-codes">#</a>
 </h3>
 <ul>
-<li>Definition: The component is the primary or underlying object that has the <strong>original behavior</strong>, which is to read data from data source for node streams.</li>
-<li>In Java IO: <code>FileInputStream</code> and <code>FileReader</code> are example of components. They provide the basic functionality for byte and character stream handling.</li>
+<li><strong>200 OK</strong>: A generic success response. Typically, includes a response body.</li>
+<li><strong>201 Created</strong>: Indicates that a new resource has been created, commonly used after a successful POST request. May include a <code>Location</code> header with the URL of the newly created resource.</li>
+<li><strong>204 No Content</strong>: Indicates success but no content is returned in the response body. Often used for DELETE or silent PUT requests.</li>
 </ul>
-<h3 id="decorator-processing-stream">
-  Decorator (Processing Stream)
-  <a class="anchor" href="#decorator-processing-stream">#</a>
-</h3>
-<ul>
-<li>Definition: Decorators implement or extend the same interface as the component they are going to decorate. They compose the instance of component and provide an enhanced interface with added responsibilities.- In Java IO: <code>BufferedInputStream</code>, <code>BufferedOutputStream</code>, <code>BufferedReader</code>, and <code>BufferedWriter</code> are examples of decorators. They add buffering to the streams they decorate.</li>
-</ul>
-<h4 id="key-features-of-decorator">
-  Key Features of Decorator
-  <a class="anchor" href="#key-features-of-decorator">#</a>
-</h4>
-<ul>
-<li>
-<p>Delegation: The decorator delegates the work to the component it decorates and then adds its own behavior before or after delegating. This is a key feature because it means the decorator itself doesn&rsquo;t handle the primary operations; it relies on the component to do so.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BufferedInputStream</span> <span style="color:#66d9ef">extends</span> InputStream {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> InputStream inner;
+<hr>
+<h1 id="-hands-on-practice-with-fastapi">
+  🛠️ Hands-On Practice with FastAPI
+  <a class="anchor" href="#-hands-on-practice-with-fastapi">#</a>
+</h1>
+<p>In this exercise, you&rsquo;ll implement endpoints for each HTTP method and return the appropriate status code.</p>
+<h2 id="-create-or-update-mainpy">
+  📄 Create or Update <code>main.py</code>
+  <a class="anchor" href="#-create-or-update-mainpy">#</a>
+</h2>
+<p><em>Create a new subdirectory <code>02-http-methods-status-codes</code> and a new Python file <code>main.py</code>:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir 02-http-methods-status-codes
+</span></span><span style="display:flex;"><span>cd 02-http-methods-status-codes
+</span></span><span style="display:flex;"><span>touch main.py
+</span></span></code></pre></div><p><em>Paste in the following Python code:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi.responses <span style="color:#f92672">import</span> JSONResponse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseModel
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">BufferedInputStream</span>(InputStream inner) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">inner</span> <span style="color:#f92672">=</span> inner;
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> FastAPI()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">read</span>() <span style="color:#66d9ef">throws</span> IOException {
-</span></span><span style="display:flex;"><span>        ... <span style="color:#75715e">// own behavior of decorator</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> inner.<span style="color:#a6e22e">read</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-<li>
-<p>Add Features Over Component Dynamically: Because decorators implement or extend the same interface as the component they are going to decorate, that means they can be decorated by other decorators. Decorators can be nested and combined in any order to add multiple behaviors.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>InputStream input <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(<span style="color:#e6db74">&#34;file.txt&#34;</span>);
-</span></span><span style="display:flex;"><span>InputStream buffered <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedInputStream(input);
-</span></span><span style="display:flex;"><span>InputStream dataInput <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DataInputStream(buffered);
-</span></span></code></pre></div></li>
-</ul>
-<h3 id="q--a-of-decorator-pattern">
-  Q &amp; A of Decorator Pattern
-  <a class="anchor" href="#q--a-of-decorator-pattern">#</a>
-</h3>
-<ul>
-<li>What&rsquo;s the main difference between component and decorator?Component and decorator both implement or extend same interface or superclass. However, components don&rsquo;t compose an instance of the interface or superclass, so it can only perform the original behavior. Decorators compose an instance of the interface or superclass, which can be delegated to perform the original behavior.</li>
-<li>What&rsquo;s the difference between strategy and decorator pattern?Key feature for decorator and strategy pattern is delegation. However, decorators extend or implements same interface or superclass it decorates, which mean decorators themselves can be decorated also, which add extra features dynamically during runtime.</li>
-</ul>
-</article>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># In-memory store</span>
+</span></span><span style="display:flex;"><span>items <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Item</span>(BaseModel):
+</span></span><span style="display:flex;"><span>    name: str
+</span></span><span style="display:flex;"><span>    description: str
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/items/</span><span style="color:#e6db74">{item_id}</span><span style="color:#e6db74">&#34;</span>, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_item</span>(item_id: str):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> item_id <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> items:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> JSONResponse(status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">404</span>, content<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;Item not found&#34;</span>})
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> items[item_id]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.post</span>(<span style="color:#e6db74">&#34;/items/</span><span style="color:#e6db74">{item_id}</span><span style="color:#e6db74">&#34;</span>, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">201</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_item</span>(item_id: str, item: Item):
+</span></span><span style="display:flex;"><span>    items[item_id] <span style="color:#f92672">=</span> item<span style="color:#f92672">.</span>dict()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> items[item_id]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.put</span>(<span style="color:#e6db74">&#34;/items/</span><span style="color:#e6db74">{item_id}</span><span style="color:#e6db74">&#34;</span>, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">replace_item</span>(item_id: str, item: Item):
+</span></span><span style="display:flex;"><span>    items[item_id] <span style="color:#f92672">=</span> item<span style="color:#f92672">.</span>dict()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> items[item_id]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.patch</span>(<span style="color:#e6db74">&#34;/items/</span><span style="color:#e6db74">{item_id}</span><span style="color:#e6db74">&#34;</span>, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_description</span>(item_id: str, item: Item):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> item_id <span style="color:#f92672">in</span> items:
+</span></span><span style="display:flex;"><span>        items[item_id][<span style="color:#e6db74">&#34;description&#34;</span>] <span style="color:#f92672">=</span> item<span style="color:#f92672">.</span>description
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> items<span style="color:#f92672">.</span>get(item_id, {<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;Item not found&#34;</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.delete</span>(<span style="color:#e6db74">&#34;/items/</span><span style="color:#e6db74">{item_id}</span><span style="color:#e6db74">&#34;</span>, status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">204</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">delete_item</span>(item_id: str):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> item_id <span style="color:#f92672">in</span> items:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">del</span> items[item_id]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span></code></pre></div><hr>
+<h2 id="-try-these-commands-in-your-terminal">
+  🧪 Try These Commands in Your Terminal
+  <a class="anchor" href="#-try-these-commands-in-your-terminal">#</a>
+</h2>
+<p><em>Use Uvicorn to start your FastAPI app:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uvicorn main:app --reload
+</span></span></code></pre></div><p><em>Invoke APIs in another terminal (simulate clients):</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Create an item</span>
+</span></span><span style="display:flex;"><span>curl -X POST http://localhost:8000/items/123 -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;{&#34;name&#34;: &#34;Book&#34;, &#34;description&#34;: &#34;FastAPI Guide&#34;}&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Read the item</span>
+</span></span><span style="display:flex;"><span>curl http://localhost:8000/items/123
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Replace the item</span>
+</span></span><span style="display:flex;"><span>curl -X PUT http://localhost:8000/items/123 -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;{&#34;name&#34;: &#34;Notebook&#34;, &#34;description&#34;: &#34;Updated&#34;}&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Patch the description</span>
+</span></span><span style="display:flex;"><span>curl -X PATCH http://localhost:8000/items/123 -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;{&#34;name&#34;: &#34;Notebook&#34;, &#34;description&#34;: &#34;Final revision&#34;}&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Delete the item</span>
+</span></span><span style="display:flex;"><span>curl -X DELETE http://localhost:8000/items/123
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Read the item after deletion</span>
+</span></span><span style="display:flex;"><span>curl http://localhost:8000/items/123
+</span></span></code></pre></div><p><em>You should see logs in server side:</em></p>
+<pre tabindex="0"><code class="language-log" data-lang="log">INFO:     127.0.0.1:62315 - &#34;POST /items/123 HTTP/1.1&#34; 201 Created
+INFO:     127.0.0.1:62317 - &#34;GET /items/123 HTTP/1.1&#34; 200 OK
+INFO:     127.0.0.1:62319 - &#34;PUT /items/123 HTTP/1.1&#34; 200 OK
+INFO:     127.0.0.1:62321 - &#34;PATCH /items/123 HTTP/1.1&#34; 200 OK
+INFO:     127.0.0.1:62323 - &#34;DELETE /items/123 HTTP/1.1&#34; 204 No Content
+INFO:     127.0.0.1:62325 - &#34;GET /items/123 HTTP/1.1&#34; 404 Not Found
+</code></pre><p><em>Logs in client side:</em></p>
+<pre tabindex="0"><code class="language-log" data-lang="log">{&#34;name&#34;:&#34;Book&#34;,&#34;description&#34;:&#34;FastAPI Guide&#34;}
+{&#34;name&#34;:&#34;Book&#34;,&#34;description&#34;:&#34;FastAPI Guide&#34;}
+{&#34;name&#34;:&#34;Notebook&#34;,&#34;description&#34;:&#34;Updated&#34;}
+{&#34;name&#34;:&#34;Notebook&#34;,&#34;description&#34;:&#34;Final revision&#34;}
+
+{&#34;error&#34;:&#34;Item not found&#34;}%
+</code></pre></article>
  
       
 
@@ -1916,18 +2005,20 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#-lesson-2-http-methods--status-codes">📘 Lesson 2: HTTP Methods &amp; Status Codes</a>
       <ul>
-        <li><a href="#node-streams-low-level-streams">Node Streams (Low-Level Streams)</a></li>
-        <li><a href="#processing-streams-high-level-streams">Processing Streams (High-Level Streams)</a></li>
-        <li><a href="#combining-node-and-processing-streams">Combining Node and Processing Streams</a></li>
-        <li><a href="#decorator-pattern-in-java-io-stream">Decorator Pattern in Java IO Stream</a>
+        <li><a href="#-common-http-methods">🔧 Common HTTP Methods</a></li>
+        <li><a href="#-http-status-codes">🚦 HTTP Status Codes</a>
           <ul>
-            <li><a href="#component-node-stream">Component (Node Stream)</a></li>
-            <li><a href="#decorator-processing-stream">Decorator (Processing Stream)</a></li>
-            <li><a href="#q--a-of-decorator-pattern">Q &amp; A of Decorator Pattern</a></li>
+            <li><a href="#-notable-2xx-status-codes">🔍 Notable 2xx Status Codes</a></li>
           </ul>
         </li>
+      </ul>
+    </li>
+    <li><a href="#-hands-on-practice-with-fastapi">🛠️ Hands-On Practice with FastAPI</a>
+      <ul>
+        <li><a href="#-create-or-update-mainpy">📄 Create or Update <code>main.py</code></a></li>
+        <li><a href="#-try-these-commands-in-your-terminal">🧪 Try These Commands in Your Terminal</a></li>
       </ul>
     </li>
   </ul>
