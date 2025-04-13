@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  🌐 Introduction to HTTP: The Foundation of the Web
+  📘 HTTP Headers: Part 1
   #
 
-HTTP (Hypertext Transfer Protocol) is the cornerstone of communication on the web. It defines the rules by which clients (like browsers or mobile apps) and servers exchange information. Every time you open a website, submit a form, or load an image, you&rsquo;re using HTTP.
+HTTP headers carry metadata between the client and server and are essential for interpreting and handling HTTP requests and responses. This lesson introduces the role of headers in HTTP communication and covers the most common and important general-purpose headers.
 
 
-  🧠 What is HTTP?
+  🧠 What Are HTTP Headers?
   #
 
-HTTP is a request-response protocol that allows a client to request data from a server and receive a response. It is:">
+HTTP headers are key-value pairs sent along with HTTP requests and responses. They:
+
+Describe the body content (e.g., format, length, encoding)
+Control behavior related to caching, authentication, and cookies
+Provide metadata about the request or response (e.g., user agent, language preferences)
+
+Headers help servers and clients interpret how to process the body, route requests, and manage security and performance.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming/web/http/start-http/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/programming/web/http/http-header-part-1-copy/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="Start HTTP">
-  <meta property="og:description" content="🌐 Introduction to HTTP: The Foundation of the Web # HTTP (Hypertext Transfer Protocol) is the cornerstone of communication on the web. It defines the rules by which clients (like browsers or mobile apps) and servers exchange information. Every time you open a website, submit a form, or load an image, you’re using HTTP.
-🧠 What is HTTP? # HTTP is a request-response protocol that allows a client to request data from a server and receive a response. It is:">
+  <meta property="og:title" content="HTTP Headers: Part 1">
+  <meta property="og:description" content="📘 HTTP Headers: Part 1 # HTTP headers carry metadata between the client and server and are essential for interpreting and handling HTTP requests and responses. This lesson introduces the role of headers in HTTP communication and covers the most common and important general-purpose headers.
+🧠 What Are HTTP Headers? # HTTP headers are key-value pairs sent along with HTTP requests and responses. They:
+Describe the body content (e.g., format, length, encoding) Control behavior related to caching, authentication, and cookies Provide metadata about the request or response (e.g., user agent, language preferences) Headers help servers and clients interpret how to process the body, route requests, and manage security and performance.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Start HTTP | What&#39;s Behind</title>
+<title>HTTP Headers: Part 1 | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming/web/http/start-http/">
+<link rel="canonical" href="http://localhost:1313/docs/programming/web/http/http-header-part-1-copy/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.14cfa3a05775dd926a2970f2e9f4cf5f1127e9f5ba35a0a277ec31da1cf4994f.js" integrity="sha256-FM&#43;joFd13ZJqKXDy6fTPXxEn6fW6NaCid&#43;wx2hz0mU8=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.32564cad9a05cab2cdcb1f320a433553561ffb3cfec68c9357fd20bf18635906.js" integrity="sha256-MlZMrZoFyrLNyx8yCkM1U1Yf&#43;zz&#43;xoyTV/0gvxhjWQY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -95,6 +102,53 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
+    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-a3774d0b7f222c1fd859911bed9f84c7" class="toggle"  />
     <label for="section-a3774d0b7f222c1fd859911bed9f84c7" class="flex justify-between">
       <a role="button" class="">Backend</a>
@@ -119,118 +173,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
-    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
-      <a role="button" class="">Nio</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
     
       
         <li>
@@ -511,6 +453,118 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ac19ec90cf736954489e2a5e8571a790" class="toggle"  />
+    <label for="section-ac19ec90cf736954489e2a5e8571a790" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/backend/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -606,53 +660,6 @@ https://github.com/alex-shpak/hugo-book
       
     
   </ul>
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-9488811b2da44d814b719a324549338f" class="toggle"  />
-    <label for="section-9488811b2da44d814b719a324549338f" class="flex justify-between">
-      <a role="button" class="">Project</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/project/online-chat/" class="">Online Chat</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming/project/node-js-auth/" class="">Node Js Auth</a>
-  
 
         </li>
       
@@ -879,7 +886,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/web/http/start-http/" class="active">Start HTTP</a>
+    <a href="/docs/programming/web/http/start-http/" class="">Start HTTP</a>
   
 
         </li>
@@ -905,7 +912,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+    <a href="/docs/programming/web/http/http-header-part-1-copy/" class="active">HTTP Headers: Part 1</a>
   
 
         </li>
@@ -918,7 +925,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+    <a href="/docs/programming/web/http/http-header-part-1/" class="">HTTP Headers: Part 1</a>
   
 
         </li>
@@ -1744,7 +1751,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Start HTTP</h3>
+  <h3>HTTP Headers: Part 1</h3>
 
   <label for="toc-control">
     
@@ -1760,25 +1767,17 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-introduction-to-http-the-foundation-of-the-web">🌐 Introduction to HTTP: The Foundation of the Web</a>
+    <li><a href="#-http-headers-part-1">📘 HTTP Headers: Part 1</a>
       <ul>
-        <li><a href="#-what-is-http">🧠 What is HTTP?</a></li>
-        <li><a href="#-components-of-http-communication">🔄 Components of HTTP Communication</a></li>
-        <li><a href="#-common-http-methods">🧾 Common HTTP Methods</a></li>
-        <li><a href="#-example-http-request">📤 Example HTTP Request</a></li>
-        <li><a href="#-example-http-response">📥 Example HTTP Response</a></li>
+        <li><a href="#-what-are-http-headers">🧠 What Are HTTP Headers?</a></li>
+        <li><a href="#-common-request-headers">🔐 Common Request Headers</a></li>
+        <li><a href="#-common-response-headers">📦 Common Response Headers</a></li>
       </ul>
     </li>
-    <li><a href="#-hands-on-practice-your-first-http-server-with-fastapi">🛠️ Hands-On Practice: Your First HTTP Server with FastAPI</a>
+    <li><a href="#-hands-on-practice-with-fastapi-inspecting-headers">🛠️ Hands-On Practice with FastAPI: Inspecting Headers</a>
       <ul>
-        <li>
-          <ul>
-            <li><a href="#-step-1-set-up-the-environment">✅ Step 1: Set Up the Environment</a></li>
-            <li><a href="#-step-2-create-your-server-file">✍️ Step 2: Create Your Server File</a></li>
-            <li><a href="#-step-3-run-the-server">🚀 Step 3: Run the Server</a></li>
-            <li><a href="#-step-4-make-a-request-with-curl">🧪 Step 4: Make a Request with Curl</a></li>
-          </ul>
-        </li>
+        <li><a href="#-start-your-server">📄 Start Your Server</a></li>
+        <li><a href="#-try-it-out">🧪 Try It Out</a></li>
       </ul>
     </li>
   </ul>
@@ -1793,131 +1792,132 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="-introduction-to-http-the-foundation-of-the-web">
-  🌐 Introduction to HTTP: The Foundation of the Web
-  <a class="anchor" href="#-introduction-to-http-the-foundation-of-the-web">#</a>
+  <article class="markdown book-article"><h1 id="-http-headers-part-1">
+  📘 HTTP Headers: Part 1
+  <a class="anchor" href="#-http-headers-part-1">#</a>
 </h1>
-<p>HTTP (Hypertext Transfer Protocol) is the cornerstone of communication on the web. It defines the rules by which clients (like browsers or mobile apps) and servers exchange information. Every time you open a website, submit a form, or load an image, you&rsquo;re using HTTP.</p>
+<p>HTTP headers carry metadata between the client and server and are essential for interpreting and handling HTTP requests and responses. This lesson introduces the role of headers in HTTP communication and covers the most common and important general-purpose headers.</p>
 <hr>
-<h2 id="-what-is-http">
-  🧠 What is HTTP?
-  <a class="anchor" href="#-what-is-http">#</a>
+<h2 id="-what-are-http-headers">
+  🧠 What Are HTTP Headers?
+  <a class="anchor" href="#-what-are-http-headers">#</a>
 </h2>
-<p>HTTP is a request-response protocol that allows a client to request data from a server and receive a response. It is:</p>
+<p>HTTP headers are key-value pairs sent along with HTTP requests and responses. They:</p>
 <ul>
-<li><strong>Application-layer protocol</strong>: Operates on the top layer of the OSI model.</li>
-<li><strong>Stateless</strong>: Each request is independent, meaning the server does not retain any information about previous requests.</li>
-<li><strong>Text-based</strong>: Both request and response messages are human-readable and structured.</li>
+<li>Describe the body content (e.g., format, length, encoding)</li>
+<li>Control behavior related to caching, authentication, and cookies</li>
+<li>Provide metadata about the request or response (e.g., user agent, language preferences)</li>
 </ul>
+<p>Headers help servers and clients interpret how to process the body, route requests, and manage security and performance.</p>
 <hr>
-<h2 id="-components-of-http-communication">
-  🔄 Components of HTTP Communication
-  <a class="anchor" href="#-components-of-http-communication">#</a>
+<h2 id="-common-request-headers">
+  🔐 Common Request Headers
+  <a class="anchor" href="#-common-request-headers">#</a>
 </h2>
 <table>
   <thead>
       <tr>
-          <th>Component</th>
-          <th>Description</th>
+          <th>Header</th>
+          <th>Purpose</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td><strong>Client</strong></td>
-          <td>Initiates the request. Examples include web browsers, Postman, or <code>curl</code>.</td>
+          <td><code>User-Agent</code></td>
+          <td>Identifies the client making the request (e.g., browser, curl, Postman)</td>
       </tr>
       <tr>
-          <td><strong>Server</strong></td>
-          <td>Receives the request, processes it, and sends back a response.</td>
+          <td><code>Authorization</code></td>
+          <td>Sends credentials or tokens to authenticate a user or session</td>
       </tr>
       <tr>
-          <td><strong>Request</strong></td>
-          <td>The message sent from client to server. Includes method, URL, headers, and (optionally) a body.</td>
+          <td><code>Accept</code></td>
+          <td>Specifies which response formats the client can handle (e.g., JSON, XML)</td>
       </tr>
       <tr>
-          <td><strong>Response</strong></td>
-          <td>The message sent from server to client. Includes status code, headers, and body.</td>
+          <td><code>Accept-Language</code></td>
+          <td>Indicates the client&rsquo;s preferred response language (e.g., <code>en-US</code>)</td>
+      </tr>
+      <tr>
+          <td><code>Cache-Control</code></td>
+          <td>Directs how requests and responses should be cached by intermediaries and browsers</td>
       </tr>
   </tbody>
 </table>
 <hr>
-<h2 id="-common-http-methods">
-  🧾 Common HTTP Methods
-  <a class="anchor" href="#-common-http-methods">#</a>
+<h2 id="-common-response-headers">
+  📦 Common Response Headers
+  <a class="anchor" href="#-common-response-headers">#</a>
 </h2>
-<ul>
-<li><strong>GET</strong> – Retrieve data</li>
-<li><strong>POST</strong> – Submit data</li>
-<li><strong>PUT</strong> – Replace data</li>
-<li><strong>PATCH</strong> – Modify data</li>
-<li><strong>DELETE</strong> – Remove data</li>
-</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Header</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Content-Type</code></td>
+          <td>Declares the format of the response body (e.g., JSON, HTML, plain text)</td>
+      </tr>
+      <tr>
+          <td><code>Set-Cookie</code></td>
+          <td>Sends cookies from the server to the client</td>
+      </tr>
+      <tr>
+          <td><code>Cache-Control</code></td>
+          <td>Specifies caching behavior for the response</td>
+      </tr>
+      <tr>
+          <td><code>ETag</code></td>
+          <td>Provides a unique identifier for a resource to support cache validation</td>
+      </tr>
+  </tbody>
+</table>
 <hr>
-<h2 id="-example-http-request">
-  📤 Example HTTP Request
-  <a class="anchor" href="#-example-http-request">#</a>
-</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#a6e22e">GET</span> /hello <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
-</span></span><span style="display:flex;"><span>Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">example.com</span>
-</span></span><span style="display:flex;"><span>User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0</span>
-</span></span><span style="display:flex;"><span>Accept<span style="color:#f92672">:</span> <span style="color:#ae81ff">text/html</span>
-</span></span></code></pre></div><h2 id="-example-http-response">
-  📥 Example HTTP Response
-  <a class="anchor" href="#-example-http-response">#</a>
-</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
-</span></span><span style="display:flex;"><span>Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/json</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{<span style="color:#f92672">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Hello, HTTP World!&#34;</span>}
-</span></span></code></pre></div><hr>
-<h1 id="-hands-on-practice-your-first-http-server-with-fastapi">
-  🛠️ Hands-On Practice: Your First HTTP Server with FastAPI
-  <a class="anchor" href="#-hands-on-practice-your-first-http-server-with-fastapi">#</a>
+<h1 id="-hands-on-practice-with-fastapi-inspecting-headers">
+  🛠️ Hands-On Practice with FastAPI: Inspecting Headers
+  <a class="anchor" href="#-hands-on-practice-with-fastapi-inspecting-headers">#</a>
 </h1>
-<h3 id="-step-1-set-up-the-environment">
-  ✅ Step 1: Set Up the Environment
-  <a class="anchor" href="#-step-1-set-up-the-environment">#</a>
-</h3>
-<p><em>Create a Python project and a virtual environment:</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir master-http
-</span></span><span style="display:flex;"><span>cd master-http
-</span></span><span style="display:flex;"><span>python3 -m venv venv
-</span></span></code></pre></div><p>This creates an isolated environment named <code>venv</code> to manage dependencies independently of your system Python installation.</p>
-<p><em>Activate the environment:</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>source venv/bin/activate
-</span></span></code></pre></div><p><em>Install FastAPI and Uvicorn:</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install fastapi uvicorn
-</span></span></code></pre></div><h3 id="-step-2-create-your-server-file">
-  ✍️ Step 2: Create Your Server File
-  <a class="anchor" href="#-step-2-create-your-server-file">#</a>
-</h3>
-<p><em>Create a subdirectory <code>01-start-http</code> and a file named <code>main.py</code>:</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir 01-start-http
-</span></span><span style="display:flex;"><span>cd 01-start-http
-</span></span><span style="display:flex;"><span>touch main.py
+<p>To see how headers are transmitted and read in FastAPI, let’s build a simple endpoint that returns all the request headers.</p>
+<h2 id="-start-your-server">
+  📄 Start Your Server
+  <a class="anchor" href="#-start-your-server">#</a>
+</h2>
+<p><em>Create a new subdirectory <code>03-http-headers</code> and a new Python file <code>start_header.py</code>:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir 03-http-headers
+</span></span><span style="display:flex;"><span>cd 03-http-headers
+</span></span><span style="display:flex;"><span>touch start_header.py
 </span></span></code></pre></div><p><em>Paste in the following Python code:</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI, Request
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> FastAPI()
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/hello&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">say_hello</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Hello, HTTP World!&#34;</span>}
-</span></span></code></pre></div><h3 id="-step-3-run-the-server">
-  🚀 Step 3: Run the Server
-  <a class="anchor" href="#-step-3-run-the-server">#</a>
-</h3>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.get</span>(<span style="color:#e6db74">&#34;/headers&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_headers</span>(request: Request):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;headers&#34;</span>: dict(request<span style="color:#f92672">.</span>headers)}
+</span></span></code></pre></div><p>This endpoint uses <code>request.headers</code> to dynamically access all incoming headers as a dictionary.</p>
 <p><em>Use Uvicorn to start your FastAPI app:</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uvicorn main:app --reload
-</span></span></code></pre></div><p>Visit <code>http://localhost:8000/hello</code> in your browser, and you should see:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Hello, HTTP World!&#34;</span>}
-</span></span></code></pre></div><h3 id="-step-4-make-a-request-with-curl">
-  🧪 Step 4: Make a Request with Curl
-  <a class="anchor" href="#-step-4-make-a-request-with-curl">#</a>
-</h3>
-<p><em>Try calling your endpoint from the terminal:</em></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl http://localhost:8000/hello
-</span></span></code></pre></div></article>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uvicorn start_header:app --reload
+</span></span></code></pre></div><hr>
+<h2 id="-try-it-out">
+  🧪 Try It Out
+  <a class="anchor" href="#-try-it-out">#</a>
+</h2>
+<p><em>Use the following <code>curl</code> command to simulate a request with custom headers in another terminal:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -H <span style="color:#e6db74">&#34;User-Agent: MyClient/1.0&#34;</span> -H <span style="color:#e6db74">&#34;Accept-Language: en-US&#34;</span> http://localhost:8000/headers
+</span></span></code></pre></div><p><em>Response:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;headers&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;host&#34;</span>: <span style="color:#e6db74">&#34;localhost:8000&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;accept&#34;</span>: <span style="color:#e6db74">&#34;*/*&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;user-agent&#34;</span>: <span style="color:#e6db74">&#34;MyClient/1.0&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;accept-language&#34;</span>: <span style="color:#e6db74">&#34;en-US&#34;</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This shows the full set of headers your server received, including custom and default headers.</p>
+</article>
  
       
 
@@ -1958,25 +1958,17 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-introduction-to-http-the-foundation-of-the-web">🌐 Introduction to HTTP: The Foundation of the Web</a>
+    <li><a href="#-http-headers-part-1">📘 HTTP Headers: Part 1</a>
       <ul>
-        <li><a href="#-what-is-http">🧠 What is HTTP?</a></li>
-        <li><a href="#-components-of-http-communication">🔄 Components of HTTP Communication</a></li>
-        <li><a href="#-common-http-methods">🧾 Common HTTP Methods</a></li>
-        <li><a href="#-example-http-request">📤 Example HTTP Request</a></li>
-        <li><a href="#-example-http-response">📥 Example HTTP Response</a></li>
+        <li><a href="#-what-are-http-headers">🧠 What Are HTTP Headers?</a></li>
+        <li><a href="#-common-request-headers">🔐 Common Request Headers</a></li>
+        <li><a href="#-common-response-headers">📦 Common Response Headers</a></li>
       </ul>
     </li>
-    <li><a href="#-hands-on-practice-your-first-http-server-with-fastapi">🛠️ Hands-On Practice: Your First HTTP Server with FastAPI</a>
+    <li><a href="#-hands-on-practice-with-fastapi-inspecting-headers">🛠️ Hands-On Practice with FastAPI: Inspecting Headers</a>
       <ul>
-        <li>
-          <ul>
-            <li><a href="#-step-1-set-up-the-environment">✅ Step 1: Set Up the Environment</a></li>
-            <li><a href="#-step-2-create-your-server-file">✍️ Step 2: Create Your Server File</a></li>
-            <li><a href="#-step-3-run-the-server">🚀 Step 3: Run the Server</a></li>
-            <li><a href="#-step-4-make-a-request-with-curl">🧪 Step 4: Make a Request with Curl</a></li>
-          </ul>
-        </li>
+        <li><a href="#-start-your-server">📄 Start Your Server</a></li>
+        <li><a href="#-try-it-out">🧪 Try It Out</a></li>
       </ul>
     </li>
   </ul>
