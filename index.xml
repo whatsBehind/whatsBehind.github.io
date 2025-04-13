@@ -394,6 +394,13 @@
       <description>&lt;h1 id=&#34;tls-handshake-server-hello&#34;&gt;&#xA;  TLS Handshake: Server Hello&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tls-handshake-server-hello&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;After a client sends the &lt;strong&gt;ClientHello&lt;/strong&gt; message to initiate a secure connection, the server responds with &lt;strong&gt;ServerHello&lt;/strong&gt;. This message finalizes the parameters needed to establish an encrypted session, and it&amp;rsquo;s the server&amp;rsquo;s way of saying:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Here’s what I’ve selected from your offers. Let’s proceed securely.&amp;rdquo;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;In this post, we’ll break down the &lt;strong&gt;ServerHello&lt;/strong&gt; message, how to view it, and what its key components mean.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>HTTP Headers Part 4: Cache Validation</title>
+      <link>https://whatsBehind.github.io/docs/programming/web/http/http-header-part-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/web/http/http-header-part-4/</guid>
+      <description>&lt;h1 id=&#34;-lesson-http-cache-validation--etag-and-last-modified-with-fastapi&#34;&gt;&#xA;  📘 Lesson: HTTP Cache Validation – ETag and Last-Modified with FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-lesson-http-cache-validation--etag-and-last-modified-with-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;In the previous lesson, we learned how to control whether and how content is cached using &lt;code&gt;Cache-Control&lt;/code&gt;. In this lesson, we focus on &lt;strong&gt;cache validation&lt;/strong&gt;, which allows the server to determine whether a client&amp;rsquo;s cached response is still valid. If so, it can return a lightweight &lt;code&gt;304 Not Modified&lt;/code&gt; instead of resending the full resource.&lt;/p&gt;&#xA;&lt;p&gt;We&amp;rsquo;ll cover how &lt;strong&gt;ETag&lt;/strong&gt; and &lt;strong&gt;Last-Modified&lt;/strong&gt; headers work, how clients use their corresponding validation headers (&lt;code&gt;If-None-Match&lt;/code&gt; and &lt;code&gt;If-Modified-Since&lt;/code&gt;), and how servers determine which one takes precedence. We&amp;rsquo;ll also walk through a complete FastAPI example and test it using the browser console.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>I/O  Model Summary</title>
       <link>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -406,6 +413,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-certificate/</guid>
       <description>&lt;h1 id=&#34;tls-handshake-certificate&#34;&gt;&#xA;  TLS Handshake: Certificate&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tls-handshake-certificate&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;what-is-a-tls-certificate&#34;&gt;&#xA;  What is a TLS Certificate?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-a-tls-certificate&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;During the TLS handshake, the server sends its certificate to the client to prove its identity. This certificate contains the server’s public key and information about who issued the certificate (a Certificate Authority). The client uses this certificate to verify that it&amp;rsquo;s really talking to the correct server, and then uses the public key to help create a secure, encrypted connection.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cookie</title>
+      <link>https://whatsBehind.github.io/docs/programming/web/http/cookie/</link>
+      <pubDate>Fri, 27 Oct 2023 08:10:45 -0700</pubDate>
+      <guid>https://whatsBehind.github.io/docs/programming/web/http/cookie/</guid>
+      <description>&lt;h3 id=&#34;what-is-cookie&#34;&gt;&#xA;  What is cookie&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-cookie&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user&amp;rsquo;s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Multiple Threads</title>
@@ -497,13 +511,6 @@
       <pubDate>Fri, 27 Oct 2023 08:11:22 -0700</pubDate>
       <guid>https://whatsBehind.github.io/docs/programming/web/web-api/web-storage-api/</guid>
       <description>&lt;h3 id=&#34;definition&#34;&gt;&#xA;  Definition&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#definition&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;The Web Storage API provides mechanisms by which browsers can store key/value pairs&lt;/p&gt;&#xA;&lt;h3 id=&#34;source-code&#34;&gt;&#xA;  Source code&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#source-code&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;These mechanisms are available via the &lt;code&gt;Window.sessionStorage&lt;/code&gt; and &lt;code&gt;Window.localStorage&lt;/code&gt; properties (to be more precise, the &lt;code&gt;Window&lt;/code&gt; object implements the &lt;code&gt;WindowLocalStorage&lt;/code&gt; and &lt;code&gt;WindowSessionStorage&lt;/code&gt; objects, which the &lt;code&gt;localStorage&lt;/code&gt; and &lt;code&gt;sessionStorage&lt;/code&gt; properties hang off) — invoking one of these will create an instance of the &lt;code&gt;Storage&lt;/code&gt; object, through which data items can be set, retrieved and removed. A different &lt;code&gt;Storage&lt;/code&gt; object is used for the &lt;code&gt;sessionStorage&lt;/code&gt; and &lt;code&gt;localStorage&lt;/code&gt; for each origin — they function and are controlled separately.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Cookie</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/http/cookie/</link>
-      <pubDate>Fri, 27 Oct 2023 08:10:45 -0700</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/http/cookie/</guid>
-      <description>&lt;h3 id=&#34;what-is-cookie&#34;&gt;&#xA;  What is cookie&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-cookie&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user&amp;rsquo;s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Set Up Hugo in Git Hub Pages</title>

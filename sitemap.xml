@@ -116,9 +116,14 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-server-hello/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/web/http/http-header-part-4/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-certificate/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming/web/http/cookie/</loc>
+    <lastmod>2023-10-27T08:10:45-07:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/</loc>
   </url><url>
@@ -202,9 +207,6 @@
     <lastmod>2023-10-27T08:11:22-07:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/web/http/</loc>
-    <lastmod>2023-10-27T08:10:45-07:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/http/cookie/</loc>
     <lastmod>2023-10-27T08:10:45-07:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming/tools/</loc>
