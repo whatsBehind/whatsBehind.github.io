@@ -2,65 +2,72 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>What&#39;s Behind</title>
-    <link>https://whatsBehind.github.io/docs/programming/web/security/</link>
+    <link>http://localhost:1313/docs/programming/web/security/</link>
     <description>Recent content on What&#39;s Behind</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://whatsBehind.github.io/docs/programming/web/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/docs/programming/web/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Asymmetric Encryption</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/security/asymmetric-encryption/</link>
+      <link>http://localhost:1313/docs/programming/web/security/asymmetric-encryption/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/security/asymmetric-encryption/</guid>
+      <guid>http://localhost:1313/docs/programming/web/security/asymmetric-encryption/</guid>
       <description>&lt;h2 id=&#34;what-is-asymmetric-encryption&#34;&gt;&#xA;  What Is Asymmetric Encryption?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-asymmetric-encryption&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Asymmetric encryption, also known as public-key encryption, is a method of encrypting data that involves two separate keys: a public key and a private key. These keys are mathematically linked but not identical, hence the term &amp;ldquo;asymmetric.&amp;rdquo; This method provides a secure way of encrypting and decrypting information, and it&amp;rsquo;s widely used in various forms of digital communication and security protocols&lt;/p&gt;&#xA;&lt;h2 id=&#34;how-does-it-work&#34;&gt;&#xA;  How Does It Work?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#how-does-it-work&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;key-generation&#34;&gt;&#xA;  Key Generation:&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#key-generation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;A pair of cryptographic keys is generated. The process involves complex algorithms like RSA or ECC, ensuring that these keys are mathematically linked.&#xA;The public key is designed to be shared, while the private key is kept confidential by the owner.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Session vs Token</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</link>
+      <link>http://localhost:1313/docs/programming/web/security/session-vs-token/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Both sessions and tokens are used for user authentication and maintaining user state across multiple HTTP requests in a web application.&lt;/p&gt;&#xA;&lt;h2 id=&#34;process&#34;&gt;&#xA;  Process&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#process&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;session-based-authentication-process&#34;&gt;&#xA;  Session-Based Authentication Process&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#session-based-authentication-process&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://whatsBehind.github.io/docs/programming/web/security/session-vs-token/session.svg&#34; alt=&#34;session&#34; /&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;1-2: User Login Attempt&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The user submits their login credentials (usually username and password) through the client (e.g., a web browser).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;3-4: Credentials Verification&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The server receives the credentials and verifies them against its user database or authentication source.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;5-6: Session Creation&lt;/p&gt;</description>
+      <guid>http://localhost:1313/docs/programming/web/security/session-vs-token/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Both sessions and tokens are used for user authentication and maintaining user state across multiple HTTP requests in a web application.&lt;/p&gt;&#xA;&lt;h2 id=&#34;process&#34;&gt;&#xA;  Process&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#process&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;session-based-authentication-process&#34;&gt;&#xA;  Session-Based Authentication Process&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#session-based-authentication-process&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/docs/programming/web/security/session-vs-token/session.svg&#34; alt=&#34;session&#34; /&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;1-2: User Login Attempt&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The user submits their login credentials (usually username and password) through the client (e.g., a web browser).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;3-4: Credentials Verification&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The server receives the credentials and verifies them against its user database or authentication source.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;5-6: Session Creation&lt;/p&gt;</description>
     </item>
     <item>
       <title>TLS Handshake</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</link>
+      <link>http://localhost:1313/docs/programming/web/security/tls-handshake/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake/</guid>
+      <guid>http://localhost:1313/docs/programming/web/security/tls-handshake/</guid>
       <description>&lt;h2 id=&#34;tlsssl-and-https&#34;&gt;&#xA;  TLS/SSL and HTTPS&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tlsssl-and-https&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;TLS (Transport Layer Security) and its predecessor, SSL (Secure Sockets Layer), are integral to HTTPS, which stands for Hypertext Transfer Protocol Secure. HTTPS is the secure version of HTTP, the primary protocol used for transmitting web pages over the internet. This post will introduce the process of TLS handshake, and the TLS version is TLS 1.2&lt;/p&gt;&#xA;&lt;h2 id=&#34;tls-handshake&#34;&gt;&#xA;  TLS Handshake&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tls-handshake&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;![client-hello](/docs/programming/web/security/tls-handshake/c  `lient-hello.svg)&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Client to Server: ClientHello&lt;/p&gt;</description>
     </item>
     <item>
       <title>TLS Handshake: Client Hello</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-client-hello/</link>
+      <link>http://localhost:1313/docs/programming/web/security/tls-handshake-client-hello/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-client-hello/</guid>
+      <guid>http://localhost:1313/docs/programming/web/security/tls-handshake-client-hello/</guid>
       <description>&lt;h1 id=&#34;tls-handshake-client-hello&#34;&gt;&#xA;  TLS Handshake: Client Hello&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tls-handshake-client-hello&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;When establishing a secure HTTPS connection, the TLS handshake is the very first step that sets the foundation for encryption and trust. One of the most critical messages in this process is the &lt;strong&gt;ClientHello&lt;/strong&gt;. In this post, we&amp;rsquo;ll walk through how to view and analyze the &lt;code&gt;ClientHello&lt;/code&gt; message, and break down its key contents and purposes.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;step-1-capture-the-tls-handshake-using-openssl&#34;&gt;&#xA;  Step 1: Capture the TLS Handshake Using OpenSSL&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#step-1-capture-the-tls-handshake-using-openssl&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;You can observe the raw TLS handshake between your machine and a server (like Google) using the following OpenSSL command:&lt;/p&gt;</description>
     </item>
     <item>
       <title>TLS Handshake: Server Hello</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-server-hello/</link>
+      <link>http://localhost:1313/docs/programming/web/security/tls-handshake-server-hello/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-server-hello/</guid>
+      <guid>http://localhost:1313/docs/programming/web/security/tls-handshake-server-hello/</guid>
       <description>&lt;h1 id=&#34;tls-handshake-server-hello&#34;&gt;&#xA;  TLS Handshake: Server Hello&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tls-handshake-server-hello&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;After a client sends the &lt;strong&gt;ClientHello&lt;/strong&gt; message to initiate a secure connection, the server responds with &lt;strong&gt;ServerHello&lt;/strong&gt;. This message finalizes the parameters needed to establish an encrypted session, and it&amp;rsquo;s the server&amp;rsquo;s way of saying:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;ldquo;Here’s what I’ve selected from your offers. Let’s proceed securely.&amp;rdquo;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;In this post, we’ll break down the &lt;strong&gt;ServerHello&lt;/strong&gt; message, how to view it, and what its key components mean.&lt;/p&gt;</description>
     </item>
     <item>
       <title>TLS Handshake: Certificate</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-certificate/</link>
+      <link>http://localhost:1313/docs/programming/web/security/tls-handshake-certificate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-certificate/</guid>
+      <guid>http://localhost:1313/docs/programming/web/security/tls-handshake-certificate/</guid>
       <description>&lt;h1 id=&#34;tls-handshake-certificate&#34;&gt;&#xA;  TLS Handshake: Certificate&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tls-handshake-certificate&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;what-is-a-tls-certificate&#34;&gt;&#xA;  What is a TLS Certificate?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-a-tls-certificate&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;During the TLS handshake, the server sends its certificate to the client to prove its identity. This certificate contains the server’s public key and information about who issued the certificate (a Certificate Authority). The client uses this certificate to verify that it&amp;rsquo;s really talking to the correct server, and then uses the public key to help create a secure, encrypted connection.&lt;/p&gt;</description>
     </item>
     <item>
       <title>TLS Handshake: Certificate Verify</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-certificate-verify/</link>
+      <link>http://localhost:1313/docs/programming/web/security/tls-handshake-certificate-verify/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-certificate-verify/</guid>
+      <guid>http://localhost:1313/docs/programming/web/security/tls-handshake-certificate-verify/</guid>
       <description>&lt;h1 id=&#34;tls-handshake-certificate-verify&#34;&gt;&#xA;  TLS Handshake: Certificate Verify&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tls-handshake-certificate-verify&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;what-is-certificateverify&#34;&gt;&#xA;  What is CertificateVerify?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-certificateverify&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;During the TLS handshake, the server sends a &lt;strong&gt;CertificateVerify&lt;/strong&gt; message &lt;strong&gt;to prove it owns the private key&lt;/strong&gt; corresponding to the public key in its certificate. This step prevents attackers from using a stolen certificate without having the private key.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-happens-in-this-step&#34;&gt;&#xA;  What Happens in This Step?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-happens-in-this-step&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;The server &lt;strong&gt;creates a hash&lt;/strong&gt; of all previous handshake messages (called the &amp;ldquo;handshake transcript&amp;rdquo;).&lt;/li&gt;&#xA;&lt;li&gt;The server &lt;strong&gt;signs&lt;/strong&gt; this hash using its &lt;strong&gt;private key&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;The server sends the &lt;strong&gt;CertificateVerify&lt;/strong&gt; message to the client. It includes:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The &lt;strong&gt;signature algorithm&lt;/strong&gt; used (e.g., &lt;code&gt;sha256+rsa_pss_rsae&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;The &lt;strong&gt;digital signature&lt;/strong&gt; value&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Example:&lt;/p&gt;</description>
     </item>
     <item>
       <title>TLS Handshake: Finished</title>
-      <link>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-certificate-finished/</link>
+      <link>http://localhost:1313/docs/programming/web/security/simulating-https/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/programming/web/security/tls-handshake-certificate-finished/</guid>
+      <guid>http://localhost:1313/docs/programming/web/security/simulating-https/</guid>
+      <description>&lt;h1 id=&#34;tls-handshake-finished&#34;&gt;&#xA;  TLS Handshake: Finished&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tls-handshake-finished&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;what-is-the-finished-message&#34;&gt;&#xA;  What is the Finished Message?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-the-finished-message&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;After the client verifies the server’s identity (with CertificateVerify), both the client and server send a &lt;strong&gt;Finished&lt;/strong&gt; message. This message is the final step in the handshake that proves everything up to this point has not been tampered with.&lt;/p&gt;&#xA;&lt;h2 id=&#34;purpose&#34;&gt;&#xA;  Purpose&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#purpose&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The Finished message ensures that:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;All previous handshake steps were received and processed correctly.&lt;/li&gt;&#xA;&lt;li&gt;The handshake wasn&amp;rsquo;t modified or intercepted by an attacker.&lt;/li&gt;&#xA;&lt;li&gt;Both parties derived the same symmetric encryption key.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;final-symmetric-key&#34;&gt;&#xA;  Final Symmetric Key&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#final-symmetric-key&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By this point in the handshake:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>TLS Handshake: Finished</title>
+      <link>http://localhost:1313/docs/programming/web/security/tls-handshake-certificate-finished/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/programming/web/security/tls-handshake-certificate-finished/</guid>
       <description>&lt;h1 id=&#34;tls-handshake-finished&#34;&gt;&#xA;  TLS Handshake: Finished&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tls-handshake-finished&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;what-is-the-finished-message&#34;&gt;&#xA;  What is the Finished Message?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-the-finished-message&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;After the client verifies the server’s identity (with CertificateVerify), both the client and server send a &lt;strong&gt;Finished&lt;/strong&gt; message. This message is the final step in the handshake that proves everything up to this point has not been tampered with.&lt;/p&gt;&#xA;&lt;h2 id=&#34;purpose&#34;&gt;&#xA;  Purpose&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#purpose&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The Finished message ensures that:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;All previous handshake steps were received and processed correctly.&lt;/li&gt;&#xA;&lt;li&gt;The handshake wasn&amp;rsquo;t modified or intercepted by an attacker.&lt;/li&gt;&#xA;&lt;li&gt;Both parties derived the same symmetric encryption key.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;final-symmetric-key&#34;&gt;&#xA;  Final Symmetric Key&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#final-symmetric-key&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By this point in the handshake:&lt;/p&gt;</description>
     </item>
   </channel>
