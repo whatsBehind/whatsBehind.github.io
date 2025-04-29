@@ -1,0 +1,2468 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55166&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  CloudFormation
+  #
+
+
+  Resources
+  #
+
+
+
+Resource Type Reference
+
+
+Resources Introduction
+
+
+
+  Syntax
+  #
+
+Resources:
+  Logical ID:
+  Type: Resource type
+  Properties:
+    Set of properties
+
+
+Logical ID: A unique logical ID for that resource, which can be referenced by other parts in the template
+
+
+Resource Type: An identifier of the resource that you are declaring
+
+Resource Type Reference
+
+
+
+Resource Properties: Additional options that you can specify for a resource
+
+
+
+  Parameters (Optional)
+  #
+
+
+Guide
+
+Parameters allow you to input custom values for your template. You can think the template as a module or a function with arguments. Each time creating or updating a stack using the template is like invoking the function with parameters you defined in the template.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:55166/docs/programming/cloud/aws/cloudformation/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="CloudFormation">
+  <meta property="og:description" content="CloudFormation # Resources # Resource Type Reference
+Resources Introduction
+Syntax # Resources: Logical ID: Type: Resource type Properties: Set of properties Logical ID: A unique logical ID for that resource, which can be referenced by other parts in the template
+Resource Type: An identifier of the resource that you are declaring
+Resource Type Reference Resource Properties: Additional options that you can specify for a resource
+Parameters (Optional) # Guide Parameters allow you to input custom values for your template. You can think the template as a module or a function with arguments. Each time creating or updating a stack using the template is like invoking the function with parameters you defined in the template.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>CloudFormation | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:55166/docs/programming/cloud/aws/cloudformation/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.63c2184d22382eb1423535ba6c75cde891650e58814bcf19869caf6d686bb259.js" integrity="sha256-Y8IYTSI4LrFCNTW6bHXN6JFlDliBS88ZhpyvbWhrslk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="toggle"  />
+    <label for="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="toggle"  />
+    <label for="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdf55a702353035bca92383ae3fb0776" class="toggle"  />
+    <label for="section-bdf55a702353035bca92383ae3fb0776" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-638baef7394c63505a0124a6ab8929d4" class="toggle"  />
+    <label for="section-638baef7394c63505a0124a6ab8929d4" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-050a487401c9ade14154296e864be8a2" class="toggle"  />
+    <label for="section-050a487401c9ade14154296e864be8a2" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6660e5a8131bb9bf21390ee36cb603b4" class="toggle"  />
+    <label for="section-6660e5a8131bb9bf21390ee36cb603b4" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e48aea960dd5f2b76bffb00087424f3" class="toggle"  />
+    <label for="section-7e48aea960dd5f2b76bffb00087424f3" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9091ac3d236d4bd531308b8633d45035" class="toggle"  />
+    <label for="section-9091ac3d236d4bd531308b8633d45035" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="toggle"  />
+    <label for="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="flex justify-between">
+      <a role="button" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="toggle"  />
+    <label for="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-caac18242619b008e4a9895db1095868" class="toggle"  />
+    <label for="section-caac18242619b008e4a9895db1095868" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61603bfa67f7e848f6f30bc8a7b7b383" class="toggle"  />
+    <label for="section-61603bfa67f7e848f6f30bc8a7b7b383" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f550cfe555239292577fe95f15a0fb58" class="toggle"  />
+    <label for="section-f550cfe555239292577fe95f15a0fb58" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-748de3caa969de5f0463714fef06e2bf" class="toggle"  />
+    <label for="section-748de3caa969de5f0463714fef06e2bf" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01867ca5de591b785e2c310209ee8cb4" class="toggle"  />
+    <label for="section-01867ca5de591b785e2c310209ee8cb4" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-119959759090fce61894a49053172a54" class="toggle"  />
+    <label for="section-119959759090fce61894a49053172a54" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ce38b31faecdfd79438e212848b8695" class="toggle"  />
+    <label for="section-4ce38b31faecdfd79438e212848b8695" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-43effcc73883f6032917b714430cd064" class="toggle"  />
+    <label for="section-43effcc73883f6032917b714430cd064" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ffff656c2dc3dfe4c18658b113a7be" class="toggle"  />
+    <label for="section-13ffff656c2dc3dfe4c18658b113a7be" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9cd6328cf5cf698fa6c672c2db6d2035" class="toggle" checked />
+    <label for="section-9cd6328cf5cf698fa6c672c2db6d2035" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bf71894cadd24d41821eba6f15a9523" class="toggle" checked />
+    <label for="section-7bf71894cadd24d41821eba6f15a9523" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/cloudformation/" class="active">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-26749471ddc426a91f4eb4368b916e16" class="toggle"  />
+    <label for="section-26749471ddc426a91f4eb4368b916e16" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92b00c426b17cc8f5bb49854760a2a5" class="toggle"  />
+    <label for="section-d92b00c426b17cc8f5bb49854760a2a5" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6464d2d3fb1a4e9e5d7077427324262c" class="toggle"  />
+    <label for="section-6464d2d3fb1a4e9e5d7077427324262c" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-94df99bcc7100f8b6dd829f22627f997" class="toggle"  />
+    <label for="section-94df99bcc7100f8b6dd829f22627f997" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b85e1e563a521a0dcacf88388f88f7a" class="toggle"  />
+    <label for="section-1b85e1e563a521a0dcacf88388f88f7a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e9a4c61515d11caeb60041730028720" class="toggle"  />
+    <label for="section-0e9a4c61515d11caeb60041730028720" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-615aafe1cd7d7f170cf11a536398f063" class="toggle"  />
+    <label for="section-615aafe1cd7d7f170cf11a536398f063" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13f05eeb6627e08a293644209c456447" class="toggle"  />
+    <label for="section-13f05eeb6627e08a293644209c456447" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c46fb385560336c69d4467dbf9a5d5a" class="toggle"  />
+    <label for="section-7c46fb385560336c69d4467dbf9a5d5a" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fe4d6a252416c10985f7090ee3b16155" class="toggle"  />
+    <label for="section-fe4d6a252416c10985f7090ee3b16155" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dfcadcb229769865e1e73e90e669fb26" class="toggle"  />
+    <label for="section-dfcadcb229769865e1e73e90e669fb26" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1e757f5004bc51fabbd20e29b8046b90" class="toggle"  />
+    <label for="section-1e757f5004bc51fabbd20e29b8046b90" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>CloudFormation</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#cloudformation">CloudFormation</a>
+      <ul>
+        <li><a href="#resources">Resources</a>
+          <ul>
+            <li><a href="#syntax">Syntax</a></li>
+          </ul>
+        </li>
+        <li><a href="#parameters-optional">Parameters (Optional)</a>
+          <ul>
+            <li><a href="#syntax-1">Syntax</a></li>
+            <li><a href="#referencing-a-parameter">Referencing a Parameter</a></li>
+            <li><a href="#pseudo-parameter">Pseudo Parameter</a></li>
+          </ul>
+        </li>
+        <li><a href="#mappings-optional">Mappings (Optional)</a>
+          <ul>
+            <li><a href="#syntax-2">Syntax</a></li>
+            <li><a href="#example">Example</a></li>
+            <li><a href="#find-a-value-in-a-mapping">Find a Value in a Mapping</a></li>
+          </ul>
+        </li>
+        <li><a href="#outputs-optional">Outputs (Optional)</a>
+          <ul>
+            <li><a href="#syntax-3">Syntax</a></li>
+            <li><a href="#import-outputs-into-other-stacks">Import Outputs into Other Stacks</a></li>
+          </ul>
+        </li>
+        <li><a href="#conditions-optional">Conditions (Optional)</a>
+          <ul>
+            <li><a href="#define-a-condition">Define a Condition</a></li>
+            <li><a href="#define-a-nested-condition">Define a Nested Condition</a></li>
+            <li><a href="#use-conditions">Use Conditions</a></li>
+          </ul>
+        </li>
+        <li><a href="#rules-optional">Rules (Optional)</a>
+          <ul>
+            <li><a href="#working-with-rules">Working with Rules</a></li>
+            <li><a href="#example-1">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#change-set">Change Set</a></li>
+        <li><a href="#nested-stack">Nested Stack</a>
+          <ul>
+            <li><a href="#example-2">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#cloudformation-drift">CloudFormation Drift</a></li>
+        <li><a href="#stack-policy">Stack Policy</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="cloudformation">
+  CloudFormation
+  <a class="anchor" href="#cloudformation">#</a>
+</h1>
+<h2 id="resources">
+  Resources
+  <a class="anchor" href="#resources">#</a>
+</h2>
+<ul>
+<li>
+<p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-alias.html">Resource Type Reference</a></p>
+</li>
+<li>
+<p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html">Resources Introduction</a></p>
+</li>
+</ul>
+<h3 id="syntax">
+  Syntax
+  <a class="anchor" href="#syntax">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Logical ID</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">Resource type</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">Set of properties</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>Logical ID: A unique logical ID for that resource, which can be referenced by other parts in the template</p>
+</li>
+<li>
+<p>Resource Type: An identifier of the resource that you are declaring</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-alias.html">Resource Type Reference</a></li>
+</ul>
+</li>
+<li>
+<p>Resource Properties: Additional options that you can specify for a resource</p>
+</li>
+</ul>
+<h2 id="parameters-optional">
+  Parameters (Optional)
+  <a class="anchor" href="#parameters-optional">#</a>
+</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html">Guide</a></li>
+</ul>
+<p>Parameters allow you to input custom values for your template. You can think the template as a module or a function with arguments. Each time creating or updating a stack using the template is like invoking the function with parameters you defined in the template.</p>
+<h3 id="syntax-1">
+  Syntax
+  <a class="anchor" href="#syntax-1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Parameters</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ParameterLogicalID</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">DataType</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ParameterProperty</span>: <span style="color:#ae81ff">value</span>
+</span></span></code></pre></div><ul>
+<li>Example
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Parameters</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">InstanceTypeParameter</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Type</span>: <span style="color:#ae81ff">String</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Default</span>: <span style="color:#ae81ff">t2.micro</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">AllowedValues</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">t2.micro</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">m1.small</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#ae81ff">m1.large</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="referencing-a-parameter">
+  Referencing a Parameter
+  <a class="anchor" href="#referencing-a-parameter">#</a>
+</h3>
+<p>User <code>Ref</code> intrinsic function to reference a parameter</p>
+<ul>
+<li>Example
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Ec2Instance</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::EC2::Instance</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">InstanceType</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Ref</span>: <span style="color:#ae81ff">InstanceTypeParameter</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ImageId</span>: <span style="color:#ae81ff">ami-0ff8a91507f77f867</span>
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="pseudo-parameter">
+  Pseudo Parameter
+  <a class="anchor" href="#pseudo-parameter">#</a>
+</h3>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/pseudo-parameter-reference.html">Guide</a></li>
+</ul>
+<p>Parameters are predefined by AWS CloudFormation. You can think them as environment variables</p>
+<h2 id="mappings-optional">
+  Mappings (Optional)
+  <a class="anchor" href="#mappings-optional">#</a>
+</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/mappings-section-structure.html">Guide</a></li>
+</ul>
+<p>Mappings are fixed values in your CloudFormation template. Different from Parameters which are unknown before creating the stack, Mappings are hard coded in the template and are known in advance</p>
+<p>You can think Mappings as static configurations in your project</p>
+<h3 id="syntax-2">
+  Syntax
+  <a class="anchor" href="#syntax-2">#</a>
+</h3>
+<h4 id="yaml">
+  YAML
+  <a class="anchor" href="#yaml">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Mappings</span>: 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">MappingName</span>: 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">PrimaryKey01</span>: 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">SecondaryKey01</span>: <span style="color:#ae81ff">Value01</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">PrimaryKey02</span>: 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">SecondaryKey02</span>: <span style="color:#ae81ff">Value02</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">PrimaryKey03</span>: 
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">SecondaryKey03</span>: <span style="color:#ae81ff">Value03</span>
+</span></span></code></pre></div><h3 id="example">
+  Example
+  <a class="anchor" href="#example">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Mappings</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">DependencyAwsAccountMapping</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">us-ease-1</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">dependency01</span>: <span style="color:#ae81ff">123456789012</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">dependency02</span>: <span style="color:#ae81ff">123456789013</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">us-west-2</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">dependency01</span>: <span style="color:#ae81ff">987654321098</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">dependency02</span>: <span style="color:#ae81ff">987654321987</span>
+</span></span></code></pre></div><h3 id="find-a-value-in-a-mapping">
+  Find a Value in a Mapping
+  <a class="anchor" href="#find-a-value-in-a-mapping">#</a>
+</h3>
+<p>You can use intrinsic function <code>!FindInMap</code></p>
+<ul>
+<li>Syntax
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span>!<span style="color:#ae81ff">FindInMap [MappingName, PrimaryKey, Secondary]</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>Above function returns <code>value01</code></p>
+<ul>
+<li>Example
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">AWSTemplateFormatVersion</span>: <span style="color:#e6db74">&#34;2010-09-09&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Mappings</span>: 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">RegionMap</span>: 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">us-east-1</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">HVM64</span>: <span style="color:#ae81ff">ami-0ff8a91507f77f867</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">HVMG2</span>: <span style="color:#ae81ff">ami-0a584ac55a7631c0c</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">us-west-2</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">HVM64</span>: <span style="color:#ae81ff">ami-0bdb828fd58c52235</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">HVMG2</span>: <span style="color:#ae81ff">ami-066ee5fd4a9ef77f1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Resources</span>: 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">myEC2Instance</span>: 
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Type</span>: <span style="color:#e6db74">&#34;AWS::EC2::Instance&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Properties</span>: 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ImageId</span>: !<span style="color:#ae81ff">FindInMap [RegionMap, !Ref &#34;AWS::Region&#34;, HVM64]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">InstanceType</span>: <span style="color:#ae81ff">m1.small</span>
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="outputs-optional">
+  Outputs (Optional)
+  <a class="anchor" href="#outputs-optional">#</a>
+</h2>
+<ul>
+<li>
+<p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html">Guide</a></p>
+</li>
+<li>
+<p>Cross-stack Reference: Outputs section declares output values that can be imported into other templates</p>
+</li>
+<li>
+<p>You can&rsquo;t delete the stack if its outputs are referenced by other stacks</p>
+</li>
+</ul>
+<h3 id="syntax-3">
+  Syntax
+  <a class="anchor" href="#syntax-3">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">LogicalId</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Information about the value</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: <span style="color:#ae81ff">Value to return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: <span style="color:#ae81ff">Name of resource to export</span>
+</span></span></code></pre></div><p>You can think above export statements as below to better understand</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JS" data-lang="JS"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#a6e22e">LogicalId</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">Name</span>;
+</span></span></code></pre></div><h3 id="import-outputs-into-other-stacks">
+  Import Outputs into Other Stacks
+  <a class="anchor" href="#import-outputs-into-other-stacks">#</a>
+</h3>
+<ul>
+<li>
+<p>Output from StackA</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WebServerSecurityGroup</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">The security group ID to use for public web servers</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#39;Fn::GetAtt&#39;</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">WebServerSecurityGroup</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">GroupId</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name: &#39;Fn::Sub&#39;</span>: <span style="color:#e6db74">&#39;${AWS::StackName}-SecurityGroupID&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Import into StackB</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">WebServerInstance</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#e6db74">&#39;AWS::EC2::Instance&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">InstanceType</span>: <span style="color:#ae81ff">t2.micro</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ImageId</span>: <span style="color:#ae81ff">ami-a1b23456</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">NetworkInterfaces</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">GroupSet</span>:
+</span></span><span style="display:flex;"><span>          - <span style="color:#f92672">Fn::ImportValue</span>: 
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#39;Fn::Sub&#39;</span>: <span style="color:#e6db74">&#39;${NetworkStackNameParameter}-SecurityGroupID&#39;</span>
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="conditions-optional">
+  Conditions (Optional)
+  <a class="anchor" href="#conditions-optional">#</a>
+</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html">Guide</a></li>
+</ul>
+<p>The <code>Conditions</code> section contains statements that define the circumstances under which entities are created or configured</p>
+<h3 id="define-a-condition">
+  Define a Condition
+  <a class="anchor" href="#define-a-condition">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">AWSTemplateFormatVersion</span>: <span style="color:#e6db74">2010-09-09</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">EnvType</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Environment type.</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Default</span>: <span style="color:#ae81ff">test</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">String</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">AllowedValues</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">prod</span>
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">test</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ConstraintDescription</span>: <span style="color:#ae81ff">must specify prod or test.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Conditions</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">IsProd</span>: !<span style="color:#ae81ff">Equals </span>
+</span></span><span style="display:flex;"><span>      - !<span style="color:#ae81ff">Ref EnvType</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">prod</span>
+</span></span></code></pre></div><h3 id="define-a-nested-condition">
+  Define a Nested Condition
+  <a class="anchor" href="#define-a-nested-condition">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span>  <span style="color:#f92672">Conditions</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">IsProd</span>: !<span style="color:#ae81ff">Equals </span>
+</span></span><span style="display:flex;"><span>      - !<span style="color:#ae81ff">Ref EnvType</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">prod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">CreateBucket</span>: !<span style="color:#ae81ff">Not </span>
+</span></span><span style="display:flex;"><span>      - !<span style="color:#ae81ff">Equals </span>
+</span></span><span style="display:flex;"><span>      - !<span style="color:#ae81ff">Ref BucketName</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">CreateBucketPolicy</span>: !<span style="color:#ae81ff">And </span>
+</span></span><span style="display:flex;"><span>      - !<span style="color:#ae81ff">Condition IsProd</span>
+</span></span><span style="display:flex;"><span>      - !<span style="color:#ae81ff">Condition CreateBucket</span>
+</span></span></code></pre></div><h3 id="use-conditions">
+  Use Conditions
+  <a class="anchor" href="#use-conditions">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">EC2Instance</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#e6db74">&#39;AWS::EC2::Instance&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Condition</span>: <span style="color:#ae81ff">IsProd</span>
+</span></span></code></pre></div><h2 id="rules-optional">
+  Rules (Optional)
+  <a class="anchor" href="#rules-optional">#</a>
+</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/rules-section-structure.html">Guide</a></li>
+</ul>
+<p>Rules validates parameters passed to a template during creation or updates of a stack</p>
+<h3 id="working-with-rules">
+  Working with Rules
+  <a class="anchor" href="#working-with-rules">#</a>
+</h3>
+<p>Each template rule contains two properties:</p>
+<ul>
+<li>Rule Condition (Optional) - determine when a rule takes effect</li>
+<li>Each rule can only have one condition</li>
+<li>If the condition is not defined, then the rule&rsquo;s assertions always take effect</li>
+<li>Rule Assertion (Required) - describe what values users can use for a specific parameter</li>
+<li>One rule can have multiple assertions</li>
+</ul>
+<h3 id="example-1">
+  Example
+  <a class="anchor" href="#example-1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">Rules</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">testInstanceType</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">RuleCondition</span>: !<span style="color:#ae81ff">Equals </span>
+</span></span><span style="display:flex;"><span>    - !<span style="color:#ae81ff">Ref Environment</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">test</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Assertions</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">Assert</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#39;Fn::Contains&#39;</span>:
+</span></span><span style="display:flex;"><span>        - - <span style="color:#ae81ff">a1.medium</span>
+</span></span><span style="display:flex;"><span>        - !<span style="color:#ae81ff">Ref InstanceType</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">AssertDescription</span>: <span style="color:#e6db74">&#39;For a test environment, the instance type must be a1.medium&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">prodInstanceType</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">RuleCondition</span>: !<span style="color:#ae81ff">Equals </span>
+</span></span><span style="display:flex;"><span>      - !<span style="color:#ae81ff">Ref Environment</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">prod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Assertions</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">Assert</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#39;Fn::Contains&#39;</span>:
+</span></span><span style="display:flex;"><span>        - - <span style="color:#ae81ff">a1.large</span>
+</span></span><span style="display:flex;"><span>        - !<span style="color:#ae81ff">Ref InstanceType</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">AssertDescription</span>: <span style="color:#e6db74">&#39;For a production environment, the instance type must be a1.large&#39;</span>
+</span></span></code></pre></div><h2 id="change-set">
+  Change Set
+  <a class="anchor" href="#change-set">#</a>
+</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Guide</a></li>
+</ul>
+<p>Change Set allows you to preview how existing resources could be affected, like adding or deleting a resource, once you update the template or parameters for a stack</p>
+<h2 id="nested-stack">
+  Nested Stack
+  <a class="anchor" href="#nested-stack">#</a>
+</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">Guide</a></li>
+</ul>
+<p>Nested stacks are stacks created as part of other stacks. You create a nested stack within another stack by using the <code>AWS::CloudFormation::Stack</code> resource.</p>
+<p>You can think nested stack as a function invoked by other modules (stacks). Similar with functions which have arguments and return values, nested stacks have parameters and outputs</p>
+<h3 id="example-2">
+  Example
+  <a class="anchor" href="#example-2">#</a>
+</h3>
+<ul>
+<li>
+<p>Nested Stack Template</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">AWSTemplateFormatVersion</span>: <span style="color:#e6db74">&#39;2010-09-09&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Parameters</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">BucketName</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">String</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">The name of the S3 bucket</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">MySampleBucket</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::S3::Bucket</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">BucketName</span>: !<span style="color:#ae81ff">Ref BucketName</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">CreatedBucketName</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Name of the created S3 bucket</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref MySampleBucket</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub &#34;${AWS::StackName}-BucketName&#34;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Parent Stack Template</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-YAML" data-lang="YAML"><span style="display:flex;"><span><span style="color:#f92672">AWSTemplateFormatVersion</span>: <span style="color:#e6db74">&#39;2010-09-09&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">MyNestedStack</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::CloudFormation::Stack</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">TemplateURL</span>: <span style="color:#e6db74">&#39;https://s3.amazonaws.com/mybucket/NestedStack.yaml&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Parameters</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">BucketName</span>: <span style="color:#ae81ff">MyCustomBucketName</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">NestedStackBucketName</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">The name of the bucket created in the nested stack</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">GetAtt MyNestedStack.Outputs.CreatedBucketName</span>
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="function-analogy">
+  Function Analogy
+  <a class="anchor" href="#function-analogy">#</a>
+</h4>
+<p>As I mentioned above, we can think nested stacks as functions invocations. We can transform above examples to a pseudo-code to illustrate the idea</p>
+<ul>
+<li>
+<p>Nested Function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nested_function</span>(bucket_name):
+</span></span><span style="display:flex;"><span>  created_bucket_name <span style="color:#f92672">=</span> create_bucket(bucket_name)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> created_bucket_name
+</span></span></code></pre></div></li>
+<li>
+<p>Parent Function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parent_function</span>():
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Specify the bucket name to pass to the nested function (like Parameters in CloudFormation).</span>
+</span></span><span style="display:flex;"><span>  bucket_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;MyCustomBucketName&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Call the nested function, mimicking the creation of the nested stack.</span>
+</span></span><span style="display:flex;"><span>  created_bucket_name <span style="color:#f92672">=</span> nested_function(bucket_name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Output the result (mimicking the Outputs in CloudFormation).</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> created_bucket_name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run the parent function to simulate the stack deployment.</span>
+</span></span><span style="display:flex;"><span>parent_function()
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="cloudformation-drift">
+  CloudFormation Drift
+  <a class="anchor" href="#cloudformation-drift">#</a>
+</h2>
+<p>A CloudFormation Drift is that the actual configuration of a stack is drifted or different from the template of the stack, in other words, the stack was modified manually</p>
+<h2 id="stack-policy">
+  Stack Policy
+  <a class="anchor" href="#stack-policy">#</a>
+</h2>
+<p>A Stack Policy is a <code>JSON</code> file that defines the update actions that are allowed on specific resources during stack updates</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#cloudformation">CloudFormation</a>
+      <ul>
+        <li><a href="#resources">Resources</a>
+          <ul>
+            <li><a href="#syntax">Syntax</a></li>
+          </ul>
+        </li>
+        <li><a href="#parameters-optional">Parameters (Optional)</a>
+          <ul>
+            <li><a href="#syntax-1">Syntax</a></li>
+            <li><a href="#referencing-a-parameter">Referencing a Parameter</a></li>
+            <li><a href="#pseudo-parameter">Pseudo Parameter</a></li>
+          </ul>
+        </li>
+        <li><a href="#mappings-optional">Mappings (Optional)</a>
+          <ul>
+            <li><a href="#syntax-2">Syntax</a></li>
+            <li><a href="#example">Example</a></li>
+            <li><a href="#find-a-value-in-a-mapping">Find a Value in a Mapping</a></li>
+          </ul>
+        </li>
+        <li><a href="#outputs-optional">Outputs (Optional)</a>
+          <ul>
+            <li><a href="#syntax-3">Syntax</a></li>
+            <li><a href="#import-outputs-into-other-stacks">Import Outputs into Other Stacks</a></li>
+          </ul>
+        </li>
+        <li><a href="#conditions-optional">Conditions (Optional)</a>
+          <ul>
+            <li><a href="#define-a-condition">Define a Condition</a></li>
+            <li><a href="#define-a-nested-condition">Define a Nested Condition</a></li>
+            <li><a href="#use-conditions">Use Conditions</a></li>
+          </ul>
+        </li>
+        <li><a href="#rules-optional">Rules (Optional)</a>
+          <ul>
+            <li><a href="#working-with-rules">Working with Rules</a></li>
+            <li><a href="#example-1">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#change-set">Change Set</a></li>
+        <li><a href="#nested-stack">Nested Stack</a>
+          <ul>
+            <li><a href="#example-2">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#cloudformation-drift">CloudFormation Drift</a></li>
+        <li><a href="#stack-policy">Stack Policy</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

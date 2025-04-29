@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>http://localhost:55166/docs/programming/networking/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:55166/docs/programming/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS</title>
+      <link>http://localhost:55166/docs/programming/networking/dns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/networking/dns/</guid>
+      <description>&lt;h2 id=&#34;what-is-dns&#34;&gt;&#xA;  What Is DNS?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-dns&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;DNS, which stands for Domain Name System, is a fundamental component of the internet&amp;rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like &lt;a href=&#34;https://www.example.com&#34;&gt;www.example.com&lt;/a&gt;) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.&lt;/p&gt;&#xA;&lt;h2 id=&#34;hierarchy-of-domain-names&#34;&gt;&#xA;  Hierarchy of Domain Names&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#hierarchy-of-domain-names&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:55166/docs/programming/web/network/dns/domain-name-hierarchy.svg&#34; alt=&#34;domain-name-hierarchy&#34; /&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Root Level Domain:&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The root level is the highest level in the DNS hierarchy and is represented by a dot (.) but is typically not visible in domain names. Root servers are the backbone of DNS, directing traffic to the correct Top-Level Domain (TLD) servers.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>DNS Hands On</title>
+      <link>http://localhost:55166/docs/programming/networking/dns-hands-on/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/networking/dns-hands-on/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;In &lt;a href=&#34;http://localhost:55166/docs/programming/network/dns&#34;&gt;dns&lt;/a&gt; post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain &lt;code&gt;google.com&lt;/code&gt;. Also, I will introduce a new concept record in domain name server&lt;/p&gt;&#xA;&lt;h2 id=&#34;environment-and-tools&#34;&gt;&#xA;  Environment and Tools&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#environment-and-tools&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;I will use CLI &lt;code&gt;dig&lt;/code&gt; to query domain name server in Linux system&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>IP Address</title>
+      <link>http://localhost:55166/docs/programming/networking/id-address/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/networking/id-address/</guid>
+      <description>&lt;h1 id=&#34;-understanding-ip-addresses-the-identity-system-of-the-internet&#34;&gt;&#xA;  🌐 Understanding IP Addresses: The Identity System of the Internet&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-understanding-ip-addresses-the-identity-system-of-the-internet&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Every device on a network needs an identity — a way for other devices to find it and communicate with it. In computer networking, that identity is an &lt;strong&gt;IP address&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-what-is-an-ip-address&#34;&gt;&#xA;  📌 What Is an IP Address?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-what-is-an-ip-address&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;An &lt;strong&gt;IP (Internet Protocol) address&lt;/strong&gt; is a unique number assigned to each device connected to a network. It functions much like a home address — directing data to the right recipient.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CIRD</title>
+      <link>http://localhost:55166/docs/programming/networking/cird/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/networking/cird/</guid>
+      <description>&lt;h1 id=&#34;-introduction-to-cidr-classless-inter-domain-routing&#34;&gt;&#xA;  📏 Introduction to CIDR (Classless Inter-Domain Routing)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-introduction-to-cidr-classless-inter-domain-routing&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;CIDR — short for &lt;strong&gt;Classless Inter-Domain Routing&lt;/strong&gt; — is a modern way to define IP address ranges in networking. It offers more flexibility and efficiency than the old class-based IP system.&lt;/p&gt;&#xA;&lt;p&gt;This post breaks down what CIDR is, why it was created, and how software engineers can understand and apply it in real-world situations.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-why-cidr-was-introduced&#34;&gt;&#xA;  🔹 Why CIDR Was Introduced&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-why-cidr-was-introduced&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Before CIDR, IPs were allocated in fixed-size blocks (Class A, B, and C), which often led to:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Subnet</title>
+      <link>http://localhost:55166/docs/programming/networking/subnet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/networking/subnet/</guid>
+      <description>&lt;h1 id=&#34;-introduction-to-subnetting&#34;&gt;&#xA;  🧱 Introduction to Subnetting&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-introduction-to-subnetting&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Subnetting&lt;/strong&gt; is the process of dividing a larger IP network into smaller, more manageable sub-networks — called &lt;strong&gt;subnets&lt;/strong&gt;. It helps organize networks, improve routing efficiency, and control IP allocation.&lt;/p&gt;&#xA;&lt;p&gt;If CIDR gives us flexible blocks of IPs, subnetting is how we &lt;strong&gt;slice those blocks&lt;/strong&gt; up.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-why-subnet&#34;&gt;&#xA;  🔹 Why Subnet?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-why-subnet&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Separate traffic by department, app, or security level&lt;/li&gt;&#xA;&lt;li&gt;Reduce broadcast domain size&lt;/li&gt;&#xA;&lt;li&gt;Plan efficient IP usage (e.g., don’t give 254 IPs to a team that only needs 10)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-concrete-example-subnetting-a-24&#34;&gt;&#xA;  📐 Concrete Example: Subnetting a /24&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-concrete-example-subnetting-a-24&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Let’s say you have the following CIDR block:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

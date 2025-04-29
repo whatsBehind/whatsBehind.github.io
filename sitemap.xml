@@ -2,259 +2,260 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://whatsBehind.github.io/docs/programming/project/online-chat/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/</loc>
+    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/project/online-chat/</loc>
     <lastmod>2023-11-26T21:26:33-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/start-thread/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/thread/start-thread/</loc>
     <lastmod>2023-11-12T22:25:15-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/asymmetric-encryption/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/asymmetric-encryption/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/byte-buffer/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/byte-buffer/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/aws/cloudformation/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/aws/cloudformation/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/network/dns/</loc>
+    <loc>https://whatsBehind.github.io/docs/networking/dns/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/docker/docker-basics/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/docker/docker-basics/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/event-loop-group/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/netty/event-loop-group/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/get-start/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/haproxy/get-start/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/python/executing-a-python-file/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/python/executing-a-python-file/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/aws/security/kms/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/aws/security/kms/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/load-balancer/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/load-balancer/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/monitoring/metric-log/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/monitoring/metric-log/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/api/restful-get/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/restful-api/restful-get/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/http/start-http/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/http/start-http/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/text-processing-and-searching/</loc>
+    <loc>https://whatsBehind.github.io/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/why-is-redis-so-fast/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/redis/why-is-redis-so-fast/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/blocking-mode/</loc>
+    <loc>https://whatsBehind.github.io/docs/project/</loc>
+    <lastmod>2023-11-26T21:26:33-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/channel/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/blocking-mode/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/common-methods/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/netty/channel/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/data-presistence/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/thread/common-methods/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/network/dns-hands-on/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/redis/data-presistence/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/health-check/</loc>
+    <loc>https://whatsBehind.github.io/docs/networking/dns-hands-on/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/http/http-methods-and-status-codes/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/haproxy/health-check/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/project/node-js-auth/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/http/http-methods-and-status-codes/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/python/re/</loc>
+    <loc>https://whatsBehind.github.io/docs/project/node-js-auth/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/replication/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/python/re/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/session-vs-token/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/design-data-intensive-applications/replication/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/aws/message/sns/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/session-vs-token/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/aws/message/sqs/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/aws/message/sns/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-lifecycle/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/aws/message/sqs/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/thread/thread-lifecycle/</loc>
     <lastmod>2023-11-12T23:12:57-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/aws/message/eventbridge/</loc>
+    <loc>https://whatsBehind.github.io/docs/operating-system/</loc>
+    <lastmod>2023-10-31T08:47:07-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/python/format-string/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/aws/message/eventbridge/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/load-balancing-algorithm/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/python/format-string/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/http/http-header-part-1/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/network/id-address/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/http/http-header-part-1/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/partition/</loc>
+    <loc>https://whatsBehind.github.io/docs/networking/id-address/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/pipeline-handler/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/design-data-intensive-applications/partition/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/pub-sub/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/netty/pipeline-handler/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/tls-handshake/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/redis/pub-sub/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/unblocking-mode/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/synchornization/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/unblocking-mode/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/thread/synchornization/</loc>
     <lastmod>2023-11-13T08:30:17-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/network/cird/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/</loc>
+    <lastmod>2023-10-30T08:44:30-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/layer7-load-balancing/</loc>
+    <loc>https://whatsBehind.github.io/docs/networking/cird/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/http/http-header-part-2/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/replication-and-sentinel/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/http/http-header-part-2/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/redis/replication-and-sentinel/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/tls-handshake-client-hello/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/selector/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/transactions/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-client-hello/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/http-sticky-sessions-cookies/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/design-data-intensive-applications/transactions/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/http/http-header-part-3/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/selector-read/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/network/subnet/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/http/http-header-part-3/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/thread-safety/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/selector-read/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/tls-handshake-server-hello/</loc>
+    <loc>https://whatsBehind.github.io/docs/networking/subnet/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/http/http-header-part-4/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/thread/thread-safety/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/io-model-summary/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-server-hello/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/tls-handshake-certificate/</loc>
+    <loc>https://whatsBehind.github.io/docs/networking/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/http/cookie/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/http/http-header-part-4/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/io-model-summary/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-certificate/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/web/http/cookie/</loc>
     <lastmod>2023-10-27T08:10:45-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/multiple-threads/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/tls-handshake-certificate-verify/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/multiple-threads/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/tls-handshake-certificate-finished/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-certificate-verify/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/simulating-https/</loc>
+    <loc>https://whatsBehind.github.io/docs/tool/</loc>
+    <lastmod>2023-10-22T11:53:02-07:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-certificate-finished/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/simulating-https/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/</loc>
     <lastmod>2023-12-01T08:19:57-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/</loc>
     <lastmod>2023-12-01T08:19:57-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/</loc>
-    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/</loc>
-    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/nio/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/</loc>
     <lastmod>2023-12-01T08:19:57-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/</loc>
     <lastmod>2023-12-01T08:19:57-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/project/</loc>
-    <lastmod>2023-11-26T21:26:33-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/net/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/net/</loc>
     <lastmod>2023-11-19T21:42:27-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/net/tcp-socket/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/net/tcp-socket/</loc>
     <lastmod>2023-11-19T21:42:27-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/io/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/io/</loc>
     <lastmod>2023-11-16T23:12:49-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/io/decorator-pattern-in-java-io/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/io/decorator-pattern-in-java-io/</loc>
     <lastmod>2023-11-16T23:12:49-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/io/object-input-and-output-stream/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/io/object-input-and-output-stream/</loc>
     <lastmod>2023-11-16T23:10:58-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/io/stream-reader-bridge-of-byte-and-char/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/io/stream-reader-bridge-of-byte-and-char/</loc>
     <lastmod>2023-11-16T23:02:33-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/io/io-stream/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/io/io-stream/</loc>
     <lastmod>2023-11-15T16:43:55-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/io/file/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/io/file/</loc>
     <lastmod>2023-11-15T15:42:12-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/thread/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/thread/</loc>
     <lastmod>2023-11-13T08:30:17-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/reflection/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/reflection/</loc>
     <lastmod>2023-11-07T07:19:23-08:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/os/</loc>
+    <loc>https://whatsBehind.github.io/docs/operating-system/linux/</loc>
     <lastmod>2023-10-31T08:47:07-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/os/linux/</loc>
+    <loc>https://whatsBehind.github.io/docs/operating-system/linux/linux-manual/</loc>
     <lastmod>2023-10-31T08:47:07-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/os/linux/linux-manual/</loc>
-    <lastmod>2023-10-31T08:47:07-07:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-fundamentals/</loc>
     <lastmod>2023-10-30T08:44:30-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/glossary/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-fundamentals/cors/</loc>
     <lastmod>2023-10-30T08:44:30-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/glossary/cors/</loc>
-    <lastmod>2023-10-30T08:44:30-07:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/web-api/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-api/</loc>
     <lastmod>2023-10-27T08:11:22-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/web-api/web-storage-api/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-api/web-storage-api/</loc>
     <lastmod>2023-10-27T08:11:22-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/http/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/http/</loc>
     <lastmod>2023-10-27T08:10:45-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/tools/</loc>
+    <loc>https://whatsBehind.github.io/docs/tool/hugo/</loc>
     <lastmod>2023-10-22T11:53:02-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/tools/hugo/</loc>
+    <loc>https://whatsBehind.github.io/docs/tool/hugo/set-up-hugo-in-git-hub-pages/</loc>
     <lastmod>2023-10-22T11:53:02-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/</loc>
-    <lastmod>2023-10-22T11:53:02-07:00</lastmod>
+    <loc>https://whatsBehind.github.io/docs/cloud/aws/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/aws/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/aws/message/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/aws/message/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/aws/security/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/aws/security/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/k8s/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/api/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/design-data-intensive-applications/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/java/netty/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/backend/python/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/haproxy/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/network/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/monitoring/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/os/mac-os/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/os/mac-os/terminal-command/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/docker/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/redis/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/design-data-intensive-applications/</loc>
+    <loc>https://whatsBehind.github.io/docs/operating-system/mac-os/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/</loc>
+    <loc>https://whatsBehind.github.io/docs/operating-system/mac-os/terminal-command/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/load-balancing/haproxy/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/java/netty/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/monitoring/</loc>
+    <loc>https://whatsBehind.github.io/docs/programming-core/python/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/restful-api/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/docker/</loc>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/system-design/technology/redis/</loc>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/programming/web/ssl-tls/</loc>
+    <loc>https://whatsBehind.github.io/docs/web/web-securities/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/categories/</loc>
   </url><url>

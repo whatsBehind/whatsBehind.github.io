@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>http://localhost:55166/docs/programming/distributed-system/technology/docker/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:55166/docs/programming/distributed-system/technology/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Basics</title>
+      <link>http://localhost:55166/docs/programming/distributed-system/technology/docker/docker-basics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/distributed-system/technology/docker/docker-basics/</guid>
+      <description>&lt;h1 id=&#34;docker-basics&#34;&gt;&#xA;  Docker Basics&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#docker-basics&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-it-works-on-my-machine-and-other-challenges&#34;&gt;&#xA;  🖥️ &amp;ldquo;It Works on My Machine&amp;rdquo; and Other Challenges&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-it-works-on-my-machine-and-other-challenges&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Imagine you&amp;rsquo;re an engineer working on a software project, and your code runs flawlessly on your machine. But as soon as your teammates try it, something breaks. Maybe it&amp;rsquo;s a missing library 📚, an incompatible runtime version 🛠️, or an environment configuration mismatch ⚙️. These issues make sharing and deploying software across different systems a tedious and error-prone process. The infamous saying, &amp;ldquo;It works on my machine,&amp;rdquo; encapsulates this frustration perfectly. 🙄&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

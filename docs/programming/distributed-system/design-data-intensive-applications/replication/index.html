@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55166&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Definition
+  #
+
+Replication means keeping a copy of the same data on multiple machines that are connected via a network.
+
+  Advantages of Replication
+  #
+
+
+Reduce Latency: To keep data geographically close to your users
+Increase Availability: To allow the system to continue working even if some of its parts have failed
+Increase Read Throughput: To scale out the number of machines that can serve read queries
+
+
+  Principles of Replication
+  #
+
+
+Data Consistency: Each node that stores a copy of the database is called a replica. Every write to the database needs to be processed by every replica; otherwise, the replicas would no longer contain the same data (Inconsistency).
+
+
+  Single Leader Mode
+  #
+
+The most common solution for Data Consistency is called leader-based replication (also known as active/passive or master–slave replication)">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:55166/docs/programming/distributed-system/design-data-intensive-applications/replication/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Replication">
+  <meta property="og:description" content="Definition # Replication means keeping a copy of the same data on multiple machines that are connected via a network.
+Advantages of Replication # Reduce Latency: To keep data geographically close to your users Increase Availability: To allow the system to continue working even if some of its parts have failed Increase Read Throughput: To scale out the number of machines that can serve read queries Principles of Replication # Data Consistency: Each node that stores a copy of the database is called a replica. Every write to the database needs to be processed by every replica; otherwise, the replicas would no longer contain the same data (Inconsistency). Single Leader Mode # The most common solution for Data Consistency is called leader-based replication (also known as active/passive or master–slave replication)">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Replication | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:55166/docs/programming/distributed-system/design-data-intensive-applications/replication/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.63c2184d22382eb1423535ba6c75cde891650e58814bcf19869caf6d686bb259.js" integrity="sha256-Y8IYTSI4LrFCNTW6bHXN6JFlDliBS88ZhpyvbWhrslk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="toggle"  />
+    <label for="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="toggle"  />
+    <label for="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdf55a702353035bca92383ae3fb0776" class="toggle"  />
+    <label for="section-bdf55a702353035bca92383ae3fb0776" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-638baef7394c63505a0124a6ab8929d4" class="toggle"  />
+    <label for="section-638baef7394c63505a0124a6ab8929d4" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-050a487401c9ade14154296e864be8a2" class="toggle"  />
+    <label for="section-050a487401c9ade14154296e864be8a2" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6660e5a8131bb9bf21390ee36cb603b4" class="toggle"  />
+    <label for="section-6660e5a8131bb9bf21390ee36cb603b4" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e48aea960dd5f2b76bffb00087424f3" class="toggle"  />
+    <label for="section-7e48aea960dd5f2b76bffb00087424f3" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9091ac3d236d4bd531308b8633d45035" class="toggle"  />
+    <label for="section-9091ac3d236d4bd531308b8633d45035" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="toggle"  />
+    <label for="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="flex justify-between">
+      <a role="button" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="toggle"  />
+    <label for="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-caac18242619b008e4a9895db1095868" class="toggle"  />
+    <label for="section-caac18242619b008e4a9895db1095868" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61603bfa67f7e848f6f30bc8a7b7b383" class="toggle"  />
+    <label for="section-61603bfa67f7e848f6f30bc8a7b7b383" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f550cfe555239292577fe95f15a0fb58" class="toggle"  />
+    <label for="section-f550cfe555239292577fe95f15a0fb58" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-748de3caa969de5f0463714fef06e2bf" class="toggle"  />
+    <label for="section-748de3caa969de5f0463714fef06e2bf" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01867ca5de591b785e2c310209ee8cb4" class="toggle"  />
+    <label for="section-01867ca5de591b785e2c310209ee8cb4" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-119959759090fce61894a49053172a54" class="toggle"  />
+    <label for="section-119959759090fce61894a49053172a54" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ce38b31faecdfd79438e212848b8695" class="toggle"  />
+    <label for="section-4ce38b31faecdfd79438e212848b8695" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-43effcc73883f6032917b714430cd064" class="toggle"  />
+    <label for="section-43effcc73883f6032917b714430cd064" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ffff656c2dc3dfe4c18658b113a7be" class="toggle"  />
+    <label for="section-13ffff656c2dc3dfe4c18658b113a7be" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9cd6328cf5cf698fa6c672c2db6d2035" class="toggle"  />
+    <label for="section-9cd6328cf5cf698fa6c672c2db6d2035" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bf71894cadd24d41821eba6f15a9523" class="toggle"  />
+    <label for="section-7bf71894cadd24d41821eba6f15a9523" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-26749471ddc426a91f4eb4368b916e16" class="toggle"  />
+    <label for="section-26749471ddc426a91f4eb4368b916e16" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92b00c426b17cc8f5bb49854760a2a5" class="toggle"  />
+    <label for="section-d92b00c426b17cc8f5bb49854760a2a5" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6464d2d3fb1a4e9e5d7077427324262c" class="toggle"  />
+    <label for="section-6464d2d3fb1a4e9e5d7077427324262c" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-94df99bcc7100f8b6dd829f22627f997" class="toggle" checked />
+    <label for="section-94df99bcc7100f8b6dd829f22627f997" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b85e1e563a521a0dcacf88388f88f7a" class="toggle" checked />
+    <label for="section-1b85e1e563a521a0dcacf88388f88f7a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/replication/" class="active">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e9a4c61515d11caeb60041730028720" class="toggle"  />
+    <label for="section-0e9a4c61515d11caeb60041730028720" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-615aafe1cd7d7f170cf11a536398f063" class="toggle"  />
+    <label for="section-615aafe1cd7d7f170cf11a536398f063" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13f05eeb6627e08a293644209c456447" class="toggle"  />
+    <label for="section-13f05eeb6627e08a293644209c456447" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c46fb385560336c69d4467dbf9a5d5a" class="toggle"  />
+    <label for="section-7c46fb385560336c69d4467dbf9a5d5a" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fe4d6a252416c10985f7090ee3b16155" class="toggle"  />
+    <label for="section-fe4d6a252416c10985f7090ee3b16155" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dfcadcb229769865e1e73e90e669fb26" class="toggle"  />
+    <label for="section-dfcadcb229769865e1e73e90e669fb26" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1e757f5004bc51fabbd20e29b8046b90" class="toggle"  />
+    <label for="section-1e757f5004bc51fabbd20e29b8046b90" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Replication</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#definition">Definition</a>
+      <ul>
+        <li><a href="#advantages-of-replication">Advantages of Replication</a></li>
+        <li><a href="#principles-of-replication">Principles of Replication</a></li>
+      </ul>
+    </li>
+    <li><a href="#single-leader-mode">Single Leader Mode</a>
+      <ul>
+        <li><a href="#how-does-it-work">How Does It Work?</a></li>
+        <li><a href="#synchronous-versus-asynchronous-replication">Synchronous Versus Asynchronous Replication</a>
+          <ul>
+            <li><a href="#synchronous-replication">Synchronous Replication</a></li>
+            <li><a href="#asynchronous-replication">Asynchronous Replication</a></li>
+          </ul>
+        </li>
+        <li><a href="#setting-up-new-followers">Setting up New Followers</a>
+          <ul>
+            <li><a href="#steps">Steps</a></li>
+          </ul>
+        </li>
+        <li><a href="#handling-node-outages">Handling Node Outages</a>
+          <ul>
+            <li><a href="#follower-failure">Follower Failure</a></li>
+            <li><a href="#leader-failure-failover">Leader Failure: Failover</a></li>
+          </ul>
+        </li>
+        <li><a href="#implementation-of-replication-logs">Implementation of Replication Logs</a>
+          <ul>
+            <li><a href="#statement-based-replication">Statement-Based Replication</a></li>
+            <li><a href="#write-ahead-log-wal-shipping">Write-Ahead Log (WAL) shipping</a></li>
+            <li><a href="#logical-row-based-log-replication">Logical (row-based) log replication</a></li>
+          </ul>
+        </li>
+        <li><a href="#replication-lag">Replication Lag</a>
+          <ul>
+            <li><a href="#problem-of-replication-lag">Problem of Replication Lag</a></li>
+            <li><a href="#solution-1-read-your-writes">Solution 1: Read Your Writes</a></li>
+            <li><a href="#solution-2-monotonic-reads">Solution 2: Monotonic Reads</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#multiple-leader-replication">Multiple Leader Replication</a>
+      <ul>
+        <li><a href="#use-cases-for-multi-leader-replication">Use Cases for Multi-Leader Replication</a>
+          <ul>
+            <li><a href="#multi-datacenter-operation">Multi-datacenter operation</a></li>
+            <li><a href="#clients-with-offline-operations">Clients with Offline Operations</a></li>
+            <li><a href="#collaborative-editing">Collaborative Editing</a></li>
+          </ul>
+        </li>
+        <li><a href="#handling-write-conflicts">Handling Write Conflicts</a>
+          <ul>
+            <li><a href="#approach-1-synchronous-versus-asynchronous-conflict-detection">Approach 1: Synchronous Versus Asynchronous Conflict Detection</a></li>
+            <li><a href="#approach-2-conflict-avoidance">Approach 2: Conflict Avoidance</a></li>
+            <li><a href="#approach-3-converging-to-a-consistent-state">Approach 3: Converging to A Consistent State</a></li>
+            <li><a href="#multiple-leader-topologies">Multiple-Leader Topologies</a></li>
+          </ul>
+        </li>
+        <li><a href="#leaderless-replication">Leaderless Replication</a>
+          <ul>
+            <li><a href="#writing-to-the-database-when-one-node-is-down">Writing to The Database When One Node Is Down</a></li>
+            <li><a href="#solutions-of-replication-lag">Solutions of Replication Lag</a></li>
+            <li><a href="#quorums-for-reading-and-writing">Quorums for reading and writing</a></li>
+            <li><a href="#sloppy-quorum--hinted-handoff">Sloppy Quorum &amp; Hinted Handoff</a></li>
+            <li><a href="#concurrent-writes">Concurrent Writes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="definition">
+  Definition
+  <a class="anchor" href="#definition">#</a>
+</h1>
+<p>Replication means keeping a copy of the same data on multiple machines that are connected via a network.</p>
+<h2 id="advantages-of-replication">
+  Advantages of Replication
+  <a class="anchor" href="#advantages-of-replication">#</a>
+</h2>
+<ul>
+<li><strong>Reduce Latency</strong>: To keep data geographically close to your users</li>
+<li><strong>Increase Availability</strong>: To allow the system to continue working even if some of its parts have failed</li>
+<li><strong>Increase Read Throughput</strong>: To scale out the number of machines that can serve read queries</li>
+</ul>
+<h2 id="principles-of-replication">
+  Principles of Replication
+  <a class="anchor" href="#principles-of-replication">#</a>
+</h2>
+<ul>
+<li><strong>Data Consistency</strong>: Each node that stores a copy of the database is called a replica. Every write to the database needs to be processed by every replica; otherwise, the replicas would no longer contain the same data (Inconsistency).</li>
+</ul>
+<h1 id="single-leader-mode">
+  Single Leader Mode
+  <a class="anchor" href="#single-leader-mode">#</a>
+</h1>
+<p>The most common solution for Data Consistency is called leader-based replication (also known as active/passive or master–slave replication)</p>
+<h2 id="how-does-it-work">
+  How Does It Work?
+  <a class="anchor" href="#how-does-it-work">#</a>
+</h2>
+<ul>
+<li>
+<p>One of the replicas is designated the leader which takes all write requests</p>
+</li>
+<li>
+<p>The other replicas are known as followers. All data written to the leader should be replicated to all followers in same order</p>
+</li>
+<li>
+<p>Both leader and followers can take read requests</p>
+</li>
+</ul>
+<h2 id="synchronous-versus-asynchronous-replication">
+  Synchronous Versus Asynchronous Replication
+  <a class="anchor" href="#synchronous-versus-asynchronous-replication">#</a>
+</h2>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/replication/sync-async-replication.png" alt="sync-async-replication" /></p>
+<h3 id="synchronous-replication">
+  Synchronous Replication
+  <a class="anchor" href="#synchronous-replication">#</a>
+</h3>
+<p>The Replication to follower 1 is synchronous: the leader waits until follower 1 has confirmed that it received the write before reporting success to the user, and before making the write visible to other clients.</p>
+<ul>
+<li><strong>Advantage</strong>: The follower is guaranteed to have an up-to-date copy of the data that is consistent with the leader. When the leader node fails suddenly, we are sure that the latest data is available on the follower</li>
+<li><strong>Disadvantage</strong>: If the synchronous follower doesn&rsquo;t respond for whatever reason, the leader has to block all writes until the follower is available again</li>
+</ul>
+<h4 id="semi-synchronous-replication">
+  Semi-Synchronous Replication
+  <a class="anchor" href="#semi-synchronous-replication">#</a>
+</h4>
+<p>It&rsquo;s not realistic to make all followers synchronous because any one node outage would cause the whole system to halt. Sometimes you make one follower synchronous and the others asynchronous. If the synchronous node fails, one of the asynchronous node is made synchronous. That ensures at least two nodes (the leader and the synchronous nodes) have update-to-date data. The configuration is sometimes called <em><strong>semi-synchronous</strong></em></p>
+<h3 id="asynchronous-replication">
+  Asynchronous Replication
+  <a class="anchor" href="#asynchronous-replication">#</a>
+</h3>
+<p>The Replication to follower 2 is asynchronous: the leader sends the message, but doesn’t wait for a response from the follower</p>
+<ul>
+<li>
+<p><strong>Advantage</strong>: The system can continue to work (allow writes) even though all followers have failed and fallen behind</p>
+</li>
+<li>
+<p><strong>Disadvantage</strong>: If the leader node fails and is not recoverable, any writes that have not yet replicated to followers are lost. This means that a write is not guaranteed to be durable</p>
+</li>
+</ul>
+<h2 id="setting-up-new-followers">
+  Setting up New Followers
+  <a class="anchor" href="#setting-up-new-followers">#</a>
+</h2>
+<h3 id="steps">
+  Steps
+  <a class="anchor" href="#steps">#</a>
+</h3>
+<ol>
+<li>
+<p>Take a snapshot of the leader&rsquo;s database at some point in time</p>
+</li>
+<li>
+<p>Copy the snapshot to the new follower node</p>
+<p>Step 1 and 2 are not sufficient, because while copying the snapshot, clients are still writing new data to the leader database. When the copy process is complete, the new follower database actually doesn&rsquo;t catch up the leader node. Hence, further steps are needed</p>
+</li>
+<li>
+<p>The follower connects to the leader and requests all the data changes that have happened since the snapshot was taken. This requires that the snapshot is associated with an exact position in the leader’s replication log.</p>
+</li>
+<li>
+<p>The new follower node catches up when the new node has process all backlog of data changes since the snapshot</p>
+</li>
+</ol>
+<h2 id="handling-node-outages">
+  Handling Node Outages
+  <a class="anchor" href="#handling-node-outages">#</a>
+</h2>
+<p>High availability system should be running as a whole despite individual node failures or maintenance.</p>
+<h3 id="follower-failure">
+  Follower Failure
+  <a class="anchor" href="#follower-failure">#</a>
+</h3>
+<p>On its disk, each follower should keep a log of data changes it has received and processed from the leader. If a follower crashes and is restarted, from its log it knows the last transaction it has processed before the fault happened. Thus, it can connect to the leader and request all data changes that occurred during the time when the follower was disconnected</p>
+<h3 id="leader-failure-failover">
+  Leader Failure: Failover
+  <a class="anchor" href="#leader-failure-failover">#</a>
+</h3>
+<p>When the leader node fails,</p>
+<ul>
+<li>One of the followers need to be promoted to be the new leader</li>
+<li>Clients should be reconfigured to send writes to the new leader</li>
+<li>Followers need to consumer data from the new leader</li>
+</ul>
+<h4 id="steps-1">
+  Steps
+  <a class="anchor" href="#steps-1">#</a>
+</h4>
+<ol>
+<li>
+<p><strong>Determine that the leader has failed</strong></p>
+<p>Common method is to use a timeout: nodes bounces messages back and forth between each other. If a node doesn&rsquo;t respond for some period of time &ndash; for example, 30 seconds &ndash; it is assumed to be dead</p>
+</li>
+<li>
+<p><strong>Choosing a new leader</strong></p>
+<p>The best candidate for the leadership is the replica with most up-to-date data changes from the old leader to minimize any data loss</p>
+</li>
+<li>
+<p><strong>Reconfiguring the system to use the new leader</strong></p>
+<ul>
+<li>Clients now need to send writes to the new leader</li>
+<li>The system needs to ensure that the old leader to be a follower and recognize the new leader when it is recovered</li>
+</ul>
+</li>
+</ol>
+<h4 id="things-can-go-wrong">
+  Things can go wrong
+  <a class="anchor" href="#things-can-go-wrong">#</a>
+</h4>
+<ul>
+<li>
+<p>If asynchronous replication is used, new leader may not have all writes from the old leader before it failed. If the old leader rejoins, what should happen to those writes? It is hard to merge them into new leader because it may have received and processed conflicting writes. For example, new entries whose key was auto-incremented were inserted to the old leader database, and insertions were not received by the new leader, so when new entries are inserted to the new leader database, same keys would be used. The most common solution is to discard the conflicting and not synchronized data changes which compromises system durability, and it is dangerous.</p>
+</li>
+<li>
+<p><strong>Split brain</strong>: two nodes both believe that they are the leader. If both nodes accept writes and there is no process to resolve conflict, data is likely to be lost or corrupted</p>
+</li>
+<li>
+<p><strong>Timeout trade-offs</strong>: A longer timeout means a longer time to recover in case the leader fails. Too short timeout may cause unnecessary failover. A temporary load spike or a network glitch could cause a node&rsquo;s slow response</p>
+</li>
+</ul>
+<h2 id="implementation-of-replication-logs">
+  Implementation of Replication Logs
+  <a class="anchor" href="#implementation-of-replication-logs">#</a>
+</h2>
+<h3 id="statement-based-replication">
+  Statement-Based Replication
+  <a class="anchor" href="#statement-based-replication">#</a>
+</h3>
+<p>The leader logs every write request (statement) that it executes and sends that statement log to its followers. <code>INSERT</code>, <code>UPDATE</code> and <code>DELETE</code> statements for a relational database</p>
+<ul>
+<li><strong>Problem</strong>: Nondeterministic functions, like <code>NOW()</code> or <code>RAND()</code> are likely to generate different values in each replica</li>
+</ul>
+<h3 id="write-ahead-log-wal-shipping">
+  Write-Ahead Log (WAL) shipping
+  <a class="anchor" href="#write-ahead-log-wal-shipping">#</a>
+</h3>
+<p>Storage engines usually append every write to a log. For example in B-Trees, every modification is written to a write-ahead log (WAL). The database then applies the operation from WAL to the B-Tree structure database. That ensures durability: changes are recoverable in case of a crash</p>
+<p>The log is an append-only sequence of bytes containing all writes to the database. Besides writing the log to disk, the leader can also send the log to followers. When followers apply the log, it builds a copy of exact data structure as found on the leader</p>
+<ul>
+<li>
+<p><strong>Shortage</strong>: Backward compatible</p>
+<p>For WAL, the storage engine needs an internal conversion from the log to the actual modification of the database. The conversion process may not be backward compatible, in other words, different versions of storage engine may convert same log to different data changes on the database. If leader and followers are using different versions of software after maintenance, that may cause problem</p>
+</li>
+</ul>
+<h3 id="logical-row-based-log-replication">
+  Logical (row-based) log replication
+  <a class="anchor" href="#logical-row-based-log-replication">#</a>
+</h3>
+<p>Logical log represents the data change of a write operation. Use relational database as example:</p>
+<ul>
+<li>For an inserted row: the log contains new values of all columns</li>
+<li>For a deleted row: the log contains all necessary information &ndash; for example, primary key &ndash; to identify the deleted row</li>
+<li>For an updated row: the log contains enough information to identify the updated row, and new values of all columns or columns that have been modified</li>
+</ul>
+<p>A transaction that modifies several rows generates several such log records, followed by a record indicating that the transaction was committed.</p>
+<p>Logical log contains information of data that has been changed, so this technique is called <em><strong>change data capture</strong></em>. The <strong>advantage</strong> of logical log is that it is decoupled from the storage engine, so it&rsquo;s more easy to keep it backward compatible. Also, it is easy for external applications to parse</p>
+<h2 id="replication-lag">
+  Replication Lag
+  <a class="anchor" href="#replication-lag">#</a>
+</h2>
+<p>Replication lag is the delay between a write happening on the leader and being reflected on a follower</p>
+<h3 id="problem-of-replication-lag">
+  Problem of Replication Lag
+  <a class="anchor" href="#problem-of-replication-lag">#</a>
+</h3>
+<p>Leader based replication allows all writes go through a single node and clients can read from any nodes in the system. If workloads in your application consist of mostly reads and only small percentage of write, then this is an attractive option. You can simply add more followers to server more reads (Scalability) w/o increasing latency.</p>
+<p>In that case, it is not realistic to use synchronous replication because any node of failure can make the entire system unavailable for writing. Hence, the majority of followers should be asynchronous. That brings another problem, some followers that have fallen behind the leader (large replication lag) would respond inconsistent values to clients. If you stop writes, after some time, those followers would catch up leader. That is called eventually consistent.</p>
+<h3 id="solution-1-read-your-writes">
+  Solution 1: Read Your Writes
+  <a class="anchor" href="#solution-1-read-your-writes">#</a>
+</h3>
+<p>This is a guarantee that user would always see any updates they submitted, but it doesn&rsquo;t make any promise about others</p>
+<p><strong>How to achieve?</strong></p>
+<ul>
+<li>
+<p>Read from leader for data that can only be modified by the user, like user&rsquo;s profile, or user&rsquo;s posts. If most things in the application are potentially modified by the user, that approach won&rsquo;t work</p>
+</li>
+<li>
+<p>The client can remember the timestamp for its most recent write. If the replica is not up-to-date, the query can be handled by another replica or wait until the replica has caught up. The timestamp could be logical, like log sequence number or version of the queried entry</p>
+</li>
+</ul>
+<p><strong>Problem of multiple devices read-your-write</strong></p>
+<p>Approaches that require remembering the timestamp are more difficulty because one device doesn&rsquo;t know the updates made on other devices. Some possible solutions:</p>
+<ul>
+<li>Server pushes timestamps of updates from any devices to all other connected devices</li>
+</ul>
+<h3 id="solution-2-monotonic-reads">
+  Solution 2: Monotonic Reads
+  <a class="anchor" href="#solution-2-monotonic-reads">#</a>
+</h3>
+<p>Monotonic reads is a guarantee that below kind of anomaly does not happen. It’s a lesser guarantee than strong consistency, but a stronger guarantee than eventual consistency.</p>
+<p><strong>Anomaly</strong></p>
+<p>User can read things moving backward in time. That can happen when user first read from replica with little lag and then read from replica with greater lag</p>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/replication/monotonic-read.png" alt="monotonic-read" /></p>
+<p>The first query returns a comment that was recently added by user 1234, but the second query doesn’t return anything because the lagging follower has not yet picked up that write</p>
+<p><strong>Achieving monotonic reads</strong></p>
+<p>One possible way to achieve monotonic reads is to make sure all reads from one user are made to same replica (consistent hashing)</p>
+<h1 id="multiple-leader-replication">
+  Multiple Leader Replication
+  <a class="anchor" href="#multiple-leader-replication">#</a>
+</h1>
+<p>Multiple-leader replication allows more than one node to accept writes. A node that processes a write must forward the data change to <strong>ALL</strong> other nodes (Each leader in this model is simultaneously follower of other leaders)</p>
+<h2 id="use-cases-for-multi-leader-replication">
+  Use Cases for Multi-Leader Replication
+  <a class="anchor" href="#use-cases-for-multi-leader-replication">#</a>
+</h2>
+<h3 id="multi-datacenter-operation">
+  Multi-datacenter operation
+  <a class="anchor" href="#multi-datacenter-operation">#</a>
+</h3>
+<p>Within each datacenter, regular leader–follower replication is used; between datacenters, each datacenter’s leader replicates its changes to the leaders in other datacenters.</p>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/replication/multiple-data-center.png" alt="multiple-data-center" /></p>
+<p><strong>Comparison between single-leader and multiple-leader configuration in a multiple-datacenter deployment</strong></p>
+<ul>
+<li>
+<p>Performance</p>
+<p>In a single-leader configuration, every write must go over the internet to the datacenter with the leader. That can add significant latency to writes from other datacenters</p>
+<p>In a multiple-leader configuration, every write can be processed in the local datacenter and asynchronously replicated to other data centers. The inner-datacenter delay is hidden from users</p>
+</li>
+<li>
+<p>Tolerance of datacenter outage</p>
+<p>In a single-leader configuration, if the datacenter with the leader fails, failover can promote follower from other datacenters to be the new leader</p>
+<p>In a multiple-leader configuration, every datacenter works independently. If one datacenter fails, traffic can be handled by other datacenters</p>
+</li>
+<li>
+<p>Tolerance of network outage</p>
+<p>Writes from other datacenters need to go through the public network and to be handled by the leader synchronously. Thus, A single-leader configuration is very sensitive to the problem of inter-datacenter network, which may be less reliable than local datacenter network</p>
+<p>A multiple-leader configuration with asynchronous replication tolerates network problem better. A temporary network issue won&rsquo;t affect writes to be processed</p>
+</li>
+</ul>
+<h3 id="clients-with-offline-operations">
+  Clients with Offline Operations
+  <a class="anchor" href="#clients-with-offline-operations">#</a>
+</h3>
+<p>Assume you have a calendar app on you mobile phone, you are allowed to add meetings even though the app is offline. Not only on the mobile phone, you can also make changes in the calendar app on your laptop. When the app is online, the changes that you made should be synced to other devices</p>
+<p>At an architectural point of view. The setup is same as multiple-leader configuration. The device is a &ldquo;datacenter&rdquo;, and the network between datacenters is not reliable (devices could be offline). Clients can still write to the datacenter when network outage happens</p>
+<h3 id="collaborative-editing">
+  Collaborative Editing
+  <a class="anchor" href="#collaborative-editing">#</a>
+</h3>
+<p>Real-time collaborative editing applications, like Google Docs, allow users to update same document simultaneously. It&rsquo;s not a real multiple-leader datacenter problem, but they have a lot of commons</p>
+<p>One way to achieve collaborative editing is to lock the document when any user is editing the file. Other users can only edit the file when previous user commits the change and the lock is released. This setup is like one-leader configuration, and only one client can write the database simultaneously</p>
+<p>For multiple-leader configuration like setup, the application allows multiple users to edit simultaneously</p>
+<h2 id="handling-write-conflicts">
+  Handling Write Conflicts
+  <a class="anchor" href="#handling-write-conflicts">#</a>
+</h2>
+<p>The biggest problem with multi-leader replication is that write conflicts. For example, a document is edited by two users simultaneously on Google Drive. User one changes the title from A to B, and user two changes the title from A to C. Each user&rsquo;s changes is processed by its local leader. However, when the changes are asynchronously replicated, a conflict is detected</p>
+<h3 id="approach-1-synchronous-versus-asynchronous-conflict-detection">
+  Approach 1: Synchronous Versus Asynchronous Conflict Detection
+  <a class="anchor" href="#approach-1-synchronous-versus-asynchronous-conflict-detection">#</a>
+</h3>
+<p>You can configure replication between datacenters synchronous &ndash; i.e., wait for the write to be replicated to all replicas before telling the user the write was successful. However, by doing so, you will lose the main advantage of multiple-leader replication: allow each replica to accept writes independently</p>
+<h3 id="approach-2-conflict-avoidance">
+  Approach 2: Conflict Avoidance
+  <a class="anchor" href="#approach-2-conflict-avoidance">#</a>
+</h3>
+<p>You can force all writes to a record are processed by one leader, so the write conflict won&rsquo;t occur.</p>
+<p>For example, in applications that user can edit their own data, like user profiles, you can ensure that requests from a specific user are always routed to the leader in same datacenter for reads and writes. From user&rsquo;s perspective, the configuration is single-leader</p>
+<p><strong>Problems</strong></p>
+<p>This approach won&rsquo;t work if the datacenter accepting writes fails and all requests are re-routed to other datacenters, or user has moved to a location which is closer to another datacenter</p>
+<h3 id="approach-3-converging-to-a-consistent-state">
+  Approach 3: Converging to A Consistent State
+  <a class="anchor" href="#approach-3-converging-to-a-consistent-state">#</a>
+</h3>
+<p>We don&rsquo;t worry about wirte conflicts in single-leader database because all writes are in sequential order because of write lock. When multiple writes are replicated to followers, the last write should have the final value. This doesn&rsquo;t apply to multiple-leader database because writes are made concurrently and independently in different datacenters. Thus, we need an approach to determine the convergent value when write conflicts happen</p>
+<ul>
+<li>
+<p>Give each write a version ID, and write with the highest version wins</p>
+</li>
+<li>
+<p>Prioritize replica, write from replica with higher priority wins</p>
+</li>
+</ul>
+<p><strong>Problems</strong></p>
+<p>Both approaches may cause data loss</p>
+<h3 id="multiple-leader-topologies">
+  Multiple-Leader Topologies
+  <a class="anchor" href="#multiple-leader-topologies">#</a>
+</h3>
+<p>A replication topology describes the communication paths along which writes are propagated from one node to another</p>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/replication/multiple-leader-topology.png" alt="multiple-leader-topology" /></p>
+<ul>
+<li>
+<p><strong>Circular topology</strong>: Each node receives writes from one node and forwards those writes (plus any writes of its own) to one other node.</p>
+<ul>
+<li>Preventing infinite loop: Every write should be tagged with the identifier of all nodes that it has passed through</li>
+<li>Problem: A single node failure can interrupt the flow of replication. For example, the write flow is A -&gt; B -&gt; C -&gt; D -&gt; A, if node C fails, then writes from node A and B can&rsquo;t be propagated to node D</li>
+</ul>
+</li>
+<li>
+<p><strong>Star topology</strong>: A designated root node accepts write replication from other leaders and forwards the writes to all other leaders</p>
+<ul>
+<li><em><strong>Single point of failure</strong></em>: Root node failure would interrupt the replication to all other leaders</li>
+</ul>
+</li>
+<li>
+<p><strong>All-to-all topology</strong>: Every leader sends it writes to all other leaders</p>
+<ul>
+<li>
+<p><em><strong>Reverse causal order</strong></em>: Some network links are faster than others, write replication 2 that depends on write replication 1 may arrive at one node earlier
+<img src="/docs/programming/system-design/design-data-intensive-applications/replication/reverse-causal-order.png" alt="reverse-causal-order" /></p>
+<p>Client A inserts a row into a table on leader 1, and client B updates that row on leader 3. However, leader 2 may receive the update first, which doesn&rsquo;t make sense because it&rsquo;s an update on a row that doesn&rsquo;t exist in the database</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="leaderless-replication">
+  Leaderless Replication
+  <a class="anchor" href="#leaderless-replication">#</a>
+</h2>
+<p>Storage system that abandons the concept of a leader and allows any replica to directly accept writes from clients</p>
+<h3 id="writing-to-the-database-when-one-node-is-down">
+  Writing to The Database When One Node Is Down
+  <a class="anchor" href="#writing-to-the-database-when-one-node-is-down">#</a>
+</h3>
+<p>Imagine you have a database with three replicas, and one node is down. There is no failover in leaderless database because of no leader node.</p>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/replication/leaderless-node-outage.png" alt="leaderless-node-outage" /></p>
+<ul>
+<li>
+<p>Write</p>
+<p>Let&rsquo;s see what will happen when one node is down. Client sends the write to all replicas in parallel, and two nodes accept the write and one node that is down misses it. It&rsquo;s sufficient for two out of three replicas to acknowledge the write. After client receives two <em><strong>ok</strong></em> responses, we consider the write is successful.</p>
+</li>
+<li>
+<p>Read</p>
+<p>Now imagine that the unavailable node comes back online, and clients start reading from it. Any writes that happened while the node was down are missing from that node. To solve this problem, when client reads, it sends the request to several replicas. Client will receive the up-to-date data from one node and stale data from another. Version number will determine which value is newer.</p>
+</li>
+</ul>
+<h3 id="solutions-of-replication-lag">
+  Solutions of Replication Lag
+  <a class="anchor" href="#solutions-of-replication-lag">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Read repair</strong></p>
+<p>When a client makes a read request to several nodes in parallel, the client detects the stale data and write new value to the replica with stale data. This approach works well for data that is frequently read</p>
+</li>
+<li>
+<p><strong>Anti-entropy process</strong></p>
+<p>In addition, some datastores have a background process that constantly looks for differences in the data between replicas and copies any missing data from one replica to another.</p>
+</li>
+</ul>
+<h3 id="quorums-for-reading-and-writing">
+  Quorums for reading and writing
+  <a class="anchor" href="#quorums-for-reading-and-writing">#</a>
+</h3>
+<p>In the <a href="#writing-to-the-database-when-one-node-is-down">example</a> (writing to the database when one node is down), if we know that every successful write is guaranteed to be present on at least two out of three replicas, that means at most one replica can be stale. Thus, if we read from at least two replicas, we can be sure that at least one of the two is up-to-date. If the third replica is down or slow to respond, reads can nevertheless continue returning an up-to-date value.</p>
+<p><strong>General condition</strong></p>
+<p>If there are n replicas, every write must be confirmed by w nodes to be considered successful, and we must query at least r nodes for each read. (In our example, n = 3, w = 2, r = 2.) As long as <em><strong>w + r &gt; n</strong></em>, we expect to get an up-to-date value when reading, because at least one of the r nodes we’re reading from must be up-to-date. Reads and writes that obey these r and w values are called <em><strong>quorum reads and writes</strong></em></p>
+<p>Normally, reads and writes are always sent to all n replicas in parallel. The parameters w and r determine how many nodes we wait for—i.e., how many of the n nodes need to report success before we consider the read or write to be successful.</p>
+<p><strong>Limitations</strong></p>
+<p>When the quorum condition is fulfilled, you always expect to read the most up-to-date data. That is the case because the set of nodes to which you have written and the set of node from which you have read must overlap. However, even with w + r &gt; n, there are likely to be edge cases where stale values are returned.</p>
+<ul>
+<li>
+<p>Sloppy quorum</p>
+</li>
+<li>
+<p>Concurrent read and write, the new value haven&rsquo;t been reflected on some replicas</p>
+<p>Consider a system with 5 replicas, with a write quorum of 3 and a read quorum of 3. Imagine a scenario where a write operation updates replicas 1, 2 and 3, and a read operation queries replica 3, 4, and 5. If replica 3 has not yet finished updating while it is queried, it might still return the stale value</p>
+</li>
+<li>
+<p>If a node carrying a new value fails, and its data is restored from a replica carrying an old value, the number of replicas carrying the new value may fall below w</p>
+</li>
+<li>
+<p>A write succeeded on fewer than w nodes, and the write is not rolled back on those succeeded replicas. That means the write is reported as failed, but the consequent read may return the new value (Old value is supposed to be returned because the new value is from a failed write)</p>
+</li>
+</ul>
+<h3 id="sloppy-quorum--hinted-handoff">
+  Sloppy Quorum &amp; Hinted Handoff
+  <a class="anchor" href="#sloppy-quorum--hinted-handoff">#</a>
+</h3>
+<p>For some quorum configurations, there are some designated nodes to accept writes for a specific key. If some designated node fail, sloppy quorum allows other nodes to accept those writes and respond success to clients. When the failed designated nodes are available, values updated will be transferred from sloppy replicas to the designated replicas. This is call *<strong>hinted handoff</strong></p>
+<p>Although condition <em><strong>w + r &gt; n</strong></em> is still fulfilled in sloppy quorum, in some cases, stale values will be returned to clients. For example, a read operation happens before hinted handoff completes, and it contacts a set of nodes that don&rsquo;t have the new value. Thus, sloppy quorum achieves high availability, which allows client to write when some designated nodes fail, by compromising consistency (eventual consistency)</p>
+<h3 id="concurrent-writes">
+  Concurrent Writes
+  <a class="anchor" href="#concurrent-writes">#</a>
+</h3>
+<p>Two clients update the same data with different values concurrently (write #1 and write #2). One node receives two writes in order write #1 and write #2, but another node receives same writes in reverse order. If each node just overwrites the data with latest write, then values of same data in different nodes are inconsistent. In order to become eventually consistent, the replicas should converge to the same value.</p>
+<p><strong>Last write wins (discarding concurrent write)</strong></p>
+<p>One approach is to declare that each replica only store the most &ldquo;recent&rdquo; value and allow the &ldquo;older&rdquo; values to be overwritten and discarded. Then we need a way of unambiguously determining which write is more &ldquo;recent&rdquo;. We can use timestamp, as long as the two writes don&rsquo;t happen at exactly same time, we can determine which one is more &ldquo;recent&rdquo; even with &ldquo;0.000001s&rdquo; difference in time. However, order in concurrently writes makes no sense, because the two writes don&rsquo;t know and depend on each other.</p>
+<p>For example, imagine one item is in the cart of someone&rsquo;s Amazon account. One person increments the number of the item by 1, and at same time another person removes the item from the cart in another device. Two write operations update the item concurrently, and both don&rsquo;t know each other. Then which one should win, 0 or 2? Use timestamp can achieve eventual consistency, but may confuse clients because both writes responded success, but one write is implicitly discarded</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#definition">Definition</a>
+      <ul>
+        <li><a href="#advantages-of-replication">Advantages of Replication</a></li>
+        <li><a href="#principles-of-replication">Principles of Replication</a></li>
+      </ul>
+    </li>
+    <li><a href="#single-leader-mode">Single Leader Mode</a>
+      <ul>
+        <li><a href="#how-does-it-work">How Does It Work?</a></li>
+        <li><a href="#synchronous-versus-asynchronous-replication">Synchronous Versus Asynchronous Replication</a>
+          <ul>
+            <li><a href="#synchronous-replication">Synchronous Replication</a></li>
+            <li><a href="#asynchronous-replication">Asynchronous Replication</a></li>
+          </ul>
+        </li>
+        <li><a href="#setting-up-new-followers">Setting up New Followers</a>
+          <ul>
+            <li><a href="#steps">Steps</a></li>
+          </ul>
+        </li>
+        <li><a href="#handling-node-outages">Handling Node Outages</a>
+          <ul>
+            <li><a href="#follower-failure">Follower Failure</a></li>
+            <li><a href="#leader-failure-failover">Leader Failure: Failover</a></li>
+          </ul>
+        </li>
+        <li><a href="#implementation-of-replication-logs">Implementation of Replication Logs</a>
+          <ul>
+            <li><a href="#statement-based-replication">Statement-Based Replication</a></li>
+            <li><a href="#write-ahead-log-wal-shipping">Write-Ahead Log (WAL) shipping</a></li>
+            <li><a href="#logical-row-based-log-replication">Logical (row-based) log replication</a></li>
+          </ul>
+        </li>
+        <li><a href="#replication-lag">Replication Lag</a>
+          <ul>
+            <li><a href="#problem-of-replication-lag">Problem of Replication Lag</a></li>
+            <li><a href="#solution-1-read-your-writes">Solution 1: Read Your Writes</a></li>
+            <li><a href="#solution-2-monotonic-reads">Solution 2: Monotonic Reads</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#multiple-leader-replication">Multiple Leader Replication</a>
+      <ul>
+        <li><a href="#use-cases-for-multi-leader-replication">Use Cases for Multi-Leader Replication</a>
+          <ul>
+            <li><a href="#multi-datacenter-operation">Multi-datacenter operation</a></li>
+            <li><a href="#clients-with-offline-operations">Clients with Offline Operations</a></li>
+            <li><a href="#collaborative-editing">Collaborative Editing</a></li>
+          </ul>
+        </li>
+        <li><a href="#handling-write-conflicts">Handling Write Conflicts</a>
+          <ul>
+            <li><a href="#approach-1-synchronous-versus-asynchronous-conflict-detection">Approach 1: Synchronous Versus Asynchronous Conflict Detection</a></li>
+            <li><a href="#approach-2-conflict-avoidance">Approach 2: Conflict Avoidance</a></li>
+            <li><a href="#approach-3-converging-to-a-consistent-state">Approach 3: Converging to A Consistent State</a></li>
+            <li><a href="#multiple-leader-topologies">Multiple-Leader Topologies</a></li>
+          </ul>
+        </li>
+        <li><a href="#leaderless-replication">Leaderless Replication</a>
+          <ul>
+            <li><a href="#writing-to-the-database-when-one-node-is-down">Writing to The Database When One Node Is Down</a></li>
+            <li><a href="#solutions-of-replication-lag">Solutions of Replication Lag</a></li>
+            <li><a href="#quorums-for-reading-and-writing">Quorums for reading and writing</a></li>
+            <li><a href="#sloppy-quorum--hinted-handoff">Sloppy Quorum &amp; Hinted Handoff</a></li>
+            <li><a href="#concurrent-writes">Concurrent Writes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55166&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  What is KMS?
+  #
+
+AWS Key Management Service is a full management service to generate and manage encryption keys
+
+  Key Concepts
+  #
+
+
+  Customer Master Key (CMK)
+  #
+
+CMKs are primary resources created and managed by KMS. It&rsquo;s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:55166/docs/programming/cloud/aws/security/kms/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="KMS">
+  <meta property="og:description" content="What is KMS? # AWS Key Management Service is a full management service to generate and manage encryption keys
+Key Concepts # Customer Master Key (CMK) # CMKs are primary resources created and managed by KMS. It’s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>KMS | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:55166/docs/programming/cloud/aws/security/kms/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.63c2184d22382eb1423535ba6c75cde891650e58814bcf19869caf6d686bb259.js" integrity="sha256-Y8IYTSI4LrFCNTW6bHXN6JFlDliBS88ZhpyvbWhrslk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="toggle"  />
+    <label for="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="toggle"  />
+    <label for="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdf55a702353035bca92383ae3fb0776" class="toggle"  />
+    <label for="section-bdf55a702353035bca92383ae3fb0776" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-638baef7394c63505a0124a6ab8929d4" class="toggle"  />
+    <label for="section-638baef7394c63505a0124a6ab8929d4" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-050a487401c9ade14154296e864be8a2" class="toggle"  />
+    <label for="section-050a487401c9ade14154296e864be8a2" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6660e5a8131bb9bf21390ee36cb603b4" class="toggle"  />
+    <label for="section-6660e5a8131bb9bf21390ee36cb603b4" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e48aea960dd5f2b76bffb00087424f3" class="toggle"  />
+    <label for="section-7e48aea960dd5f2b76bffb00087424f3" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9091ac3d236d4bd531308b8633d45035" class="toggle"  />
+    <label for="section-9091ac3d236d4bd531308b8633d45035" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="toggle"  />
+    <label for="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="flex justify-between">
+      <a role="button" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="toggle"  />
+    <label for="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-caac18242619b008e4a9895db1095868" class="toggle"  />
+    <label for="section-caac18242619b008e4a9895db1095868" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61603bfa67f7e848f6f30bc8a7b7b383" class="toggle"  />
+    <label for="section-61603bfa67f7e848f6f30bc8a7b7b383" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f550cfe555239292577fe95f15a0fb58" class="toggle"  />
+    <label for="section-f550cfe555239292577fe95f15a0fb58" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-748de3caa969de5f0463714fef06e2bf" class="toggle"  />
+    <label for="section-748de3caa969de5f0463714fef06e2bf" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01867ca5de591b785e2c310209ee8cb4" class="toggle"  />
+    <label for="section-01867ca5de591b785e2c310209ee8cb4" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-119959759090fce61894a49053172a54" class="toggle"  />
+    <label for="section-119959759090fce61894a49053172a54" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ce38b31faecdfd79438e212848b8695" class="toggle"  />
+    <label for="section-4ce38b31faecdfd79438e212848b8695" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-43effcc73883f6032917b714430cd064" class="toggle"  />
+    <label for="section-43effcc73883f6032917b714430cd064" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ffff656c2dc3dfe4c18658b113a7be" class="toggle"  />
+    <label for="section-13ffff656c2dc3dfe4c18658b113a7be" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9cd6328cf5cf698fa6c672c2db6d2035" class="toggle" checked />
+    <label for="section-9cd6328cf5cf698fa6c672c2db6d2035" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bf71894cadd24d41821eba6f15a9523" class="toggle" checked />
+    <label for="section-7bf71894cadd24d41821eba6f15a9523" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-26749471ddc426a91f4eb4368b916e16" class="toggle"  />
+    <label for="section-26749471ddc426a91f4eb4368b916e16" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92b00c426b17cc8f5bb49854760a2a5" class="toggle" checked />
+    <label for="section-d92b00c426b17cc8f5bb49854760a2a5" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/security/kms/" class="active">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6464d2d3fb1a4e9e5d7077427324262c" class="toggle"  />
+    <label for="section-6464d2d3fb1a4e9e5d7077427324262c" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-94df99bcc7100f8b6dd829f22627f997" class="toggle"  />
+    <label for="section-94df99bcc7100f8b6dd829f22627f997" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b85e1e563a521a0dcacf88388f88f7a" class="toggle"  />
+    <label for="section-1b85e1e563a521a0dcacf88388f88f7a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e9a4c61515d11caeb60041730028720" class="toggle"  />
+    <label for="section-0e9a4c61515d11caeb60041730028720" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-615aafe1cd7d7f170cf11a536398f063" class="toggle"  />
+    <label for="section-615aafe1cd7d7f170cf11a536398f063" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13f05eeb6627e08a293644209c456447" class="toggle"  />
+    <label for="section-13f05eeb6627e08a293644209c456447" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c46fb385560336c69d4467dbf9a5d5a" class="toggle"  />
+    <label for="section-7c46fb385560336c69d4467dbf9a5d5a" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fe4d6a252416c10985f7090ee3b16155" class="toggle"  />
+    <label for="section-fe4d6a252416c10985f7090ee3b16155" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dfcadcb229769865e1e73e90e669fb26" class="toggle"  />
+    <label for="section-dfcadcb229769865e1e73e90e669fb26" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1e757f5004bc51fabbd20e29b8046b90" class="toggle"  />
+    <label for="section-1e757f5004bc51fabbd20e29b8046b90" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>KMS</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-kms">What is KMS?</a></li>
+    <li><a href="#key-concepts">Key Concepts</a>
+      <ul>
+        <li><a href="#customer-master-key-cmk">Customer Master Key (CMK)</a></li>
+        <li><a href="#key-policies">Key policies</a></li>
+        <li><a href="#data-keys">Data Keys</a>
+          <ul>
+            <li><a href="#why-need-data-keys">Why Need Data Keys?</a></li>
+            <li><a href="#how-to-use-data-keys">How to Use Data Keys?</a></li>
+          </ul>
+        </li>
+        <li><a href="#envelop-encryption">Envelop Encryption</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-aws-services-utilize-kms">How AWS Services Utilize KMS</a>
+      <ul>
+        <li><a href="#data-protection">Data Protection</a></li>
+        <li><a href="#s3-server-side-encryption">S3 Server-Side Encryption</a>
+          <ul>
+            <li><a href="#sse-s3">SSE-S3</a></li>
+            <li><a href="#sse-kms">SSE-KMS</a></li>
+            <li><a href="#sse-c">SSE-C</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="what-is-kms">
+  What is KMS?
+  <a class="anchor" href="#what-is-kms">#</a>
+</h1>
+<p>AWS Key Management Service is a full management service to generate and manage encryption keys</p>
+<h1 id="key-concepts">
+  Key Concepts
+  <a class="anchor" href="#key-concepts">#</a>
+</h1>
+<h2 id="customer-master-key-cmk">
+  Customer Master Key (CMK)
+  <a class="anchor" href="#customer-master-key-cmk">#</a>
+</h2>
+<p>CMKs are primary resources created and managed by KMS. It&rsquo;s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data.</p>
+<p>CMKs can be:</p>
+<ul>
+<li>Customer-managed: These are created and managed by AWS users</li>
+<li>AWS-managed: There are created and managed by AWS services, like <code>aws/s3</code>, <code>aws/ddb</code> etc&hellip;</li>
+</ul>
+<h2 id="key-policies">
+  Key policies
+  <a class="anchor" href="#key-policies">#</a>
+</h2>
+<p>Key policies are resource policies that are attached to every CMK to determine who has what permissions on the CMK under which conditions. Every CMK must have one and only one key policy</p>
+<h2 id="data-keys">
+  Data Keys
+  <a class="anchor" href="#data-keys">#</a>
+</h2>
+<p>Data keys are <strong>SYMMETRIC</strong> keys generated by AWS KMS. They are normally used to encrypt and decrypt large size data on client side. You can use CMK to generate, encrypt and decrypt data keys</p>
+<h3 id="why-need-data-keys">
+  Why Need Data Keys?
+  <a class="anchor" href="#why-need-data-keys">#</a>
+</h3>
+<p>AWS KMS APIs <code>kms:Encrypt</code> and <code>kms:Decrypt</code> only support data size less than 4 KB. The workaround to encrypt large size data is that KMS generates data keys and clients use the generated data keys to encrypt and decrypt large size data on their sides and no need to upload the data to KMS.</p>
+<h3 id="how-to-use-data-keys">
+  How to Use Data Keys?
+  <a class="anchor" href="#how-to-use-data-keys">#</a>
+</h3>
+<h4 id="creating-a-cmk">
+  Creating a CMK
+  <a class="anchor" href="#creating-a-cmk">#</a>
+</h4>
+<ul>
+<li>
+<p>First calling <code>create-key</code> API to create a CMK</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>aws kms create-key 
+</span></span></code></pre></div><p>You will get response like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;KeyMetadata&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;KeyId&#34;</span>: <span style="color:#e6db74">&#34;bca1a73c-b9d2-43e2-97e7-XXXXXXXXXXXX&#34;</span>,
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Creating an alias for the CMK</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>aws kms create-alias --target-key-id <span style="color:#e6db74">&#34;bca1a73c-b9d2-43e2-97e7-XXXXXXXXXXXX&#34;</span> --alias-name alias/demo-data-key
+</span></span></code></pre></div></li>
+</ul>
+<p>We won&rsquo;t use the generated CMK to encrypt data, but use the data key. That is called <a href="#envelop-encryption">Envelop Encryption</a></p>
+<h4 id="generating-a-data-key">
+  Generating a Data Key
+  <a class="anchor" href="#generating-a-data-key">#</a>
+</h4>
+<ul>
+<li>
+<p>Generating a symmetric data key</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>aws kms generate-data-key --key-id alias/demo-data-key --key-spec AES_256
+</span></span></code></pre></div><p>You will get response:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;CiphertextBlob&#34;</span>: <span style="color:#e6db74">&#34;AQIDAHiNuXXnu8SiDat5B2+53PrUzQvrztxy2goKhceTVwNoDAFboLcM9DYLJRprvSF16VWhAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMaAKf1DtSn99SoSYsAgEQgDsPACB1itRaJX6yTjEQuWidGXpMYwL9x47oxbepRkjQjIta4jdisEZU3VbqJhGRKLJzwFepzU+ofZWKBA==&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Plaintext&#34;</span>: <span style="color:#e6db74">&#34;tJ6HM0yWt2SwkEGDhG7IgVilYlU8j2IaX+wrr24Af7w=&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;KeyId&#34;</span>: <span style="color:#e6db74">&#34;arn\:aws\:kms\:eu-central-1\:XXXXXXXXXXXX\:key/0265a04d-b823-4a16-9fbe-772a5cb6baea&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>
+<p>Components</p>
+<ul>
+<li>Plaintext:
+<ul>
+<li>The data key, unencrypted.</li>
+<li>It is used to encrypt or decrypt data by clients.</li>
+<li>Clients should remove it from memory every time after use it</li>
+</ul>
+</li>
+<li>CiphertextBlob:
+<ul>
+<li>The data key, encrypted by the CMK.</li>
+<li>Clients should keep it persistently.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Relationship</p>
+<p>The plaintext and encrypted data key are generated by running an encryption algorithm on the CMK. One CMK can generate multiple data keys</p>
+<p><img src="/docs/programming/aws/security/kms/generate-data-key.png" alt="generate-data-key" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Storing encrypted data key</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>export DATA_KEY_CIPHERTEXT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;AQIDAHiNuXXnu8SiDat5B2+53PrUzQvrztxy2goKhceTVwNoDAFboLcM9DYLJRprvSF16VWhAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMaAKf1DtSn99SoSYsAgEQgDsPACB1itRaJX6yTjEQuWidGXpMYwL9x47oxbepRkjQjIta4jdisEZU3VbqJhGRKLJzwFepzU+ofZWKBA==&#34;</span>
+</span></span><span style="display:flex;"><span>echo $DATA_KEY_CIPHERTEXT | base64 --decode &gt; data_key_ciphertext
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="decrypting-encrypted-data-key">
+  Decrypting Encrypted Data Key
+  <a class="anchor" href="#decrypting-encrypted-data-key">#</a>
+</h4>
+<p>After generating a data key, client keeps the encrypted data key and should never keep the plaintext data key in their disk. To encrypt data using data key, client needs to decrypt the encrypted data key to get the plaintext data key</p>
+<p><img src="/docs/programming/aws/security/kms/kms-decrypt-with-data-key.png" alt="decrypt-data-key" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>export DATA_KEY_PLAINTEXT<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>aws kms decrypt --ciphertext-blob fileb://./data_key_ciphertext --query Plaintext --output text<span style="color:#e6db74">`</span>
+</span></span></code></pre></div><h4 id="encrypting-with-plaintext-data-key">
+  Encrypting with Plaintext Data Key
+  <a class="anchor" href="#encrypting-with-plaintext-data-key">#</a>
+</h4>
+<p>Now you have the plaintext data key. You can use your preferred encryption algorithm to encrypt your data with the plaintext data key. Remember to remove the plaintext data key from memory after using</p>
+<p><img src="/docs/programming/aws/security/kms/kms-encrypt-with-data-key.png" alt="encrypt-with-data-key" /></p>
+<h2 id="envelop-encryption">
+  Envelop Encryption
+  <a class="anchor" href="#envelop-encryption">#</a>
+</h2>
+<p>Envelop Encryption is to encrypt your plaintext data with a plaintext data key and then encrypt the plaintext data key with a master key (CMK)</p>
+<p><img src="/docs/programming/aws/security/kms/envelop-encryption.png" alt="envelop-encryption" /></p>
+<h1 id="how-aws-services-utilize-kms">
+  How AWS Services Utilize KMS
+  <a class="anchor" href="#how-aws-services-utilize-kms">#</a>
+</h1>
+<h2 id="data-protection">
+  Data Protection
+  <a class="anchor" href="#data-protection">#</a>
+</h2>
+<p>Data protection in AWS refers to protecting data in transit (data transmits over wire) and protecting data at rest (storing data at disk). You can protect your data in transit using TLS/SSL protocol (HTTPS), or encrypt your data at client side. To protect data at rest, you have two options:</p>
+<ul>
+<li>Server-Side encryption</li>
+<li>Client-Side encryption</li>
+</ul>
+<p>Use S3 as example to introduce how KMS is involved in server-side encryption</p>
+<h2 id="s3-server-side-encryption">
+  S3 Server-Side Encryption
+  <a class="anchor" href="#s3-server-side-encryption">#</a>
+</h2>
+<h3 id="sse-s3">
+  SSE-S3
+  <a class="anchor" href="#sse-s3">#</a>
+</h3>
+<p>SSE-S3 stands for Server-Side Encryption with Amazon S3-managed Keys.</p>
+<ul>
+<li>Default option</li>
+<li>No KMS is involved, so no extra costs</li>
+<li>Only S3 related permissions are required to access objects in S3 buckets</li>
+</ul>
+<p>It&rsquo;s the most basic encryption method provided by S3. After you upload an object to S3 buckets, before it is saved to disk, the object will be encrypted by a S3-managed key. When you download objects from S3 buckets, the encrypted objects will be decrypted first and then downloaded to client side.</p>
+<h3 id="sse-kms">
+  SSE-KMS
+  <a class="anchor" href="#sse-kms">#</a>
+</h3>
+<p>SSE-KMS stands for Server-Side Encryption with CMK stored in KMS</p>
+<ul>
+<li>Loss: KMS is involved, so you need to pay extra costs</li>
+<li>Gain: Extra layer of security. You need to have permissions of S3 and KMS to access objects in S3 buckets</li>
+</ul>
+<p><img src="/docs/programming/aws/security/kms/kms-iam.png" alt="SSE-KMS" /></p>
+<p>To upload an object encrypted with an AWS KMS key to Amazon S3, you need <code>kms:GenerateDataKey</code> permissions on the key. To download an object encrypted with an AWS KMS key, you need <code>kms:Decrypt</code> permissions. Encryption on each object provides high security, but that results in too many calls from S3 to KMS. To balance security and HTTP traffic (also costs), instead of generating data key for each object, you can use bucket key to encrypt objects.</p>
+<ul>
+<li>S3 Bucket Keys for SSE-KMS
+After you configure your bucket to use S3 Bucket Key for SSE-KMS, AWS generates a short-live key from AWS KMS and then keep it in S3 for a period of time. The bucket key will create data keys for new objects during its lifecycle. That eliminates a lot of requests to KMS to generate data key for each object.</li>
+</ul>
+<h3 id="sse-c">
+  SSE-C
+  <a class="anchor" href="#sse-c">#</a>
+</h3>
+<p>AWS S3 allows you to use custom encryption key for server-side encryption. Clients manage the encryption key and provide the key as part of their requests and S3 manages the encryption process.</p>
+<h1 id="reference">
+  Reference
+  <a class="anchor" href="#reference">#</a>
+</h1>
+<p><a href="https://catalog.us-east-1.prod.workshops.aws/workshops/aad9ff1e-b607-45bc-893f-121ea5224f24/en-US">AWS KMS Workshop</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-kms">What is KMS?</a></li>
+    <li><a href="#key-concepts">Key Concepts</a>
+      <ul>
+        <li><a href="#customer-master-key-cmk">Customer Master Key (CMK)</a></li>
+        <li><a href="#key-policies">Key policies</a></li>
+        <li><a href="#data-keys">Data Keys</a>
+          <ul>
+            <li><a href="#why-need-data-keys">Why Need Data Keys?</a></li>
+            <li><a href="#how-to-use-data-keys">How to Use Data Keys?</a></li>
+          </ul>
+        </li>
+        <li><a href="#envelop-encryption">Envelop Encryption</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-aws-services-utilize-kms">How AWS Services Utilize KMS</a>
+      <ul>
+        <li><a href="#data-protection">Data Protection</a></li>
+        <li><a href="#s3-server-side-encryption">S3 Server-Side Encryption</a>
+          <ul>
+            <li><a href="#sse-s3">SSE-S3</a></li>
+            <li><a href="#sse-kms">SSE-KMS</a></li>
+            <li><a href="#sse-c">SSE-C</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

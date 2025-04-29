@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  re in Python
+  #
+
+
+  re.search()
+  #
+
+The re.search() method is used to search a string for a match to a regular expression pattern. It scans through the string from left to right and returns the FIRST match it finds. If a match is found, it returns a match object; otherwise, it returns None.
+
+  Method Signature
+  #
+
+search(pattern: str, string: str, flags: int=0) -&gt; re.Match
+
+pattern: The regular expression pattern to search for.
+string: The string to search within.
+flags: Optional flags to modify the behavior of the pattern (default is 0).
+
+
+  Match Object Methods
+  #
+
+If a match is found, re.search() returns a match object. This object provides several useful methods and attributes:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming-core/python/re/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="RegEx">
+  <meta property="og:description" content="re in Python # re.search() # The re.search() method is used to search a string for a match to a regular expression pattern. It scans through the string from left to right and returns the FIRST match it finds. If a match is found, it returns a match object; otherwise, it returns None.
+Method Signature # search(pattern: str, string: str, flags: int=0) -&gt; re.Match pattern: The regular expression pattern to search for. string: The string to search within. flags: Optional flags to modify the behavior of the pattern (default is 0). Match Object Methods # If a match is found, re.search() returns a match object. This object provides several useful methods and attributes:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>RegEx | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/programming-core/python/re/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.650346cbc7dbd641b677ef4deeb160310a4553204dee20b907cc95acac1c1e28.js" integrity="sha256-ZQNGy8fb1kG2d&#43;9N7rFgMQpFUyBN7iC5B8yVrKwcHig=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle" checked />
+    <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
+    <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d40552f3cfe92824018c63b2452ecba" class="toggle"  />
+    <label for="section-2d40552f3cfe92824018c63b2452ecba" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c98292848de5e1eee8daf1df97ad8e9" class="toggle"  />
+    <label for="section-6c98292848de5e1eee8daf1df97ad8e9" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
+    <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3190593332d0f8f9ed0d16abadebf669" class="toggle"  />
+    <label for="section-3190593332d0f8f9ed0d16abadebf669" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fe208af9b1b31c593b428135b5384f8" class="toggle" checked />
+    <label for="section-9fe208af9b1b31c593b428135b5384f8" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/re/" class="active">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle"  />
+    <label for="section-67fa7359ce5b658cf77244fff5df08fc" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48d1fef9b34bd9f66cd11153ecec9532" class="toggle"  />
+    <label for="section-48d1fef9b34bd9f66cd11153ecec9532" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e85d05a86421e8876acb62f953a355e" class="toggle"  />
+    <label for="section-0e85d05a86421e8876acb62f953a355e" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="toggle"  />
+    <label for="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12c34d34235c7f130e7a4969b853bc86" class="toggle"  />
+    <label for="section-12c34d34235c7f130e7a4969b853bc86" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
+    <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="toggle"  />
+    <label for="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-941ff506688d79a8f0ca9e629da3459f" class="toggle"  />
+    <label for="section-941ff506688d79a8f0ca9e629da3459f" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d2544afe2799858027d68114f061083" class="toggle"  />
+    <label for="section-3d2544afe2799858027d68114f061083" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c932410b33a0ef4d9ccee9231c75620" class="toggle"  />
+    <label for="section-0c932410b33a0ef4d9ccee9231c75620" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
+    <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7e22ed5bec8c14629b6ab355bc1502c" class="toggle"  />
+    <label for="section-f7e22ed5bec8c14629b6ab355bc1502c" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-663cecbab2af013dadd72e5397ce62dc" class="toggle"  />
+    <label for="section-663cecbab2af013dadd72e5397ce62dc" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-454b2a6456d3526d3f6d34370515a130" class="toggle"  />
+    <label for="section-454b2a6456d3526d3f6d34370515a130" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-868ff3bc94429ce8afade70db1d07dbc" class="toggle"  />
+    <label for="section-868ff3bc94429ce8afade70db1d07dbc" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-304cd452d0278b77fa76b02a905b318b" class="toggle"  />
+    <label for="section-304cd452d0278b77fa76b02a905b318b" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
+    <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
+    <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-18d02721e1887f4bb6418527097a8950" class="toggle"  />
+    <label for="section-18d02721e1887f4bb6418527097a8950" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-38078f6b2dffb5cfde0331f97c464879" class="toggle"  />
+    <label for="section-38078f6b2dffb5cfde0331f97c464879" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9885b1e85034892b05dcefffde06c590" class="toggle"  />
+    <label for="section-9885b1e85034892b05dcefffde06c590" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
+    <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="toggle"  />
+    <label for="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
+    <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9d47227da1237bf23c06190fe793afd" class="toggle"  />
+    <label for="section-c9d47227da1237bf23c06190fe793afd" class="flex justify-between">
+      <a role="button" class="">Tool</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-624d42859b7b037f1a6e15ba4ee427e1" class="toggle"  />
+    <label for="section-624d42859b7b037f1a6e15ba4ee427e1" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tool/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>RegEx</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#re-in-python"><code>re</code> in Python</a>
+      <ul>
+        <li><a href="#research"><code>re.search()</code></a>
+          <ul>
+            <li><a href="#method-signature">Method Signature</a></li>
+            <li><a href="#match-object-methods"><code>Match</code> Object Methods</a></li>
+            <li><a href="#example">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#rematch"><code>re.match()</code></a>
+          <ul>
+            <li><a href="#method-signature-1">Method Signature</a></li>
+            <li><a href="#example-1">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#refullmatch"><code>re.fullmatch()</code></a>
+          <ul>
+            <li><a href="#method-signature-2">Method Signature</a></li>
+            <li><a href="#example-2">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#refindall"><code>re.findall()</code></a>
+          <ul>
+            <li><a href="#method-signature-3">Method Signature</a></li>
+            <li><a href="#example-3">Example</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="re-in-python">
+  <code>re</code> in Python
+  <a class="anchor" href="#re-in-python">#</a>
+</h1>
+<h2 id="research">
+  <code>re.search()</code>
+  <a class="anchor" href="#research">#</a>
+</h2>
+<p>The <code>re.search()</code> method is used to search a string for a match to a regular expression pattern. It scans through the string from left to right and returns the <em><strong>FIRST</strong></em> match it finds. If a match is found, it returns a match object; otherwise, it returns <code>None</code>.</p>
+<h3 id="method-signature">
+  Method Signature
+  <a class="anchor" href="#method-signature">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>search(pattern: str, string: str, flags: int<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>) <span style="color:#f92672">-&gt;</span> re<span style="color:#f92672">.</span>Match
+</span></span></code></pre></div><ul>
+<li><code>pattern</code>: The regular expression pattern to search for.</li>
+<li><code>string</code>: The string to search within.</li>
+<li><code>flags</code>: Optional flags to modify the behavior of the pattern (default is 0).</li>
+</ul>
+<h3 id="match-object-methods">
+  <code>Match</code> Object Methods
+  <a class="anchor" href="#match-object-methods">#</a>
+</h3>
+<p>If a match is found, <code>re.search()</code> returns a match object. This object provides several useful methods and attributes:</p>
+<ul>
+<li><code>.group() -&gt; str</code>: Returns the string matched by the regular expression.</li>
+<li><code>.start() -&gt; int</code>: Returns the starting position of the match.</li>
+<li><code>.end() -&gt; int</code>: Returns the ending position of the match.</li>
+<li><code>.span() -&gt; turple(int)</code>: Returns a tuple containing the (start, end) positions of the match.</li>
+</ul>
+<h3 id="example">
+  Example
+  <a class="anchor" href="#example">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;\d+&#34;</span>
+</span></span><span style="display:flex;"><span>input_string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;There are 123 numbers in 456 text&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">match</span> <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(pattern, input_string)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;`re.search()` type -&gt; </span><span style="color:#e6db74">{</span>type(match)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#66d9ef">match</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;`match.group()` type -&gt; </span><span style="color:#e6db74">{</span>type(match<span style="color:#f92672">.</span>group())<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;`match.group()` value -&gt; </span><span style="color:#e6db74">{</span>match<span style="color:#f92672">.</span>group()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;`match.start()` type -&gt; </span><span style="color:#e6db74">{</span>type(match<span style="color:#f92672">.</span>start())<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;`match.start()` value -&gt; </span><span style="color:#e6db74">{</span>match<span style="color:#f92672">.</span>start()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;`match.span()` type -&gt; </span><span style="color:#e6db74">{</span>type(match<span style="color:#f92672">.</span>span())<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;`match.span()` value -&gt; </span><span style="color:#e6db74">{</span>match<span style="color:#f92672">.</span>span()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span></code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#e6db74">`</span>re.search<span style="color:#f92672">()</span><span style="color:#e6db74">`</span> type -&gt; &lt;class <span style="color:#e6db74">&#39;re.Match&#39;</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>match.group<span style="color:#f92672">()</span><span style="color:#e6db74">`</span> type -&gt; &lt;class <span style="color:#e6db74">&#39;str&#39;</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>match.group<span style="color:#f92672">()</span><span style="color:#e6db74">`</span> value -&gt; <span style="color:#ae81ff">123</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>match.start<span style="color:#f92672">()</span><span style="color:#e6db74">`</span> type -&gt; &lt;class <span style="color:#e6db74">&#39;int&#39;</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>match.start<span style="color:#f92672">()</span><span style="color:#e6db74">`</span> value -&gt; <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>match.span<span style="color:#f92672">()</span><span style="color:#e6db74">`</span> type -&gt; &lt;class <span style="color:#e6db74">&#39;tuple&#39;</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>match.span<span style="color:#f92672">()</span><span style="color:#e6db74">`</span> value -&gt; <span style="color:#f92672">(</span>10, 13<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h2 id="rematch">
+  <code>re.match()</code>
+  <a class="anchor" href="#rematch">#</a>
+</h2>
+<p>The <code>re.match()</code> method is used to determine if the regular expression pattern matches <em><strong>AT THE BEGINNING</strong></em> of the string. If a match is found at the beginning of the string, it returns a match object. Otherwise, it returns <code>None</code>.</p>
+<h3 id="method-signature-1">
+  Method Signature
+  <a class="anchor" href="#method-signature-1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">match</span>(pattern: str, string: str, flags: int<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>) <span style="color:#f92672">-&gt;</span> re<span style="color:#f92672">.</span>Match
+</span></span></code></pre></div><h3 id="example-1">
+  Example
+  <a class="anchor" href="#example-1">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;word&#34;</span>
+</span></span><span style="display:flex;"><span>word_at_beginning <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;word is at the beginning of the sentence&#34;</span>
+</span></span><span style="display:flex;"><span>word_not_at_beginning <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The word is not at the beginning of the sentence&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">match</span> <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(pattern, word_at_beginning)
+</span></span><span style="display:flex;"><span>non_match <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(pattern, word_not_at_beginning)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#66d9ef">match</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Matching string -&gt; </span><span style="color:#e6db74">{</span>match<span style="color:#f92672">.</span>group()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> non_match:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;word is not found at the beginning&#34;</span>)
+</span></span></code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Matching string -&gt; word
+</span></span><span style="display:flex;"><span>word is not found at the beginning
+</span></span></code></pre></div><h2 id="refullmatch">
+  <code>re.fullmatch()</code>
+  <a class="anchor" href="#refullmatch">#</a>
+</h2>
+<p>The <code>re.fullmatch()</code> method is used to check if the entire string matches a regular expression pattern. It differs from <code>re.match()</code> in that <code>re.fullmatch()</code> requires the whole string to match the pattern, not just a prefix. If the entire string matches the pattern, it returns a match object; otherwise, it returns <code>None</code></p>
+<h3 id="method-signature-2">
+  Method Signature
+  <a class="anchor" href="#method-signature-2">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fullmatch(pattern: str, string: str, flags: int<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>) <span style="color:#f92672">-&gt;</span> re<span style="color:#f92672">.</span>Match
+</span></span></code></pre></div><h3 id="example-2">
+  Example
+  <a class="anchor" href="#example-2">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;word&#34;</span>
+</span></span><span style="display:flex;"><span>full_match_string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;word&#34;</span>
+</span></span><span style="display:flex;"><span>non_full_match_string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;words&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">match</span> <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>fullmatch(pattern, full_match_string)
+</span></span><span style="display:flex;"><span>non_match <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>fullmatch(pattern, non_full_match_string)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#66d9ef">match</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Found full match&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> non_match:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;No full match&#34;</span>)
+</span></span></code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Found full match
+</span></span><span style="display:flex;"><span>No full match
+</span></span></code></pre></div><h2 id="refindall">
+  <code>re.findall()</code>
+  <a class="anchor" href="#refindall">#</a>
+</h2>
+<h3 id="method-signature-3">
+  Method Signature
+  <a class="anchor" href="#method-signature-3">#</a>
+</h3>
+<p>The <code>re.findall()</code> method is used to find all occurrences of a pattern in a string. It returns a list of all matches found. If no matches are found, it returns an empty list. Unlike <code>re.search()</code> and <code>re.match()</code>, which return match objects, <code>re.findall()</code> directly returns the matched strings.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>findall(pattern: str, string: str, flags: int<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>) <span style="color:#f92672">-&gt;</span> list(str)
+</span></span></code></pre></div><h3 id="example-3">
+  Example
+  <a class="anchor" href="#example-3">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;\bword\b&#34;</span>
+</span></span><span style="display:flex;"><span>text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;word in a wordy word sentence with words&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>matches <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(pattern, text)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Type of `re.findall()` -&gt; </span><span style="color:#e6db74">{</span>type(matches)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Type of item in matches -&gt; </span><span style="color:#e6db74">{</span>type(matches[<span style="color:#ae81ff">0</span>])<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;All matches found:&#34;</span>, matches)
+</span></span></code></pre></div><p><strong>Output</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>Type of <span style="color:#e6db74">`</span>re.findall<span style="color:#f92672">()</span><span style="color:#e6db74">`</span> -&gt; &lt;class <span style="color:#e6db74">&#39;list&#39;</span>&gt;
+</span></span><span style="display:flex;"><span>Type of item in matches -&gt; &lt;class <span style="color:#e6db74">&#39;str&#39;</span>&gt;
+</span></span><span style="display:flex;"><span>All matches found: <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;word&#39;</span>, <span style="color:#e6db74">&#39;word&#39;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#re-in-python"><code>re</code> in Python</a>
+      <ul>
+        <li><a href="#research"><code>re.search()</code></a>
+          <ul>
+            <li><a href="#method-signature">Method Signature</a></li>
+            <li><a href="#match-object-methods"><code>Match</code> Object Methods</a></li>
+            <li><a href="#example">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#rematch"><code>re.match()</code></a>
+          <ul>
+            <li><a href="#method-signature-1">Method Signature</a></li>
+            <li><a href="#example-1">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#refullmatch"><code>re.fullmatch()</code></a>
+          <ul>
+            <li><a href="#method-signature-2">Method Signature</a></li>
+            <li><a href="#example-2">Example</a></li>
+          </ul>
+        </li>
+        <li><a href="#refindall"><code>re.findall()</code></a>
+          <ul>
+            <li><a href="#method-signature-3">Method Signature</a></li>
+            <li><a href="#example-3">Example</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

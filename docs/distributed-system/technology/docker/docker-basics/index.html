@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Docker Basics
+  #
+
+
+  🖥️ &ldquo;It Works on My Machine&rdquo; and Other Challenges
+  #
+
+Imagine you&rsquo;re an engineer working on a software project, and your code runs flawlessly on your machine. But as soon as your teammates try it, something breaks. Maybe it&rsquo;s a missing library 📚, an incompatible runtime version 🛠️, or an environment configuration mismatch ⚙️. These issues make sharing and deploying software across different systems a tedious and error-prone process. The infamous saying, &ldquo;It works on my machine,&rdquo; encapsulates this frustration perfectly. 🙄">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/distributed-system/technology/docker/docker-basics/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Docker Basics">
+  <meta property="og:description" content="Docker Basics # 🖥️ “It Works on My Machine” and Other Challenges # Imagine you’re an engineer working on a software project, and your code runs flawlessly on your machine. But as soon as your teammates try it, something breaks. Maybe it’s a missing library 📚, an incompatible runtime version 🛠️, or an environment configuration mismatch ⚙️. These issues make sharing and deploying software across different systems a tedious and error-prone process. The infamous saying, “It works on my machine,” encapsulates this frustration perfectly. 🙄">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Docker Basics | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/distributed-system/technology/docker/docker-basics/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.650346cbc7dbd641b677ef4deeb160310a4553204dee20b907cc95acac1c1e28.js" integrity="sha256-ZQNGy8fb1kG2d&#43;9N7rFgMQpFUyBN7iC5B8yVrKwcHig=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle"  />
+    <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
+    <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d40552f3cfe92824018c63b2452ecba" class="toggle"  />
+    <label for="section-2d40552f3cfe92824018c63b2452ecba" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c98292848de5e1eee8daf1df97ad8e9" class="toggle"  />
+    <label for="section-6c98292848de5e1eee8daf1df97ad8e9" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
+    <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3190593332d0f8f9ed0d16abadebf669" class="toggle"  />
+    <label for="section-3190593332d0f8f9ed0d16abadebf669" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fe208af9b1b31c593b428135b5384f8" class="toggle"  />
+    <label for="section-9fe208af9b1b31c593b428135b5384f8" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle"  />
+    <label for="section-67fa7359ce5b658cf77244fff5df08fc" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48d1fef9b34bd9f66cd11153ecec9532" class="toggle"  />
+    <label for="section-48d1fef9b34bd9f66cd11153ecec9532" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e85d05a86421e8876acb62f953a355e" class="toggle"  />
+    <label for="section-0e85d05a86421e8876acb62f953a355e" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="toggle"  />
+    <label for="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12c34d34235c7f130e7a4969b853bc86" class="toggle"  />
+    <label for="section-12c34d34235c7f130e7a4969b853bc86" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
+    <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="toggle"  />
+    <label for="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-941ff506688d79a8f0ca9e629da3459f" class="toggle"  />
+    <label for="section-941ff506688d79a8f0ca9e629da3459f" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d2544afe2799858027d68114f061083" class="toggle"  />
+    <label for="section-3d2544afe2799858027d68114f061083" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c932410b33a0ef4d9ccee9231c75620" class="toggle"  />
+    <label for="section-0c932410b33a0ef4d9ccee9231c75620" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
+    <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7e22ed5bec8c14629b6ab355bc1502c" class="toggle"  />
+    <label for="section-f7e22ed5bec8c14629b6ab355bc1502c" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-663cecbab2af013dadd72e5397ce62dc" class="toggle"  />
+    <label for="section-663cecbab2af013dadd72e5397ce62dc" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-454b2a6456d3526d3f6d34370515a130" class="toggle"  />
+    <label for="section-454b2a6456d3526d3f6d34370515a130" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-868ff3bc94429ce8afade70db1d07dbc" class="toggle"  />
+    <label for="section-868ff3bc94429ce8afade70db1d07dbc" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-304cd452d0278b77fa76b02a905b318b" class="toggle"  />
+    <label for="section-304cd452d0278b77fa76b02a905b318b" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle" checked />
+    <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
+    <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-18d02721e1887f4bb6418527097a8950" class="toggle"  />
+    <label for="section-18d02721e1887f4bb6418527097a8950" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-38078f6b2dffb5cfde0331f97c464879" class="toggle"  />
+    <label for="section-38078f6b2dffb5cfde0331f97c464879" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9885b1e85034892b05dcefffde06c590" class="toggle"  />
+    <label for="section-9885b1e85034892b05dcefffde06c590" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle" checked />
+    <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="toggle" checked />
+    <label for="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/docker/docker-basics/" class="active">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
+    <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9d47227da1237bf23c06190fe793afd" class="toggle"  />
+    <label for="section-c9d47227da1237bf23c06190fe793afd" class="flex justify-between">
+      <a role="button" class="">Tool</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-624d42859b7b037f1a6e15ba4ee427e1" class="toggle"  />
+    <label for="section-624d42859b7b037f1a6e15ba4ee427e1" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tool/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Docker Basics</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#docker-basics">Docker Basics</a>
+      <ul>
+        <li><a href="#-it-works-on-my-machine-and-other-challenges">🖥️ &ldquo;It Works on My Machine&rdquo; and Other Challenges</a></li>
+        <li><a href="#-virtual-machines-a-heavyweight-solution">💾 Virtual Machines: A Heavyweight Solution</a></li>
+        <li><a href="#-docker-a-lightweight-alternative">🐳 Docker: A Lightweight Alternative</a></li>
+        <li><a href="#-simple-example-running-nginx-with-docker">🛠️ Simple Example: Running Nginx with Docker</a>
+          <ul>
+            <li><a href="#step-1-pull-the-nginx-image">Step 1️⃣: Pull the Nginx Image</a></li>
+            <li><a href="#step-2-run-the-nginx-container">Step 2️⃣: Run the Nginx Container</a></li>
+            <li><a href="#step-3-access-the-web-server">Step 3️⃣: Access the Web Server</a></li>
+            <li><a href="#step-4-stop-and-remove-the-container">Step 4️⃣: Stop and Remove the Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-understanding-key-docker-components">🔑 Understanding Key Docker Components</a>
+          <ul>
+            <li><a href="#1-docker-registry">1️⃣ Docker Registry</a></li>
+            <li><a href="#2-docker-image">2️⃣ Docker Image</a></li>
+            <li><a href="#3-docker-client">3️⃣ Docker Client</a></li>
+            <li><a href="#4-docker-server-docker-daemon">4️⃣ Docker Server (Docker Daemon)</a></li>
+            <li><a href="#5-host-server">5️⃣ Host Server</a></li>
+            <li><a href="#6-docker-container">6️⃣ Docker Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-visualizing-the-architecture">🖼️ Visualizing the Architecture</a></li>
+        <li><a href="#-step-by-step-breakdown-of-docker-run">🛠️ Step-by-Step Breakdown of <code>docker run</code></a>
+          <ul>
+            <li><a href="#step-1-parsing-the-command">Step 1️⃣: Parsing the Command</a></li>
+            <li><a href="#step-2-checking-the-image">Step 2️⃣: Checking the Image</a></li>
+            <li><a href="#step-3-pulling-the-image-if-necessary">Step 3️⃣: Pulling the Image (if necessary)</a></li>
+            <li><a href="#step-4-creating-the-container">Step 4️⃣: Creating the Container</a></li>
+            <li><a href="#step-5-setting-up-networking">Step 5️⃣: Setting Up Networking</a></li>
+            <li><a href="#step-6-starting-the-container">Step 6️⃣: Starting the Container</a></li>
+            <li><a href="#step-7-running-the-application">Step 7️⃣: Running the Application</a></li>
+          </ul>
+        </li>
+        <li><a href="#-introducing-dockerfile">📝 Introducing Dockerfile</a>
+          <ul>
+            <li><a href="#example-of-a-basic-dockerfile">Example of a Basic Dockerfile</a></li>
+            <li><a href="#key-instructions">Key Instructions</a></li>
+            <li><a href="#building-an-image-with-dockerfile">Building an Image with Dockerfile</a></li>
+            <li><a href="#running-the-built-image">Running the Built Image</a></li>
+          </ul>
+        </li>
+        <li><a href="#-understanding-docker-layers">🛠️ Understanding Docker Layers</a>
+          <ul>
+            <li><a href="#a-simple-dockerfile-example">A Simple Dockerfile Example</a></li>
+            <li><a href="#how-docker-builds-layers-during-image-creation">How Docker Builds Layers During Image Creation</a></li>
+            <li><a href="#characteristics-of-docker-layers">Characteristics of Docker Layers</a></li>
+            <li><a href="#how-docker-ensures-isolation-and-efficiency">How Docker Ensures Isolation and Efficiency</a></li>
+            <li><a href="#how-docker-modifies-and-accesses-files-in-a-container">How Docker Modifies and Accesses Files in a Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-union-file-system-the-layer-management-interface-">🖼️ Union File System: The Layer Management Interface 🌐</a>
+          <ul>
+            <li><a href="#role-of-the-union-file-system">Role of the Union File System</a></li>
+            <li><a href="#summary-of-ufs-benefits">Summary of UFS Benefits</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="docker-basics">
+  Docker Basics
+  <a class="anchor" href="#docker-basics">#</a>
+</h1>
+<h2 id="-it-works-on-my-machine-and-other-challenges">
+  🖥️ &ldquo;It Works on My Machine&rdquo; and Other Challenges
+  <a class="anchor" href="#-it-works-on-my-machine-and-other-challenges">#</a>
+</h2>
+<p>Imagine you&rsquo;re an engineer working on a software project, and your code runs flawlessly on your machine. But as soon as your teammates try it, something breaks. Maybe it&rsquo;s a missing library 📚, an incompatible runtime version 🛠️, or an environment configuration mismatch ⚙️. These issues make sharing and deploying software across different systems a tedious and error-prone process. The infamous saying, &ldquo;It works on my machine,&rdquo; encapsulates this frustration perfectly. 🙄</p>
+<p>The root of the problem lies in dependencies 🔗. A service relies on specific runtimes, libraries, and configurations to function correctly. If even one element differs between environments, the application might behave unpredictably or fail entirely. Scaling the service across multiple machines compounds the issue, as each instance must be configured identically. Developers often spent countless hours 🕒 manually setting up environments, resolving mismatches, and troubleshooting issues, turning even small deployments into significant challenges. 😩</p>
+<h2 id="-virtual-machines-a-heavyweight-solution">
+  💾 Virtual Machines: A Heavyweight Solution
+  <a class="anchor" href="#-virtual-machines-a-heavyweight-solution">#</a>
+</h2>
+<p>In the early 2010s, engineers sought a better solution to ensure consistent environments for running applications. Virtual machines (VMs) 🖥️ helped by bundling an operating system and dependencies together, creating isolated environments. However, they had key drawbacks: VMs were large and resource-intensive because each included an entire OS 🐘, making them overkill for many applications that didn’t need such heavy isolation. Running multiple VMs required substantial CPU and memory 💾, limiting scalability. Their long startup times ⏳ caused delays, particularly for tasks requiring rapid initialization, such as restarting services. Portability was another challenge, as VM images were bulky and difficult to transfer between environments 📦. Managing VMs at scale was complex, with updates and patches requiring significant manual effort. These limitations made VMs inefficient for many use cases, creating a demand for a lightweight, portable alternative.</p>
+<h2 id="-docker-a-lightweight-alternative">
+  🐳 Docker: A Lightweight Alternative
+  <a class="anchor" href="#-docker-a-lightweight-alternative">#</a>
+</h2>
+<p>Docker was designed as a solution to the limitations of Virtual Machines (VMs), offering a lightweight and efficient way to package and deploy applications 🚀. Unlike VMs, Docker does not bundle a full operating system. Instead, it uses the host OS kernel and includes only the essential components needed to run applications. This makes Docker faster ⚡, more resource-efficient, and less demanding on hardware.</p>
+<p>Another key distinction is that Docker is platform-independent. While VMs rely on the host operating system and include their own full OS stack, Docker containers are portable across different platforms. This is achieved by leveraging Docker’s ability to isolate applications from the underlying system, enabling them to run consistently on any environment that supports Docker.</p>
+<p>Docker’s foundation rests on two key components: <strong>images</strong> 🖼️ and <strong>containers</strong> 📦. A <strong>Docker image</strong> is a blueprint 📐 that defines everything an application needs to run, such as code, libraries, and configurations. A <strong>container</strong> is an instance 🏠 of this image, providing an isolated environment where the application runs consistently, regardless of the underlying system. </p>
+<p>With Docker, developers can create these images once and use them anywhere, ensuring that the application behaves the same way across development, testing, and production environments. This eliminates the &ldquo;it works on my machine&rdquo; problem while making deployments faster and more reliable. Scaling becomes straightforward, as launching additional containers from the same image is quick and efficient. ⚙️</p>
+<h2 id="-simple-example-running-nginx-with-docker">
+  🛠️ Simple Example: Running Nginx with Docker
+  <a class="anchor" href="#-simple-example-running-nginx-with-docker">#</a>
+</h2>
+<p>Before diving deeper, let’s look at a simple example to demonstrate how Docker works in practice. We’ll use Docker to run an <strong>Nginx web server</strong>, a lightweight and widely used server for hosting websites. 🌐</p>
+<h3 id="step-1-pull-the-nginx-image">
+  Step 1️⃣: Pull the Nginx Image
+  <a class="anchor" href="#step-1-pull-the-nginx-image">#</a>
+</h3>
+<p>Docker provides prebuilt images for popular software through Docker Hub. To get the Nginx image, run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull nginx
+</span></span></code></pre></div><p>This command downloads the latest Nginx image to your local machine. 📥</p>
+<h3 id="step-2-run-the-nginx-container">
+  Step 2️⃣: Run the Nginx Container
+  <a class="anchor" href="#step-2-run-the-nginx-container">#</a>
+</h3>
+<p>Start a container using the Nginx image:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d -p 8080:80 --name my-nginx nginx
+</span></span></code></pre></div><ul>
+<li><code>-d</code>: Runs the container in detached mode (in the background).</li>
+<li><code>-p 8080:80</code>: Maps port 80 inside the container to port 8080 on the host.</li>
+<li><code>--name my-nginx</code>: Names the container &ldquo;my-nginx&rdquo; for easy reference.</li>
+</ul>
+<h3 id="step-3-access-the-web-server">
+  Step 3️⃣: Access the Web Server
+  <a class="anchor" href="#step-3-access-the-web-server">#</a>
+</h3>
+<p>Open your browser and navigate to <code>http://localhost:8080</code>. You’ll see the default Nginx welcome page, confirming the container is running successfully. 🎉</p>
+<h3 id="step-4-stop-and-remove-the-container">
+  Step 4️⃣: Stop and Remove the Container
+  <a class="anchor" href="#step-4-stop-and-remove-the-container">#</a>
+</h3>
+<p>When you’re done, stop and remove the container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker stop my-nginx
+</span></span><span style="display:flex;"><span>docker rm my-nginx
+</span></span></code></pre></div><p>This simple example demonstrates how Docker simplifies running software in isolated environments while managing dependencies and configurations seamlessly. 🚀</p>
+<h2 id="-understanding-key-docker-components">
+  🔑 Understanding Key Docker Components
+  <a class="anchor" href="#-understanding-key-docker-components">#</a>
+</h2>
+<p>To fully appreciate Docker, it’s essential to understand its core architecture. Here are the key components introduced in a logical dependency order:</p>
+<h3 id="1-docker-registry">
+  1️⃣ Docker Registry
+  <a class="anchor" href="#1-docker-registry">#</a>
+</h3>
+<p>The <strong>Docker Registry</strong> is a repository 🏢 where Docker images are stored. Popular public registries like Docker Hub host a wide variety of pre-built images. You can also create private registries 🔒 for internal use. The registry serves as the source for pulling and pushing images, making it the starting point for creating containers.</p>
+<h3 id="2-docker-image">
+  2️⃣ Docker Image
+  <a class="anchor" href="#2-docker-image">#</a>
+</h3>
+<p>A <strong>Docker image</strong> is a pre-built package containing everything an application needs to run, such as the application code, runtime, libraries, and configurations. Think of it as a &ldquo;blueprint&rdquo; 📝 for your application. Images are pulled from the Docker Registry or built locally.</p>
+<h3 id="3-docker-client">
+  3️⃣ Docker Client
+  <a class="anchor" href="#3-docker-client">#</a>
+</h3>
+<p>The <strong>Docker Client</strong> is the primary interface 🎛️ that allows users to interact with Docker. While the most common client is the command-line interface (CLI) 💻, other interfaces, such as APIs or graphical user interfaces (GUIs), can also act as Docker Clients. For example, Docker Desktop includes a GUI for managing containers. The client sends commands like <code>docker run</code> or <code>docker build</code> to the Docker Daemon 🛠️, which processes and executes them. The Docker Client and Docker Daemon do not need to run on the same host. The client can connect to a remote daemon over a network 🌐, enabling you to manage containers on other machines from your local environment.</p>
+<h3 id="4-docker-server-docker-daemon">
+  4️⃣ Docker Server (Docker Daemon)
+  <a class="anchor" href="#4-docker-server-docker-daemon">#</a>
+</h3>
+<p>The <strong>Docker Daemon</strong> is the background process ⚙️ running on the host server. It manages Docker objects like images, containers, networks, and volumes. The daemon listens for requests from the Docker Client and executes them, such as building images or starting containers.</p>
+<h3 id="5-host-server">
+  5️⃣ Host Server
+  <a class="anchor" href="#5-host-server">#</a>
+</h3>
+<p>The <strong>host server</strong> 🖥️ is the machine where the Docker Daemon runs. It can be your local machine, a virtual machine, or a cloud server ☁️. The host provides the underlying resources like CPU, memory, and storage needed to run containers.</p>
+<h3 id="6-docker-container">
+  6️⃣ Docker Container
+  <a class="anchor" href="#6-docker-container">#</a>
+</h3>
+<p>A <strong>Docker container</strong> is a running instance of a Docker image 📦. Every container is like a lightweight Linux OS 🐧, providing an isolated environment for running applications. Just like a server, a container has its own ports 🔌 that can be mapped to the host system&rsquo;s ports to enable communication with the outside world.</p>
+<h2 id="-visualizing-the-architecture">
+  🖼️ Visualizing the Architecture
+  <a class="anchor" href="#-visualizing-the-architecture">#</a>
+</h2>
+<p>Here’s a visual representation of the Docker components and how they interact:</p>
+<p><img src="/docs/programming/system-design/technology/docker/docker-architecture.webp" alt="application-load-balancer" /></p>
+<p>Image Source: <em><a href="https://community.aws/content/2g5DJFeXfAH9hMWcZ9VpR4UGRKP/how-docker-works">How Docker Works&hellip;.!</a></em></p>
+<p>This diagram provides a clear view of how Docker images, containers, the Docker Daemon, and other components work together to simplify development and deployment. 🛠️</p>
+<h2 id="-step-by-step-breakdown-of-docker-run">
+  🛠️ Step-by-Step Breakdown of <code>docker run</code>
+  <a class="anchor" href="#-step-by-step-breakdown-of-docker-run">#</a>
+</h2>
+<p>To better understand how Docker works in practice, let’s break down what happens internally when you execute the <code>docker run</code> command. Each step highlights a specific component’s role in the process:</p>
+<h3 id="step-1-parsing-the-command">
+  Step 1️⃣: Parsing the Command
+  <a class="anchor" href="#step-1-parsing-the-command">#</a>
+</h3>
+<p>The Docker Client parses the <code>docker run</code> command and sends an API request to the Docker Daemon with the necessary instructions.</p>
+<h3 id="step-2-checking-the-image">
+  Step 2️⃣: Checking the Image
+  <a class="anchor" href="#step-2-checking-the-image">#</a>
+</h3>
+<p>The Docker Daemon checks if the specified image is available locally:</p>
+<ul>
+<li>If the image exists locally, the daemon proceeds.</li>
+<li>If not, the daemon pulls the image from the Docker Registry (e.g., Docker Hub).</li>
+</ul>
+<h3 id="step-3-pulling-the-image-if-necessary">
+  Step 3️⃣: Pulling the Image (if necessary)
+  <a class="anchor" href="#step-3-pulling-the-image-if-necessary">#</a>
+</h3>
+<p>If required, the daemon downloads the image in layers 📥 from the registry. This ensures only missing parts are downloaded, optimizing bandwidth usage.</p>
+<h3 id="step-4-creating-the-container">
+  Step 4️⃣: Creating the Container
+  <a class="anchor" href="#step-4-creating-the-container">#</a>
+</h3>
+<p>The daemon creates a container from the image by:</p>
+<ul>
+<li>Setting up the container’s filesystem based on the image.</li>
+<li>Allocating resources like CPU and memory.</li>
+<li>Assigning a unique ID to the container.</li>
+</ul>
+<h3 id="step-5-setting-up-networking">
+  Step 5️⃣: Setting Up Networking
+  <a class="anchor" href="#step-5-setting-up-networking">#</a>
+</h3>
+<p>Docker sets up networking for the container by:</p>
+<ul>
+<li>Creating a virtual network interface.</li>
+<li>Establishing port mappings (e.g., host port 8080 to container port 80).</li>
+<li>Connecting the container to a Docker network, if required.</li>
+</ul>
+<h3 id="step-6-starting-the-container">
+  Step 6️⃣: Starting the Container
+  <a class="anchor" href="#step-6-starting-the-container">#</a>
+</h3>
+<p>The container starts, executing the default or specified command defined in the image.</p>
+<h3 id="step-7-running-the-application">
+  Step 7️⃣: Running the Application
+  <a class="anchor" href="#step-7-running-the-application">#</a>
+</h3>
+<p>The application inside the container runs, and logs or outputs are streamed back to the Docker Client. 🐳</p>
+<h2 id="-introducing-dockerfile">
+  📝 Introducing Dockerfile
+  <a class="anchor" href="#-introducing-dockerfile">#</a>
+</h2>
+<p>A <strong>Dockerfile</strong> is a script-like template that defines the steps required to build a Docker image. It provides a systematic way to package an application by specifying its dependencies, configurations, and commands. By using a Dockerfile, developers can ensure consistent builds across different environments, automate image creation, and streamline deployments effectively.</p>
+<h3 id="example-of-a-basic-dockerfile">
+  Example of a Basic Dockerfile
+  <a class="anchor" href="#example-of-a-basic-dockerfile">#</a>
+</h3>
+<p>Here’s a simpler example of a Dockerfile for a basic Node.js application:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># Use an official Node.js runtime as the base image</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> node:14</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set the working directory inside the container</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /usr/src/app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy package.json and package-lock.json for dependency installation</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> package.json package-lock.json ./<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install application dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> npm install<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy application source code to the container</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Expose the application port</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 3000</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Define the default command to run the application</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;node&#34;</span>, <span style="color:#e6db74">&#34;server.js&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="key-instructions">
+  Key Instructions
+  <a class="anchor" href="#key-instructions">#</a>
+</h3>
+<ul>
+<li><strong>FROM</strong>: Specifies the base image (e.g., <code>python:3.9-slim</code>).</li>
+<li><strong>WORKDIR</strong>: Sets the working directory inside the container.</li>
+<li><strong>COPY</strong>: Copies files from the host to the container.</li>
+<li><strong>RUN</strong>: Executes commands to install dependencies or configure the image.</li>
+<li><strong>CMD</strong>: Specifies the default command to execute when the container starts.</li>
+</ul>
+<h3 id="building-an-image-with-dockerfile">
+  Building an Image with Dockerfile
+  <a class="anchor" href="#building-an-image-with-dockerfile">#</a>
+</h3>
+<p>To build an image from this Dockerfile, run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build -t my-python-app .
+</span></span></code></pre></div><ul>
+<li><code>-t</code>: Tags the image with a name (<code>my-python-app</code>).</li>
+<li><code>.</code>: Indicates the build context (the current directory).</li>
+</ul>
+<h3 id="running-the-built-image">
+  Running the Built Image
+  <a class="anchor" href="#running-the-built-image">#</a>
+</h3>
+<p>Once built, you can run a container from the image:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d -p 5000:5000 my-python-app
+</span></span></code></pre></div><p>This starts the container, maps port 5000 on the host to port 5000 in the container, and runs your Python application. 🚀</p>
+<h2 id="-understanding-docker-layers">
+  🛠️ Understanding Docker Layers
+  <a class="anchor" href="#-understanding-docker-layers">#</a>
+</h2>
+<p>Docker layers are the foundational building blocks of Docker images, enabling its lightweight and efficient design. Each layer represents a set of instructions from a Dockerfile, such as <code>RUN</code>, <code>COPY</code>, or <code>ADD</code>. These layers work together to create a single, unified image while maintaining modularity and efficiency. 🌟</p>
+<h3 id="a-simple-dockerfile-example">
+  A Simple Dockerfile Example
+  <a class="anchor" href="#a-simple-dockerfile-example">#</a>
+</h3>
+<p>Before diving deeper, here’s a simple Dockerfile to demonstrate how layers are created:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># Use a base image</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:20.04</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y python3<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy application code</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> app.py /app/app.py<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Define the default command</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;python3&#34;</span>, <span style="color:#e6db74">&#34;/app/app.py&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="how-docker-builds-layers-during-image-creation">
+  How Docker Builds Layers During Image Creation
+  <a class="anchor" href="#how-docker-builds-layers-during-image-creation">#</a>
+</h3>
+<p>When you run <code>docker build</code> with this Dockerfile, Docker processes each instruction and creates a new layer for every step:</p>
+<ol>
+<li><strong>Base Layer</strong>: The <code>FROM ubuntu:20.04</code> instruction pulls the base image and sets it as the foundational layer. 🚀</li>
+<li><strong>Instruction Layers</strong>:
+<ul>
+<li><code>RUN apt-get update &amp;&amp; apt-get install -y python3</code>: Adds a new layer containing the installed dependencies.</li>
+<li><code>COPY app.py /app/app.py</code>: Creates another layer with the copied application code.</li>
+</ul>
+</li>
+<li><strong>Layer Caching</strong>: If you rebuild the image without changing <code>COPY app.py</code>, Docker reuses the cached layers for the <code>RUN</code> and <code>COPY</code> steps, speeding up the process. ⚡</li>
+<li><strong>Final Image</strong>: Docker combines all layers into a single, cohesive image that can be reused and shared. 🖼️</li>
+</ol>
+<h3 id="characteristics-of-docker-layers">
+  Characteristics of Docker Layers
+  <a class="anchor" href="#characteristics-of-docker-layers">#</a>
+</h3>
+<ol>
+<li><strong>Read-Only Layers</strong>: All layers in an image are immutable. Once created, they cannot be modified. 📂</li>
+<li><strong>Writable Layers</strong>: When a container is started, Docker adds a writable layer on top of the image’s read-only layers. This writable layer stores any runtime changes made by the container. ✏️</li>
+<li><strong>Layer Reuse</strong>: Docker optimizes storage and build times by reusing existing layers. For example, if two images share a base layer, Docker stores it only once. 🔄</li>
+</ol>
+<h3 id="how-docker-ensures-isolation-and-efficiency">
+  How Docker Ensures Isolation and Efficiency
+  <a class="anchor" href="#how-docker-ensures-isolation-and-efficiency">#</a>
+</h3>
+<ul>
+<li><strong>Isolation</strong>: Each container has its own writable layer, ensuring changes made in one container do not affect others. 🔒</li>
+<li><strong>Efficient Reuse</strong>: Shared read-only layers allow multiple containers to use the same base image without duplication. 📦</li>
+</ul>
+<h3 id="how-docker-modifies-and-accesses-files-in-a-container">
+  How Docker Modifies and Accesses Files in a Container
+  <a class="anchor" href="#how-docker-modifies-and-accesses-files-in-a-container">#</a>
+</h3>
+<ol>
+<li><strong>File Access</strong>:
+<ul>
+<li>When a container requests a file, Docker checks the writable layer first.</li>
+<li>If the file doesn’t exist there, Docker looks through the underlying read-only layers from top to bottom. 🔍</li>
+</ul>
+</li>
+<li><strong>File Modification</strong>:
+<ul>
+<li>If a container modifies a file, Docker uses a <strong>Copy-on-Write</strong> mechanism:
+<ul>
+<li>A copy of the file is moved to the writable layer.</li>
+<li>The container modifies this private copy, leaving the original in the read-only layer untouched. ✂️</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>By using this layered approach, Docker achieves both efficiency and isolation, making it ideal for modern application development. 🚀</p>
+<h2 id="-union-file-system-the-layer-management-interface-">
+  🖼️ Union File System: The Layer Management Interface 🌐
+  <a class="anchor" href="#-union-file-system-the-layer-management-interface-">#</a>
+</h2>
+<p>While Docker layers provide the building blocks for images and containers, the question arises: how are these layers managed and unified? This is where the <strong>Union File System (UFS)</strong> comes into play. UFS acts as the interface and abstraction layer responsible for merging and managing the various layers, enabling Docker to seamlessly handle file systems during image creation, builds, container creation, and runtime. 🌟</p>
+<h3 id="role-of-the-union-file-system">
+  Role of the Union File System
+  <a class="anchor" href="#role-of-the-union-file-system">#</a>
+</h3>
+<ol>
+<li>
+<p><strong>Image Creation and Storage</strong>:</p>
+<ul>
+<li>When building an image, UFS overlays the layers created by each Dockerfile instruction into a unified file system. Each new instruction (e.g., <code>RUN</code>, <code>COPY</code>) adds a layer, and UFS merges them to form the final image. 🖼️</li>
+<li>UFS ensures that read-only layers in images are stored efficiently, avoiding duplication by sharing common layers across images. For example, if two images use the same base image, UFS ensures that the base layer is stored only once. 📦</li>
+</ul>
+</li>
+<li>
+<p><strong>Container Creation</strong>:</p>
+<ul>
+<li>During container startup, UFS overlays the read-only image layers with a writable layer that is unique to each container.</li>
+<li>This writable layer is placed on top of the stack and allows the container to make changes while preserving the original image layers. The uniqueness of the writable layer ensures complete isolation between containers, so changes in one container do not affect others or the base image. 🔒</li>
+</ul>
+</li>
+<li>
+<p><strong>Runtime Operations</strong>:</p>
+<ul>
+<li>At runtime, UFS provides a unified view of the container’s file system by facilitating efficient access to files across layers. Each file in the container exists as a potential version within the writable or read-only layers. 🔄</li>
+<li><strong>File Access</strong>: When a file is requested, UFS starts searching from the writable layer. If the file exists, its writable-layer version is used. If not, UFS searches sequentially through the underlying read-only layers until the file is found. 🔍</li>
+<li><strong>File Modification</strong>: If a container modifies a file, UFS employs a <strong>Copy-on-Write</strong> mechanism:
+<ul>
+<li>A copy of the file from the read-only layer is created in the writable layer.</li>
+<li>The writable-layer version is updated, while the original remains unchanged in the lower layers. ✏️</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="summary-of-ufs-benefits">
+  Summary of UFS Benefits
+  <a class="anchor" href="#summary-of-ufs-benefits">#</a>
+</h3>
+<ul>
+<li><strong>Layer Caching and Reuse</strong>: Enhances build efficiency by reusing unchanged layers, reducing storage requirements and build times. ⚡</li>
+<li><strong>Writable Layer Isolation</strong>: Ensures every container has a private writable layer for runtime changes, preserving isolation and security. 🔒</li>
+<li><strong>Unified Management</strong>: Abstracts layer and file system operations, enabling seamless container creation, builds, and runtime efficiency. 🌐</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#docker-basics">Docker Basics</a>
+      <ul>
+        <li><a href="#-it-works-on-my-machine-and-other-challenges">🖥️ &ldquo;It Works on My Machine&rdquo; and Other Challenges</a></li>
+        <li><a href="#-virtual-machines-a-heavyweight-solution">💾 Virtual Machines: A Heavyweight Solution</a></li>
+        <li><a href="#-docker-a-lightweight-alternative">🐳 Docker: A Lightweight Alternative</a></li>
+        <li><a href="#-simple-example-running-nginx-with-docker">🛠️ Simple Example: Running Nginx with Docker</a>
+          <ul>
+            <li><a href="#step-1-pull-the-nginx-image">Step 1️⃣: Pull the Nginx Image</a></li>
+            <li><a href="#step-2-run-the-nginx-container">Step 2️⃣: Run the Nginx Container</a></li>
+            <li><a href="#step-3-access-the-web-server">Step 3️⃣: Access the Web Server</a></li>
+            <li><a href="#step-4-stop-and-remove-the-container">Step 4️⃣: Stop and Remove the Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-understanding-key-docker-components">🔑 Understanding Key Docker Components</a>
+          <ul>
+            <li><a href="#1-docker-registry">1️⃣ Docker Registry</a></li>
+            <li><a href="#2-docker-image">2️⃣ Docker Image</a></li>
+            <li><a href="#3-docker-client">3️⃣ Docker Client</a></li>
+            <li><a href="#4-docker-server-docker-daemon">4️⃣ Docker Server (Docker Daemon)</a></li>
+            <li><a href="#5-host-server">5️⃣ Host Server</a></li>
+            <li><a href="#6-docker-container">6️⃣ Docker Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-visualizing-the-architecture">🖼️ Visualizing the Architecture</a></li>
+        <li><a href="#-step-by-step-breakdown-of-docker-run">🛠️ Step-by-Step Breakdown of <code>docker run</code></a>
+          <ul>
+            <li><a href="#step-1-parsing-the-command">Step 1️⃣: Parsing the Command</a></li>
+            <li><a href="#step-2-checking-the-image">Step 2️⃣: Checking the Image</a></li>
+            <li><a href="#step-3-pulling-the-image-if-necessary">Step 3️⃣: Pulling the Image (if necessary)</a></li>
+            <li><a href="#step-4-creating-the-container">Step 4️⃣: Creating the Container</a></li>
+            <li><a href="#step-5-setting-up-networking">Step 5️⃣: Setting Up Networking</a></li>
+            <li><a href="#step-6-starting-the-container">Step 6️⃣: Starting the Container</a></li>
+            <li><a href="#step-7-running-the-application">Step 7️⃣: Running the Application</a></li>
+          </ul>
+        </li>
+        <li><a href="#-introducing-dockerfile">📝 Introducing Dockerfile</a>
+          <ul>
+            <li><a href="#example-of-a-basic-dockerfile">Example of a Basic Dockerfile</a></li>
+            <li><a href="#key-instructions">Key Instructions</a></li>
+            <li><a href="#building-an-image-with-dockerfile">Building an Image with Dockerfile</a></li>
+            <li><a href="#running-the-built-image">Running the Built Image</a></li>
+          </ul>
+        </li>
+        <li><a href="#-understanding-docker-layers">🛠️ Understanding Docker Layers</a>
+          <ul>
+            <li><a href="#a-simple-dockerfile-example">A Simple Dockerfile Example</a></li>
+            <li><a href="#how-docker-builds-layers-during-image-creation">How Docker Builds Layers During Image Creation</a></li>
+            <li><a href="#characteristics-of-docker-layers">Characteristics of Docker Layers</a></li>
+            <li><a href="#how-docker-ensures-isolation-and-efficiency">How Docker Ensures Isolation and Efficiency</a></li>
+            <li><a href="#how-docker-modifies-and-accesses-files-in-a-container">How Docker Modifies and Accesses Files in a Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-union-file-system-the-layer-management-interface-">🖼️ Union File System: The Layer Management Interface 🌐</a>
+          <ul>
+            <li><a href="#role-of-the-union-file-system">Role of the Union File System</a></li>
+            <li><a href="#summary-of-ufs-benefits">Summary of UFS Benefits</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

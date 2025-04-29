@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Introduction
+  #
+
+This project is for learning purpose. It is a practice of
+
+how to use JWT (Json Web Token) to authenticate user
+login with Google using OAuth2
+
+
+  Tech Stack
+  #
+
+
+Node.js
+Express: Quickly start a local host
+MongoDB/Mongoose: Database to store users
+@hapi/joi: Package to validate parameters of objects
+bcryptjs: Hash confidential information including passwords in this project
+jsonwebtoken: JWT package to sign and verify a auth token
+axios: Send HTTP requests
+querystring: Package to parse and assembly query string in HTTP request
+
+
+  Reference
+  #
+
+
+Implement JWT using node.js and express: Very nice video which guides me step by step to build this project
+Google OAuth2 with node.js: Video that explains and implements OAuth2 flow from end to end
+OAuth 2.0 and OpenID Connect: Plain English explains the evolution of OAuth2 and OpenID Connect
+
+
+  What Is JWT?
+  #
+
+A JWT (JSON Web Token) is like a compact digital note or a small piece of data that web servers and clients (like your browser or a mobile app) use to communicate secure information. It&rsquo;s like a tiny, encoded message.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/project/node-js-auth/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Node Js Auth">
+  <meta property="og:description" content="Introduction # This project is for learning purpose. It is a practice of
+how to use JWT (Json Web Token) to authenticate user login with Google using OAuth2 Tech Stack # Node.js Express: Quickly start a local host MongoDB/Mongoose: Database to store users @hapi/joi: Package to validate parameters of objects bcryptjs: Hash confidential information including passwords in this project jsonwebtoken: JWT package to sign and verify a auth token axios: Send HTTP requests querystring: Package to parse and assembly query string in HTTP request Reference # Implement JWT using node.js and express: Very nice video which guides me step by step to build this project Google OAuth2 with node.js: Video that explains and implements OAuth2 flow from end to end OAuth 2.0 and OpenID Connect: Plain English explains the evolution of OAuth2 and OpenID Connect What Is JWT? # A JWT (JSON Web Token) is like a compact digital note or a small piece of data that web servers and clients (like your browser or a mobile app) use to communicate secure information. It’s like a tiny, encoded message.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Node Js Auth | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/project/node-js-auth/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.650346cbc7dbd641b677ef4deeb160310a4553204dee20b907cc95acac1c1e28.js" integrity="sha256-ZQNGy8fb1kG2d&#43;9N7rFgMQpFUyBN7iC5B8yVrKwcHig=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle"  />
+    <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
+    <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d40552f3cfe92824018c63b2452ecba" class="toggle"  />
+    <label for="section-2d40552f3cfe92824018c63b2452ecba" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c98292848de5e1eee8daf1df97ad8e9" class="toggle"  />
+    <label for="section-6c98292848de5e1eee8daf1df97ad8e9" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
+    <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3190593332d0f8f9ed0d16abadebf669" class="toggle"  />
+    <label for="section-3190593332d0f8f9ed0d16abadebf669" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fe208af9b1b31c593b428135b5384f8" class="toggle"  />
+    <label for="section-9fe208af9b1b31c593b428135b5384f8" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle" checked />
+    <label for="section-67fa7359ce5b658cf77244fff5df08fc" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/node-js-auth/" class="active">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48d1fef9b34bd9f66cd11153ecec9532" class="toggle"  />
+    <label for="section-48d1fef9b34bd9f66cd11153ecec9532" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e85d05a86421e8876acb62f953a355e" class="toggle"  />
+    <label for="section-0e85d05a86421e8876acb62f953a355e" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="toggle"  />
+    <label for="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12c34d34235c7f130e7a4969b853bc86" class="toggle"  />
+    <label for="section-12c34d34235c7f130e7a4969b853bc86" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
+    <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="toggle"  />
+    <label for="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-941ff506688d79a8f0ca9e629da3459f" class="toggle"  />
+    <label for="section-941ff506688d79a8f0ca9e629da3459f" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d2544afe2799858027d68114f061083" class="toggle"  />
+    <label for="section-3d2544afe2799858027d68114f061083" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c932410b33a0ef4d9ccee9231c75620" class="toggle"  />
+    <label for="section-0c932410b33a0ef4d9ccee9231c75620" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
+    <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7e22ed5bec8c14629b6ab355bc1502c" class="toggle"  />
+    <label for="section-f7e22ed5bec8c14629b6ab355bc1502c" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-663cecbab2af013dadd72e5397ce62dc" class="toggle"  />
+    <label for="section-663cecbab2af013dadd72e5397ce62dc" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-454b2a6456d3526d3f6d34370515a130" class="toggle"  />
+    <label for="section-454b2a6456d3526d3f6d34370515a130" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-868ff3bc94429ce8afade70db1d07dbc" class="toggle"  />
+    <label for="section-868ff3bc94429ce8afade70db1d07dbc" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-304cd452d0278b77fa76b02a905b318b" class="toggle"  />
+    <label for="section-304cd452d0278b77fa76b02a905b318b" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
+    <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
+    <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-18d02721e1887f4bb6418527097a8950" class="toggle"  />
+    <label for="section-18d02721e1887f4bb6418527097a8950" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-38078f6b2dffb5cfde0331f97c464879" class="toggle"  />
+    <label for="section-38078f6b2dffb5cfde0331f97c464879" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9885b1e85034892b05dcefffde06c590" class="toggle"  />
+    <label for="section-9885b1e85034892b05dcefffde06c590" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
+    <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="toggle"  />
+    <label for="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
+    <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9d47227da1237bf23c06190fe793afd" class="toggle"  />
+    <label for="section-c9d47227da1237bf23c06190fe793afd" class="flex justify-between">
+      <a role="button" class="">Tool</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-624d42859b7b037f1a6e15ba4ee427e1" class="toggle"  />
+    <label for="section-624d42859b7b037f1a6e15ba4ee427e1" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tool/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Node Js Auth</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#tech-stack">Tech Stack</a></li>
+        <li><a href="#reference">Reference</a></li>
+        <li><a href="#what-is-jwt">What Is JWT?</a>
+          <ul>
+            <li><a href="#structure-of-jwt">Structure of JWT</a></li>
+            <li><a href="#risk-of-jwt">Risk of JWT</a></li>
+            <li><a href="#best-practice">Best Practice</a></li>
+          </ul>
+        </li>
+        <li><a href="#api">API</a>
+          <ul>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#login">Login</a></li>
+            <li><a href="#posts">Posts</a></li>
+          </ul>
+        </li>
+        <li><a href="#oauth2">OAuth2</a>
+          <ul>
+            <li><a href="#what-is-oauth2">What is OAuth2?</a></li>
+            <li><a href="#why-oauth2">Why OAuth2?</a></li>
+            <li><a href="#key-components-of-oauth2">Key Components of OAuth2</a></li>
+            <li><a href="#how-oauth2-works">How OAuth2 works</a></li>
+            <li><a href="#why-openid-connect">Why OpenID Connect</a></li>
+            <li><a href="#how-opendid-connect-works">How OpendID Connect works</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h1>
+<p>This project is for learning purpose. It is a practice of</p>
+<ol>
+<li>how to use JWT (Json Web Token) to authenticate user</li>
+<li>login with Google using OAuth2</li>
+</ol>
+<h2 id="tech-stack">
+  Tech Stack
+  <a class="anchor" href="#tech-stack">#</a>
+</h2>
+<ul>
+<li><code>Node.js</code></li>
+<li><code>Express</code>: Quickly start a local host</li>
+<li><code>MongoDB/Mongoose</code>: Database to store users</li>
+<li><code>@hapi/joi</code>: Package to validate parameters of objects</li>
+<li><code>bcryptjs</code>: Hash confidential information including passwords in this project</li>
+<li><code>jsonwebtoken</code>: JWT package to sign and verify a auth token</li>
+<li><code>axios</code>: Send HTTP requests</li>
+<li><code>querystring</code>: Package to parse and assembly query string in HTTP request</li>
+</ul>
+<h2 id="reference">
+  Reference
+  <a class="anchor" href="#reference">#</a>
+</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=2jqok-WgelI">Implement JWT using node.js and express</a>: Very nice video which guides me step by step to build this project</li>
+<li><a href="https://www.youtube.com/watch?v=Qt3KJZ2kQk0&amp;t=6s">Google OAuth2 with node.js</a>: Video that explains and implements OAuth2 flow from end to end</li>
+<li><a href="https://www.youtube.com/watch?v=996OiexHze0">OAuth 2.0 and OpenID Connect</a>: Plain English explains the evolution of OAuth2 and OpenID Connect</li>
+</ul>
+<h2 id="what-is-jwt">
+  What Is JWT?
+  <a class="anchor" href="#what-is-jwt">#</a>
+</h2>
+<p>A JWT (JSON Web Token) is like a compact digital note or a small piece of data that web servers and clients (like your browser or a mobile app) use to communicate secure information. It&rsquo;s like a tiny, encoded message.</p>
+<h3 id="structure-of-jwt">
+  Structure of JWT
+  <a class="anchor" href="#structure-of-jwt">#</a>
+</h3>
+<p>A JWT is made up of three parts, each encoded in base64 and separated by dots (<code>.</code>):</p>
+<ul>
+<li><strong>Header</strong>: The header typically consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as SHA256 or RSA.</li>
+<li><strong>Payload</strong>: The payload contains information of the identity, like id, isa(issuedAt), and etc&hellip;</li>
+<li><strong>Signature</strong>: This is the secure part of JWT. It is created by taking encoded header, encoded payload, a secret only known by the server, then running it through the signing algorithm mentioned in the header. If the algorithm is
+<ul>
+<li>Symmetric algorithm (like <code>HS256</code>): The same secret is used for signing and verification</li>
+<li>Asymmetric algorithm (like <code>RS256</code>): A private key will be used for signing, and a corresponding public key will be used for verification</li>
+</ul>
+</li>
+</ul>
+<h3 id="risk-of-jwt">
+  Risk of JWT
+  <a class="anchor" href="#risk-of-jwt">#</a>
+</h3>
+<ul>
+<li>Data is Not Encrypted
+<ul>
+<li>The first two parts of a JWT token are only base64 encoded, but not encrypted, so everyone can decode them and read data directly. Hence, confidential information should not be stored in the payload</li>
+</ul>
+</li>
+<li>Susceptible to Theft
+<ul>
+<li>If a JWT is stolen, it could by used by unauthorized parties to gain access to the system</li>
+</ul>
+</li>
+<li>No Revocation Mechanism
+<ul>
+<li>Once issued, a JWT can&rsquo;t be revoked before it expires</li>
+</ul>
+</li>
+<li>Key Management Challenges
+<ul>
+<li>The security of JWT depends on how secret key is managed by the server. If the secret is not well managed or securely stored, it could lead security vulnerabilities</li>
+</ul>
+</li>
+</ul>
+<h3 id="best-practice">
+  Best Practice
+  <a class="anchor" href="#best-practice">#</a>
+</h3>
+<ul>
+<li>Use HTTPS to prevent interception of tokens.</li>
+<li>Keep expiration times as short as practical.</li>
+<li>Avoid storing sensitive data in the token.</li>
+<li>Implement token refresh mechanisms.</li>
+<li>Securely manage signing keys.</li>
+</ul>
+<h2 id="api">
+  API
+  <a class="anchor" href="#api">#</a>
+</h2>
+<h3 id="register">
+  Register
+  <a class="anchor" href="#register">#</a>
+</h3>
+<ul>
+<li>Url: <code>/api/user/register</code></li>
+<li>Method: <code>POST</code></li>
+<li>Request
+<ul>
+<li>Body
+<pre tabindex="0"><code>{
+    name: string,
+    email: string,
+    password: string
+}
+</code></pre></li>
+</ul>
+</li>
+<li>Response
+<ul>
+<li>Body
+<pre tabindex="0"><code>{
+    userId: string
+}
+</code></pre></li>
+</ul>
+</li>
+<li>Business logic
+<ul>
+<li>Validate parameters in the request body</li>
+<li>Validate email is not registered in DB</li>
+<li>Insert a new user in DB</li>
+</ul>
+</li>
+</ul>
+<h3 id="login">
+  Login
+  <a class="anchor" href="#login">#</a>
+</h3>
+<ul>
+<li>Url: <code>/api/user/login</code></li>
+<li>Method: <code>POST</code></li>
+<li>Request
+<ul>
+<li>Body
+<pre tabindex="0"><code>{
+    email: string,
+    password: string
+}
+</code></pre></li>
+</ul>
+</li>
+<li>Response
+<ul>
+<li>Header
+<pre tabindex="0"><code>{
+    auth-token: string
+}
+</code></pre></li>
+<li>Body
+<pre tabindex="0"><code>{
+    token: string
+}
+</code></pre></li>
+</ul>
+</li>
+<li>Business logic
+<ul>
+<li>Verify if email and password match</li>
+<li>Sign a new JWT and return it</li>
+</ul>
+</li>
+</ul>
+<h3 id="posts">
+  Posts
+  <a class="anchor" href="#posts">#</a>
+</h3>
+<ul>
+<li>Url: <code>/api/posts</code></li>
+<li>Method: <code>GET</code></li>
+<li>Request
+<ul>
+<li>Header
+<pre tabindex="0"><code>{
+    auth-token: string
+}
+</code></pre></li>
+</ul>
+</li>
+<li>Response
+<ul>
+<li>Body
+<pre tabindex="0"><code>{
+    posts: {
+        title: string,
+        description: string
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+<li>Business logic
+<ul>
+<li>Verify the <code>auth-token</code> from request headers</li>
+<li>Return a hard-coded post object</li>
+</ul>
+</li>
+</ul>
+<p>After users login, server signs a JWT to users. By include the JWT in the request headers, server could verify it to determine if user is authenticated (login)</p>
+<h2 id="oauth2">
+  OAuth2
+  <a class="anchor" href="#oauth2">#</a>
+</h2>
+<h3 id="what-is-oauth2">
+  What is OAuth2?
+  <a class="anchor" href="#what-is-oauth2">#</a>
+</h3>
+<p>OAuth2 is an open standard for access delegation, which is commonly used as the way for internet users to grant a client or application access to their resources under another server without sharing their passwords</p>
+<h3 id="why-oauth2">
+  Why OAuth2?
+  <a class="anchor" href="#why-oauth2">#</a>
+</h3>
+<ul>
+<li>
+<p>Secure Delegation of Access: Users often need to grant a third party website or application access to their data on another service (like accessing your google account from a social media app). Sharing credentials for this purpose is highly insecure</p>
+</li>
+<li>
+<p>Fine Grained Authorization: User may not want to give full access of their all data</p>
+</li>
+<li>
+<p>Standardization and Interoperability: With requirements of authentication and authorization from many internet service, a standard way is needed</p>
+</li>
+<li>
+<p>Reducing Password Fatigue: Users are overwhelmed by the need to create username and password for each single service</p>
+</li>
+</ul>
+<h3 id="key-components-of-oauth2">
+  Key Components of OAuth2
+  <a class="anchor" href="#key-components-of-oauth2">#</a>
+</h3>
+<ul>
+<li>Resource Owner: The user who authorizes an application to access their account</li>
+<li>Client: The application that wants to access user&rsquo;s account</li>
+<li>Resource Server: The server hosting user&rsquo;s data</li>
+<li>Authorization Server: The server that authenticates user and issues access token to the application</li>
+</ul>
+<h3 id="how-oauth2-works">
+  How OAuth2 works
+  <a class="anchor" href="#how-oauth2-works">#</a>
+</h3>
+<p><img src="/docs/programming/project/node-js-auth/oauth2-authorization.svg" alt="image" /></p>
+<ul>
+<li>
+<p>Authorization Request</p>
+<ul>
+<li>The client requests authorization to access user&rsquo;s resources. This is usually done through a redirection, where client passes along its identity (client id) and the scope of the access it&rsquo;s requesting</li>
+</ul>
+</li>
+<li>
+<p>User Authenticate and Consent</p>
+<ul>
+<li>The user is asked to login to the authorization server and to approve the requested access by the client</li>
+</ul>
+</li>
+<li>
+<p>Authorization Grant</p>
+<ul>
+<li>Upon successful authentication and consent, authorization server issues an authorization grant to the client. The authorization grant can be of different type, like an authorization code or an implicit grant, depending on the OAuth flow being used</li>
+</ul>
+</li>
+<li>
+<p>Access Token Request (In case of authorization code grant)</p>
+<ul>
+<li>If an authorization code is granted, then client exchanges the code for an access token. This is done by sent a request to authorization server&rsquo;s token endpoint where client authenticates itself and presents the authorization code</li>
+</ul>
+</li>
+<li>
+<p>Issuance of Access Token</p>
+<ul>
+<li>The authorization server authenticates the client validates the authorization grant and if valid issues an access token (and possibly a refresh token)</li>
+</ul>
+</li>
+<li>
+<p>Accessing the Resource</p>
+<ul>
+<li>The client uses access to token to make a request to the resource server for the protected resources</li>
+</ul>
+</li>
+<li>
+<p>Resource Server Validates Token</p>
+<ul>
+<li>The resource server validates the token and if valid serves the request</li>
+</ul>
+</li>
+<li>
+<p>Resource Deliver</p>
+<ul>
+<li>The client receives the protected resources</li>
+</ul>
+</li>
+</ul>
+<h3 id="why-openid-connect">
+  Why OpenID Connect
+  <a class="anchor" href="#why-openid-connect">#</a>
+</h3>
+<p>OAuth2 was originally designed for authorization, but not for authentication. Different companies have their own standards to authenticate users using OAuth2, in other words, OAuth2 is overused for authentication.</p>
+<p>OpenID Connect is an authentication layer built on top of OAuth2. It was developed to address the need for a standardized authentication process.</p>
+<h3 id="how-opendid-connect-works">
+  How OpendID Connect works
+  <a class="anchor" href="#how-opendid-connect-works">#</a>
+</h3>
+<ul>
+<li>Authentication Request
+<ul>
+<li>The client includes <code>openid</code> in the scope of the authorization request. That indicates that the client is requesting an ID token in addition to access token</li>
+</ul>
+</li>
+<li>Token Response
+<ul>
+<li>Access Token: Just like OAuth2, access token is issued by the authorization server. This token grants access to user&rsquo;s resources</li>
+<li>ID Token: This is unique to OpenID Connect. The ID token is a JWT which contains claims about user&rsquo;s identity and profile
+Token Validation</li>
+<li>Upon receiving the tokens, the client must validate the ID tokens to ensure its integrity and authenticity. This involves verifying JWT signature and the claims it contains</li>
+</ul>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#tech-stack">Tech Stack</a></li>
+        <li><a href="#reference">Reference</a></li>
+        <li><a href="#what-is-jwt">What Is JWT?</a>
+          <ul>
+            <li><a href="#structure-of-jwt">Structure of JWT</a></li>
+            <li><a href="#risk-of-jwt">Risk of JWT</a></li>
+            <li><a href="#best-practice">Best Practice</a></li>
+          </ul>
+        </li>
+        <li><a href="#api">API</a>
+          <ul>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#login">Login</a></li>
+            <li><a href="#posts">Posts</a></li>
+          </ul>
+        </li>
+        <li><a href="#oauth2">OAuth2</a>
+          <ul>
+            <li><a href="#what-is-oauth2">What is OAuth2?</a></li>
+            <li><a href="#why-oauth2">Why OAuth2?</a></li>
+            <li><a href="#key-components-of-oauth2">Key Components of OAuth2</a></li>
+            <li><a href="#how-oauth2-works">How OAuth2 works</a></li>
+            <li><a href="#why-openid-connect">Why OpenID Connect</a></li>
+            <li><a href="#how-opendid-connect-works">How OpendID Connect works</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,2406 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Vim: Three Modes
+  #
+
+
+Normal mode
+Insert mode
+Command mode
+
+
+  Command Mode
+  #
+
+Type : to enter.
+
+w (write): save.
+q: quit.
+x (==wq): save and quit.
+set nu: show line numbers.
+set nonu: do not show line numbers.
+
+
+  Normal Mode
+  #
+
+
+y (yank): copy.
+p: paste.
+5yy: copy 4 lines.
+dd: delete.
+4dd: delete 4 lines.
+/word_to_search &#43; Enter: search a word.
+
+n: next.
+G: last line.
+gg (go to the top&hellip;): first line.
+
+
+u: undo.
+Ctrl &#43; r: redo.
+20gg / 20G: go to line 20.
+
+
+  User Login and Logout Commands
+  #
+
+
+Command:
+
+su - &lt;user&gt;: switch user.
+logout:
+
+If you are the root user, you will be switched to the standard user.
+If you are not the root user, you will be logged out of the Linux system.
+
+
+adduser &lt;user&gt;: add a user under /home directory.
+
+-d &lt;home_dir&gt;: specify the home directory for the new user.
+
+
+passwd: set the password for the root user.
+&lt;user&gt;: set the password for the user.
+
+
+
+
+  User
+  #
+
+
+User home directory: /home/&lt;user&gt;.
+
+
+  File and Directory Commands
+  #
+
+
+ls: List files and directories in the current directory.
+
+Example: ls
+Common options:
+
+-h: make the file sizes in the output more human-readable
+
+
+
+
+cd: Change the current directory.
+
+Example: cd /path/to/directory
+
+
+pwd: Print the current working directory.
+
+Example: pwd
+
+
+mkdir: Create a new directory.
+
+Example: mkdir new_directory
+
+
+rmdir: Remove a directory (only if it&rsquo;s empty).
+
+Example: rmdir empty_directory
+
+
+rm: Remove files or directories.
+
+Example: rm file.txt or rm -r directory
+
+
+cp: Copy files and directories.
+
+Example: cp file.txt /path/to/destination
+
+
+mv: Move or rename files and directories.
+
+Example: mv file.txt new_name.txt or mv file.txt /path/to/destination
+
+
+touch: Create an empty file.
+
+Example: touch new_file.txt
+
+
+cat: Display the content of a file.
+
+Options:
+
+-n: show line number
+
+
+Example: cat file.txt
+
+
+more and less: Display file content page by page.
+
+Example: more file.txt or less file.txt
+
+
+head and tail: Display the beginning or end of a file.
+
+Example: head file.txt or tail file.txt
+
+
+chmod: Change file permissions.
+
+Example: chmod 755 file.txt
+
+
+chown: Change file ownership.
+
+Example: chown user:group file.txt
+
+
+ln: Create symbolic links or hard links to files or directories.
+
+Example: ln -s target link_name (for symbolic links) or ln target link_name (for hard links)
+
+
+history: Display latest executed commands in current shell session
+
+Use case:
+
+history
+!100: re-execute executed command in line 100
+
+
+
+
+&gt; &amp; &gt;&gt;: In Linux and Unix-like operating systems, &gt; and &raquo; are used as operators for redirecting output from commands. They are often used in the command line to control where the output of a command is sent
+
+Difference: &gt; overwrite existed content, but &gt;&gt; append command output to to the output of a file
+Example:
+
+echo &quot;Hello, World!&quot; &gt; output.txt
+echo &quot;Appended text&quot; &gt;&gt; output.txt
+echo file1.txt &gt;&gt; file2.txt
+ls -l &gt;&gt; output.txt
+
+
+
+
+
+
+  Date Command
+  #
+
+
+Date
+
+
+  Search &amp; Find Commands
+  #
+
+
+find: Search for files and directories.
+
+Basic syntax:
+
+find [path] [options] [expression]
+
+
+Common options:
+
+-name &lt;pattern&gt;: Search for files and directories with a specific name or pattern.
+-type &lt;type&gt;: Specify the type of file (e.g., f for regular files, d for directories).
+-mtime &lt;days&gt;: Search for files modified within a certain number of days.
+-size &lt;size&gt;: Search for files of a specific size (e.g., &#43;10M for files larger than 10 megabytes).
+-user &lt;username&gt;: Search for files owned by a specific user.
+-group &lt;groupname&gt;: Search for files in a specific group.
+-exec &lt;command&gt; {} \;: Execute a command on each matching file or directory.
+-print: Display the path of each matching file or directory.
+
+
+Example:
+
+find . -name &quot;example.txt&quot;
+find ~ -type d -user john
+find /path/to/directory -type f -mtime &#43;7 -exec rm {} ;
+find . -type f -size &#43;100M
+find /path/to/directory -type f -name &quot;*.log&quot;
+
+
+
+
+locate: Quick find location of a file. It uses pre-built database (updatedb command to create index for dirs and files) to provide fast search results
+
+Usage:
+
+sudo yum install mlocate: install locate in CentOS
+updatedb: create a db to store index of all files in your linux system
+locate example.txt: find example.txt files
+
+
+Reminder Keep in mind that locate is a powerful tool for quickly finding files and directories on your system. However, it doesn&rsquo;t search for files in real-time, so you need to ensure that the database is updated regularly using the updatedb command for accurate results.
+
+
+grep: filter and find
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/operating-system/linux/linux-manual/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Linux Manual">
+  <meta property="og:description" content="Vim: Three Modes # Normal mode Insert mode Command mode Command Mode # Type : to enter.
+w (write): save. q: quit. x (==wq): save and quit. set nu: show line numbers. set nonu: do not show line numbers. Normal Mode # y (yank): copy. p: paste. 5yy: copy 4 lines. dd: delete. 4dd: delete 4 lines. /word_to_search &#43; Enter: search a word. n: next. G: last line. gg (go to the top…): first line. u: undo. Ctrl &#43; r: redo. 20gg / 20G: go to line 20. User Login and Logout Commands # Command: su - &lt;user&gt;: switch user. logout: If you are the root user, you will be switched to the standard user. If you are not the root user, you will be logged out of the Linux system. adduser &lt;user&gt;: add a user under /home directory. -d &lt;home_dir&gt;: specify the home directory for the new user. passwd: set the password for the root user. &lt;user&gt;: set the password for the user. User # User home directory: /home/&lt;user&gt;. File and Directory Commands # ls: List files and directories in the current directory. Example: ls Common options: -h: make the file sizes in the output more human-readable cd: Change the current directory. Example: cd /path/to/directory pwd: Print the current working directory. Example: pwd mkdir: Create a new directory. Example: mkdir new_directory rmdir: Remove a directory (only if it’s empty). Example: rmdir empty_directory rm: Remove files or directories. Example: rm file.txt or rm -r directory cp: Copy files and directories. Example: cp file.txt /path/to/destination mv: Move or rename files and directories. Example: mv file.txt new_name.txt or mv file.txt /path/to/destination touch: Create an empty file. Example: touch new_file.txt cat: Display the content of a file. Options: -n: show line number Example: cat file.txt more and less: Display file content page by page. Example: more file.txt or less file.txt head and tail: Display the beginning or end of a file. Example: head file.txt or tail file.txt chmod: Change file permissions. Example: chmod 755 file.txt chown: Change file ownership. Example: chown user:group file.txt ln: Create symbolic links or hard links to files or directories. Example: ln -s target link_name (for symbolic links) or ln target link_name (for hard links) history: Display latest executed commands in current shell session Use case: history !100: re-execute executed command in line 100 &gt; &amp; &gt;&gt;: In Linux and Unix-like operating systems, &gt; and » are used as operators for redirecting output from commands. They are often used in the command line to control where the output of a command is sent Difference: &gt; overwrite existed content, but &gt;&gt; append command output to to the output of a file Example: echo &#34;Hello, World!&#34; &gt; output.txt echo &#34;Appended text&#34; &gt;&gt; output.txt echo file1.txt &gt;&gt; file2.txt ls -l &gt;&gt; output.txt Date Command # Date Search &amp; Find Commands # find: Search for files and directories. Basic syntax: find [path] [options] [expression] Common options: -name &lt;pattern&gt;: Search for files and directories with a specific name or pattern. -type &lt;type&gt;: Specify the type of file (e.g., f for regular files, d for directories). -mtime &lt;days&gt;: Search for files modified within a certain number of days. -size &lt;size&gt;: Search for files of a specific size (e.g., &#43;10M for files larger than 10 megabytes). -user &lt;username&gt;: Search for files owned by a specific user. -group &lt;groupname&gt;: Search for files in a specific group. -exec &lt;command&gt; {} \;: Execute a command on each matching file or directory. -print: Display the path of each matching file or directory. Example: find . -name &#34;example.txt&#34; find ~ -type d -user john find /path/to/directory -type f -mtime &#43;7 -exec rm {} ; find . -type f -size &#43;100M find /path/to/directory -type f -name &#34;*.log&#34; locate: Quick find location of a file. It uses pre-built database (updatedb command to create index for dirs and files) to provide fast search results Usage: sudo yum install mlocate: install locate in CentOS updatedb: create a db to store index of all files in your linux system locate example.txt: find example.txt files Reminder Keep in mind that locate is a powerful tool for quickly finding files and directories on your system. However, it doesn’t search for files in real-time, so you need to ensure that the database is updated regularly using the updatedb command for accurate results. grep: filter and find">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2023-10-31T08:47:07-07:00">
+    <meta property="article:modified_time" content="2023-10-31T08:47:07-07:00">
+<title>Linux Manual | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/operating-system/linux/linux-manual/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.650346cbc7dbd641b677ef4deeb160310a4553204dee20b907cc95acac1c1e28.js" integrity="sha256-ZQNGy8fb1kG2d&#43;9N7rFgMQpFUyBN7iC5B8yVrKwcHig=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle"  />
+    <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
+    <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d40552f3cfe92824018c63b2452ecba" class="toggle"  />
+    <label for="section-2d40552f3cfe92824018c63b2452ecba" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c98292848de5e1eee8daf1df97ad8e9" class="toggle"  />
+    <label for="section-6c98292848de5e1eee8daf1df97ad8e9" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
+    <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3190593332d0f8f9ed0d16abadebf669" class="toggle"  />
+    <label for="section-3190593332d0f8f9ed0d16abadebf669" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fe208af9b1b31c593b428135b5384f8" class="toggle"  />
+    <label for="section-9fe208af9b1b31c593b428135b5384f8" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle"  />
+    <label for="section-67fa7359ce5b658cf77244fff5df08fc" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48d1fef9b34bd9f66cd11153ecec9532" class="toggle" checked />
+    <label for="section-48d1fef9b34bd9f66cd11153ecec9532" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e85d05a86421e8876acb62f953a355e" class="toggle" checked />
+    <label for="section-0e85d05a86421e8876acb62f953a355e" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/linux/linux-manual/" class="active">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="toggle"  />
+    <label for="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12c34d34235c7f130e7a4969b853bc86" class="toggle"  />
+    <label for="section-12c34d34235c7f130e7a4969b853bc86" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
+    <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="toggle"  />
+    <label for="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-941ff506688d79a8f0ca9e629da3459f" class="toggle"  />
+    <label for="section-941ff506688d79a8f0ca9e629da3459f" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d2544afe2799858027d68114f061083" class="toggle"  />
+    <label for="section-3d2544afe2799858027d68114f061083" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c932410b33a0ef4d9ccee9231c75620" class="toggle"  />
+    <label for="section-0c932410b33a0ef4d9ccee9231c75620" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
+    <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7e22ed5bec8c14629b6ab355bc1502c" class="toggle"  />
+    <label for="section-f7e22ed5bec8c14629b6ab355bc1502c" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-663cecbab2af013dadd72e5397ce62dc" class="toggle"  />
+    <label for="section-663cecbab2af013dadd72e5397ce62dc" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-454b2a6456d3526d3f6d34370515a130" class="toggle"  />
+    <label for="section-454b2a6456d3526d3f6d34370515a130" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-868ff3bc94429ce8afade70db1d07dbc" class="toggle"  />
+    <label for="section-868ff3bc94429ce8afade70db1d07dbc" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-304cd452d0278b77fa76b02a905b318b" class="toggle"  />
+    <label for="section-304cd452d0278b77fa76b02a905b318b" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
+    <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
+    <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-18d02721e1887f4bb6418527097a8950" class="toggle"  />
+    <label for="section-18d02721e1887f4bb6418527097a8950" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-38078f6b2dffb5cfde0331f97c464879" class="toggle"  />
+    <label for="section-38078f6b2dffb5cfde0331f97c464879" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9885b1e85034892b05dcefffde06c590" class="toggle"  />
+    <label for="section-9885b1e85034892b05dcefffde06c590" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
+    <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="toggle"  />
+    <label for="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
+    <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9d47227da1237bf23c06190fe793afd" class="toggle"  />
+    <label for="section-c9d47227da1237bf23c06190fe793afd" class="flex justify-between">
+      <a role="button" class="">Tool</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-624d42859b7b037f1a6e15ba4ee427e1" class="toggle"  />
+    <label for="section-624d42859b7b037f1a6e15ba4ee427e1" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tool/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Linux Manual</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#vim-three-modes">Vim: Three Modes</a></li>
+            <li><a href="#user-login-and-logout-commands">User Login and Logout Commands</a></li>
+            <li><a href="#file-and-directory-commands">File and Directory Commands</a></li>
+            <li><a href="#date-command">Date Command</a></li>
+            <li><a href="#search--find-commands">Search &amp; Find Commands</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h3 id="vim-three-modes">
+  Vim: Three Modes
+  <a class="anchor" href="#vim-three-modes">#</a>
+</h3>
+<ol>
+<li><strong>Normal mode</strong></li>
+<li><strong>Insert mode</strong></li>
+<li><strong>Command mode</strong></li>
+</ol>
+<h4 id="command-mode">
+  Command Mode
+  <a class="anchor" href="#command-mode">#</a>
+</h4>
+<p>Type <code>:</code> to enter.</p>
+<ul>
+<li><code>w</code> (write): save.</li>
+<li><code>q</code>: quit.</li>
+<li><code>x</code> (==wq): save and quit.</li>
+<li><code>set nu</code>: show line numbers.</li>
+<li><code>set nonu</code>: do not show line numbers.</li>
+</ul>
+<h4 id="normal-mode">
+  Normal Mode
+  <a class="anchor" href="#normal-mode">#</a>
+</h4>
+<ul>
+<li><code>y</code> (yank): copy.</li>
+<li><code>p</code>: paste.</li>
+<li><code>5yy</code>: copy 4 lines.</li>
+<li><code>dd</code>: delete.</li>
+<li><code>4dd</code>: delete 4 lines.</li>
+<li><code>/word_to_search</code> + Enter: search a word.
+<ul>
+<li><code>n</code>: next.</li>
+<li><code>G</code>: last line.</li>
+<li><code>gg</code> (go to the top&hellip;): first line.</li>
+</ul>
+</li>
+<li><code>u</code>: undo.</li>
+<li><code>Ctrl + r</code>: redo.</li>
+<li><code>20gg</code> / <code>20G</code>: go to line 20.</li>
+</ul>
+<h3 id="user-login-and-logout-commands">
+  User Login and Logout Commands
+  <a class="anchor" href="#user-login-and-logout-commands">#</a>
+</h3>
+<ul>
+<li><strong>Command:</strong>
+<ul>
+<li><code>su - &lt;user&gt;</code>: switch user.</li>
+<li><code>logout</code>:
+<ul>
+<li>If you are the root user, you will be switched to the standard user.</li>
+<li>If you are not the root user, you will be logged out of the Linux system.</li>
+</ul>
+</li>
+<li><code>adduser &lt;user&gt;</code>: add a user under /home directory.
+<ul>
+<li><code>-d &lt;home_dir&gt;</code>: specify the home directory for the new user.</li>
+</ul>
+</li>
+<li><code>passwd</code>: set the password for the root user.</li>
+<li><code>&lt;user&gt;</code>: set the password for the user.</li>
+</ul>
+</li>
+</ul>
+<h4 id="user">
+  User
+  <a class="anchor" href="#user">#</a>
+</h4>
+<ul>
+<li>User home directory: <code>/home/&lt;user&gt;</code>.</li>
+</ul>
+<h3 id="file-and-directory-commands">
+  File and Directory Commands
+  <a class="anchor" href="#file-and-directory-commands">#</a>
+</h3>
+<ul>
+<li><code>ls</code>: List files and directories in the current directory.
+<ul>
+<li>Example: <code>ls</code></li>
+<li>Common options:
+<ul>
+<li><code>-h</code>: make the file sizes in the output more human-readable</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>cd</code>: Change the current directory.
+<ul>
+<li>Example: <code>cd /path/to/directory</code></li>
+</ul>
+</li>
+<li><code>pwd</code>: Print the current working directory.
+<ul>
+<li>Example: <code>pwd</code></li>
+</ul>
+</li>
+<li><code>mkdir</code>: Create a new directory.
+<ul>
+<li>Example: <code>mkdir new_directory</code></li>
+</ul>
+</li>
+<li><code>rmdir</code>: Remove a directory (only if it&rsquo;s empty).
+<ul>
+<li>Example: <code>rmdir empty_directory</code></li>
+</ul>
+</li>
+<li><code>rm</code>: Remove files or directories.
+<ul>
+<li>Example: <code>rm file.txt</code> or <code>rm -r directory</code></li>
+</ul>
+</li>
+<li><code>cp</code>: Copy files and directories.
+<ul>
+<li>Example: <code>cp file.txt /path/to/destination</code></li>
+</ul>
+</li>
+<li><code>mv</code>: Move or rename files and directories.
+<ul>
+<li>Example: <code>mv file.txt new_name.txt</code> or <code>mv file.txt /path/to/destination</code></li>
+</ul>
+</li>
+<li><code>touch</code>: Create an empty file.
+<ul>
+<li>Example: <code>touch new_file.txt</code></li>
+</ul>
+</li>
+<li><code>cat</code>: Display the content of a file.
+<ul>
+<li>Options:
+<ul>
+<li>-n: show line number</li>
+</ul>
+</li>
+<li>Example: <code>cat file.txt</code></li>
+</ul>
+</li>
+<li><code>more</code> and <code>less</code>: Display file content page by page.
+<ul>
+<li>Example: <code>more file.txt</code> or <code>less file.txt</code></li>
+</ul>
+</li>
+<li><code>head</code> and <code>tail</code>: Display the beginning or end of a file.
+<ul>
+<li>Example: <code>head file.txt</code> or <code>tail file.txt</code></li>
+</ul>
+</li>
+<li><code>chmod</code>: Change file permissions.
+<ul>
+<li>Example: <code>chmod 755 file.txt</code></li>
+</ul>
+</li>
+<li><code>chown</code>: Change file ownership.
+<ul>
+<li>Example: <code>chown user:group file.txt</code></li>
+</ul>
+</li>
+<li><code>ln</code>: Create symbolic links or hard links to files or directories.
+<ul>
+<li>Example: <code>ln -s target link_name</code> (for symbolic links) or <code>ln target link_name</code> (for hard links)</li>
+</ul>
+</li>
+<li><code>history</code>: Display latest executed commands in current shell session
+<ul>
+<li>Use case:
+<ul>
+<li><code>history</code></li>
+<li><code>!100</code>: re-execute executed command in line 100</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&gt;</code> &amp; <code>&gt;&gt;</code>: In Linux and Unix-like operating systems, &gt; and &raquo; are used as operators for redirecting output from commands. They are often used in the command line to control where the output of a command is sent
+<ul>
+<li>Difference: <code>&gt;</code> overwrite existed content, but <code>&gt;&gt;</code> append command output to to the output of a file</li>
+<li>Example:
+<ul>
+<li><code>echo &quot;Hello, World!&quot; &gt; output.txt</code></li>
+<li><code>echo &quot;Appended text&quot; &gt;&gt; output.txt</code></li>
+<li><code>echo file1.txt &gt;&gt; file2.txt</code></li>
+<li><code>ls -l &gt;&gt; output.txt</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="date-command">
+  Date Command
+  <a class="anchor" href="#date-command">#</a>
+</h3>
+<ul>
+<li><code>Date</code></li>
+</ul>
+<h3 id="search--find-commands">
+  Search &amp; Find Commands
+  <a class="anchor" href="#search--find-commands">#</a>
+</h3>
+<ul>
+<li><code>find</code>: Search for files and directories.
+<ul>
+<li>Basic syntax:
+<ul>
+<li><code>find [path] [options] [expression]</code></li>
+</ul>
+</li>
+<li>Common options:
+<ul>
+<li><code>-name &lt;pattern&gt;</code>: Search for files and directories with a specific name or pattern.</li>
+<li><code>-type &lt;type&gt;</code>: Specify the type of file (e.g., <code>f</code> for regular files, <code>d</code> for directories).</li>
+<li><code>-mtime &lt;days&gt;</code>: Search for files modified within a certain number of days.</li>
+<li><code>-size &lt;size&gt;</code>: Search for files of a specific size (e.g., <code>+10M</code> for files larger than 10 megabytes).</li>
+<li><code>-user &lt;username&gt;</code>: Search for files owned by a specific user.</li>
+<li><code>-group &lt;groupname&gt;</code>: Search for files in a specific group.</li>
+<li><code>-exec &lt;command&gt; {} \;</code>: Execute a command on each matching file or directory.</li>
+<li><code>-print</code>: Display the path of each matching file or directory.</li>
+</ul>
+</li>
+<li>Example:
+<ul>
+<li><code>find . -name &quot;example.txt&quot;</code></li>
+<li><code>find ~ -type d -user john</code></li>
+<li><code>find /path/to/directory -type f -mtime +7 -exec rm {} ;</code></li>
+<li><code>find . -type f -size +100M</code></li>
+<li><code>find /path/to/directory -type f -name &quot;*.log&quot;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>locate</code>: Quick find location of a file. It uses pre-built database (<code>updatedb</code> command to create index for dirs and files) to provide fast search results
+<ul>
+<li>Usage:
+<ul>
+<li><code>sudo yum install mlocate</code>: install <code>locate</code> in <code>CentOS</code></li>
+<li><code>updatedb</code>: create a db to store index of all files in your linux system</li>
+<li><code>locate example.txt</code>: find <code>example.txt</code> files</li>
+</ul>
+</li>
+<li>Reminder Keep in mind that locate is a powerful tool for quickly finding files and directories on your system. However, it doesn&rsquo;t search for files in real-time, so you need to ensure that the database is updated regularly using the <code>updatedb</code> command for accurate results.</li>
+</ul>
+</li>
+<li><code>grep</code>: filter and find</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#vim-three-modes">Vim: Three Modes</a></li>
+            <li><a href="#user-login-and-logout-commands">User Login and Logout Commands</a></li>
+            <li><a href="#file-and-directory-commands">File and Directory Commands</a></li>
+            <li><a href="#date-command">Date Command</a></li>
+            <li><a href="#search--find-commands">Search &amp; Find Commands</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

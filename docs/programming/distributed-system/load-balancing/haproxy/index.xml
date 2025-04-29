@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HAProxy: Get Started</title>
+      <link>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/get-start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/get-start/</guid>
+      <description>&lt;h1 id=&#34;haproxy-get-started&#34;&gt;&#xA;  HAProxy: Get Started&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#haproxy-get-started&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-goal-of-this-module&#34;&gt;&#xA;  ✨ Goal of this Module&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal-of-this-module&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;You will:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Set up HAProxy using Docker&lt;/li&gt;&#xA;&lt;li&gt;Create a working HAProxy config for Layer 4 (TCP) load balancing&lt;/li&gt;&#xA;&lt;li&gt;Use &lt;code&gt;nc&lt;/code&gt; (netcat) to simulate backend TCP servers&lt;/li&gt;&#xA;&lt;li&gt;Verify that HAProxy distributes connections across backends&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-step-1-project-setup&#34;&gt;&#xA;  🧱 Step 1: Project Setup&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-step-1-project-setup&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Create a folder for your HAProxy lab:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir haproxy-lab&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd haproxy-lab&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch haproxy.cfg docker-compose.yml&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Create two files inside it:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HAProxy: Health Check</title>
+      <link>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/health-check/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/health-check/</guid>
+      <description>&lt;h1 id=&#34;haproxy-health-check&#34;&gt;&#xA;  HAProxy: Health Check&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#haproxy-health-check&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;In a typical load-balanced setup, if one of your backend services crashes or becomes unreachable, HAProxy can detect this and stop sending traffic to it. Health checks help HAProxy:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Detect failures early&lt;/li&gt;&#xA;&lt;li&gt;Prevent routing to broken services&lt;/li&gt;&#xA;&lt;li&gt;Recover gracefully when the backend comes back&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;-basic-health-check-configuration&#34;&gt;&#xA;  🔧 Basic Health Check Configuration&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-basic-health-check-configuration&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Here is a simple example:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-haproxy&#34; data-lang=&#34;haproxy&#34;&gt;backend tcp_backends&#xA;  balance roundrobin&#xA;  option tcp-check&#xA;  server s1 host.docker.internal:9001 check inter 2s fall 3 rise 2&#xA;  server s2 host.docker.internal:9002 check inter 2s fall 3 rise 2&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;🔍 Explanation:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HAProxy: Load Balancing Algorithem</title>
+      <link>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/load-balancing-algorithm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/load-balancing-algorithm/</guid>
+      <description>&lt;h1 id=&#34;haproxy-tcp-load-balancing-algorithms&#34;&gt;&#xA;  HAProxy: TCP Load Balancing Algorithms&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#haproxy-tcp-load-balancing-algorithms&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-what-is-a-load-balancing-algorithm&#34;&gt;&#xA;  🔄 What Is a Load Balancing Algorithm?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-what-is-a-load-balancing-algorithm&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A load balancing algorithm determines &lt;strong&gt;how HAProxy selects a backend server&lt;/strong&gt; when multiple are available and healthy. Each strategy suits different types of traffic and usage patterns.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-common-tcp-load-balancing-strategies&#34;&gt;&#xA;  ⚖️ Common TCP Load Balancing Strategies&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-common-tcp-load-balancing-strategies&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-roundrobin&#34;&gt;&#xA;  1. &lt;code&gt;roundrobin&lt;/code&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-roundrobin&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-haproxy&#34; data-lang=&#34;haproxy&#34;&gt;balance roundrobin&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;&#xA;&lt;li&gt;The default method.&lt;/li&gt;&#xA;&lt;li&gt;HAProxy sends connections to each server in turn.&lt;/li&gt;&#xA;&lt;li&gt;Simple, fair, and works well for &lt;strong&gt;uniform&lt;/strong&gt; connection loads.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Use Case:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HAProxy: HTTP (Layer 7) Load Balancing</title>
+      <link>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/layer7-load-balancing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/layer7-load-balancing/</guid>
+      <description>&lt;h1 id=&#34;haproxy-http-layer-7-load-balancing&#34;&gt;&#xA;  HAProxy: HTTP (Layer 7) Load Balancing&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#haproxy-http-layer-7-load-balancing&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Once you’ve mastered TCP (Layer 4) load balancing with HAProxy, it&amp;rsquo;s time to unlock even more control with &lt;strong&gt;Layer 7 (HTTP) routing&lt;/strong&gt;. In this post, you&amp;rsquo;ll learn how to configure HAProxy to route web traffic intelligently based on &lt;strong&gt;paths&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-what-is-layer-7-load-balancing&#34;&gt;&#xA;  🏋️ What is Layer 7 Load Balancing?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-what-is-layer-7-load-balancing&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Layer 7 load balancing means HAProxy inspects the &lt;strong&gt;application layer (HTTP)&lt;/strong&gt; of incoming requests and makes routing decisions based on that. It allows you to:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HAProxy: Sticky Sessions Using Cookies</title>
+      <link>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/</guid>
+      <description>&lt;h1 id=&#34;haproxy-sticky-sessions-using-cookies&#34;&gt;&#xA;  HAProxy: Sticky Sessions Using Cookies&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#haproxy-sticky-sessions-using-cookies&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;When running multiple backend servers, sticky sessions (also known as session persistence) ensure that a user&amp;rsquo;s requests are always routed to the &lt;strong&gt;same server&lt;/strong&gt;. This is especially useful for apps that store session state in memory (e.g., login sessions, carts, temporary data).&lt;/p&gt;&#xA;&lt;p&gt;In this post, you&amp;rsquo;ll learn how to implement sticky sessions in HAProxy using &lt;strong&gt;HTTP cookies&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-backend-setup-with-python-servers&#34;&gt;&#xA;  🔧 Backend Setup with Python Servers&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-backend-setup-with-python-servers&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Use this Python script to spin up identifiable HTTP servers:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

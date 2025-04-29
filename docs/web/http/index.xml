@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/web/http/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Oct 2023 08:10:45 -0700</lastBuildDate>
+    <atom:link href="https://whatsBehind.github.io/docs/web/http/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Start HTTP</title>
+      <link>https://whatsBehind.github.io/docs/web/http/start-http/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/web/http/start-http/</guid>
+      <description>&lt;h1 id=&#34;-introduction-to-http-the-foundation-of-the-web&#34;&gt;&#xA;  🌐 Introduction to HTTP: The Foundation of the Web&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-introduction-to-http-the-foundation-of-the-web&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;HTTP (Hypertext Transfer Protocol) is the cornerstone of communication on the web. It defines the rules by which clients (like browsers or mobile apps) and servers exchange information. Every time you open a website, submit a form, or load an image, you&amp;rsquo;re using HTTP.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-what-is-http&#34;&gt;&#xA;  🧠 What is HTTP?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-what-is-http&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;HTTP is a request-response protocol that allows a client to request data from a server and receive a response. It is:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTP Methods &amp; Status Codes</title>
+      <link>https://whatsBehind.github.io/docs/web/http/http-methods-and-status-codes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/web/http/http-methods-and-status-codes/</guid>
+      <description>&lt;h1 id=&#34;-http-methods--status-codes&#34;&gt;&#xA;  📘 HTTP Methods &amp;amp; Status Codes&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-http-methods--status-codes&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Understanding HTTP methods and status codes is essential for designing and debugging web APIs. This lesson explores the most commonly used HTTP methods and how servers communicate the results of requests using standardized status codes.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-common-http-methods&#34;&gt;&#xA;  🔧 Common HTTP Methods&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-common-http-methods&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;HTTP methods (also called verbs) define the action the client wants the server to perform. Here are the most commonly used methods:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTP Headers Part 1</title>
+      <link>https://whatsBehind.github.io/docs/web/http/http-header-part-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/web/http/http-header-part-1/</guid>
+      <description>&lt;h1 id=&#34;-http-headers-part-1&#34;&gt;&#xA;  📘 HTTP Headers Part 1&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-http-headers-part-1&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;HTTP headers carry metadata between the client and server and are essential for interpreting and handling HTTP requests and responses. This lesson introduces the role of headers in HTTP communication and covers the most common and important general-purpose headers.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-what-are-http-headers&#34;&gt;&#xA;  🧠 What Are HTTP Headers?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-what-are-http-headers&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;HTTP headers are key-value pairs sent along with HTTP requests and responses. They:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Describe the body content (e.g., format, length, encoding)&lt;/li&gt;&#xA;&lt;li&gt;Control behavior related to caching, authentication, and cookies&lt;/li&gt;&#xA;&lt;li&gt;Provide metadata about the request or response (e.g., user agent, language preferences)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Headers help servers and clients interpret how to process the body, route requests, and manage security and performance.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTP Headers Part 2: Content-Type &amp; Accept</title>
+      <link>https://whatsBehind.github.io/docs/web/http/http-header-part-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/web/http/http-header-part-2/</guid>
+      <description>&lt;h1 id=&#34;-mastering-content-type-and-accept-headers-with-fastapi&#34;&gt;&#xA;  📘 Mastering &lt;code&gt;Content-Type&lt;/code&gt; and &lt;code&gt;Accept&lt;/code&gt; Headers with FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-mastering-content-type-and-accept-headers-with-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;This lesson focuses on two essential HTTP headers: &lt;em&gt;&lt;code&gt;Content-Type&lt;/code&gt;&lt;/em&gt; and &lt;em&gt;&lt;code&gt;Accept&lt;/code&gt;&lt;/em&gt;. These headers play a critical role in defining the data format being sent or expected in API communication. Understanding how to use them correctly is key to building robust, flexible APIs.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-content-type-declaring-the-format-of-sent-data&#34;&gt;&#xA;  🔹 &lt;code&gt;Content-Type&lt;/code&gt;: Declaring the Format of Sent Data&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-content-type-declaring-the-format-of-sent-data&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Direction&lt;/strong&gt;: Request and Response&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Purpose&lt;/strong&gt;: Informs the recipient how to parse the message body.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Common Values&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTP Headers Part 3: Cache-Control</title>
+      <link>https://whatsBehind.github.io/docs/web/http/http-header-part-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/web/http/http-header-part-3/</guid>
+      <description>&lt;h1 id=&#34;-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi&#34;&gt;&#xA;  📘 Lesson: HTTP Cache-Control – Concepts and Browser Testing with FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;HTTP caching plays a crucial role in improving performance, reducing latency, and minimizing server load. One of the most versatile headers for managing caching behavior is &lt;code&gt;Cache-Control&lt;/code&gt;. In this lesson, we&amp;rsquo;ll explore how it works from both the server and client perspectives, and demonstrate how to test it using FastAPI and Chrome DevTools.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-why-cache&#34;&gt;&#xA;  🔄 Why Cache?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-why-cache&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Caching helps eliminate redundant requests to the server by allowing clients or intermediaries to reuse stored responses. It:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTP Headers Part 4: Cache Validation</title>
+      <link>https://whatsBehind.github.io/docs/web/http/http-header-part-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/web/http/http-header-part-4/</guid>
+      <description>&lt;h1 id=&#34;-lesson-http-cache-validation--etag-and-last-modified-with-fastapi&#34;&gt;&#xA;  📘 Lesson: HTTP Cache Validation – ETag and Last-Modified with FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-lesson-http-cache-validation--etag-and-last-modified-with-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;In the previous lesson, we learned how to control whether and how content is cached using &lt;code&gt;Cache-Control&lt;/code&gt;. In this lesson, we focus on &lt;strong&gt;cache validation&lt;/strong&gt;, which allows the server to determine whether a client&amp;rsquo;s cached response is still valid. If so, it can return a lightweight &lt;code&gt;304 Not Modified&lt;/code&gt; instead of resending the full resource.&lt;/p&gt;&#xA;&lt;p&gt;We&amp;rsquo;ll cover how &lt;strong&gt;ETag&lt;/strong&gt; and &lt;strong&gt;Last-Modified&lt;/strong&gt; headers work, how clients use their corresponding validation headers (&lt;code&gt;If-None-Match&lt;/code&gt; and &lt;code&gt;If-Modified-Since&lt;/code&gt;), and how servers determine which one takes precedence. We&amp;rsquo;ll also walk through a complete FastAPI example and test it using the browser console.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cookie</title>
+      <link>https://whatsBehind.github.io/docs/web/http/cookie/</link>
+      <pubDate>Fri, 27 Oct 2023 08:10:45 -0700</pubDate>
+      <guid>https://whatsBehind.github.io/docs/web/http/cookie/</guid>
+      <description>&lt;h3 id=&#34;what-is-cookie&#34;&gt;&#xA;  What is cookie&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-cookie&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user&amp;rsquo;s web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

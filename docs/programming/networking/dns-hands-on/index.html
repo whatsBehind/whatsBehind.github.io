@@ -1,0 +1,2169 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55166&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Introduction
+  #
+
+In dns post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain google.com. Also, I will introduce a new concept record in domain name server
+
+  Environment and Tools
+  #
+
+I will use CLI dig to query domain name server in Linux system">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:55166/docs/programming/networking/dns-hands-on/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="DNS Hands On">
+  <meta property="og:description" content="Introduction # In dns post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain google.com. Also, I will introduce a new concept record in domain name server
+Environment and Tools # I will use CLI dig to query domain name server in Linux system">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>DNS Hands On | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:55166/docs/programming/networking/dns-hands-on/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.63c2184d22382eb1423535ba6c75cde891650e58814bcf19869caf6d686bb259.js" integrity="sha256-Y8IYTSI4LrFCNTW6bHXN6JFlDliBS88ZhpyvbWhrslk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="toggle"  />
+    <label for="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="toggle"  />
+    <label for="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdf55a702353035bca92383ae3fb0776" class="toggle"  />
+    <label for="section-bdf55a702353035bca92383ae3fb0776" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-638baef7394c63505a0124a6ab8929d4" class="toggle"  />
+    <label for="section-638baef7394c63505a0124a6ab8929d4" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-050a487401c9ade14154296e864be8a2" class="toggle"  />
+    <label for="section-050a487401c9ade14154296e864be8a2" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6660e5a8131bb9bf21390ee36cb603b4" class="toggle"  />
+    <label for="section-6660e5a8131bb9bf21390ee36cb603b4" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e48aea960dd5f2b76bffb00087424f3" class="toggle"  />
+    <label for="section-7e48aea960dd5f2b76bffb00087424f3" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9091ac3d236d4bd531308b8633d45035" class="toggle"  />
+    <label for="section-9091ac3d236d4bd531308b8633d45035" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="toggle"  />
+    <label for="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="flex justify-between">
+      <a role="button" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="toggle"  />
+    <label for="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-caac18242619b008e4a9895db1095868" class="toggle"  />
+    <label for="section-caac18242619b008e4a9895db1095868" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61603bfa67f7e848f6f30bc8a7b7b383" class="toggle"  />
+    <label for="section-61603bfa67f7e848f6f30bc8a7b7b383" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f550cfe555239292577fe95f15a0fb58" class="toggle"  />
+    <label for="section-f550cfe555239292577fe95f15a0fb58" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-748de3caa969de5f0463714fef06e2bf" class="toggle"  />
+    <label for="section-748de3caa969de5f0463714fef06e2bf" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01867ca5de591b785e2c310209ee8cb4" class="toggle"  />
+    <label for="section-01867ca5de591b785e2c310209ee8cb4" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-119959759090fce61894a49053172a54" class="toggle"  />
+    <label for="section-119959759090fce61894a49053172a54" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ce38b31faecdfd79438e212848b8695" class="toggle"  />
+    <label for="section-4ce38b31faecdfd79438e212848b8695" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-43effcc73883f6032917b714430cd064" class="toggle"  />
+    <label for="section-43effcc73883f6032917b714430cd064" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ffff656c2dc3dfe4c18658b113a7be" class="toggle"  />
+    <label for="section-13ffff656c2dc3dfe4c18658b113a7be" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9cd6328cf5cf698fa6c672c2db6d2035" class="toggle"  />
+    <label for="section-9cd6328cf5cf698fa6c672c2db6d2035" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bf71894cadd24d41821eba6f15a9523" class="toggle"  />
+    <label for="section-7bf71894cadd24d41821eba6f15a9523" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-26749471ddc426a91f4eb4368b916e16" class="toggle"  />
+    <label for="section-26749471ddc426a91f4eb4368b916e16" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92b00c426b17cc8f5bb49854760a2a5" class="toggle"  />
+    <label for="section-d92b00c426b17cc8f5bb49854760a2a5" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6464d2d3fb1a4e9e5d7077427324262c" class="toggle"  />
+    <label for="section-6464d2d3fb1a4e9e5d7077427324262c" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-94df99bcc7100f8b6dd829f22627f997" class="toggle"  />
+    <label for="section-94df99bcc7100f8b6dd829f22627f997" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b85e1e563a521a0dcacf88388f88f7a" class="toggle"  />
+    <label for="section-1b85e1e563a521a0dcacf88388f88f7a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e9a4c61515d11caeb60041730028720" class="toggle"  />
+    <label for="section-0e9a4c61515d11caeb60041730028720" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-615aafe1cd7d7f170cf11a536398f063" class="toggle"  />
+    <label for="section-615aafe1cd7d7f170cf11a536398f063" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13f05eeb6627e08a293644209c456447" class="toggle"  />
+    <label for="section-13f05eeb6627e08a293644209c456447" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c46fb385560336c69d4467dbf9a5d5a" class="toggle"  />
+    <label for="section-7c46fb385560336c69d4467dbf9a5d5a" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fe4d6a252416c10985f7090ee3b16155" class="toggle"  />
+    <label for="section-fe4d6a252416c10985f7090ee3b16155" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dfcadcb229769865e1e73e90e669fb26" class="toggle"  />
+    <label for="section-dfcadcb229769865e1e73e90e669fb26" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1e757f5004bc51fabbd20e29b8046b90" class="toggle" checked />
+    <label for="section-1e757f5004bc51fabbd20e29b8046b90" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns-hands-on/" class="active">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>DNS Hands On</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#environment-and-tools">Environment and Tools</a></li>
+        <li><a href="#records">Records</a>
+          <ul>
+            <li><a href="#name">Name</a></li>
+            <li><a href="#type">Type</a></li>
+            <li><a href="#ttl-time-to-live">TTL (Time To Live)</a></li>
+            <li><a href="#value">Value</a></li>
+          </ul>
+        </li>
+        <li><a href="#hands-on">Hands On</a>
+          <ul>
+            <li><a href="#query-root-domain-">Query Root Domain <code>.</code></a></li>
+            <li><a href="#query-name-server-of-com">Query Name Server of <code>com.</code></a></li>
+            <li><a href="#query-name-server-of-googlecom">Query Name Server of <code>google.com</code></a></li>
+            <li><a href="#query-ip-address-of-googlecom-web-server">Query IP Address of <code>google.com</code> Web Server</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h1>
+<p>In <a href="/docs/programming/network/dns">dns</a> post, I introduced hierarchy of domain names and how browser queries IP address for a domain name from domain name servers. This post we will query domain name servers step by step to get the IP address of domain <code>google.com</code>. Also, I will introduce a new concept record in domain name server</p>
+<h2 id="environment-and-tools">
+  Environment and Tools
+  <a class="anchor" href="#environment-and-tools">#</a>
+</h2>
+<p>I will use CLI <code>dig</code> to query domain name server in Linux system</p>
+<h2 id="records">
+  Records
+  <a class="anchor" href="#records">#</a>
+</h2>
+<p>Records are resourced managed by domain name servers. They are a mapping of domain name to its various type of information. You can think records as entries in the DB managed by domain name servers. Records have below important fields</p>
+<h3 id="name">
+  Name
+  <a class="anchor" href="#name">#</a>
+</h3>
+<p>The domain name</p>
+<h3 id="type">
+  Type
+  <a class="anchor" href="#type">#</a>
+</h3>
+<p>Type of the record. Here are some common record types</p>
+<ul>
+<li><code>A</code> (Address Record): Maps a domain name directly to its IPv4 address</li>
+<li><code>AAAA</code> (Quad Record): Maps a domain name directly to its IPv6 address</li>
+<li><code>CNAME</code> (Canonical Name Record): Maps a domain name to another domain name. It is used to alias one domain name to another</li>
+<li><code>NS</code> (Name Server Record): Map a domain name to a domain name server</li>
+</ul>
+<h3 id="ttl-time-to-live">
+  TTL (Time To Live)
+  <a class="anchor" href="#ttl-time-to-live">#</a>
+</h3>
+<p>TTL specifies the duration in seconds that the record may be cached by the resolver. After this time, the resolver must query the name server again to ensure it has the current record</p>
+<h3 id="value">
+  Value
+  <a class="anchor" href="#value">#</a>
+</h3>
+<p>Value varies depending on the record type</p>
+<ul>
+<li><code>A</code>/<code>AAAA</code> record: it contains the IP address of the domain name points to</li>
+<li><code>CNAME</code> record: the target domain to which it alias to</li>
+</ul>
+<h2 id="hands-on">
+  Hands On
+  <a class="anchor" href="#hands-on">#</a>
+</h2>
+<h3 id="query-root-domain-">
+  Query Root Domain <code>.</code>
+  <a class="anchor" href="#query-root-domain-">#</a>
+</h3>
+<ul>
+<li>
+<p>Command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>dig NS .
+</span></span></code></pre></div><ul>
+<li><code>dig</code>: CLI command to look up records in domain name server</li>
+<li><code>NS</code>: Query <code>NS</code> records</li>
+<li><code>.</code>: The domain name to query. Here is root domain</li>
+</ul>
+<p>The query is sent to the root name server, and the router will select the nearest physical name server and route the query to it.</p>
+</li>
+<li>
+<p>Response</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>;; ANSWER SECTION:
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      f.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      g.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      h.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      i.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      j.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      k.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      l.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      m.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      a.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      b.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      c.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      d.root-servers.net.
+</span></span><span style="display:flex;"><span>.                       <span style="color:#ae81ff">0</span>       IN      NS      e.root-servers.net.
+</span></span><span style="display:flex;"><span>a.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      A       198.41.0.4
+</span></span><span style="display:flex;"><span>a.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      AAAA    2001:503:ba3e::2:30
+</span></span><span style="display:flex;"><span>b.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      A       170.247.170.2
+</span></span><span style="display:flex;"><span>b.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      AAAA    2801:1b8:10::b
+</span></span><span style="display:flex;"><span>c.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      A       192.33.4.12
+</span></span><span style="display:flex;"><span>c.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      AAAA    2001:500:2::c
+</span></span><span style="display:flex;"><span>d.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      A       199.7.91.13
+</span></span><span style="display:flex;"><span>d.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      AAAA    2001:500:2d::d
+</span></span><span style="display:flex;"><span>e.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      A       192.203.230.10
+</span></span><span style="display:flex;"><span>e.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      AAAA    2001:500:a8::e
+</span></span><span style="display:flex;"><span>f.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      A       192.5.5.241
+</span></span><span style="display:flex;"><span>f.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      AAAA    2001:500:2f::f
+</span></span><span style="display:flex;"><span>g.root-servers.net.     <span style="color:#ae81ff">0</span>       IN      A       192.112.36.4
+</span></span></code></pre></div><p>The command returns 13 <code>NS</code> records of root domain servers and <code>A/AAAA</code> records of each root name server.</p>
+</li>
+</ul>
+<h4 id="root-name-server">
+  Root Name Server
+  <a class="anchor" href="#root-name-server">#</a>
+</h4>
+<p>There are 13 logical root name servers around the world, naming from <code>a</code> to <code>m</code> and with <code>.root-servers.net.</code> as suffix. However, it doesn&rsquo;t mean there are only 13 physical servers. Actually each logical root name server has hundreds of physical servers with same IP address using anycast addressing. When the router receives client&rsquo;s query to root servers, it will select the nearest physical server with the least latency or other network conditions</p>
+<h3 id="query-name-server-of-com">
+  Query Name Server of <code>com.</code>
+  <a class="anchor" href="#query-name-server-of-com">#</a>
+</h3>
+<ul>
+<li>
+<p>Command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>dig @a.root-servers.net. NS com.
+</span></span></code></pre></div><p>Here I pick one root name server <code>a.root-servers.net.</code> and query the <code>NS</code> record for domain name <code>com.</code></p>
+</li>
+<li>
+<p>Response</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>;; AUTHORITY SECTION:
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      e.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      b.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      j.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      m.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      i.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      f.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      a.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      g.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      h.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      l.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      k.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      c.gtld-servers.net.
+</span></span><span style="display:flex;"><span>com.                    <span style="color:#ae81ff">172800</span>  IN      NS      d.gtld-servers.net.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; ADDITIONAL SECTION:
+</span></span><span style="display:flex;"><span>e.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.12.94.30
+</span></span><span style="display:flex;"><span>e.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:502:1ca1::30
+</span></span><span style="display:flex;"><span>b.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.33.14.30
+</span></span><span style="display:flex;"><span>b.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:503:231d::2:30
+</span></span><span style="display:flex;"><span>j.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.48.79.30
+</span></span><span style="display:flex;"><span>j.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:502:7094::30
+</span></span><span style="display:flex;"><span>m.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.55.83.30
+</span></span><span style="display:flex;"><span>m.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:501:b1f9::30
+</span></span><span style="display:flex;"><span>i.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.43.172.30
+</span></span><span style="display:flex;"><span>i.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:503:39c1::30
+</span></span><span style="display:flex;"><span>f.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.35.51.30
+</span></span><span style="display:flex;"><span>f.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:503:d414::30
+</span></span><span style="display:flex;"><span>a.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.5.6.30
+</span></span><span style="display:flex;"><span>a.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:503:a83e::2:30
+</span></span><span style="display:flex;"><span>g.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.42.93.30
+</span></span><span style="display:flex;"><span>g.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:503:eea3::30
+</span></span><span style="display:flex;"><span>h.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.54.112.30
+</span></span><span style="display:flex;"><span>h.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:502:8cc::30
+</span></span><span style="display:flex;"><span>l.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.41.162.30
+</span></span><span style="display:flex;"><span>l.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:500:d937::30
+</span></span><span style="display:flex;"><span>k.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.52.178.30
+</span></span><span style="display:flex;"><span>k.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:503:d2d::30
+</span></span><span style="display:flex;"><span>c.gtld-servers.net.     <span style="color:#ae81ff">172800</span>  IN      A       192.26.92.30
+</span></span></code></pre></div><p>The response contains two sections of answers:</p>
+<ul>
+<li>Authority Section:
+This section lists the authoritative name servers for the <code>.com</code> TLD</li>
+<li>Additional Section:
+This section lists the IPv4 and IPv6 addresses for the authoritative TLD name servers</li>
+</ul>
+</li>
+</ul>
+<h3 id="query-name-server-of-googlecom">
+  Query Name Server of <code>google.com</code>
+  <a class="anchor" href="#query-name-server-of-googlecom">#</a>
+</h3>
+<ul>
+<li>
+<p>Command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>dig @e.gtld-servers.net. NS google.com
+</span></span></code></pre></div><p>Send the query to the TLD name server <code>e.gtld-servers.net.</code></p>
+</li>
+<li>
+<p>Response</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>;; AUTHORITY SECTION:
+</span></span><span style="display:flex;"><span>google.com.             <span style="color:#ae81ff">172800</span>  IN      NS      ns2.google.com.
+</span></span><span style="display:flex;"><span>google.com.             <span style="color:#ae81ff">172800</span>  IN      NS      ns1.google.com.
+</span></span><span style="display:flex;"><span>google.com.             <span style="color:#ae81ff">172800</span>  IN      NS      ns3.google.com.
+</span></span><span style="display:flex;"><span>google.com.             <span style="color:#ae81ff">172800</span>  IN      NS      ns4.google.com.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>;; ADDITIONAL SECTION:
+</span></span><span style="display:flex;"><span>ns2.google.com.         <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:4860:4802:34::a
+</span></span><span style="display:flex;"><span>ns2.google.com.         <span style="color:#ae81ff">172800</span>  IN      A       216.239.34.10
+</span></span><span style="display:flex;"><span>ns1.google.com.         <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:4860:4802:32::a
+</span></span><span style="display:flex;"><span>ns1.google.com.         <span style="color:#ae81ff">172800</span>  IN      A       216.239.32.10
+</span></span><span style="display:flex;"><span>ns3.google.com.         <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:4860:4802:36::a
+</span></span><span style="display:flex;"><span>ns3.google.com.         <span style="color:#ae81ff">172800</span>  IN      A       216.239.36.10
+</span></span><span style="display:flex;"><span>ns4.google.com.         <span style="color:#ae81ff">172800</span>  IN      AAAA    2001:4860:4802:38::a
+</span></span><span style="display:flex;"><span>ns4.google.com.         <span style="color:#ae81ff">172800</span>  IN      A       216.239.38.10
+</span></span></code></pre></div><p>The response also contains two sections: the authoritative name servers <code>google.com</code> and their IP addresses. Those records are <code>NS</code> records for <code>google.com</code> name servers instead of web servers. To get the IP address of the web server, we need to make an extra query to the Google&rsquo;s name server</p>
+</li>
+</ul>
+<h3 id="query-ip-address-of-googlecom-web-server">
+  Query IP Address of <code>google.com</code> Web Server
+  <a class="anchor" href="#query-ip-address-of-googlecom-web-server">#</a>
+</h3>
+<ul>
+<li>
+<p>Command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>dig @ns2.google.com. google.com
+</span></span></code></pre></div></li>
+<li>
+<p>Response</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>;; ANSWER SECTION:
+</span></span><span style="display:flex;"><span>google.com.             <span style="color:#ae81ff">300</span>     IN      A       142.250.217.78
+</span></span></code></pre></div></li>
+</ul>
+<p>The response only contains one <code>A</code> record which is the IPv4 address of <code>google.com</code> web server. You can type the IP address in your browser, and you will be routed to website <code>www.google.com</code></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#environment-and-tools">Environment and Tools</a></li>
+        <li><a href="#records">Records</a>
+          <ul>
+            <li><a href="#name">Name</a></li>
+            <li><a href="#type">Type</a></li>
+            <li><a href="#ttl-time-to-live">TTL (Time To Live)</a></li>
+            <li><a href="#value">Value</a></li>
+          </ul>
+        </li>
+        <li><a href="#hands-on">Hands On</a>
+          <ul>
+            <li><a href="#query-root-domain-">Query Root Domain <code>.</code></a></li>
+            <li><a href="#query-name-server-of-com">Query Name Server of <code>com.</code></a></li>
+            <li><a href="#query-name-server-of-googlecom">Query Name Server of <code>google.com</code></a></li>
+            <li><a href="#query-ip-address-of-googlecom-web-server">Query IP Address of <code>google.com</code> Web Server</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

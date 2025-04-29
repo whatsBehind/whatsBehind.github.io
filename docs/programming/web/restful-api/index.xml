@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>http://localhost:55166/docs/programming/web/restful-api/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:55166/docs/programming/web/restful-api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RESTful GET</title>
+      <link>http://localhost:55166/docs/programming/web/restful-api/restful-get/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/web/restful-api/restful-get/</guid>
+      <description>&lt;h1 id=&#34;understanding-get-in-restful-apis-best-practices--use-cases&#34;&gt;&#xA;  &lt;strong&gt;Understanding GET in RESTful APIs: Best Practices &amp;amp; Use Cases&lt;/strong&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#understanding-get-in-restful-apis-best-practices--use-cases&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;&#xA;  &lt;strong&gt;Introduction&lt;/strong&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The &lt;strong&gt;GET&lt;/strong&gt; method is one of the most fundamental HTTP methods used in &lt;strong&gt;RESTful APIs&lt;/strong&gt;. It is designed to &lt;strong&gt;retrieve&lt;/strong&gt; data from a server without making modifications. In this guide, we&amp;rsquo;ll explore how GET works, when to use it, best practices, and common patterns for designing RESTful GET APIs.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-what-is-the-get-method&#34;&gt;&#xA;  &lt;strong&gt;1. What is the GET Method?&lt;/strong&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-what-is-the-get-method&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;The &lt;strong&gt;GET&lt;/strong&gt; method is used for &lt;strong&gt;reading and retrieving&lt;/strong&gt; data. Unlike &lt;code&gt;POST&lt;/code&gt;, &lt;code&gt;PUT&lt;/code&gt;, or &lt;code&gt;DELETE&lt;/code&gt;, it does &lt;strong&gt;not modify&lt;/strong&gt; any server-side resources.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

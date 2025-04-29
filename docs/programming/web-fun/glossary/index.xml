@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>http://localhost:1313/docs/programming/web-fun/glossary/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Oct 2023 08:44:30 -0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/programming/web-fun/glossary/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CORS</title>
+      <link>http://localhost:1313/docs/programming/web-fun/glossary/cors/</link>
+      <pubDate>Mon, 30 Oct 2023 08:44:30 -0700</pubDate>
+      <guid>http://localhost:1313/docs/programming/web-fun/glossary/cors/</guid>
+      <description>&lt;h3 id=&#34;whats-cors&#34;&gt;&#xA;  What&amp;rsquo;s CORS&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#whats-cors&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;code&gt;CORS&lt;/code&gt; is a mechanism to stop you from accessing resource in one origin from another origin. For example, there is an image &lt;code&gt;img.jpg&lt;/code&gt; from origin &lt;code&gt;images.com&lt;/code&gt;, if you don&amp;rsquo;t have CORS set properly, you can&amp;rsquo;t access the &lt;code&gt;img.jpg&lt;/code&gt; from other origins like &lt;code&gt;yourOrigin.com&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;why-needs-cors&#34;&gt;&#xA;  Why needs CORS&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#why-needs-cors&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;code&gt;CORS&lt;/code&gt; is mainly for security usage. Image that your browser stores credential cookies of domain &lt;code&gt;bank.com&lt;/code&gt; which is the website of you bank account, and a hacking website &lt;code&gt;hacking.com&lt;/code&gt; want to access your bank information and make a transaction from your bank. If without CORS, the javascript script from &lt;code&gt;hacking.com&lt;/code&gt; is able to get the cookies under domain &lt;code&gt;bank.com&lt;/code&gt; and make requests to &lt;code&gt;bank.com&lt;/code&gt;.&#xA;&lt;code&gt;CORS&lt;/code&gt; can protect your website from malicious requests&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

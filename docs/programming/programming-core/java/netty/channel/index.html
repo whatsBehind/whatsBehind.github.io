@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55166&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Concept
+  #
+
+
+  What is Channel?
+  #
+
+
+
+Definition
+A Channel in Netty represents an open network connection, such as a socket. It&rsquo;s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.
+
+
+Role
+
+Data Communication: A Channel is used for reading data from and writing data to the network.
+State Management: It keeps track of the state of a network connection (e.g., whether it&rsquo;s open, connected, etc.).
+
+
+
+
+  What is ChannelFuture?
+  #
+
+
+
+Definition">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:55166/docs/programming/programming-core/java/netty/channel/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Channel & ChannelFuture">
+  <meta property="og:description" content="Concept # What is Channel? # Definition
+A Channel in Netty represents an open network connection, such as a socket. It’s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.
+Role
+Data Communication: A Channel is used for reading data from and writing data to the network. State Management: It keeps track of the state of a network connection (e.g., whether it’s open, connected, etc.). What is ChannelFuture? # Definition">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Channel &amp; ChannelFuture | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:55166/docs/programming/programming-core/java/netty/channel/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.63c2184d22382eb1423535ba6c75cde891650e58814bcf19869caf6d686bb259.js" integrity="sha256-Y8IYTSI4LrFCNTW6bHXN6JFlDliBS88ZhpyvbWhrslk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Programming</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="toggle" checked />
+    <label for="section-967ab9d3eb6864d350e1e9f8d578bfbe" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="toggle" checked />
+    <label for="section-bd6aae65fa2bf2ec8490fdc7c0aeebe5" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bdf55a702353035bca92383ae3fb0776" class="toggle"  />
+    <label for="section-bdf55a702353035bca92383ae3fb0776" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-638baef7394c63505a0124a6ab8929d4" class="toggle"  />
+    <label for="section-638baef7394c63505a0124a6ab8929d4" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-050a487401c9ade14154296e864be8a2" class="toggle"  />
+    <label for="section-050a487401c9ade14154296e864be8a2" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6660e5a8131bb9bf21390ee36cb603b4" class="toggle"  />
+    <label for="section-6660e5a8131bb9bf21390ee36cb603b4" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e48aea960dd5f2b76bffb00087424f3" class="toggle" checked />
+    <label for="section-7e48aea960dd5f2b76bffb00087424f3" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/channel/" class="active">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9091ac3d236d4bd531308b8633d45035" class="toggle"  />
+    <label for="section-9091ac3d236d4bd531308b8633d45035" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="toggle"  />
+    <label for="section-d8ddbf6b94a21c8ab7e480f37b5b76e6" class="flex justify-between">
+      <a role="button" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/projects/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="toggle"  />
+    <label for="section-8e0ec90d068fb4fa2d21a8fb7e8cd087" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-caac18242619b008e4a9895db1095868" class="toggle"  />
+    <label for="section-caac18242619b008e4a9895db1095868" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-61603bfa67f7e848f6f30bc8a7b7b383" class="toggle"  />
+    <label for="section-61603bfa67f7e848f6f30bc8a7b7b383" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f550cfe555239292577fe95f15a0fb58" class="toggle"  />
+    <label for="section-f550cfe555239292577fe95f15a0fb58" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-73eee81d29f3d1d06e3ced5db70613c1" class="toggle"  />
+    <label for="section-73eee81d29f3d1d06e3ced5db70613c1" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-748de3caa969de5f0463714fef06e2bf" class="toggle"  />
+    <label for="section-748de3caa969de5f0463714fef06e2bf" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01867ca5de591b785e2c310209ee8cb4" class="toggle"  />
+    <label for="section-01867ca5de591b785e2c310209ee8cb4" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4da064fabd249335787f92ae73011b1b" class="toggle"  />
+    <label for="section-4da064fabd249335787f92ae73011b1b" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-119959759090fce61894a49053172a54" class="toggle"  />
+    <label for="section-119959759090fce61894a49053172a54" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ce38b31faecdfd79438e212848b8695" class="toggle"  />
+    <label for="section-4ce38b31faecdfd79438e212848b8695" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-43effcc73883f6032917b714430cd064" class="toggle"  />
+    <label for="section-43effcc73883f6032917b714430cd064" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13ffff656c2dc3dfe4c18658b113a7be" class="toggle"  />
+    <label for="section-13ffff656c2dc3dfe4c18658b113a7be" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9cd6328cf5cf698fa6c672c2db6d2035" class="toggle"  />
+    <label for="section-9cd6328cf5cf698fa6c672c2db6d2035" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bf71894cadd24d41821eba6f15a9523" class="toggle"  />
+    <label for="section-7bf71894cadd24d41821eba6f15a9523" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-26749471ddc426a91f4eb4368b916e16" class="toggle"  />
+    <label for="section-26749471ddc426a91f4eb4368b916e16" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92b00c426b17cc8f5bb49854760a2a5" class="toggle"  />
+    <label for="section-d92b00c426b17cc8f5bb49854760a2a5" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6464d2d3fb1a4e9e5d7077427324262c" class="toggle"  />
+    <label for="section-6464d2d3fb1a4e9e5d7077427324262c" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-94df99bcc7100f8b6dd829f22627f997" class="toggle"  />
+    <label for="section-94df99bcc7100f8b6dd829f22627f997" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1b85e1e563a521a0dcacf88388f88f7a" class="toggle"  />
+    <label for="section-1b85e1e563a521a0dcacf88388f88f7a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e9a4c61515d11caeb60041730028720" class="toggle"  />
+    <label for="section-0e9a4c61515d11caeb60041730028720" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-615aafe1cd7d7f170cf11a536398f063" class="toggle"  />
+    <label for="section-615aafe1cd7d7f170cf11a536398f063" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-13f05eeb6627e08a293644209c456447" class="toggle"  />
+    <label for="section-13f05eeb6627e08a293644209c456447" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c46fb385560336c69d4467dbf9a5d5a" class="toggle"  />
+    <label for="section-7c46fb385560336c69d4467dbf9a5d5a" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-fe4d6a252416c10985f7090ee3b16155" class="toggle"  />
+    <label for="section-fe4d6a252416c10985f7090ee3b16155" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dfcadcb229769865e1e73e90e669fb26" class="toggle"  />
+    <label for="section-dfcadcb229769865e1e73e90e669fb26" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1e757f5004bc51fabbd20e29b8046b90" class="toggle"  />
+    <label for="section-1e757f5004bc51fabbd20e29b8046b90" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Channel &amp; ChannelFuture</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#concept">Concept</a>
+          <ul>
+            <li><a href="#what-is-channel">What is <code>Channel</code>?</a></li>
+            <li><a href="#what-is-channelfuture">What is <code>ChannelFuture</code>?</a></li>
+          </ul>
+        </li>
+        <li><a href="#usage">Usage</a>
+          <ul>
+            <li><a href="#create-a-channelfuture">Create a <code>ChannelFuture</code></a></li>
+            <li><a href="#channel-connect">Channel Connect</a></li>
+            <li><a href="#channel-close">Channel Close</a></li>
+            <li><a href="#channel-lifecycle">Channel Lifecycle</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="concept">
+  Concept
+  <a class="anchor" href="#concept">#</a>
+</h2>
+<h3 id="what-is-channel">
+  What is <code>Channel</code>?
+  <a class="anchor" href="#what-is-channel">#</a>
+</h3>
+<ul>
+<li>
+<p>Definition</p>
+<p>A <code>Channel</code> in Netty represents an open network connection, such as a socket. It&rsquo;s a key abstraction that encapsulates the underlying network transport, such as TCP or UDP.</p>
+</li>
+<li>
+<p>Role</p>
+<ul>
+<li>Data Communication: A <code>Channel</code> is used for reading data from and writing data to the network.</li>
+<li>State Management: It keeps track of the state of a network connection (e.g., whether it&rsquo;s open, connected, etc.).</li>
+</ul>
+</li>
+</ul>
+<h3 id="what-is-channelfuture">
+  What is <code>ChannelFuture</code>?
+  <a class="anchor" href="#what-is-channelfuture">#</a>
+</h3>
+<ul>
+<li>
+<p>Definition</p>
+<p>A <code>ChannelFuture</code> represents the result of an asynchronous <code>Channel</code> I/O operation. It&rsquo;s a promise-like mechanism that provides a way to be notified when an asynchronous operation completes.</p>
+</li>
+</ul>
+<h2 id="usage">
+  Usage
+  <a class="anchor" href="#usage">#</a>
+</h2>
+<h3 id="create-a-channelfuture">
+  Create a <code>ChannelFuture</code>
+  <a class="anchor" href="#create-a-channelfuture">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>ChannelFuture channelFuture <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Bootstrap()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">group</span>(<span style="color:#66d9ef">new</span> NioEventLoopGroup())
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">channel</span>(NioSocketChannel.<span style="color:#a6e22e">class</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">handler</span>(<span style="color:#66d9ef">new</span> ChannelInitializer<span style="color:#f92672">&lt;</span>NioSocketChannel<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initChannel</span>(NioSocketChannel nioSocketChannel) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>                nioSocketChannel.<span style="color:#a6e22e">pipeline</span>().<span style="color:#a6e22e">addLast</span>(<span style="color:#66d9ef">new</span> StringEncoder());
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">new</span> InetSocketAddress(9999));
+</span></span></code></pre></div><h3 id="channel-connect">
+  Channel Connect
+  <a class="anchor" href="#channel-connect">#</a>
+</h3>
+<p>Let&rsquo;s add a LoggingHandler to better track the lifecycle of the <code>Channel</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Diff" data-lang="Diff"><span style="display:flex;"><span>ChannelFuture channelFuture = new Bootstrap()
+</span></span><span style="display:flex;"><span>        .group(new NioEventLoopGroup())
+</span></span><span style="display:flex;"><span>        .channel(NioSocketChannel.class)
+</span></span><span style="display:flex;"><span>        .handler(new ChannelInitializer&lt;NioSocketChannel&gt;() {
+</span></span><span style="display:flex;"><span>            @Override
+</span></span><span style="display:flex;"><span>            protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">+               nioSocketChannel.pipeline().addLast(new LoggingHandler());
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e"></span>                nioSocketChannel.pipeline().addLast(new StringEncoder());
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .connect(new InetSocketAddress(9999));
+</span></span></code></pre></div><h4 id="synchronous-way">
+  Synchronous Way
+  <a class="anchor" href="#synchronous-way">#</a>
+</h4>
+<ul>
+<li>
+<p>Code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start to connect...&#34;</span>);
+</span></span><span style="display:flex;"><span>channelFuture.<span style="color:#a6e22e">sync</span>();
+</span></span><span style="display:flex;"><span>log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Connected&#34;</span>);
+</span></span><span style="display:flex;"><span>Channel channel <span style="color:#f92672">=</span> channelFuture.<span style="color:#a6e22e">channel</span>();
+</span></span><span style="display:flex;"><span>channel.<span style="color:#a6e22e">writeAndFlush</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>);
+</span></span></code></pre></div></li>
+<li>
+<p>Execution Result</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:16:55 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">channel</span>.<span style="color:#a6e22e">Client</span> <span style="color:#f92672">-</span> Start to connect...
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:16:55 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x77a252c2<span style="color:#f92672">]</span> REGISTERED
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:16:55 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x77a252c2<span style="color:#f92672">]</span> CONNECT: 0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span><span style="color:#f92672">/</span>0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>:9999
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:16:55 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x77a252c2, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:49310 <span style="color:#f92672">-</span> R:0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span><span style="color:#f92672">/</span>0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>:9999<span style="color:#f92672">]</span> ACTIVE
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:16:55 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">netty_</span>.<span style="color:#a6e22e">component</span>.<span style="color:#a6e22e">channel</span>.<span style="color:#a6e22e">Client</span> <span style="color:#f92672">-</span> Connected
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:16:55 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x77a252c2, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:49310 <span style="color:#f92672">-</span> R:0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span><span style="color:#f92672">/</span>0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>:9999<span style="color:#f92672">]</span> WRITE: 11B
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">+-------------------------------------------------+</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">|</span>  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span>00000000<span style="color:#f92672">|</span> 48 65 6c 6c 6f 20 57 6f 72 6c 64                <span style="color:#f92672">|</span>Hello World     <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:16:55 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x77a252c2, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:49310 <span style="color:#f92672">-</span> R:0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span><span style="color:#f92672">/</span>0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>:9999<span style="color:#f92672">]</span> FLUSH
+</span></span></code></pre></div></li>
+<li>
+<p>Explain</p>
+<ul>
+<li>The lifecycle of <code>Channel</code> and custom logs are printed the in the terminal</li>
+<li>Two thread: &ldquo;main&rdquo; and &ldquo;worker&rdquo; (<code>nioEventLoopGroup-2-1</code>) are involved</li>
+<li>Netty build the connection from the client to the server in a non-blocking asynchronous way.
+<ul>
+<li>Main thread initiates the connection</li>
+<li>The connection then is handed over to the worker thread</li>
+<li>The <code>Channel</code> is <code>REGISTERED</code> -&gt; <code>CONNECT</code> -&gt; <code>ACTIVE</code></li>
+<li><code>sync()</code> stops the main thread until the <code>Channel</code> becomes <code>CONNECT</code></li>
+<li>Then &ldquo;Hello World&rdquo; is written and flushed</li>
+</ul>
+</li>
+<li>Although Netty builds the connection in a non-blocking and asynchronous way, because of using <code>sync()</code> method, the logs are printed in linear order like building the connection synchronously</li>
+</ul>
+</li>
+</ul>
+<h4 id="asynchronous-way--callback">
+  Asynchronous Way / Callback
+  <a class="anchor" href="#asynchronous-way--callback">#</a>
+</h4>
+<ul>
+<li>
+<p>Code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>channelFuture.<span style="color:#a6e22e">addListener</span>(future <span style="color:#f92672">-&gt;</span> ((ChannelFuture) future).<span style="color:#a6e22e">channel</span>().<span style="color:#a6e22e">writeAndFlush</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>));
+</span></span></code></pre></div></li>
+<li>
+<p>Execution Result:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:31:08 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x46b4d807<span style="color:#f92672">]</span> REGISTERED
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:31:08 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x46b4d807<span style="color:#f92672">]</span> CONNECT: 0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span><span style="color:#f92672">/</span>0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>:9999
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:31:08 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x46b4d807, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:49450 <span style="color:#f92672">-</span> R:0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span><span style="color:#f92672">/</span>0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>:9999<span style="color:#f92672">]</span> WRITE: 11B
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">+-------------------------------------------------+</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">|</span>  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span>00000000<span style="color:#f92672">|</span> 48 65 6c 6c 6f 20 57 6f 72 6c 64                <span style="color:#f92672">|</span>Hello World     <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:31:08 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x46b4d807, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:49450 <span style="color:#f92672">-</span> R:0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span><span style="color:#f92672">/</span>0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>:9999<span style="color:#f92672">]</span> FLUSH
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 11:31:08 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x46b4d807, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:49450 <span style="color:#f92672">-</span> R:0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span><span style="color:#f92672">/</span>0.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>:9999<span style="color:#f92672">]</span> ACTIVE
+</span></span></code></pre></div></li>
+<li>
+<p>How does it work?</p>
+<p>In Netty, operations like reading, writing or connecting over a network channel are asynchronous. When you invoke such an operation, it doesn&rsquo;t complete immediately.</p>
+<ul>
+<li>Perform the Asynchronous Operation: You initiate an operation, like channel connection, which returns a <code>ChannelFuture</code></li>
+<li>Attach Listener to ChannelFuture: You use <code>addListener</code> to attach a <code>ChannelFutureListener</code> to this <code>ChannelFuture</code></li>
+<li>Completion of the Operation: When the operation you listen to finishes, the callback method is invoked</li>
+</ul>
+</li>
+</ul>
+<h3 id="channel-close">
+  Channel Close
+  <a class="anchor" href="#channel-close">#</a>
+</h3>
+<h4 id="synchronous-way-1">
+  Synchronous Way
+  <a class="anchor" href="#synchronous-way-1">#</a>
+</h4>
+<ul>
+<li>
+<p>Code</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Channel channel <span style="color:#f92672">=</span> channelFuture.<span style="color:#a6e22e">sync</span>().<span style="color:#a6e22e">channel</span>();
+</span></span><span style="display:flex;"><span>channel.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>ChannelFuture closeFuture <span style="color:#f92672">=</span> channel.<span style="color:#a6e22e">closeFuture</span>();
+</span></span><span style="display:flex;"><span>closeFuture.<span style="color:#a6e22e">sync</span>();
+</span></span><span style="display:flex;"><span>group.<span style="color:#a6e22e">shutdownGracefully</span>();
+</span></span></code></pre></div></li>
+<li>
+<p>Execution result</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 21:26:27 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x6675c311<span style="color:#f92672">]</span> REGISTERED
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 21:26:27 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x6675c311<span style="color:#f92672">]</span> CONNECT: localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 21:26:27 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x6675c311, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:45504 <span style="color:#f92672">-</span> R:localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999<span style="color:#f92672">]</span> ACTIVE
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 21:26:27 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x6675c311, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:45504 <span style="color:#f92672">-</span> R:localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999<span style="color:#f92672">]</span> CLOSE
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 21:26:27 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x6675c311, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:45504 <span style="color:#f92672">!</span> R:localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999<span style="color:#f92672">]</span> INACTIVE
+</span></span><span style="display:flex;"><span>2023<span style="color:#f92672">-</span>12<span style="color:#f92672">-</span>31 21:26:27 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x6675c311, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:45504 <span style="color:#f92672">!</span> R:localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999<span style="color:#f92672">]</span> UNREGISTERED
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="asynchronous-way">
+  Asynchronous Way
+  <a class="anchor" href="#asynchronous-way">#</a>
+</h4>
+<ul>
+<li>Code
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Channel channel <span style="color:#f92672">=</span> channelFuture.<span style="color:#a6e22e">sync</span>().<span style="color:#a6e22e">channel</span>();
+</span></span><span style="display:flex;"><span>channel.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>channel.<span style="color:#a6e22e">closeFuture</span>().<span style="color:#a6e22e">addListener</span>(future <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>    group.<span style="color:#a6e22e">shutdownGracefully</span>();
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="channel-lifecycle">
+  Channel Lifecycle
+  <a class="anchor" href="#channel-lifecycle">#</a>
+</h3>
+<p>In the execution history of closing the <code>Channel</code>, we can see the lifecycle or state of a <code>Channel</code></p>
+<ul>
+<li><code>REGISTERED</code>: The <code>Channel</code> is registered with an <code>EventLoop</code>. This means it&rsquo;s now bound to a particular thread for its I/O operations</li>
+<li><code>CONNECT</code>: The <code>Channel</code> is trying to connect to a server</li>
+<li><code>ACTIVE</code>: A <code>Channel</code> is considered active when it&rsquo;s connected to a remote peer and ready for I/O operations</li>
+<li><code>CLOSE</code>: The <code>Channel</code> closes the connection and releases all underlying resources. A closed <code>Channel</code> can&rsquo;t be reopened</li>
+<li><code>INACTIVE</code>: A <code>Channel</code> in the <code>INACTIVE</code> state has been disconnected from the remote endpoint but is not necessarily fully closed. It is potential for reuse</li>
+<li><code>UNREGISTERED</code>: The <code>Channel</code> is unregistered from its <code>EventLoop</code></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#concept">Concept</a>
+          <ul>
+            <li><a href="#what-is-channel">What is <code>Channel</code>?</a></li>
+            <li><a href="#what-is-channelfuture">What is <code>ChannelFuture</code>?</a></li>
+          </ul>
+        </li>
+        <li><a href="#usage">Usage</a>
+          <ul>
+            <li><a href="#create-a-channelfuture">Create a <code>ChannelFuture</code></a></li>
+            <li><a href="#channel-connect">Channel Connect</a></li>
+            <li><a href="#channel-close">Channel Close</a></li>
+            <li><a href="#channel-lifecycle">Channel Lifecycle</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

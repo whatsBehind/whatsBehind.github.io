@@ -1,0 +1,2278 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Handler
+  #
+
+
+  Role
+  #
+
+A Handler in Netty is a component that contains the business logic for processing inbound and outbound data as well as various network (channel) events.
+
+  Types
+  #
+
+
+
+ChannelInboundHandler:
+
+Purpose: Deals with inbound data and events. It processes incoming data and reacts to channel events
+Key Methods: channelRead, channelActive, channelInactive, channelRegistered, channelUnregistered.
+Usage: You override these methods to perform actions like reading data from a network socket, reacting to channel activation or deactivation, etc.
+
+
+
+ChannelOutboundHandler:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/programming-cores/java/netty/pipeline-handler/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Pipeline & Handler">
+  <meta property="og:description" content="Handler # Role # A Handler in Netty is a component that contains the business logic for processing inbound and outbound data as well as various network (channel) events.
+Types # ChannelInboundHandler:
+Purpose: Deals with inbound data and events. It processes incoming data and reacts to channel events Key Methods: channelRead, channelActive, channelInactive, channelRegistered, channelUnregistered. Usage: You override these methods to perform actions like reading data from a network socket, reacting to channel activation or deactivation, etc. ChannelOutboundHandler:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Pipeline &amp; Handler | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/programming-cores/java/netty/pipeline-handler/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.63c2184d22382eb1423535ba6c75cde891650e58814bcf19869caf6d686bb259.js" integrity="sha256-Y8IYTSI4LrFCNTW6bHXN6JFlDliBS88ZhpyvbWhrslk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67b3cb622c47500e9fc2e358a13f8c61" class="toggle" checked />
+    <label for="section-67b3cb622c47500e9fc2e358a13f8c61" class="flex justify-between">
+      <a role="button" class="">Programming Cores</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-96eef157127a6bd3795a81141bc7d985" class="toggle" checked />
+    <label for="section-96eef157127a6bd3795a81141bc7d985" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-39ef4653638e9cdfa21318d986b84d1d" class="toggle"  />
+    <label for="section-39ef4653638e9cdfa21318d986b84d1d" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c43c89d9eaf4c6ae7334d6ab3da44710" class="toggle"  />
+    <label for="section-c43c89d9eaf4c6ae7334d6ab3da44710" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4e9f89f1944052683374772c69e5be43" class="toggle"  />
+    <label for="section-4e9f89f1944052683374772c69e5be43" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-dea781c98f2500fd15dd6dcba909406f" class="toggle"  />
+    <label for="section-dea781c98f2500fd15dd6dcba909406f" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-65ec706aa8f13a49c85f640360abe3e4" class="toggle" checked />
+    <label for="section-65ec706aa8f13a49c85f640360abe3e4" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/java/netty/pipeline-handler/" class="active">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7b8ee5287f02badfe82f7edb29721397" class="toggle"  />
+    <label for="section-7b8ee5287f02badfe82f7edb29721397" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-cores/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-21f78c626649856e13cef1ead9e388b9" class="toggle"  />
+    <label for="section-21f78c626649856e13cef1ead9e388b9" class="flex justify-between">
+      <a role="button" class="">Projects</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/projects/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/projects/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48d1fef9b34bd9f66cd11153ecec9532" class="toggle"  />
+    <label for="section-48d1fef9b34bd9f66cd11153ecec9532" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e85d05a86421e8876acb62f953a355e" class="toggle"  />
+    <label for="section-0e85d05a86421e8876acb62f953a355e" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="toggle"  />
+    <label for="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12c34d34235c7f130e7a4969b853bc86" class="toggle"  />
+    <label for="section-12c34d34235c7f130e7a4969b853bc86" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
+    <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="toggle"  />
+    <label for="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-941ff506688d79a8f0ca9e629da3459f" class="toggle"  />
+    <label for="section-941ff506688d79a8f0ca9e629da3459f" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d2544afe2799858027d68114f061083" class="toggle"  />
+    <label for="section-3d2544afe2799858027d68114f061083" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c932410b33a0ef4d9ccee9231c75620" class="toggle"  />
+    <label for="section-0c932410b33a0ef4d9ccee9231c75620" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
+    <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45f25b83b9e5acf9883be577b1d209ca" class="toggle"  />
+    <label for="section-45f25b83b9e5acf9883be577b1d209ca" class="flex justify-between">
+      <a role="button" class="">Tools</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bd64c4b23a97b3f725aff1adf6e0822c" class="toggle"  />
+    <label for="section-bd64c4b23a97b3f725aff1adf6e0822c" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tools/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7e22ed5bec8c14629b6ab355bc1502c" class="toggle"  />
+    <label for="section-f7e22ed5bec8c14629b6ab355bc1502c" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-663cecbab2af013dadd72e5397ce62dc" class="toggle"  />
+    <label for="section-663cecbab2af013dadd72e5397ce62dc" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-454b2a6456d3526d3f6d34370515a130" class="toggle"  />
+    <label for="section-454b2a6456d3526d3f6d34370515a130" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-868ff3bc94429ce8afade70db1d07dbc" class="toggle"  />
+    <label for="section-868ff3bc94429ce8afade70db1d07dbc" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
+    <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
+    <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-18d02721e1887f4bb6418527097a8950" class="toggle"  />
+    <label for="section-18d02721e1887f4bb6418527097a8950" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-38078f6b2dffb5cfde0331f97c464879" class="toggle"  />
+    <label for="section-38078f6b2dffb5cfde0331f97c464879" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9885b1e85034892b05dcefffde06c590" class="toggle"  />
+    <label for="section-9885b1e85034892b05dcefffde06c590" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
+    <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="toggle"  />
+    <label for="section-7c6ad10d58d2c3d26a9062d0009a07d3" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/docker/docker-basics/" class="">Docker Basics</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
+    <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-304cd452d0278b77fa76b02a905b318b" class="toggle"  />
+    <label for="section-304cd452d0278b77fa76b02a905b318b" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Pipeline &amp; Handler</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#handler">Handler</a>
+          <ul>
+            <li><a href="#role">Role</a></li>
+            <li><a href="#types">Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#pipeline">Pipeline</a>
+          <ul>
+            <li><a href="#what-is-pipeline">What is pipeline?</a></li>
+            <li><a href="#structure-and-flow">Structure and Flow</a></li>
+          </ul>
+        </li>
+        <li><a href="#example">Example</a>
+          <ul>
+            <li><a href="#server">Server</a></li>
+            <li><a href="#client">Client</a></li>
+            <li><a href="#execution">Execution</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="handler">
+  Handler
+  <a class="anchor" href="#handler">#</a>
+</h2>
+<h3 id="role">
+  Role
+  <a class="anchor" href="#role">#</a>
+</h3>
+<p>A Handler in Netty is a component that contains the business logic for processing inbound and outbound data as well as various network (channel) events.</p>
+<h3 id="types">
+  Types
+  <a class="anchor" href="#types">#</a>
+</h3>
+<ul>
+<li>
+<p><code>ChannelInboundHandler</code>:</p>
+<ul>
+<li>Purpose: Deals with inbound data and events. It processes incoming data and reacts to channel events</li>
+<li>Key Methods: <code>channelRead</code>, <code>channelActive</code>, <code>channelInactive</code>, <code>channelRegistered</code>, <code>channelUnregistered</code>.</li>
+<li>Usage: You override these methods to perform actions like reading data from a network socket, reacting to channel activation or deactivation, etc.</li>
+</ul>
+</li>
+<li>
+<p><code>ChannelOutboundHandler</code>:</p>
+<ul>
+<li>Purpose: Responsible for handling outbound operations, such as writing data to the network or closing the channel.</li>
+<li>Key Methods: <code>write</code>, <code>flush</code>, <code>close</code>, <code>bind</code>, <code>connect</code>.</li>
+<li>Usage: These methods are overridden to intercept and execute operations that modify the state of the channel or write data to it.</li>
+</ul>
+</li>
+</ul>
+<h2 id="pipeline">
+  Pipeline
+  <a class="anchor" href="#pipeline">#</a>
+</h2>
+<h3 id="what-is-pipeline">
+  What is pipeline?
+  <a class="anchor" href="#what-is-pipeline">#</a>
+</h3>
+<p>A Netty pipeline is an ordered list of handlers. It represents a sequence of operations that are applied to inbound and outbound data.</p>
+<h3 id="structure-and-flow">
+  Structure and Flow
+  <a class="anchor" href="#structure-and-flow">#</a>
+</h3>
+<ul>
+<li><code>ChannelPipeline</code>: Each <code>Channel</code> in Netty has its own <code>ChannelPipeline</code>. This pipeline is automatically created when the channel is created.</li>
+<li>Ordered Sequence: Handlers are placed in the pipeline in a specific order, and the data or events are processed in this sequence.</li>
+<li>Data Flow:
+<ul>
+<li>Inbound Data: Flows head-to-tail through the pipeline. Each inbound handler processes the data and passes it to the next handler.</li>
+<li>Outbound Data: Flows tail-to-head. Each outbound handler processes the data and passes it back towards the head of the pipeline.</li>
+</ul>
+</li>
+</ul>
+<h2 id="example">
+  Example
+  <a class="anchor" href="#example">#</a>
+</h2>
+<h3 id="server">
+  Server
+  <a class="anchor" href="#server">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>1.  EventLoopGroup boss <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NioEventLoopGroup();
+</span></span><span style="display:flex;"><span>2.  EventLoopGroup worker <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NioEventLoopGroup(2);
+</span></span><span style="display:flex;"><span>3.  ChannelInboundHandlerAdapter inboundHandler1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ChannelInboundHandlerAdapter() {
+</span></span><span style="display:flex;"><span>4.      <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>5.      <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">channelRead</span>(ChannelHandlerContext ctx, Object msg) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>6.          ByteBuf buf <span style="color:#f92672">=</span> (ByteBuf) msg;
+</span></span><span style="display:flex;"><span>7.          String message <span style="color:#f92672">=</span> buf.<span style="color:#a6e22e">toString</span>(StandardCharsets.<span style="color:#a6e22e">UTF_8</span>);
+</span></span><span style="display:flex;"><span>8.          log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;InboundHandler_1 receives msg: [{}]&#34;</span>, message);
+</span></span><span style="display:flex;"><span>9.          <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">channelRead</span>(ctx, message);
+</span></span><span style="display:flex;"><span>10.     }
+</span></span><span style="display:flex;"><span>11. };
+</span></span><span style="display:flex;"><span>12. ChannelInboundHandlerAdapter inboundHandler2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ChannelInboundHandlerAdapter() {
+</span></span><span style="display:flex;"><span>13.     <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>14.     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">channelRead</span>(ChannelHandlerContext ctx, Object msg) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>15.         log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;InboundHandler_2 receives msg: [{}]&#34;</span>, msg);
+</span></span><span style="display:flex;"><span>16.         ctx.<span style="color:#a6e22e">channel</span>().<span style="color:#a6e22e">writeAndFlush</span>(ctx.<span style="color:#a6e22e">alloc</span>().<span style="color:#a6e22e">buffer</span>().<span style="color:#a6e22e">writeBytes</span>(<span style="color:#e6db74">&#34;Hello Client&#34;</span>.<span style="color:#a6e22e">getBytes</span>()));
+</span></span><span style="display:flex;"><span>17.         <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">channelRead</span>(ctx, msg);
+</span></span><span style="display:flex;"><span>18.     }
+</span></span><span style="display:flex;"><span>19. };
+</span></span><span style="display:flex;"><span>20. ChannelOutboundHandlerAdapter outboundHandler1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ChannelOutboundHandlerAdapter() {
+</span></span><span style="display:flex;"><span>21.     <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>22.     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">write</span>(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>23.         log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;OutboundHandler_1 writes msg&#34;</span>);
+</span></span><span style="display:flex;"><span>24.         <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">write</span>(ctx, msg, promise);
+</span></span><span style="display:flex;"><span>25.     }
+</span></span><span style="display:flex;"><span>26. };
+</span></span><span style="display:flex;"><span>27. ChannelOutboundHandlerAdapter outboundHandler2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ChannelOutboundHandlerAdapter() {
+</span></span><span style="display:flex;"><span>28.     <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>29.     <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">write</span>(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>30.         log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;OutboundHandler_2 writes msg&#34;</span>);
+</span></span><span style="display:flex;"><span>31.         <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">write</span>(ctx, msg, promise);
+</span></span><span style="display:flex;"><span>32.     }
+</span></span><span style="display:flex;"><span>33. };
+</span></span><span style="display:flex;"><span>34. <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ServerBootstrap</span>()
+</span></span><span style="display:flex;"><span>35.         .<span style="color:#a6e22e">group</span>(boss, worker)
+</span></span><span style="display:flex;"><span>36.         .<span style="color:#a6e22e">channel</span>(NioServerSocketChannel.<span style="color:#a6e22e">class</span>)
+</span></span><span style="display:flex;"><span>37.         .<span style="color:#a6e22e">childHandler</span>(<span style="color:#66d9ef">new</span> ChannelInitializer<span style="color:#f92672">&lt;</span>NioSocketChannel<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>38.             <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>39.             <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initChannel</span>(NioSocketChannel nioSocketChannel){
+</span></span><span style="display:flex;"><span>40.                 ChannelPipeline pipeline <span style="color:#f92672">=</span> nioSocketChannel.<span style="color:#a6e22e">pipeline</span>();
+</span></span><span style="display:flex;"><span>41.                 nioSocketChannel.<span style="color:#a6e22e">pipeline</span>().<span style="color:#a6e22e">addLast</span>(<span style="color:#66d9ef">new</span> LoggingHandler(LogLevel.<span style="color:#a6e22e">DEBUG</span>));
+</span></span><span style="display:flex;"><span>42.                 pipeline.<span style="color:#a6e22e">addLast</span>(inboundHandler1);
+</span></span><span style="display:flex;"><span>43.                 pipeline.<span style="color:#a6e22e">addLast</span>(inboundHandler2);
+</span></span><span style="display:flex;"><span>44.                 pipeline.<span style="color:#a6e22e">addLast</span>(outboundHandler1);
+</span></span><span style="display:flex;"><span>45.                 pipeline.<span style="color:#a6e22e">addLast</span>(outboundHandler2);
+</span></span><span style="display:flex;"><span>46.             }
+</span></span><span style="display:flex;"><span>47.         })
+</span></span><span style="display:flex;"><span>48.         .<span style="color:#a6e22e">bind</span>(9999);
+</span></span></code></pre></div><ul>
+<li>Line 1-2. EventLoopGroups Creation: Two EventLoopGroup instances are created. boss handles accepting new connections, and worker (with 2 threads) handles actual I/O operations for the connections.</li>
+<li>Line 3-11. First Inbound Handler: A custom inbound handler (inboundHandler1) that reads incoming data (as ByteBuf), converts it to a string, logs it, and forwards it down the pipeline.</li>
+<li>Line 12-19. Second Inbound Handler: Another inbound handler (inboundHandler2) that logs the received message and writes a response back to the client.</li>
+<li>Line 20-26. First Outbound Handler: A custom outbound handler (outboundHandler1) that logs a debug message when it writes data.</li>
+<li>Line 27-33. Second Outbound Handler: Another outbound handler (outboundHandler2) with similar functionality as the first outbound handler, logging when data is written.</li>
+<li>34-48. Bootstrap a server. In the channel pipeline, five handlers are added, including a logging handler and the two inbound and two outbound handlers</li>
+</ul>
+<h3 id="client">
+  Client
+  <a class="anchor" href="#client">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>EventLoopGroup group <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NioEventLoopGroup();
+</span></span><span style="display:flex;"><span>ChannelFuture channelFuture <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Bootstrap()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">group</span>(group)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">channel</span>(NioSocketChannel.<span style="color:#a6e22e">class</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">handler</span>(<span style="color:#66d9ef">new</span> ChannelInitializer<span style="color:#f92672">&lt;</span>NioSocketChannel<span style="color:#f92672">&gt;</span>() {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initChannel</span>(NioSocketChannel nioSocketChannel) {
+</span></span><span style="display:flex;"><span>                nioSocketChannel.<span style="color:#a6e22e">pipeline</span>().<span style="color:#a6e22e">addLast</span>(<span style="color:#66d9ef">new</span> LoggingHandler(LogLevel.<span style="color:#a6e22e">DEBUG</span>));
+</span></span><span style="display:flex;"><span>                nioSocketChannel.<span style="color:#a6e22e">pipeline</span>().<span style="color:#a6e22e">addLast</span>(<span style="color:#66d9ef">new</span> StringEncoder());
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">new</span> InetSocketAddress(<span style="color:#e6db74">&#34;localhost&#34;</span>, 9999));
+</span></span><span style="display:flex;"><span>Channel channel <span style="color:#f92672">=</span> channelFuture.<span style="color:#a6e22e">sync</span>().<span style="color:#a6e22e">channel</span>();
+</span></span><span style="display:flex;"><span>channel.<span style="color:#a6e22e">writeAndFlush</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>);
+</span></span></code></pre></div><ul>
+<li>Client connects to the server</li>
+<li>Then client sends a message to the server</li>
+</ul>
+<h3 id="execution">
+  Execution
+  <a class="anchor" href="#execution">#</a>
+</h3>
+<ul>
+<li>Start the server</li>
+<li>Start the client</li>
+</ul>
+<h4 id="execution-result">
+  Execution Result
+  <a class="anchor" href="#execution-result">#</a>
+</h4>
+<ul>
+<li>
+<p>Server log</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x9ce2b880, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999 <span style="color:#f92672">-</span> R:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006<span style="color:#f92672">]</span> REGISTERED
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x9ce2b880, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999 <span style="color:#f92672">-</span> R:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006<span style="color:#f92672">]</span> ACTIVE
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x9ce2b880, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999 <span style="color:#f92672">-</span> R:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006<span style="color:#f92672">]</span> READ: 11B
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">+-------------------------------------------------+</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">|</span>  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span>00000000<span style="color:#f92672">|</span> 48 65 6c 6c 6f 20 57 6f 72 6c 64                <span style="color:#f92672">|</span>Hello World     <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">pipeline_handler</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> InboundHandler_1 receives msg: <span style="color:#f92672">[</span>Hello World<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">pipeline_handler</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> InboundHandler_2 receives msg: <span style="color:#f92672">[</span>Hello World<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">pipeline_handler</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> OutboundHandler_2 writes msg
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">pipeline_handler</span>.<span style="color:#a6e22e">Server</span> <span style="color:#f92672">-</span> OutboundHandler_1 writes msg
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x9ce2b880, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999 <span style="color:#f92672">-</span> R:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006<span style="color:#f92672">]</span> WRITE: 12B
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">+-------------------------------------------------+</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">|</span>  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span>00000000<span style="color:#f92672">|</span> 48 65 6c 6c 6f 20 43 6c 69 65 6e 74             <span style="color:#f92672">|</span>Hello Client    <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x9ce2b880, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999 <span style="color:#f92672">-</span> R:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006<span style="color:#f92672">]</span> FLUSH
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>3<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0x9ce2b880, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999 <span style="color:#f92672">-</span> R:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006<span style="color:#f92672">]</span> READ COMPLETE
+</span></span></code></pre></div></li>
+<li>
+<p>Client log</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0xa3ce2712<span style="color:#f92672">]</span> REGISTERED
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0xa3ce2712<span style="color:#f92672">]</span> CONNECT: localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0xa3ce2712, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006 <span style="color:#f92672">-</span> R:localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999<span style="color:#f92672">]</span> ACTIVE
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0xa3ce2712, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006 <span style="color:#f92672">-</span> R:localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999<span style="color:#f92672">]</span> WRITE: 11B
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">+-------------------------------------------------+</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">|</span>  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span>00000000<span style="color:#f92672">|</span> 48 65 6c 6c 6f 20 57 6f 72 6c 64                <span style="color:#f92672">|</span>Hello World     <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0xa3ce2712, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006 <span style="color:#f92672">-</span> R:localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999<span style="color:#f92672">]</span> FLUSH
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0xa3ce2712, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006 <span style="color:#f92672">-</span> R:localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999<span style="color:#f92672">]</span> READ: 12B
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">+-------------------------------------------------+</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">|</span>  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">|</span>00000000<span style="color:#f92672">|</span> 48 65 6c 6c 6f 20 43 6c 69 65 6e 74             <span style="color:#f92672">|</span>Hello Client    <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">+--------+-------------------------------------------------+----------------+</span>
+</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>03 22:16:03 <span style="color:#f92672">[</span>nioEventLoopGroup<span style="color:#f92672">-</span>2<span style="color:#f92672">-</span>1<span style="color:#f92672">]</span> DEBUG i.<span style="color:#a6e22e">n</span>.<span style="color:#a6e22e">handler</span>.<span style="color:#a6e22e">logging</span>.<span style="color:#a6e22e">LoggingHandler</span> <span style="color:#f92672">-</span> <span style="color:#f92672">[</span>id: 0xa3ce2712, L:<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:46006 <span style="color:#f92672">-</span> R:localhost<span style="color:#f92672">/</span>127.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">0</span>.<span style="color:#a6e22e">1</span>:9999<span style="color:#f92672">]</span> READ COMPLETE
+</span></span></code></pre></div></li>
+</ul>
+<h4 id="pipeline-virtualization">
+  Pipeline Virtualization
+  <a class="anchor" href="#pipeline-virtualization">#</a>
+</h4>
+<p><img src="/docs/programming/backend/java/netty/pipeline-handler/client-server.png" alt="client-server" /></p>
+<ul>
+<li>
+<p>Double-Linked List:</p>
+<ul>
+<li>Each handler in the pipeline is a node in a double-linked list, maintaining references to its previous and next handlers. This allows for efficient traversal in both directions – towards the head for outbound events and towards the tail for inbound events.</li>
+</ul>
+</li>
+<li>
+<p>Dynamic Modification:</p>
+<ul>
+<li>The double-linked list structure allows for handlers to be dynamically added, removed, or replaced at runtime. This is crucial for Netty&rsquo;s flexibility, enabling the pipeline to adapt to different protocol requirements or runtime conditions.</li>
+</ul>
+</li>
+<li>
+<p>Ordered Processing:</p>
+<ul>
+<li>The order of handlers in the list determines the order of processing. Inbound data flows through the pipeline from the first (head) to the last (tail) handler, while outbound data flows in the opposite direction.</li>
+</ul>
+</li>
+<li>
+<p>Contextual Linkage:</p>
+<ul>
+<li>Each handler is associated with a ChannelHandlerContext, which provides the handler with its position (context) in the pipeline. This context is used to interact with the pipeline, such as forwarding events, accessing the channel, or modifying the pipeline itself.</li>
+</ul>
+</li>
+<li>
+<p>Head and Tail Contexts:</p>
+<ul>
+<li>Special HeadContext and TailContext nodes are typically present in the beginning and at the ends of the pipeline. These nodes handle some standard operations, like the initial entry of events into the pipeline or the termination of event propagation.</li>
+</ul>
+</li>
+</ul>
+<h4 id="how-does-it-work">
+  How Does It Work?
+  <a class="anchor" href="#how-does-it-work">#</a>
+</h4>
+<ul>
+<li>
+<p>Client</p>
+<ol>
+<li>Client Registration, Connection, and Activation
+<ul>
+<li>The client registers a new channel (REGISTERED), connects to the server (CONNECT), and becomes active (ACTIVE).</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Server</p>
+<ol start="2">
+<li>Server Registration and Activation
+<ul>
+<li>The server registers a new channel (REGISTERED) and then becomes active (ACTIVE). This indicates that the server accepts client&rsquo;s connection</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Client</p>
+<ol start="3">
+<li>Sending Data to Server:
+<ul>
+<li>The client writes (WRITE) the &ldquo;Hello World&rdquo; message (11 bytes) and then flushes it (FLUSH) to the server.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Server</p>
+<ol start="4">
+<li>
+<p>Receiving Client Data:</p>
+<ul>
+<li>The server reads (READ) 11 bytes of data from the client. This data corresponds to the string &ldquo;Hello World&rdquo;.</li>
+</ul>
+</li>
+<li>
+<p>Inbound Handler Processing:</p>
+<ul>
+<li>InboundHandler_1 on the server receives the &ldquo;Hello World&rdquo; message, logs it, and passes it along.</li>
+<li>InboundHandler_2 also receives the &ldquo;Hello World&rdquo; message, logs it, and then writes a response (&ldquo;Hello Client&rdquo;) back to the client.</li>
+</ul>
+</li>
+<li>
+<p>Outbound Handler Processing:</p>
+<ul>
+<li>OutboundHandler_2 and OutboundHandler_1 log the message as it passes through the outbound pipeline. The server then writes 12 bytes, which is the &ldquo;Hello Client&rdquo; response, and flushes it (FLUSH) to the client.</li>
+</ul>
+</li>
+<li>
+<p>Completion of Read Operation:</p>
+<ul>
+<li>The READ COMPLETE event signifies the end of the read operation for this round of communication.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Client</p>
+<ol start="8">
+<li>Receiving Server Response:
+<ul>
+<li>The client reads (READ) 12 bytes of data, which is the &ldquo;Hello Client&rdquo; message sent by the server.</li>
+</ul>
+</li>
+<li>Completion of Read Operation:
+<ul>
+<li>Similar to the server, the READ COMPLETE event on the client side indicates the end of the read operation.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#handler">Handler</a>
+          <ul>
+            <li><a href="#role">Role</a></li>
+            <li><a href="#types">Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#pipeline">Pipeline</a>
+          <ul>
+            <li><a href="#what-is-pipeline">What is pipeline?</a></li>
+            <li><a href="#structure-and-flow">Structure and Flow</a></li>
+          </ul>
+        </li>
+        <li><a href="#example">Example</a>
+          <ul>
+            <li><a href="#server">Server</a></li>
+            <li><a href="#client">Client</a></li>
+            <li><a href="#execution">Execution</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

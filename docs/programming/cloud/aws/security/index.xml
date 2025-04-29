@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>http://localhost:55166/docs/programming/cloud/aws/security/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:55166/docs/programming/cloud/aws/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KMS</title>
+      <link>http://localhost:55166/docs/programming/cloud/aws/security/kms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:55166/docs/programming/cloud/aws/security/kms/</guid>
+      <description>&lt;h1 id=&#34;what-is-kms&#34;&gt;&#xA;  What is KMS?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-kms&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;AWS Key Management Service is a full management service to generate and manage encryption keys&lt;/p&gt;&#xA;&lt;h1 id=&#34;key-concepts&#34;&gt;&#xA;  Key Concepts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#key-concepts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;customer-master-key-cmk&#34;&gt;&#xA;  Customer Master Key (CMK)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#customer-master-key-cmk&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;CMKs are primary resources created and managed by KMS. It&amp;rsquo;s a logical representation of a master key. It includes metadata like key ID, description, alias and key state. More importantly, it contains key materials which are used to encrypt and decrypt your data.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
