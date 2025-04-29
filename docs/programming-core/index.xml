@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>What&#39;s Behind</title>
-    <link>https://whatsBehind.github.io/docs/programming-core/</link>
+    <link>http://localhost:55166/docs/programming-core/</link>
     <description>Recent content on What&#39;s Behind</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="https://whatsBehind.github.io/docs/programming-core/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:55166/docs/programming-core/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
