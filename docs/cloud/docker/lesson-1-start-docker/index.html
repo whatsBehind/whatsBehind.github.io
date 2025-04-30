@@ -4,50 +4,34 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Six Java Thread States
+  🐳 Docker Mastery Course – Lesson 1
   #
 
 
+  💡 Introduction: What Is Docker and Why Use It?
+  #
 
-NEW State:
-
-When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state.
-At this point, the thread is not yet running.
-Example: Thread t = new Thread();
+Welcome to Lesson 1 of the Docker Mastery Course! In this lesson, you&rsquo;ll discover what Docker is, why it&rsquo;s valuable, and how to verify your installation by running your very first container. This is the first step in your journey to mastering Docker through a project-driven, hands-on approach.
 
 
+  🎯 Learning Objective
+  #
 
-RUNNABLE State:
-
-When you invoke the start() method, the thread moves to the RUNNABLE state
-In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running
-A RUNNABLE state means the thread is
-
-either running on the CPU
-or waiting for Scheduler to allocate CPU resource
-
-
-
-
-
-BLOCKED State:">
+By the end of this lesson, you will:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming-core/java/thread/thread-lifecycle/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/cloud/docker/lesson-1-start-docker/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="Thread Lifecycle">
-  <meta property="og:description" content="Six Java Thread States # NEW State:
-When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:
-When you invoke the start() method, the thread moves to the RUNNABLE state In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running A RUNNABLE state means the thread is either running on the CPU or waiting for Scheduler to allocate CPU resource BLOCKED State:">
+  <meta property="og:title" content="Lesson 1: Start Docker">
+  <meta property="og:description" content="🐳 Docker Mastery Course – Lesson 1 # 💡 Introduction: What Is Docker and Why Use It? # Welcome to Lesson 1 of the Docker Mastery Course! In this lesson, you’ll discover what Docker is, why it’s valuable, and how to verify your installation by running your very first container. This is the first step in your journey to mastering Docker through a project-driven, hands-on approach.
+🎯 Learning Objective # By the end of this lesson, you will:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:published_time" content="2023-11-12T23:12:57-08:00">
-    <meta property="article:modified_time" content="2023-11-12T23:12:57-08:00">
-<title>Thread Lifecycle | What&#39;s Behind</title>
+<title>Lesson 1: Start Docker | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming-core/java/thread/thread-lifecycle/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/cloud/docker/lesson-1-start-docker/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.dded3c912a51742ec8020f1ae41c41560d826cb931ac0973f51e881ffca3d9c4.js" integrity="sha256-3e08kSpRdC7IAg8a5BxBVg2CbLkxrAlz9R6IH/yj2cQ=" crossorigin="anonymous"></script>
@@ -102,7 +86,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle" checked />
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle"  />
     <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
       <a role="button" class="">Programming Core</a>
     </label>
@@ -118,7 +102,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle" checked />
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
     <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
@@ -366,7 +350,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle" checked />
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
     <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
       <a role="button" class="">Thread</a>
     </label>
@@ -408,7 +392,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="active">Thread Lifecycle</a>
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
   
 
         </li>
@@ -1125,7 +1109,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle" checked />
     <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
       <a role="button" class="">Cloud</a>
     </label>
@@ -1269,7 +1253,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle"  />
+    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle" checked />
     <label for="section-a8c6511954d9f72be55fac23451b589b" class="flex justify-between">
       <a role="button" class="">Docker</a>
     </label>
@@ -1298,7 +1282,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/cloud/docker/lesson-1-start-docker/" class="">Lesson 1: Start Docker</a>
+    <a href="/docs/cloud/docker/lesson-1-start-docker/" class="active">Lesson 1: Start Docker</a>
   
 
         </li>
@@ -1879,7 +1863,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Thread Lifecycle</h3>
+  <h3>Lesson 1: Start Docker</h3>
 
   <label for="toc-control">
     
@@ -1895,11 +1879,26 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#-docker-mastery-course--lesson-1">🐳 Docker Mastery Course – Lesson 1</a>
       <ul>
-        <li><a href="#six-java-thread-states">Six Java Thread States</a></li>
-        <li><a href="#state-transition">State Transition</a></li>
-        <li><a href="#demo">Demo</a></li>
+        <li><a href="#-introduction-what-is-docker-and-why-use-it">💡 Introduction: What Is Docker and Why Use It?</a></li>
+        <li><a href="#-learning-objective">🎯 Learning Objective</a></li>
+        <li><a href="#-core-concepts">📚 Core Concepts</a>
+          <ul>
+            <li><a href="#1-the-problem-docker-solves">1. The Problem Docker Solves</a></li>
+            <li><a href="#2-what-is-docker">2. What Is Docker?</a></li>
+            <li><a href="#3-key-terminology">3. Key Terminology</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">🛠️ Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-install-docker">✅ Step 1: Install Docker</a></li>
+            <li><a href="#-step-2-run-your-first-container">✅ Step 2: Run Your First Container</a></li>
+            <li><a href="#-step-3-list-your-containers">✅ Step 3: List Your Containers</a></li>
+          </ul>
+        </li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-whats-next">📅 What’s Next?</a></li>
       </ul>
     </li>
   </ul>
@@ -1914,148 +1913,149 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h2 id="six-java-thread-states">
-  Six Java Thread States
-  <a class="anchor" href="#six-java-thread-states">#</a>
+  <article class="markdown book-article"><h1 id="-docker-mastery-course--lesson-1">
+  🐳 Docker Mastery Course – Lesson 1
+  <a class="anchor" href="#-docker-mastery-course--lesson-1">#</a>
+</h1>
+<h2 id="-introduction-what-is-docker-and-why-use-it">
+  💡 Introduction: What Is Docker and Why Use It?
+  <a class="anchor" href="#-introduction-what-is-docker-and-why-use-it">#</a>
 </h2>
-<ul>
-<li>
-<p><code>NEW</code> State:</p>
-<ul>
-<li>When you create an instance of a <code>Thread</code> class (or a class that extends <code>Thread</code>), the thread is in the <code>New</code> state.</li>
-<li>At this point, the thread is not yet running.</li>
-<li>Example: <code>Thread t = new Thread();</code></li>
-</ul>
-</li>
-<li>
-<p><code>RUNNABLE</code> State:</p>
-<ul>
-<li>When you invoke the <code>start()</code> method, the thread moves to the <code>RUNNABLE</code> state</li>
-<li>In a typical implementation, a Java thread in the <code>RUNNABLE</code> state corresponds to an OS thread that is eligible for running</li>
-<li>A <code>RUNNABLE</code> state means the thread is
-<ul>
-<li>either running on the CPU</li>
-<li>or waiting for Scheduler to allocate CPU resource</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><code>BLOCKED</code> State:</p>
-<ul>
-<li>A thread enters the <code>BLOCKED</code> state when it tries to acquire a monitor lock (intrinsic lock) of an object but another thread already holds that lock. This commonly occurs in synchronized blocks or methods.</li>
-</ul>
-</li>
-<li>
-<p><code>WAITING</code> State:</p>
-<ul>
-<li>A thread is in the <code>WAITING</code> state when it is waiting for another thread to perform a specific action. Unlike the <code>BLOCKED</code> state, where a thread is waiting to acquire a lock, in the <code>WAITING</code> state, a thread is waiting for another thread&rsquo;s action without any lock competition</li>
-<li>How <code>WAITING</code> state occurs
-<ul>
-<li><code>Object.wait()</code> <strong>WITHOUT</strong> timeout</li>
-<li><code>Thread.join()</code> <strong>WITHOUT</strong> timeout</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><code>TIMED_WAITING</code> State:</p>
-<ul>
-<li>A thread is in this state when it is waiting for another thread to perform an action for up to a specified waiting time. After the time expires, the thread will automatically return to the RUNNABLE state if it&rsquo;s not blocked by other means</li>
-<li>How <code>TIMED_WAITING</code> state occurs
-<ul>
-<li><code>Thread.sleep(long millis)</code></li>
-<li><code>Object.wait</code> <strong>WITH</strong> timeout</li>
-<li><code>Thread.join</code> <strong>WITH</strong> timeout</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><code>TERMINATED</code> State:</p>
-<ul>
-<li>A thread enters the <code>TERMINATED</code> state when it completes the execution of its <code>run()</code> method or if an exception occurs.</li>
-<li>Once terminated, a thread cannot be restarted.</li>
-</ul>
-</li>
-</ul>
-<h2 id="state-transition">
-  State Transition
-  <a class="anchor" href="#state-transition">#</a>
+<p>Welcome to <strong>Lesson 1</strong> of the Docker Mastery Course! In this lesson, you&rsquo;ll discover what Docker is, why it&rsquo;s valuable, and how to verify your installation by running your very first container. This is the first step in your journey to mastering Docker through a <strong>project-driven, hands-on approach</strong>.</p>
+<hr>
+<h2 id="-learning-objective">
+  🎯 Learning Objective
+  <a class="anchor" href="#-learning-objective">#</a>
 </h2>
-<img src="/docs/programming/backend/java/thread/common-methods/thread-state.svg" alt="join" width="300"/>
-<h2 id="demo">
-  Demo
-  <a class="anchor" href="#demo">#</a>
-</h2>
+<p>By the end of this lesson, you will:</p>
 <ul>
-<li>
-<p>Code</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SixStates</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        Thread newThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start a new thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;NEW-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread runnableThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">true</span>) {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;RUNNABLE-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        runnableThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread timedWaitingThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>                Thread.<span style="color:#a6e22e">sleep</span>(1_000_000);
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;TIMED_WAITING-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        timedWaitingThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread waitingThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">synchronized</span> (SixStates.<span style="color:#a6e22e">class</span>) {
-</span></span><span style="display:flex;"><span>                    runnableThread.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;WAITING-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        waitingThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread blockedThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">synchronized</span> (SixStates.<span style="color:#a6e22e">class</span>) {
-</span></span><span style="display:flex;"><span>                log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;BLOCKED thread&#34;</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;BLOCKED-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        blockedThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread terminatedThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;TERMINATED-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        terminatedThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, newThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, runnableThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, timedWaitingThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, waitingThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, blockedThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, terminatedThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}    
-</span></span></code></pre></div><ul>
-<li>Execution</li>
+<li>Understand the purpose of Docker</li>
+<li>Learn how Docker solves common deployment problems</li>
+<li>Install Docker</li>
+<li>Run and inspect your first Docker container</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> NEW
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> RUNNABLE
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> TIMED_WAITING
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> WAITING
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> BLOCKED
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> TERMINATED
-</span></span></code></pre></div></li>
+<hr>
+<h2 id="-core-concepts">
+  📚 Core Concepts
+  <a class="anchor" href="#-core-concepts">#</a>
+</h2>
+<h3 id="1-the-problem-docker-solves">
+  1. The Problem Docker Solves
+  <a class="anchor" href="#1-the-problem-docker-solves">#</a>
+</h3>
+<p>Have you ever had an app that runs perfectly on your local machine but crashes in production? This happens because the environments differ:</p>
+<ul>
+<li>Different operating systems</li>
+<li>Different library versions</li>
+<li>Different configurations</li>
 </ul>
+<p>Docker solves this issue by packaging everything your application needs into a <strong>container</strong>, ensuring consistency across development, testing, and production.</p>
+<h3 id="2-what-is-docker">
+  2. What Is Docker?
+  <a class="anchor" href="#2-what-is-docker">#</a>
+</h3>
+<p>Docker is a <strong>containerization platform</strong>. It allows developers to bundle an application and all its dependencies into a <strong>standardized unit</strong> called a container. These containers:</p>
+<ul>
+<li>Are lightweight and fast</li>
+<li>Run consistently across different environments</li>
+<li>Simplify testing and deployment</li>
+</ul>
+<h3 id="3-key-terminology">
+  3. Key Terminology
+  <a class="anchor" href="#3-key-terminology">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Term</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Image</strong></td>
+          <td>A blueprint for creating containers; read-only.</td>
+      </tr>
+      <tr>
+          <td><strong>Container</strong></td>
+          <td>A running instance of an image.</td>
+      </tr>
+      <tr>
+          <td><strong>Docker Engine</strong></td>
+          <td>The core software that runs and manages containers.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="-hands-on-practice">
+  🛠️ Hands-On Practice
+  <a class="anchor" href="#-hands-on-practice">#</a>
+</h2>
+<h3 id="-step-1-install-docker">
+  ✅ Step 1: Install Docker
+  <a class="anchor" href="#-step-1-install-docker">#</a>
+</h3>
+<h4 id="for-macos">
+  For macOS:
+  <a class="anchor" href="#for-macos">#</a>
+</h4>
+<ol>
+<li>Visit <a href="https://www.docker.com/products/docker-desktop">Docker Desktop for Mac</a></li>
+<li>Download and install the application</li>
+<li>Grant necessary permissions during setup</li>
+<li>Launch Docker Desktop (look for the whale icon in the top menu bar)</li>
+</ol>
+<p>Verify the installation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker --version
+</span></span></code></pre></div><p>Example output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Docker version 24.0.2, build cb74dfc
+</span></span></code></pre></div><hr>
+<h3 id="-step-2-run-your-first-container">
+  ✅ Step 2: Run Your First Container
+  <a class="anchor" href="#-step-2-run-your-first-container">#</a>
+</h3>
+<p>Run a simple test container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run hello-world
+</span></span></code></pre></div><p>What this does:</p>
+<ul>
+<li>Pulls the <code>hello-world</code> image from Docker Hub</li>
+<li>Creates a container from that image</li>
+<li>Executes it and prints a success message</li>
+</ul>
+<p>Expected output:</p>
+<pre tabindex="0"><code>Hello from Docker!
+This message shows that your installation appears to be working correctly.
+...
+</code></pre><hr>
+<h3 id="-step-3-list-your-containers">
+  ✅ Step 3: List Your Containers
+  <a class="anchor" href="#-step-3-list-your-containers">#</a>
+</h3>
+<p>To list all containers (even those that have exited):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker ps -a
+</span></span></code></pre></div><p>You should see a container entry for <code>hello-world</code>.</p>
+<hr>
+<h2 id="-checkpoint">
+  🏁 Checkpoint
+  <a class="anchor" href="#-checkpoint">#</a>
+</h2>
+<p>You’ve successfully:</p>
+<ul>
+<li>Installed Docker</li>
+<li>Learned what Docker is and why it&rsquo;s useful</li>
+<li>Run your first Docker container</li>
+</ul>
+<p>🎉 <strong>Congratulations!</strong> You’re officially a Docker user.</p>
+<hr>
+<h2 id="-whats-next">
+  📅 What’s Next?
+  <a class="anchor" href="#-whats-next">#</a>
+</h2>
+<blockquote>
+<p><strong>Lesson 2: Basic Docker Commands</strong><br>
+Learn how to start, stop, and manage real-world containers (like Nginx) using essential Docker CLI commands.</p>
+</blockquote>
+<p>Stay tuned and get ready to deepen your Docker skills!</p>
 </article>
  
       
@@ -2097,11 +2097,26 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#-docker-mastery-course--lesson-1">🐳 Docker Mastery Course – Lesson 1</a>
       <ul>
-        <li><a href="#six-java-thread-states">Six Java Thread States</a></li>
-        <li><a href="#state-transition">State Transition</a></li>
-        <li><a href="#demo">Demo</a></li>
+        <li><a href="#-introduction-what-is-docker-and-why-use-it">💡 Introduction: What Is Docker and Why Use It?</a></li>
+        <li><a href="#-learning-objective">🎯 Learning Objective</a></li>
+        <li><a href="#-core-concepts">📚 Core Concepts</a>
+          <ul>
+            <li><a href="#1-the-problem-docker-solves">1. The Problem Docker Solves</a></li>
+            <li><a href="#2-what-is-docker">2. What Is Docker?</a></li>
+            <li><a href="#3-key-terminology">3. Key Terminology</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">🛠️ Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-install-docker">✅ Step 1: Install Docker</a></li>
+            <li><a href="#-step-2-run-your-first-container">✅ Step 2: Run Your First Container</a></li>
+            <li><a href="#-step-3-list-your-containers">✅ Step 3: List Your Containers</a></li>
+          </ul>
+        </li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-whats-next">📅 What’s Next?</a></li>
       </ul>
     </li>
   </ul>

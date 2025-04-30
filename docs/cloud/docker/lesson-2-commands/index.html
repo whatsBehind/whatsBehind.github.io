@@ -4,50 +4,34 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Six Java Thread States
+  🐳 Docker Mastery Course – Lesson 2
   #
 
 
+  💡 Basic Docker Commands
+  #
 
-NEW State:
-
-When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state.
-At this point, the thread is not yet running.
-Example: Thread t = new Thread();
+Welcome to Lesson 2 of the Docker Mastery Course! In this session, you&rsquo;ll learn how to start, stop, inspect, and remove containers using real-world examples. We&rsquo;ll also use the Nginx web server to deepen your hands-on understanding of Docker&rsquo;s command-line interface.
 
 
+  🎯 Goal
+  #
 
-RUNNABLE State:
-
-When you invoke the start() method, the thread moves to the RUNNABLE state
-In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running
-A RUNNABLE state means the thread is
-
-either running on the CPU
-or waiting for Scheduler to allocate CPU resource
-
-
-
-
-
-BLOCKED State:">
+Gain confidence using essential Docker commands to manage container lifecycles and work effectively with real containers.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/programming-core/java/thread/thread-lifecycle/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/cloud/docker/lesson-2-commands/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="Thread Lifecycle">
-  <meta property="og:description" content="Six Java Thread States # NEW State:
-When you create an instance of a Thread class (or a class that extends Thread), the thread is in the New state. At this point, the thread is not yet running. Example: Thread t = new Thread(); RUNNABLE State:
-When you invoke the start() method, the thread moves to the RUNNABLE state In a typical implementation, a Java thread in the RUNNABLE state corresponds to an OS thread that is eligible for running A RUNNABLE state means the thread is either running on the CPU or waiting for Scheduler to allocate CPU resource BLOCKED State:">
+  <meta property="og:title" content="Lesson 2: Docker Commands">
+  <meta property="og:description" content="🐳 Docker Mastery Course – Lesson 2 # 💡 Basic Docker Commands # Welcome to Lesson 2 of the Docker Mastery Course! In this session, you’ll learn how to start, stop, inspect, and remove containers using real-world examples. We’ll also use the Nginx web server to deepen your hands-on understanding of Docker’s command-line interface.
+🎯 Goal # Gain confidence using essential Docker commands to manage container lifecycles and work effectively with real containers.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-    <meta property="article:published_time" content="2023-11-12T23:12:57-08:00">
-    <meta property="article:modified_time" content="2023-11-12T23:12:57-08:00">
-<title>Thread Lifecycle | What&#39;s Behind</title>
+<title>Lesson 2: Docker Commands | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/programming-core/java/thread/thread-lifecycle/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/cloud/docker/lesson-2-commands/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.dded3c912a51742ec8020f1ae41c41560d826cb931ac0973f51e881ffca3d9c4.js" integrity="sha256-3e08kSpRdC7IAg8a5BxBVg2CbLkxrAlz9R6IH/yj2cQ=" crossorigin="anonymous"></script>
@@ -102,7 +86,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle" checked />
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle"  />
     <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
       <a role="button" class="">Programming Core</a>
     </label>
@@ -118,7 +102,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle" checked />
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
     <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
       <a role="button" class="">Java</a>
     </label>
@@ -366,7 +350,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle" checked />
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
     <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
       <a role="button" class="">Thread</a>
     </label>
@@ -408,7 +392,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="active">Thread Lifecycle</a>
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
   
 
         </li>
@@ -1125,7 +1109,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle" checked />
     <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
       <a role="button" class="">Cloud</a>
     </label>
@@ -1269,7 +1253,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle"  />
+    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle" checked />
     <label for="section-a8c6511954d9f72be55fac23451b589b" class="flex justify-between">
       <a role="button" class="">Docker</a>
     </label>
@@ -1311,7 +1295,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/cloud/docker/lesson-2-commands/" class="">Lesson 2: Docker Commands</a>
+    <a href="/docs/cloud/docker/lesson-2-commands/" class="active">Lesson 2: Docker Commands</a>
   
 
         </li>
@@ -1879,7 +1863,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Thread Lifecycle</h3>
+  <h3>Lesson 2: Docker Commands</h3>
 
   <label for="toc-control">
     
@@ -1895,11 +1879,25 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#-docker-mastery-course--lesson-2">🐳 Docker Mastery Course – Lesson 2</a>
       <ul>
-        <li><a href="#six-java-thread-states">Six Java Thread States</a></li>
-        <li><a href="#state-transition">State Transition</a></li>
-        <li><a href="#demo">Demo</a></li>
+        <li><a href="#-basic-docker-commands">💡 Basic Docker Commands</a></li>
+        <li><a href="#-goal">🎯 Goal</a></li>
+        <li><a href="#-concepts">📚 Concepts</a>
+          <ul>
+            <li><a href="#-1-lifecycle-of-a-docker-container">🔄 1. Lifecycle of a Docker Container</a></li>
+            <li><a href="#-2-common-docker-commands">🔧 2. Common Docker Commands</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">💻 Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-run-an-nginx-web-server">✅ Step 1: Run an Nginx Web Server</a></li>
+            <li><a href="#-step-2-inspect-and-manage-the-container">✅ Step 2: Inspect and Manage the Container</a></li>
+            <li><a href="#-step-3-remove-the-container">✅ Step 3: Remove the Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-whats-next">📅 What’s Next?</a></li>
       </ul>
     </li>
   </ul>
@@ -1914,148 +1912,168 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h2 id="six-java-thread-states">
-  Six Java Thread States
-  <a class="anchor" href="#six-java-thread-states">#</a>
+  <article class="markdown book-article"><h1 id="-docker-mastery-course--lesson-2">
+  🐳 Docker Mastery Course – Lesson 2
+  <a class="anchor" href="#-docker-mastery-course--lesson-2">#</a>
+</h1>
+<h2 id="-basic-docker-commands">
+  💡 Basic Docker Commands
+  <a class="anchor" href="#-basic-docker-commands">#</a>
 </h2>
-<ul>
-<li>
-<p><code>NEW</code> State:</p>
-<ul>
-<li>When you create an instance of a <code>Thread</code> class (or a class that extends <code>Thread</code>), the thread is in the <code>New</code> state.</li>
-<li>At this point, the thread is not yet running.</li>
-<li>Example: <code>Thread t = new Thread();</code></li>
-</ul>
-</li>
-<li>
-<p><code>RUNNABLE</code> State:</p>
-<ul>
-<li>When you invoke the <code>start()</code> method, the thread moves to the <code>RUNNABLE</code> state</li>
-<li>In a typical implementation, a Java thread in the <code>RUNNABLE</code> state corresponds to an OS thread that is eligible for running</li>
-<li>A <code>RUNNABLE</code> state means the thread is
-<ul>
-<li>either running on the CPU</li>
-<li>or waiting for Scheduler to allocate CPU resource</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><code>BLOCKED</code> State:</p>
-<ul>
-<li>A thread enters the <code>BLOCKED</code> state when it tries to acquire a monitor lock (intrinsic lock) of an object but another thread already holds that lock. This commonly occurs in synchronized blocks or methods.</li>
-</ul>
-</li>
-<li>
-<p><code>WAITING</code> State:</p>
-<ul>
-<li>A thread is in the <code>WAITING</code> state when it is waiting for another thread to perform a specific action. Unlike the <code>BLOCKED</code> state, where a thread is waiting to acquire a lock, in the <code>WAITING</code> state, a thread is waiting for another thread&rsquo;s action without any lock competition</li>
-<li>How <code>WAITING</code> state occurs
-<ul>
-<li><code>Object.wait()</code> <strong>WITHOUT</strong> timeout</li>
-<li><code>Thread.join()</code> <strong>WITHOUT</strong> timeout</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><code>TIMED_WAITING</code> State:</p>
-<ul>
-<li>A thread is in this state when it is waiting for another thread to perform an action for up to a specified waiting time. After the time expires, the thread will automatically return to the RUNNABLE state if it&rsquo;s not blocked by other means</li>
-<li>How <code>TIMED_WAITING</code> state occurs
-<ul>
-<li><code>Thread.sleep(long millis)</code></li>
-<li><code>Object.wait</code> <strong>WITH</strong> timeout</li>
-<li><code>Thread.join</code> <strong>WITH</strong> timeout</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><code>TERMINATED</code> State:</p>
-<ul>
-<li>A thread enters the <code>TERMINATED</code> state when it completes the execution of its <code>run()</code> method or if an exception occurs.</li>
-<li>Once terminated, a thread cannot be restarted.</li>
-</ul>
-</li>
-</ul>
-<h2 id="state-transition">
-  State Transition
-  <a class="anchor" href="#state-transition">#</a>
+<p>Welcome to <strong>Lesson 2</strong> of the Docker Mastery Course! In this session, you&rsquo;ll learn how to start, stop, inspect, and remove containers using real-world examples. We&rsquo;ll also use the Nginx web server to deepen your hands-on understanding of Docker&rsquo;s command-line interface.</p>
+<hr>
+<h2 id="-goal">
+  🎯 Goal
+  <a class="anchor" href="#-goal">#</a>
 </h2>
-<img src="/docs/programming/backend/java/thread/common-methods/thread-state.svg" alt="join" width="300"/>
-<h2 id="demo">
-  Demo
-  <a class="anchor" href="#demo">#</a>
+<p>Gain confidence using essential Docker commands to manage container lifecycles and work effectively with real containers.</p>
+<hr>
+<h2 id="-concepts">
+  📚 Concepts
+  <a class="anchor" href="#-concepts">#</a>
 </h2>
-<ul>
-<li>
-<p>Code</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#a6e22e">@Slf4j</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SixStates</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        Thread newThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;Start a new thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;NEW-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread runnableThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">true</span>) {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;RUNNABLE-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        runnableThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread timedWaitingThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>                Thread.<span style="color:#a6e22e">sleep</span>(1_000_000);
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;TIMED_WAITING-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        timedWaitingThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread waitingThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">synchronized</span> (SixStates.<span style="color:#a6e22e">class</span>) {
-</span></span><span style="display:flex;"><span>                    runnableThread.<span style="color:#a6e22e">join</span>();
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (InterruptedException e) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException(e);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;WAITING-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        waitingThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread blockedThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">synchronized</span> (SixStates.<span style="color:#a6e22e">class</span>) {
-</span></span><span style="display:flex;"><span>                log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;BLOCKED thread&#34;</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;BLOCKED-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        blockedThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Thread terminatedThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        }, <span style="color:#e6db74">&#34;TERMINATED-thread&#34;</span>);
-</span></span><span style="display:flex;"><span>        terminatedThread.<span style="color:#a6e22e">start</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, newThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, runnableThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, timedWaitingThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, waitingThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, blockedThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>        log.<span style="color:#a6e22e">debug</span>(<span style="color:#e6db74">&#34;{}&#34;</span>, terminatedThread.<span style="color:#a6e22e">getState</span>());
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}    
+<h3 id="-1-lifecycle-of-a-docker-container">
+  🔄 1. Lifecycle of a Docker Container
+  <a class="anchor" href="#-1-lifecycle-of-a-docker-container">#</a>
+</h3>
+<p>A typical container lifecycle includes the following steps:</p>
+<ol>
+<li><strong>Create</strong> – using <code>docker create</code> or <code>docker run</code></li>
+<li><strong>Start</strong> – using <code>docker start</code></li>
+<li><strong>Run</strong> – the container is now live</li>
+<li><strong>Stop</strong> – using <code>docker stop</code></li>
+<li><strong>Remove</strong> – using <code>docker rm</code></li>
+</ol>
+<h3 id="-2-common-docker-commands">
+  🔧 2. Common Docker Commands
+  <a class="anchor" href="#-2-common-docker-commands">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Command</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>docker run</code></td>
+          <td>Create and start a container</td>
+      </tr>
+      <tr>
+          <td><code>docker ps</code></td>
+          <td>List running containers</td>
+      </tr>
+      <tr>
+          <td><code>docker ps -a</code></td>
+          <td>List <strong>all</strong> containers (running, stopped, exited)</td>
+      </tr>
+      <tr>
+          <td><code>docker stop &lt;id&gt;</code></td>
+          <td>Stop a running container</td>
+      </tr>
+      <tr>
+          <td><code>docker start &lt;id&gt;</code></td>
+          <td>Start a stopped container</td>
+      </tr>
+      <tr>
+          <td><code>docker rm &lt;id&gt;</code></td>
+          <td>Remove a stopped container</td>
+      </tr>
+      <tr>
+          <td><code>docker rm -f &lt;id&gt;</code></td>
+          <td>Force-remove a running container (stop and delete)</td>
+      </tr>
+      <tr>
+          <td><code>docker logs &lt;id&gt;</code></td>
+          <td>View logs generated by a container</td>
+      </tr>
+      <tr>
+          <td><code>docker exec -it &lt;id&gt; bash</code></td>
+          <td>Open a bash shell inside a container</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>💡 <code>ps</code> stands for <strong>process status</strong> — a familiar command in Linux. In Docker, <code>docker ps</code> lists running containers.</p>
+</blockquote>
+<hr>
+<h2 id="-hands-on-practice">
+  💻 Hands-On Practice
+  <a class="anchor" href="#-hands-on-practice">#</a>
+</h2>
+<h3 id="-step-1-run-an-nginx-web-server">
+  ✅ Step 1: Run an Nginx Web Server
+  <a class="anchor" href="#-step-1-run-an-nginx-web-server">#</a>
+</h3>
+<p>We’ll begin with Nginx — a lightweight, high-performance web server — to explore practical container operations.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d -p 8080:80 --name webserver nginx
 </span></span></code></pre></div><ul>
-<li>Execution</li>
+<li><code>-d</code>: Run the container in detached (background) mode</li>
+<li><code>-p 8080:80</code>: Map port 8080 on your machine to port 80 inside the container</li>
+<li><code>--name webserver</code>: Assign the container a name for easy reference</li>
+<li><code>nginx</code>: Use the official Nginx image</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> NEW
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> RUNNABLE
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> TIMED_WAITING
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> WAITING
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> BLOCKED
-</span></span><span style="display:flex;"><span>2024<span style="color:#f92672">-</span>01<span style="color:#f92672">-</span>07 14:57:44 <span style="color:#f92672">[</span>main<span style="color:#f92672">]</span> DEBUG c.<span style="color:#a6e22e">w</span>.<span style="color:#a6e22e">thread_</span>.<span style="color:#a6e22e">lifecycle</span>.<span style="color:#a6e22e">SixStates</span> <span style="color:#f92672">-</span> TERMINATED
-</span></span></code></pre></div></li>
+<p>Now open your browser and go to <code>http://localhost:8080</code> — you should see the Nginx welcome page.</p>
+<hr>
+<h3 id="-step-2-inspect-and-manage-the-container">
+  ✅ Step 2: Inspect and Manage the Container
+  <a class="anchor" href="#-step-2-inspect-and-manage-the-container">#</a>
+</h3>
+<p>List running containers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker ps
+</span></span></code></pre></div><p>List <strong>all containers</strong>, including stopped and exited ones:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker ps -a
+</span></span></code></pre></div><p>This also displays each container’s <strong>status</strong>, such as:</p>
+<ul>
+<li><code>Up 1 minute</code></li>
+<li><code>Exited (0)</code> (stopped successfully)</li>
+<li><code>Exited (1)</code> (stopped with an error)</li>
 </ul>
+<p>Stop the container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker stop webserver
+</span></span></code></pre></div><p>Start the container again:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker start webserver
+</span></span></code></pre></div><p>View container logs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker logs webserver
+</span></span></code></pre></div><p>Access an interactive shell session inside the container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec -it webserver bash
+</span></span></code></pre></div><hr>
+<h3 id="-step-3-remove-the-container">
+  ✅ Step 3: Remove the Container
+  <a class="anchor" href="#-step-3-remove-the-container">#</a>
+</h3>
+<p>To remove a container, it must be stopped first:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker stop webserver
+</span></span><span style="display:flex;"><span>docker rm webserver
+</span></span></code></pre></div><p>If the container is still running and you want to force-remove it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker rm -f webserver
+</span></span></code></pre></div><p>⚠️ This forcibly stops and deletes the container. Use with caution.</p>
+<p>Verify the container is gone:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker ps -a
+</span></span></code></pre></div><hr>
+<h2 id="-checkpoint">
+  🏁 Checkpoint
+  <a class="anchor" href="#-checkpoint">#</a>
+</h2>
+<p>By now, you should be able to:</p>
+<ul>
+<li>Start, stop, and restart containers</li>
+<li>Access containers using bash</li>
+<li>View container statuses and logs</li>
+<li>Safely or forcefully remove containers</li>
+</ul>
+<p>🎉 Excellent work — you’ve built a strong foundation for working with containers in real-world environments.</p>
+<hr>
+<h2 id="-whats-next">
+  📅 What’s Next?
+  <a class="anchor" href="#-whats-next">#</a>
+</h2>
+<blockquote>
+<p><strong>Lesson 3: Docker Images</strong><br>
+You’ll learn how Docker images are built and layered, how to pull them from Docker Hub, and how to explore and optimize them.</p>
+</blockquote>
+<p>Stay tuned — you&rsquo;re progressing fast!</p>
 </article>
  
       
@@ -2097,11 +2115,25 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#-docker-mastery-course--lesson-2">🐳 Docker Mastery Course – Lesson 2</a>
       <ul>
-        <li><a href="#six-java-thread-states">Six Java Thread States</a></li>
-        <li><a href="#state-transition">State Transition</a></li>
-        <li><a href="#demo">Demo</a></li>
+        <li><a href="#-basic-docker-commands">💡 Basic Docker Commands</a></li>
+        <li><a href="#-goal">🎯 Goal</a></li>
+        <li><a href="#-concepts">📚 Concepts</a>
+          <ul>
+            <li><a href="#-1-lifecycle-of-a-docker-container">🔄 1. Lifecycle of a Docker Container</a></li>
+            <li><a href="#-2-common-docker-commands">🔧 2. Common Docker Commands</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">💻 Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-run-an-nginx-web-server">✅ Step 1: Run an Nginx Web Server</a></li>
+            <li><a href="#-step-2-inspect-and-manage-the-container">✅ Step 2: Inspect and Manage the Container</a></li>
+            <li><a href="#-step-3-remove-the-container">✅ Step 3: Remove the Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-whats-next">📅 What’s Next?</a></li>
       </ul>
     </li>
   </ul>

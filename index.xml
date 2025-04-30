@@ -184,6 +184,13 @@
       <description>&lt;h1 id=&#34;-http-methods--status-codes&#34;&gt;&#xA;  📘 HTTP Methods &amp;amp; Status Codes&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-http-methods--status-codes&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Understanding HTTP methods and status codes is essential for designing and debugging web APIs. This lesson explores the most commonly used HTTP methods and how servers communicate the results of requests using standardized status codes.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-common-http-methods&#34;&gt;&#xA;  🔧 Common HTTP Methods&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-common-http-methods&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;HTTP methods (also called verbs) define the action the client wants the server to perform. Here are the most commonly used methods:&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Lesson 1: Start Docker</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-1-start-docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-1-start-docker/</guid>
+      <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-1&#34;&gt;&#xA;  🐳 Docker Mastery Course – Lesson 1&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-1&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-introduction-what-is-docker-and-why-use-it&#34;&gt;&#xA;  💡 Introduction: What Is Docker and Why Use It?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-introduction-what-is-docker-and-why-use-it&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 1&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll discover what Docker is, why it&amp;rsquo;s valuable, and how to verify your installation by running your very first container. This is the first step in your journey to mastering Docker through a &lt;strong&gt;project-driven, hands-on approach&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-learning-objective&#34;&gt;&#xA;  🎯 Learning Objective&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-learning-objective&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you will:&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Node Js Auth</title>
       <link>https://whatsBehind.github.io/docs/project/node-js-auth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -273,6 +280,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/networking/id-address/</guid>
       <description>&lt;h1 id=&#34;-understanding-ip-addresses-the-identity-system-of-the-internet&#34;&gt;&#xA;  🌐 Understanding IP Addresses: The Identity System of the Internet&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-understanding-ip-addresses-the-identity-system-of-the-internet&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Every device on a network needs an identity — a way for other devices to find it and communicate with it. In computer networking, that identity is an &lt;strong&gt;IP address&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-what-is-an-ip-address&#34;&gt;&#xA;  📌 What Is an IP Address?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-what-is-an-ip-address&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;An &lt;strong&gt;IP (Internet Protocol) address&lt;/strong&gt; is a unique number assigned to each device connected to a network. It functions much like a home address — directing data to the right recipient.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lesson 2: Docker Commands</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-2-commands/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-2-commands/</guid>
+      <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-2&#34;&gt;&#xA;  🐳 Docker Mastery Course – Lesson 2&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-2&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-basic-docker-commands&#34;&gt;&#xA;  💡 Basic Docker Commands&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-basic-docker-commands&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 2&lt;/strong&gt; of the Docker Mastery Course! In this session, you&amp;rsquo;ll learn how to start, stop, inspect, and remove containers using real-world examples. We&amp;rsquo;ll also use the Nginx web server to deepen your hands-on understanding of Docker&amp;rsquo;s command-line interface.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Gain confidence using essential Docker commands to manage container lifecycles and work effectively with real containers.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Partition</title>
