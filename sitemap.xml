@@ -11,6 +11,8 @@
     <loc>https://whatsBehind.github.io/docs/programming-core/java/thread/start-thread/</loc>
     <lastmod>2023-11-12T22:25:15-08:00</lastmod>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/aws/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/asymmetric-encryption/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/byte-buffer/</loc>
@@ -19,7 +21,7 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/networking/dns/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/docker/docker-basics/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/docker-basics/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/netty/event-loop-group/</loc>
   </url><url>
@@ -41,8 +43,12 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/technology/redis/why-is-redis-so-fast/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/k8s/why-k8s/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/project/</loc>
     <lastmod>2023-11-26T21:26:33-08:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/blocking-mode/</loc>
   </url><url>
@@ -70,11 +76,15 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/aws/message/sqs/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/k8s/start-first-pod/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/thread/thread-lifecycle/</loc>
     <lastmod>2023-11-12T23:12:57-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/operating-system/</loc>
     <lastmod>2023-10-31T08:47:07-07:00</lastmod>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/k8s/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/aws/message/eventbridge/</loc>
   </url><url>
@@ -223,13 +233,9 @@
     <loc>https://whatsBehind.github.io/docs/tool/hugo/set-up-hugo-in-git-hub-pages/</loc>
     <lastmod>2023-10-22T11:53:02-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/aws/</loc>
-  </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/aws/message/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/aws/security/</loc>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/k8s/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/design-data-intensive-applications/</loc>
   </url><url>
@@ -240,8 +246,6 @@
     <loc>https://whatsBehind.github.io/docs/distributed-system/monitoring/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/technology/</loc>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/distributed-system/technology/docker/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/technology/redis/</loc>
   </url><url>

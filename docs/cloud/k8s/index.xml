@@ -7,5 +7,19 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="https://whatsBehind.github.io/docs/cloud/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why K8S?</title>
+      <link>https://whatsBehind.github.io/docs/cloud/k8s/why-k8s/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/k8s/why-k8s/</guid>
+      <description>&lt;h1 id=&#34;-kubernetes-for-beginners-why-software-engineers-should-care-about-it&#34;&gt;&#xA;  🚀 Kubernetes for Beginners: Why Software Engineers Should Care About It&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-kubernetes-for-beginners-why-software-engineers-should-care-about-it&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-preamble&#34;&gt;&#xA;  📅 Preamble&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-preamble&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Software today isn’t just about writing applications — it’s about &lt;strong&gt;running them reliably&lt;/strong&gt;.&lt;br&gt;&#xA;As systems grow larger and more complex, managing applications becomes just as important as building them.&lt;br&gt;&#xA;Containers like &lt;strong&gt;Docker&lt;/strong&gt; changed how we package software, but when you have &lt;strong&gt;dozens or hundreds of containers&lt;/strong&gt;, managing them manually becomes overwhelming.&lt;br&gt;&#xA;That’s where &lt;strong&gt;Kubernetes&lt;/strong&gt; comes in — a powerful system to automate and scale container management.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Start First Pod</title>
+      <link>https://whatsBehind.github.io/docs/cloud/k8s/start-first-pod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/k8s/start-first-pod/</guid>
+      <description>&lt;h1 id=&#34;-lesson-1-set-up-kubernetes-locally-and-run-your-first-pod-macos-edition&#34;&gt;&#xA;  🧭 Lesson 1: Set Up Kubernetes Locally and Run Your First Pod (macOS Edition)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-lesson-1-set-up-kubernetes-locally-and-run-your-first-pod-macos-edition&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🔢 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you&amp;rsquo;ll be able to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Install a local Kubernetes cluster using &lt;strong&gt;Minikube&lt;/strong&gt; on macOS&lt;/li&gt;&#xA;&lt;li&gt;Understand the basic components behind Kubernetes operations&lt;/li&gt;&#xA;&lt;li&gt;Deploy and explore your very first &lt;strong&gt;Pod&lt;/strong&gt; using the command line&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-step-1-install-required-tools-macos&#34;&gt;&#xA;  🛠️ Step 1: Install Required Tools (macOS)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-step-1-install-required-tools-macos&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;We’ll install three essential tools:&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

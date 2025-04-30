@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>http://localhost:1313/docs/cloud/ks/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/cloud/ks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why K8S?</title>
+      <link>http://localhost:1313/docs/cloud/ks/why-k8s/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/cloud/ks/why-k8s/</guid>
+      <description>&lt;h1 id=&#34;-kubernetes-for-beginners-why-software-engineers-should-care-about-it&#34;&gt;&#xA;  🚀 Kubernetes for Beginners: Why Software Engineers Should Care About It&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-kubernetes-for-beginners-why-software-engineers-should-care-about-it&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-preamble&#34;&gt;&#xA;  📅 Preamble&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-preamble&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Software today isn’t just about writing applications — it’s about &lt;strong&gt;running them reliably&lt;/strong&gt;.&lt;br&gt;&#xA;As systems grow larger and more complex, managing applications becomes just as important as building them.&lt;br&gt;&#xA;Containers like &lt;strong&gt;Docker&lt;/strong&gt; changed how we package software, but when you have &lt;strong&gt;dozens or hundreds of containers&lt;/strong&gt;, managing them manually becomes overwhelming.&lt;br&gt;&#xA;That’s where &lt;strong&gt;Kubernetes&lt;/strong&gt; comes in — a powerful system to automate and scale container management.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
