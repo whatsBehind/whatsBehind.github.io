@@ -4,30 +4,34 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  TLS Handshake: Client Hello
+  🐳 Docker Mastery Course – Lesson 3
   #
 
-When establishing a secure HTTPS connection, the TLS handshake is the very first step that sets the foundation for encryption and trust. One of the most critical messages in this process is the ClientHello. In this post, we&rsquo;ll walk through how to view and analyze the ClientHello message, and break down its key contents and purposes.
 
-
-  Step 1: Capture the TLS Handshake Using OpenSSL
+  🔬 Mastering Docker Images: Understand and Use Them Effectively
   #
 
-You can observe the raw TLS handshake between your machine and a server (like Google) using the following OpenSSL command:">
+Welcome to Lesson 3 of the Docker Mastery Course! In this lesson, you&rsquo;ll dive into the concept of Docker images — what they are, how to retrieve and inspect them, and how to run containers based on these images.
+
+
+  🎯 Learning Goal
+  #
+
+By the end of this lesson, you will:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-client-hello/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/cloud/docker/lesson-3-images/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="TLS Handshake: Client Hello">
-  <meta property="og:description" content="TLS Handshake: Client Hello # When establishing a secure HTTPS connection, the TLS handshake is the very first step that sets the foundation for encryption and trust. One of the most critical messages in this process is the ClientHello. In this post, we’ll walk through how to view and analyze the ClientHello message, and break down its key contents and purposes.
-Step 1: Capture the TLS Handshake Using OpenSSL # You can observe the raw TLS handshake between your machine and a server (like Google) using the following OpenSSL command:">
+  <meta property="og:title" content="Lesson 3: Docker Images">
+  <meta property="og:description" content="🐳 Docker Mastery Course – Lesson 3 # 🔬 Mastering Docker Images: Understand and Use Them Effectively # Welcome to Lesson 3 of the Docker Mastery Course! In this lesson, you’ll dive into the concept of Docker images — what they are, how to retrieve and inspect them, and how to run containers based on these images.
+🎯 Learning Goal # By the end of this lesson, you will:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>TLS Handshake: Client Hello | What&#39;s Behind</title>
+<title>Lesson 3: Docker Images | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-client-hello/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/cloud/docker/lesson-3-images/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.05c957cbe0f6396d7cc440eec6e703681108a1b59796279abf55cb5b06dfa848.js" integrity="sha256-BclXy&#43;D2OW18xEDuxucDaBEIobWXlieav1XLWwbfqEg=" crossorigin="anonymous"></script>
@@ -732,7 +736,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle" checked />
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
     <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
       <a role="button" class="">Web</a>
     </label>
@@ -962,7 +966,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle" checked />
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
     <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
       <a role="button" class="">Web Securities</a>
     </label>
@@ -1017,7 +1021,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="active">TLS Handshake: Client Hello</a>
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
   
 
         </li>
@@ -1105,7 +1109,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle" checked />
     <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
       <a role="button" class="">Cloud</a>
     </label>
@@ -1249,7 +1253,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle"  />
+    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle" checked />
     <label for="section-a8c6511954d9f72be55fac23451b589b" class="flex justify-between">
       <a role="button" class="">Docker</a>
     </label>
@@ -1304,7 +1308,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/cloud/docker/lesson-3-images/" class="">Lesson 3: Docker Images</a>
+    <a href="/docs/cloud/docker/lesson-3-images/" class="active">Lesson 3: Docker Images</a>
   
 
         </li>
@@ -1872,7 +1876,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>TLS Handshake: Client Hello</h3>
+  <h3>Lesson 3: Docker Images</h3>
 
   <label for="toc-control">
     
@@ -1888,12 +1892,28 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#tls-handshake-client-hello">TLS Handshake: Client Hello</a>
+    <li><a href="#-docker-mastery-course--lesson-3">🐳 Docker Mastery Course – Lesson 3</a>
       <ul>
-        <li><a href="#step-1-capture-the-tls-handshake-using-openssl">Step 1: Capture the TLS Handshake Using OpenSSL</a></li>
-        <li><a href="#step-2-save-and-parse-the-clienthello-message-with-python">Step 2: Save and Parse the ClientHello Message with Python</a></li>
-        <li><a href="#step-3-key-contents-in-the-clienthello-message">Step 3: Key Contents in the ClientHello Message</a></li>
-        <li><a href="#summary">Summary</a></li>
+        <li><a href="#-mastering-docker-images-understand-and-use-them-effectively">🔬 Mastering Docker Images: Understand and Use Them Effectively</a></li>
+        <li><a href="#-learning-goal">🎯 Learning Goal</a></li>
+        <li><a href="#-core-concepts">📚 Core Concepts</a>
+          <ul>
+            <li><a href="#1-what-is-a-docker-image">1. What Is a Docker Image?</a></li>
+            <li><a href="#2-where-do-docker-images-come-from">2. Where Do Docker Images Come From?</a></li>
+            <li><a href="#3-image-naming-format">3. Image Naming Format</a></li>
+            <li><a href="#4-docker-images-are-layered">4. Docker Images Are Layered</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">💻 Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-pull-an-image-from-docker-hub">✅ Step 1: Pull an Image from Docker Hub</a></li>
+            <li><a href="#-step-2-inspect-the-image">✅ Step 2: Inspect the Image</a></li>
+            <li><a href="#-step-3-run-a-container-from-the-image">✅ Step 3: Run a Container from the Image</a></li>
+            <li><a href="#-step-4-clean-up">✅ Step 4: Clean Up</a></li>
+          </ul>
+        </li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-coming-up-next">📆 Coming Up Next</a></li>
       </ul>
     </li>
   </ul>
@@ -1908,134 +1928,151 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="tls-handshake-client-hello">
-  TLS Handshake: Client Hello
-  <a class="anchor" href="#tls-handshake-client-hello">#</a>
+  <article class="markdown book-article"><h1 id="-docker-mastery-course--lesson-3">
+  🐳 Docker Mastery Course – Lesson 3
+  <a class="anchor" href="#-docker-mastery-course--lesson-3">#</a>
 </h1>
-<p>When establishing a secure HTTPS connection, the TLS handshake is the very first step that sets the foundation for encryption and trust. One of the most critical messages in this process is the <strong>ClientHello</strong>. In this post, we&rsquo;ll walk through how to view and analyze the <code>ClientHello</code> message, and break down its key contents and purposes.</p>
+<h2 id="-mastering-docker-images-understand-and-use-them-effectively">
+  🔬 Mastering Docker Images: Understand and Use Them Effectively
+  <a class="anchor" href="#-mastering-docker-images-understand-and-use-them-effectively">#</a>
+</h2>
+<p>Welcome to <strong>Lesson 3</strong> of the Docker Mastery Course! In this lesson, you&rsquo;ll dive into the concept of Docker images — what they are, how to retrieve and inspect them, and how to run containers based on these images.</p>
 <hr>
-<h2 id="step-1-capture-the-tls-handshake-using-openssl">
-  Step 1: Capture the TLS Handshake Using OpenSSL
-  <a class="anchor" href="#step-1-capture-the-tls-handshake-using-openssl">#</a>
+<h2 id="-learning-goal">
+  🎯 Learning Goal
+  <a class="anchor" href="#-learning-goal">#</a>
 </h2>
-<p>You can observe the raw TLS handshake between your machine and a server (like Google) using the following OpenSSL command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl s_client -connect www.google.com:443 -servername www.google.com -msg
-</span></span></code></pre></div><p>This command:</p>
+<p>By the end of this lesson, you will:</p>
 <ul>
-<li>Connects to <code>www.google.com</code> over port <code>443</code></li>
-<li>Sends the correct domain via SNI (Server Name Indication)</li>
-<li>Displays <strong>TLS messages</strong>, including the raw <strong>ClientHello</strong> in hexadecimal</li>
+<li>Understand what Docker images are and how they work</li>
+<li>Learn how to pull, inspect, and use images</li>
+<li>Get hands-on experience running containers from official images</li>
 </ul>
-<p>Example output:</p>
-<pre tabindex="0"><code>&gt;&gt;&gt; TLS 1.3 Handshake [length 0131], ClientHello
-    01 00 01 2d 03 03 a1 c6 ed 3f 78 88 21 0c 32 40 ...
-</code></pre><hr>
-<h2 id="step-2-save-and-parse-the-clienthello-message-with-python">
-  Step 2: Save and Parse the ClientHello Message with Python
-  <a class="anchor" href="#step-2-save-and-parse-the-clienthello-message-with-python">#</a>
+<hr>
+<h2 id="-core-concepts">
+  📚 Core Concepts
+  <a class="anchor" href="#-core-concepts">#</a>
 </h2>
-<p>To analyze the hex data, first store it in a file called <code>client_hello.hex</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>01 00 01 2d 03 03 a1 c6 ed 3f 78 88 21 0c 32 40 ...
-</span></span></code></pre></div><p>Now, use Python to parse it. Create file <code>tls-parser.py</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> scapy.all <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span>load_layer(<span style="color:#e6db74">&#34;tls&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;client_hello.hex&#34;</span>, <span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> file:
-</span></span><span style="display:flex;"><span>    hex_str <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>read()<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;\s+&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    pkt <span style="color:#f92672">=</span> TLSClientHello(bytes<span style="color:#f92672">.</span>fromhex(hex_str))
-</span></span><span style="display:flex;"><span>    pkt<span style="color:#f92672">.</span>show()
-</span></span></code></pre></div><p>Run the Python script to view the <code>ClientHello</code> message:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python3 tls-parser.py
+<h3 id="1-what-is-a-docker-image">
+  1. What Is a Docker Image?
+  <a class="anchor" href="#1-what-is-a-docker-image">#</a>
+</h3>
+<p>A <strong>Docker image</strong> is a <strong>read-only template</strong> used to create containers. It contains:</p>
+<ul>
+<li>OS-level files (e.g., a Linux base layer)</li>
+<li>Your application code</li>
+<li>Required runtime (e.g., Python, Node.js)</li>
+<li>Configuration and environment variables</li>
+</ul>
+<blockquote>
+<p>✅ Think of the runtime as the software required to <strong>run your application</strong>, such as the Python interpreter or Node.js engine.</p>
+</blockquote>
+<p>In simple terms: <strong>Images are blueprints</strong>, and <strong>containers are the products built from them</strong>.</p>
+<hr>
+<h3 id="2-where-do-docker-images-come-from">
+  2. Where Do Docker Images Come From?
+  <a class="anchor" href="#2-where-do-docker-images-come-from">#</a>
+</h3>
+<p>Docker images are commonly pulled from <strong>Docker Hub</strong>, which is the default public image registry.</p>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull nginx
+</span></span></code></pre></div><p>This command downloads the <code>nginx</code> image from Docker Hub.</p>
+<hr>
+<h3 id="3-image-naming-format">
+  3. Image Naming Format
+  <a class="anchor" href="#3-image-naming-format">#</a>
+</h3>
+<p>Docker images typically follow this naming format:</p>
+<pre tabindex="0"><code>[registry]/[username_or_org]/[repository]:[tag]
+</code></pre><p>However, many parts can be omitted and Docker will automatically apply default values:</p>
+<ul>
+<li><code>docker pull nginx</code> is interpreted as:
+<ul>
+<li><code>docker.io/library/nginx:latest</code></li>
+<li><code>docker.io</code>: default registry</li>
+<li><code>library</code>: default namespace for official images</li>
+<li><code>latest</code>: default tag</li>
+</ul>
+</li>
+</ul>
+<p>So yes — image names can often be shortened thanks to these sensible defaults.</p>
+<hr>
+<h3 id="4-docker-images-are-layered">
+  4. Docker Images Are Layered
+  <a class="anchor" href="#4-docker-images-are-layered">#</a>
+</h3>
+<p>Each instruction in a Dockerfile (we’ll cover this in the next lesson) adds a <strong>new layer</strong> to the image.</p>
+<ul>
+<li>Layers are cached, which speeds up builds</li>
+<li>Layers can be shared across different images</li>
+</ul>
+<p>This layered approach makes Docker fast and space-efficient.</p>
+<hr>
+<h2 id="-hands-on-practice">
+  💻 Hands-On Practice
+  <a class="anchor" href="#-hands-on-practice">#</a>
+</h2>
+<h3 id="-step-1-pull-an-image-from-docker-hub">
+  ✅ Step 1: Pull an Image from Docker Hub
+  <a class="anchor" href="#-step-1-pull-an-image-from-docker-hub">#</a>
+</h3>
+<p>Run the following command in your terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull python:3.11
+</span></span></code></pre></div><p>This downloads the Python 3.11 image.</p>
+<p>To view all local images:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker images
 </span></span></code></pre></div><hr>
-<h2 id="step-3-key-contents-in-the-clienthello-message">
-  Step 3: Key Contents in the ClientHello Message
-  <a class="anchor" href="#step-3-key-contents-in-the-clienthello-message">#</a>
-</h2>
-<p>The <code>ClientHello</code> message includes several critical fields. Here&rsquo;s a breakdown of the most important parts:</p>
-<table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>Purpose</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>TLS Version</strong></td>
-          <td>Specifies the highest TLS version the client supports (e.g., TLS 1.3)</td>
-      </tr>
-      <tr>
-          <td><strong>Random Number</strong></td>
-          <td>32 bytes of client-generated randomness used for key generation</td>
-      </tr>
-      <tr>
-          <td><strong>Session ID</strong></td>
-          <td>Used for session resumption (often empty in TLS 1.3)</td>
-      </tr>
-      <tr>
-          <td><strong>Cipher Suites</strong></td>
-          <td>List of encryption algorithms the client supports</td>
-      </tr>
-      <tr>
-          <td><strong>Compression Methods</strong></td>
-          <td>Legacy field, usually set to &rsquo;null&rsquo; (no compression)</td>
-      </tr>
-      <tr>
-          <td><strong>Extensions</strong></td>
-          <td>Extra information including key exchange, server name, etc.</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Notable Extensions</strong></p>
-<table>
-  <thead>
-      <tr>
-          <th>Extension</th>
-          <th>Description</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>Key Share</strong></td>
-          <td>Contains the client&rsquo;s ephemeral public key used in Diffie-Hellman key exchange. The server will respond with its own key share to derive a shared symmetric key for encrypted communication.</td>
-      </tr>
-      <tr>
-          <td><strong>Supported Groups</strong></td>
-          <td>Tells the server what kinds of keys the client can use to help create a shared symmetric key.</td>
-      </tr>
-      <tr>
-          <td><strong>Signature Algorithms</strong></td>
-          <td>Algorithms client supports to verify the server certificate</td>
-      </tr>
-      <tr>
-          <td><strong>Server Name Indication (SNI)</strong></td>
-          <td>Indicates the domain the client wants to connect to (e.g., <a href="https://www.google.com">www.google.com</a>)</td>
-      </tr>
-      <tr>
-          <td><strong>ALPN</strong></td>
-          <td>Tells the server which application protocols are supported (e.g., HTTP/2, HTTP/1.1)</td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>💡 Explainer: Key Share vs Supported Groups</strong></p>
-<ul>
-<li><strong>Supported Groups</strong>: These define what kinds of mathematical structures (like elliptic curves or finite fields) the client is capable of using in a key exchange. They are <strong>not algorithms</strong>, but parameters that describe the math.</li>
-<li><strong>Key Share</strong>: This is the <strong>actual public key</strong> the client sends, created using one of the supported groups. It&rsquo;s part of the ephemeral Diffie-Hellman exchange.</li>
-<li>During the handshake, the server picks a matching group, sends its own key share, and both sides compute the same shared symmetric key independently.</li>
-</ul>
+<h3 id="-step-2-inspect-the-image">
+  ✅ Step 2: Inspect the Image
+  <a class="anchor" href="#-step-2-inspect-the-image">#</a>
+</h3>
+<p>To view detailed information about the image:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect python:3.11
+</span></span></code></pre></div><p>This will return a JSON output containing the image’s configuration, creation time, ID, and more.</p>
 <hr>
-<h2 id="summary">
-  Summary
-  <a class="anchor" href="#summary">#</a>
+<h3 id="-step-3-run-a-container-from-the-image">
+  ✅ Step 3: Run a Container from the Image
+  <a class="anchor" href="#-step-3-run-a-container-from-the-image">#</a>
+</h3>
+<p>Launch a container using the image and enter an interactive Python shell:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it python:3.11
+</span></span></code></pre></div><p>Once inside, try running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Hello from inside a Docker container!&#34;</span>)
+</span></span></code></pre></div><p>Exit the shell with <code>exit()</code> or <code>Ctrl+D</code>.</p>
+<hr>
+<h3 id="-step-4-clean-up">
+  ✅ Step 4: Clean Up
+  <a class="anchor" href="#-step-4-clean-up">#</a>
+</h3>
+<p>List all containers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker ps -a
+</span></span></code></pre></div><p>Remove a specific container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker rm &lt;container_id&gt;
+</span></span></code></pre></div><p>Remove the image:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker rmi python:3.11
+</span></span></code></pre></div><hr>
+<h2 id="-checkpoint">
+  🏁 Checkpoint
+  <a class="anchor" href="#-checkpoint">#</a>
 </h2>
-<p>The <code>ClientHello</code> message is the first and most foundational message in a TLS handshake. It tells the server:</p>
+<p>You can now confidently:</p>
 <ul>
-<li>What the client supports (TLS version, cipher suites, extensions)</li>
-<li>What domain it wants (via SNI)</li>
-<li>What keys and algorithms it proposes to use</li>
+<li>Pull Docker images from Docker Hub</li>
+<li>Understand and interpret Docker image naming conventions</li>
+<li>Inspect image metadata and internal configuration</li>
+<li>Run containers from pulled images and clean them up</li>
 </ul>
-<p>In TLS 1.3, the key share and supported groups are crucial to securely deriving a <strong>shared symmetric encryption key</strong> between client and server. This symmetric key is what ultimately encrypts all future HTTPS traffic.</p>
+<p>👏 Excellent work! You’ve just taken a major step toward mastering Docker.</p>
+<hr>
+<h2 id="-coming-up-next">
+  📆 Coming Up Next
+  <a class="anchor" href="#-coming-up-next">#</a>
+</h2>
+<blockquote>
+<p><strong>Lesson 4: Building Your Own Image with a Dockerfile</strong><br>
+You’ll learn how to write your first <code>Dockerfile</code> and build a custom image from your application code.</p>
+</blockquote>
+<p>Yes — we will absolutely dive into Dockerfiles in the next lesson. Stay tuned!</p>
 </article>
  
       
@@ -2077,12 +2114,28 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#tls-handshake-client-hello">TLS Handshake: Client Hello</a>
+    <li><a href="#-docker-mastery-course--lesson-3">🐳 Docker Mastery Course – Lesson 3</a>
       <ul>
-        <li><a href="#step-1-capture-the-tls-handshake-using-openssl">Step 1: Capture the TLS Handshake Using OpenSSL</a></li>
-        <li><a href="#step-2-save-and-parse-the-clienthello-message-with-python">Step 2: Save and Parse the ClientHello Message with Python</a></li>
-        <li><a href="#step-3-key-contents-in-the-clienthello-message">Step 3: Key Contents in the ClientHello Message</a></li>
-        <li><a href="#summary">Summary</a></li>
+        <li><a href="#-mastering-docker-images-understand-and-use-them-effectively">🔬 Mastering Docker Images: Understand and Use Them Effectively</a></li>
+        <li><a href="#-learning-goal">🎯 Learning Goal</a></li>
+        <li><a href="#-core-concepts">📚 Core Concepts</a>
+          <ul>
+            <li><a href="#1-what-is-a-docker-image">1. What Is a Docker Image?</a></li>
+            <li><a href="#2-where-do-docker-images-come-from">2. Where Do Docker Images Come From?</a></li>
+            <li><a href="#3-image-naming-format">3. Image Naming Format</a></li>
+            <li><a href="#4-docker-images-are-layered">4. Docker Images Are Layered</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">💻 Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-pull-an-image-from-docker-hub">✅ Step 1: Pull an Image from Docker Hub</a></li>
+            <li><a href="#-step-2-inspect-the-image">✅ Step 2: Inspect the Image</a></li>
+            <li><a href="#-step-3-run-a-container-from-the-image">✅ Step 3: Run a Container from the Image</a></li>
+            <li><a href="#-step-4-clean-up">✅ Step 4: Clean Up</a></li>
+          </ul>
+        </li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-coming-up-next">📆 Coming Up Next</a></li>
       </ul>
     </li>
   </ul>
