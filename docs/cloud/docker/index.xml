@@ -37,10 +37,17 @@
     </item>
     <item>
       <title>Lesson 4: Dockerfile</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-4-docker-file/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-4-dockerfile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-4-docker-file/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-4-dockerfile/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-4&#34;&gt;&#xA;  🧠 Docker Mastery Course – Lesson 4&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-4&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-building-your-own-image-with-a-dockerfile&#34;&gt;&#xA;  🏗️ Building Your Own Image with a Dockerfile&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-building-your-own-image-with-a-dockerfile&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 4&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll learn how to create your own Docker image using a &lt;code&gt;Dockerfile&lt;/code&gt;, understand how file paths are interpreted during the build process, and explore the difference between shell and exec forms of the &lt;code&gt;CMD&lt;/code&gt; instruction.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you’ll be able to:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Lesson 5: Docker Networking</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-5-networking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-5-networking/</guid>
+      <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-5&#34;&gt;&#xA;  🧰 Docker Mastery Course – Lesson 5&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-5&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-understanding-docker-networking&#34;&gt;&#xA;  📡 Understanding Docker Networking&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-understanding-docker-networking&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 5&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll learn how Docker networking works, how to expose container services, and how containers communicate with each other and with the outside world.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you’ll understand how to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Expose container ports to your host machine&lt;/li&gt;&#xA;&lt;li&gt;Use Docker bridge networks&lt;/li&gt;&#xA;&lt;li&gt;Connect multiple containers&lt;/li&gt;&#xA;&lt;li&gt;Resolve container names using Docker DNS&lt;/li&gt;&#xA;&lt;li&gt;Access public internet domains from within containers&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-concepts&#34;&gt;&#xA;  📚 Concepts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-concepts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;what-is-docker-networking&#34;&gt;&#xA;  What Is Docker Networking?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-docker-networking&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Docker creates virtual networks that allow containers to:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
