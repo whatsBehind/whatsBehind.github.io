@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Why is Redis So Fast?
+  🐳 Docker Mastery Course – Lesson 3
   #
 
-Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for &ldquo;Remote Dictionary Server,&rdquo; and it’s an open-source project known for its speed, simplicity, and versatility.
-Redis achieves its incredible speed through several key design principles and optimizations:
 
-  1. In-Memory Operations
+  🔬 Mastering Docker Images: Understand and Use Them Effectively
   #
 
-Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.">
+Welcome to Lesson 3 of the Docker Mastery Course! In this lesson, you&rsquo;ll dive into the concept of Docker images — what they are, how to retrieve and inspect them, and how to run containers based on these images.
+
+
+  🎯 Learning Goal
+  #
+
+By the end of this lesson, you will:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/distributed-system/technology/redis/why-is-redis-so-fast/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/cloud/docker/lesson-3-images-copy/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="Why Is Redis So Fast">
-  <meta property="og:description" content="Why is Redis So Fast? # Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for “Remote Dictionary Server,” and it’s an open-source project known for its speed, simplicity, and versatility.
-Redis achieves its incredible speed through several key design principles and optimizations:
-1. In-Memory Operations # Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.">
+  <meta property="og:title" content="Lesson 3: Docker Images">
+  <meta property="og:description" content="🐳 Docker Mastery Course – Lesson 3 # 🔬 Mastering Docker Images: Understand and Use Them Effectively # Welcome to Lesson 3 of the Docker Mastery Course! In this lesson, you’ll dive into the concept of Docker images — what they are, how to retrieve and inspect them, and how to run containers based on these images.
+🎯 Learning Goal # By the end of this lesson, you will:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Why Is Redis So Fast | What&#39;s Behind</title>
+<title>Lesson 3: Docker Images | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/distributed-system/technology/redis/why-is-redis-so-fast/">
+<link rel="canonical" href="http://localhost:1313/docs/cloud/docker/lesson-3-images-copy/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.054fd8bf359c9c59f94a025b0eb0ccab6bae2a89ca49f66b2fbc5b36f8b10279.js" integrity="sha256-BU/YvzWcnFn5SgJbDrDMq2uuKonKSfZrL7xbNvixAnk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.fd1ce6839704997fa7b7aca95c5a9fdc47af24f52623a80371e9a21a65c1bb0a.js" integrity="sha256-/Rzmg5cEmX&#43;nt6ypXFqf3EevJPUmI6gDcemiGmXBuwo=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -107,118 +110,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
-    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
-      <a role="button" class="">Nio</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
     
       
         <li>
@@ -489,6 +380,118 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
   
 
         </li>
@@ -1106,7 +1109,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle" checked />
     <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
       <a role="button" class="">Cloud</a>
     </label>
@@ -1250,7 +1253,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle"  />
+    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle" checked />
     <label for="section-a8c6511954d9f72be55fac23451b589b" class="flex justify-between">
       <a role="button" class="">Docker</a>
     </label>
@@ -1305,7 +1308,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/cloud/docker/lesson-3-images/" class="">Lesson 3: Docker Images</a>
+    <a href="/docs/cloud/docker/lesson-3-images-copy/" class="active">Lesson 3: Docker Images</a>
   
 
         </li>
@@ -1318,7 +1321,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/cloud/docker/lesson-4-docker-file/" class="">Lesson 4: Dockerfile</a>
+    <a href="/docs/cloud/docker/lesson-3-images/" class="">Lesson 3: Docker Images</a>
   
 
         </li>
@@ -1474,7 +1477,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle" checked />
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
     <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
       <a role="button" class="">Distributed System</a>
     </label>
@@ -1704,7 +1707,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle" checked />
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
     <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
       <a role="button" class="">Technology</a>
     </label>
@@ -1720,7 +1723,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle" checked />
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
     <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
       <a role="button" class="">Redis</a>
     </label>
@@ -1736,7 +1739,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="active">Why Is Redis So Fast</a>
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
   
 
         </li>
@@ -1886,7 +1889,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Why Is Redis So Fast</h3>
+  <h3>Lesson 3: Docker Images</h3>
 
   <label for="toc-control">
     
@@ -1902,29 +1905,28 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#why-is-redis-so-fast">Why is Redis So Fast?</a>
+    <li><a href="#-docker-mastery-course--lesson-3">🐳 Docker Mastery Course – Lesson 3</a>
       <ul>
-        <li><a href="#1-in-memory-operations">1. In-Memory Operations</a>
+        <li><a href="#-mastering-docker-images-understand-and-use-them-effectively">🔬 Mastering Docker Images: Understand and Use Them Effectively</a></li>
+        <li><a href="#-learning-goal">🎯 Learning Goal</a></li>
+        <li><a href="#-core-concepts">📚 Core Concepts</a>
           <ul>
-            <li><a href="#understanding-mts-and-bandwidth">Understanding MT/s and Bandwidth</a></li>
-            <li><a href="#calculating-redis-operations">Calculating Redis Operations</a></li>
+            <li><a href="#1-what-is-a-docker-image">1. What Is a Docker Image?</a></li>
+            <li><a href="#2-where-do-docker-images-come-from">2. Where Do Docker Images Come From?</a></li>
+            <li><a href="#3-image-naming-format">3. Image Naming Format</a></li>
+            <li><a href="#4-docker-images-are-layered">4. Docker Images Are Layered</a></li>
           </ul>
         </li>
-        <li><a href="#2-efficient-data-structures">2. Efficient Data Structures</a></li>
-        <li><a href="#3-single-threaded-event-loop">3. Single-Threaded Event Loop</a>
+        <li><a href="#-hands-on-practice">💻 Hands-On Practice</a>
           <ul>
-            <li><a href="#calculating-redis-operations-per-second-cpu-bound">Calculating Redis Operations Per Second (CPU-bound)</a></li>
+            <li><a href="#-step-1-pull-an-image-from-docker-hub">✅ Step 1: Pull an Image from Docker Hub</a></li>
+            <li><a href="#-step-2-inspect-the-image">✅ Step 2: Inspect the Image</a></li>
+            <li><a href="#-step-3-run-a-container-from-the-image">✅ Step 3: Run a Container from the Image</a></li>
+            <li><a href="#-step-4-clean-up">✅ Step 4: Clean Up</a></li>
           </ul>
         </li>
-        <li><a href="#4-minimal-protocol-overhead">4. Minimal Protocol Overhead</a></li>
-        <li><a href="#5-pipelining">5. Pipelining</a></li>
-        <li><a href="#6-optimized-network-io">6. Optimized Network IO</a>
-          <ul>
-            <li><a href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">Step-by-Step Handling of a Request and Response in Non-Blocking I/O</a></li>
-            <li><a href="#network-bandwidth-calculation">Network Bandwidth Calculation</a></li>
-          </ul>
-        </li>
-        <li><a href="#7-partitioning">7. Partitioning</a></li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-coming-up-next">📆 Coming Up Next</a></li>
       </ul>
     </li>
   </ul>
@@ -1939,183 +1941,151 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="why-is-redis-so-fast">
-  Why is Redis So Fast?
-  <a class="anchor" href="#why-is-redis-so-fast">#</a>
+  <article class="markdown book-article"><h1 id="-docker-mastery-course--lesson-3">
+  🐳 Docker Mastery Course – Lesson 3
+  <a class="anchor" href="#-docker-mastery-course--lesson-3">#</a>
 </h1>
-<p>Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for &ldquo;Remote Dictionary Server,&rdquo; and it’s an open-source project known for its speed, simplicity, and versatility.</p>
-<p>Redis achieves its incredible speed through several key design principles and optimizations:</p>
-<h2 id="1-in-memory-operations">
-  1. In-Memory Operations
-  <a class="anchor" href="#1-in-memory-operations">#</a>
+<h2 id="-mastering-docker-images-understand-and-use-them-effectively">
+  🔬 Mastering Docker Images: Understand and Use Them Effectively
+  <a class="anchor" href="#-mastering-docker-images-understand-and-use-them-effectively">#</a>
 </h2>
-<p>Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.</p>
-<h3 id="understanding-mts-and-bandwidth">
-  Understanding MT/s and Bandwidth
-  <a class="anchor" href="#understanding-mts-and-bandwidth">#</a>
+<p>Welcome to <strong>Lesson 3</strong> of the Docker Mastery Course! In this lesson, you&rsquo;ll dive into the concept of Docker images — what they are, how to retrieve and inspect them, and how to run containers based on these images.</p>
+<hr>
+<h2 id="-learning-goal">
+  🎯 Learning Goal
+  <a class="anchor" href="#-learning-goal">#</a>
+</h2>
+<p>By the end of this lesson, you will:</p>
+<ul>
+<li>Understand what Docker images are and how they work</li>
+<li>Learn how to pull, inspect, and use images</li>
+<li>Get hands-on experience running containers from official images</li>
+</ul>
+<hr>
+<h2 id="-core-concepts">
+  📚 Core Concepts
+  <a class="anchor" href="#-core-concepts">#</a>
+</h2>
+<h3 id="1-what-is-a-docker-image">
+  1. What Is a Docker Image?
+  <a class="anchor" href="#1-what-is-a-docker-image">#</a>
 </h3>
-<p>For example, DDR5 DRAM—the latest generation of DRAM—can achieve memory access speeds of around 4800 MT/s (megatransfers per second). MT/s reflects the number of data transfers per second over the memory bus. DRAM employs double data rate (DDR) technology, which allows it to send data on both the rising and falling edges of the clock cycle, effectively doubling the transfer rate. Each transfer moves a fixed amount of data, and this is used to calculate the bandwidth (GB/s):</p>
-<p>Bandwidth (GB/s) = MT/s × Bus Width (Bytes) ÷ 1000</p>
-<p>For instance, with DDR5-4800, having 4800 MT/s and a bus width of 64 bits (8 bytes):
-Bandwidth = 4800 × 8 ÷ 1000 = 38.4 GB/s per channel.</p>
-<h3 id="calculating-redis-operations">
-  Calculating Redis Operations
-  <a class="anchor" href="#calculating-redis-operations">#</a>
+<p>A <strong>Docker image</strong> is a <strong>read-only template</strong> used to create containers. It contains:</p>
+<ul>
+<li>OS-level files (e.g., a Linux base layer)</li>
+<li>Your application code</li>
+<li>Required runtime (e.g., Python, Node.js)</li>
+<li>Configuration and environment variables</li>
+</ul>
+<blockquote>
+<p>✅ Think of the runtime as the software required to <strong>run your application</strong>, such as the Python interpreter or Node.js engine.</p>
+</blockquote>
+<p>In simple terms: <strong>Images are blueprints</strong>, and <strong>containers are the products built from them</strong>.</p>
+<hr>
+<h3 id="2-where-do-docker-images-come-from">
+  2. Where Do Docker Images Come From?
+  <a class="anchor" href="#2-where-do-docker-images-come-from">#</a>
 </h3>
-<p>Assume each Redis operation requires 100 bytes of data (both request and response). Using the theoretical bandwidth of 38.4 GB/s for a single channel, the rough queries per second (QPS) Redis could achieve is:</p>
-<p>QPS = Bandwidth (Bytes/s) ÷ Operation Size (Bytes)
-QPS = 38.4 × 10^9 ÷ 100 = 384 million operations per second.</p>
-<p>This theoretical calculation showcases the massive potential throughput of Redis when operating entirely in memory with modern DRAM, far exceeding the capabilities of traditional disk-based systems and enabling sub-millisecond response times. However, this is just a rough calculation. In real-world scenarios, the QPS of Redis is bottlenecked by other factors such as CPU, network bandwidth, and I/O limitations, with memory being just one of the constraints.</p>
-<h2 id="2-efficient-data-structures">
-  2. Efficient Data Structures
-  <a class="anchor" href="#2-efficient-data-structures">#</a>
-</h2>
-<p>Redis uses highly optimized data structures specifically designed to maximize performance. For example, dictionaries in Redis allow O(1) average-time complexity for lookups and inserts, making key-value storage extremely efficient. Skip lists are used for sorted sets, enabling fast range queries and ordered operations with O(log n) complexity. Additionally, Redis employs lightweight compression techniques to reduce memory usage while ensuring minimal impact on data access speed. These tailored data structures ensure that Redis can handle millions of operations per second while maintaining consistent low latency.</p>
-<h2 id="3-single-threaded-event-loop">
-  3. Single-Threaded Event Loop
-  <a class="anchor" href="#3-single-threaded-event-loop">#</a>
-</h2>
-<p>The benefit of using a single-threaded event loop in Redis is that it eliminates the need for context switching and complex locking mechanisms, enabling more predictable and efficient operation. This simplicity also avoids issues like race conditions and deadlocks, making Redis highly reliable for lightweight commands and in-memory operations.</p>
-<p>However, this raises a critical question: can a single thread handle high volumes of operations in a modern computing environment? To address this, let’s calculate the theoretical performance of a single-threaded Redis instance, assuming one operation takes 100 CPU cycles on average.</p>
-<h3 id="calculating-redis-operations-per-second-cpu-bound">
-  Calculating Redis Operations Per Second (CPU-bound)
-  <a class="anchor" href="#calculating-redis-operations-per-second-cpu-bound">#</a>
+<p>Docker images are commonly pulled from <strong>Docker Hub</strong>, which is the default public image registry.</p>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull nginx
+</span></span></code></pre></div><p>This command downloads the <code>nginx</code> image from Docker Hub.</p>
+<hr>
+<h3 id="3-image-naming-format">
+  3. Image Naming Format
+  <a class="anchor" href="#3-image-naming-format">#</a>
 </h3>
+<p>Docker images typically follow this naming format:</p>
+<pre tabindex="0"><code>[registry]/[username_or_org]/[repository]:[tag]
+</code></pre><p>However, many parts can be omitted and Docker will automatically apply default values:</p>
 <ul>
-<li><strong>CPU Clock Speed</strong>: 4.5 GHz (4.5 × 10^9 cycles/second)</li>
-<li><strong>Cycles Per Operation</strong>: 100 CPU cycles per operation (assumption for lightweight Redis commands).</li>
-</ul>
-<p>Thus, the number of operations Redis can handle is:</p>
-<p>QPS = Clock Speed / Cycles Per Operation
-QPS = 4.5 × 10^9 / 100 = 45 million operations per second.</p>
-<h2 id="4-minimal-protocol-overhead">
-  4. Minimal Protocol Overhead
-  <a class="anchor" href="#4-minimal-protocol-overhead">#</a>
-</h2>
-<p>RESP (Redis Serialization Protocol) is a lightweight, custom protocol dedicated to Redis that offers several key advantages:</p>
+<li><code>docker pull nginx</code> is interpreted as:
 <ul>
-<li><strong>Compact Format</strong>: RESP eliminates the overhead of verbose headers and negotiation mechanisms, which eases CPU usage by requiring significantly fewer cycles to parse and execute compared to general-purpose protocols like HTTP.</li>
-<li><strong>Reduced Network Bandwidth</strong>: By containing fewer bytes in both requests and responses, RESP minimizes the network bandwidth required for communication, improving overall throughput.</li>
-<li><strong>Integrated Pipelining</strong>: RESP seamlessly supports pipelining, allowing multiple commands to be sent in a single request, which further reduces latency and boosts performance.</li>
+<li><code>docker.io/library/nginx:latest</code></li>
+<li><code>docker.io</code>: default registry</li>
+<li><code>library</code>: default namespace for official images</li>
+<li><code>latest</code>: default tag</li>
 </ul>
-<h2 id="5-pipelining">
-  5. Pipelining
-  <a class="anchor" href="#5-pipelining">#</a>
-</h2>
-<p>Redis allows clients to send multiple commands in a single request through its pipelining feature, which reduces round-trip latency and significantly improves throughput. For example, instead of waiting for each command&rsquo;s response before sending the next, a client can send a batch of commands like <code>SET key1 value1</code>, <code>SET key2 value2</code>, and <code>GET key1</code> all at once. The server processes them sequentially and sends back a batch of responses, minimizing network delays. </p>
-<h2 id="6-optimized-network-io">
-  6. Optimized Network IO
-  <a class="anchor" href="#6-optimized-network-io">#</a>
-</h2>
-<p>Redis handles network requests and responses efficiently using non-blocking I/O and event-driven mechanisms. Here’s a step-by-step explanation of how Redis handles client requests and responses:</p>
-<h3 id="step-by-step-handling-of-a-request-and-response-in-non-blocking-io">
-  Step-by-Step Handling of a Request and Response in Non-Blocking I/O
-  <a class="anchor" href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">#</a>
+</li>
+</ul>
+<p>So yes — image names can often be shortened thanks to these sensible defaults.</p>
+<hr>
+<h3 id="4-docker-images-are-layered">
+  4. Docker Images Are Layered
+  <a class="anchor" href="#4-docker-images-are-layered">#</a>
 </h3>
-<ol>
-<li>
-<p><strong>Client Sends a TCP Request</strong>:</p>
+<p>Each instruction in a Dockerfile (we’ll cover this in the next lesson) adds a <strong>new layer</strong> to the image.</p>
 <ul>
-<li>The client sends a command (e.g., <code>GET key1</code>) over an established TCP connection to Redis.</li>
-<li>The data is broken into packets and sent to the server.</li>
+<li>Layers are cached, which speeds up builds</li>
+<li>Layers can be shared across different images</li>
 </ul>
-</li>
-<li>
-<p><strong>OS Receives TCP Packets</strong>:</p>
-<ul>
-<li>The operating system (OS) kernel on the server receives the incoming packets, reassembles them, and stores the complete request in the <strong>socket buffer</strong>, which is managed by the OS.</li>
-<li>In non-blocking mode, Redis’s main thread does not wait for the complete message to be ready in the buffer. Instead, Redis continues processing other ready events in its event loop until notified by the OS that the request is ready for reading.</li>
-</ul>
-</li>
-<li>
-<p><strong>Redis Reads the Request</strong>:</p>
-<ul>
-<li>When the complete request is ready in the socket buffer, the OS notifies Redis that it is ready to be read and processed.</li>
-<li>Redis’s main thread processes the &ldquo;ready-to-read&rdquo; event in its event loop. </li>
-<li>It executes a non-blocking <code>read()</code> system call to fetch the request data from the socket buffer into Redis’s user-space memory.</li>
-<li>If the full request is not yet available, Redis skips this socket and continues processing other events, avoiding blocking.</li>
-</ul>
-</li>
-<li>
-<p><strong>Redis Processes the Request</strong>:</p>
-<ul>
-<li>Redis parses and executes the command (e.g., <code>GET key1</code>) by retrieving the key’s value from its in-memory data structure.</li>
-<li>The response (e.g., <code>value1</code>) is prepared in memory, waiting to be written to the socket buffer.</li>
-</ul>
-</li>
-<li>
-<p><strong>Redis Writes the Response to the Socket Buffer</strong>:</p>
-<ul>
-<li>Redis executes a non-blocking <code>write()</code> system call to send the response to the socket buffer.</li>
-<li>If the socket buffer has enough space, the data is copied immediately, and the <code>write()</code> call returns.</li>
-<li>If the buffer is full (e.g., due to a slow client), the <code>write()</code> call defers, and Redis marks the socket as &ldquo;waiting for readiness.&rdquo; After marking, Redis does not block; instead, it immediately moves on to process other ready requests or tasks in its event loop. Redis retries the write when the OS notifies that the socket is writable again, ensuring efficient use of the main thread while maintaining responsiveness.</li>
-</ul>
-</li>
-<li>
-<p><strong>OS Transmits the Data to the Client</strong>:</p>
-<ul>
-<li>Once the response is in the socket buffer, the OS and the network interface card (NIC) handle the actual transmission of the data over the network. Redis itself is not involved in this process; the OS takes full responsibility for reliably sending the data to the client, including handling retransmissions and acknowledgments.</li>
-</ul>
-</li>
-</ol>
-<h4 id="key-points-of-non-blocking-io">
-  <strong>Key Points of Non-Blocking I/O</strong>
-  <a class="anchor" href="#key-points-of-non-blocking-io">#</a>
-</h4>
-<ul>
-<li>Redis never blocks its main thread while waiting for I/O operations (e.g., receiving a request, writing a response).</li>
-<li>The OS handles low-level tasks like managing socket buffers and transmitting data over the network.</li>
-<li>Redis’s event loop ensures it efficiently processes ready events (e.g., requests from other clients) while waiting for I/O readiness.</li>
-</ul>
-<p>This non-blocking I/O model, combined with Redis’s single-threaded design, allows it to scale efficiently and handle thousands of concurrent connections without bottlenecks.</p>
-<h3 id="network-bandwidth-calculation">
-  Network Bandwidth Calculation
-  <a class="anchor" href="#network-bandwidth-calculation">#</a>
-</h3>
-<p>Let’s calculate the theoretical maximum number of requests Redis can handle based solely on network bandwidth. Assume both the request and response are 100 bytes each.</p>
-<h4 id="assumptions">
-  Assumptions:
-  <a class="anchor" href="#assumptions">#</a>
-</h4>
-<ul>
-<li>Request size = 200 bytes, considering network overhead like TCP/IP headers</li>
-<li>Response size = 200 bytes</li>
-<li>Total data per operation = 200 (request) + 200 (response) = 400 bytes</li>
-<li>Network bandwidth = 10 Gbps (10 gigabits per second)</li>
-</ul>
-<h4 id="calculation">
-  Calculation:
-  <a class="anchor" href="#calculation">#</a>
-</h4>
-<ol>
-<li>
-<p>Convert bandwidth to bytes per second:</p>
-<ul>
-<li>
-<p>10 Gbps = 10 × 10^9 bits/second</p>
-</li>
-<li>
-<p>1 byte = 8 bits, so:</p>
-<p>Bandwidth (bytes/second) = 10 × 10^9 ÷ 8 = 1250 × 10^6 bytes/second</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Calculate the maximum requests per second:</p>
-<p>Requests per second (RPS) = Bandwidth (bytes/second) ÷ Data per operation (bytes)</p>
-<p>RPS = 1250 × 10^6 ÷ 400 = 3.125 million requests per second</p>
-</li>
-</ol>
-<h4 id="conclusion">
-  Conclusion:
-  <a class="anchor" href="#conclusion">#</a>
-</h4>
-<p>With a 10 Gbps network connection, Redis can theoretically handle up to <strong>3.125 million requests per second</strong> network bandwidth-wise, assuming no other bottlenecks (e.g., CPU or memory).</p>
-<h2 id="7-partitioning">
-  7. Partitioning
-  <a class="anchor" href="#7-partitioning">#</a>
+<p>This layered approach makes Docker fast and space-efficient.</p>
+<hr>
+<h2 id="-hands-on-practice">
+  💻 Hands-On Practice
+  <a class="anchor" href="#-hands-on-practice">#</a>
 </h2>
-<p>With Redis Cluster, data can be partitioned across multiple nodes, enabling horizontal scaling while maintaining high performance. If higher QPS is required and a single thread cannot handle the load, the system can be scaled by partitioning incoming requests and deploying more Redis instances to distribute the workload efficiently.</p>
+<h3 id="-step-1-pull-an-image-from-docker-hub">
+  ✅ Step 1: Pull an Image from Docker Hub
+  <a class="anchor" href="#-step-1-pull-an-image-from-docker-hub">#</a>
+</h3>
+<p>Run the following command in your terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull python:3.11
+</span></span></code></pre></div><p>This downloads the Python 3.11 image.</p>
+<p>To view all local images:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker images
+</span></span></code></pre></div><hr>
+<h3 id="-step-2-inspect-the-image">
+  ✅ Step 2: Inspect the Image
+  <a class="anchor" href="#-step-2-inspect-the-image">#</a>
+</h3>
+<p>To view detailed information about the image:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker inspect python:3.11
+</span></span></code></pre></div><p>This will return a JSON output containing the image’s configuration, creation time, ID, and more.</p>
+<hr>
+<h3 id="-step-3-run-a-container-from-the-image">
+  ✅ Step 3: Run a Container from the Image
+  <a class="anchor" href="#-step-3-run-a-container-from-the-image">#</a>
+</h3>
+<p>Launch a container using the image and enter an interactive Python shell:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it python:3.11
+</span></span></code></pre></div><p>Once inside, try running:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Hello from inside a Docker container!&#34;</span>)
+</span></span></code></pre></div><p>Exit the shell with <code>exit()</code> or <code>Ctrl+D</code>.</p>
+<hr>
+<h3 id="-step-4-clean-up">
+  ✅ Step 4: Clean Up
+  <a class="anchor" href="#-step-4-clean-up">#</a>
+</h3>
+<p>List all containers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker ps -a
+</span></span></code></pre></div><p>Remove a specific container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker rm &lt;container_id&gt;
+</span></span></code></pre></div><p>Remove the image:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker rmi python:3.11
+</span></span></code></pre></div><hr>
+<h2 id="-checkpoint">
+  🏁 Checkpoint
+  <a class="anchor" href="#-checkpoint">#</a>
+</h2>
+<p>You can now confidently:</p>
+<ul>
+<li>Pull Docker images from Docker Hub</li>
+<li>Understand and interpret Docker image naming conventions</li>
+<li>Inspect image metadata and internal configuration</li>
+<li>Run containers from pulled images and clean them up</li>
+</ul>
+<p>👏 Excellent work! You’ve just taken a major step toward mastering Docker.</p>
+<hr>
+<h2 id="-coming-up-next">
+  📆 Coming Up Next
+  <a class="anchor" href="#-coming-up-next">#</a>
+</h2>
+<blockquote>
+<p><strong>Lesson 4: Building Your Own Image with a Dockerfile</strong><br>
+You’ll learn how to write your first <code>Dockerfile</code> and build a custom image from your application code.</p>
+</blockquote>
+<p>Yes — we will absolutely dive into Dockerfiles in the next lesson. Stay tuned!</p>
 </article>
  
       
@@ -2157,29 +2127,28 @@ QPS = 4.5 × 10^9 / 100 = 45 million operations per second.</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#why-is-redis-so-fast">Why is Redis So Fast?</a>
+    <li><a href="#-docker-mastery-course--lesson-3">🐳 Docker Mastery Course – Lesson 3</a>
       <ul>
-        <li><a href="#1-in-memory-operations">1. In-Memory Operations</a>
+        <li><a href="#-mastering-docker-images-understand-and-use-them-effectively">🔬 Mastering Docker Images: Understand and Use Them Effectively</a></li>
+        <li><a href="#-learning-goal">🎯 Learning Goal</a></li>
+        <li><a href="#-core-concepts">📚 Core Concepts</a>
           <ul>
-            <li><a href="#understanding-mts-and-bandwidth">Understanding MT/s and Bandwidth</a></li>
-            <li><a href="#calculating-redis-operations">Calculating Redis Operations</a></li>
+            <li><a href="#1-what-is-a-docker-image">1. What Is a Docker Image?</a></li>
+            <li><a href="#2-where-do-docker-images-come-from">2. Where Do Docker Images Come From?</a></li>
+            <li><a href="#3-image-naming-format">3. Image Naming Format</a></li>
+            <li><a href="#4-docker-images-are-layered">4. Docker Images Are Layered</a></li>
           </ul>
         </li>
-        <li><a href="#2-efficient-data-structures">2. Efficient Data Structures</a></li>
-        <li><a href="#3-single-threaded-event-loop">3. Single-Threaded Event Loop</a>
+        <li><a href="#-hands-on-practice">💻 Hands-On Practice</a>
           <ul>
-            <li><a href="#calculating-redis-operations-per-second-cpu-bound">Calculating Redis Operations Per Second (CPU-bound)</a></li>
+            <li><a href="#-step-1-pull-an-image-from-docker-hub">✅ Step 1: Pull an Image from Docker Hub</a></li>
+            <li><a href="#-step-2-inspect-the-image">✅ Step 2: Inspect the Image</a></li>
+            <li><a href="#-step-3-run-a-container-from-the-image">✅ Step 3: Run a Container from the Image</a></li>
+            <li><a href="#-step-4-clean-up">✅ Step 4: Clean Up</a></li>
           </ul>
         </li>
-        <li><a href="#4-minimal-protocol-overhead">4. Minimal Protocol Overhead</a></li>
-        <li><a href="#5-pipelining">5. Pipelining</a></li>
-        <li><a href="#6-optimized-network-io">6. Optimized Network IO</a>
-          <ul>
-            <li><a href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">Step-by-Step Handling of a Request and Response in Non-Blocking I/O</a></li>
-            <li><a href="#network-bandwidth-calculation">Network Bandwidth Calculation</a></li>
-          </ul>
-        </li>
-        <li><a href="#7-partitioning">7. Partitioning</a></li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-coming-up-next">📆 Coming Up Next</a></li>
       </ul>
     </li>
   </ul>

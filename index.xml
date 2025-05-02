@@ -401,6 +401,13 @@
       <description>&lt;h1 id=&#34;-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi&#34;&gt;&#xA;  📘 Lesson: HTTP Cache-Control – Concepts and Browser Testing with FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-lesson-http-cache-control--concepts-and-browser-testing-with-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;HTTP caching plays a crucial role in improving performance, reducing latency, and minimizing server load. One of the most versatile headers for managing caching behavior is &lt;code&gt;Cache-Control&lt;/code&gt;. In this lesson, we&amp;rsquo;ll explore how it works from both the server and client perspectives, and demonstrate how to test it using FastAPI and Chrome DevTools.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-why-cache&#34;&gt;&#xA;  🔄 Why Cache?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-why-cache&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Caching helps eliminate redundant requests to the server by allowing clients or intermediaries to reuse stored responses. It:&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Lesson 4: Dockerfile</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-4-docker-file/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-4-docker-file/</guid>
+      <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-4&#34;&gt;&#xA;  🧠 Docker Mastery Course – Lesson 4&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-4&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-building-your-own-image-with-a-dockerfile&#34;&gt;&#xA;  🏗️ Building Your Own Image with a Dockerfile&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-building-your-own-image-with-a-dockerfile&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 4&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll learn how to create your own Docker image using a &lt;code&gt;Dockerfile&lt;/code&gt;, understand how file paths are interpreted during the build process, and explore the difference between shell and exec forms of the &lt;code&gt;CMD&lt;/code&gt; instruction.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you’ll be able to:&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Selector Read</title>
       <link>https://whatsBehind.github.io/docs/programming-core/java/nio/selector-read/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

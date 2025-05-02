@@ -4,31 +4,34 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Why is Redis So Fast?
+  🧠 Docker Mastery Course – Lesson 4
   #
 
-Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for &ldquo;Remote Dictionary Server,&rdquo; and it’s an open-source project known for its speed, simplicity, and versatility.
-Redis achieves its incredible speed through several key design principles and optimizations:
 
-  1. In-Memory Operations
+  🏗️ Building Your Own Image with a Dockerfile
   #
 
-Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.">
+Welcome to Lesson 4 of the Docker Mastery Course! In this lesson, you&rsquo;ll learn how to create your own Docker image using a Dockerfile, understand how file paths are interpreted during the build process, and explore the difference between shell and exec forms of the CMD instruction.
+
+
+  🎯 Goal
+  #
+
+By the end of this lesson, you’ll be able to:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/distributed-system/technology/redis/why-is-redis-so-fast/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/cloud/docker/lesson-4-docker-file/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="Why Is Redis So Fast">
-  <meta property="og:description" content="Why is Redis So Fast? # Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for “Remote Dictionary Server,” and it’s an open-source project known for its speed, simplicity, and versatility.
-Redis achieves its incredible speed through several key design principles and optimizations:
-1. In-Memory Operations # Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.">
+  <meta property="og:title" content="Lesson 4: Dockerfile">
+  <meta property="og:description" content="🧠 Docker Mastery Course – Lesson 4 # 🏗️ Building Your Own Image with a Dockerfile # Welcome to Lesson 4 of the Docker Mastery Course! In this lesson, you’ll learn how to create your own Docker image using a Dockerfile, understand how file paths are interpreted during the build process, and explore the difference between shell and exec forms of the CMD instruction.
+🎯 Goal # By the end of this lesson, you’ll be able to:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Why Is Redis So Fast | What&#39;s Behind</title>
+<title>Lesson 4: Dockerfile | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/distributed-system/technology/redis/why-is-redis-so-fast/">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/cloud/docker/lesson-4-docker-file/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.054fd8bf359c9c59f94a025b0eb0ccab6bae2a89ca49f66b2fbc5b36f8b10279.js" integrity="sha256-BU/YvzWcnFn5SgJbDrDMq2uuKonKSfZrL7xbNvixAnk=" crossorigin="anonymous"></script>
@@ -1106,7 +1109,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle" checked />
     <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
       <a role="button" class="">Cloud</a>
     </label>
@@ -1250,7 +1253,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle"  />
+    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle" checked />
     <label for="section-a8c6511954d9f72be55fac23451b589b" class="flex justify-between">
       <a role="button" class="">Docker</a>
     </label>
@@ -1318,7 +1321,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/cloud/docker/lesson-4-docker-file/" class="">Lesson 4: Dockerfile</a>
+    <a href="/docs/cloud/docker/lesson-4-docker-file/" class="active">Lesson 4: Dockerfile</a>
   
 
         </li>
@@ -1474,7 +1477,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle" checked />
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
     <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
       <a role="button" class="">Distributed System</a>
     </label>
@@ -1704,7 +1707,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle" checked />
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
     <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
       <a role="button" class="">Technology</a>
     </label>
@@ -1720,7 +1723,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle" checked />
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
     <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
       <a role="button" class="">Redis</a>
     </label>
@@ -1736,7 +1739,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="active">Why Is Redis So Fast</a>
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
   
 
         </li>
@@ -1886,7 +1889,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Why Is Redis So Fast</h3>
+  <h3>Lesson 4: Dockerfile</h3>
 
   <label for="toc-control">
     
@@ -1902,29 +1905,26 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#why-is-redis-so-fast">Why is Redis So Fast?</a>
+    <li><a href="#-docker-mastery-course--lesson-4">🧠 Docker Mastery Course – Lesson 4</a>
       <ul>
-        <li><a href="#1-in-memory-operations">1. In-Memory Operations</a>
+        <li><a href="#-building-your-own-image-with-a-dockerfile">🏗️ Building Your Own Image with a Dockerfile</a></li>
+        <li><a href="#-goal">🎯 Goal</a></li>
+        <li><a href="#-concepts">📚 Concepts</a>
           <ul>
-            <li><a href="#understanding-mts-and-bandwidth">Understanding MT/s and Bandwidth</a></li>
-            <li><a href="#calculating-redis-operations">Calculating Redis Operations</a></li>
+            <li><a href="#what-is-a-dockerfile">What Is a Dockerfile?</a></li>
+            <li><a href="#common-dockerfile-instructions">Common Dockerfile Instructions</a></li>
           </ul>
         </li>
-        <li><a href="#2-efficient-data-structures">2. Efficient Data Structures</a></li>
-        <li><a href="#3-single-threaded-event-loop">3. Single-Threaded Event Loop</a>
+        <li><a href="#-hands-on-practice">💻 Hands-On Practice</a>
           <ul>
-            <li><a href="#calculating-redis-operations-per-second-cpu-bound">Calculating Redis Operations Per Second (CPU-bound)</a></li>
+            <li><a href="#-step-1-create-a-simple-python-app">✅ Step 1: Create a Simple Python App</a></li>
+            <li><a href="#-step-2-write-a-dockerfile">✅ Step 2: Write a Dockerfile</a></li>
+            <li><a href="#-step-3-build-the-image">✅ Step 3: Build the Image</a></li>
+            <li><a href="#-step-4-run-the-container">✅ Step 4: Run the Container</a></li>
           </ul>
         </li>
-        <li><a href="#4-minimal-protocol-overhead">4. Minimal Protocol Overhead</a></li>
-        <li><a href="#5-pipelining">5. Pipelining</a></li>
-        <li><a href="#6-optimized-network-io">6. Optimized Network IO</a>
-          <ul>
-            <li><a href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">Step-by-Step Handling of a Request and Response in Non-Blocking I/O</a></li>
-            <li><a href="#network-bandwidth-calculation">Network Bandwidth Calculation</a></li>
-          </ul>
-        </li>
-        <li><a href="#7-partitioning">7. Partitioning</a></li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-whats-next">📆 What’s Next?</a></li>
       </ul>
     </li>
   </ul>
@@ -1939,183 +1939,164 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="why-is-redis-so-fast">
-  Why is Redis So Fast?
-  <a class="anchor" href="#why-is-redis-so-fast">#</a>
+  <article class="markdown book-article"><h1 id="-docker-mastery-course--lesson-4">
+  🧠 Docker Mastery Course – Lesson 4
+  <a class="anchor" href="#-docker-mastery-course--lesson-4">#</a>
 </h1>
-<p>Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for &ldquo;Remote Dictionary Server,&rdquo; and it’s an open-source project known for its speed, simplicity, and versatility.</p>
-<p>Redis achieves its incredible speed through several key design principles and optimizations:</p>
-<h2 id="1-in-memory-operations">
-  1. In-Memory Operations
-  <a class="anchor" href="#1-in-memory-operations">#</a>
+<h2 id="-building-your-own-image-with-a-dockerfile">
+  🏗️ Building Your Own Image with a Dockerfile
+  <a class="anchor" href="#-building-your-own-image-with-a-dockerfile">#</a>
 </h2>
-<p>Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.</p>
-<h3 id="understanding-mts-and-bandwidth">
-  Understanding MT/s and Bandwidth
-  <a class="anchor" href="#understanding-mts-and-bandwidth">#</a>
+<p>Welcome to <strong>Lesson 4</strong> of the Docker Mastery Course! In this lesson, you&rsquo;ll learn how to create your own Docker image using a <code>Dockerfile</code>, understand how file paths are interpreted during the build process, and explore the difference between shell and exec forms of the <code>CMD</code> instruction.</p>
+<hr>
+<h2 id="-goal">
+  🎯 Goal
+  <a class="anchor" href="#-goal">#</a>
+</h2>
+<p>By the end of this lesson, you’ll be able to:</p>
+<ul>
+<li>Understand the purpose and structure of a Dockerfile</li>
+<li>Build and tag a custom Docker image</li>
+<li>Interpret relative paths in Docker build context</li>
+<li>Run your custom image using both best practices and practical understanding</li>
+</ul>
+<hr>
+<h2 id="-concepts">
+  📚 Concepts
+  <a class="anchor" href="#-concepts">#</a>
+</h2>
+<h3 id="what-is-a-dockerfile">
+  What Is a Dockerfile?
+  <a class="anchor" href="#what-is-a-dockerfile">#</a>
 </h3>
-<p>For example, DDR5 DRAM—the latest generation of DRAM—can achieve memory access speeds of around 4800 MT/s (megatransfers per second). MT/s reflects the number of data transfers per second over the memory bus. DRAM employs double data rate (DDR) technology, which allows it to send data on both the rising and falling edges of the clock cycle, effectively doubling the transfer rate. Each transfer moves a fixed amount of data, and this is used to calculate the bandwidth (GB/s):</p>
-<p>Bandwidth (GB/s) = MT/s × Bus Width (Bytes) ÷ 1000</p>
-<p>For instance, with DDR5-4800, having 4800 MT/s and a bus width of 64 bits (8 bytes):
-Bandwidth = 4800 × 8 ÷ 1000 = 38.4 GB/s per channel.</p>
-<h3 id="calculating-redis-operations">
-  Calculating Redis Operations
-  <a class="anchor" href="#calculating-redis-operations">#</a>
+<p>A <strong>Dockerfile</strong> is a plain text file containing a sequence of instructions that tell Docker how to build an image. Each instruction creates a new layer in the final image. Dockerfiles are essential for defining reproducible, portable containers.</p>
+<h3 id="common-dockerfile-instructions">
+  Common Dockerfile Instructions
+  <a class="anchor" href="#common-dockerfile-instructions">#</a>
 </h3>
-<p>Assume each Redis operation requires 100 bytes of data (both request and response). Using the theoretical bandwidth of 38.4 GB/s for a single channel, the rough queries per second (QPS) Redis could achieve is:</p>
-<p>QPS = Bandwidth (Bytes/s) ÷ Operation Size (Bytes)
-QPS = 38.4 × 10^9 ÷ 100 = 384 million operations per second.</p>
-<p>This theoretical calculation showcases the massive potential throughput of Redis when operating entirely in memory with modern DRAM, far exceeding the capabilities of traditional disk-based systems and enabling sub-millisecond response times. However, this is just a rough calculation. In real-world scenarios, the QPS of Redis is bottlenecked by other factors such as CPU, network bandwidth, and I/O limitations, with memory being just one of the constraints.</p>
-<h2 id="2-efficient-data-structures">
-  2. Efficient Data Structures
-  <a class="anchor" href="#2-efficient-data-structures">#</a>
+<table>
+  <thead>
+      <tr>
+          <th>Instruction</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>FROM</code></td>
+          <td>Specifies the base image (e.g., <code>python:3.11</code>)</td>
+      </tr>
+      <tr>
+          <td><code>WORKDIR</code></td>
+          <td>Sets the working directory inside the container</td>
+      </tr>
+      <tr>
+          <td><code>COPY</code></td>
+          <td>Copies files/folders from the build context into the image</td>
+      </tr>
+      <tr>
+          <td><code>RUN</code></td>
+          <td>Executes commands during image build time</td>
+      </tr>
+      <tr>
+          <td><code>CMD</code></td>
+          <td>Sets the default command to run when the container starts</td>
+      </tr>
+      <tr>
+          <td><code>ENV</code></td>
+          <td>Defines environment variables</td>
+      </tr>
+      <tr>
+          <td><code>EXPOSE</code></td>
+          <td>Documents which port the container will listen on</td>
+      </tr>
+      <tr>
+          <td><code>ENTRYPOINT</code></td>
+          <td>Sets a fixed command that runs when the container starts</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>✅ For this lesson, we&rsquo;ll focus on the most essential instructions: <code>FROM</code>, <code>WORKDIR</code>, <code>COPY</code>, and <code>CMD</code>.</p>
+</blockquote>
+<hr>
+<h2 id="-hands-on-practice">
+  💻 Hands-On Practice
+  <a class="anchor" href="#-hands-on-practice">#</a>
 </h2>
-<p>Redis uses highly optimized data structures specifically designed to maximize performance. For example, dictionaries in Redis allow O(1) average-time complexity for lookups and inserts, making key-value storage extremely efficient. Skip lists are used for sorted sets, enabling fast range queries and ordered operations with O(log n) complexity. Additionally, Redis employs lightweight compression techniques to reduce memory usage while ensuring minimal impact on data access speed. These tailored data structures ensure that Redis can handle millions of operations per second while maintaining consistent low latency.</p>
-<h2 id="3-single-threaded-event-loop">
-  3. Single-Threaded Event Loop
-  <a class="anchor" href="#3-single-threaded-event-loop">#</a>
-</h2>
-<p>The benefit of using a single-threaded event loop in Redis is that it eliminates the need for context switching and complex locking mechanisms, enabling more predictable and efficient operation. This simplicity also avoids issues like race conditions and deadlocks, making Redis highly reliable for lightweight commands and in-memory operations.</p>
-<p>However, this raises a critical question: can a single thread handle high volumes of operations in a modern computing environment? To address this, let’s calculate the theoretical performance of a single-threaded Redis instance, assuming one operation takes 100 CPU cycles on average.</p>
-<h3 id="calculating-redis-operations-per-second-cpu-bound">
-  Calculating Redis Operations Per Second (CPU-bound)
-  <a class="anchor" href="#calculating-redis-operations-per-second-cpu-bound">#</a>
+<h3 id="-step-1-create-a-simple-python-app">
+  ✅ Step 1: Create a Simple Python App
+  <a class="anchor" href="#-step-1-create-a-simple-python-app">#</a>
 </h3>
-<ul>
-<li><strong>CPU Clock Speed</strong>: 4.5 GHz (4.5 × 10^9 cycles/second)</li>
-<li><strong>Cycles Per Operation</strong>: 100 CPU cycles per operation (assumption for lightweight Redis commands).</li>
-</ul>
-<p>Thus, the number of operations Redis can handle is:</p>
-<p>QPS = Clock Speed / Cycles Per Operation
-QPS = 4.5 × 10^9 / 100 = 45 million operations per second.</p>
-<h2 id="4-minimal-protocol-overhead">
-  4. Minimal Protocol Overhead
-  <a class="anchor" href="#4-minimal-protocol-overhead">#</a>
-</h2>
-<p>RESP (Redis Serialization Protocol) is a lightweight, custom protocol dedicated to Redis that offers several key advantages:</p>
-<ul>
-<li><strong>Compact Format</strong>: RESP eliminates the overhead of verbose headers and negotiation mechanisms, which eases CPU usage by requiring significantly fewer cycles to parse and execute compared to general-purpose protocols like HTTP.</li>
-<li><strong>Reduced Network Bandwidth</strong>: By containing fewer bytes in both requests and responses, RESP minimizes the network bandwidth required for communication, improving overall throughput.</li>
-<li><strong>Integrated Pipelining</strong>: RESP seamlessly supports pipelining, allowing multiple commands to be sent in a single request, which further reduces latency and boosts performance.</li>
-</ul>
-<h2 id="5-pipelining">
-  5. Pipelining
-  <a class="anchor" href="#5-pipelining">#</a>
-</h2>
-<p>Redis allows clients to send multiple commands in a single request through its pipelining feature, which reduces round-trip latency and significantly improves throughput. For example, instead of waiting for each command&rsquo;s response before sending the next, a client can send a batch of commands like <code>SET key1 value1</code>, <code>SET key2 value2</code>, and <code>GET key1</code> all at once. The server processes them sequentially and sends back a batch of responses, minimizing network delays. </p>
-<h2 id="6-optimized-network-io">
-  6. Optimized Network IO
-  <a class="anchor" href="#6-optimized-network-io">#</a>
-</h2>
-<p>Redis handles network requests and responses efficiently using non-blocking I/O and event-driven mechanisms. Here’s a step-by-step explanation of how Redis handles client requests and responses:</p>
-<h3 id="step-by-step-handling-of-a-request-and-response-in-non-blocking-io">
-  Step-by-Step Handling of a Request and Response in Non-Blocking I/O
-  <a class="anchor" href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">#</a>
+<p>Start by creating a directory for your project and saving the following Python file as <code>app.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Hello from my custom Docker image!&#34;</span>)
+</span></span></code></pre></div><hr>
+<h3 id="-step-2-write-a-dockerfile">
+  ✅ Step 2: Write a Dockerfile
+  <a class="anchor" href="#-step-2-write-a-dockerfile">#</a>
 </h3>
-<ol>
-<li>
-<p><strong>Client Sends a TCP Request</strong>:</p>
+<p>In the same directory, create a file named <code>Dockerfile</code> and add the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># Use a base image</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.11</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set working directory inside the container</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy source code into the image</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> app.py .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set the default startup command (exec form)</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;python&#34;</span>, <span style="color:#e6db74">&#34;app.py&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><strong>Explanation:</strong></p>
 <ul>
-<li>The client sends a command (e.g., <code>GET key1</code>) over an established TCP connection to Redis.</li>
-<li>The data is broken into packets and sent to the server.</li>
+<li><code>COPY app.py .</code> copies <code>app.py</code> from your local system into the <code>/app</code> directory <strong>inside the image</strong>. The local path is relative to the build context, which you’ll define during the <code>docker build</code> command.</li>
+<li><code>CMD [&quot;python&quot;, &quot;app.py&quot;]</code> is written in <strong>exec form</strong>, which runs the command directly without using a shell. This form avoids common pitfalls, handles signals better, and is preferred for most containerized applications.</li>
 </ul>
-</li>
-<li>
-<p><strong>OS Receives TCP Packets</strong>:</p>
-<ul>
-<li>The operating system (OS) kernel on the server receives the incoming packets, reassembles them, and stores the complete request in the <strong>socket buffer</strong>, which is managed by the OS.</li>
-<li>In non-blocking mode, Redis’s main thread does not wait for the complete message to be ready in the buffer. Instead, Redis continues processing other ready events in its event loop until notified by the OS that the request is ready for reading.</li>
-</ul>
-</li>
-<li>
-<p><strong>Redis Reads the Request</strong>:</p>
-<ul>
-<li>When the complete request is ready in the socket buffer, the OS notifies Redis that it is ready to be read and processed.</li>
-<li>Redis’s main thread processes the &ldquo;ready-to-read&rdquo; event in its event loop. </li>
-<li>It executes a non-blocking <code>read()</code> system call to fetch the request data from the socket buffer into Redis’s user-space memory.</li>
-<li>If the full request is not yet available, Redis skips this socket and continues processing other events, avoiding blocking.</li>
-</ul>
-</li>
-<li>
-<p><strong>Redis Processes the Request</strong>:</p>
-<ul>
-<li>Redis parses and executes the command (e.g., <code>GET key1</code>) by retrieving the key’s value from its in-memory data structure.</li>
-<li>The response (e.g., <code>value1</code>) is prepared in memory, waiting to be written to the socket buffer.</li>
-</ul>
-</li>
-<li>
-<p><strong>Redis Writes the Response to the Socket Buffer</strong>:</p>
-<ul>
-<li>Redis executes a non-blocking <code>write()</code> system call to send the response to the socket buffer.</li>
-<li>If the socket buffer has enough space, the data is copied immediately, and the <code>write()</code> call returns.</li>
-<li>If the buffer is full (e.g., due to a slow client), the <code>write()</code> call defers, and Redis marks the socket as &ldquo;waiting for readiness.&rdquo; After marking, Redis does not block; instead, it immediately moves on to process other ready requests or tasks in its event loop. Redis retries the write when the OS notifies that the socket is writable again, ensuring efficient use of the main thread while maintaining responsiveness.</li>
-</ul>
-</li>
-<li>
-<p><strong>OS Transmits the Data to the Client</strong>:</p>
-<ul>
-<li>Once the response is in the socket buffer, the OS and the network interface card (NIC) handle the actual transmission of the data over the network. Redis itself is not involved in this process; the OS takes full responsibility for reliably sending the data to the client, including handling retransmissions and acknowledgments.</li>
-</ul>
-</li>
-</ol>
-<h4 id="key-points-of-non-blocking-io">
-  <strong>Key Points of Non-Blocking I/O</strong>
-  <a class="anchor" href="#key-points-of-non-blocking-io">#</a>
-</h4>
-<ul>
-<li>Redis never blocks its main thread while waiting for I/O operations (e.g., receiving a request, writing a response).</li>
-<li>The OS handles low-level tasks like managing socket buffers and transmitting data over the network.</li>
-<li>Redis’s event loop ensures it efficiently processes ready events (e.g., requests from other clients) while waiting for I/O readiness.</li>
-</ul>
-<p>This non-blocking I/O model, combined with Redis’s single-threaded design, allows it to scale efficiently and handle thousands of concurrent connections without bottlenecks.</p>
-<h3 id="network-bandwidth-calculation">
-  Network Bandwidth Calculation
-  <a class="anchor" href="#network-bandwidth-calculation">#</a>
+<hr>
+<h3 id="-step-3-build-the-image">
+  ✅ Step 3: Build the Image
+  <a class="anchor" href="#-step-3-build-the-image">#</a>
 </h3>
-<p>Let’s calculate the theoretical maximum number of requests Redis can handle based solely on network bandwidth. Assume both the request and response are 100 bytes each.</p>
-<h4 id="assumptions">
-  Assumptions:
-  <a class="anchor" href="#assumptions">#</a>
-</h4>
-<ul>
-<li>Request size = 200 bytes, considering network overhead like TCP/IP headers</li>
-<li>Response size = 200 bytes</li>
-<li>Total data per operation = 200 (request) + 200 (response) = 400 bytes</li>
-<li>Network bandwidth = 10 Gbps (10 gigabits per second)</li>
+<p>In your terminal, navigate to the folder containing your <code>Dockerfile</code>, then run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build -t my-python-app .
+</span></span></code></pre></div><ul>
+<li><code>-t my-python-app</code> tags the image so you can refer to it by name later.</li>
+<li><code>.</code> specifies the <strong>build context</strong> — everything in the current directory is accessible during the build.</li>
 </ul>
-<h4 id="calculation">
-  Calculation:
-  <a class="anchor" href="#calculation">#</a>
-</h4>
-<ol>
-<li>
-<p>Convert bandwidth to bytes per second:</p>
-<ul>
-<li>
-<p>10 Gbps = 10 × 10^9 bits/second</p>
-</li>
-<li>
-<p>1 byte = 8 bits, so:</p>
-<p>Bandwidth (bytes/second) = 10 × 10^9 ÷ 8 = 1250 × 10^6 bytes/second</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Calculate the maximum requests per second:</p>
-<p>Requests per second (RPS) = Bandwidth (bytes/second) ÷ Data per operation (bytes)</p>
-<p>RPS = 1250 × 10^6 ÷ 400 = 3.125 million requests per second</p>
-</li>
-</ol>
-<h4 id="conclusion">
-  Conclusion:
-  <a class="anchor" href="#conclusion">#</a>
-</h4>
-<p>With a 10 Gbps network connection, Redis can theoretically handle up to <strong>3.125 million requests per second</strong> network bandwidth-wise, assuming no other bottlenecks (e.g., CPU or memory).</p>
-<h2 id="7-partitioning">
-  7. Partitioning
-  <a class="anchor" href="#7-partitioning">#</a>
+<p>Verify your image exists:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker images
+</span></span></code></pre></div><hr>
+<h3 id="-step-4-run-the-container">
+  ✅ Step 4: Run the Container
+  <a class="anchor" href="#-step-4-run-the-container">#</a>
+</h3>
+<p>Now run the image as a container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run my-python-app
+</span></span></code></pre></div><p>Expected output:</p>
+<pre tabindex="0"><code>Hello from my custom Docker image!
+</code></pre><hr>
+<h2 id="-checkpoint">
+  🏁 Checkpoint
+  <a class="anchor" href="#-checkpoint">#</a>
 </h2>
-<p>With Redis Cluster, data can be partitioned across multiple nodes, enabling horizontal scaling while maintaining high performance. If higher QPS is required and a single thread cannot handle the load, the system can be scaled by partitioning incoming requests and deploying more Redis instances to distribute the workload efficiently.</p>
+<p>At this point, you’ve:</p>
+<ul>
+<li>Written and structured a Dockerfile</li>
+<li>Built a custom Docker image from your local code</li>
+<li>Understood how <code>COPY</code> and <code>WORKDIR</code> affect file placement inside the container</li>
+<li>Used exec form in <code>CMD</code> for better performance and control</li>
+</ul>
+<p>🎉 Congratulations — you’ve built and run your very first Dockerized app!</p>
+<hr>
+<h2 id="-whats-next">
+  📆 What’s Next?
+  <a class="anchor" href="#-whats-next">#</a>
+</h2>
+<blockquote>
+<p><strong>Lesson 5: Understanding Docker Networking</strong>
+You’ll learn how Docker containers communicate, how to expose ports to the host system, and how to connect multiple containers with Docker networks.</p>
+</blockquote>
+<p>Stay tuned!</p>
 </article>
  
       
@@ -2157,29 +2138,26 @@ QPS = 4.5 × 10^9 / 100 = 45 million operations per second.</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#why-is-redis-so-fast">Why is Redis So Fast?</a>
+    <li><a href="#-docker-mastery-course--lesson-4">🧠 Docker Mastery Course – Lesson 4</a>
       <ul>
-        <li><a href="#1-in-memory-operations">1. In-Memory Operations</a>
+        <li><a href="#-building-your-own-image-with-a-dockerfile">🏗️ Building Your Own Image with a Dockerfile</a></li>
+        <li><a href="#-goal">🎯 Goal</a></li>
+        <li><a href="#-concepts">📚 Concepts</a>
           <ul>
-            <li><a href="#understanding-mts-and-bandwidth">Understanding MT/s and Bandwidth</a></li>
-            <li><a href="#calculating-redis-operations">Calculating Redis Operations</a></li>
+            <li><a href="#what-is-a-dockerfile">What Is a Dockerfile?</a></li>
+            <li><a href="#common-dockerfile-instructions">Common Dockerfile Instructions</a></li>
           </ul>
         </li>
-        <li><a href="#2-efficient-data-structures">2. Efficient Data Structures</a></li>
-        <li><a href="#3-single-threaded-event-loop">3. Single-Threaded Event Loop</a>
+        <li><a href="#-hands-on-practice">💻 Hands-On Practice</a>
           <ul>
-            <li><a href="#calculating-redis-operations-per-second-cpu-bound">Calculating Redis Operations Per Second (CPU-bound)</a></li>
+            <li><a href="#-step-1-create-a-simple-python-app">✅ Step 1: Create a Simple Python App</a></li>
+            <li><a href="#-step-2-write-a-dockerfile">✅ Step 2: Write a Dockerfile</a></li>
+            <li><a href="#-step-3-build-the-image">✅ Step 3: Build the Image</a></li>
+            <li><a href="#-step-4-run-the-container">✅ Step 4: Run the Container</a></li>
           </ul>
         </li>
-        <li><a href="#4-minimal-protocol-overhead">4. Minimal Protocol Overhead</a></li>
-        <li><a href="#5-pipelining">5. Pipelining</a></li>
-        <li><a href="#6-optimized-network-io">6. Optimized Network IO</a>
-          <ul>
-            <li><a href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">Step-by-Step Handling of a Request and Response in Non-Blocking I/O</a></li>
-            <li><a href="#network-bandwidth-calculation">Network Bandwidth Calculation</a></li>
-          </ul>
-        </li>
-        <li><a href="#7-partitioning">7. Partitioning</a></li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-whats-next">📆 What’s Next?</a></li>
       </ul>
     </li>
   </ul>
