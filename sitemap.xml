@@ -21,8 +21,6 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/networking/dns/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/docker-basics/</loc>
-  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/netty/event-loop-group/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/haproxy/get-start/</loc>
@@ -176,7 +174,13 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-certificate-finished/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-8-health-checks/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/simulating-https/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-9-env/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-10-multi-stage/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/</loc>
     <lastmod>2023-12-01T08:19:57-08:00</lastmod>
