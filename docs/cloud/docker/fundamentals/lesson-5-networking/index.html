@@ -1,0 +1,2368 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  🧰 Docker Mastery Course – Lesson 5
+  #
+
+
+  📡 Understanding Docker Networking
+  #
+
+Welcome to Lesson 5 of the Docker Mastery Course! In this lesson, you&rsquo;ll learn how Docker networking works, how to expose container services, and how containers communicate with each other and with the outside world.
+
+
+  🎯 Goal
+  #
+
+By the end of this lesson, you’ll understand how to:
+
+Expose container ports to your host machine
+Use Docker bridge networks
+Connect multiple containers
+Resolve container names using Docker DNS
+Access public internet domains from within containers
+
+
+
+  📚 Concepts
+  #
+
+
+  What Is Docker Networking?
+  #
+
+Docker creates virtual networks that allow containers to:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-5-networking/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Lesson 5: Docker Networking">
+  <meta property="og:description" content="🧰 Docker Mastery Course – Lesson 5 # 📡 Understanding Docker Networking # Welcome to Lesson 5 of the Docker Mastery Course! In this lesson, you’ll learn how Docker networking works, how to expose container services, and how containers communicate with each other and with the outside world.
+🎯 Goal # By the end of this lesson, you’ll understand how to:
+Expose container ports to your host machine Use Docker bridge networks Connect multiple containers Resolve container names using Docker DNS Access public internet domains from within containers 📚 Concepts # What Is Docker Networking? # Docker creates virtual networks that allow containers to:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Lesson 5: Docker Networking | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-5-networking/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.df54ec47b1a1334d1aa716d96465e34bd1c3c2709ac688b778dd691afe262184.js" integrity="sha256-31TsR7GhM00apxbZZGXjS9HDwnCaxoi3eN1pGv4mIYQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle"  />
+    <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
+    <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d40552f3cfe92824018c63b2452ecba" class="toggle"  />
+    <label for="section-2d40552f3cfe92824018c63b2452ecba" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c98292848de5e1eee8daf1df97ad8e9" class="toggle"  />
+    <label for="section-6c98292848de5e1eee8daf1df97ad8e9" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
+    <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3190593332d0f8f9ed0d16abadebf669" class="toggle"  />
+    <label for="section-3190593332d0f8f9ed0d16abadebf669" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fe208af9b1b31c593b428135b5384f8" class="toggle"  />
+    <label for="section-9fe208af9b1b31c593b428135b5384f8" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle"  />
+    <label for="section-67fa7359ce5b658cf77244fff5df08fc" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48d1fef9b34bd9f66cd11153ecec9532" class="toggle"  />
+    <label for="section-48d1fef9b34bd9f66cd11153ecec9532" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e85d05a86421e8876acb62f953a355e" class="toggle"  />
+    <label for="section-0e85d05a86421e8876acb62f953a355e" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="toggle"  />
+    <label for="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12c34d34235c7f130e7a4969b853bc86" class="toggle"  />
+    <label for="section-12c34d34235c7f130e7a4969b853bc86" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
+    <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="toggle"  />
+    <label for="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-941ff506688d79a8f0ca9e629da3459f" class="toggle"  />
+    <label for="section-941ff506688d79a8f0ca9e629da3459f" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d2544afe2799858027d68114f061083" class="toggle"  />
+    <label for="section-3d2544afe2799858027d68114f061083" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c932410b33a0ef4d9ccee9231c75620" class="toggle"  />
+    <label for="section-0c932410b33a0ef4d9ccee9231c75620" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
+    <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle" checked />
+    <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7e22ed5bec8c14629b6ab355bc1502c" class="toggle"  />
+    <label for="section-f7e22ed5bec8c14629b6ab355bc1502c" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-663cecbab2af013dadd72e5397ce62dc" class="toggle"  />
+    <label for="section-663cecbab2af013dadd72e5397ce62dc" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-454b2a6456d3526d3f6d34370515a130" class="toggle"  />
+    <label for="section-454b2a6456d3526d3f6d34370515a130" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle" checked />
+    <label for="section-a8c6511954d9f72be55fac23451b589b" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1fdaa73665acbf8848179fc0521ae9a8" class="toggle" checked />
+    <label for="section-1fdaa73665acbf8848179fc0521ae9a8" class="flex justify-between">
+      <a role="button" class="">Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-1-start-docker/" class="">Lesson 1: Start Docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-2-commands/" class="">Lesson 2: Docker Commands</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-3-images/" class="">Lesson 3: Docker Images</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-4-dockerfile/" class="">Lesson 4: Dockerfile</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-5-networking/" class="active">Lesson 5: Docker Networking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-6-volumes/" class="">Lesson 6: Docker Volumes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-7-compose/" class="">Lesson 7: Docker Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-8-health-checks/" class="">Lesson 8: Docker Logging, Healthchecks, and Container Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-9-env/" class="">Lesson 9: Docker Env</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-10-multi-stage/" class="">Lesson 10: Docker Multi-Stage</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-11-dockerignore/" class="">Lesson 11: Docker Context &amp; `.dockerignore`</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a26e4ce35f8f99c6e7f1b46f1d47ff41" class="toggle"  />
+    <label for="section-a26e4ce35f8f99c6e7f1b46f1d47ff41" class="flex justify-between">
+      <a role="button" class="">Containerize Full Stack Application</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/preamble/" class="">Docker Fundamentals Final Project</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/par1-backend-service/" class="">Part1: Backend Service</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/par2-database/" class="">Part2: Database</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-868ff3bc94429ce8afade70db1d07dbc" class="toggle"  />
+    <label for="section-868ff3bc94429ce8afade70db1d07dbc" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/k8s/why-k8s/" class="">Why K8S?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/k8s/start-first-pod/" class="">Start First Pod</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-304cd452d0278b77fa76b02a905b318b" class="toggle"  />
+    <label for="section-304cd452d0278b77fa76b02a905b318b" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
+    <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
+    <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-18d02721e1887f4bb6418527097a8950" class="toggle"  />
+    <label for="section-18d02721e1887f4bb6418527097a8950" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-38078f6b2dffb5cfde0331f97c464879" class="toggle"  />
+    <label for="section-38078f6b2dffb5cfde0331f97c464879" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9885b1e85034892b05dcefffde06c590" class="toggle"  />
+    <label for="section-9885b1e85034892b05dcefffde06c590" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
+    <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
+    <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9d47227da1237bf23c06190fe793afd" class="toggle"  />
+    <label for="section-c9d47227da1237bf23c06190fe793afd" class="flex justify-between">
+      <a role="button" class="">Tool</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-624d42859b7b037f1a6e15ba4ee427e1" class="toggle"  />
+    <label for="section-624d42859b7b037f1a6e15ba4ee427e1" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tool/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Lesson 5: Docker Networking</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-docker-mastery-course--lesson-5">🧰 Docker Mastery Course – Lesson 5</a>
+      <ul>
+        <li><a href="#-understanding-docker-networking">📡 Understanding Docker Networking</a></li>
+        <li><a href="#-goal">🎯 Goal</a></li>
+        <li><a href="#-concepts">📚 Concepts</a>
+          <ul>
+            <li><a href="#what-is-docker-networking">What Is Docker Networking?</a></li>
+            <li><a href="#default-docker-network-types">Default Docker Network Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">📁 Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-expose-a-container-to-the-host">✅ Step 1: Expose a Container to the Host</a></li>
+            <li><a href="#-step-2-create-a-custom-docker-network">✅ Step 2: Create a Custom Docker Network</a></li>
+            <li><a href="#-step-3-connect-two-containers-by-name">✅ Step 3: Connect Two Containers by Name</a></li>
+            <li><a href="#-step-4-ping-a-public-domain-from-a-container">✅ Step 4: Ping a Public Domain from a Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-checkpoint">🏃️ Checkpoint</a></li>
+        <li><a href="#-whats-next">📆 What’s Next?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-docker-mastery-course--lesson-5">
+  🧰 Docker Mastery Course – Lesson 5
+  <a class="anchor" href="#-docker-mastery-course--lesson-5">#</a>
+</h1>
+<h2 id="-understanding-docker-networking">
+  📡 Understanding Docker Networking
+  <a class="anchor" href="#-understanding-docker-networking">#</a>
+</h2>
+<p>Welcome to <strong>Lesson 5</strong> of the Docker Mastery Course! In this lesson, you&rsquo;ll learn how Docker networking works, how to expose container services, and how containers communicate with each other and with the outside world.</p>
+<hr>
+<h2 id="-goal">
+  🎯 Goal
+  <a class="anchor" href="#-goal">#</a>
+</h2>
+<p>By the end of this lesson, you’ll understand how to:</p>
+<ul>
+<li>Expose container ports to your host machine</li>
+<li>Use Docker bridge networks</li>
+<li>Connect multiple containers</li>
+<li>Resolve container names using Docker DNS</li>
+<li>Access public internet domains from within containers</li>
+</ul>
+<hr>
+<h2 id="-concepts">
+  📚 Concepts
+  <a class="anchor" href="#-concepts">#</a>
+</h2>
+<h3 id="what-is-docker-networking">
+  What Is Docker Networking?
+  <a class="anchor" href="#what-is-docker-networking">#</a>
+</h3>
+<p>Docker creates virtual networks that allow containers to:</p>
+<ul>
+<li>Communicate with each other securely</li>
+<li>Be isolated from or connected to external systems</li>
+</ul>
+<h3 id="default-docker-network-types">
+  Default Docker Network Types
+  <a class="anchor" href="#default-docker-network-types">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Network Mode</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>bridge</code></td>
+          <td>Default for user-created containers; provides isolation and DNS resolution within the same network</td>
+      </tr>
+      <tr>
+          <td><code>host</code></td>
+          <td>Shares the host’s network stack (Linux only)</td>
+      </tr>
+      <tr>
+          <td><code>none</code></td>
+          <td>Disables all networking</td>
+      </tr>
+      <tr>
+          <td><code>overlay</code></td>
+          <td>Connects containers across multiple Docker hosts (advanced use cases)</td>
+      </tr>
+  </tbody>
+</table>
+<p>This lesson focuses on the <strong>bridge</strong> network, the default and most commonly used setup.</p>
+<hr>
+<h2 id="-hands-on-practice">
+  📁 Hands-On Practice
+  <a class="anchor" href="#-hands-on-practice">#</a>
+</h2>
+<h3 id="-step-1-expose-a-container-to-the-host">
+  ✅ Step 1: Expose a Container to the Host
+  <a class="anchor" href="#-step-1-expose-a-container-to-the-host">#</a>
+</h3>
+<p>Run a public-facing container and map its internal port to your machine:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d --name mynginx -p 8080:80 nginx
+</span></span></code></pre></div><ul>
+<li><code>-d</code>: runs the container in detached (background) mode</li>
+<li><code>--name mynginx</code>: names the container</li>
+<li><code>-p 8080:80</code>: maps host port 8080 to container port 80</li>
+</ul>
+<p>Visit <code>http://localhost:8080</code> in your browser to view the Nginx welcome page.</p>
+<p>To clean up:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker stop mynginx
+</span></span><span style="display:flex;"><span>docker rm mynginx
+</span></span></code></pre></div><hr>
+<h3 id="-step-2-create-a-custom-docker-network">
+  ✅ Step 2: Create a Custom Docker Network
+  <a class="anchor" href="#-step-2-create-a-custom-docker-network">#</a>
+</h3>
+<p>Create a user-defined bridge network:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker network create demo-net
+</span></span></code></pre></div><p>Verify it exists:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker network ls
+</span></span></code></pre></div><p>A custom network like this allows containers to communicate by name through Docker’s internal DNS resolver.</p>
+<hr>
+<h3 id="-step-3-connect-two-containers-by-name">
+  ✅ Step 3: Connect Two Containers by Name
+  <a class="anchor" href="#-step-3-connect-two-containers-by-name">#</a>
+</h3>
+<p>Start an Nginx container in the custom network:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d --name web --network demo-net nginx
+</span></span></code></pre></div><ul>
+<li><code>-d</code>: runs the container in detached mode</li>
+<li><code>--name web</code>: names the container &ldquo;web&rdquo;</li>
+<li><code>--network demo-net</code>: connects the container to the custom network</li>
+<li><code>nginx</code>: the image being used</li>
+</ul>
+<p>Now run an Alpine container in the same network and ping the Nginx container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it --rm --network demo-net alpine ping web
+</span></span></code></pre></div><ul>
+<li><code>-it</code>: opens an interactive terminal session</li>
+<li><code>--rm</code>: automatically removes the container after it exits</li>
+<li><code>--network demo-net</code>: connects the container to the same network</li>
+<li><code>alpine</code>: the image used (a lightweight Linux distro)</li>
+<li><code>ping web</code>: runs the ping command inside the container, using <code>web</code> as the hostname</li>
+</ul>
+<blockquote>
+<p>🧠 <strong>Why does this work?</strong>
+When containers are on the same user-defined network, Docker injects a custom DNS configuration. This allows containers to resolve each other by name. In this case, <code>web</code> is resolved to the internal IP address of the Nginx container.</p>
+</blockquote>
+<hr>
+<h3 id="-step-4-ping-a-public-domain-from-a-container">
+  ✅ Step 4: Ping a Public Domain from a Container
+  <a class="anchor" href="#-step-4-ping-a-public-domain-from-a-container">#</a>
+</h3>
+<p>Containers can access the internet by default:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it --rm alpine ping google.com
+</span></span></code></pre></div><ul>
+<li>Docker uses NAT (Network Address Translation) to route outbound traffic</li>
+<li>Public DNS queries like <code>google.com</code> are forwarded to your host’s DNS resolver</li>
+<li>This works even on the default bridge network</li>
+</ul>
+<blockquote>
+<p>❗ Containers <strong>can access</strong> the internet by default, but the internet <strong>cannot access containers</strong> unless you explicitly expose ports (<code>-p</code>) or configure a reverse proxy.</p>
+</blockquote>
+<hr>
+<h2 id="-checkpoint">
+  🏃️ Checkpoint
+  <a class="anchor" href="#-checkpoint">#</a>
+</h2>
+<p>By now, you’ve learned how to:</p>
+<ul>
+<li>Expose container services to your host</li>
+<li>Create and use custom Docker networks</li>
+<li>Connect containers and communicate using container names</li>
+<li>Understand how Docker&rsquo;s DNS system works</li>
+<li>Access external resources from inside a container</li>
+</ul>
+<p>🎉 Great job! You’re now equipped to build multi-container apps that communicate efficiently and securely.</p>
+<hr>
+<h2 id="-whats-next">
+  📆 What’s Next?
+  <a class="anchor" href="#-whats-next">#</a>
+</h2>
+<blockquote>
+<p><strong>Lesson 6: Data Persistence with Volumes</strong>
+Learn how to manage persistent data in Docker, make data survive container restarts, and understand the difference between volumes and bind mounts.</p>
+</blockquote>
+<p>Stay tuned!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-docker-mastery-course--lesson-5">🧰 Docker Mastery Course – Lesson 5</a>
+      <ul>
+        <li><a href="#-understanding-docker-networking">📡 Understanding Docker Networking</a></li>
+        <li><a href="#-goal">🎯 Goal</a></li>
+        <li><a href="#-concepts">📚 Concepts</a>
+          <ul>
+            <li><a href="#what-is-docker-networking">What Is Docker Networking?</a></li>
+            <li><a href="#default-docker-network-types">Default Docker Network Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">📁 Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-expose-a-container-to-the-host">✅ Step 1: Expose a Container to the Host</a></li>
+            <li><a href="#-step-2-create-a-custom-docker-network">✅ Step 2: Create a Custom Docker Network</a></li>
+            <li><a href="#-step-3-connect-two-containers-by-name">✅ Step 3: Connect Two Containers by Name</a></li>
+            <li><a href="#-step-4-ping-a-public-domain-from-a-container">✅ Step 4: Ping a Public Domain from a Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#-checkpoint">🏃️ Checkpoint</a></li>
+        <li><a href="#-whats-next">📆 What’s Next?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

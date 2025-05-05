@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Fundamentals Final Project</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/preamble/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/preamble/</guid>
+      <description>&lt;h1 id=&#34;final-project-containerized-fullstack-web-application&#34;&gt;&#xA;  Final Project: Containerized Fullstack Web Application&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#final-project-containerized-fullstack-web-application&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-preamble-why-this-project&#34;&gt;&#xA;  🚀 Preamble: Why This Project?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-preamble-why-this-project&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Throughout &lt;a href=&#34;https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-1-start-docker&#34;&gt;docker fundamental&lt;/a&gt; course, you&amp;rsquo;ve built a solid foundation in Docker — learning how to run containers, build images, manage networking, use volumes, optimize builds, and orchestrate multi-service setups with Docker Compose. Now it’s time to bring all of that knowledge together in a &lt;strong&gt;real-world fullstack project&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This final project mirrors how modern development teams design, deploy, and operate production-ready applications using Docker. It will reinforce your Docker expertise while giving you a hands-on, working example of containerized application architecture.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Part1: Backend Service</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par1-backend-service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par1-backend-service/</guid>
+      <description>&lt;h1 id=&#34;-project-part-1-set-up-backend-api-with-fastapi&#34;&gt;&#xA;  🧱 Project Part 1: Set Up Backend API with FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-project-part-1-set-up-backend-api-with-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;In this part of the project, you&amp;rsquo;ll create a FastAPI application, containerize it with a Dockerfile, and orchestrate it using Docker Compose. This backend service will serve as the foundation of your fullstack application.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-project-structure-overview&#34;&gt;&#xA;  🗂️ Project Structure Overview&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-project-structure-overview&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Start with the following folder structure:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker-fullstack-app/&#xA;│&#xA;├── backend/&#xA;│   ├── app.py&#xA;│   ├── requirements.txt&#xA;│   └── Dockerfile&#xA;│&#xA;├── docker-compose.yml&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-step-1-create-the-fastapi-app&#34;&gt;&#xA;  ✅ Step 1: Create the FastAPI App&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-step-1-create-the-fastapi-app&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Inside the &lt;code&gt;backend/&lt;/code&gt; folder:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Part2: Database</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par2-database/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par2-database/</guid>
+      <description>&lt;h1 id=&#34;-project-part-2-add-postgresql-and-connect-to-fastapi&#34;&gt;&#xA;  🧱 Project Part 2: Add PostgreSQL and Connect to FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-project-part-2-add-postgresql-and-connect-to-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;In this part of the project, you&amp;rsquo;ll add a PostgreSQL database container to your existing setup and connect it to your FastAPI backend. This is a foundational step toward enabling full backend functionality with persistent data storage.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-updated-project-structure&#34;&gt;&#xA;  🗂️ Updated Project Structure&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-updated-project-structure&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker-fullstack-app/&#xA;│&#xA;├── backend/&#xA;│   ├── app.py&#xA;│   ├── requirements.txt&#xA;│   └── Dockerfile&#xA;│&#xA;├── docker-compose.yml&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-step-1-update-the-fastapi-app-to-use-postgresql&#34;&gt;&#xA;  ✅ Step 1: Update the FastAPI App to Use PostgreSQL&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-step-1-update-the-fastapi-app-to-use-postgresql&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;First, add the PostgreSQL driver to your project dependencies:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

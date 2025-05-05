@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>What&#39;s Behind</title>
+    <title>My Pholosophy of Software Engineer on What&#39;s Behind</title>
     <link>https://whatsBehind.github.io/</link>
-    <description>Recent content on What&#39;s Behind</description>
+    <description>Recent content in My Pholosophy of Software Engineer on What&#39;s Behind</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 26 Nov 2023 21:26:33 -0800</lastBuildDate>
@@ -49,6 +49,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/networking/dns/</guid>
       <description>&lt;h2 id=&#34;what-is-dns&#34;&gt;&#xA;  What Is DNS?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-dns&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;DNS, which stands for Domain Name System, is a fundamental component of the internet&amp;rsquo;s infrastructure. It functions like a phone book for the internet by translating human-friendly domain names (like &lt;a href=&#34;https://www.example.com&#34;&gt;www.example.com&lt;/a&gt;) into IP addresses (like 192.0.2.1) that computers use to identify each other on the network.&lt;/p&gt;&#xA;&lt;h2 id=&#34;hierarchy-of-domain-names&#34;&gt;&#xA;  Hierarchy of Domain Names&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#hierarchy-of-domain-names&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://whatsBehind.github.io/docs/programming/web/network/dns/domain-name-hierarchy.svg&#34; alt=&#34;domain-name-hierarchy&#34; /&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Root Level Domain:&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The root level is the highest level in the DNS hierarchy and is represented by a dot (.) but is typically not visible in domain names. Root servers are the backbone of DNS, directing traffic to the correct Top-Level Domain (TLD) servers.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Docker Fundamentals Final Project</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/preamble/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/preamble/</guid>
+      <description>&lt;h1 id=&#34;final-project-containerized-fullstack-web-application&#34;&gt;&#xA;  Final Project: Containerized Fullstack Web Application&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#final-project-containerized-fullstack-web-application&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-preamble-why-this-project&#34;&gt;&#xA;  🚀 Preamble: Why This Project?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-preamble-why-this-project&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Throughout &lt;a href=&#34;https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-1-start-docker&#34;&gt;docker fundamental&lt;/a&gt; course, you&amp;rsquo;ve built a solid foundation in Docker — learning how to run containers, build images, manage networking, use volumes, optimize builds, and orchestrate multi-service setups with Docker Compose. Now it’s time to bring all of that knowledge together in a &lt;strong&gt;real-world fullstack project&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This final project mirrors how modern development teams design, deploy, and operate production-ready applications using Docker. It will reinforce your Docker expertise while giving you a hands-on, working example of containerized application architecture.&lt;/p&gt;</description>
     </item>
     <item>
       <title>EventLoop &amp; EventLoopGroup</title>
@@ -178,9 +185,9 @@
     </item>
     <item>
       <title>Lesson 1: Start Docker</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-1-start-docker/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-1-start-docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-1-start-docker/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-1-start-docker/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-1&#34;&gt;&#xA;  🐳 Docker Mastery Course – Lesson 1&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-1&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-introduction-what-is-docker-and-why-use-it&#34;&gt;&#xA;  💡 Introduction: What Is Docker and Why Use It?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-introduction-what-is-docker-and-why-use-it&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 1&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll discover what Docker is, why it&amp;rsquo;s valuable, and how to verify your installation by running your very first container. This is the first step in your journey to mastering Docker through a &lt;strong&gt;project-driven, hands-on approach&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-learning-objective&#34;&gt;&#xA;  🎯 Learning Objective&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-learning-objective&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you will:&lt;/p&gt;</description>
     </item>
     <item>
@@ -189,6 +196,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://whatsBehind.github.io/docs/project/node-js-auth/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;&#xA;  Introduction&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#introduction&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;This project is for learning purpose. It is a practice of&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;how to use JWT (Json Web Token) to authenticate user&lt;/li&gt;&#xA;&lt;li&gt;login with Google using OAuth2&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;tech-stack&#34;&gt;&#xA;  Tech Stack&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#tech-stack&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;Node.js&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;Express&lt;/code&gt;: Quickly start a local host&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;MongoDB/Mongoose&lt;/code&gt;: Database to store users&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;@hapi/joi&lt;/code&gt;: Package to validate parameters of objects&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;bcryptjs&lt;/code&gt;: Hash confidential information including passwords in this project&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;jsonwebtoken&lt;/code&gt;: JWT package to sign and verify a auth token&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;axios&lt;/code&gt;: Send HTTP requests&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;querystring&lt;/code&gt;: Package to parse and assembly query string in HTTP request&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;reference&#34;&gt;&#xA;  Reference&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=2jqok-WgelI&#34;&gt;Implement JWT using node.js and express&lt;/a&gt;: Very nice video which guides me step by step to build this project&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=Qt3KJZ2kQk0&amp;amp;t=6s&#34;&gt;Google OAuth2 with node.js&lt;/a&gt;: Video that explains and implements OAuth2 flow from end to end&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=996OiexHze0&#34;&gt;OAuth 2.0 and OpenID Connect&lt;/a&gt;: Plain English explains the evolution of OAuth2 and OpenID Connect&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;what-is-jwt&#34;&gt;&#xA;  What Is JWT?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-jwt&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A JWT (JSON Web Token) is like a compact digital note or a small piece of data that web servers and clients (like your browser or a mobile app) use to communicate secure information. It&amp;rsquo;s like a tiny, encoded message.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Part1: Backend Service</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par1-backend-service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par1-backend-service/</guid>
+      <description>&lt;h1 id=&#34;-project-part-1-set-up-backend-api-with-fastapi&#34;&gt;&#xA;  🧱 Project Part 1: Set Up Backend API with FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-project-part-1-set-up-backend-api-with-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;In this part of the project, you&amp;rsquo;ll create a FastAPI application, containerize it with a Dockerfile, and orchestrate it using Docker Compose. This backend service will serve as the foundation of your fullstack application.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-project-structure-overview&#34;&gt;&#xA;  🗂️ Project Structure Overview&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-project-structure-overview&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Start with the following folder structure:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker-fullstack-app/&#xA;│&#xA;├── backend/&#xA;│   ├── app.py&#xA;│   ├── requirements.txt&#xA;│   └── Dockerfile&#xA;│&#xA;├── docker-compose.yml&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-step-1-create-the-fastapi-app&#34;&gt;&#xA;  ✅ Step 1: Create the FastAPI App&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-step-1-create-the-fastapi-app&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Inside the &lt;code&gt;backend/&lt;/code&gt; folder:&lt;/p&gt;</description>
     </item>
     <item>
       <title>RegEx</title>
@@ -276,10 +290,17 @@
     </item>
     <item>
       <title>Lesson 2: Docker Commands</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-2-commands/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-2-commands/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-2-commands/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-2-commands/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-2&#34;&gt;&#xA;  🐳 Docker Mastery Course – Lesson 2&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-2&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-basic-docker-commands&#34;&gt;&#xA;  💡 Basic Docker Commands&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-basic-docker-commands&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 2&lt;/strong&gt; of the Docker Mastery Course! In this session, you&amp;rsquo;ll learn how to start, stop, inspect, and remove containers using real-world examples. We&amp;rsquo;ll also use the Nginx web server to deepen your hands-on understanding of Docker&amp;rsquo;s command-line interface.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Gain confidence using essential Docker commands to manage container lifecycles and work effectively with real containers.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Part2: Database</title>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par2-database/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par2-database/</guid>
+      <description>&lt;h1 id=&#34;-project-part-2-add-postgresql-and-connect-to-fastapi&#34;&gt;&#xA;  🧱 Project Part 2: Add PostgreSQL and Connect to FastAPI&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-project-part-2-add-postgresql-and-connect-to-fastapi&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;In this part of the project, you&amp;rsquo;ll add a PostgreSQL database container to your existing setup and connect it to your FastAPI backend. This is a foundational step toward enabling full backend functionality with persistent data storage.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-updated-project-structure&#34;&gt;&#xA;  🗂️ Updated Project Structure&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-updated-project-structure&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker-fullstack-app/&#xA;│&#xA;├── backend/&#xA;│   ├── app.py&#xA;│   ├── requirements.txt&#xA;│   └── Dockerfile&#xA;│&#xA;├── docker-compose.yml&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-step-1-update-the-fastapi-app-to-use-postgresql&#34;&gt;&#xA;  ✅ Step 1: Update the FastAPI App to Use PostgreSQL&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-step-1-update-the-fastapi-app-to-use-postgresql&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;First, add the PostgreSQL driver to your project dependencies:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Partition</title>
@@ -346,9 +367,9 @@
     </item>
     <item>
       <title>Lesson 3: Docker Images</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-3-images/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-3-images/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-3-images/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-3-images/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-3&#34;&gt;&#xA;  🐳 Docker Mastery Course – Lesson 3&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-3&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-mastering-docker-images-understand-and-use-them-effectively&#34;&gt;&#xA;  🔬 Mastering Docker Images: Understand and Use Them Effectively&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-mastering-docker-images-understand-and-use-them-effectively&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 3&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll dive into the concept of Docker images — what they are, how to retrieve and inspect them, and how to run containers based on these images.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-learning-goal&#34;&gt;&#xA;  🎯 Learning Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-learning-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you will:&lt;/p&gt;</description>
     </item>
     <item>
@@ -395,9 +416,9 @@
     </item>
     <item>
       <title>Lesson 4: Dockerfile</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-4-dockerfile/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-4-dockerfile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-4-dockerfile/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-4-dockerfile/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-4&#34;&gt;&#xA;  🧠 Docker Mastery Course – Lesson 4&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-4&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-building-your-own-image-with-a-dockerfile&#34;&gt;&#xA;  🏗️ Building Your Own Image with a Dockerfile&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-building-your-own-image-with-a-dockerfile&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 4&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll learn how to create your own Docker image using a &lt;code&gt;Dockerfile&lt;/code&gt;, understand how file paths are interpreted during the build process, and explore the difference between shell and exec forms of the &lt;code&gt;CMD&lt;/code&gt; instruction.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you’ll be able to:&lt;/p&gt;</description>
     </item>
     <item>
@@ -444,9 +465,9 @@
     </item>
     <item>
       <title>Lesson 5: Docker Networking</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-5-networking/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-5-networking/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-5-networking/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-5-networking/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-5&#34;&gt;&#xA;  🧰 Docker Mastery Course – Lesson 5&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-5&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-understanding-docker-networking&#34;&gt;&#xA;  📡 Understanding Docker Networking&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-understanding-docker-networking&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 5&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll learn how Docker networking works, how to expose container services, and how containers communicate with each other and with the outside world.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you’ll understand how to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Expose container ports to your host machine&lt;/li&gt;&#xA;&lt;li&gt;Use Docker bridge networks&lt;/li&gt;&#xA;&lt;li&gt;Connect multiple containers&lt;/li&gt;&#xA;&lt;li&gt;Resolve container names using Docker DNS&lt;/li&gt;&#xA;&lt;li&gt;Access public internet domains from within containers&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-concepts&#34;&gt;&#xA;  📚 Concepts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-concepts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;what-is-docker-networking&#34;&gt;&#xA;  What Is Docker Networking?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-docker-networking&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Docker creates virtual networks that allow containers to:&lt;/p&gt;</description>
     </item>
     <item>
@@ -465,9 +486,9 @@
     </item>
     <item>
       <title>Lesson 6: Docker Volumes</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-6-volumes/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-6-volumes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-6-volumes/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-6-volumes/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-6&#34;&gt;&#xA;  💾 Docker Mastery Course – Lesson 6&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-6&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-data-persistence-with-volumes-and-bind-mounts&#34;&gt;&#xA;  📦 Data Persistence with Volumes and Bind Mounts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-data-persistence-with-volumes-and-bind-mounts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 6&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll learn how to persist data in Docker containers using &lt;strong&gt;volumes&lt;/strong&gt; and &lt;strong&gt;bind mounts&lt;/strong&gt;, and understand the differences between them.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you’ll be able to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Understand why container data is ephemeral by default&lt;/li&gt;&#xA;&lt;li&gt;Use &lt;strong&gt;volumes&lt;/strong&gt; to persist data across container lifecycles&lt;/li&gt;&#xA;&lt;li&gt;Use &lt;strong&gt;bind mounts&lt;/strong&gt; to sync data between host and container&lt;/li&gt;&#xA;&lt;li&gt;Explain the differences between volumes and bind mounts clearly&lt;/li&gt;&#xA;&lt;li&gt;Understand how multiple containers can share the same volume&lt;/li&gt;&#xA;&lt;li&gt;Know how Docker handles (or doesn’t handle) concurrent writes&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-concepts&#34;&gt;&#xA;  📘 Concepts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-concepts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-why-data-persistence-matters&#34;&gt;&#xA;  1. Why Data Persistence Matters&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-why-data-persistence-matters&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Docker containers are designed to be &lt;strong&gt;ephemeral&lt;/strong&gt; — meaning:&lt;/p&gt;</description>
     </item>
     <item>
@@ -486,9 +507,9 @@
     </item>
     <item>
       <title>Lesson 7: Docker Compose</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-7-compose/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-7-compose/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-7-compose/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-7-compose/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-7&#34;&gt;&#xA;  🧰 Docker Mastery Course – Lesson 7&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-7&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-multi-container-apps-with-docker-compose-fastapi--redis&#34;&gt;&#xA;  🧩 Multi-Container Apps with Docker Compose (FastAPI + Redis)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-multi-container-apps-with-docker-compose-fastapi--redis&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 7&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll learn how to orchestrate multi-container applications using &lt;strong&gt;Docker Compose&lt;/strong&gt;, and build a working FastAPI + Redis system.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you’ll be able to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Define multiple services in a &lt;code&gt;docker-compose.yml&lt;/code&gt; file&lt;/li&gt;&#xA;&lt;li&gt;Understand how Compose builds images and sets up networks&lt;/li&gt;&#xA;&lt;li&gt;Run, inspect, and tear down multi-service apps&lt;/li&gt;&#xA;&lt;li&gt;Understand container-to-container networking using service names&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-concepts&#34;&gt;&#xA;  📘 Concepts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-concepts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;what-is-docker-compose&#34;&gt;&#xA;  What is Docker Compose?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-docker-compose&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Docker Compose is a tool for defining and running &lt;strong&gt;multi-container Docker applications&lt;/strong&gt;. It lets you:&lt;/p&gt;</description>
     </item>
     <item>
@@ -500,9 +521,9 @@
     </item>
     <item>
       <title>Lesson 8: Docker Logging, Healthchecks, and Container Lifecycle</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-8-health-checks/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-8-health-checks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-8-health-checks/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-8-health-checks/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-8&#34;&gt;&#xA;  🩺 Docker Mastery Course – Lesson 8&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-8&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-logging-healthchecks-and-container-lifecycle&#34;&gt;&#xA;  🚦 Logging, Healthchecks, and Container Lifecycle&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-logging-healthchecks-and-container-lifecycle&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 8&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you’ll learn how to monitor and control container health and behavior using logging, healthchecks, and lifecycle management tools.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you’ll be able to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;View and interpret container logs using Docker&lt;/li&gt;&#xA;&lt;li&gt;Define and use healthchecks to monitor container health&lt;/li&gt;&#xA;&lt;li&gt;Understand and manage container lifecycle states: created, running, exited, restarting&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-concepts&#34;&gt;&#xA;  📘 Concepts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-concepts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-viewing-logs&#34;&gt;&#xA;  1. Viewing Logs&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-viewing-logs&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Docker captures stdout and stderr output from container processes. You can access logs with:&lt;/p&gt;</description>
     </item>
     <item>
@@ -514,23 +535,23 @@
     </item>
     <item>
       <title>Lesson 9: Docker Env</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-9-env/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-9-env/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-9-env/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-9-env/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-9&#34;&gt;&#xA;  🔐 Docker Mastery Course – Lesson 9&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-9&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-environment-variables-and-secrets&#34;&gt;&#xA;  🧪 Environment Variables and Secrets&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-environment-variables-and-secrets&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 9&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll learn how to inject and manage configuration settings and secrets in your containers using environment variables and &lt;code&gt;.env&lt;/code&gt; files.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you will be able to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Use environment variables to configure container behavior&lt;/li&gt;&#xA;&lt;li&gt;Load configuration from &lt;code&gt;.env&lt;/code&gt; files&lt;/li&gt;&#xA;&lt;li&gt;Access environment variables inside a FastAPI application&lt;/li&gt;&#xA;&lt;li&gt;Recognize the risks of storing secrets in environment variables&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-concepts&#34;&gt;&#xA;  📘 Concepts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-concepts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-why-use-environment-variables&#34;&gt;&#xA;  1. Why Use Environment Variables?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-why-use-environment-variables&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;Environment variables allow you to pass dynamic configuration into containers &lt;strong&gt;without modifying application code&lt;/strong&gt;. They&amp;rsquo;re commonly used for:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lesson 10: Docker Multi-Stage</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-10-multi-stage/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-10-multi-stage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-10-multi-stage/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-10-multi-stage/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-10&#34;&gt;&#xA;  🚀 Docker Mastery Course – Lesson 10&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-10&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-multi-stage-builds-and-image-optimization&#34;&gt;&#xA;  🧰 Multi-Stage Builds and Image Optimization&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-multi-stage-builds-and-image-optimization&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 10&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you’ll learn how to optimize Docker images using multi-stage builds — a powerful technique for separating build-time and runtime concerns.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you’ll be able to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Understand what multi-stage builds are and why they matter&lt;/li&gt;&#xA;&lt;li&gt;Reduce image size and improve security&lt;/li&gt;&#xA;&lt;li&gt;Apply multi-stage techniques to your FastAPI application&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-concepts&#34;&gt;&#xA;  📘 Concepts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-concepts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-why-optimize-your-docker-images&#34;&gt;&#xA;  1. Why Optimize Your Docker Images?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-why-optimize-your-docker-images&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;A typical Dockerfile may include:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Lesson 11: Docker Context &amp; `.dockerignore`</title>
-      <link>https://whatsBehind.github.io/docs/cloud/docker/lesson-11-dockerignore/</link>
+      <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-11-dockerignore/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://whatsBehind.github.io/docs/cloud/docker/lesson-11-dockerignore/</guid>
+      <guid>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-11-dockerignore/</guid>
       <description>&lt;h1 id=&#34;-docker-mastery-course--lesson-11&#34;&gt;&#xA;  🗂️ Docker Mastery Course – Lesson 11&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-docker-mastery-course--lesson-11&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;-build-context-and-dockerignore&#34;&gt;&#xA;  📦 Build Context and &lt;code&gt;.dockerignore&lt;/code&gt;&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-build-context-and-dockerignore&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Welcome to &lt;strong&gt;Lesson 11&lt;/strong&gt; of the Docker Mastery Course! In this lesson, you&amp;rsquo;ll learn how to use the &lt;code&gt;.dockerignore&lt;/code&gt; file to optimize the build context, improve build speed, and avoid leaking sensitive files into your Docker images.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-goal&#34;&gt;&#xA;  🎯 Goal&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-goal&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;By the end of this lesson, you&amp;rsquo;ll be able to:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Understand what Docker&amp;rsquo;s build context is and why it matters&lt;/li&gt;&#xA;&lt;li&gt;Use a &lt;code&gt;.dockerignore&lt;/code&gt; file to reduce build size and improve security&lt;/li&gt;&#xA;&lt;li&gt;Prevent unnecessary or sensitive files from being copied into Docker images&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-concepts&#34;&gt;&#xA;  📘 Concepts&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-concepts&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-what-is-build-context&#34;&gt;&#xA;  1. What Is Build Context?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#1-what-is-build-context&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;When you run:&lt;/p&gt;</description>
     </item>
     <item>

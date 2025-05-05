@@ -5,6 +5,9 @@
     <loc>https://whatsBehind.github.io/docs/programming-core/</loc>
     <lastmod>2023-12-01T08:19:57-08:00</lastmod>
   </url><url>
+    <loc>https://whatsBehind.github.io/</loc>
+    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/project/online-chat/</loc>
     <lastmod>2023-11-26T21:26:33-08:00</lastmod>
   </url><url>
@@ -13,6 +16,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/aws/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/asymmetric-encryption/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/byte-buffer/</loc>
@@ -20,6 +25,8 @@
     <loc>https://whatsBehind.github.io/docs/cloud/aws/cloudformation/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/networking/dns/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/preamble/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/netty/event-loop-group/</loc>
   </url><url>
@@ -48,6 +55,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/blocking-mode/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/netty/channel/</loc>
@@ -62,9 +71,11 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/http/http-methods-and-status-codes/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-1-start-docker/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-1-start-docker/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/project/node-js-auth/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par1-backend-service/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/python/re/</loc>
   </url><url>
@@ -96,7 +107,9 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/networking/id-address/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-2-commands/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-2-commands/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par2-database/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/design-data-intensive-applications/partition/</loc>
   </url><url>
@@ -120,7 +133,7 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/http/http-header-part-2/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-3-images/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-3-images/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/technology/redis/replication-and-sentinel/</loc>
   </url><url>
@@ -136,7 +149,7 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/http/http-header-part-3/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-4-dockerfile/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-4-dockerfile/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/selector-read/</loc>
   </url><url>
@@ -152,7 +165,7 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/io-model-summary/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-5-networking/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-5-networking/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-certificate/</loc>
   </url><url>
@@ -161,7 +174,7 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-6-volumes/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-6-volumes/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/multiple-threads/</loc>
   </url><url>
@@ -170,19 +183,19 @@
     <loc>https://whatsBehind.github.io/docs/tool/</loc>
     <lastmod>2023-10-22T11:53:02-07:00</lastmod>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-7-compose/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-7-compose/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-certificate-finished/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-8-health-checks/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-8-health-checks/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/simulating-https/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-9-env/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-9-env/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-10-multi-stage/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-10-multi-stage/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/cloud/docker/lesson-11-dockerignore/</loc>
+    <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-11-dockerignore/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/</loc>
     <lastmod>2023-12-01T08:19:57-08:00</lastmod>
@@ -191,9 +204,6 @@
     <lastmod>2023-12-01T08:19:57-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/</loc>
-    <lastmod>2023-12-01T08:19:57-08:00</lastmod>
-  </url><url>
-    <loc>https://whatsBehind.github.io/</loc>
     <lastmod>2023-12-01T08:19:57-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/net/</loc>

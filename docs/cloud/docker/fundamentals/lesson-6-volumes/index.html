@@ -1,0 +1,2483 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  💾 Docker Mastery Course – Lesson 6
+  #
+
+
+  📦 Data Persistence with Volumes and Bind Mounts
+  #
+
+Welcome to Lesson 6 of the Docker Mastery Course! In this lesson, you&rsquo;ll learn how to persist data in Docker containers using volumes and bind mounts, and understand the differences between them.
+
+
+  🎯 Goal
+  #
+
+By the end of this lesson, you’ll be able to:
+
+Understand why container data is ephemeral by default
+Use volumes to persist data across container lifecycles
+Use bind mounts to sync data between host and container
+Explain the differences between volumes and bind mounts clearly
+Understand how multiple containers can share the same volume
+Know how Docker handles (or doesn’t handle) concurrent writes
+
+
+
+  📘 Concepts
+  #
+
+
+  1. Why Data Persistence Matters
+  #
+
+Docker containers are designed to be ephemeral — meaning:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-6-volumes/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Lesson 6: Docker Volumes">
+  <meta property="og:description" content="💾 Docker Mastery Course – Lesson 6 # 📦 Data Persistence with Volumes and Bind Mounts # Welcome to Lesson 6 of the Docker Mastery Course! In this lesson, you’ll learn how to persist data in Docker containers using volumes and bind mounts, and understand the differences between them.
+🎯 Goal # By the end of this lesson, you’ll be able to:
+Understand why container data is ephemeral by default Use volumes to persist data across container lifecycles Use bind mounts to sync data between host and container Explain the differences between volumes and bind mounts clearly Understand how multiple containers can share the same volume Know how Docker handles (or doesn’t handle) concurrent writes 📘 Concepts # 1. Why Data Persistence Matters # Docker containers are designed to be ephemeral — meaning:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Lesson 6: Docker Volumes | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-6-volumes/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.df54ec47b1a1334d1aa716d96465e34bd1c3c2709ac688b778dd691afe262184.js" integrity="sha256-31TsR7GhM00apxbZZGXjS9HDwnCaxoi3eN1pGv4mIYQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle"  />
+    <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
+    <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d40552f3cfe92824018c63b2452ecba" class="toggle"  />
+    <label for="section-2d40552f3cfe92824018c63b2452ecba" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c98292848de5e1eee8daf1df97ad8e9" class="toggle"  />
+    <label for="section-6c98292848de5e1eee8daf1df97ad8e9" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
+    <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3190593332d0f8f9ed0d16abadebf669" class="toggle"  />
+    <label for="section-3190593332d0f8f9ed0d16abadebf669" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fe208af9b1b31c593b428135b5384f8" class="toggle"  />
+    <label for="section-9fe208af9b1b31c593b428135b5384f8" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle"  />
+    <label for="section-67fa7359ce5b658cf77244fff5df08fc" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48d1fef9b34bd9f66cd11153ecec9532" class="toggle"  />
+    <label for="section-48d1fef9b34bd9f66cd11153ecec9532" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e85d05a86421e8876acb62f953a355e" class="toggle"  />
+    <label for="section-0e85d05a86421e8876acb62f953a355e" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="toggle"  />
+    <label for="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12c34d34235c7f130e7a4969b853bc86" class="toggle"  />
+    <label for="section-12c34d34235c7f130e7a4969b853bc86" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
+    <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="toggle"  />
+    <label for="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-941ff506688d79a8f0ca9e629da3459f" class="toggle"  />
+    <label for="section-941ff506688d79a8f0ca9e629da3459f" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d2544afe2799858027d68114f061083" class="toggle"  />
+    <label for="section-3d2544afe2799858027d68114f061083" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c932410b33a0ef4d9ccee9231c75620" class="toggle"  />
+    <label for="section-0c932410b33a0ef4d9ccee9231c75620" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
+    <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle" checked />
+    <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7e22ed5bec8c14629b6ab355bc1502c" class="toggle"  />
+    <label for="section-f7e22ed5bec8c14629b6ab355bc1502c" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-663cecbab2af013dadd72e5397ce62dc" class="toggle"  />
+    <label for="section-663cecbab2af013dadd72e5397ce62dc" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-454b2a6456d3526d3f6d34370515a130" class="toggle"  />
+    <label for="section-454b2a6456d3526d3f6d34370515a130" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle" checked />
+    <label for="section-a8c6511954d9f72be55fac23451b589b" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1fdaa73665acbf8848179fc0521ae9a8" class="toggle" checked />
+    <label for="section-1fdaa73665acbf8848179fc0521ae9a8" class="flex justify-between">
+      <a role="button" class="">Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-1-start-docker/" class="">Lesson 1: Start Docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-2-commands/" class="">Lesson 2: Docker Commands</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-3-images/" class="">Lesson 3: Docker Images</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-4-dockerfile/" class="">Lesson 4: Dockerfile</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-5-networking/" class="">Lesson 5: Docker Networking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-6-volumes/" class="active">Lesson 6: Docker Volumes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-7-compose/" class="">Lesson 7: Docker Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-8-health-checks/" class="">Lesson 8: Docker Logging, Healthchecks, and Container Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-9-env/" class="">Lesson 9: Docker Env</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-10-multi-stage/" class="">Lesson 10: Docker Multi-Stage</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-11-dockerignore/" class="">Lesson 11: Docker Context &amp; `.dockerignore`</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a26e4ce35f8f99c6e7f1b46f1d47ff41" class="toggle"  />
+    <label for="section-a26e4ce35f8f99c6e7f1b46f1d47ff41" class="flex justify-between">
+      <a role="button" class="">Containerize Full Stack Application</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/preamble/" class="">Docker Fundamentals Final Project</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/par1-backend-service/" class="">Part1: Backend Service</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/par2-database/" class="">Part2: Database</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-868ff3bc94429ce8afade70db1d07dbc" class="toggle"  />
+    <label for="section-868ff3bc94429ce8afade70db1d07dbc" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/k8s/why-k8s/" class="">Why K8S?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/k8s/start-first-pod/" class="">Start First Pod</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-304cd452d0278b77fa76b02a905b318b" class="toggle"  />
+    <label for="section-304cd452d0278b77fa76b02a905b318b" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
+    <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
+    <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-18d02721e1887f4bb6418527097a8950" class="toggle"  />
+    <label for="section-18d02721e1887f4bb6418527097a8950" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-38078f6b2dffb5cfde0331f97c464879" class="toggle"  />
+    <label for="section-38078f6b2dffb5cfde0331f97c464879" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9885b1e85034892b05dcefffde06c590" class="toggle"  />
+    <label for="section-9885b1e85034892b05dcefffde06c590" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
+    <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
+    <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9d47227da1237bf23c06190fe793afd" class="toggle"  />
+    <label for="section-c9d47227da1237bf23c06190fe793afd" class="flex justify-between">
+      <a role="button" class="">Tool</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-624d42859b7b037f1a6e15ba4ee427e1" class="toggle"  />
+    <label for="section-624d42859b7b037f1a6e15ba4ee427e1" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tool/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Lesson 6: Docker Volumes</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-docker-mastery-course--lesson-6">💾 Docker Mastery Course – Lesson 6</a>
+      <ul>
+        <li><a href="#-data-persistence-with-volumes-and-bind-mounts">📦 Data Persistence with Volumes and Bind Mounts</a></li>
+        <li><a href="#-goal">🎯 Goal</a></li>
+        <li><a href="#-concepts">📘 Concepts</a>
+          <ul>
+            <li><a href="#1-why-data-persistence-matters">1. Why Data Persistence Matters</a></li>
+            <li><a href="#2-volume-vs-bind-mount-whats-the-difference">2. Volume vs Bind Mount: What&rsquo;s the Difference?</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">🛠️ Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-create-a-volume">✅ Step 1: Create a Volume</a></li>
+            <li><a href="#-step-2-use-the-volume-in-a-container">✅ Step 2: Use the Volume in a Container</a></li>
+            <li><a href="#-step-3-use-a-bind-mount">✅ Step 3: Use a Bind Mount</a></li>
+            <li><a href="#-key-syntax-what-does-mydatadata-mean">✅ Key Syntax: What does <code>mydata:/data</code> mean?</a></li>
+          </ul>
+        </li>
+        <li><a href="#-volume-sharing-and-deletion">🔄 Volume Sharing and Deletion</a>
+          <ul>
+            <li><a href="#-can-a-volume-be-used-by-multiple-containers">🧩 Can a Volume Be Used by Multiple Containers?</a></li>
+            <li><a href="#-what-happens-if-a-volume-is-deleted">🚫 What Happens If a Volume Is Deleted?</a></li>
+          </ul>
+        </li>
+        <li><a href="#-concurrent-writes-and-volume-safety">⚠️ Concurrent Writes and Volume Safety</a></li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-whats-next">📆 What’s Next?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="-docker-mastery-course--lesson-6">
+  💾 Docker Mastery Course – Lesson 6
+  <a class="anchor" href="#-docker-mastery-course--lesson-6">#</a>
+</h1>
+<h2 id="-data-persistence-with-volumes-and-bind-mounts">
+  📦 Data Persistence with Volumes and Bind Mounts
+  <a class="anchor" href="#-data-persistence-with-volumes-and-bind-mounts">#</a>
+</h2>
+<p>Welcome to <strong>Lesson 6</strong> of the Docker Mastery Course! In this lesson, you&rsquo;ll learn how to persist data in Docker containers using <strong>volumes</strong> and <strong>bind mounts</strong>, and understand the differences between them.</p>
+<hr>
+<h2 id="-goal">
+  🎯 Goal
+  <a class="anchor" href="#-goal">#</a>
+</h2>
+<p>By the end of this lesson, you’ll be able to:</p>
+<ul>
+<li>Understand why container data is ephemeral by default</li>
+<li>Use <strong>volumes</strong> to persist data across container lifecycles</li>
+<li>Use <strong>bind mounts</strong> to sync data between host and container</li>
+<li>Explain the differences between volumes and bind mounts clearly</li>
+<li>Understand how multiple containers can share the same volume</li>
+<li>Know how Docker handles (or doesn’t handle) concurrent writes</li>
+</ul>
+<hr>
+<h2 id="-concepts">
+  📘 Concepts
+  <a class="anchor" href="#-concepts">#</a>
+</h2>
+<h3 id="1-why-data-persistence-matters">
+  1. Why Data Persistence Matters
+  <a class="anchor" href="#1-why-data-persistence-matters">#</a>
+</h3>
+<p>Docker containers are designed to be <strong>ephemeral</strong> — meaning:</p>
+<ul>
+<li>If a container is deleted or restarted, <strong>any data written inside it is lost</strong>.</li>
+<li>This makes it hard to store logs, databases, or application-generated files.</li>
+</ul>
+<p>To solve this, Docker supports two methods:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Method</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Volumes</strong></td>
+          <td>Docker-managed persistent storage. Recommended for most cases.</td>
+      </tr>
+      <tr>
+          <td><strong>Bind mounts</strong></td>
+          <td>User-specified paths on the host. Great for development workflows.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="2-volume-vs-bind-mount-whats-the-difference">
+  2. Volume vs Bind Mount: What&rsquo;s the Difference?
+  <a class="anchor" href="#2-volume-vs-bind-mount-whats-the-difference">#</a>
+</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Feature</th>
+          <th>Volume</th>
+          <th>Bind Mount</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Managed by Docker</td>
+          <td>✅ Yes</td>
+          <td>❌ No — user defines path</td>
+      </tr>
+      <tr>
+          <td>Host path visible</td>
+          <td>❌ Abstracted (Docker manages it)</td>
+          <td>✅ Directly maps to a host folder</td>
+      </tr>
+      <tr>
+          <td>Created by</td>
+          <td><code>docker volume create</code> or automatically</td>
+          <td>User simply provides a path</td>
+      </tr>
+      <tr>
+          <td>Location</td>
+          <td><code>/var/lib/docker/volumes/...</code> (Linux/Mac)</td>
+          <td>Anywhere on the host</td>
+      </tr>
+      <tr>
+          <td>Use case</td>
+          <td>Databases, persistent files</td>
+          <td>Syncing source code in development</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>🔎 <strong>Are bind mounts like symlinks?</strong>
+Not quite — they’re actual kernel-level filesystem mounts. Bind mounts behave like “real-time mirrors” of host folders.</p>
+</blockquote>
+<blockquote>
+<p>🔎 <strong>Are volumes like managed storage?</strong>
+Yes. Volumes are Docker-controlled storage resources with automatically assigned host paths. You can inspect or back them up, but Docker handles them for you.</p>
+</blockquote>
+<hr>
+<h2 id="-hands-on-practice">
+  🛠️ Hands-On Practice
+  <a class="anchor" href="#-hands-on-practice">#</a>
+</h2>
+<h3 id="-step-1-create-a-volume">
+  ✅ Step 1: Create a Volume
+  <a class="anchor" href="#-step-1-create-a-volume">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker volume create mydata
+</span></span></code></pre></div><p>Check:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker volume ls
+</span></span><span style="display:flex;"><span>docker volume inspect mydata
+</span></span></code></pre></div><p>This creates a managed resource with its own storage path.</p>
+<hr>
+<h3 id="-step-2-use-the-volume-in-a-container">
+  ✅ Step 2: Use the Volume in a Container
+  <a class="anchor" href="#-step-2-use-the-volume-in-a-container">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it --name voltest -v mydata:/data alpine
+</span></span></code></pre></div><ul>
+<li><code>mydata:/data</code> means: mount Docker volume <code>mydata</code> into <code>/data</code> inside the container</li>
+<li>Inside, run:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Hello Volume!&#34;</span> &gt; /data/hello.txt
+</span></span><span style="display:flex;"><span>exit
+</span></span></code></pre></div><p>Now remove the container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker rm voltest
+</span></span></code></pre></div><p>Start a new container to access the same volume:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it -v mydata:/data alpine cat /data/hello.txt
+</span></span></code></pre></div><p>✅ You’ll see the message again — the data <strong>persisted</strong>.</p>
+<hr>
+<h3 id="-step-3-use-a-bind-mount">
+  ✅ Step 3: Use a Bind Mount
+  <a class="anchor" href="#-step-3-use-a-bind-mount">#</a>
+</h3>
+<p>Create a folder on your host:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir ~/docker-test
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;hello from host&#34;</span> &gt; ~/docker-test/host.txt
+</span></span></code></pre></div><p>Run this container:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -it -v ~/docker-test:/data alpine ls /data
+</span></span></code></pre></div><p>You should see <code>host.txt</code>. This is your local folder <strong>mounted into</strong> the container at runtime.</p>
+<hr>
+<h3 id="-key-syntax-what-does-mydatadata-mean">
+  ✅ Key Syntax: What does <code>mydata:/data</code> mean?
+  <a class="anchor" href="#-key-syntax-what-does-mydatadata-mean">#</a>
+</h3>
+<p>This is used in the <code>-v</code> option:</p>
+<ul>
+<li><code>mydata</code> → volume name (Docker-managed)</li>
+<li><code>/data</code> → path inside the container</li>
+</ul>
+<p>So it means: “Mount the Docker volume <code>mydata</code> at <code>/data</code> in the container.”</p>
+<p>For bind mounts, the syntax looks like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-v /host/path:/container/path
+</span></span></code></pre></div><p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-v ~/project:/app
+</span></span></code></pre></div><p>This binds your host’s <code>~/project</code> folder to the container’s <code>/app</code> directory.</p>
+<blockquote>
+<p>📍 With volumes, Docker chooses the host path and manages it. With bind mounts, <strong>you define the host directory</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="-volume-sharing-and-deletion">
+  🔄 Volume Sharing and Deletion
+  <a class="anchor" href="#-volume-sharing-and-deletion">#</a>
+</h2>
+<h3 id="-can-a-volume-be-used-by-multiple-containers">
+  🧩 Can a Volume Be Used by Multiple Containers?
+  <a class="anchor" href="#-can-a-volume-be-used-by-multiple-containers">#</a>
+</h3>
+<p>✅ Yes. A Docker volume can be mounted into <strong>multiple containers</strong> — they all share the <strong>same underlying data</strong>.</p>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -d --name c1 -v mydata:/shared alpine sleep <span style="color:#ae81ff">300</span>
+</span></span><span style="display:flex;"><span>docker run -it --name c2 -v mydata:/shared alpine sh
+</span></span></code></pre></div><p>Both containers see the same files inside <code>/shared</code>.</p>
+<p>You can even mount the same volume at <strong>different paths</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -v mydata:/app1 alpine
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>docker run -v mydata:/backup alpine
+</span></span></code></pre></div><h3 id="-what-happens-if-a-volume-is-deleted">
+  🚫 What Happens If a Volume Is Deleted?
+  <a class="anchor" href="#-what-happens-if-a-volume-is-deleted">#</a>
+</h3>
+<ul>
+<li>If a volume is <strong>in use</strong>, Docker will block deletion:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker volume rm mydata
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># → Error: volume is in use</span>
+</span></span></code></pre></div><ul>
+<li>If <strong>not in use</strong>, deleting the volume removes its data permanently.</li>
+<li>Anonymous volumes can be removed automatically when containers are deleted using <code>--volumes</code>.</li>
+</ul>
+<hr>
+<h2 id="-concurrent-writes-and-volume-safety">
+  ⚠️ Concurrent Writes and Volume Safety
+  <a class="anchor" href="#-concurrent-writes-and-volume-safety">#</a>
+</h2>
+<p>Docker <strong>does not coordinate</strong> concurrent access to volumes.</p>
+<ul>
+<li>All containers writing to the same volume access the same underlying filesystem.</li>
+<li>Docker relies on the <strong>host OS filesystem</strong> to handle concurrent reads/writes.</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Scenario</th>
+          <th>Safe?</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Multiple containers reading</td>
+          <td>✅ Yes</td>
+          <td>Safe and common</td>
+      </tr>
+      <tr>
+          <td>One writer, multiple readers</td>
+          <td>✅ Usually</td>
+          <td>Still depends on app-level logic</td>
+      </tr>
+      <tr>
+          <td>Multiple writers</td>
+          <td>❌ Risky</td>
+          <td>May lead to corruption or race issues</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p>🧠 If you have multiple writers, use application-level coordination (e.g., file locks, DBs, queues).</p>
+</blockquote>
+<hr>
+<h2 id="-checkpoint">
+  🏁 Checkpoint
+  <a class="anchor" href="#-checkpoint">#</a>
+</h2>
+<p>You now know how to:</p>
+<ul>
+<li>Create and manage Docker volumes</li>
+<li>Use volumes to persist data between containers</li>
+<li>Bind host folders into containers for development</li>
+<li>Distinguish clearly between volumes and bind mounts</li>
+<li>Share volumes across multiple containers</li>
+<li>Handle deletion scenarios and avoid data loss</li>
+<li>Understand Docker’s lack of built-in concurrency control</li>
+</ul>
+<p>🎉 Your containers are now capable of retaining, sharing, and coordinating data like full-scale applications.</p>
+<hr>
+<h2 id="-whats-next">
+  📆 What’s Next?
+  <a class="anchor" href="#-whats-next">#</a>
+</h2>
+<blockquote>
+<p><strong>Lesson 7: Docker Compose for Multi-Container Apps</strong>
+You’ll learn how to define multi-service apps using a YAML file and bring up the entire app stack with one command.</p>
+</blockquote>
+<p>Stay tuned!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-docker-mastery-course--lesson-6">💾 Docker Mastery Course – Lesson 6</a>
+      <ul>
+        <li><a href="#-data-persistence-with-volumes-and-bind-mounts">📦 Data Persistence with Volumes and Bind Mounts</a></li>
+        <li><a href="#-goal">🎯 Goal</a></li>
+        <li><a href="#-concepts">📘 Concepts</a>
+          <ul>
+            <li><a href="#1-why-data-persistence-matters">1. Why Data Persistence Matters</a></li>
+            <li><a href="#2-volume-vs-bind-mount-whats-the-difference">2. Volume vs Bind Mount: What&rsquo;s the Difference?</a></li>
+          </ul>
+        </li>
+        <li><a href="#-hands-on-practice">🛠️ Hands-On Practice</a>
+          <ul>
+            <li><a href="#-step-1-create-a-volume">✅ Step 1: Create a Volume</a></li>
+            <li><a href="#-step-2-use-the-volume-in-a-container">✅ Step 2: Use the Volume in a Container</a></li>
+            <li><a href="#-step-3-use-a-bind-mount">✅ Step 3: Use a Bind Mount</a></li>
+            <li><a href="#-key-syntax-what-does-mydatadata-mean">✅ Key Syntax: What does <code>mydata:/data</code> mean?</a></li>
+          </ul>
+        </li>
+        <li><a href="#-volume-sharing-and-deletion">🔄 Volume Sharing and Deletion</a>
+          <ul>
+            <li><a href="#-can-a-volume-be-used-by-multiple-containers">🧩 Can a Volume Be Used by Multiple Containers?</a></li>
+            <li><a href="#-what-happens-if-a-volume-is-deleted">🚫 What Happens If a Volume Is Deleted?</a></li>
+          </ul>
+        </li>
+        <li><a href="#-concurrent-writes-and-volume-safety">⚠️ Concurrent Writes and Volume Safety</a></li>
+        <li><a href="#-checkpoint">🏁 Checkpoint</a></li>
+        <li><a href="#-whats-next">📆 What’s Next?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
