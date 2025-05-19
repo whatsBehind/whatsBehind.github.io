@@ -1,0 +1,3231 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Transaction
+  #
+
+A transaction is a way for an application to group several reads and writes together into a logical unit. Either the entire transaction succeeds (commits) or it fails (aborts, rollbacks). This can eliminate partial failure&ndash;i.e., the case where some operations succeed and some fail
+
+  The Meaning of ACID
+  #
+
+ACID, which stands for Atomicity, Consistency, Isolation, and Durability, are the safety guarantees provided by transactions
+
+  Atomicity
+  #
+
+
+
+Definition">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/distributed-system-copy/design-data-intensive-applications/transactions/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Transactions">
+  <meta property="og:description" content="Transaction # A transaction is a way for an application to group several reads and writes together into a logical unit. Either the entire transaction succeeds (commits) or it fails (aborts, rollbacks). This can eliminate partial failure–i.e., the case where some operations succeed and some fail
+The Meaning of ACID # ACID, which stands for Atomicity, Consistency, Isolation, and Durability, are the safety guarantees provided by transactions
+Atomicity # Definition">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Transactions | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/distributed-system-copy/design-data-intensive-applications/transactions/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.cd37e550a0f2da02302f19fa1858257b9ee76f8783af958426773ec4671b85a9.js" integrity="sha256-zTflUKDy2gIwLxn6GFgle57nb4eDr5WEJnc&#43;xGcbhak=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle"  />
+    <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
+    <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d40552f3cfe92824018c63b2452ecba" class="toggle"  />
+    <label for="section-2d40552f3cfe92824018c63b2452ecba" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c98292848de5e1eee8daf1df97ad8e9" class="toggle"  />
+    <label for="section-6c98292848de5e1eee8daf1df97ad8e9" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
+    <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3190593332d0f8f9ed0d16abadebf669" class="toggle"  />
+    <label for="section-3190593332d0f8f9ed0d16abadebf669" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fe208af9b1b31c593b428135b5384f8" class="toggle"  />
+    <label for="section-9fe208af9b1b31c593b428135b5384f8" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle"  />
+    <label for="section-67fa7359ce5b658cf77244fff5df08fc" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48d1fef9b34bd9f66cd11153ecec9532" class="toggle"  />
+    <label for="section-48d1fef9b34bd9f66cd11153ecec9532" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e85d05a86421e8876acb62f953a355e" class="toggle"  />
+    <label for="section-0e85d05a86421e8876acb62f953a355e" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="toggle"  />
+    <label for="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12c34d34235c7f130e7a4969b853bc86" class="toggle"  />
+    <label for="section-12c34d34235c7f130e7a4969b853bc86" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
+    <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="toggle"  />
+    <label for="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-941ff506688d79a8f0ca9e629da3459f" class="toggle"  />
+    <label for="section-941ff506688d79a8f0ca9e629da3459f" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d2544afe2799858027d68114f061083" class="toggle"  />
+    <label for="section-3d2544afe2799858027d68114f061083" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c932410b33a0ef4d9ccee9231c75620" class="toggle"  />
+    <label for="section-0c932410b33a0ef4d9ccee9231c75620" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
+    <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7e22ed5bec8c14629b6ab355bc1502c" class="toggle"  />
+    <label for="section-f7e22ed5bec8c14629b6ab355bc1502c" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-663cecbab2af013dadd72e5397ce62dc" class="toggle"  />
+    <label for="section-663cecbab2af013dadd72e5397ce62dc" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-454b2a6456d3526d3f6d34370515a130" class="toggle"  />
+    <label for="section-454b2a6456d3526d3f6d34370515a130" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle"  />
+    <label for="section-a8c6511954d9f72be55fac23451b589b" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1fdaa73665acbf8848179fc0521ae9a8" class="toggle"  />
+    <label for="section-1fdaa73665acbf8848179fc0521ae9a8" class="flex justify-between">
+      <a role="button" class="">Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-1-start-docker/" class="">Lesson 1: Start Docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-2-commands/" class="">Lesson 2: Docker Commands</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-3-images/" class="">Lesson 3: Docker Images</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-4-dockerfile/" class="">Lesson 4: Dockerfile</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-5-networking/" class="">Lesson 5: Docker Networking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-6-volumes/" class="">Lesson 6: Docker Volumes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-7-compose/" class="">Lesson 7: Docker Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-8-health-checks/" class="">Lesson 8: Docker Logging, Healthchecks, and Container Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-9-env/" class="">Lesson 9: Docker Env</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-10-multi-stage/" class="">Lesson 10: Docker Multi-Stage</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-11-dockerignore/" class="">Lesson 11: Docker Context &amp; `.dockerignore`</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a26e4ce35f8f99c6e7f1b46f1d47ff41" class="toggle"  />
+    <label for="section-a26e4ce35f8f99c6e7f1b46f1d47ff41" class="flex justify-between">
+      <a role="button" class="">Containerize Full Stack Application</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/preamble/" class="">Docker Fundamentals Final Project</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/par1-backend-service/" class="">Part1: Backend Service</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/par2-database/" class="">Part2: Database</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-868ff3bc94429ce8afade70db1d07dbc" class="toggle"  />
+    <label for="section-868ff3bc94429ce8afade70db1d07dbc" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/k8s/why-k8s/" class="">Why K8S?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/k8s/start-first-pod/" class="">Start First Pod</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-304cd452d0278b77fa76b02a905b318b" class="toggle"  />
+    <label for="section-304cd452d0278b77fa76b02a905b318b" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bd152e192623ef00fcf43cf6f77e094" class="toggle" checked />
+    <label for="section-7bd152e192623ef00fcf43cf6f77e094" class="flex justify-between">
+      <a role="button" class="">Distributed System Copy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-adf9b3215704e58978ecf3df648a5818" class="toggle" checked />
+    <label for="section-adf9b3215704e58978ecf3df648a5818" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/design-data-intensive-applications/transactions/" class="active">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-47ed647c1008396013d0a27a84f98211" class="toggle"  />
+    <label for="section-47ed647c1008396013d0a27a84f98211" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bce8df42233920cef05ec7a692b598bd" class="toggle"  />
+    <label for="section-bce8df42233920cef05ec7a692b598bd" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-22ea07c8347cf8dff26ed726fbd954d9" class="toggle"  />
+    <label for="section-22ea07c8347cf8dff26ed726fbd954d9" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-55ba8999a6f9fb09bc4297e8b281a8e5" class="toggle"  />
+    <label for="section-55ba8999a6f9fb09bc4297e8b281a8e5" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9263e96f0b92b7ce9e41e4dfd59137a" class="toggle"  />
+    <label for="section-c9263e96f0b92b7ce9e41e4dfd59137a" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
+    <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
+    <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-18d02721e1887f4bb6418527097a8950" class="toggle"  />
+    <label for="section-18d02721e1887f4bb6418527097a8950" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-38078f6b2dffb5cfde0331f97c464879" class="toggle"  />
+    <label for="section-38078f6b2dffb5cfde0331f97c464879" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9885b1e85034892b05dcefffde06c590" class="toggle"  />
+    <label for="section-9885b1e85034892b05dcefffde06c590" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
+    <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
+    <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9d47227da1237bf23c06190fe793afd" class="toggle"  />
+    <label for="section-c9d47227da1237bf23c06190fe793afd" class="flex justify-between">
+      <a role="button" class="">Tool</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-624d42859b7b037f1a6e15ba4ee427e1" class="toggle"  />
+    <label for="section-624d42859b7b037f1a6e15ba4ee427e1" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tool/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Transactions</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#transaction">Transaction</a>
+      <ul>
+        <li><a href="#the-meaning-of-acid">The Meaning of ACID</a>
+          <ul>
+            <li><a href="#atomicity">Atomicity</a></li>
+            <li><a href="#consistency">Consistency</a></li>
+            <li><a href="#isolation">Isolation</a></li>
+            <li><a href="#durability">Durability</a></li>
+          </ul>
+        </li>
+        <li><a href="#single-object-and-multi-object-operations">Single-Object and Multi-Object Operations</a>
+          <ul>
+            <li><a href="#single-object-operations">Single-Object Operations</a></li>
+            <li><a href="#the-need-for-multiple-object-transactions">The need for multiple-object transactions</a></li>
+            <li><a href="#handling-errors-and-aborts">Handling Errors and Aborts</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#weak-isolation-levels">Weak Isolation Levels</a>
+      <ul>
+        <li><a href="#read-committed">Read Committed</a>
+          <ul>
+            <li><a href="#dirty-reads">Dirty Reads</a></li>
+            <li><a href="#dirty-writes">Dirty Writes</a></li>
+            <li><a href="#implementation">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#snapshot-isolation-and-repeatable-read">Snapshot Isolation and Repeatable Read</a>
+          <ul>
+            <li><a href="#non-repeatable-read">Non-Repeatable Read</a></li>
+            <li><a href="#snapshot-isolation">Snapshot Isolation</a></li>
+            <li><a href="#implementing-snapshot-isolation">Implementing Snapshot Isolation</a></li>
+            <li><a href="#indexes-of-snapshot-isolation">Indexes of Snapshot Isolation</a></li>
+          </ul>
+        </li>
+        <li><a href="#preventing-lost-updates">Preventing Lost Updates</a>
+          <ul>
+            <li><a href="#lost-updates">Lost updates</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#lost-updates-in-replicated-system">Lost Updates in Replicated System</a></li>
+          </ul>
+        </li>
+        <li><a href="#write-skew-and-phantoms">Write Skew and Phantoms</a>
+          <ul>
+            <li><a href="#write-skew-example">Write Skew Example</a></li>
+            <li><a href="#write-skew">Write Skew</a></li>
+            <li><a href="#write-skew-solution">Write Skew Solution</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#serializability">Serializability</a>
+      <ul>
+        <li><a href="#actual-serial-execution">Actual Serial Execution</a>
+          <ul>
+            <li><a href="#encapsulating-transactions-in-stored-procedures">Encapsulating transactions in stored procedures</a></li>
+            <li><a href="#write-overheads">Write Overheads</a></li>
+            <li><a href="#partitioning">Partitioning</a></li>
+          </ul>
+        </li>
+        <li><a href="#two-phase-locking-2pl">Two-Phase Locking (2PL)</a>
+          <ul>
+            <li><a href="#implementation-of-two-phase-locking">Implementation of Two-Phase Locking</a></li>
+            <li><a href="#poor-performance-of-two-phase-locking">Poor Performance of Two-Phase Locking</a></li>
+            <li><a href="#predicate-locks">Predicate Locks</a></li>
+            <li><a href="#index-range-locks">Index-range locks</a></li>
+          </ul>
+        </li>
+        <li><a href="#serializable-snapshot-isolation">Serializable Snapshot Isolation</a>
+          <ul>
+            <li><a href="#pessimistic-versus-optimistic-concurrency-control">Pessimistic Versus Optimistic Concurrency Control</a></li>
+            <li><a href="#decision-based-on-an-outdated-premise">Decision Based on An Outdated Premise</a></li>
+            <li><a href="#performance-of-serializable-snapshot-isolation">Performance of Serializable Snapshot Isolation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="transaction">
+  Transaction
+  <a class="anchor" href="#transaction">#</a>
+</h1>
+<p>A transaction is a way for an application to group several reads and writes together into a logical unit. Either the entire transaction succeeds (commits) or it fails (aborts, rollbacks). This can eliminate partial failure&ndash;i.e., the case where some operations succeed and some fail</p>
+<h2 id="the-meaning-of-acid">
+  The Meaning of ACID
+  <a class="anchor" href="#the-meaning-of-acid">#</a>
+</h2>
+<p>ACID, which stands for Atomicity, Consistency, Isolation, and Durability, are the safety guarantees provided by transactions</p>
+<h3 id="atomicity">
+  Atomicity
+  <a class="anchor" href="#atomicity">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Definition</strong></p>
+<p>The ability to abort a transaction on error and have all writes from that transaction discarded</p>
+</li>
+</ul>
+<p>If the writes are grouped together into an atomic transaction, and the transaction cannot be completed (committed) due to a fault, then the transaction is aborted, and the database must discard or undo any writes it has made so far in that transaction.</p>
+<h3 id="consistency">
+  Consistency
+  <a class="anchor" href="#consistency">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>Consistency</strong>: Database should be in valid states before and after transactions</p>
+</li>
+<li>
+<p><strong>Invariants</strong>: Rules or conditions that define what constitutes a valid state in the database</p>
+</li>
+</ul>
+<p><strong>Invariant Examples</strong></p>
+<ul>
+<li>Unique and valid email address</li>
+<li>Non-negative product price</li>
+<li>Non-negative account balance</li>
+</ul>
+<p><strong>Application Property</strong></p>
+<p>Many consistency rules are specific to the business logic of the application. For example, ensuring that a customer’s order is valid according to various business rules (e.g., inventory availability, discount application, shipping constraints) often requires logic that is best handled in the application layer. Thus, the letter C doesn&rsquo;t really belong to ACID</p>
+<h3 id="isolation">
+  Isolation
+  <a class="anchor" href="#isolation">#</a>
+</h3>
+<p>Concurrently running transactions shouldn’t interfere with each other. For example, if one transaction makes several writes, then another transaction should see either all or none of those writes, but not some subset.</p>
+<h3 id="durability">
+  Durability
+  <a class="anchor" href="#durability">#</a>
+</h3>
+<p>Durability is the promise that once a transaction has committed successfully, any data it has written will not be forgotten.</p>
+<ul>
+<li>
+<p>In a single node system, it means that data has been written to nonvolatile storages</p>
+</li>
+<li>
+<p>In a replicated system, it means that data has been copied to some number of nodes</p>
+</li>
+</ul>
+<h2 id="single-object-and-multi-object-operations">
+  Single-Object and Multi-Object Operations
+  <a class="anchor" href="#single-object-and-multi-object-operations">#</a>
+</h2>
+<h3 id="single-object-operations">
+  Single-Object Operations
+  <a class="anchor" href="#single-object-operations">#</a>
+</h3>
+<p>Atomicity and isolation are essential requirements for single-object operations.</p>
+<h3 id="the-need-for-multiple-object-transactions">
+  The need for multiple-object transactions
+  <a class="anchor" href="#the-need-for-multiple-object-transactions">#</a>
+</h3>
+<p>Many distributed databases have abandoned multiple-object transactions because they are difficult to implement across partitions. However, there are still some scenarios requiring multiple-object transactions</p>
+<ul>
+<li>
+<p>When updating denormalized information in a document data model, you need to update multiple documents in one go</p>
+</li>
+<li>
+<p>In databases with secondary indexes (almost used everywhere except pure key-value stores), the indexes also need to be updated every time you change a value. These indexes are different database objects from a transaction point of view</p>
+<p><strong>Secondary Index</strong>: In many databases, particularly relational databases, secondary indexes are used to improve the performance of queries. Unlike the primary index, which is typically based on the primary key, secondary indexes are built on other columns. Whenever you change a value in the database that is a part of a secondary index, the secondary index needs to be updated to reflect this change</p>
+</li>
+</ul>
+<h3 id="handling-errors-and-aborts">
+  Handling Errors and Aborts
+  <a class="anchor" href="#handling-errors-and-aborts">#</a>
+</h3>
+<p><strong>Retry Principles</strong></p>
+<ul>
+<li>
+<p>It is only worth retrying after transient errors (for example due to deadlock, isolation violation, temporary network interruptions, and failover). A retry for permanent error (e.g., constraint violation) is pointless</p>
+</li>
+<li>
+<p>If the error is due to overload, retrying the transactions will make the problem worse. In this case, consider limiting the number of retries, and use exponential backoff</p>
+</li>
+</ul>
+<h1 id="weak-isolation-levels">
+  Weak Isolation Levels
+  <a class="anchor" href="#weak-isolation-levels">#</a>
+</h1>
+<h2 id="read-committed">
+  Read Committed
+  <a class="anchor" href="#read-committed">#</a>
+</h2>
+<p>The most basic level of transaction isolation. It makes two guarantees:</p>
+<ol>
+<li>
+<p>When reading from the database, you will only see data that has been committed (no dirty reads).</p>
+</li>
+<li>
+<p>When writing to the database, you will only overwrite data that has been committed (no dirty writes).</p>
+</li>
+</ol>
+<h3 id="dirty-reads">
+  Dirty Reads
+  <a class="anchor" href="#dirty-reads">#</a>
+</h3>
+<p><strong>Definition</strong></p>
+<p>A transaction <strong>READS</strong> data that has been modified by another transaction but not yet committed</p>
+<p><strong>Read committed isolation</strong></p>
+<p>Any writes by a transaction only become visible to others when that transaction commits</p>
+<h3 id="dirty-writes">
+  Dirty Writes
+  <a class="anchor" href="#dirty-writes">#</a>
+</h3>
+<p><strong>Definition</strong></p>
+<p>A transaction <strong>WRITES</strong> data that has been modified by another transaction but not yet committed.</p>
+<p>Dirty writes happen when two transactions modify same data concurrently</p>
+<p><strong>Limitation</strong></p>
+<p>Read committed only works for two direct writes, but it can&rsquo;t prevent race condition between two read-modify-write operations.</p>
+<p>For example, there is a counter whose value is 1 in a table, and client 1 and client 2 read its value simultaneously. Then they increment the counter value concurrently. Even with read committed, the final value of the counter is 2 instead of 3</p>
+<h3 id="implementation">
+  Implementation
+  <a class="anchor" href="#implementation">#</a>
+</h3>
+<p><strong>No dirty writes</strong></p>
+<p>Using row-level lock. When a transaction wants to modify a particular object (a row or a document), it must first acquire a lock on that object. It must then hold the lock until the transaction is committed or aborted. Only one transaction can hold the lock</p>
+<p><strong>No dirty reads</strong></p>
+<p>Using lock to prevent dirty reads is not realistic, cause one long-running writes would block all reads to that object</p>
+<p>The workaround is that for every object that is written, the database remembers both the old committed value and the new value set by the transaction that is currently holding the write lock. While the transaction is ongoing, any other transactions that read the object are simply given the old value</p>
+<h2 id="snapshot-isolation-and-repeatable-read">
+  Snapshot Isolation and Repeatable Read
+  <a class="anchor" href="#snapshot-isolation-and-repeatable-read">#</a>
+</h2>
+<h3 id="non-repeatable-read">
+  Non-Repeatable Read
+  <a class="anchor" href="#non-repeatable-read">#</a>
+</h3>
+<p>A transaction reads the same data item more than once and gets different values each time. This inconsistency happens because another concurrent transaction modifies the data between the reads</p>
+<p><strong>Example</strong></p>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/transaction/non-repeatable-read.drawio.svg" alt="non-repeatable-read" /></p>
+<ol>
+<li>
+<p>Initial State:</p>
+<ul>
+<li>Account balance: $1000</li>
+</ul>
+</li>
+<li>
+<p>Alice Transaction:</p>
+<ul>
+<li>Starts and reads the balance of account</li>
+<li>Reads balance as $1000</li>
+</ul>
+</li>
+<li>
+<p>Transfer Transaction:</p>
+<ul>
+<li>Starts and updates the balance of account (e.g., deposits $100).</li>
+<li>New balance: $1100.</li>
+<li>Commits the change.</li>
+</ul>
+</li>
+<li>
+<p>Alice Transaction:</p>
+<ul>
+<li>Reads the balance of account</li>
+<li>Now reads balance as $1100.</li>
+</ul>
+</li>
+</ol>
+<p>Read committed can&rsquo;t solve above problem, because in second read of Alice transaction, transfer transaction has been committed. No dirty read happens</p>
+<h3 id="snapshot-isolation">
+  Snapshot Isolation
+  <a class="anchor" href="#snapshot-isolation">#</a>
+</h3>
+<p>The transaction sees all data that was committed in the database at the start of the transaction. Any changes made after that time are not visible to the read transaction</p>
+<h3 id="implementing-snapshot-isolation">
+  Implementing Snapshot Isolation
+  <a class="anchor" href="#implementing-snapshot-isolation">#</a>
+</h3>
+<p><strong>Writes</strong></p>
+<p>Implementation of snapshot isolation normally uses write lock to prevent dirty writes, which means transaction that makes a write can block the progress of another transaction that writes to the same object</p>
+<p><strong>Reads</strong></p>
+<p><strong>MVCC (multi-version concurrency control)</strong>: The database must potentially keeps several committed versions of an object to allow various in-progress transactions to see the state of the database at different points in time.</p>
+<p>The benefit of MVCC is that readers won&rsquo;t block any writers and vise verse.</p>
+<p><strong>Comparison with read committed</strong></p>
+<p>Read committed only needs to keep two versions of an object: latest committed version and modified-but-not-yet-committed version, but snapshot isolation requires multiple versions of an object</p>
+<p>Database can also use MVCC to support read committed isolation. Read committed uses a separate snapshot for each <strong>QUERY</strong> (one transaction may contain multiple queries), while snapshot isolation uses a separate snapshot for each <strong>TRANSACTION</strong>.</p>
+<h4 id="implementation-example">
+  Implementation Example
+  <a class="anchor" href="#implementation-example">#</a>
+</h4>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/transaction/snapshot-isolation-implementation.drawio.svg" alt="snapshot-isolation-implementation" /></p>
+<ul>
+<li>
+<p>Each transaction has a unique transaction ID (<code>txid</code>).</p>
+</li>
+<li>
+<p>Each row in the table has a <code>created_by</code> field, containing the ID of the transaction that inserted the row into the table</p>
+</li>
+<li>
+<p>Moreover, each row has a <code>deleted_by</code> field, which is initially is empty. If a transaction deletes a row, the row is not deleted from the table, but it is marked for deletion by setting the field <code>deleted_by</code> to the ID of the transaction that requested for deletion. When it is certain that no queries would access the deleted data, a garbage collection process removes rows that are marked for deletion</p>
+</li>
+<li>
+<p>An update is translated to a create and a delete. For example, in above picture, transaction 13 update balance of the account to $1100. Then the row with balance of $1000 is marked as deleted by transaction 13 and a new row with balance of $1100 is created by transaction 13</p>
+</li>
+</ul>
+<p><strong>Visibility rules</strong></p>
+<ol>
+<li>
+<p>At the start of each transaction, the database makes a list of all other transactions that are in progress at that time. Any writes made by those transactions are ignored</p>
+</li>
+<li>
+<p>Any writes made by aborted transactions are ignored</p>
+</li>
+<li>
+<p>Any writes made by transactions with a later <code>txid</code> are ignored</p>
+</li>
+<li>
+<p>All other writes are visible</p>
+</li>
+</ol>
+<p><strong>Equivalent rules</strong></p>
+<p>When reader transaction queries the database, below rows are visible:</p>
+<ol>
+<li>
+<p>Created rows (not deleted): the transactions that created the rows had already committed at the time when reader transaction started</p>
+</li>
+<li>
+<p>Deleted rows: the transaction that deleted the row are <strong>NOT</strong> yet committed at the time when reader transaction started</p>
+</li>
+</ol>
+<h3 id="indexes-of-snapshot-isolation">
+  Indexes of Snapshot Isolation
+  <a class="anchor" href="#indexes-of-snapshot-isolation">#</a>
+</h3>
+<p>One option is to have the index simply point to all versions of an object and require an index query to filter out any object versions that are not visible to the current transaction. When garbage collection removes old object versions that are no longer visible to any transaction, the corresponding index entries can also be removed</p>
+<h2 id="preventing-lost-updates">
+  Preventing Lost Updates
+  <a class="anchor" href="#preventing-lost-updates">#</a>
+</h2>
+<p>The read committed and snapshot isolation levels we’ve discussed so far have been primarily about the guarantees of what a read-only transaction can see in the presence of concurrent writes.</p>
+<p>We have only discussed dirty writes. There are several other kinds of conflicts that can occur between concurrently writing transactions:</p>
+<h3 id="lost-updates">
+  Lost updates
+  <a class="anchor" href="#lost-updates">#</a>
+</h3>
+<p><strong>Definition</strong></p>
+<p>Lost updates can occur when an application reads some value from the database, modifies it and writes back the modified value (a read-modify-write cycle). If two transactions do this concurrently, one of the modifications can be lost, because the second write does not include the first modification</p>
+<p><strong>Scenarios</strong></p>
+<ul>
+<li>
+<p>Incrementing a counter (requires querying the current value, calculating the new value and writing back the updated value)</p>
+</li>
+<li>
+<p>Making a change to a JSON document (requires parsing the document, making the change and writing back the modified document)</p>
+</li>
+<li>
+<p>Two users editing a wiki page at the same time</p>
+</li>
+</ul>
+<h3 id="solutions">
+  Solutions
+  <a class="anchor" href="#solutions">#</a>
+</h3>
+<h4 id="atomic-write-operations">
+  Atomic write operations
+  <a class="anchor" href="#atomic-write-operations">#</a>
+</h4>
+<p>An atomic write operation ensures that the entire read-modify-write sequence is executed as a single, indivisible unit. This means that once a transaction starts modifying a value, no other transaction can see or affect the intermediate states (blocks both writes and reads)</p>
+<p><strong>Implementation</strong>
+Atomic operations are usually implemented by taking an exclusive lock on the object when it is read so that no other transaction can read it until the update has been applied.</p>
+<h4 id="explicit-locking">
+  Explicit Locking
+  <a class="anchor" href="#explicit-locking">#</a>
+</h4>
+<p>If the built-in atomic operations can&rsquo;t handle the use case, the application explicitly lock the object when it starts a read-modify-write cycle. If any other transactions try to concurrently read the object, they are forced to wait until the first read-modify-write cycle has completed</p>
+<h4 id="automatically-detecting-lost-updates">
+  Automatically Detecting Lost Updates
+  <a class="anchor" href="#automatically-detecting-lost-updates">#</a>
+</h4>
+<p>This approach doesn&rsquo;t lock the object being updated and allow in parallel updates. If the transaction manager detects a lost update, it aborts the transaction and force it to retry the read-modify-write cycle</p>
+<h4 id="compare-and-set">
+  Compare-and-Set
+  <a class="anchor" href="#compare-and-set">#</a>
+</h4>
+<p>Compare-and-set operation allows an update to happen only the value has <strong>NOT</strong> changed since you last read it.</p>
+<p><strong>Limitation</strong></p>
+<p>If the value read is from an old snapshot, it may not prevent lost updates, because this condition may be true even though another concurrent write is occurring (this updates is not visible to the transaction)</p>
+<h3 id="lost-updates-in-replicated-system">
+  Lost Updates in Replicated System
+  <a class="anchor" href="#lost-updates-in-replicated-system">#</a>
+</h3>
+<ul>
+<li>
+<p>Locks and compare-and-set operations don&rsquo;t work in a replicated system, because they can only prevent lost updates in a single node</p>
+</li>
+<li>
+<p>We discussed before that replicated system allows concurrent writes in different nodes, and we can use application code to resolve and merge those conflicts</p>
+</li>
+<li>
+<p>Atomic, commutative operations can work well in a replicated context</p>
+<ul>
+<li>
+<p>Commutative operations are those where the order of execution does not affect the final result. Examples include incrementing a counter or adding elements to a set</p>
+</li>
+<li>
+<p>For instance, if you increment a counter by 1 on Replica A and by 1 on Replica B, the final result is the same regardless of the order in which these increments are applied when the replicas synchronize.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="write-skew-and-phantoms">
+  Write Skew and Phantoms
+  <a class="anchor" href="#write-skew-and-phantoms">#</a>
+</h2>
+<p>In previous sections, we discussed <em>dirty writes</em> and <em>lost updates</em>, two kinds of race conditions can occur when different transactions try to write to the <strong>SAME</strong> objects concurrently.</p>
+<h3 id="write-skew-example">
+  Write Skew Example
+  <a class="anchor" href="#write-skew-example">#</a>
+</h3>
+<p>Consider a hospital shift management system where two doctors should be on call for every 12 hours. On call doctors can take a break but at least one doctor should be on call, in other words, at most one doctor can take a break</p>
+<ol>
+<li>
+<p>Initial state:</p>
+<ul>
+<li>Alice&rsquo;s status: <code>on_call</code></li>
+<li>Bob&rsquo;s status: <code>on_call</code></li>
+</ul>
+</li>
+<li>
+<p>Transaction A (Alice):</p>
+<ul>
+<li>Reads the number of doctors who are on call (database returns 2)</li>
+<li>Plans to take a break</li>
+</ul>
+</li>
+<li>
+<p>Transaction B (Bob):</p>
+<ul>
+<li>Reads the number of doctors who are on call (database returns 2)</li>
+<li>Plans to take a break</li>
+</ul>
+</li>
+<li>
+<p>Transaction A (Alice):</p>
+<ul>
+<li>Updates Alice&rsquo;s status to <code>in_break</code> and commits</li>
+</ul>
+</li>
+<li>
+<p>Transaction B (Bob):</p>
+<ul>
+<li>Updates Bob&rsquo;s status to <code>in_break</code> and commits</li>
+</ul>
+</li>
+</ol>
+<p><strong>Final state</strong>:</p>
+<ul>
+<li>Alice&rsquo;s status: <code>in_break</code></li>
+<li>Bob&rsquo;s status: <code>in_break</code></li>
+</ul>
+<p>The rule that at least one doctor should be on call is violated</p>
+<h3 id="write-skew">
+  Write Skew
+  <a class="anchor" href="#write-skew">#</a>
+</h3>
+<p><strong>Write skew pattern</strong>:</p>
+<ul>
+<li>
+<p>A query checks whether a condition is satisfied. In above example, the number of on call doctors should be larger than 1</p>
+</li>
+<li>
+<p>If the condition is satisfied and the application decides to go ahead, it then makes a write to other objects in the database. In above example, doctor&rsquo;s status is updated from <code>on_call</code> to <code>in_break</code></p>
+</li>
+</ul>
+<p><strong>Phantom</strong></p>
+<p>Different transactions query same data. When the condition is satisfied, all transactions make a write to different objects. If the write to the objects breaks the condition in the query step, then write skew will occur.</p>
+<p>In above example, no matter Alice or Bob updates their status from <code>on_call</code> to <code>in_break</code>, the condition that number of on call doctors should be larger than 1 is not satisfied anymore. In that case, the write made later should be aborted instead be committed.</p>
+<p>This effect, where a write in one transaction changes the result of a search query in another transaction, is called a phantom</p>
+<h3 id="write-skew-solution">
+  Write Skew Solution
+  <a class="anchor" href="#write-skew-solution">#</a>
+</h3>
+<ul>
+<li>
+<p>Serializable isolation</p>
+</li>
+<li>
+<p>Locks all objects that are queried in the first step</p>
+<p>Unfortunately, this approach doesn&rsquo;t work if the search query if checking the absence of rows matching some search conditions, and the write adds a row matching the same condition.</p>
+<p>For example, in a meeting room booking system, before booking a room in the requested time spots, you need to search if any entries with the same room ID and time spots exist in the database, if not, then you insert a new entry with the room ID and time spots. In this example, you can&rsquo;t lock any entries in the search query because no entries are matched.</p>
+</li>
+</ul>
+<h1 id="serializability">
+  Serializability
+  <a class="anchor" href="#serializability">#</a>
+</h1>
+<p>Serializable isolation is usually regarded as the strongest isolation level. It guarantees that even though transactions may execute in parallel, the end result is the same as if they had executed one at a time, serially, without any concurrency.</p>
+<h2 id="actual-serial-execution">
+  Actual Serial Execution
+  <a class="anchor" href="#actual-serial-execution">#</a>
+</h2>
+<p>The simplest way of avoiding concurrency problems is to remove the concurrency entirely: to execute only one transaction at a time, in serial order, on a single thread.</p>
+<p>A system designed for single-threaded execution can sometimes perform better that a system that supports concurrency, because it can avoid the coordination overhead of locking.</p>
+<h3 id="encapsulating-transactions-in-stored-procedures">
+  Encapsulating transactions in stored procedures
+  <a class="anchor" href="#encapsulating-transactions-in-stored-procedures">#</a>
+</h3>
+<p><strong>Interactive multiple-statement transaction</strong></p>
+<p>An interactive multiple-statement transaction is a type of transaction where multiple SQL statements are executed as part of a single transaction, and these statements are sent interactively from application code over the network to the database server. This means that there is significant network overhead involved, as each statement requires a round trip between the application and the database server.</p>
+<p>In the interactive style of transactions, a lot of time is spent in network communication between the application and the database. If a database disallow concurrency, then interactive transactions will make the throughput and the performance dreadful.</p>
+<p><strong>Stored procedure</strong></p>
+<p>For this reason (Multiple network roundtrips in one transaction overloads the database server), systems with single-threaded serial transaction processing disallow interactive multiple-statement transactions. Applications need to store the transactional codes in the database ahead of time, as <em>stored procedure</em>, which contains multiple read or write statements and business logics. This approach &ndash; one request is sent from the application to the database server, and then database executes the stored procedure &ndash; eliminates the overhead of network communications.</p>
+<p><strong>Example of stored procedure</strong></p>
+<p><img src="/docs/programming/system-design/design-data-intensive-applications/transaction/stored-procedure.png" alt="stored-procedure" /></p>
+<h3 id="write-overheads">
+  Write Overheads
+  <a class="anchor" href="#write-overheads">#</a>
+</h3>
+<p>Systems with Single-threaded serial transactions can perform well for applications with high read throughput and low write throughput. Compared with read operations, write operations bring more overheads:</p>
+<ol>
+<li>
+<p>Data modifications and persistence</p>
+<ul>
+<li>
+<p>Data modified by write operations need to be durable. That typically involves writing to disk or other permanent storage.</p>
+</li>
+<li>
+<p>Most databases use write-ahead logging (WAL) to ensure durability and atomicity. Each write operation generate log entries which must be written to disk before the actual data modification.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Index maintenance</p>
+<ul>
+<li>Write operations require updates to one or more indexes to keep them in sync with the underlying data</li>
+</ul>
+</li>
+<li>
+<p>Resource utilization</p>
+<ul>
+<li>Write operations often involve advanced operations like constraint checking, trigger execution, and logging</li>
+</ul>
+</li>
+<li>
+<p>Error handling and rollback</p>
+<ul>
+<li>If a write operation encounters an error, the database must roll back the entire change and retry in some cases</li>
+</ul>
+</li>
+<li>
+<p>Concurrent writes</p>
+<ul>
+<li>Conflict resolution: Concurrent writes can lead to conflicts that the database must detect and resolve</li>
+<li>Locking: Write operations often require locking on the data modified to support concurrent writes</li>
+</ul>
+</li>
+</ol>
+<h3 id="partitioning">
+  Partitioning
+  <a class="anchor" href="#partitioning">#</a>
+</h3>
+<p>Considering so many write overheads (concurrent writes are not applied here), high write throughput would overwhelm single-threaded systems. One solution is to partition your data, so you can scale your system linearly with the number of partitions.</p>
+<p><strong>Limitation</strong></p>
+<p>This approach only works well if applications read and write the data in one single partition. If cross-partition transactions are required, then linear scalability is not realistic</p>
+<h2 id="two-phase-locking-2pl">
+  Two-Phase Locking (2PL)
+  <a class="anchor" href="#two-phase-locking-2pl">#</a>
+</h2>
+<p>Two-phase locking requires strong locking on objects. It allows multiple transactions to read same objects, but if any transactions want to write an object, exclusive access is required</p>
+<ul>
+<li>
+<p>Readers block other writers</p>
+</li>
+<li>
+<p>Writers block other readers and writers</p>
+</li>
+</ul>
+<h3 id="implementation-of-two-phase-locking">
+  Implementation of Two-Phase Locking
+  <a class="anchor" href="#implementation-of-two-phase-locking">#</a>
+</h3>
+<p>Every object in the system has a lock. The lock could either be in <em>shared mode</em> or in <em>exclusive mode</em></p>
+<ul>
+<li>
+<p>If a transaction wants to read an object, it must acquire the lock in shared mode. Several transactions are allowed to hold the lock in shared mode simultaneously, but if a transaction already has an exclusive lock on the object, these transactions must wait</p>
+</li>
+<li>
+<p>If a transaction wants to write, it must acquire the lock in exclusive mode. No other transaction can hold the lock at the same time (either in shared or in exclusive mode). In other words, readers block writes</p>
+</li>
+<li>
+<p>If a transaction first reads and then writes an object, it must upgrade its lock from shared mode to exclusive mode. The upgrade works the same as getting an exclusive lock directly</p>
+</li>
+<li>
+<p>After a transaction has the acquired lock, it must hold it until the transaction commits or aborts</p>
+</li>
+</ul>
+<h3 id="poor-performance-of-two-phase-locking">
+  Poor Performance of Two-Phase Locking
+  <a class="anchor" href="#poor-performance-of-two-phase-locking">#</a>
+</h3>
+<ul>
+<li>
+<p>Overhead of acquiring and releasing locks. The isolation level is too strong. If two transactions try to do anything that may in any way result in a race condition, one transaction has to wait for the other to complete</p>
+</li>
+<li>
+<p><em><strong>Deadlock</strong></em>. Because every object has a lock, and both read and write operations need to acquire the lock, the deadlock can happen quite easily that transaction A is waiting for transaction B to release the lock and vise verse.</p>
+<p>For example, in the on call shift management system</p>
+<ul>
+<li>Doctor Alice and Bob are on call</li>
+<li>Transaction A (Alice) searches doctors that are on call, and it acquires the locks of two entries: Alice and Bob&rsquo;s on call entries</li>
+<li>Transaction B (Bob) searches doctor that are on call, and it also acquires locks in shared mode for the same entries</li>
+<li>When either transaction tries to upgrade its lock from shared mode to exclusive mode, it will be blocked by the other transaction, and vise verse.</li>
+</ul>
+<p>Here, the deadlock occurs. When database detects this, it must abort all other transactions to allow only one transaction to acquire the exclusive lock</p>
+</li>
+</ul>
+<h3 id="predicate-locks">
+  Predicate Locks
+  <a class="anchor" href="#predicate-locks">#</a>
+</h3>
+<p>In some types of phantoms, the rows in the query is absent, serializable isolation should potentially handle this problem. In the meeting room booking example, the condition of booking a room is no entries with same room ID and time spots. How could two-phase locking achieve this?</p>
+<p><strong>Predicate locks</strong></p>
+<p>Predicate locks are a type of database lock that lock search conditions or predicates instead of specific data objects (like rows or tables). For below search statements:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-SQL" data-lang="SQL"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> bookings
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">WHERE</span> room_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">123</span> <span style="color:#66d9ef">AND</span>
+</span></span><span style="display:flex;"><span>    end_time   <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;2018-01-01 12:00&#39;</span> <span style="color:#66d9ef">AND</span>
+</span></span><span style="display:flex;"><span>    start_time <span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#39;2018-01-01 13:00&#39;</span>;
+</span></span></code></pre></div><p>The transaction must first acquire shared lock on the search conditions. If a transaction already has the exclusive lock on the same search conditions, others have to wait until the lock is released</p>
+<p><strong>Limitation of predicate locks</strong></p>
+<ol>
+<li>
+<p>Granularity and lock explosion</p>
+<p>When search conditions are highly specific, each unique condition potentially requires a separate lock. That may lead to a situation known as &ldquo;lock explosion&rdquo;, where many locks are created</p>
+</li>
+<li>
+<p>Lock management and checking</p>
+<p>The database must track each lock, which consumes memory and processing power. Each operation must be checking against all relevant predicate locks to ensure no conflicts</p>
+</li>
+</ol>
+<h3 id="index-range-locks">
+  Index-range locks
+  <a class="anchor" href="#index-range-locks">#</a>
+</h3>
+<p>The root cause of above limitations is that the search conditions associated with predicate locks are too granular causing too many locks are created. The optimization is to lock against less specific conditions.</p>
+<p><em><strong>Index-range locks</strong></em> simplify a predicate by making it match a greater set of object. For example, if you have a predicate lock for bookings of room 123 between noon and 1 p.m., you can approximate it by locking bookings for room 123 at any time, or you can approximate it by locking all rooms (not just room 123) between noon and 1 p.m. This is safe, because any write that matches the original predicate will definitely also match the approximations</p>
+<p>In the room booking system, you may have an index on the <code>room_id</code>, and database uses this index to find existing bookings for room 123. Now the database can simply attach a shared lock to this index entry, indicating that a transaction has searched for bookings of room 123.</p>
+<p>A lock is attached to the index. When a transaction wants to make a write to an entry, it must update the index. In the processing of doing so, it will encounter a shared lock, and it will be forces to wait until the lock is released</p>
+<p><strong>Trade-offs</strong></p>
+<p>Index-range locks are less precise as predicate locks would be, so they lock a larger range of objects, but it creates less number of locks</p>
+<h2 id="serializable-snapshot-isolation">
+  Serializable Snapshot Isolation
+  <a class="anchor" href="#serializable-snapshot-isolation">#</a>
+</h2>
+<h3 id="pessimistic-versus-optimistic-concurrency-control">
+  Pessimistic Versus Optimistic Concurrency Control
+  <a class="anchor" href="#pessimistic-versus-optimistic-concurrency-control">#</a>
+</h3>
+<p>Two-phase locking is a so-called <em>pessimistic</em> concurrency control mechanism. Its principle is that if anything might go wrong (as indicated by a lock held by another transaction), it&rsquo;s better to wait until the situation is safe again before doing anything</p>
+<p>Serial execution is pessimistic to the extreme: it is equivalent to each transaction having an exclusive lock on the entire database (or one partition of the database) for the duration of the transaction</p>
+<p><strong>serializable snapshot isolation</strong></p>
+<p>By contrast, serializable snapshot isolation is an optimistic concurrency control technique. If anything could go wrong, instead of blocking, transactions continue anyway, in the hope that everything will turn out all right. When a transaction wants to commit, the database checks if anything bad happened; if so, the transaction is aborted and has to be retried.</p>
+<p>SSI is based on snapshot isolation &ndash; that is, all reads within the transaction are from a consistent snapshot of the database. This is the main difference compared to optimistic concurrency control technique.</p>
+<h3 id="decision-based-on-an-outdated-premise">
+  Decision Based on An Outdated Premise
+  <a class="anchor" href="#decision-based-on-an-outdated-premise">#</a>
+</h3>
+<p>Write skew pattern in snapshot isolation: a transaction reads some data from the database, examines the result of the query, and decide to take some action based on the results. However, the result from the original query may not be up-to-date by the time the transaction commits, because the data may have been modified in the meantime by other transactions</p>
+<p>How does the database know if a query result might have changed? There are cases to consider:</p>
+<ul>
+<li>
+<p>Detecting reads of a stale MVCC object version (uncommitted write occurred before the read)</p>
+</li>
+<li>
+<p>Detecting writes that affect prior reads (the write occurs after the right)</p>
+</li>
+</ul>
+<p><strong>Detecting stale MVCC reads</strong></p>
+<p>Snapshot isolation is usually implemented by multi-version concurrency control (MVCC). When a transaction reads from a consistent snapshot, it ignores writes that were made but not yet committed at the time when the snapshot was taken.</p>
+<p>In order to prevent this anomaly, the database needs to track writes that were ignored by the transaction due to MVCC visibility rule. When the transaction wants to commit, the database check if any of the ignored writes have now been committed. If so, the transaction must be aborted</p>
+<p><strong>Detecting writes that affect prior reads</strong></p>
+<p>When a transaction writes to the database, it must look in the indexes for any other transactions that have recently read the modified data. The process is similar to acquire a write lock, but rather than blocking until the readers have committed, the transaction continues its process and notify other transaction the data they read is not up-to-date after it commits</p>
+<h3 id="performance-of-serializable-snapshot-isolation">
+  Performance of Serializable Snapshot Isolation
+  <a class="anchor" href="#performance-of-serializable-snapshot-isolation">#</a>
+</h3>
+<p>As always, many engineering details affect how well an algorithm works in practice. For example, one trade-off is the granularity at which transactions’ reads and writes are tracked. If the database keeps track of each transaction’s activity in great detail, it can be precise about which transactions need to abort, but the bookkeeping overhead can become significant. Less detailed tracking is faster, but may lead to more transactions being aborted than strictly necessary.</p>
+<p>Compared to two-phase locking, the big advantage of serializable snapshot isolation is that read-only queries can run on a consistent snapshot without requiring any locks, which is very appealing for read-heavy workloads.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#transaction">Transaction</a>
+      <ul>
+        <li><a href="#the-meaning-of-acid">The Meaning of ACID</a>
+          <ul>
+            <li><a href="#atomicity">Atomicity</a></li>
+            <li><a href="#consistency">Consistency</a></li>
+            <li><a href="#isolation">Isolation</a></li>
+            <li><a href="#durability">Durability</a></li>
+          </ul>
+        </li>
+        <li><a href="#single-object-and-multi-object-operations">Single-Object and Multi-Object Operations</a>
+          <ul>
+            <li><a href="#single-object-operations">Single-Object Operations</a></li>
+            <li><a href="#the-need-for-multiple-object-transactions">The need for multiple-object transactions</a></li>
+            <li><a href="#handling-errors-and-aborts">Handling Errors and Aborts</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#weak-isolation-levels">Weak Isolation Levels</a>
+      <ul>
+        <li><a href="#read-committed">Read Committed</a>
+          <ul>
+            <li><a href="#dirty-reads">Dirty Reads</a></li>
+            <li><a href="#dirty-writes">Dirty Writes</a></li>
+            <li><a href="#implementation">Implementation</a></li>
+          </ul>
+        </li>
+        <li><a href="#snapshot-isolation-and-repeatable-read">Snapshot Isolation and Repeatable Read</a>
+          <ul>
+            <li><a href="#non-repeatable-read">Non-Repeatable Read</a></li>
+            <li><a href="#snapshot-isolation">Snapshot Isolation</a></li>
+            <li><a href="#implementing-snapshot-isolation">Implementing Snapshot Isolation</a></li>
+            <li><a href="#indexes-of-snapshot-isolation">Indexes of Snapshot Isolation</a></li>
+          </ul>
+        </li>
+        <li><a href="#preventing-lost-updates">Preventing Lost Updates</a>
+          <ul>
+            <li><a href="#lost-updates">Lost updates</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#lost-updates-in-replicated-system">Lost Updates in Replicated System</a></li>
+          </ul>
+        </li>
+        <li><a href="#write-skew-and-phantoms">Write Skew and Phantoms</a>
+          <ul>
+            <li><a href="#write-skew-example">Write Skew Example</a></li>
+            <li><a href="#write-skew">Write Skew</a></li>
+            <li><a href="#write-skew-solution">Write Skew Solution</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#serializability">Serializability</a>
+      <ul>
+        <li><a href="#actual-serial-execution">Actual Serial Execution</a>
+          <ul>
+            <li><a href="#encapsulating-transactions-in-stored-procedures">Encapsulating transactions in stored procedures</a></li>
+            <li><a href="#write-overheads">Write Overheads</a></li>
+            <li><a href="#partitioning">Partitioning</a></li>
+          </ul>
+        </li>
+        <li><a href="#two-phase-locking-2pl">Two-Phase Locking (2PL)</a>
+          <ul>
+            <li><a href="#implementation-of-two-phase-locking">Implementation of Two-Phase Locking</a></li>
+            <li><a href="#poor-performance-of-two-phase-locking">Poor Performance of Two-Phase Locking</a></li>
+            <li><a href="#predicate-locks">Predicate Locks</a></li>
+            <li><a href="#index-range-locks">Index-range locks</a></li>
+          </ul>
+        </li>
+        <li><a href="#serializable-snapshot-isolation">Serializable Snapshot Isolation</a>
+          <ul>
+            <li><a href="#pessimistic-versus-optimistic-concurrency-control">Pessimistic Versus Optimistic Concurrency Control</a></li>
+            <li><a href="#decision-based-on-an-outdated-premise">Decision Based on An Outdated Premise</a></li>
+            <li><a href="#performance-of-serializable-snapshot-isolation">Performance of Serializable Snapshot Isolation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

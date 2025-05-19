@@ -18,6 +18,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/asymmetric-encryption/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/byte-buffer/</loc>
@@ -35,6 +37,8 @@
     <loc>https://whatsBehind.github.io/docs/programming-core/python/executing-a-python-file/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/aws/security/kms/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/lesson-1-start-kafka/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/load-balancer/</loc>
   </url><url>
@@ -180,12 +184,16 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-certificate-verify/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/tool/</loc>
-    <lastmod>2023-10-22T11:53:02-07:00</lastmod>
+    <loc>https://whatsBehind.github.io/docs/system-design/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/system-design/common-interview-questions/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-7-compose/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/tls-handshake-certificate-finished/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/tool/</loc>
+    <lastmod>2023-10-22T11:53:02-07:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-8-health-checks/</loc>
   </url><url>
@@ -292,6 +300,8 @@
     <loc>https://whatsBehind.github.io/docs/web/web-securities/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/categories/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/lesson-0-why-kafka/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/tags/</loc>
   </url>

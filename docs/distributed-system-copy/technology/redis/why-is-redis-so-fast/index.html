@@ -1,0 +1,2697 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Why is Redis So Fast?
+  #
+
+Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for &ldquo;Remote Dictionary Server,&rdquo; and it’s an open-source project known for its speed, simplicity, and versatility.
+Redis achieves its incredible speed through several key design principles and optimizations:
+
+  1. In-Memory Operations
+  #
+
+Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/distributed-system-copy/technology/redis/why-is-redis-so-fast/">
+  <meta property="og:site_name" content="What&#39;s Behind">
+  <meta property="og:title" content="Why Is Redis So Fast">
+  <meta property="og:description" content="Why is Redis So Fast? # Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for “Remote Dictionary Server,” and it’s an open-source project known for its speed, simplicity, and versatility.
+Redis achieves its incredible speed through several key design principles and optimizations:
+1. In-Memory Operations # Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Why Is Redis So Fast | What&#39;s Behind</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/distributed-system-copy/technology/redis/why-is-redis-so-fast/">
+<link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.cd37e550a0f2da02302f19fa1858257b9ee76f8783af958426773ec4671b85a9.js" integrity="sha256-zTflUKDy2gIwLxn6GFgle57nb4eDr5WEJnc&#43;xGcbhak=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>What&#39;s Behind</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-df2dded5abd1981845f18302063e6a5b" class="toggle"  />
+    <label for="section-df2dded5abd1981845f18302063e6a5b" class="flex justify-between">
+      <a role="button" class="">Programming Core</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="toggle"  />
+    <label for="section-9fb25f5d54e0dc77f875d628dd70b2b3" class="flex justify-between">
+      <a role="button" class="">Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2d40552f3cfe92824018c63b2452ecba" class="toggle"  />
+    <label for="section-2d40552f3cfe92824018c63b2452ecba" class="flex justify-between">
+      <a role="button" class="">Net</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/net/tcp-socket/" class="">Tcp Socket</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c98292848de5e1eee8daf1df97ad8e9" class="toggle"  />
+    <label for="section-6c98292848de5e1eee8daf1df97ad8e9" class="flex justify-between">
+      <a role="button" class="">Io</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/decorator-pattern-in-java-io/" class="">Decorator Pattern in Java IO</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/object-input-and-output-stream/" class="">ObjectInputStream and ObjectOutputStream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/stream-reader-bridge-of-byte-and-char/" class="">Stream Reader: Bridge of Byte and Char</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/io-stream/" class="">Java IO Stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/io/file/" class="">Java File</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="toggle"  />
+    <label for="section-314a5e3b512ecf7c8f90bb17f726a5a5" class="flex justify-between">
+      <a role="button" class="">Thread</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/start-thread/" class="">Start Thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/common-methods/" class="">Common Methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-lifecycle/" class="">Thread Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/synchornization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/thread/thread-safety/" class="">Thread Safety</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/reflection/" class="">Reflection</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3190593332d0f8f9ed0d16abadebf669" class="toggle"  />
+    <label for="section-3190593332d0f8f9ed0d16abadebf669" class="flex justify-between">
+      <a role="button" class="">Netty</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/event-loop-group/" class="">EventLoop &amp; EventLoopGroup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/channel/" class="">Channel &amp; ChannelFuture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/netty/pipeline-handler/" class="">Pipeline &amp; Handler</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9fe208af9b1b31c593b428135b5384f8" class="toggle"  />
+    <label for="section-9fe208af9b1b31c593b428135b5384f8" class="flex justify-between">
+      <a role="button" class="">Python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/executing-a-python-file/" class="">How Is Python File Executed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/re/" class="">RegEx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/python/format-string/" class="">format-string</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle"  />
+    <label for="section-67fa7359ce5b658cf77244fff5df08fc" class="flex justify-between">
+      <a role="button" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/online-chat/" class="">Online Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/node-js-auth/" class="">Node Js Auth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-48d1fef9b34bd9f66cd11153ecec9532" class="toggle"  />
+    <label for="section-48d1fef9b34bd9f66cd11153ecec9532" class="flex justify-between">
+      <a role="button" class="">Operating System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e85d05a86421e8876acb62f953a355e" class="toggle"  />
+    <label for="section-0e85d05a86421e8876acb62f953a355e" class="flex justify-between">
+      <a role="button" class="">Linux</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/linux/linux-manual/" class="">Linux Manual</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="toggle"  />
+    <label for="section-9963a5297d9d25c2d2a59e9f2cefd35c" class="flex justify-between">
+      <a role="button" class="">MAC Os</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-12c34d34235c7f130e7a4969b853bc86" class="toggle"  />
+    <label for="section-12c34d34235c7f130e7a4969b853bc86" class="flex justify-between">
+      <a role="button" class="">Terminal Command</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/operating-system/mac-os/terminal-command/text-processing-and-searching/" class="">Text Processing and Searching</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d553e6b678ca585c168cb48c2760b239" class="toggle"  />
+    <label for="section-d553e6b678ca585c168cb48c2760b239" class="flex justify-between">
+      <a role="button" class="">Web</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="toggle"  />
+    <label for="section-c8d5eaec12dd323a3cdfef1a04bd16d5" class="flex justify-between">
+      <a role="button" class="">Web Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-fundamentals/cors/" class="">CORS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-941ff506688d79a8f0ca9e629da3459f" class="toggle"  />
+    <label for="section-941ff506688d79a8f0ca9e629da3459f" class="flex justify-between">
+      <a role="button" class="">Web API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-api/web-storage-api/" class="">Web Storage Api</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d2544afe2799858027d68114f061083" class="toggle"  />
+    <label for="section-3d2544afe2799858027d68114f061083" class="flex justify-between">
+      <a role="button" class="">HTTP</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/start-http/" class="">Start HTTP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-methods-and-status-codes/" class="">HTTP Methods &amp; Status Codes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-1/" class="">HTTP Headers Part 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-2/" class="">HTTP Headers Part 2: Content-Type &amp; Accept</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-3/" class="">HTTP Headers Part 3: Cache-Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/http-header-part-4/" class="">HTTP Headers Part 4: Cache Validation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/http/cookie/" class="">Cookie</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c932410b33a0ef4d9ccee9231c75620" class="toggle"  />
+    <label for="section-0c932410b33a0ef4d9ccee9231c75620" class="flex justify-between">
+      <a role="button" class="">Restful API</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/restful-api/restful-get/" class="">RESTful GET</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1ff2ecac9e6a513c9d4c240eb7556772" class="toggle"  />
+    <label for="section-1ff2ecac9e6a513c9d4c240eb7556772" class="flex justify-between">
+      <a role="button" class="">Web Securities</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/asymmetric-encryption/" class="">Asymmetric Encryption</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/session-vs-token/" class="">Session vs Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake/" class="">TLS Handshake</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-client-hello/" class="">TLS Handshake: Client Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-server-hello/" class="">TLS Handshake: Server Hello</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate/" class="">TLS Handshake: Certificate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-verify/" class="">TLS Handshake: Certificate Verify</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/tls-handshake-certificate-finished/" class="">TLS Handshake: Finished</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/web/web-securities/simulating-https/" class="">Simulating HTTPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37a2fe5bfa20ce9b69339053678d5269" class="toggle"  />
+    <label for="section-37a2fe5bfa20ce9b69339053678d5269" class="flex justify-between">
+      <a role="button" class="">Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f7e22ed5bec8c14629b6ab355bc1502c" class="toggle"  />
+    <label for="section-f7e22ed5bec8c14629b6ab355bc1502c" class="flex justify-between">
+      <a role="button" class="">Aws</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/cloudformation/" class="">CloudFormation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-663cecbab2af013dadd72e5397ce62dc" class="toggle"  />
+    <label for="section-663cecbab2af013dadd72e5397ce62dc" class="flex justify-between">
+      <a role="button" class="">Message</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sns/" class="">SNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/sqs/" class="">SQS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/message/eventbridge/" class="">EventBridge</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-454b2a6456d3526d3f6d34370515a130" class="toggle"  />
+    <label for="section-454b2a6456d3526d3f6d34370515a130" class="flex justify-between">
+      <a role="button" class="">Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/aws/security/kms/" class="">KMS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a8c6511954d9f72be55fac23451b589b" class="toggle"  />
+    <label for="section-a8c6511954d9f72be55fac23451b589b" class="flex justify-between">
+      <a role="button" class="">Docker</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1fdaa73665acbf8848179fc0521ae9a8" class="toggle"  />
+    <label for="section-1fdaa73665acbf8848179fc0521ae9a8" class="flex justify-between">
+      <a role="button" class="">Fundamentals</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-1-start-docker/" class="">Lesson 1: Start Docker</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-2-commands/" class="">Lesson 2: Docker Commands</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-3-images/" class="">Lesson 3: Docker Images</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-4-dockerfile/" class="">Lesson 4: Dockerfile</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-5-networking/" class="">Lesson 5: Docker Networking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-6-volumes/" class="">Lesson 6: Docker Volumes</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-7-compose/" class="">Lesson 7: Docker Compose</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-8-health-checks/" class="">Lesson 8: Docker Logging, Healthchecks, and Container Lifecycle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-9-env/" class="">Lesson 9: Docker Env</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-10-multi-stage/" class="">Lesson 10: Docker Multi-Stage</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/fundamentals/lesson-11-dockerignore/" class="">Lesson 11: Docker Context &amp; `.dockerignore`</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a26e4ce35f8f99c6e7f1b46f1d47ff41" class="toggle"  />
+    <label for="section-a26e4ce35f8f99c6e7f1b46f1d47ff41" class="flex justify-between">
+      <a role="button" class="">Containerize Full Stack Application</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/preamble/" class="">Docker Fundamentals Final Project</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/par1-backend-service/" class="">Part1: Backend Service</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/docker/containerize-full-stack-application/par2-database/" class="">Part2: Database</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-868ff3bc94429ce8afade70db1d07dbc" class="toggle"  />
+    <label for="section-868ff3bc94429ce8afade70db1d07dbc" class="flex justify-between">
+      <a role="button" class="">K8s</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/k8s/why-k8s/" class="">Why K8S?</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/cloud/k8s/start-first-pod/" class="">Start First Pod</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-304cd452d0278b77fa76b02a905b318b" class="toggle"  />
+    <label for="section-304cd452d0278b77fa76b02a905b318b" class="flex justify-between">
+      <a role="button" class="">Networking</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns/" class="">DNS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/dns-hands-on/" class="">DNS Hands On</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/id-address/" class="">IP Address</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/cird/" class="">CIRD</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/networking/subnet/" class="">Subnet</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7bd152e192623ef00fcf43cf6f77e094" class="toggle" checked />
+    <label for="section-7bd152e192623ef00fcf43cf6f77e094" class="flex justify-between">
+      <a role="button" class="">Distributed System Copy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-adf9b3215704e58978ecf3df648a5818" class="toggle"  />
+    <label for="section-adf9b3215704e58978ecf3df648a5818" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-47ed647c1008396013d0a27a84f98211" class="toggle"  />
+    <label for="section-47ed647c1008396013d0a27a84f98211" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bce8df42233920cef05ec7a692b598bd" class="toggle"  />
+    <label for="section-bce8df42233920cef05ec7a692b598bd" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-22ea07c8347cf8dff26ed726fbd954d9" class="toggle"  />
+    <label for="section-22ea07c8347cf8dff26ed726fbd954d9" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-55ba8999a6f9fb09bc4297e8b281a8e5" class="toggle" checked />
+    <label for="section-55ba8999a6f9fb09bc4297e8b281a8e5" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9263e96f0b92b7ce9e41e4dfd59137a" class="toggle" checked />
+    <label for="section-c9263e96f0b92b7ce9e41e4dfd59137a" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/technology/redis/why-is-redis-so-fast/" class="active">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system-copy/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
+    <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
+      <a role="button" class="">Distributed System</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
+    <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
+      <a role="button" class="">Design Data Intensive Applications</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/replication/" class="">Replication</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/partition/" class="">Partition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/design-data-intensive-applications/transactions/" class="">Transactions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-18d02721e1887f4bb6418527097a8950" class="toggle"  />
+    <label for="section-18d02721e1887f4bb6418527097a8950" class="flex justify-between">
+      <a role="button" class="">Load Balancing</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/load-balancer/" class="">Load Balancer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-38078f6b2dffb5cfde0331f97c464879" class="toggle"  />
+    <label for="section-38078f6b2dffb5cfde0331f97c464879" class="flex justify-between">
+      <a role="button" class="">Haproxy</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/get-start/" class="">HAProxy: Get Started</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/health-check/" class="">HAProxy: Health Check</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/load-balancing-algorithm/" class="">HAProxy: Load Balancing Algorithem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/" class="">HAProxy: HTTP (Layer 7) Load Balancing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/load-balancing/haproxy/http-sticky-sessions-cookies/" class="">HAProxy: Sticky Sessions Using Cookies</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9885b1e85034892b05dcefffde06c590" class="toggle"  />
+    <label for="section-9885b1e85034892b05dcefffde06c590" class="flex justify-between">
+      <a role="button" class="">Monitoring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/monitoring/metric-log/" class="">Metric &amp; Log</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-37c1b579ed912460907b6bb054fdc275" class="toggle"  />
+    <label for="section-37c1b579ed912460907b6bb054fdc275" class="flex justify-between">
+      <a role="button" class="">Technology</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7dd16f458cbfc149eeb8aee70fe5b780" class="toggle"  />
+    <label for="section-7dd16f458cbfc149eeb8aee70fe5b780" class="flex justify-between">
+      <a role="button" class="">Redis</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/why-is-redis-so-fast/" class="">Why Is Redis So Fast</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/data-presistence/" class="">Data Persistence</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/pub-sub/" class="">Redis Pub/Sub</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/technology/redis/replication-and-sentinel/" class="">Redis Replication &amp; Sentinel</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c9d47227da1237bf23c06190fe793afd" class="toggle"  />
+    <label for="section-c9d47227da1237bf23c06190fe793afd" class="flex justify-between">
+      <a role="button" class="">Tool</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-624d42859b7b037f1a6e15ba4ee427e1" class="toggle"  />
+    <label for="section-624d42859b7b037f1a6e15ba4ee427e1" class="flex justify-between">
+      <a role="button" class="">Hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/tool/hugo/set-up-hugo-in-git-hub-pages/" class="">Set Up Hugo in Git Hub Pages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Why Is Redis So Fast</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-is-redis-so-fast">Why is Redis So Fast?</a>
+      <ul>
+        <li><a href="#1-in-memory-operations">1. In-Memory Operations</a>
+          <ul>
+            <li><a href="#understanding-mts-and-bandwidth">Understanding MT/s and Bandwidth</a></li>
+            <li><a href="#calculating-redis-operations">Calculating Redis Operations</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-efficient-data-structures">2. Efficient Data Structures</a></li>
+        <li><a href="#3-single-threaded-event-loop">3. Single-Threaded Event Loop</a>
+          <ul>
+            <li><a href="#calculating-redis-operations-per-second-cpu-bound">Calculating Redis Operations Per Second (CPU-bound)</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-minimal-protocol-overhead">4. Minimal Protocol Overhead</a></li>
+        <li><a href="#5-pipelining">5. Pipelining</a></li>
+        <li><a href="#6-optimized-network-io">6. Optimized Network IO</a>
+          <ul>
+            <li><a href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">Step-by-Step Handling of a Request and Response in Non-Blocking I/O</a></li>
+            <li><a href="#network-bandwidth-calculation">Network Bandwidth Calculation</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-partitioning">7. Partitioning</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="why-is-redis-so-fast">
+  Why is Redis So Fast?
+  <a class="anchor" href="#why-is-redis-so-fast">#</a>
+</h1>
+<p>Redis is a blazing-fast, in-memory data structure store that serves as a database, cache, and message broker. Its name stands for &ldquo;Remote Dictionary Server,&rdquo; and it’s an open-source project known for its speed, simplicity, and versatility.</p>
+<p>Redis achieves its incredible speed through several key design principles and optimizations:</p>
+<h2 id="1-in-memory-operations">
+  1. In-Memory Operations
+  <a class="anchor" href="#1-in-memory-operations">#</a>
+</h2>
+<p>Unlike traditional databases that rely on disk storage, Redis stores all data in memory. Modern DRAM (Dynamic Random-Access Memory) is a type of volatile memory widely used in computers for its high speed and low latency.</p>
+<h3 id="understanding-mts-and-bandwidth">
+  Understanding MT/s and Bandwidth
+  <a class="anchor" href="#understanding-mts-and-bandwidth">#</a>
+</h3>
+<p>For example, DDR5 DRAM—the latest generation of DRAM—can achieve memory access speeds of around 4800 MT/s (megatransfers per second). MT/s reflects the number of data transfers per second over the memory bus. DRAM employs double data rate (DDR) technology, which allows it to send data on both the rising and falling edges of the clock cycle, effectively doubling the transfer rate. Each transfer moves a fixed amount of data, and this is used to calculate the bandwidth (GB/s):</p>
+<p>Bandwidth (GB/s) = MT/s × Bus Width (Bytes) ÷ 1000</p>
+<p>For instance, with DDR5-4800, having 4800 MT/s and a bus width of 64 bits (8 bytes):
+Bandwidth = 4800 × 8 ÷ 1000 = 38.4 GB/s per channel.</p>
+<h3 id="calculating-redis-operations">
+  Calculating Redis Operations
+  <a class="anchor" href="#calculating-redis-operations">#</a>
+</h3>
+<p>Assume each Redis operation requires 100 bytes of data (both request and response). Using the theoretical bandwidth of 38.4 GB/s for a single channel, the rough queries per second (QPS) Redis could achieve is:</p>
+<p>QPS = Bandwidth (Bytes/s) ÷ Operation Size (Bytes)
+QPS = 38.4 × 10^9 ÷ 100 = 384 million operations per second.</p>
+<p>This theoretical calculation showcases the massive potential throughput of Redis when operating entirely in memory with modern DRAM, far exceeding the capabilities of traditional disk-based systems and enabling sub-millisecond response times. However, this is just a rough calculation. In real-world scenarios, the QPS of Redis is bottlenecked by other factors such as CPU, network bandwidth, and I/O limitations, with memory being just one of the constraints.</p>
+<h2 id="2-efficient-data-structures">
+  2. Efficient Data Structures
+  <a class="anchor" href="#2-efficient-data-structures">#</a>
+</h2>
+<p>Redis uses highly optimized data structures specifically designed to maximize performance. For example, dictionaries in Redis allow O(1) average-time complexity for lookups and inserts, making key-value storage extremely efficient. Skip lists are used for sorted sets, enabling fast range queries and ordered operations with O(log n) complexity. Additionally, Redis employs lightweight compression techniques to reduce memory usage while ensuring minimal impact on data access speed. These tailored data structures ensure that Redis can handle millions of operations per second while maintaining consistent low latency.</p>
+<h2 id="3-single-threaded-event-loop">
+  3. Single-Threaded Event Loop
+  <a class="anchor" href="#3-single-threaded-event-loop">#</a>
+</h2>
+<p>The benefit of using a single-threaded event loop in Redis is that it eliminates the need for context switching and complex locking mechanisms, enabling more predictable and efficient operation. This simplicity also avoids issues like race conditions and deadlocks, making Redis highly reliable for lightweight commands and in-memory operations.</p>
+<p>However, this raises a critical question: can a single thread handle high volumes of operations in a modern computing environment? To address this, let’s calculate the theoretical performance of a single-threaded Redis instance, assuming one operation takes 100 CPU cycles on average.</p>
+<h3 id="calculating-redis-operations-per-second-cpu-bound">
+  Calculating Redis Operations Per Second (CPU-bound)
+  <a class="anchor" href="#calculating-redis-operations-per-second-cpu-bound">#</a>
+</h3>
+<ul>
+<li><strong>CPU Clock Speed</strong>: 4.5 GHz (4.5 × 10^9 cycles/second)</li>
+<li><strong>Cycles Per Operation</strong>: 100 CPU cycles per operation (assumption for lightweight Redis commands).</li>
+</ul>
+<p>Thus, the number of operations Redis can handle is:</p>
+<p>QPS = Clock Speed / Cycles Per Operation
+QPS = 4.5 × 10^9 / 100 = 45 million operations per second.</p>
+<h2 id="4-minimal-protocol-overhead">
+  4. Minimal Protocol Overhead
+  <a class="anchor" href="#4-minimal-protocol-overhead">#</a>
+</h2>
+<p>RESP (Redis Serialization Protocol) is a lightweight, custom protocol dedicated to Redis that offers several key advantages:</p>
+<ul>
+<li><strong>Compact Format</strong>: RESP eliminates the overhead of verbose headers and negotiation mechanisms, which eases CPU usage by requiring significantly fewer cycles to parse and execute compared to general-purpose protocols like HTTP.</li>
+<li><strong>Reduced Network Bandwidth</strong>: By containing fewer bytes in both requests and responses, RESP minimizes the network bandwidth required for communication, improving overall throughput.</li>
+<li><strong>Integrated Pipelining</strong>: RESP seamlessly supports pipelining, allowing multiple commands to be sent in a single request, which further reduces latency and boosts performance.</li>
+</ul>
+<h2 id="5-pipelining">
+  5. Pipelining
+  <a class="anchor" href="#5-pipelining">#</a>
+</h2>
+<p>Redis allows clients to send multiple commands in a single request through its pipelining feature, which reduces round-trip latency and significantly improves throughput. For example, instead of waiting for each command&rsquo;s response before sending the next, a client can send a batch of commands like <code>SET key1 value1</code>, <code>SET key2 value2</code>, and <code>GET key1</code> all at once. The server processes them sequentially and sends back a batch of responses, minimizing network delays. </p>
+<h2 id="6-optimized-network-io">
+  6. Optimized Network IO
+  <a class="anchor" href="#6-optimized-network-io">#</a>
+</h2>
+<p>Redis handles network requests and responses efficiently using non-blocking I/O and event-driven mechanisms. Here’s a step-by-step explanation of how Redis handles client requests and responses:</p>
+<h3 id="step-by-step-handling-of-a-request-and-response-in-non-blocking-io">
+  Step-by-Step Handling of a Request and Response in Non-Blocking I/O
+  <a class="anchor" href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">#</a>
+</h3>
+<ol>
+<li>
+<p><strong>Client Sends a TCP Request</strong>:</p>
+<ul>
+<li>The client sends a command (e.g., <code>GET key1</code>) over an established TCP connection to Redis.</li>
+<li>The data is broken into packets and sent to the server.</li>
+</ul>
+</li>
+<li>
+<p><strong>OS Receives TCP Packets</strong>:</p>
+<ul>
+<li>The operating system (OS) kernel on the server receives the incoming packets, reassembles them, and stores the complete request in the <strong>socket buffer</strong>, which is managed by the OS.</li>
+<li>In non-blocking mode, Redis’s main thread does not wait for the complete message to be ready in the buffer. Instead, Redis continues processing other ready events in its event loop until notified by the OS that the request is ready for reading.</li>
+</ul>
+</li>
+<li>
+<p><strong>Redis Reads the Request</strong>:</p>
+<ul>
+<li>When the complete request is ready in the socket buffer, the OS notifies Redis that it is ready to be read and processed.</li>
+<li>Redis’s main thread processes the &ldquo;ready-to-read&rdquo; event in its event loop. </li>
+<li>It executes a non-blocking <code>read()</code> system call to fetch the request data from the socket buffer into Redis’s user-space memory.</li>
+<li>If the full request is not yet available, Redis skips this socket and continues processing other events, avoiding blocking.</li>
+</ul>
+</li>
+<li>
+<p><strong>Redis Processes the Request</strong>:</p>
+<ul>
+<li>Redis parses and executes the command (e.g., <code>GET key1</code>) by retrieving the key’s value from its in-memory data structure.</li>
+<li>The response (e.g., <code>value1</code>) is prepared in memory, waiting to be written to the socket buffer.</li>
+</ul>
+</li>
+<li>
+<p><strong>Redis Writes the Response to the Socket Buffer</strong>:</p>
+<ul>
+<li>Redis executes a non-blocking <code>write()</code> system call to send the response to the socket buffer.</li>
+<li>If the socket buffer has enough space, the data is copied immediately, and the <code>write()</code> call returns.</li>
+<li>If the buffer is full (e.g., due to a slow client), the <code>write()</code> call defers, and Redis marks the socket as &ldquo;waiting for readiness.&rdquo; After marking, Redis does not block; instead, it immediately moves on to process other ready requests or tasks in its event loop. Redis retries the write when the OS notifies that the socket is writable again, ensuring efficient use of the main thread while maintaining responsiveness.</li>
+</ul>
+</li>
+<li>
+<p><strong>OS Transmits the Data to the Client</strong>:</p>
+<ul>
+<li>Once the response is in the socket buffer, the OS and the network interface card (NIC) handle the actual transmission of the data over the network. Redis itself is not involved in this process; the OS takes full responsibility for reliably sending the data to the client, including handling retransmissions and acknowledgments.</li>
+</ul>
+</li>
+</ol>
+<h4 id="key-points-of-non-blocking-io">
+  <strong>Key Points of Non-Blocking I/O</strong>
+  <a class="anchor" href="#key-points-of-non-blocking-io">#</a>
+</h4>
+<ul>
+<li>Redis never blocks its main thread while waiting for I/O operations (e.g., receiving a request, writing a response).</li>
+<li>The OS handles low-level tasks like managing socket buffers and transmitting data over the network.</li>
+<li>Redis’s event loop ensures it efficiently processes ready events (e.g., requests from other clients) while waiting for I/O readiness.</li>
+</ul>
+<p>This non-blocking I/O model, combined with Redis’s single-threaded design, allows it to scale efficiently and handle thousands of concurrent connections without bottlenecks.</p>
+<h3 id="network-bandwidth-calculation">
+  Network Bandwidth Calculation
+  <a class="anchor" href="#network-bandwidth-calculation">#</a>
+</h3>
+<p>Let’s calculate the theoretical maximum number of requests Redis can handle based solely on network bandwidth. Assume both the request and response are 100 bytes each.</p>
+<h4 id="assumptions">
+  Assumptions:
+  <a class="anchor" href="#assumptions">#</a>
+</h4>
+<ul>
+<li>Request size = 200 bytes, considering network overhead like TCP/IP headers</li>
+<li>Response size = 200 bytes</li>
+<li>Total data per operation = 200 (request) + 200 (response) = 400 bytes</li>
+<li>Network bandwidth = 10 Gbps (10 gigabits per second)</li>
+</ul>
+<h4 id="calculation">
+  Calculation:
+  <a class="anchor" href="#calculation">#</a>
+</h4>
+<ol>
+<li>
+<p>Convert bandwidth to bytes per second:</p>
+<ul>
+<li>
+<p>10 Gbps = 10 × 10^9 bits/second</p>
+</li>
+<li>
+<p>1 byte = 8 bits, so:</p>
+<p>Bandwidth (bytes/second) = 10 × 10^9 ÷ 8 = 1250 × 10^6 bytes/second</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Calculate the maximum requests per second:</p>
+<p>Requests per second (RPS) = Bandwidth (bytes/second) ÷ Data per operation (bytes)</p>
+<p>RPS = 1250 × 10^6 ÷ 400 = 3.125 million requests per second</p>
+</li>
+</ol>
+<h4 id="conclusion">
+  Conclusion:
+  <a class="anchor" href="#conclusion">#</a>
+</h4>
+<p>With a 10 Gbps network connection, Redis can theoretically handle up to <strong>3.125 million requests per second</strong> network bandwidth-wise, assuming no other bottlenecks (e.g., CPU or memory).</p>
+<h2 id="7-partitioning">
+  7. Partitioning
+  <a class="anchor" href="#7-partitioning">#</a>
+</h2>
+<p>With Redis Cluster, data can be partitioned across multiple nodes, enabling horizontal scaling while maintaining high performance. If higher QPS is required and a single thread cannot handle the load, the system can be scaled by partitioning incoming requests and deploying more Redis instances to distribute the workload efficiently.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-is-redis-so-fast">Why is Redis So Fast?</a>
+      <ul>
+        <li><a href="#1-in-memory-operations">1. In-Memory Operations</a>
+          <ul>
+            <li><a href="#understanding-mts-and-bandwidth">Understanding MT/s and Bandwidth</a></li>
+            <li><a href="#calculating-redis-operations">Calculating Redis Operations</a></li>
+          </ul>
+        </li>
+        <li><a href="#2-efficient-data-structures">2. Efficient Data Structures</a></li>
+        <li><a href="#3-single-threaded-event-loop">3. Single-Threaded Event Loop</a>
+          <ul>
+            <li><a href="#calculating-redis-operations-per-second-cpu-bound">Calculating Redis Operations Per Second (CPU-bound)</a></li>
+          </ul>
+        </li>
+        <li><a href="#4-minimal-protocol-overhead">4. Minimal Protocol Overhead</a></li>
+        <li><a href="#5-pipelining">5. Pipelining</a></li>
+        <li><a href="#6-optimized-network-io">6. Optimized Network IO</a>
+          <ul>
+            <li><a href="#step-by-step-handling-of-a-request-and-response-in-non-blocking-io">Step-by-Step Handling of a Request and Response in Non-Blocking I/O</a></li>
+            <li><a href="#network-bandwidth-calculation">Network Bandwidth Calculation</a></li>
+          </ul>
+        </li>
+        <li><a href="#7-partitioning">7. Partitioning</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
