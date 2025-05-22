@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Kafka</title>
+      <link>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/1-why-kafka/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/1-why-kafka/</guid>
+      <description>&lt;h1 id=&#34;-when-one-service-sends-too-fast-and-another-cant-keep-up--why-we-need-kafka&#34;&gt;&#xA;  🚦 When One Service Sends Too Fast and Another Can’t Keep Up — Why We Need Kafka&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-when-one-service-sends-too-fast-and-another-cant-keep-up--why-we-need-kafka&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-the-real-world-bottleneck&#34;&gt;&#xA;  💥 The Real-World Bottleneck&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-the-real-world-bottleneck&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Imagine this: Service A is a high-throughput component, generating 2000 messages per second. Meanwhile, Service B can only handle 1000 messages per second.&lt;/p&gt;&#xA;&lt;p&gt;Without any coordination or buffering between them, Service B is bound to fail. Messages will pile up, CPU usage will spike, memory will overflow — and eventually, Service B will crash.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

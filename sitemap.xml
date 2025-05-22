@@ -20,6 +20,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/hands-on-practice/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/web/web-securities/asymmetric-encryption/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/byte-buffer/</loc>
@@ -38,7 +40,9 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/aws/security/kms/</loc>
   </url><url>
-    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/lesson-1-start-kafka/</loc>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/hands-on-practice/lesson-0-why-kafka/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/hands-on-practice/lesson-1-start-kafka/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/load-balancer/</loc>
   </url><url>
@@ -54,12 +58,16 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/k8s/why-k8s/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/1-why-kafka/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/project/</loc>
     <lastmod>2023-11-26T21:26:33-08:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/nio/blocking-mode/</loc>
   </url><url>
@@ -113,6 +121,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-2-commands/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/hands-on-practice/lesson-2-kafka-python-app/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/par2-database/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/design-data-intensive-applications/partition/</loc>
@@ -136,6 +146,8 @@
     <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/haproxy/layer7-load-balancing/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/http/http-header-part-2/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/hands-on-practice/lesson-3-consumer-group/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-3-images/</loc>
   </url><url>
@@ -300,8 +312,6 @@
     <loc>https://whatsBehind.github.io/docs/web/web-securities/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/categories/</loc>
-  </url><url>
-    <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/lesson-0-why-kafka/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/tags/</loc>
   </url>
