@@ -205,6 +205,13 @@
       <description>&lt;h1 id=&#34;-http-methods--status-codes&#34;&gt;&#xA;  📘 HTTP Methods &amp;amp; Status Codes&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-http-methods--status-codes&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Understanding HTTP methods and status codes is essential for designing and debugging web APIs. This lesson explores the most commonly used HTTP methods and how servers communicate the results of requests using standardized status codes.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-common-http-methods&#34;&gt;&#xA;  🔧 Common HTTP Methods&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-common-http-methods&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;HTTP methods (also called verbs) define the action the client wants the server to perform. Here are the most commonly used methods:&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Kafka Scales</title>
+      <link>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/2-kafka-scales/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/2-kafka-scales/</guid>
+      <description>&lt;h1 id=&#34;-how-kafka-scales--splitting-and-distributing-messages-for-parallel-processing&#34;&gt;&#xA;  ⚖️ How Kafka Scales — Splitting and Distributing Messages for Parallel Processing&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-how-kafka-scales--splitting-and-distributing-messages-for-parallel-processing&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-the-challenge-one-consumer-isnt-enough&#34;&gt;&#xA;  🚀 The Challenge: One Consumer Isn’t Enough&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-the-challenge-one-consumer-isnt-enough&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;In our previous post, we introduced Kafka as a message buffer that helps decouple a fast producer from a slow consumer.&lt;/p&gt;&#xA;&lt;p&gt;But what happens when one consumer still can’t keep up?&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Maybe it’s doing something heavy, like image analysis or fraud detection.&lt;/li&gt;&#xA;&lt;li&gt;Even with buffering, it eventually starts falling behind.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Can we simply add more consumers to share the load?&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Lesson 1: Start Docker</title>
       <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-1-start-docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

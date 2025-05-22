@@ -30,7 +30,7 @@ Without any coordination or buffering between them, Service B is bound to fail. 
 <link rel="canonical" href="https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/1-why-kafka/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5d624269eb3507e03232949a3da7eda3cc894013e2f24ec42383fa99e5775300.js" integrity="sha256-XWJCaes1B&#43;AyMpSaPafto8yJQBPi8k7EI4P6meV3UwA=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.cdcadeb6966e27dc79d234a3378b5234ecb283c38191a94e500b380d06d0b7a7.js" integrity="sha256-zcretpZuJ9x50jSjN4tSNOyyg8OBkalOUAs4DQbQt6c=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1759,6 +1759,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/kafka/real-world-architecture/2-kafka-scales/" class="">Kafka Scales</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -2268,38 +2281,44 @@ https://github.com/alex-shpak/hugo-book
   🧱 A Smarter Buffer Between Services
   <a class="anchor" href="#-a-smarter-buffer-between-services">#</a>
 </h2>
-<p>One logical step is to place an intermediate <strong>buffer</strong> between A and B:</p>
+<p>Before we go further, let’s define the roles these services play:</p>
 <ul>
-<li>Service A pushes messages into this buffer.</li>
-<li>Service B pulls messages from it at its own pace.</li>
-<li>If Service B crashes, the buffer holds the unprocessed messages.</li>
+<li><strong>Service A</strong>, which sends messages, is known as a <strong>producer</strong>.</li>
+<li><strong>Service B</strong>, which receives and processes those messages, is referred to as a <strong>consumer</strong>.</li>
 </ul>
-<p>This helps absorb the difference in speed between the two services. But to make this setup more reliable and scalable, we need something more robust — a purpose-built system that acts as a <strong>stream or message queue</strong>.</p>
+<p>This naming convention aligns with the model that Kafka and other message streaming systems use.</p>
+<p>One logical step is to place an intermediate <strong>buffer</strong> between these two services:</p>
+<ul>
+<li>The producer pushes messages into this buffer.</li>
+<li>The consumer pulls messages from it at its own pace.</li>
+<li>If the consumer crashes, the buffer retains any unprocessed messages.</li>
+</ul>
+<p>This approach helps smooth out the speed mismatch. But to make this setup reliable and production-ready, we need a specialized solution — a dedicated system designed for stream or message queuing.</p>
 <hr>
 <h2 id="-introducing-kafka">
   ⚙️ Introducing Kafka
   <a class="anchor" href="#-introducing-kafka">#</a>
 </h2>
-<p>Kafka is one such system. It sits between Service A and Service B, acting as a <strong>dedicated messaging layer</strong>:</p>
+<p>Kafka is one such system. It acts as a <strong>dedicated messaging layer</strong> that sits between the producer and the consumer:</p>
 <pre tabindex="0"><code>   ┌──────────────┐       ┌────────────────┐       ┌──────────────┐
-   │   Service A  │ ───▶  │     Kafka      │ ───▶  │   Service B  │
+   │  Producer A  │ ───▶  │     Kafka      │ ───▶  │  Consumer B  │
    └──────────────┘       └────────────────┘       └──────────────┘
-</code></pre><p>Kafka helps:</p>
+</code></pre><p>Kafka helps producers and consumers work together more effectively:</p>
 <ul>
-<li>Decouple fast-producing services from slower consumers</li>
-<li>Allow services to operate independently without crashing</li>
-<li>Smooth out traffic spikes by introducing an intermediate stream layer</li>
+<li>Decouples fast-producing services from slower consumers</li>
+<li>Allows services to operate independently and reliably</li>
+<li>Absorbs traffic spikes by introducing a central stream layer</li>
 </ul>
-<p>With Kafka in place, Service A no longer needs to worry about whether Service B is available or fast enough. Messages are stored in Kafka, and Service B processes them as it becomes ready.</p>
+<p>With Kafka in place, the producer no longer needs to worry about whether the consumer is available or fast enough. Messages are sent to Kafka, and the consumer can process them when it’s ready.</p>
 <hr>
 <h2 id="-final-takeaway">
   🧠 Final Takeaway
   <a class="anchor" href="#-final-takeaway">#</a>
 </h2>
 <blockquote>
-<p>Kafka is more than just a message queue — it’s a coordination layer that lets services work together without stepping on each other’s toes.</p>
+<p>Kafka is more than just a queue — it’s a coordination layer that enables smooth, reliable communication between distributed services.</p>
 </blockquote>
-<p>In future posts, we’ll dive deeper into <strong>how Kafka makes this possible</strong> — from the way it organizes messages to how it handles scalability, fault tolerance, and data retention.</p>
+<p>In future posts, we’ll explore <strong>how Kafka achieves this</strong>, including how it structures message storage, scales with demand, and handles failure and recovery.</p>
 <hr>
 <p>👉 <strong>Coming up next</strong>: How Kafka enables scaling — by splitting and distributing data across machines for parallel processing.</p>
 </article>
