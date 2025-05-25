@@ -317,6 +317,13 @@
       <description>&lt;h1 id=&#34;-understanding-ip-addresses-the-identity-system-of-the-internet&#34;&gt;&#xA;  🌐 Understanding IP Addresses: The Identity System of the Internet&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-understanding-ip-addresses-the-identity-system-of-the-internet&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Every device on a network needs an identity — a way for other devices to find it and communicate with it. In computer networking, that identity is an &lt;strong&gt;IP address&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-what-is-an-ip-address&#34;&gt;&#xA;  📌 What Is an IP Address?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-what-is-an-ip-address&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;An &lt;strong&gt;IP (Internet Protocol) address&lt;/strong&gt; is a unique number assigned to each device connected to a network. It functions much like a home address — directing data to the right recipient.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Kafka Reliability</title>
+      <link>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/3-kafka-reliability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/3-kafka-reliability/</guid>
+      <description>&lt;h1 id=&#34;-ensuring-reliability-and-high-availability-in-kafka--replication-and-brokers&#34;&gt;&#xA;  🛡️ Ensuring Reliability and High Availability in Kafka — Replication and Brokers&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-ensuring-reliability-and-high-availability-in-kafka--replication-and-brokers&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-the-challenge-what-happens-when-a-partition-fails&#34;&gt;&#xA;  🚨 The Challenge: What Happens When a Partition Fails?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-the-challenge-what-happens-when-a-partition-fails&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Previously, we explored how Kafka’s partitioning strategy enables scalability by distributing message processing across multiple consumers. But what if one of these partitions becomes unavailable? Without precautions, this could result in data loss or service interruption.&lt;/p&gt;&#xA;&lt;p&gt;This is where &lt;strong&gt;replication&lt;/strong&gt; comes into play, providing durability and high availability.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Lesson 2: Docker Commands</title>
       <link>https://whatsBehind.github.io/docs/cloud/docker/fundamentals/lesson-2-commands/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
