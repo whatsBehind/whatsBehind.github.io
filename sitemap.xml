@@ -48,6 +48,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/monitoring/metric-log/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/elasticsearch/get-started-with-es/1-quick-intro/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/web/restful-api/restful-get/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/web/http/start-http/</loc>
@@ -66,6 +68,10 @@
     <loc>https://whatsBehind.github.io/docs/cloud/docker/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/docker/containerize-full-stack-application/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/elasticsearch/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/elasticsearch/get-started-with-es/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/</loc>
   </url><url>

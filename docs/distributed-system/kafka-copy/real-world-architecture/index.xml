@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Kafka</title>
+      <link>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/1-why-kafka/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/1-why-kafka/</guid>
+      <description>&lt;h1 id=&#34;-when-one-service-sends-too-fast-and-another-cant-keep-up--why-we-need-kafka&#34;&gt;&#xA;  🚦 When One Service Sends Too Fast and Another Can’t Keep Up — Why We Need Kafka&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-when-one-service-sends-too-fast-and-another-cant-keep-up--why-we-need-kafka&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-the-real-world-bottleneck&#34;&gt;&#xA;  💥 The Real-World Bottleneck&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-the-real-world-bottleneck&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Imagine this: Service A is a high-throughput component, generating 2000 messages per second. Meanwhile, Service B can only handle 1000 messages per second.&lt;/p&gt;&#xA;&lt;p&gt;Without any coordination or buffering between them, Service B is bound to fail. Messages will pile up, CPU usage will spike, memory will overflow — and eventually, Service B will crash.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kafka Scales</title>
+      <link>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/2-kafka-scales/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/2-kafka-scales/</guid>
+      <description>&lt;h1 id=&#34;-how-kafka-scales--splitting-and-distributing-messages-for-parallel-processing&#34;&gt;&#xA;  ⚖️ How Kafka Scales — Splitting and Distributing Messages for Parallel Processing&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-how-kafka-scales--splitting-and-distributing-messages-for-parallel-processing&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-the-challenge-one-consumer-isnt-enough&#34;&gt;&#xA;  🚀 The Challenge: One Consumer Isn’t Enough&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-the-challenge-one-consumer-isnt-enough&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;In our previous post, we introduced Kafka as a message buffer that helps decouple a fast producer from a slow consumer.&lt;/p&gt;&#xA;&lt;p&gt;But what happens when one consumer still can’t keep up?&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Maybe it’s doing something heavy, like image analysis or fraud detection.&lt;/li&gt;&#xA;&lt;li&gt;Even with buffering, it eventually starts falling behind.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Can we simply add more consumers to share the load?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kafka Reliability</title>
+      <link>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/3-kafka-reliability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/3-kafka-reliability/</guid>
+      <description>&lt;h1 id=&#34;-ensuring-reliability-and-high-availability-in-kafka--replication-and-brokers&#34;&gt;&#xA;  🛡️ Ensuring Reliability and High Availability in Kafka — Replication and Brokers&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-ensuring-reliability-and-high-availability-in-kafka--replication-and-brokers&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-the-challenge-what-happens-when-a-partition-fails&#34;&gt;&#xA;  🚨 The Challenge: What Happens When a Partition Fails?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-the-challenge-what-happens-when-a-partition-fails&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Previously, we explored how Kafka’s partitioning strategy enables scalability by distributing message processing across multiple consumers. But what if one of these partitions becomes unavailable? Without precautions, this could result in data loss or service interruption.&lt;/p&gt;&#xA;&lt;p&gt;This is where &lt;strong&gt;replication&lt;/strong&gt; comes into play, providing durability and high availability.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kafka Offset</title>
+      <link>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/4-kafka-offset/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/4-kafka-offset/</guid>
+      <description>&lt;h1 id=&#34;-how-kafka-tracks-consumer-progress-and-enables-recovery&#34;&gt;&#xA;  🔖 How Kafka Tracks Consumer Progress and Enables Recovery&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-how-kafka-tracks-consumer-progress-and-enables-recovery&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-the-challenge-when-consumers-crash-or-restart&#34;&gt;&#xA;  🚨 The Challenge: When Consumers Crash or Restart&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-the-challenge-when-consumers-crash-or-restart&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Imagine this: Service B is consuming messages from Kafka without issues. Suddenly, it crashes or needs to restart. When it comes back online, it faces a critical question:&lt;/p&gt;&#xA;&lt;p&gt;❓ How can it resume processing from the correct point?&lt;/p&gt;&#xA;&lt;p&gt;❓ How does it avoid reprocessing old data or missing new messages?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kafka Data Persistence</title>
+      <link>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/5-kafka-data-persistence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/5-kafka-data-persistence/</guid>
+      <description>&lt;h1 id=&#34;-kafkas-disk-storage-and-retention--ensuring-durability-even-when-things-go-wrong&#34;&gt;&#xA;  🗄️ Kafka’s Disk Storage and Retention — Ensuring Durability Even When Things Go Wrong&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-kafkas-disk-storage-and-retention--ensuring-durability-even-when-things-go-wrong&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-the-challenge-what-happens-if-all-brokers-crash&#34;&gt;&#xA;  🚨 The Challenge: What Happens If All Brokers Crash?&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-the-challenge-what-happens-if-all-brokers-crash&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;In our previous post, we learned how Kafka uses replication across brokers to ensure availability and resilience. But what if &lt;strong&gt;all brokers&lt;/strong&gt;, and therefore all replicas of a partition, fail?&lt;/p&gt;&#xA;&lt;p&gt;❓ Is all the data lost?&lt;/p&gt;&#xA;&lt;p&gt;❓ How does Kafka handle such a catastrophic situation?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kafka Replication</title>
+      <link>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/6-kafka-replication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/distributed-system/kafka-copy/real-world-architecture/6-kafka-replication/</guid>
+      <description>&lt;h1 id=&#34;-kafka-replication-key-concepts-configurations-and-real-world-scenarios&#34;&gt;&#xA;  🔁 Kafka Replication: Key Concepts, Configurations, and Real-World Scenarios&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-kafka-replication-key-concepts-configurations-and-real-world-scenarios&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-the-challenge-ensuring-data-durability-and-availability&#34;&gt;&#xA;  🚨 The Challenge: Ensuring Data Durability and Availability&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-the-challenge-ensuring-data-durability-and-availability&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Kafka operates using a single-leader replication model, where each partition has a designated leader replica responsible for handling all reads and writes, while one or more follower replicas replicate the data asynchronously. This model strikes a balance between performance and consistency. Kafka’s replication system is designed not only to replicate data but also to provide configuration options that balance durability, availability, and resource efficiency.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -21,7 +21,8 @@ In our previous post, we learned how Kafka uses replication across brokers to en
   <meta property="og:site_name" content="What&#39;s Behind">
   <meta property="og:title" content="Kafka Data Persistence">
   <meta property="og:description" content="🗄️ Kafka’s Disk Storage and Retention — Ensuring Durability Even When Things Go Wrong # 🚨 The Challenge: What Happens If All Brokers Crash? # In our previous post, we learned how Kafka uses replication across brokers to ensure availability and resilience. But what if all brokers, and therefore all replicas of a partition, fail?
-❓ Is all the data lost? ❓ How does Kafka handle such a catastrophic situation?">
+❓ Is all the data lost?
+❓ How does Kafka handle such a catastrophic situation?">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -31,7 +32,7 @@ In our previous post, we learned how Kafka uses replication across brokers to en
 <link rel="canonical" href="https://whatsBehind.github.io/docs/distributed-system/kafka/real-world-architecture/5-kafka-data-persistence/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.8dfcfa0b532b6d6fc2edcb0f68f9df8bbef8f6caf317d36cfe59cc1a7c139488.js" integrity="sha256-jfz6C1MrbW/C7csPaPnfi7749srzF9Ns/lnMGnwTlIg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5ab255bf1d5e869b84d9c6759c216d5757641502cdeed00da7f765ac6466a0c8.js" integrity="sha256-WrJVvx1ehpuE2cZ1nCFtV1dkFQLN7tANp/dlrGRmoMg=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1842,6 +1843,61 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-b4fa9759c93d77a3b9140b515e6df951" class="toggle"  />
+    <label for="section-b4fa9759c93d77a3b9140b515e6df951" class="flex justify-between">
+      <a role="button" class="">Elasticsearch</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8f9b5bf0140cf2b0f8134bc076021251" class="toggle"  />
+    <label for="section-8f9b5bf0140cf2b0f8134bc076021251" class="flex justify-between">
+      <a role="button" class="">Get Started With Es</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/elasticsearch/get-started-with-es/1-quick-intro/" class="">Quick Intro</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="toggle"  />
     <label for="section-0c440edfc8d9ba2a67cafbd689bb4e3a" class="flex justify-between">
       <a role="button" class="">Design Data Intensive Applications</a>
@@ -2327,8 +2383,8 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#-the-challenge-what-happens-if-all-brokers-crash">#</a>
 </h2>
 <p>In our previous post, we learned how Kafka uses replication across brokers to ensure availability and resilience. But what if <strong>all brokers</strong>, and therefore all replicas of a partition, fail?</p>
-<p>❓ Is all the data lost?
-❓ How does Kafka handle such a catastrophic situation?</p>
+<p>❓ Is all the data lost?</p>
+<p>❓ How does Kafka handle such a catastrophic situation?</p>
 <p>The answer lies in <strong>disk-based storage and retention policies</strong>.</p>
 <hr>
 <h2 id="-kafkas-solution-persistent-disk-storage">

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What&#39;s Behind</title>
+    <link>http://localhost:1313/docs/distributed-system/elasticsearch/2-get-started-with-es/</link>
+    <description>Recent content on What&#39;s Behind</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/distributed-system/elasticsearch/2-get-started-with-es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quick Intro</title>
+      <link>http://localhost:1313/docs/distributed-system/elasticsearch/2-get-started-with-es/1-quick-intro/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/distributed-system/elasticsearch/2-get-started-with-es/1-quick-intro/</guid>
+      <description>&lt;h1 id=&#34;-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana&#34;&gt;&#xA;  🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp;amp; Kibana)&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;-introduction-to-elasticsearch-architecture&#34;&gt;&#xA;  🌟 Introduction to Elasticsearch Architecture&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#-introduction-to-elasticsearch-architecture&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Elasticsearch is a robust, distributed search and analytics engine. Here’s a concise overview of its key components:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Cluster&lt;/strong&gt;: A collection of nodes that work together to store data and handle search requests.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Node&lt;/strong&gt;: An individual server within a cluster.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Index&lt;/strong&gt;: A logical namespace for storing related documents.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Document&lt;/strong&gt;: A JSON object representing a unit of data.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Shard&lt;/strong&gt;: A partition of an index to facilitate horizontal scaling.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Replica&lt;/strong&gt;: A duplicate of a shard for high availability and fault tolerance.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This quick introduction sets the stage for hands-on practice. 🎩&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
