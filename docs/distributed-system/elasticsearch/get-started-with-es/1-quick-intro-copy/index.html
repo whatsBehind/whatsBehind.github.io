@@ -1,62 +1,44 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Introduction
-  #
-
-This project is for learning purpose. It is a practice of
-
-how to use JWT (Json Web Token) to authenticate user
-login with Google using OAuth2
-
-
-  Tech Stack
+  🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)
   #
 
 
-Node.js
-Express: Quickly start a local host
-MongoDB/Mongoose: Database to store users
-@hapi/joi: Package to validate parameters of objects
-bcryptjs: Hash confidential information including passwords in this project
-jsonwebtoken: JWT package to sign and verify a auth token
-axios: Send HTTP requests
-querystring: Package to parse and assembly query string in HTTP request
 
-
-  Reference
+  🌟 Introduction to Elasticsearch Architecture
   #
 
+Elasticsearch is a powerful, distributed search and analytics engine. Below are its core components:
 
-Implement JWT using node.js and express: Very nice video which guides me step by step to build this project
-Google OAuth2 with node.js: Video that explains and implements OAuth2 flow from end to end
-OAuth 2.0 and OpenID Connect: Plain English explains the evolution of OAuth2 and OpenID Connect
+Cluster: A group of nodes that store data and handle requests.
+Node: An individual server within a cluster.
+Index: A logical namespace for storing related documents.
+Document: A JSON object representing a data entry.
+Shard: A partition of an index that enables scalability.
+Replica: A copy of a shard for redundancy and high availability.
 
-
-  What Is JWT?
-  #
-
-A JWT (JSON Web Token) is like a compact digital note or a small piece of data that web servers and clients (like your browser or a mobile app) use to communicate secure information. It&rsquo;s like a tiny, encoded message.">
+This brief overview prepares us for hands-on practice. 🎩">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/project/node-js-auth/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/distributed-system/elasticsearch/get-started-with-es/1-quick-intro-copy/">
   <meta property="og:site_name" content="What&#39;s Behind">
-  <meta property="og:title" content="Node Js Auth">
-  <meta property="og:description" content="Introduction # This project is for learning purpose. It is a practice of
-how to use JWT (Json Web Token) to authenticate user login with Google using OAuth2 Tech Stack # Node.js Express: Quickly start a local host MongoDB/Mongoose: Database to store users @hapi/joi: Package to validate parameters of objects bcryptjs: Hash confidential information including passwords in this project jsonwebtoken: JWT package to sign and verify a auth token axios: Send HTTP requests querystring: Package to parse and assembly query string in HTTP request Reference # Implement JWT using node.js and express: Very nice video which guides me step by step to build this project Google OAuth2 with node.js: Video that explains and implements OAuth2 flow from end to end OAuth 2.0 and OpenID Connect: Plain English explains the evolution of OAuth2 and OpenID Connect What Is JWT? # A JWT (JSON Web Token) is like a compact digital note or a small piece of data that web servers and clients (like your browser or a mobile app) use to communicate secure information. It’s like a tiny, encoded message.">
+  <meta property="og:title" content="Quick Intro">
+  <meta property="og:description" content="🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana) # 🌟 Introduction to Elasticsearch Architecture # Elasticsearch is a powerful, distributed search and analytics engine. Below are its core components:
+Cluster: A group of nodes that store data and handle requests. Node: An individual server within a cluster. Index: A logical namespace for storing related documents. Document: A JSON object representing a data entry. Shard: A partition of an index that enables scalability. Replica: A copy of a shard for redundancy and high availability. This brief overview prepares us for hands-on practice. 🎩">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Node Js Auth | What&#39;s Behind</title>
+<title>Quick Intro | What&#39;s Behind</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://whatsBehind.github.io/docs/project/node-js-auth/">
+<link rel="canonical" href="http://localhost:1313/docs/distributed-system/elasticsearch/get-started-with-es/1-quick-intro-copy/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.6c2cc9cf03a6c4d3407a659d1a953f0a095b1b6763cbe5c4d175231302eb94c1.js" integrity="sha256-bCzJzwOmxNNAemWdGpU/CglbG2djy&#43;XE0XUjEwLrlME=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.a6178158db23fbe1abf52fcc5b3de27534cfa8d2d2373b8894c81727dc9d8930.js" integrity="sha256-pheBWNsj&#43;&#43;Gr9S/MWz3idTTPqNLSNzuIlMgXJ9ydiTA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -132,118 +114,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
-    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
-      <a role="button" class="">Nio</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
     
       
         <li>
@@ -524,6 +394,118 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-affd14f777bbfac5e18cb08a48b725a9" class="toggle"  />
+    <label for="section-affd14f777bbfac5e18cb08a48b725a9" class="flex justify-between">
+      <a role="button" class="">Nio</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/byte-buffer/" class="">Byte Buffer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/blocking-mode/" class="">Blocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/unblocking-mode/" class="">Unblocking Mode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector/" class="">Selector</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/selector-read/" class="">Selector Read</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/io-model-summary/" class="">I/O  Model Summary</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/programming-core/java/nio/multiple-threads/" class="">Multiple Threads</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -601,7 +583,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle" checked />
+    <input type="checkbox" id="section-67fa7359ce5b658cf77244fff5df08fc" class="toggle"  />
     <label for="section-67fa7359ce5b658cf77244fff5df08fc" class="flex justify-between">
       <a role="button" class="">Project</a>
     </label>
@@ -630,7 +612,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/project/node-js-auth/" class="active">Node Js Auth</a>
+    <a href="/docs/project/node-js-auth/" class="">Node Js Auth</a>
   
 
         </li>
@@ -1658,7 +1640,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle"  />
+    <input type="checkbox" id="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="toggle" checked />
     <label for="section-c0d136b848f77f3d3eb404c3ec9bb01d" class="flex justify-between">
       <a role="button" class="">Distributed System</a>
     </label>
@@ -1867,7 +1849,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-b4fa9759c93d77a3b9140b515e6df951" class="toggle"  />
+    <input type="checkbox" id="section-b4fa9759c93d77a3b9140b515e6df951" class="toggle" checked />
     <label for="section-b4fa9759c93d77a3b9140b515e6df951" class="flex justify-between">
       <a role="button" class="">Elasticsearch</a>
     </label>
@@ -1883,7 +1865,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-8f9b5bf0140cf2b0f8134bc076021251" class="toggle"  />
+    <input type="checkbox" id="section-8f9b5bf0140cf2b0f8134bc076021251" class="toggle" checked />
     <label for="section-8f9b5bf0140cf2b0f8134bc076021251" class="flex justify-between">
       <a role="button" class="">Get Started With Es</a>
     </label>
@@ -1899,7 +1881,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/distributed-system/elasticsearch/get-started-with-es/1-quick-intro/" class="">Quick Intro</a>
+    <a href="/docs/distributed-system/elasticsearch/get-started-with-es/1-quick-intro-copy/" class="active">Quick Intro</a>
   
 
         </li>
@@ -1912,7 +1894,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/distributed-system/elasticsearch/get-started-with-es/2-mappings-datatypes/" class="">Mappings &amp; Datatypes</a>
+    <a href="/docs/distributed-system/elasticsearch/get-started-with-es/1-quick-intro/" class="">Quick Intro</a>
   
 
         </li>
@@ -2373,7 +2355,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Node Js Auth</h3>
+  <h3>Quick Intro</h3>
 
   <label for="toc-control">
     
@@ -2389,32 +2371,26 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a>
+    <li><a href="#-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)</a></li>
+    <li><a href="#-introduction-to-elasticsearch-architecture">🌟 Introduction to Elasticsearch Architecture</a></li>
+    <li><a href="#-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">🏗️ Hands-on Practice: Setting Up Elasticsearch 8 &amp; Kibana with Docker</a>
       <ul>
-        <li><a href="#tech-stack">Tech Stack</a></li>
-        <li><a href="#reference">Reference</a></li>
-        <li><a href="#what-is-jwt">What Is JWT?</a>
+        <li>
           <ul>
-            <li><a href="#structure-of-jwt">Structure of JWT</a></li>
-            <li><a href="#risk-of-jwt">Risk of JWT</a></li>
-            <li><a href="#best-practice">Best Practice</a></li>
+            <li><a href="#-step-1-set-up-the-docker-compose-environment">📦 Step 1: Set Up the Docker Compose Environment</a></li>
+            <li><a href="#-step-2-start-the-docker-containers">📦 Step 2: Start the Docker Containers</a></li>
+            <li><a href="#-step-3-access-kibana">📦 Step 3: Access Kibana</a></li>
           </ul>
         </li>
-        <li><a href="#api">API</a>
+      </ul>
+    </li>
+    <li><a href="#-indexing-and-retrieving-a-document">✍️ Indexing and Retrieving a Document</a>
+      <ul>
+        <li>
           <ul>
-            <li><a href="#register">Register</a></li>
-            <li><a href="#login">Login</a></li>
-            <li><a href="#posts">Posts</a></li>
-          </ul>
-        </li>
-        <li><a href="#oauth2">OAuth2</a>
-          <ul>
-            <li><a href="#what-is-oauth2">What is OAuth2?</a></li>
-            <li><a href="#why-oauth2">Why OAuth2?</a></li>
-            <li><a href="#key-components-of-oauth2">Key Components of OAuth2</a></li>
-            <li><a href="#how-oauth2-works">How OAuth2 works</a></li>
-            <li><a href="#why-openid-connect">Why OpenID Connect</a></li>
-            <li><a href="#how-opendid-connect-works">How OpendID Connect works</a></li>
+            <li><a href="#-index-a-document">📦 Index a Document</a></li>
+            <li><a href="#-retrieve-the-document">🔍 Retrieve the Document</a></li>
+            <li><a href="#-expected-output">✅ Expected Output</a></li>
           </ul>
         </li>
       </ul>
@@ -2431,326 +2407,140 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="introduction">
-  Introduction
-  <a class="anchor" href="#introduction">#</a>
+  <article class="markdown book-article"><h1 id="-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">
+  🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)
+  <a class="anchor" href="#-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">#</a>
 </h1>
-<p>This project is for learning purpose. It is a practice of</p>
-<ol>
-<li>how to use JWT (Json Web Token) to authenticate user</li>
-<li>login with Google using OAuth2</li>
-</ol>
-<h2 id="tech-stack">
-  Tech Stack
-  <a class="anchor" href="#tech-stack">#</a>
-</h2>
+<hr>
+<h1 id="-introduction-to-elasticsearch-architecture">
+  🌟 Introduction to Elasticsearch Architecture
+  <a class="anchor" href="#-introduction-to-elasticsearch-architecture">#</a>
+</h1>
+<p>Elasticsearch is a powerful, distributed search and analytics engine. Below are its core components:</p>
 <ul>
-<li><code>Node.js</code></li>
-<li><code>Express</code>: Quickly start a local host</li>
-<li><code>MongoDB/Mongoose</code>: Database to store users</li>
-<li><code>@hapi/joi</code>: Package to validate parameters of objects</li>
-<li><code>bcryptjs</code>: Hash confidential information including passwords in this project</li>
-<li><code>jsonwebtoken</code>: JWT package to sign and verify a auth token</li>
-<li><code>axios</code>: Send HTTP requests</li>
-<li><code>querystring</code>: Package to parse and assembly query string in HTTP request</li>
+<li><strong>Cluster</strong>: A group of nodes that store data and handle requests.</li>
+<li><strong>Node</strong>: An individual server within a cluster.</li>
+<li><strong>Index</strong>: A logical namespace for storing related documents.</li>
+<li><strong>Document</strong>: A JSON object representing a data entry.</li>
+<li><strong>Shard</strong>: A partition of an index that enables scalability.</li>
+<li><strong>Replica</strong>: A copy of a shard for redundancy and high availability.</li>
 </ul>
-<h2 id="reference">
-  Reference
-  <a class="anchor" href="#reference">#</a>
-</h2>
+<p>This brief overview prepares us for hands-on practice. 🎩</p>
+<hr>
+<h1 id="-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">
+  🏗️ Hands-on Practice: Setting Up Elasticsearch 8 &amp; Kibana with Docker
+  <a class="anchor" href="#-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">#</a>
+</h1>
+<p>This hands-on exercise uses <strong>Elasticsearch 8</strong> and <strong>Kibana</strong>, orchestrated with Docker:</p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=2jqok-WgelI">Implement JWT using node.js and express</a>: Very nice video which guides me step by step to build this project</li>
-<li><a href="https://www.youtube.com/watch?v=Qt3KJZ2kQk0&amp;t=6s">Google OAuth2 with node.js</a>: Video that explains and implements OAuth2 flow from end to end</li>
-<li><a href="https://www.youtube.com/watch?v=996OiexHze0">OAuth 2.0 and OpenID Connect</a>: Plain English explains the evolution of OAuth2 and OpenID Connect</li>
-</ul>
-<h2 id="what-is-jwt">
-  What Is JWT?
-  <a class="anchor" href="#what-is-jwt">#</a>
-</h2>
-<p>A JWT (JSON Web Token) is like a compact digital note or a small piece of data that web servers and clients (like your browser or a mobile app) use to communicate secure information. It&rsquo;s like a tiny, encoded message.</p>
-<h3 id="structure-of-jwt">
-  Structure of JWT
-  <a class="anchor" href="#structure-of-jwt">#</a>
-</h3>
-<p>A JWT is made up of three parts, each encoded in base64 and separated by dots (<code>.</code>):</p>
-<ul>
-<li><strong>Header</strong>: The header typically consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as SHA256 or RSA.</li>
-<li><strong>Payload</strong>: The payload contains information of the identity, like id, isa(issuedAt), and etc&hellip;</li>
-<li><strong>Signature</strong>: This is the secure part of JWT. It is created by taking encoded header, encoded payload, a secret only known by the server, then running it through the signing algorithm mentioned in the header. If the algorithm is
-<ul>
-<li>Symmetric algorithm (like <code>HS256</code>): The same secret is used for signing and verification</li>
-<li>Asymmetric algorithm (like <code>RS256</code>): A private key will be used for signing, and a corresponding public key will be used for verification</li>
-</ul>
+<li>
+<p><strong>Elasticsearch 8</strong>: Functions as the core search engine, storing and indexing data. Configured as a single-node cluster for learning, with security features disabled.</p>
+</li>
+<li>
+<p><strong>Kibana</strong>: Provides a web interface to interact with Elasticsearch, submit queries, and visualize data.</p>
+</li>
+<li>
+<p><strong>Docker &amp; Docker Compose</strong>: Containerize Elasticsearch and Kibana, ensuring simplified deployment and management.</p>
 </li>
 </ul>
-<h3 id="risk-of-jwt">
-  Risk of JWT
-  <a class="anchor" href="#risk-of-jwt">#</a>
+<h3 id="-step-1-set-up-the-docker-compose-environment">
+  📦 Step 1: Set Up the Docker Compose Environment
+  <a class="anchor" href="#-step-1-set-up-the-docker-compose-environment">#</a>
 </h3>
 <ul>
-<li>Data is Not Encrypted
-<ul>
-<li>The first two parts of a JWT token are only base64 encoded, but not encrypted, so everyone can decode them and read data directly. Hence, confidential information should not be stored in the payload</li>
-</ul>
+<li>
+<p><strong>Step 1.1:</strong> Create a new directory for the project, e.g., <code>elasticsearch-practice</code>.</p>
 </li>
-<li>Susceptible to Theft
-<ul>
-<li>If a JWT is stolen, it could by used by unauthorized parties to gain access to the system</li>
-</ul>
+<li>
+<p><strong>Step 1.2:</strong> Inside the directory, create a new file named <code>docker-compose.yml</code>.</p>
 </li>
-<li>No Revocation Mechanism
-<ul>
-<li>Once issued, a JWT can&rsquo;t be revoked before it expires</li>
-</ul>
-</li>
-<li>Key Management Challenges
-<ul>
-<li>The security of JWT depends on how secret key is managed by the server. If the secret is not well managed or securely stored, it could lead security vulnerabilities</li>
-</ul>
+<li>
+<p><strong>Step 1.3:</strong> Copy the following content into <code>docker-compose.yml</code>.</p>
 </li>
 </ul>
-<h3 id="best-practice">
-  Best Practice
-  <a class="anchor" href="#best-practice">#</a>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.8&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">elasticsearch</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/elasticsearch/elasticsearch:8.13.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">discovery.type=single-node</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">xpack.security.enabled=false</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">ES_JAVA_OPTS=-Xms1g -Xmx1g</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;9200:9200&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">elastic</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">kibana</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">docker.elastic.co/kibana/kibana:8.13.0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">ELASTICSEARCH_HOSTS=http://elasticsearch:9200</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;5601:5601&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">elastic</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">elasticsearch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">networks</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">elastic</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">driver</span>: <span style="color:#ae81ff">bridge</span>
+</span></span></code></pre></div><h3 id="-step-2-start-the-docker-containers">
+  📦 Step 2: Start the Docker Containers
+  <a class="anchor" href="#-step-2-start-the-docker-containers">#</a>
 </h3>
-<ul>
-<li>Use HTTPS to prevent interception of tokens.</li>
-<li>Keep expiration times as short as practical.</li>
-<li>Avoid storing sensitive data in the token.</li>
-<li>Implement token refresh mechanisms.</li>
-<li>Securely manage signing keys.</li>
-</ul>
-<h2 id="api">
-  API
-  <a class="anchor" href="#api">#</a>
-</h2>
-<h3 id="register">
-  Register
-  <a class="anchor" href="#register">#</a>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker-compose up -d
+</span></span></code></pre></div><p>First time executing above command is time-consuming because es and Kibana containers are large. It takes time to pull them from docker registry.</p>
+<h3 id="-step-3-access-kibana">
+  📦 Step 3: Access Kibana
+  <a class="anchor" href="#-step-3-access-kibana">#</a>
 </h3>
-<ul>
-<li>Url: <code>/api/user/register</code></li>
-<li>Method: <code>POST</code></li>
-<li>Request
-<ul>
-<li>Body
-<pre tabindex="0"><code>{
-    name: string,
-    email: string,
-    password: string
+<p>Open your browser and navigate to:
+🌐 <code>http://localhost:5601</code>
+Click on <strong>Dev Tools</strong> in Kibana to interact with Elasticsearch.</p>
+<hr>
+<h1 id="-indexing-and-retrieving-a-document">
+  ✍️ Indexing and Retrieving a Document
+  <a class="anchor" href="#-indexing-and-retrieving-a-document">#</a>
+</h1>
+<h3 id="-index-a-document">
+  📦 Index a Document
+  <a class="anchor" href="#-index-a-document">#</a>
+</h3>
+<pre tabindex="0"><code>POST my_first_index/_doc/1
+{
+  &#34;title&#34;: &#34;Hello Elasticsearch 8!&#34;,
+  &#34;content&#34;: &#34;This is my first document.&#34;,
+  &#34;timestamp&#34;: &#34;2025-06-02T12:00:00&#34;
 }
-</code></pre></li>
-</ul>
-</li>
-<li>Response
+</code></pre><p>In this API call:</p>
 <ul>
-<li>Body
+<li><code>my_first_index</code> specifies the index name.</li>
+<li><code>_doc</code> is the default document type (maintained for backward compatibility).</li>
+<li><code>1</code> is the document ID, which uniquely identifies the document.</li>
+</ul>
+<h3 id="-retrieve-the-document">
+  🔍 Retrieve the Document
+  <a class="anchor" href="#-retrieve-the-document">#</a>
+</h3>
+<pre tabindex="0"><code>GET my_first_index/_doc/1
+</code></pre><hr>
+<h3 id="-expected-output">
+  ✅ Expected Output
+  <a class="anchor" href="#-expected-output">#</a>
+</h3>
 <pre tabindex="0"><code>{
-    userId: string
+  &#34;_index&#34;: &#34;my_first_index&#34;,
+  &#34;_id&#34;: &#34;1&#34;,
+  &#34;_version&#34;: 1,
+  &#34;found&#34;: true,
+  &#34;_source&#34;: {
+    &#34;title&#34;: &#34;Hello Elasticsearch 8!&#34;,
+    &#34;content&#34;: &#34;This is my first document.&#34;,
+    &#34;timestamp&#34;: &#34;2025-06-02T12:00:00&#34;
+  }
 }
-</code></pre></li>
-</ul>
-</li>
-<li>Business logic
-<ul>
-<li>Validate parameters in the request body</li>
-<li>Validate email is not registered in DB</li>
-<li>Insert a new user in DB</li>
-</ul>
-</li>
-</ul>
-<h3 id="login">
-  Login
-  <a class="anchor" href="#login">#</a>
-</h3>
-<ul>
-<li>Url: <code>/api/user/login</code></li>
-<li>Method: <code>POST</code></li>
-<li>Request
-<ul>
-<li>Body
-<pre tabindex="0"><code>{
-    email: string,
-    password: string
-}
-</code></pre></li>
-</ul>
-</li>
-<li>Response
-<ul>
-<li>Header
-<pre tabindex="0"><code>{
-    auth-token: string
-}
-</code></pre></li>
-<li>Body
-<pre tabindex="0"><code>{
-    token: string
-}
-</code></pre></li>
-</ul>
-</li>
-<li>Business logic
-<ul>
-<li>Verify if email and password match</li>
-<li>Sign a new JWT and return it</li>
-</ul>
-</li>
-</ul>
-<h3 id="posts">
-  Posts
-  <a class="anchor" href="#posts">#</a>
-</h3>
-<ul>
-<li>Url: <code>/api/posts</code></li>
-<li>Method: <code>GET</code></li>
-<li>Request
-<ul>
-<li>Header
-<pre tabindex="0"><code>{
-    auth-token: string
-}
-</code></pre></li>
-</ul>
-</li>
-<li>Response
-<ul>
-<li>Body
-<pre tabindex="0"><code>{
-    posts: {
-        title: string,
-        description: string
-    }
-}
-</code></pre></li>
-</ul>
-</li>
-<li>Business logic
-<ul>
-<li>Verify the <code>auth-token</code> from request headers</li>
-<li>Return a hard-coded post object</li>
-</ul>
-</li>
-</ul>
-<p>After users login, server signs a JWT to users. By include the JWT in the request headers, server could verify it to determine if user is authenticated (login)</p>
-<h2 id="oauth2">
-  OAuth2
-  <a class="anchor" href="#oauth2">#</a>
-</h2>
-<h3 id="what-is-oauth2">
-  What is OAuth2?
-  <a class="anchor" href="#what-is-oauth2">#</a>
-</h3>
-<p>OAuth2 is an open standard for access delegation, which is commonly used as the way for internet users to grant a client or application access to their resources under another server without sharing their passwords</p>
-<h3 id="why-oauth2">
-  Why OAuth2?
-  <a class="anchor" href="#why-oauth2">#</a>
-</h3>
-<ul>
-<li>
-<p>Secure Delegation of Access: Users often need to grant a third party website or application access to their data on another service (like accessing your google account from a social media app). Sharing credentials for this purpose is highly insecure</p>
-</li>
-<li>
-<p>Fine Grained Authorization: User may not want to give full access of their all data</p>
-</li>
-<li>
-<p>Standardization and Interoperability: With requirements of authentication and authorization from many internet service, a standard way is needed</p>
-</li>
-<li>
-<p>Reducing Password Fatigue: Users are overwhelmed by the need to create username and password for each single service</p>
-</li>
-</ul>
-<h3 id="key-components-of-oauth2">
-  Key Components of OAuth2
-  <a class="anchor" href="#key-components-of-oauth2">#</a>
-</h3>
-<ul>
-<li>Resource Owner: The user who authorizes an application to access their account</li>
-<li>Client: The application that wants to access user&rsquo;s account</li>
-<li>Resource Server: The server hosting user&rsquo;s data</li>
-<li>Authorization Server: The server that authenticates user and issues access token to the application</li>
-</ul>
-<h3 id="how-oauth2-works">
-  How OAuth2 works
-  <a class="anchor" href="#how-oauth2-works">#</a>
-</h3>
-<p><img src="/docs/programming/project/node-js-auth/oauth2-authorization.svg" alt="image" /></p>
-<ul>
-<li>
-<p>Authorization Request</p>
-<ul>
-<li>The client requests authorization to access user&rsquo;s resources. This is usually done through a redirection, where client passes along its identity (client id) and the scope of the access it&rsquo;s requesting</li>
-</ul>
-</li>
-<li>
-<p>User Authenticate and Consent</p>
-<ul>
-<li>The user is asked to login to the authorization server and to approve the requested access by the client</li>
-</ul>
-</li>
-<li>
-<p>Authorization Grant</p>
-<ul>
-<li>Upon successful authentication and consent, authorization server issues an authorization grant to the client. The authorization grant can be of different type, like an authorization code or an implicit grant, depending on the OAuth flow being used</li>
-</ul>
-</li>
-<li>
-<p>Access Token Request (In case of authorization code grant)</p>
-<ul>
-<li>If an authorization code is granted, then client exchanges the code for an access token. This is done by sent a request to authorization server&rsquo;s token endpoint where client authenticates itself and presents the authorization code</li>
-</ul>
-</li>
-<li>
-<p>Issuance of Access Token</p>
-<ul>
-<li>The authorization server authenticates the client validates the authorization grant and if valid issues an access token (and possibly a refresh token)</li>
-</ul>
-</li>
-<li>
-<p>Accessing the Resource</p>
-<ul>
-<li>The client uses access to token to make a request to the resource server for the protected resources</li>
-</ul>
-</li>
-<li>
-<p>Resource Server Validates Token</p>
-<ul>
-<li>The resource server validates the token and if valid serves the request</li>
-</ul>
-</li>
-<li>
-<p>Resource Deliver</p>
-<ul>
-<li>The client receives the protected resources</li>
-</ul>
-</li>
-</ul>
-<h3 id="why-openid-connect">
-  Why OpenID Connect
-  <a class="anchor" href="#why-openid-connect">#</a>
-</h3>
-<p>OAuth2 was originally designed for authorization, but not for authentication. Different companies have their own standards to authenticate users using OAuth2, in other words, OAuth2 is overused for authentication.</p>
-<p>OpenID Connect is an authentication layer built on top of OAuth2. It was developed to address the need for a standardized authentication process.</p>
-<h3 id="how-opendid-connect-works">
-  How OpendID Connect works
-  <a class="anchor" href="#how-opendid-connect-works">#</a>
-</h3>
-<ul>
-<li>Authentication Request
-<ul>
-<li>The client includes <code>openid</code> in the scope of the authorization request. That indicates that the client is requesting an ID token in addition to access token</li>
-</ul>
-</li>
-<li>Token Response
-<ul>
-<li>Access Token: Just like OAuth2, access token is issued by the authorization server. This token grants access to user&rsquo;s resources</li>
-<li>ID Token: This is unique to OpenID Connect. The ID token is a JWT which contains claims about user&rsquo;s identity and profile
-Token Validation</li>
-<li>Upon receiving the tokens, the client must validate the ID tokens to ensure its integrity and authenticity. This involves verifying JWT signature and the claims it contains</li>
-</ul>
-</li>
-</ul>
-</article>
+</code></pre></article>
  
       
 
@@ -2791,32 +2581,26 @@ Token Validation</li>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a>
+    <li><a href="#-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)</a></li>
+    <li><a href="#-introduction-to-elasticsearch-architecture">🌟 Introduction to Elasticsearch Architecture</a></li>
+    <li><a href="#-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">🏗️ Hands-on Practice: Setting Up Elasticsearch 8 &amp; Kibana with Docker</a>
       <ul>
-        <li><a href="#tech-stack">Tech Stack</a></li>
-        <li><a href="#reference">Reference</a></li>
-        <li><a href="#what-is-jwt">What Is JWT?</a>
+        <li>
           <ul>
-            <li><a href="#structure-of-jwt">Structure of JWT</a></li>
-            <li><a href="#risk-of-jwt">Risk of JWT</a></li>
-            <li><a href="#best-practice">Best Practice</a></li>
+            <li><a href="#-step-1-set-up-the-docker-compose-environment">📦 Step 1: Set Up the Docker Compose Environment</a></li>
+            <li><a href="#-step-2-start-the-docker-containers">📦 Step 2: Start the Docker Containers</a></li>
+            <li><a href="#-step-3-access-kibana">📦 Step 3: Access Kibana</a></li>
           </ul>
         </li>
-        <li><a href="#api">API</a>
+      </ul>
+    </li>
+    <li><a href="#-indexing-and-retrieving-a-document">✍️ Indexing and Retrieving a Document</a>
+      <ul>
+        <li>
           <ul>
-            <li><a href="#register">Register</a></li>
-            <li><a href="#login">Login</a></li>
-            <li><a href="#posts">Posts</a></li>
-          </ul>
-        </li>
-        <li><a href="#oauth2">OAuth2</a>
-          <ul>
-            <li><a href="#what-is-oauth2">What is OAuth2?</a></li>
-            <li><a href="#why-oauth2">Why OAuth2?</a></li>
-            <li><a href="#key-components-of-oauth2">Key Components of OAuth2</a></li>
-            <li><a href="#how-oauth2-works">How OAuth2 works</a></li>
-            <li><a href="#why-openid-connect">Why OpenID Connect</a></li>
-            <li><a href="#how-opendid-connect-works">How OpendID Connect works</a></li>
+            <li><a href="#-index-a-document">📦 Index a Document</a></li>
+            <li><a href="#-retrieve-the-document">🔍 Retrieve the Document</a></li>
+            <li><a href="#-expected-output">✅ Expected Output</a></li>
           </ul>
         </li>
       </ul>

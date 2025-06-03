@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)
+  🎩 Lesson 2.1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)
   #
 
 
@@ -27,7 +27,7 @@ This brief overview prepares us for hands-on practice. 🎩">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://whatsBehind.github.io/docs/distributed-system/elasticsearch/get-started-with-es/1-quick-intro/">
   <meta property="og:site_name" content="What&#39;s Behind">
   <meta property="og:title" content="Quick Intro">
-  <meta property="og:description" content="🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana) # 🌟 Introduction to Elasticsearch Architecture # Elasticsearch is a powerful, distributed search and analytics engine. Below are its core components:
+  <meta property="og:description" content="🎩 Lesson 2.1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana) # 🌟 Introduction to Elasticsearch Architecture # Elasticsearch is a powerful, distributed search and analytics engine. Below are its core components:
 Cluster: A group of nodes that store data and handle requests. Node: An individual server within a cluster. Index: A logical namespace for storing related documents. Document: A JSON object representing a data entry. Shard: A partition of an index that enables scalability. Replica: A copy of a shard for redundancy and high availability. This brief overview prepares us for hands-on practice. 🎩">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -38,7 +38,7 @@ Cluster: A group of nodes that store data and handle requests. Node: An individu
 <link rel="canonical" href="https://whatsBehind.github.io/docs/distributed-system/elasticsearch/get-started-with-es/1-quick-intro/">
 <link rel="stylesheet" href="/book.min.6c8b9d2a1fc95075ed7da46ca81060b39add8fff6741ac51259f768929281e2c.css" integrity="sha256-bIudKh/JUHXtfaRsqBBgs5rdj/9nQaxRJZ92iSkoHiw=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5ab255bf1d5e869b84d9c6759c216d5757641502cdeed00da7f765ac6466a0c8.js" integrity="sha256-WrJVvx1ehpuE2cZ1nCFtV1dkFQLN7tANp/dlrGRmoMg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.6c2cc9cf03a6c4d3407a659d1a953f0a095b1b6763cbe5c4d175231302eb94c1.js" integrity="sha256-bCzJzwOmxNNAemWdGpU/CglbG2djy&#43;XE0XUjEwLrlME=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1887,6 +1887,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/distributed-system/elasticsearch/get-started-with-es/2-mappings-datatypes/" class="">Mappings &amp; Datatypes</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -2358,22 +2371,17 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)</a></li>
-    <li><a href="#-introduction-to-elasticsearch-architecture">🌟 Introduction to Elasticsearch Architecture</a></li>
-    <li><a href="#-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">🏗️ Hands-on Practice: Setting Up Elasticsearch 8 &amp; Kibana with Docker</a>
+    <li><a href="#-lesson-21-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">🎩 Lesson 2.1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)</a>
       <ul>
-        <li>
+        <li><a href="#-introduction-to-elasticsearch-architecture">🌟 Introduction to Elasticsearch Architecture</a></li>
+        <li><a href="#-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">🏗️ Hands-on Practice: Setting Up Elasticsearch 8 &amp; Kibana with Docker</a>
           <ul>
             <li><a href="#-step-1-set-up-the-docker-compose-environment">📦 Step 1: Set Up the Docker Compose Environment</a></li>
             <li><a href="#-step-2-start-the-docker-containers">📦 Step 2: Start the Docker Containers</a></li>
             <li><a href="#-step-3-access-kibana">📦 Step 3: Access Kibana</a></li>
           </ul>
         </li>
-      </ul>
-    </li>
-    <li><a href="#-indexing-and-retrieving-a-document">✍️ Indexing and Retrieving a Document</a>
-      <ul>
-        <li>
+        <li><a href="#-indexing-and-retrieving-a-document">✍️ Indexing and Retrieving a Document</a>
           <ul>
             <li><a href="#-index-a-document">📦 Index a Document</a></li>
             <li><a href="#-retrieve-the-document">🔍 Retrieve the Document</a></li>
@@ -2394,15 +2402,15 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">
-  🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)
-  <a class="anchor" href="#-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">#</a>
+  <article class="markdown book-article"><h1 id="-lesson-21-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">
+  🎩 Lesson 2.1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)
+  <a class="anchor" href="#-lesson-21-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">#</a>
 </h1>
 <hr>
-<h1 id="-introduction-to-elasticsearch-architecture">
+<h2 id="-introduction-to-elasticsearch-architecture">
   🌟 Introduction to Elasticsearch Architecture
   <a class="anchor" href="#-introduction-to-elasticsearch-architecture">#</a>
-</h1>
+</h2>
 <p>Elasticsearch is a powerful, distributed search and analytics engine. Below are its core components:</p>
 <ul>
 <li><strong>Cluster</strong>: A group of nodes that store data and handle requests.</li>
@@ -2414,10 +2422,10 @@ https://github.com/alex-shpak/hugo-book
 </ul>
 <p>This brief overview prepares us for hands-on practice. 🎩</p>
 <hr>
-<h1 id="-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">
+<h2 id="-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">
   🏗️ Hands-on Practice: Setting Up Elasticsearch 8 &amp; Kibana with Docker
   <a class="anchor" href="#-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">#</a>
-</h1>
+</h2>
 <p>This hands-on exercise uses <strong>Elasticsearch 8</strong> and <strong>Kibana</strong>, orchestrated with Docker:</p>
 <ul>
 <li>
@@ -2486,10 +2494,10 @@ https://github.com/alex-shpak/hugo-book
 🌐 <code>http://localhost:5601</code>
 Click on <strong>Dev Tools</strong> in Kibana to interact with Elasticsearch.</p>
 <hr>
-<h1 id="-indexing-and-retrieving-a-document">
+<h2 id="-indexing-and-retrieving-a-document">
   ✍️ Indexing and Retrieving a Document
   <a class="anchor" href="#-indexing-and-retrieving-a-document">#</a>
-</h1>
+</h2>
 <h3 id="-index-a-document">
   📦 Index a Document
   <a class="anchor" href="#-index-a-document">#</a>
@@ -2568,22 +2576,17 @@ Click on <strong>Dev Tools</strong> in Kibana to interact with Elasticsearch.</p
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#-elasticsearch-lesson-2-1-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">🎩 Elasticsearch Lesson 2-1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)</a></li>
-    <li><a href="#-introduction-to-elasticsearch-architecture">🌟 Introduction to Elasticsearch Architecture</a></li>
-    <li><a href="#-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">🏗️ Hands-on Practice: Setting Up Elasticsearch 8 &amp; Kibana with Docker</a>
+    <li><a href="#-lesson-21-quick-intro-and-hands-on-elasticsearch-8-with-docker--kibana">🎩 Lesson 2.1: Quick Intro and Hands-On (Elasticsearch 8 with Docker &amp; Kibana)</a>
       <ul>
-        <li>
+        <li><a href="#-introduction-to-elasticsearch-architecture">🌟 Introduction to Elasticsearch Architecture</a></li>
+        <li><a href="#-hands-on-practice-setting-up-elasticsearch-8--kibana-with-docker">🏗️ Hands-on Practice: Setting Up Elasticsearch 8 &amp; Kibana with Docker</a>
           <ul>
             <li><a href="#-step-1-set-up-the-docker-compose-environment">📦 Step 1: Set Up the Docker Compose Environment</a></li>
             <li><a href="#-step-2-start-the-docker-containers">📦 Step 2: Start the Docker Containers</a></li>
             <li><a href="#-step-3-access-kibana">📦 Step 3: Access Kibana</a></li>
           </ul>
         </li>
-      </ul>
-    </li>
-    <li><a href="#-indexing-and-retrieving-a-document">✍️ Indexing and Retrieving a Document</a>
-      <ul>
-        <li>
+        <li><a href="#-indexing-and-retrieving-a-document">✍️ Indexing and Retrieving a Document</a>
           <ul>
             <li><a href="#-index-a-document">📦 Index a Document</a></li>
             <li><a href="#-retrieve-the-document">🔍 Retrieve the Document</a></li>
