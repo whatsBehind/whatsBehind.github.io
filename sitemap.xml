@@ -34,6 +34,8 @@
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/java/netty/event-loop-group/</loc>
   </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/elasticsearch/text-analysis/1-quick-intro/</loc>
+  </url><url>
     <loc>https://whatsBehind.github.io/docs/distributed-system/load-balancing/haproxy/get-start/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/programming-core/python/executing-a-python-file/</loc>
@@ -118,6 +120,8 @@
     <lastmod>2023-10-31T08:47:07-07:00</lastmod>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/k8s/</loc>
+  </url><url>
+    <loc>https://whatsBehind.github.io/docs/distributed-system/elasticsearch/text-analysis/</loc>
   </url><url>
     <loc>https://whatsBehind.github.io/docs/cloud/aws/message/eventbridge/</loc>
   </url><url>
